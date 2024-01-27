@@ -1,0 +1,41 @@
+{"sourceFile": [{
+      "name": "",
+      "directive": [
+        {
+          "functionName": "dummy_top_level_function",
+          "label": "",
+          "functionLabel": "",
+          "pragma": {
+            "name": "TOP",
+            "option": [{
+                "name": "name",
+                "value": "dummy_top_level_function"
+              }]
+          }
+        },
+        {
+          "functionName": "dummy_top_level_function",
+          "label": "",
+          "functionLabel": "",
+          "pragma": {
+            "name": "TOP",
+            "option": [{
+                "name": "name",
+                "value": "dummy_top_level_function"
+              }]
+          }
+        },
+        {
+          "functionName": "dummy_top_level_function",
+          "label": "",
+          "functionLabel": "",
+          "pragma": {
+            "name": "TOP",
+            "option": [{
+                "name": "name",
+                "value": "dummy_top_level_function"
+              }]
+          }
+        }
+      ]
+    }]}

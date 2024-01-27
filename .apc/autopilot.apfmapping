@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="debug.cxx" path="C:\Projects\ParticleCoverHLS\src\debug.cxx"/>
+    <originFiles name="parser.cxx" path="C:\Projects\ParticleCoverHLS\src\parser.cxx"/>
+  </source>
+  <testbench>
+    <originFiles name="main.cxx" path="C:\Projects\ParticleCoverHLS\src\main.cxx"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>

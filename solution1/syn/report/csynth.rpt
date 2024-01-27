@@ -1,0 +1,25 @@
+
+
+================================================================
+== Synthesis Summary Report of 'dummy_top_level_function'
+================================================================
++ General Information: 
+    * Date:           Sat Jan 27 16:28:32 2024
+    * Version:        2020.2 (Build 3064766 on Wed Nov 18 09:12:45 MST 2020)
+    * Project:        ParticleCoverHLS
+    * Solution:       solution1 (Vivado IP Flow Target)
+    * Product family: virtexuplus
+    * Target device:  xcvu11p-flga2577-1-e
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +----------------------------+------+-------+---------+--------+----------+---------+------+----------+------+---------+-----------+-----------+-----+
+    |           Modules          | Issue|       | Latency | Latency| Iteration|         | Trip |          |      |         |           |           |     |
+    |           & Loops          | Type | Slack | (cycles)|  (ns)  |  Latency | Interval| Count| Pipelined| BRAM |   DSP   |     FF    |    LUT    | URAM|
+    +----------------------------+------+-------+---------+--------+----------+---------+------+----------+------+---------+-----------+-----------+-----+
+    |+ dummy_top_level_function  |     -|  -0.81|        -|       -|         -|        -|     -|        no|     -|  8 (~0%)|  243 (~0%)|  275 (~0%)|    -|
+    | o copy_loop                |     -|  -7.30|        -|       -|         3|        -|     -|        no|     -|        -|          -|          -|    -|
+    +----------------------------+------+-------+---------+--------+----------+---------+------+----------+------+---------+-----------+-----------+-----+
+
