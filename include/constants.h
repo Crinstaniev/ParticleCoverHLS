@@ -10,4 +10,6 @@
 #define BEAM_AXIS_LIM 15
 #define NUM_LAYERS 5
 
+#define MAX_PATCHES_IN_COVER 32
+
 #endif
