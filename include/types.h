@@ -16,6 +16,13 @@ typedef struct {
 } PointArr_s;
 
 typedef struct {
+  PointArr_s points;
+  double z_values[MAX_NUM_POINTS];
+  double min;
+  double max;
+} superPoints_s;
+
+typedef struct {
   int end_layer;
   int left_end_layer;
   int right_end_layer;
@@ -27,6 +34,8 @@ typedef struct {
   int shadow_fromTopToInnermost_topL_jR;
   int shadow_fromTopToInnermost_topR_jL;
   int shadow_fromTopToInnermost_topR_jR;
+
+  superPoints_s superpoints;
 } wedgePatch_s;
 
 void makePatch_alignedToLine();
@@ -34,7 +43,14 @@ void makePatch_alignedToLine();
 typedef struct {
   int num_patches;
   wedgePatch_s patches[MAX_PATCHES_IN_COVER];
+  
 } wedgeCover_s;
+
+superPoints_s superPoint_init(PointArr_s points_arr);
+
+bool superPoint_is_eq(superPoints_s sp_1, superPoints_s sp_2);
+
+wedgePatch_s wedgePatch_init(superPoints_s superpoints, double apexZ0);
 
 void wedgeCover_add_patch();
 
