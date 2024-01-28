@@ -43,15 +43,32 @@ void makePatch_alignedToLine();
 typedef struct {
   int num_patches;
   wedgePatch_s patches[MAX_PATCHES_IN_COVER];
-  
+  int fitting_lines[MAX_NUM_POINTS]; // TODO: figure out the maximum size of
+                                     // this array
+  superPoints_s superpoints;
+  wedgePatch_s all_patches[MAX_PATCHES_IN_COVER];
+  wedgePatch_s wedge_patch[MAX_PATCHES_IN_COVER];
+  bool real_patch_list[MAX_NUM_POINTS]; // TODO: figure out the maximum size of
+                                        // this array
 } wedgeCover_s;
 
+/**
+ * Superpoint
+ */
 superPoints_s superPoint_init(PointArr_s points_arr);
 
 bool superPoint_is_eq(superPoints_s sp_1, superPoints_s sp_2);
 
+/**
+ * Wedge patch
+ */
 wedgePatch_s wedgePatch_init(superPoints_s superpoints, double apexZ0);
 
-void wedgeCover_add_patch();
+/**
+ * Wedge cover
+ */
+wedgeCover_s wedgeCover_init();
+
+void wedgeCover_add_patch(wedgePatch_s curr_patch, wedgeCover_s *wedge_cover);
 
 #endif
