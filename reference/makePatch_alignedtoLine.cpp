@@ -408,8 +408,10 @@ public:
   }
 };
 
+// TODO: implement FileReader
 class FileReader {
 public:
+  // TODO: implement splitString
   static vector<string> splitString(string str, string splitter = "),(") {
     vector<string> result;
     string currentStr = "";
@@ -433,6 +435,7 @@ public:
     return result;
   }
 
+  // TODO: implement readFile
   static vector<Event> readFile(string filepath, int stop = 128,
                                 bool performance = false) {
     ifstream currentFile;
@@ -500,6 +503,7 @@ public:
 int main() {
   string filepath = "wedgeData_v3_128.txt";
 
+  // TODO: implement Event
   vector<Event> events = FileReader::readFile(filepath);
 
   Environment env = events[0].env;

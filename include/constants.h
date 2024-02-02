@@ -1,15 +1,13 @@
 #ifndef __CONSTANTS_H__
 #define __CONSTANTS_H__
 
-#define MAX_NUM_POINTS 1024
+#define MAX_NUM_POINTS 1000
 
-#define MAX_LINE_LENGTH MAX_NUM_POINTS * 64
-
-// Environment Constants
-#define TOP_LAYER_LIM 100
-#define BEAM_AXIS_LIM 15
+// ENVIRONMENT CONSTANTS
+#define TOP_LAYER_LIM 100.0
+#define BEAM_AXIS_LIM 15.0
 #define NUM_LAYERS 5
 
-#define MAX_PATCHES_IN_COVER 32
+const double RADII[] = {5.0, 10.0, 15.0, 20.0, 25.0};
 
 #endif
