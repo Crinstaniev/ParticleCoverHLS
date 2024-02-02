@@ -20,7 +20,7 @@ enable_testing()
 add_executable(test_environment test/test_environment.cxx)
 add_test(NAME test_environment COMMAND test_environment)
 
-# build everything to libpatchmaker.so
+# build dynamic library
 add_library(patchmaker SHARED ${SOURCES})
 # name it libpatchmaker.so
 set_target_properties(patchmaker PROPERTIES OUTPUT_NAME libpatchmaker)

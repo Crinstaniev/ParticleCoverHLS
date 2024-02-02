@@ -400,6 +400,7 @@ public:
 class Event {
 public:
   Environment env;
+  // TODO: implement Point
   vector<Point> list_of_Points;
 
   Event(Environment envI = NULL, vector<Point> listP = {}) {
@@ -411,7 +412,6 @@ public:
 // TODO: implement FileReader
 class FileReader {
 public:
-  // TODO: implement splitString
   static vector<string> splitString(string str, string splitter = "),(") {
     vector<string> result;
     string currentStr = "";
