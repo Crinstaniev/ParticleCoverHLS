@@ -14,15 +14,14 @@ set(SOURCES ${SOURCES})
 
 add_executable(PatchMakerHLS ${SOURCES})
 
-# tests
 enable_testing()
-# test/test_environment.cxx
 add_executable(test_environment test/test_environment.cxx)
 add_test(NAME test_environment COMMAND test_environment)
 
-# build dynamic library
 add_library(patchmaker SHARED ${SOURCES})
-# name it libpatchmaker.so
 set_target_properties(patchmaker PROPERTIES OUTPUT_NAME libpatchmaker)
-# link the library to the test
 target_link_libraries(test_environment patchmaker)
+
+# build reference implementation, without warnings
+add_executable(PatchMakerHLSReference ${CMAKE_CURRENT_SOURCE_DIR}/reference/makePatch_alignedtoLine.cpp)
+target_compile_options(PatchMakerHLSReference PRIVATE -w)

@@ -400,7 +400,6 @@ public:
 class Event {
 public:
   Environment env;
-  // TODO: implement Point
   vector<Point> list_of_Points;
 
   Event(Environment envI = NULL, vector<Point> listP = {}) {
