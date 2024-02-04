@@ -77,4 +77,16 @@ void dataset_add_boundary_point(dataset_s &dataset, double offset) {
 }
 
 // DEBUG FUNCTIONS
-std::ostream &operator<<(std::ostream &os, const dataset_s &dataset) {}
+std::ostream &operator<<(std::ostream &os, const dataset_s &dataset) {
+  os << "Dataset: " << std::endl;
+  os << "  Total Points: " << dataset.total_points << std::endl;
+  os << "  Boundary Point Offset: " << dataset.boundaryPoint_offset
+     << std::endl;
+
+  for (size_t i = 0; i < NUM_LAYERS; i++) {
+    os << "  Layer " << i + 1 << " Points: " << dataset.n_points[i]
+       << std::endl;
+  }
+
+  return os;
+}

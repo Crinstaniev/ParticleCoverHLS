@@ -9,6 +9,8 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 add_definitions(-DDEBUG)
 
+# add -g option for all targets
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
 
 file(GLOB SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cxx)
 set(SOURCES ${SOURCES})
@@ -21,6 +23,7 @@ target_link_libraries(PatchMakerHLS patchmaker)
 
 enable_testing()
 
+# test_environment
 add_executable(test_environment test/test_environment.cxx)
 add_test(NAME test_environment COMMAND test_environment)
 target_link_libraries(test_environment patchmaker)
@@ -29,3 +32,8 @@ target_link_libraries(test_environment patchmaker)
 add_executable(test_file_reader test/test_file_reader.cxx)
 add_test(NAME test_file_reader COMMAND test_file_reader)
 target_link_libraries(test_file_reader patchmaker)
+
+# test_dataset
+add_executable(test_dataset test/test_dataset.cxx)
+add_test(NAME test_dataset COMMAND test_dataset)
+target_link_libraries(test_dataset patchmaker)

@@ -19,7 +19,7 @@ dataset_s dataset_init(environment_s &env);
 void dataset_import_data(dataset_s &dataset, point_s *data_array,
                          size_t data_array_size);
 
-void dataset_add_boundary_point(dataset_s &dataset, double offset);
+void dataset_add_boundary_point(dataset_s &dataset, double offset = 0.0001);
 
 // DEBUG FUNCTIONS
 std::ostream &operator<<(std::ostream &os, const dataset_s &dataset);
