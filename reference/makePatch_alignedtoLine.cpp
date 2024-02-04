@@ -502,7 +502,7 @@ public:
 int main() {
   string filepath = "wedgeData_v3_128.txt";
 
-  // TODO: implement Event
+  // implemented
   vector<Event> events = FileReader::readFile(filepath);
 
   Environment env = events[0].env;

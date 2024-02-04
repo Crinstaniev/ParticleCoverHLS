@@ -9,13 +9,15 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 add_definitions(-DDEBUG)
 
+
 file(GLOB SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cxx)
 set(SOURCES ${SOURCES})
 
-add_executable(PatchMakerHLS ${SOURCES})
-
 add_library(patchmaker SHARED ${SOURCES})
-set_target_properties(patchmaker PROPERTIES OUTPUT_NAME libpatchmaker)
+set_target_properties(patchmaker PROPERTIES OUTPUT_NAME patchmaker)
+
+add_executable(PatchMakerHLS src/system.cxx)
+target_link_libraries(PatchMakerHLS patchmaker)
 
 enable_testing()
 
