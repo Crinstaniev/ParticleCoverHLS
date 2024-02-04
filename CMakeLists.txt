@@ -37,3 +37,8 @@ target_link_libraries(test_file_reader patchmaker)
 add_executable(test_dataset test/test_dataset.cxx)
 add_test(NAME test_dataset COMMAND test_dataset)
 target_link_libraries(test_dataset patchmaker)
+
+# test_superpoint
+add_executable(test_superpoint test/test_superpoint.cxx)
+add_test(NAME test_superpoint COMMAND test_superpoint)
+target_link_libraries(test_superpoint patchmaker)

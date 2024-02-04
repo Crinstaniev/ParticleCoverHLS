@@ -20,7 +20,8 @@ int main(void) {
   dataset_import_data(ds, points, events[0].num_points);
   dataset_add_boundary_point(ds, 0.0001);
 
-  
+  // print dataset in green
+  std::cerr << "\033[1;32m" << ds << "\033[0m" << std::endl;
 
   return 0;
 }
