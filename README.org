@@ -1,6 +1,6 @@
 * ParticleCoverHLS
 
-This project is a HLS implementation of the ParticleCover algorithm from [[ParticleCover][https://github.com/mbahng/ParticleCover/]]
+This project is a HLS implementation of the ParticleCover algorithm from [[https://github.com/mbahng/ParticleCover/][ParticleCover]]
 
 ** Coding Convention
 
