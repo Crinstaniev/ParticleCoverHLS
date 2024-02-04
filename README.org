@@ -1,0 +1,10 @@
+* ParticleCoverHLS
+
+This project is a HLS implementation of the ParticleCover algorithm from [[ParticleCover][https://github.com/mbahng/ParticleCover/]]
+
+** Coding Convention
+
+=class= converted to =struct= to accomondate HLS.
+Each struct has its own header and source code file.
+
+TODO: Add more details
