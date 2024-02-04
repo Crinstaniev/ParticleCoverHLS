@@ -5,8 +5,8 @@
 #include <regex>
 #include <vector>
 
-static std::vector<std::string> split_string(std::string str,
-                                             const std::string splitter) {
+std::vector<std::string> split_string(std::string str,
+                                      const std::string splitter) {
   std::vector<std::string> result;
   std::string current_str = "";
 
@@ -34,11 +34,12 @@ static std::vector<std::string> split_string(std::string str,
   return result;
 }
 
-static event_s *file_reader_read(const std::string &filename, const int stop) {
+event_s *file_reader_read(const std::string &filename, const int stop) {
   std::ifstream file;
   std::string line;
 
-  event_s events[MAX_NUM_EVENTS];
+  // event_s events[MAX_NUM_EVENTS];
+  event_s *events = new event_s[MAX_NUM_EVENTS]; // size fixed for HLS
 
   file.open(filename);
 
@@ -81,12 +82,19 @@ static event_s *file_reader_read(const std::string &filename, const int stop) {
 
       int num_layers = radii.size();
 
-      // TODO: figure out how to properly initialize environment
       environment_s env = environment_init();
 
-      // TODO: implement rest
+      // append to events
+      events[line_index] = event_init(env, list_of_points.data(), num_layers);
+      line_index++;
+
+      if (line_index == stop) {
+        break;
+      }
     }
   }
 
-  return NULL;
+  file.close();
+
+  return events;
 }

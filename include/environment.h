@@ -2,7 +2,8 @@
 #define __ENVIRONMENT_H__
 
 #include "constants.h"
-#include <ctype.h>
+#include <cstddef>
+#include <iostream>
 
 typedef struct {
   double top_layer_lim;
@@ -21,6 +22,7 @@ typedef struct {
 
 environment_s environment_init();
 
-void environment_print(environment_s env);
+// DEBUG FUNCTION
+std::ostream &operator<<(std::ostream &os, const environment_s &env);
 
 #endif

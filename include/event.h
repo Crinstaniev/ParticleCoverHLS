@@ -4,6 +4,7 @@
 #include "constants.h"
 #include "environment.h"
 #include "point.h"
+#include <iostream>
 
 typedef struct {
   environment_s env;
@@ -11,6 +12,10 @@ typedef struct {
   size_t num_points; // inits to 0
 } event_s;
 
-event_s event_init(environment_s env);
+event_s event_init(environment_s env, point_s list_of_points[],
+                   size_t num_points);
+
+// DEBUG FUNCTION
+std::ostream &operator<<(std::ostream &os, const event_s &e);
 
 #endif

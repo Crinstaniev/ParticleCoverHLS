@@ -6,10 +6,10 @@
 #include <string>
 #include <vector>
 
-static std::vector<std::string>
-split_string(std::string str, const std::string splitter = "),(");
+std::vector<std::string> split_string(std::string str,
+                                      const std::string splitter = "),(");
 
-static event_s *file_reader_read(const std::string &filename,
+event_s *file_reader_read(const std::string &filename,
                                  const int stop = 128);
 
 #endif

@@ -49,30 +49,31 @@ environment_s environment_init() {
   return env;
 }
 
-void environment_print(environment_s env) {
-  std::cout << "Top Layer Limit: " << env.top_layer_lim << std::endl;
-  std::cout << "Beam Axis Limit: " << env.beam_axis_lim << std::endl;
-  std::cout << "Number of Layers: " << env.num_layers << std::endl;
-  std::cout << "Radii: ";
+// DEBUG FUNCTION
+std::ostream &operator<<(std::ostream &os, const environment_s &env) {
+  os << "Top Layer Limit: " << env.top_layer_lim << std::endl;
+  os << "Beam Axis Limit: " << env.beam_axis_lim << std::endl;
+  os << "Number of Layers: " << env.num_layers << std::endl;
+  os << "Radii: ";
   for (size_t i = 0; i < env.radii_size; ++i) {
-    std::cout << env.radii[i] << " ";
+    os << env.radii[i] << " ";
   }
-  std::cout << std::endl;
-  std::cout << "Parallelogram Slopes: ";
+  os << std::endl;
+  os << "Parallelogram Slopes: ";
   for (size_t i = 0; i < env.parallelogramSlopes_size; ++i) {
-    std::cout << env.parallelogramSlopes[i] << " ";
+    os << env.parallelogramSlopes[i] << " ";
   }
-  std::cout << std::endl;
-  std::cout << "Radii Lever Arm: ";
+  os << std::endl;
+  os << "Radii Lever Arm: ";
   for (size_t i = 0; i < env.radii_leverArm_size; ++i) {
-    std::cout << env.radii_leverArm[i] << " ";
+    os << env.radii_leverArm[i] << " ";
   }
-  std::cout << std::endl;
-  std::cout << "Boundary Point Offset: " << env.boundaryPoint_offset
-            << std::endl;
-  std::cout << "Trapezoid Edges: ";
+  os << std::endl;
+  os << "Boundary Point Offset: " << env.boundaryPoint_offset << std::endl;
+  os << "Trapezoid Edges: ";
   for (size_t i = 0; i < env.trapezoid_edges_size; ++i) {
-    std::cout << env.trapezoid_edges[i] << " ";
+    os << env.trapezoid_edges[i] << " ";
   }
-  std::cout << std::endl;
+  os << std::endl;
+  return os;
 }
