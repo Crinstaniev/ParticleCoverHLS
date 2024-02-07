@@ -13,7 +13,11 @@ point_s point_init(int layer_num, double radius, double phi, double z) {
 
 // DEBUG FUNCTION
 std::ostream &operator<<(std::ostream &os, const point_s &p) {
-  os << "Layer: " << p.layer_num << " Radius: " << p.radius << " Phi: " << p.phi
-     << " Z: " << p.z;
+  os << "Point: " << std::endl;
+  os << "  layer_num: " << p.layer_num << std::endl;
+  os << "  radius: " << p.radius << std::endl;
+  os << "  phi: " << p.phi << std::endl;
+  os << "  z: " << p.z << std::endl;
+
   return os;
 }

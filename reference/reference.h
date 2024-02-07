@@ -29,6 +29,17 @@ public:
   }
 };
 
+// DEBUG: print point
+ostream &operator<<(ostream &os, const Point &p) {
+  os << "Point: " << endl;
+  os << "  layer_num: " << p.layer_num << endl;
+  os << "  radius: " << p.radius << endl;
+  os << "  phi: " << p.phi << endl;
+  os << "  z: " << p.z << endl;
+
+  return os;
+}
+
 class Environment {
 public:
   double top_layer_lim;

@@ -1,60 +1,54 @@
 cmake_minimum_required(VERSION 3.10)
 
-project("PatchMakerHLS")
+project(PatchMakerHLS VERSION 1.0 LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 11)
+# Use C++11 standard
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Include directories
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/reference)
 
-add_definitions(-DDEBUG)
+# Definition for Debug mode
+add_compile_definitions($<$<CONFIG:DEBUG>:DEBUG>)
 
-# add -g option for all targets
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
+# Global compiler options
+add_compile_options(-g) # Debugging information
 
+# Source files
 file(GLOB SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cxx)
-set(SOURCES ${SOURCES})
 
+# PatchMaker Library
 add_library(patchmaker SHARED ${SOURCES})
 set_target_properties(patchmaker PROPERTIES OUTPUT_NAME patchmaker)
 
+# PatchMakerHLS executable
 add_executable(PatchMakerHLS src/system.cxx)
-target_link_libraries(PatchMakerHLS patchmaker)
+target_link_libraries(PatchMakerHLS PRIVATE patchmaker)
 
-# add reference implementation
+# PatchMakerHLS reference implementation
 add_executable(PatchMakerHLS_ref ${CMAKE_CURRENT_SOURCE_DIR}/reference/makePatch_alignedtoLIne.cpp)
 target_include_directories(PatchMakerHLS_ref PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/reference)
-# ignore warning for reference implementation
-set_target_properties(PatchMakerHLS_ref PROPERTIES COMPILE_FLAGS "-w")
-# build reference implementation without main to dynamically linked library libreference.so
+target_compile_options(PatchMakerHLS_ref PRIVATE -w) # Suppress all warnings
+
+# Reference library
 add_library(reference SHARED ${CMAKE_CURRENT_SOURCE_DIR}/reference/makePatch_alignedtoLIne.cpp)
-set_target_properties(reference PROPERTIES OUTPUT_NAME reference)
-# ignore warning for reference library
-set_target_properties(reference PROPERTIES COMPILE_FLAGS "-w")
+set_target_properties(reference PROPERTIES OUTPUT_NAME reference COMPILE_OPTIONS "-w") # Suppress all warnings
 
 enable_testing()
 
-# test_environment
-add_executable(test_environment test/test_environment.cxx)
-add_test(NAME test_environment COMMAND test_environment)
-target_link_libraries(test_environment patchmaker)
+# Helper macro for adding tests
+macro(patchmaker_add_test TEST_NAME)
+  add_executable(${TEST_NAME} test/${TEST_NAME}.cxx)
+  add_test(NAME ${TEST_NAME} COMMAND ${TEST_NAME})
+  target_link_libraries(${TEST_NAME} PRIVATE patchmaker reference)
+endmacro()
 
-# test_file_reader
-add_executable(test_file_reader test/test_file_reader.cxx)
-add_test(NAME test_file_reader COMMAND test_file_reader)
-target_link_libraries(test_file_reader patchmaker)
-
-# test_dataset
-add_executable(test_dataset test/test_dataset.cxx)
-add_test(NAME test_dataset COMMAND test_dataset)
-target_link_libraries(test_dataset patchmaker)
-
-# test_superpoint
-add_executable(test_superpoint test/test_superpoint.cxx)
-add_test(NAME test_superpoint COMMAND test_superpoint)
-target_link_libraries(test_superpoint patchmaker)
-
-# test_patch
-add_executable(test_patch test/test_patch.cxx)
-add_test(NAME test_patch COMMAND test_patch)
-target_link_libraries(test_patch patchmaker)
+# Add tests
+patchmaker_add_test(test_environment)
+patchmaker_add_test(test_file_reader)
+patchmaker_add_test(test_dataset)
+patchmaker_add_test(test_superpoint)
+patchmaker_add_test(test_patch)
+patchmaker_add_test(test_file_reader_comp)
