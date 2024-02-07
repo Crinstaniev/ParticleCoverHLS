@@ -42,11 +42,11 @@ std::ostream &operator<<(std::ostream &os, const superpoint_s &sp) {
     os << sp.z_values[i] << " ";
   }
   os << std::endl;
-  os << "  points: " << std::endl;
+  // os << "  points: " << std::endl;
   // one point per line
-  for (size_t i = 0; i < sp.n_points; i++) {
-    os << sp.points[i] << std::endl;
-  }
+  // for (size_t i = 0; i < sp.n_points; i++) {
+  //   os << sp.points[i] << std::endl;
+  // }
 
   os << std::endl;
 

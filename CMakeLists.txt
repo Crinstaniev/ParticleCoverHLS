@@ -21,6 +21,17 @@ set_target_properties(patchmaker PROPERTIES OUTPUT_NAME patchmaker)
 add_executable(PatchMakerHLS src/system.cxx)
 target_link_libraries(PatchMakerHLS patchmaker)
 
+# add reference implementation
+add_executable(PatchMakerHLS_ref ${CMAKE_CURRENT_SOURCE_DIR}/reference/makePatch_alignedtoLIne.cpp)
+target_include_directories(PatchMakerHLS_ref PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/reference)
+# ignore warning for reference implementation
+set_target_properties(PatchMakerHLS_ref PROPERTIES COMPILE_FLAGS "-w")
+# build reference implementation without main to dynamically linked library libreference.so
+add_library(reference SHARED ${CMAKE_CURRENT_SOURCE_DIR}/reference/makePatch_alignedtoLIne.cpp)
+set_target_properties(reference PROPERTIES OUTPUT_NAME reference)
+# ignore warning for reference library
+set_target_properties(reference PROPERTIES COMPILE_FLAGS "-w")
+
 enable_testing()
 
 # test_environment
