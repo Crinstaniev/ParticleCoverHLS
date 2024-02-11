@@ -21,12 +21,11 @@ typedef struct {
   int shadow_fromTopToInnermost_topR_jL;
   int shadow_fromTopToInnermost_topR_jR;
 
-  superpoint_s superpoints[MAX_NUM_POINTS]; // TODO: figure out correct size
+  superpoint_s superpoints[NUM_LAYERS]; // TODO: figure out correct size
   size_t n_superpoints;
 } patch_s;
 
-patch_s patch_init(environment_s env, superpoint_s *superpoints,
-                   size_t n_superpoints, double apexZ0);
+patch_s patch_init(environment_s env, superpoint_s *superpoints, double apexZ0);
 
 // DEBUG FUNCTION
 std::ostream &operator<<(std::ostream &os, const patch_s &p);

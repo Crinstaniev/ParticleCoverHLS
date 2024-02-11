@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
   <source>
-    <originFiles name="debug.cxx" path="C:\Projects\ParticleCoverHLS\src\debug.cxx"/>
-    <originFiles name="parser.cxx" path="C:\Projects\ParticleCoverHLS\src\parser.cxx"/>
+    <originFiles name="cover.cxx" path="C:\Projects\ParticleCoverHLS\src\cover.cxx"/>
+    <originFiles name="dataset.cxx" path="C:\Projects\ParticleCoverHLS\src\dataset.cxx"/>
+    <originFiles name="environment.cxx" path="C:\Projects\ParticleCoverHLS\src\environment.cxx"/>
+    <originFiles name="event.cxx" path="C:\Projects\ParticleCoverHLS\src\event.cxx"/>
+    <originFiles name="file_reader.cxx" path="C:\Projects\ParticleCoverHLS\src\file_reader.cxx"/>
+    <originFiles name="patch.cxx" path="C:\Projects\ParticleCoverHLS\src\patch.cxx"/>
+    <originFiles name="point.cxx" path="C:\Projects\ParticleCoverHLS\src\point.cxx"/>
+    <originFiles name="sim_utils.cxx" path="C:\Projects\ParticleCoverHLS\src\sim_utils.cxx"/>
+    <originFiles name="superpoint.cxx" path="C:\Projects\ParticleCoverHLS\src\superpoint.cxx"/>
+    <originFiles name="system.cxx" path="C:\Projects\ParticleCoverHLS\src\system.cxx"/>
   </source>
   <testbench>
-    <originFiles name="main.cxx" path="C:\Projects\ParticleCoverHLS\src\main.cxx"/>
+    <originFiles name="test_system_hls.cxx" path="C:\Projects\ParticleCoverHLS\test\test_system_hls.cxx"/>
   </testbench>
 </autopilotfilemapping:AutoPilotFileMapping>

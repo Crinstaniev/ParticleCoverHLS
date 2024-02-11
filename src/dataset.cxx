@@ -6,8 +6,10 @@ dataset_s dataset_init(environment_s &env) {
 
   dataset.env = &env;
 
-  // set all the number of points to 0
+// set all the number of points to 0
+loop_init:
   for (int i = 0; i < NUM_LAYERS; i++) {
+#pragma HLS unroll
     dataset.n_points[i] = 0;
   }
 
@@ -33,9 +35,20 @@ void dataset_import_data(dataset_s &dataset, point_s *data_array,
 
   for (size_t i = 0; i < NUM_LAYERS; i++) {
     // sort dataset.array[i] by z
-    std::sort(
-        dataset.array[i], dataset.array[i] + dataset.n_points[i],
-        [](const point_s &a, const point_s &b) -> bool { return a.z < b.z; });
+    // std::sort(
+    //     dataset.array[i], dataset.array[i] + dataset.n_points[i],
+    //     [](const point_s &a, const point_s &b) -> bool { return a.z < b.z;
+    //     });
+    // hls implementation, sort by z, using bubble sort (temporary solution)
+    for (size_t j = 0; j < dataset.n_points[i]; j++) {
+      for (size_t k = 0; k < dataset.n_points[i] - j - 1; k++) {
+        if (dataset.array[i][k].z > dataset.array[i][k + 1].z) {
+          point_s temp = dataset.array[i][k];
+          dataset.array[i][k] = dataset.array[i][k + 1];
+          dataset.array[i][k + 1] = temp;
+        }
+      }
+    }
 
     ln++;
   }
@@ -64,9 +77,21 @@ void dataset_add_boundary_point(dataset_s &dataset, double offset) {
   int ln = 0;
 
   for (size_t i = 0; i < NUM_LAYERS; i++) {
-    std::sort(
-        dataset.array[i], dataset.array[i] + dataset.n_points[i],
-        [](const point_s &a, const point_s &b) -> bool { return a.z < b.z; });
+    // std::sort(
+    //     dataset.array[i], dataset.array[i] + dataset.n_points[i],
+    //     [](const point_s &a, const point_s &b) -> bool { return a.z < b.z;
+    //     });
+
+    // implement using hls-compatible sort
+    for (size_t j = 0; j < dataset.n_points[i]; j++) {
+      for (size_t k = 0; k < dataset.n_points[i] - j - 1; k++) {
+        if (dataset.array[i][k].z > dataset.array[i][k + 1].z) {
+          point_s temp = dataset.array[i][k];
+          dataset.array[i][k] = dataset.array[i][k + 1];
+          dataset.array[i][k + 1] = temp;
+        }
+      }
+    }
 
     ln++;
   }

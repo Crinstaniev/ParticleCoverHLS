@@ -6,6 +6,9 @@ project(PatchMakerHLS VERSION 1.0 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Generate compile_commands.json
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 # Include directories
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/reference)
@@ -52,3 +55,4 @@ patchmaker_add_test(test_dataset)
 patchmaker_add_test(test_superpoint)
 patchmaker_add_test(test_patch)
 patchmaker_add_test(test_file_reader_comp)
+patchmaker_add_test(test_system_hls)

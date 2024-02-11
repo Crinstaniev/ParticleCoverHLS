@@ -1,0 +1,51 @@
+<profile>
+
+<section name = "Vitis HLS Report for 'system_top'" level="0">
+<item name = "Date">Sun Feb 11 13:12:37 2024
+</item>
+<item name = "Version">2020.2 (Build 3064766 on Wed Nov 18 09:12:45 MST 2020)</item>
+<item name = "Project">ParticleCoverHLS</item>
+<item name = "Solution">solution2 (Vivado IP Flow Target)</item>
+<item name = "Product family">virtexuplus</item>
+<item name = "Target device">xcvu11p-flga2577-1-e</item>
+</section>
+
+<section name = "Performance Estimates" level="0">
+<item name = "Timing">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="4">Clock, Target, Estimated, Uncertainty</keys>
+<column name="ap_clk">10.00 ns, 7.014 ns, 2.70 ns</column>
+</table>
+</item>
+</section>
+</item>
+<item name = "Latency">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="8">, min, max, min, max, min, max, Type</keys>
+<column name="">?, ?, ?, ?, ?, ?, none</column>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="0">
+<keys size="9">Instance, Module, min, max, min, max, min, max, Type</keys>
+<column name="grp_dataset_add_boundary_point_fu_50522">dataset_add_boundary_point, ?, ?, ?, ?, ?, ?, none</column>
+</table>
+</item>
+<item name = "Loop"><table name="" hasTotal="0">
+<keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
+<column name="- VITIS_LOOP_10_1">5, 5, 1, 1, 1, 5, yes</column>
+<column name="- VITIS_LOOP_24_1">?, ?, 5, 1, 1, ?, yes</column>
+<column name="- VITIS_LOOP_34_2">?, ?, ?, -, -, 5, no</column>
+<column name=" + VITIS_LOOP_41_3">?, ?, ?, -, -, ?, no</column>
+<column name="  ++ VITIS_LOOP_42_4">?, ?, 4, 3, 1, ?, yes</column>
+</table>
+</item>
+</section>
+</item>
+</section>
+</item>
+</section>
+</profile>

@@ -19,15 +19,8 @@ patch_s patch_init(environment_s env, superpoint_s *superpoints,
   patch.shadow_fromTopToInnermost_topR_jL = INT16_MIN;
   patch.shadow_fromTopToInnermost_topR_jR = INT16_MIN;
 
-#ifdef DEBUG
-  if (n_superpoints > MAX_NUM_POINTS) {
-    std::cerr << "[ERROR]: n_superpoints > MAX_NUM_POINTS" << std::endl;
-    exit(1);
-  }
-#endif // DEBUG
-
   // copy superpoints
-  for (size_t i = 0; i < n_superpoints; i++) {
+  for (size_t i = 0; i < NUM_LAYERS; i++) {
     patch.superpoints[i] = superpoints[i];
   }
 

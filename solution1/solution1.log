@@ -75,7 +75,7 @@ INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
 INFO: [HLS 200-1510] Running: csynth_design 
 INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 162.533 MB.
 INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/parser.cxx' ... 
-ERROR: [HLS 207-5156] non-void function 'dummy_top_level_function' should return a value: ParticleCoverHLS/src/parser.cxx:14:3
+ERROR: [HLS 207-5156] non-void function 'system_top' should return a value: ParticleCoverHLS/src/parser.cxx:14:3
 INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.615 seconds; current allocated memory: 163.849 MB.
 INFO: [HLS 200-112] Total CPU user time: 2 seconds. Total CPU system time: 1 seconds. Total elapsed time: 2.024 seconds; peak allocated memory: 163.501 MB.
 ==============================================================
@@ -108,7 +108,7 @@ INFO: [HLS 200-10] Setting target device to 'xcvu11p-flga2577-1-e'
 INFO: [HLS 200-1505] Using flow_target 'vivado'
 INFO: [HLS 200-1510] Running: set_part xcvu11p-flga2577-1-e 
 INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
-INFO: [HLS 200-1510] Running: set_directive_top -name dummy_top_level_function dummy_top_level_function 
+INFO: [HLS 200-1510] Running: set_directive_top -name system_top system_top 
 INFO: [HLS 200-1510] Running: csynth_design 
 INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.044 seconds; current allocated memory: 162.538 MB.
 INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/debug.cxx' ... 
@@ -126,7 +126,7 @@ INFO: [HLS 200-10] Setting target device to 'xcvu11p-flga2577-1-e'
 INFO: [HLS 200-1505] Using flow_target 'vivado'
 INFO: [HLS 200-1510] Running: set_part xcvu11p-flga2577-1-e 
 INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
-INFO: [HLS 200-1510] Running: set_directive_top -name dummy_top_level_function dummy_top_level_function 
+INFO: [HLS 200-1510] Running: set_directive_top -name system_top system_top 
 INFO: [HLS 200-1510] Running: csim_design -clean -quiet 
 INFO: [SIM 211-2] *************** CSIM start ***************
 INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
@@ -142,7 +142,7 @@ INFO: [HLS 200-10] Setting target device to 'xcvu11p-flga2577-1-e'
 INFO: [HLS 200-1505] Using flow_target 'vivado'
 INFO: [HLS 200-1510] Running: set_part xcvu11p-flga2577-1-e 
 INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
-INFO: [HLS 200-1510] Running: set_directive_top -name dummy_top_level_function dummy_top_level_function 
+INFO: [HLS 200-1510] Running: set_directive_top -name system_top system_top 
 INFO: [HLS 200-1510] Running: csim_design -clean -quiet 
 INFO: [SIM 211-2] *************** CSIM start ***************
 INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
@@ -158,7 +158,7 @@ INFO: [HLS 200-10] Setting target device to 'xcvu11p-flga2577-1-e'
 INFO: [HLS 200-1505] Using flow_target 'vivado'
 INFO: [HLS 200-1510] Running: set_part xcvu11p-flga2577-1-e 
 INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
-INFO: [HLS 200-1510] Running: set_directive_top -name dummy_top_level_function dummy_top_level_function 
+INFO: [HLS 200-1510] Running: set_directive_top -name system_top system_top 
 INFO: [HLS 200-1510] Running: csynth_design 
 INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.044 seconds; current allocated memory: 162.539 MB.
 INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/debug.cxx' ... 
@@ -176,7 +176,7 @@ INFO: [HLS 200-10] Setting target device to 'xcvu11p-flga2577-1-e'
 INFO: [HLS 200-1505] Using flow_target 'vivado'
 INFO: [HLS 200-1510] Running: set_part xcvu11p-flga2577-1-e 
 INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
-INFO: [HLS 200-1510] Running: set_directive_top -name dummy_top_level_function dummy_top_level_function 
+INFO: [HLS 200-1510] Running: set_directive_top -name system_top system_top 
 INFO: [HLS 200-1510] Running: csynth_design 
 INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.042 seconds; current allocated memory: 162.538 MB.
 INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/debug.cxx' ... 
@@ -194,8 +194,8 @@ INFO: [HLS 200-10] Setting target device to 'xcvu11p-flga2577-1-e'
 INFO: [HLS 200-1505] Using flow_target 'vivado'
 INFO: [HLS 200-1510] Running: set_part xcvu11p-flga2577-1-e 
 INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
-INFO: [HLS 200-1510] Running: set_directive_top -name dummy_top_level_function dummy_top_level_function 
-INFO: [HLS 200-1510] Running: set_directive_unroll dummy_top_level_function/copy_loop 
+INFO: [HLS 200-1510] Running: set_directive_top -name system_top system_top 
+INFO: [HLS 200-1510] Running: set_directive_unroll system_top/copy_loop 
 INFO: [HLS 200-1510] Running: csynth_design 
 INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 162.557 MB.
 INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/debug.cxx' ... 
@@ -226,8 +226,8 @@ INFO: [HLS 200-10] Setting target device to 'xcvu11p-flga2577-1-e'
 INFO: [HLS 200-1505] Using flow_target 'vivado'
 INFO: [HLS 200-1510] Running: set_part xcvu11p-flga2577-1-e 
 INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
-INFO: [HLS 200-1510] Running: set_directive_top -name dummy_top_level_function dummy_top_level_function 
-INFO: [HLS 200-1510] Running: set_directive_unroll dummy_top_level_function/copy_loop 
+INFO: [HLS 200-1510] Running: set_directive_top -name system_top system_top 
+INFO: [HLS 200-1510] Running: set_directive_unroll system_top/copy_loop 
 INFO: [HLS 200-1510] Running: csynth_design 
 INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.043 seconds; current allocated memory: 162.522 MB.
 INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/debug.cxx' ... 
@@ -240,13 +240,13 @@ INFO: [HLS 200-10] Starting code transformations ...
 INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.082 seconds; current allocated memory: 166.222 MB.
 INFO: [HLS 200-10] Checking synthesizability ...
 INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.057 seconds; current allocated memory: 165.494 MB.
-WARNING: [HLS 200-936] Cannot unroll loop 'copy_loop' (ParticleCoverHLS/src/parser.cxx:12) in function 'dummy_top_level_function': cannot completely unroll a loop with a variable trip count.
+WARNING: [HLS 200-936] Cannot unroll loop 'copy_loop' (ParticleCoverHLS/src/parser.cxx:12) in function 'system_top': cannot completely unroll a loop with a variable trip count.
 INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.086 seconds; current allocated memory: 185.770 MB.
 INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.073 seconds; current allocated memory: 177.955 MB.
 INFO: [HLS 200-10] Starting hardware synthesis ...
-INFO: [HLS 200-10] Synthesizing 'dummy_top_level_function' ...
+INFO: [HLS 200-10] Synthesizing 'system_top' ...
 INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-42] -- Implementing module 'dummy_top_level_function' 
+INFO: [HLS 200-42] -- Implementing module 'system_top' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-11] Finished scheduling.
@@ -258,18 +258,18 @@ INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
 INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.08 seconds; current allocated memory: 178.519 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-10] -- Generating RTL for module 'dummy_top_level_function' 
+INFO: [HLS 200-10] -- Generating RTL for module 'system_top' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [RTGEN 206-500] Setting interface mode on port 'dummy_top_level_function/point_arr_in' to 'ap_memory'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'dummy_top_level_function/point_arr_out' to 'ap_memory'.
-INFO: [RTGEN 206-500] Setting interface mode on function 'dummy_top_level_function' to 'ap_ctrl_hs'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'system_top/point_arr_in' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'system_top/point_arr_out' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'system_top' to 'ap_ctrl_hs'.
 INFO: [RTGEN 206-100] Generating core module 'mul_64ns_66ns_129_1_1': 1 instance(s).
-INFO: [RTGEN 206-100] Finished creating RTL model for 'dummy_top_level_function'.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'system_top'.
 INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.101 seconds; current allocated memory: 178.832 MB.
-INFO: [RTMG 210-282] Generating pipelined core: 'dummy_top_level_function_mul_64ns_66ns_129_1_1_Multiplier_0'
+INFO: [RTMG 210-282] Generating pipelined core: 'system_top_mul_64ns_66ns_129_1_1_Multiplier_0'
 INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.058 seconds; current allocated memory: 186.672 MB.
-INFO: [VHDL 208-304] Generating VHDL RTL for dummy_top_level_function.
-INFO: [VLOG 209-307] Generating Verilog RTL for dummy_top_level_function.
+INFO: [VHDL 208-304] Generating VHDL RTL for system_top.
+INFO: [VLOG 209-307] Generating Verilog RTL for system_top.
 INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
 INFO: [HLS 200-789] **** Estimated Fmax: 154.03 MHz
 INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 4.401 seconds; current allocated memory: 186.759 MB.
@@ -283,7 +283,7 @@ INFO: [HLS 200-10] Setting target device to 'xcvu11p-flga2577-1-e'
 INFO: [HLS 200-1505] Using flow_target 'vivado'
 INFO: [HLS 200-1510] Running: set_part xcvu11p-flga2577-1-e 
 INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
-INFO: [HLS 200-1510] Running: set_directive_top -name dummy_top_level_function dummy_top_level_function 
+INFO: [HLS 200-1510] Running: set_directive_top -name system_top system_top 
 INFO: [HLS 200-1510] Running: csynth_design 
 INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 162.553 MB.
 INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/debug.cxx' ... 
@@ -296,13 +296,13 @@ INFO: [HLS 200-10] Starting code transformations ...
 INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.052 seconds; current allocated memory: 166.237 MB.
 INFO: [HLS 200-10] Checking synthesizability ...
 INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.055 seconds; current allocated memory: 165.525 MB.
-WARNING: [HLS 200-936] Cannot unroll loop 'copy_loop' (ParticleCoverHLS/src/parser.cxx:12) in function 'dummy_top_level_function': cannot completely unroll a loop with a variable trip count.
+WARNING: [HLS 200-936] Cannot unroll loop 'copy_loop' (ParticleCoverHLS/src/parser.cxx:12) in function 'system_top': cannot completely unroll a loop with a variable trip count.
 INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.079 seconds; current allocated memory: 185.817 MB.
 INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.068 seconds; current allocated memory: 177.986 MB.
 INFO: [HLS 200-10] Starting hardware synthesis ...
-INFO: [HLS 200-10] Synthesizing 'dummy_top_level_function' ...
+INFO: [HLS 200-10] Synthesizing 'system_top' ...
 INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-42] -- Implementing module 'dummy_top_level_function' 
+INFO: [HLS 200-42] -- Implementing module 'system_top' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-11] Finished scheduling.
@@ -314,18 +314,18 @@ INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
 INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.081 seconds; current allocated memory: 178.490 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-10] -- Generating RTL for module 'dummy_top_level_function' 
+INFO: [HLS 200-10] -- Generating RTL for module 'system_top' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [RTGEN 206-500] Setting interface mode on port 'dummy_top_level_function/point_arr_in' to 'ap_memory'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'dummy_top_level_function/point_arr_out' to 'ap_memory'.
-INFO: [RTGEN 206-500] Setting interface mode on function 'dummy_top_level_function' to 'ap_ctrl_hs'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'system_top/point_arr_in' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'system_top/point_arr_out' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'system_top' to 'ap_ctrl_hs'.
 INFO: [RTGEN 206-100] Generating core module 'mul_64ns_66ns_129_1_1': 1 instance(s).
-INFO: [RTGEN 206-100] Finished creating RTL model for 'dummy_top_level_function'.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'system_top'.
 INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.093 seconds; current allocated memory: 178.847 MB.
-INFO: [RTMG 210-282] Generating pipelined core: 'dummy_top_level_function_mul_64ns_66ns_129_1_1_Multiplier_0'
+INFO: [RTMG 210-282] Generating pipelined core: 'system_top_mul_64ns_66ns_129_1_1_Multiplier_0'
 INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.102 seconds; current allocated memory: 186.672 MB.
-INFO: [VHDL 208-304] Generating VHDL RTL for dummy_top_level_function.
-INFO: [VLOG 209-307] Generating Verilog RTL for dummy_top_level_function.
+INFO: [VHDL 208-304] Generating VHDL RTL for system_top.
+INFO: [VLOG 209-307] Generating Verilog RTL for system_top.
 INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
 INFO: [HLS 200-789] **** Estimated Fmax: 154.03 MHz
 INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 4.393 seconds; current allocated memory: 186.758 MB.
@@ -339,7 +339,7 @@ INFO: [HLS 200-10] Setting target device to 'xcvu11p-flga2577-1-e'
 INFO: [HLS 200-1505] Using flow_target 'vivado'
 INFO: [HLS 200-1510] Running: set_part xcvu11p-flga2577-1-e 
 INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
-INFO: [HLS 200-1510] Running: set_directive_top -name dummy_top_level_function dummy_top_level_function 
+INFO: [HLS 200-1510] Running: set_directive_top -name system_top system_top 
 INFO: [HLS 200-1510] Running: export_design -rtl verilog -format ip_catalog 
 INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
 ERROR: [IMPL 213-28] Failed to generate IP.
@@ -356,7 +356,7 @@ INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
 INFO: [HLS 200-1510] Running: set_part xcvu11p-flga2577-1-e 
 INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
 INFO: [HLS 200-1510] Running: config_export -format ip_catalog -rtl verilog 
-INFO: [HLS 200-1510] Running: set_directive_top -name dummy_top_level_function dummy_top_level_function 
+INFO: [HLS 200-1510] Running: set_directive_top -name system_top system_top 
 INFO: [HLS 200-1510] Running: csim_design -clean -quiet 
 INFO: [SIM 211-2] *************** CSIM start ***************
 INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
@@ -375,9 +375,9 @@ INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
 INFO: [HLS 200-1510] Running: set_part xcvu11p-flga2577-1-e 
 INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
 INFO: [HLS 200-1510] Running: config_export -format ip_catalog -rtl verilog 
-INFO: [HLS 200-1510] Running: set_directive_top -name dummy_top_level_function dummy_top_level_function 
-INFO: [HLS 200-1510] Running: export_design -rtl verilog -format ip_catalog -output C:/Users/Zesen Zhuang/Desktop/dummy_top_level_function.zip 
-ERROR: [HLS 200-101] 'export_design': Unknown option 'Zhuang/Desktop/dummy_top_level_function.zip'.
+INFO: [HLS 200-1510] Running: set_directive_top -name system_top system_top 
+INFO: [HLS 200-1510] Running: export_design -rtl verilog -format ip_catalog -output C:/Users/Zesen Zhuang/Desktop/system_top.zip 
+ERROR: [HLS 200-101] 'export_design': Unknown option 'Zhuang/Desktop/system_top.zip'.
 INFO: [HLS 200-111] Finished Command export_design CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.033 seconds; current allocated memory: 162.469 MB.
 ==============================================================
 Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
@@ -391,8 +391,8 @@ INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
 INFO: [HLS 200-1510] Running: set_part xcvu11p-flga2577-1-e 
 INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
 INFO: [HLS 200-1510] Running: config_export -format ip_catalog -rtl verilog 
-INFO: [HLS 200-1510] Running: set_directive_top -name dummy_top_level_function dummy_top_level_function 
-INFO: [HLS 200-1510] Running: export_design -rtl verilog -format ip_catalog -output C:/Projects/dummy_top_level_function.zip 
+INFO: [HLS 200-1510] Running: set_directive_top -name system_top system_top 
+INFO: [HLS 200-1510] Running: export_design -rtl verilog -format ip_catalog -output C:/Projects/system_top.zip 
 INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
 ERROR: [IMPL 213-28] Failed to generate IP.
 INFO: [HLS 200-111] Finished Command export_design CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 4.583 seconds; current allocated memory: 170.210 MB.
@@ -405,11 +405,11 @@ INFO: [HLS 200-10] Setting target device to 'xcvu11p-flga2577-1-e'
 INFO: [HLS 200-1505] Using flow_target 'vivado'
 INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
 INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
-INFO: [HLS 200-1464] Running solution command: config_export -output=C:/Projects/dummy_top_level_function.zip
+INFO: [HLS 200-1464] Running solution command: config_export -output=C:/Projects/system_top.zip
 INFO: [HLS 200-1510] Running: set_part xcvu11p-flga2577-1-e 
 INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
-INFO: [HLS 200-1510] Running: config_export -format ip_catalog -output C:/Projects/dummy_top_level_function.zip -rtl verilog 
-INFO: [HLS 200-1510] Running: set_directive_top -name dummy_top_level_function dummy_top_level_function 
+INFO: [HLS 200-1510] Running: config_export -format ip_catalog -output C:/Projects/system_top.zip -rtl verilog 
+INFO: [HLS 200-1510] Running: set_directive_top -name system_top system_top 
 INFO: [HLS 200-1510] Running: csynth_design 
 INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 162.624 MB.
 INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/parser.cxx' ... 
@@ -422,13 +422,13 @@ INFO: [HLS 200-10] Starting code transformations ...
 INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.086 seconds; current allocated memory: 166.387 MB.
 INFO: [HLS 200-10] Checking synthesizability ...
 INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.061 seconds; current allocated memory: 165.659 MB.
-WARNING: [HLS 200-936] Cannot unroll loop 'copy_loop' (ParticleCoverHLS/src/parser.cxx:12) in function 'dummy_top_level_function': cannot completely unroll a loop with a variable trip count.
+WARNING: [HLS 200-936] Cannot unroll loop 'copy_loop' (ParticleCoverHLS/src/parser.cxx:12) in function 'system_top': cannot completely unroll a loop with a variable trip count.
 INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.085 seconds; current allocated memory: 185.951 MB.
 INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.073 seconds; current allocated memory: 178.150 MB.
 INFO: [HLS 200-10] Starting hardware synthesis ...
-INFO: [HLS 200-10] Synthesizing 'dummy_top_level_function' ...
+INFO: [HLS 200-10] Synthesizing 'system_top' ...
 INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-42] -- Implementing module 'dummy_top_level_function' 
+INFO: [HLS 200-42] -- Implementing module 'system_top' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-11] Finished scheduling.
@@ -440,19 +440,161 @@ INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
 INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.078 seconds; current allocated memory: 178.625 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-10] -- Generating RTL for module 'dummy_top_level_function' 
+INFO: [HLS 200-10] -- Generating RTL for module 'system_top' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [RTGEN 206-500] Setting interface mode on port 'dummy_top_level_function/point_arr_in' to 'ap_memory'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'dummy_top_level_function/point_arr_out' to 'ap_memory'.
-INFO: [RTGEN 206-500] Setting interface mode on function 'dummy_top_level_function' to 'ap_ctrl_hs'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'system_top/point_arr_in' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'system_top/point_arr_out' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'system_top' to 'ap_ctrl_hs'.
 INFO: [RTGEN 206-100] Generating core module 'mul_64ns_66ns_129_1_1': 1 instance(s).
-INFO: [RTGEN 206-100] Finished creating RTL model for 'dummy_top_level_function'.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'system_top'.
 INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.102 seconds; current allocated memory: 178.996 MB.
-INFO: [RTMG 210-282] Generating pipelined core: 'dummy_top_level_function_mul_64ns_66ns_129_1_1_Multiplier_0'
+INFO: [RTMG 210-282] Generating pipelined core: 'system_top_mul_64ns_66ns_129_1_1_Multiplier_0'
 INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.09 seconds; current allocated memory: 186.842 MB.
-INFO: [VHDL 208-304] Generating VHDL RTL for dummy_top_level_function.
-INFO: [VLOG 209-307] Generating Verilog RTL for dummy_top_level_function.
+INFO: [VHDL 208-304] Generating VHDL RTL for system_top.
+INFO: [VLOG 209-307] Generating Verilog RTL for system_top.
 INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
 INFO: [HLS 200-789] **** Estimated Fmax: 154.03 MHz
 INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 5.088 seconds; current allocated memory: 186.958 MB.
 INFO: [HLS 200-112] Total CPU user time: 4 seconds. Total CPU system time: 1 seconds. Total elapsed time: 6.747 seconds; peak allocated memory: 186.842 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xcvu11p-flga2577-1-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+INFO: [HLS 200-1464] Running solution command: config_export -output=C:/Projects/system_top.zip
+INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
+INFO: [HLS 200-1510] Running: set_part xcvu11p-flga2577-1-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: config_export -format ip_catalog -output C:/Projects/system_top.zip -rtl verilog 
+INFO: [HLS 200-1510] Running: set_directive_top -name system_top system_top 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 162.834 MB.
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/system.cxx' ... 
+ERROR: [HLS 207-812] 'system.h' file not found: ParticleCoverHLS/src/system.cxx:2:10
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.295 seconds; current allocated memory: 163.301 MB.
+INFO: [HLS 200-112] Total CPU user time: 2 seconds. Total CPU system time: 1 seconds. Total elapsed time: 1.942 seconds; peak allocated memory: 162.953 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xcvu11p-flga2577-1-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+INFO: [HLS 200-1464] Running solution command: config_export -output=C:/Projects/system_top.zip
+INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
+INFO: [HLS 200-1510] Running: set_part xcvu11p-flga2577-1-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: config_export -format ip_catalog -output C:/Projects/system_top.zip -rtl verilog 
+INFO: [HLS 200-1510] Running: set_directive_top -name system_top system_top 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.039 seconds; current allocated memory: 162.834 MB.
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/system.cxx' ... 
+ERROR: [HLS 207-812] 'system.h' file not found: ParticleCoverHLS/src/system.cxx:2:10
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.152 seconds; current allocated memory: 163.301 MB.
+INFO: [HLS 200-112] Total CPU user time: 3 seconds. Total CPU system time: 1 seconds. Total elapsed time: 1.677 seconds; peak allocated memory: 162.953 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xcvu11p-flga2577-1-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+INFO: [HLS 200-1464] Running solution command: config_export -output=C:/Projects/system_top.zip
+INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
+INFO: [HLS 200-1510] Running: set_part xcvu11p-flga2577-1-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: config_export -format ip_catalog -output C:/Projects/system_top.zip -rtl verilog 
+INFO: [HLS 200-1510] Running: set_directive_top -name system_top system_top 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.039 seconds; current allocated memory: 162.834 MB.
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/system.cxx' ... 
+ERROR: [HLS 207-812] 'system.h' file not found: ParticleCoverHLS/src/system.cxx:2:10
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.153 seconds; current allocated memory: 163.301 MB.
+INFO: [HLS 200-112] Total CPU user time: 3 seconds. Total CPU system time: 1 seconds. Total elapsed time: 1.671 seconds; peak allocated memory: 162.953 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xcvu11p-flga2577-1-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+INFO: [HLS 200-1464] Running solution command: config_export -output=C:/Projects/system_top.zip
+INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
+INFO: [HLS 200-1510] Running: set_part xcvu11p-flga2577-1-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: config_export -format ip_catalog -output C:/Projects/system_top.zip -rtl verilog 
+INFO: [HLS 200-1510] Running: set_directive_top -name system_top system_top 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.042 seconds; current allocated memory: 162.835 MB.
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/system.cxx' ... 
+ERROR: [HLS 207-812] 'paths.h' file not found: C:/Projects/ParticleCoverHLS/include\system.h:10:10
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.169 seconds; current allocated memory: 163.302 MB.
+INFO: [HLS 200-112] Total CPU user time: 2 seconds. Total CPU system time: 1 seconds. Total elapsed time: 1.694 seconds; peak allocated memory: 162.954 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xcvu11p-flga2577-1-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+INFO: [HLS 200-1464] Running solution command: config_export -output=C:/Projects/system_top.zip
+INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
+INFO: [HLS 200-1510] Running: set_part xcvu11p-flga2577-1-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: config_export -format ip_catalog -output C:/Projects/system_top.zip -rtl verilog 
+INFO: [HLS 200-1510] Running: set_directive_top -name system_top system_top 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.039 seconds; current allocated memory: 162.860 MB.
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/system.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/superpoint.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/sim_utils.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/point.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/patch.cxx' ... 
+WARNING: [HLS 207-5301] unused parameter 'n_superpoints': ParticleCoverHLS/src/patch.cxx:6:27
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/file_reader.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/event.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/environment.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/dataset.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/cover.cxx' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 9.57 seconds; current allocated memory: 164.871 MB.
+ERROR: [HLS 214-157] Top function not found: there is no function named 'system_top'
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 12.115 seconds; current allocated memory: 164.886 MB.
+INFO: [HLS 200-112] Total CPU user time: 3 seconds. Total CPU system time: 1 seconds. Total elapsed time: 13.641 seconds; peak allocated memory: 164.871 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xcvu11p-flga2577-1-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+INFO: [HLS 200-1464] Running solution command: config_export -output=C:/Projects/system_top.zip
+INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
+INFO: [HLS 200-1510] Running: set_part xcvu11p-flga2577-1-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: config_export -format ip_catalog -output C:/Projects/system_top.zip -rtl verilog 
+INFO: [HLS 200-1510] Running: set_directive_top -name system_top system_top 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.039 seconds; current allocated memory: 162.857 MB.
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/system.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/superpoint.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/sim_utils.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/point.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/patch.cxx' ... 
+WARNING: [HLS 207-5301] unused parameter 'n_superpoints': ParticleCoverHLS/src/patch.cxx:6:27
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/file_reader.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/event.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/environment.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/dataset.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/cover.cxx' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 9.189 seconds; current allocated memory: 164.822 MB.
+ERROR: [HLS 214-157] Top function not found: there is no function named 'system_top'
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 11.605 seconds; current allocated memory: 164.852 MB.
+INFO: [HLS 200-112] Total CPU user time: 3 seconds. Total CPU system time: 1 seconds. Total elapsed time: 13.035 seconds; peak allocated memory: 164.822 MB.

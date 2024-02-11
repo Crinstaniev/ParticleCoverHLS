@@ -12,13 +12,12 @@ int main(void) {
   // get some superpoints
   event_s *events = file_reader_read(file_path, 128);
   point_s *points = events[0].list_of_points;
-  superpoint_s sp = superpoint_init(points, events[0].num_points);
 
   // print superpoint in green
-  std::cerr << "\033[1;32m" << sp << "\033[0m" << std::endl;
+  // std::cerr << "\033[1;32m" << sp << "\033[0m" << std::endl;
 
   // make a patch from the superpoint
-  patch_s p = patch_init(events[0].env, &sp, 1, 0.0);
+  // patch_s p = patch_init(events[0].env, &sp, 1, 0.0);
 
   // print patch in green
   // std::cerr << "\033[1;32m" << p << "\033[0m" << std::endl;

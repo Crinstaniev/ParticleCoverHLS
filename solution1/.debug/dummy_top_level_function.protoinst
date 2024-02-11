@@ -1,9 +1,9 @@
 {
 	"version": "1.0",
 	"modules": {
-		"dummy_top_level_function": {
+		"system_top": {
 			"proto_instances": {
-				"/AESL_inst_dummy_top_level_function_activity": {
+				"/AESL_inst_system_top_activity": {
 					"interface": "xilinx.com:interface:internal_hls_dataflow:1.0",
 					"ports": {
 						"AP_CLK": { "actual": "ap_clk"},

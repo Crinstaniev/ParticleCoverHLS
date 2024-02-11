@@ -7,14 +7,14 @@ use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
 
-entity dummy_top_level_function_mul_64ns_66ns_129_1_1_Multiplier_0 is
+entity system_top_mul_64ns_66ns_129_1_1_Multiplier_0 is
 port (
     a: in std_logic_vector(64 - 1 downto 0);
     b: in std_logic_vector(66 - 1 downto 0);
     p: out std_logic_vector(129 - 1 downto 0));
 end entity;
 
-architecture behav of dummy_top_level_function_mul_64ns_66ns_129_1_1_Multiplier_0 is
+architecture behav of system_top_mul_64ns_66ns_129_1_1_Multiplier_0 is
     signal a_i : std_logic_vector(64 - 1 downto 0);
     signal b_i : std_logic_vector(66 - 1 downto 0);
 begin
@@ -25,7 +25,7 @@ end architecture;
 Library IEEE;
 use IEEE.std_logic_1164.all;
 
-entity dummy_top_level_function_mul_64ns_66ns_129_1_1 is
+entity system_top_mul_64ns_66ns_129_1_1 is
     generic (
         ID : INTEGER;
         NUM_STAGE : INTEGER;
@@ -38,8 +38,8 @@ entity dummy_top_level_function_mul_64ns_66ns_129_1_1 is
         dout : OUT STD_LOGIC_VECTOR(dout_WIDTH - 1 DOWNTO 0));
 end entity;
 
-architecture arch of dummy_top_level_function_mul_64ns_66ns_129_1_1 is
-    component dummy_top_level_function_mul_64ns_66ns_129_1_1_Multiplier_0 is
+architecture arch of system_top_mul_64ns_66ns_129_1_1 is
+    component system_top_mul_64ns_66ns_129_1_1_Multiplier_0 is
         port (
             a : IN STD_LOGIC_VECTOR;
             b : IN STD_LOGIC_VECTOR;
@@ -49,7 +49,7 @@ architecture arch of dummy_top_level_function_mul_64ns_66ns_129_1_1 is
 
 
 begin
-    dummy_top_level_function_mul_64ns_66ns_129_1_1_Multiplier_0_U :  component dummy_top_level_function_mul_64ns_66ns_129_1_1_Multiplier_0
+    system_top_mul_64ns_66ns_129_1_1_Multiplier_0_U :  component system_top_mul_64ns_66ns_129_1_1_Multiplier_0
     port map (
         a => din0,
         b => din1,

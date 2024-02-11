@@ -42,19 +42,64 @@
 			<location>C:/Projects/ParticleCoverHLS/solution1/.tcls</location>
 		</link>
 		<link>
-			<name>source/debug.cxx</name>
-			<type>1</type>
-			<location>C:/Projects/ParticleCoverHLS/src/debug.cxx</location>
+			<name>solution2/constraints</name>
+			<type>2</type>
+			<location>C:/Projects/ParticleCoverHLS/solution2/.tcls</location>
 		</link>
 		<link>
-			<name>source/parser.cxx</name>
+			<name>source/cover.cxx</name>
 			<type>1</type>
-			<location>C:/Projects/ParticleCoverHLS/src/parser.cxx</location>
+			<location>C:/Projects/ParticleCoverHLS/src/cover.cxx</location>
 		</link>
 		<link>
-			<name>testbench/main.cxx</name>
+			<name>source/dataset.cxx</name>
 			<type>1</type>
-			<location>C:/Projects/ParticleCoverHLS/src/main.cxx</location>
+			<location>C:/Projects/ParticleCoverHLS/src/dataset.cxx</location>
+		</link>
+		<link>
+			<name>source/environment.cxx</name>
+			<type>1</type>
+			<location>C:/Projects/ParticleCoverHLS/src/environment.cxx</location>
+		</link>
+		<link>
+			<name>source/event.cxx</name>
+			<type>1</type>
+			<location>C:/Projects/ParticleCoverHLS/src/event.cxx</location>
+		</link>
+		<link>
+			<name>source/file_reader.cxx</name>
+			<type>1</type>
+			<location>C:/Projects/ParticleCoverHLS/src/file_reader.cxx</location>
+		</link>
+		<link>
+			<name>source/patch.cxx</name>
+			<type>1</type>
+			<location>C:/Projects/ParticleCoverHLS/src/patch.cxx</location>
+		</link>
+		<link>
+			<name>source/point.cxx</name>
+			<type>1</type>
+			<location>C:/Projects/ParticleCoverHLS/src/point.cxx</location>
+		</link>
+		<link>
+			<name>source/sim_utils.cxx</name>
+			<type>1</type>
+			<location>C:/Projects/ParticleCoverHLS/src/sim_utils.cxx</location>
+		</link>
+		<link>
+			<name>source/superpoint.cxx</name>
+			<type>1</type>
+			<location>C:/Projects/ParticleCoverHLS/src/superpoint.cxx</location>
+		</link>
+		<link>
+			<name>source/system.cxx</name>
+			<type>1</type>
+			<location>C:/Projects/ParticleCoverHLS/src/system.cxx</location>
+		</link>
+		<link>
+			<name>testbench/test_system_hls.cxx</name>
+			<type>1</type>
+			<location>C:/Projects/ParticleCoverHLS/test/test_system_hls.cxx</location>
 		</link>
 		<link>
 			<name>solution1/constraints/.xml.directive</name>
@@ -70,6 +115,21 @@
 			<name>solution1/constraints/script.tcl</name>
 			<type>1</type>
 			<location>C:/Projects/ParticleCoverHLS/solution1/script.tcl</location>
+		</link>
+		<link>
+			<name>solution2/constraints/.xml.directive</name>
+			<type>1</type>
+			<location>C:/Projects/ParticleCoverHLS/solution2/solution2.directive</location>
+		</link>
+		<link>
+			<name>solution2/constraints/directives.tcl</name>
+			<type>1</type>
+			<location>C:/Projects/ParticleCoverHLS/solution2/directives.tcl</location>
+		</link>
+		<link>
+			<name>solution2/constraints/script.tcl</name>
+			<type>1</type>
+			<location>C:/Projects/ParticleCoverHLS/solution2/script.tcl</location>
 		</link>
 	</linkedResources>
 </projectDescription>

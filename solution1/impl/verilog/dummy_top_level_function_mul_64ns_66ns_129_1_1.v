@@ -5,7 +5,7 @@
 
 `timescale 1 ns / 1 ps
 
-module dummy_top_level_function_mul_64ns_66ns_129_1_1_Multiplier_0(a, b, p);
+module system_top_mul_64ns_66ns_129_1_1_Multiplier_0(a, b, p);
 input[64 - 1 : 0] a; 
 input[66 - 1 : 0] b; 
 output[129 - 1 : 0] p;
@@ -13,7 +13,7 @@ output[129 - 1 : 0] p;
 assign p = $signed({1'b0, a}) * $signed({1'b0, b});
 endmodule
 `timescale 1 ns / 1 ps
-module dummy_top_level_function_mul_64ns_66ns_129_1_1(
+module system_top_mul_64ns_66ns_129_1_1(
     din0,
     din1,
     dout);
@@ -29,7 +29,7 @@ output[dout_WIDTH - 1:0] dout;
 
 
 
-dummy_top_level_function_mul_64ns_66ns_129_1_1_Multiplier_0 dummy_top_level_function_mul_64ns_66ns_129_1_1_Multiplier_0_U(
+system_top_mul_64ns_66ns_129_1_1_Multiplier_0 system_top_mul_64ns_66ns_129_1_1_Multiplier_0_U(
     .a( din0 ),
     .b( din1 ),
     .p( dout ));

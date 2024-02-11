@@ -7,9 +7,9 @@
 
 `timescale 1 ns / 1 ps 
 
-(* CORE_GENERATION_INFO="dummy_top_level_function_dummy_top_level_function,hls_ip_2020_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=0,HLS_INPUT_PART=xcvu11p-flga2577-1-e,HLS_INPUT_CLOCK=10.000000,HLS_INPUT_ARCH=others,HLS_SYN_CLOCK=6.492250,HLS_SYN_LAT=-1,HLS_SYN_TPT=none,HLS_SYN_MEM=0,HLS_SYN_DSP=0,HLS_SYN_FF=243,HLS_SYN_LUT=275,HLS_VERSION=2020_2}" *)
+(* CORE_GENERATION_INFO="system_top_system_top,hls_ip_2020_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=0,HLS_INPUT_PART=xcvu11p-flga2577-1-e,HLS_INPUT_CLOCK=10.000000,HLS_INPUT_ARCH=others,HLS_SYN_CLOCK=6.492250,HLS_SYN_LAT=-1,HLS_SYN_TPT=none,HLS_SYN_MEM=0,HLS_SYN_DSP=0,HLS_SYN_FF=243,HLS_SYN_LUT=275,HLS_VERSION=2020_2}" *)
 
-module dummy_top_level_function (
+module system_top (
         ap_clk,
         ap_rst,
         ap_start,
@@ -110,7 +110,7 @@ initial begin
 #0 ap_CS_fsm = 5'd1;
 end
 
-dummy_top_level_function_mul_64ns_66ns_129_1_1 #(
+system_top_mul_64ns_66ns_129_1_1 #(
     .ID( 1 ),
     .NUM_STAGE( 1 ),
     .din0_WIDTH( 64 ),
@@ -338,4 +338,4 @@ always @ (posedge ap_clk) begin
     zext_ln14_3_reg_301[63:11] <= 53'b00000000000000000000000000000000000000000000000000000;
 end
 
-endmodule //dummy_top_level_function
+endmodule //system_top
