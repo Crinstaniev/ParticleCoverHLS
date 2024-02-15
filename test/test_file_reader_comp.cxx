@@ -10,7 +10,7 @@
 #include <string>
 #include <vector>
 
-int main(void) {
+int main(void) { // TODO: exhaust test for multiple events
   // go to .. directory
   std::filesystem::current_path("..");
 

@@ -8,3 +8,26 @@ This project is a HLS implementation of the ParticleCover algorithm from [[https
 Each struct has its own header and source code file.
 
 TODO: Add more details
+
+** Known Problems
+
+- Initialization of =cover= failed. I guess it is due to the size of the struct.
+
+Data Hierarchy:
++ cover
+  + dataset
+    + env
+    + point[NUM_LAYERS][MAX_NUM_POINTS]
+  + env
+  + patch[MAX_NUM_PATCHES]
+    + superpoints[NUM_LAYERS]
+      + points[MAX_NUM_POINTS]
+  + patch[MAX_NUM_PATCHES]
+    + superpoints[NUM_LAYERS] 
+      + points[MAX_NUM_POINTS]
+  + superpoint[NUM_LAYERS]
+    + points[MAX_NUM_POINTS]
+
+NUM_LAYERS = 5
+MAX_NUM_POINTS = 1024
+MAX_NUM_PATCHES = 32

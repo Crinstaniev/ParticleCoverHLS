@@ -1,5 +1,4 @@
-#ifndef __SYSTEM_H__
-#define __SYSTEM_H__
+#pragma once
 
 #include "constants.h"
 #include "cover.h"
@@ -13,5 +12,3 @@
 #include "superpoint.h"
 
 void system_top(event_s event, size_t *total_result);
-
-#endif // __SYSTEM_H__

@@ -6,6 +6,9 @@ project(PatchMakerHLS VERSION 1.0 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Global compiler options
+add_compile_options(-g) # Debugging information
+
 # Generate compile_commands.json
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
@@ -16,8 +19,6 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/reference)
 # Definition for Debug mode
 add_compile_definitions($<$<CONFIG:DEBUG>:DEBUG>)
 
-# Global compiler options
-add_compile_options(-g) # Debugging information
 
 # Source files
 file(GLOB SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cxx)
@@ -56,3 +57,4 @@ patchmaker_add_test(test_superpoint)
 patchmaker_add_test(test_patch)
 patchmaker_add_test(test_file_reader_comp)
 patchmaker_add_test(test_system_hls)
+patchmaker_add_test(test_cover)
