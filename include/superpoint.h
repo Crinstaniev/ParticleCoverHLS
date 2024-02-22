@@ -5,9 +5,9 @@
 #include "point.h"
 
 typedef struct {
-  point_s points[MAX_NUM_POINTS];
+  point_s points[MAX_NUM_POINTS_IN_SUPERPOINT];
   size_t n_points;
-  double z_values[MAX_NUM_POINTS];
+  double z_values[MAX_NUM_POINTS_IN_SUPERPOINT];
   double min;
   double max;
 } superpoint_s;

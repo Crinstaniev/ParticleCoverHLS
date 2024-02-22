@@ -22,9 +22,7 @@ typedef struct {
   bool real_patch_list[MAX_NUM_PATCHES];
 } cover_s;
 
-// cover_s cover_init(environment_s env, dataset_s data);
-
-cover_s cover_init();
+cover_s cover_init(environment_s env, dataset_s data);
 
 void cover_add_patch(cover_s &cover, patch_s curr_patch);
 

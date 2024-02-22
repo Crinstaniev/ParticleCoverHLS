@@ -1,3 +1,4 @@
+#include "cover.h"
 #include "system.h"
 #include <string>
 
@@ -14,10 +15,17 @@ int main(void) {
   dataset_import_data(ds, points, events[0].num_points);
   dataset_add_boundary_point(ds, 0.0001);
 
-  // cover_init(env, ds);
-  // cover_init();
-  // print size of cover_s in kb
-  std::cout << "Size of cover_s: " << sizeof(cover_s) / 1024 / 1024 << " mb" << std::endl;
+  cover_s cover = cover_init(env, ds);
+
+  double apexZ0 = 7.75751;
+  int ppl = 16;
+  double z_top = -8.883753333333333;
+  bool leftRight = false;
+
+  cover_make_patch_aligned_to_line(cover, apexZ0, z_top, ppl, leftRight);
+
+  // print the cover
+  // std::cout << cover << std::endl;
 
   return 0;
 }

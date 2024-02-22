@@ -25,7 +25,8 @@ typedef struct {
   size_t n_superpoints;
 } patch_s;
 
-patch_s patch_init(environment_s env, superpoint_s *superpoints, double apexZ0);
+patch_s patch_init(environment_s env, superpoint_s *superpoints,
+                   size_t n_superpoints, double apexZ0);
 
 // DEBUG FUNCTION
 std::ostream &operator<<(std::ostream &os, const patch_s &p);

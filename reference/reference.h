@@ -1,8 +1,6 @@
 #ifndef __REFERENCE_H__
 #define __REFERENCE_H__
 
-#include "reference.h"
-
 #include <climits>
 #include <fstream>
 #include <functional>
@@ -421,6 +419,11 @@ public:
     }
 
     add_patch(wedgePatch(env, init_patch, apexZ0 = apexZ0));
+
+    // print real patch list
+    for (int i = 0; i < real_patch_list.size(); i++) {
+      cout << real_patch_list[i] << " ";
+    }
   }
 
   void tester() {
