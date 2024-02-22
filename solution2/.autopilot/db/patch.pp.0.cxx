@@ -156,7 +156,7 @@ extern "C" {
 
 
 # 1 "C:/Projects/ParticleCoverHLS/include/constants.h" 1
-# 12 "C:/Projects/ParticleCoverHLS/include/constants.h"
+# 13 "C:/Projects/ParticleCoverHLS/include/constants.h"
 const double RADII[] = {5.0, 10.0, 15.0, 20.0, 25.0};
 # 5 "C:/Projects/ParticleCoverHLS/include\\patch.h" 2
 # 1 "C:/Projects/ParticleCoverHLS/include/environment.h" 1
@@ -24729,9 +24729,9 @@ std::ostream &operator<<(std::ostream &os, const point_s &p);
 # 6 "C:/Projects/ParticleCoverHLS/include/superpoint.h" 2
 
 typedef struct {
-  point_s points[1000];
+  point_s points[32];
   size_t n_points;
-  double z_values[1000];
+  double z_values[32];
   double min;
   double max;
 } superpoint_s;
@@ -24764,7 +24764,8 @@ typedef struct {
   size_t n_superpoints;
 } patch_s;
 
-patch_s patch_init(environment_s env, superpoint_s *superpoints, double apexZ0);
+patch_s patch_init(environment_s env, superpoint_s *superpoints,
+                   size_t n_superpoints, double apexZ0);
 
 
 std::ostream &operator<<(std::ostream &os, const patch_s &p);

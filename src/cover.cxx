@@ -5,12 +5,19 @@
 #include <climits>
 
 cover_s cover_init(environment_s env, dataset_s data) {
-  cover_s cover = {.n_patches = 0,
-                   .env = env,
-                   .data = data,
-                   .n_fitting_lines = 0,
-                   .n_superpoints = 0,
-                   .n_all_patches = 0};
+  // cover_s cover = {.n_patches = 0,
+  //                  .env = env,
+  //                  .data = data,
+  //                  .n_fitting_lines = 0,
+  //                  .n_superpoints = 0,
+  //                  .n_all_patches = 0};
+  cover_s cover;
+  cover.n_patches = 0;
+  cover.env = env;
+  cover.data = data;
+  cover.n_fitting_lines = 0;
+  cover.n_superpoints = 0;
+  cover.n_all_patches = 0;
 
 // set real_patch_list to false for all patches
 loop_set_real_patch_list_to_false:
@@ -138,15 +145,15 @@ void cover_make_patch_aligned_to_line(cover_s &cover, double apexZ0,
     // leftright = false
     {
       if (start_index != (row_list_size - 1)) {
-        std::cout << "row " << i + 1 << " start_index " << start_index
-                  << " start_value " << start_value
-                  << " z: " << row_list[start_index] << std::endl;
+        // std::cout << "row " << i + 1 << " start_index " << start_index
+        //           << " start_value " << start_value
+        //           << " z: " << row_list[start_index] << std::endl;
         if (start_value < -1 * alignmentAccuracy) {
           start_index++;
           start_value = row_list[start_index] - projectionToRow;
-          std::cout << "row " << i + 1 << " updated start_index " << start_index
-                    << " start_value " << start_value
-                    << " z: " << row_list[start_index] << std::endl;
+          // std::cout << "row " << i + 1 << " updated start_index " << start_index
+          //           << " start_value " << start_value
+          //           << " z: " << row_list[start_index] << std::endl;
         }
       }
 
@@ -179,7 +186,7 @@ void cover_make_patch_aligned_to_line(cover_s &cover, double apexZ0,
   cover_add_patch(cover,
                   patch_init(cover.env, init_patch, init_patch_size, apexZ0));
 
-  std::cout << cover << std::endl;
+  // std::cout << cover << std::endl;
 
   return;
 }

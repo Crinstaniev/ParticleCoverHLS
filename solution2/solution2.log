@@ -4581,3 +4581,204 @@ INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were NOT s
 INFO: [HLS 200-789] **** Estimated Fmax: 142.57 MHz
 INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 1583 seconds. CPU system time: 38 seconds. Elapsed time: 1669.1 seconds; current allocated memory: 1.425 GB.
 INFO: [HLS 200-112] Total CPU user time: 1585 seconds. Total CPU system time: 39 seconds. Total elapsed time: 1671.04 seconds; peak allocated memory: 3.757 GB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xcvu11p-flga2577-1-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+INFO: [HLS 200-1464] Running solution command: config_export -output=C:/Projects/system_top.zip
+INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
+INFO: [HLS 200-1510] Running: set_part xcvu11p-flga2577-1-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: config_export -format ip_catalog -output C:/Projects/system_top.zip -rtl verilog 
+INFO: [HLS 200-1510] Running: set_directive_top -name system_top system_top 
+INFO: [HLS 200-1510] Running: csim_design -clean -quiet 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s).
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 6.335 seconds; current allocated memory: 163.019 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xcvu11p-flga2577-1-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+INFO: [HLS 200-1464] Running solution command: config_export -output=C:/Projects/system_top.zip
+INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
+INFO: [HLS 200-1510] Running: set_part xcvu11p-flga2577-1-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: config_export -format ip_catalog -output C:/Projects/system_top.zip -rtl verilog 
+INFO: [HLS 200-1510] Running: set_directive_top -name system_top system_top 
+INFO: [HLS 200-1510] Running: csim_design -clean -quiet 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+ERROR: [SIM 211-100] CSim failed with errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 5.85 seconds; current allocated memory: 162.981 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xcvu11p-flga2577-1-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+INFO: [HLS 200-1464] Running solution command: config_export -output=C:/Projects/system_top.zip
+INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
+INFO: [HLS 200-1510] Running: set_part xcvu11p-flga2577-1-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: config_export -format ip_catalog -output C:/Projects/system_top.zip -rtl verilog 
+INFO: [HLS 200-1510] Running: set_directive_top -name system_top system_top 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.041 seconds; current allocated memory: 162.864 MB.
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/cover.cxx' ... 
+WARNING: [HLS 207-5301] unused parameter 'leftRight': ParticleCoverHLS/src/cover.cxx:74:67
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/dataset.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/environment.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/event.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/file_reader.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/patch.cxx' ... 
+WARNING: [HLS 207-5301] unused parameter 'n_superpoints': ParticleCoverHLS/src/patch.cxx:6:27
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/point.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/sim_utils.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/superpoint.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/system.cxx' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 10.41 seconds; current allocated memory: 164.823 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-186] Unrolling loop 'loop_set_real_patch_list_to_false' (ParticleCoverHLS/src/cover.cxx:24:3) in function 'cover_init' completely with a factor of 32 (ParticleCoverHLS/src/cover.cxx:24:3)
+INFO: [HLS 214-186] Unrolling loop 'loop_init' (ParticleCoverHLS/src/dataset.cxx:11:3) in function 'dataset_init' completely with a factor of 5 (ParticleCoverHLS/src/dataset.cxx:11:3)
+INFO: [HLS 214-178] Inlining function 'point_init(int, double, double, double)' into 'dataset_add_boundary_point(dataset_s&, double)' (ParticleCoverHLS/src/dataset.cxx:59:0)
+INFO: [HLS 214-178] Inlining function 'patch_init(environment_s, superpoint_s*, unsigned long, double)' into 'cover_make_patch_aligned_to_line(cover_s&, double, double, int, bool, bool)' (ParticleCoverHLS/src/cover.cxx:75:0)
+INFO: [HLS 214-178] Inlining function 'dataset_init(environment_s&)' into 'system_top(event_s, cover_s*)' (ParticleCoverHLS/src/system.cxx:27:0)
+INFO: [HLS 214-178] Inlining function 'dataset_import_data(dataset_s&, point_s*, unsigned long)' into 'system_top(event_s, cover_s*)' (ParticleCoverHLS/src/system.cxx:27:0)
+INFO: [HLS 214-178] Inlining function 'cover_init(environment_s, dataset_s)' into 'system_top(event_s, cover_s*)' (ParticleCoverHLS/src/system.cxx:27:0)
+ERROR: [HLS 214-134] in function 'dataset_add_boundary_point(dataset_s&, double)': Pointer to pointer is not supported (ParticleCoverHLS/src/dataset.cxx:62:51)
+ERROR: [HLS 214-134] in function 'dataset_add_boundary_point(dataset_s&, double)': Pointer to pointer is not supported (ParticleCoverHLS/src/dataset.cxx:70:43)
+ERROR: [HLS 214-134] in function 'dataset_add_boundary_point(dataset_s&, double)': Pointer to pointer is not supported
+ERROR: [HLS 214-134] in function 'system_top(event_s, cover_s*)': Pointer to pointer is not supported (ParticleCoverHLS/src/dataset.cxx:7:15)
+ERROR: [HLS 214-134] in function 'system_top(event_s, cover_s*)': Pointer to pointer is not supported (ParticleCoverHLS/src/system.cxx:38:35)
+ERROR: [HLS 214-134] in function 'system_top(event_s, cover_s*)': Pointer to pointer is not supported (ParticleCoverHLS/src/cover.cxx:17:14)
+ERROR: [HLS 214-134] in function 'system_top(event_s, cover_s*)': Pointer to pointer is not supported (ParticleCoverHLS/src/system.cxx:48:17)
+ERROR: [HLS 214-135] Syn check fail!
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 40.09 seconds; current allocated memory: 165.431 MB.
+INFO: [HLS 200-112] Total CPU user time: 3 seconds. Total CPU system time: 1 seconds. Total elapsed time: 41.755 seconds; peak allocated memory: 165.068 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xcvu11p-flga2577-1-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+INFO: [HLS 200-1464] Running solution command: config_export -output=C:/Projects/system_top.zip
+INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
+INFO: [HLS 200-1510] Running: set_part xcvu11p-flga2577-1-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: config_export -format ip_catalog -output C:/Projects/system_top.zip -rtl verilog 
+INFO: [HLS 200-1510] Running: set_directive_top -name system_top system_top 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 162.863 MB.
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/cover.cxx' ... 
+WARNING: [HLS 207-5301] unused parameter 'leftRight': ParticleCoverHLS/src/cover.cxx:74:67
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/dataset.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/environment.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/event.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/file_reader.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/patch.cxx' ... 
+WARNING: [HLS 207-5301] unused parameter 'n_superpoints': ParticleCoverHLS/src/patch.cxx:6:27
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/point.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/sim_utils.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/superpoint.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/system.cxx' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 10.301 seconds; current allocated memory: 164.823 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-178] Inlining function 'patch_init(environment_s, superpoint_s*, unsigned long, double)' into 'cover_make_patch_aligned_to_line(cover_s&, double, double, int, bool, bool)' (ParticleCoverHLS/src/cover.cxx:75:0)
+INFO: [HLS 214-131] Inlining function '_llvm.fpga.pack.none.i54272.s_struct.patch_ss' into 'cover_add_patch(cover_s&, patch_s) (.1)' (ParticleCoverHLS/src/cover.cxx:35:36)
+INFO: [HLS 214-131] Inlining function '_llvm.fpga.pack.none.i54272.s_struct.patch_ss' into 'cover_add_patch(cover_s&, patch_s) (.1)' (ParticleCoverHLS/src/cover.cxx:62:40)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 10 seconds. CPU system time: 0 seconds. Elapsed time: 18.99 seconds; current allocated memory: 197.776 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.039 seconds; current allocated memory: 197.776 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 14 seconds. CPU system time: 0 seconds. Elapsed time: 13.938 seconds; current allocated memory: 486.092 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 35 seconds. CPU system time: 0 seconds. Elapsed time: 35.2 seconds; current allocated memory: 451.866 MB.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_49_1' (ParticleCoverHLS/src/cover.cxx:49) in function 'cover_add_patch' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_55_2' (ParticleCoverHLS/src/cover.cxx:55) in function 'cover_add_patch' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_59_3' (ParticleCoverHLS/src/cover.cxx:59) in function 'cover_add_patch' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_85_2' (ParticleCoverHLS/src/cover.cxx:85) in function 'cover_make_patch_aligned_to_line' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_97_4' (ParticleCoverHLS/src/cover.cxx:97) in function 'cover_make_patch_aligned_to_line' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_111_5' (ParticleCoverHLS/src/cover.cxx:108) in function 'cover_make_patch_aligned_to_line' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_123_6' (ParticleCoverHLS/src/cover.cxx:118) in function 'cover_make_patch_aligned_to_line' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_164_7' (ParticleCoverHLS/src/cover.cxx:164) in function 'cover_make_patch_aligned_to_line' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_175_8' (ParticleCoverHLS/src/cover.cxx:175) in function 'cover_make_patch_aligned_to_line' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_23_1' (ParticleCoverHLS/src/patch.cxx:23) in function 'cover_make_patch_aligned_to_line' automatically.
+INFO: [XFORM 203-102] Partitioning array 'prev_patch.superpoints.points.layer_num' (ParticleCoverHLS/src/cover.cxx:46) in dimension 2 automatically.
+INFO: [XFORM 203-102] Partitioning array 'prev_patch.superpoints.points.radius' (ParticleCoverHLS/src/cover.cxx:46) in dimension 2 automatically.
+INFO: [XFORM 203-102] Partitioning array 'prev_patch.superpoints.points.phi' (ParticleCoverHLS/src/cover.cxx:46) in dimension 2 automatically.
+INFO: [XFORM 203-102] Partitioning array 'prev_patch.superpoints.points.z' (ParticleCoverHLS/src/cover.cxx:46) in dimension 2 automatically.
+INFO: [XFORM 203-102] Partitioning array 'prev_patch.superpoints.z_values' (ParticleCoverHLS/src/cover.cxx:46) in dimension 2 automatically.
+INFO: [XFORM 203-102] Partitioning array 'init_patch.points.layer_num' (ParticleCoverHLS/src/cover.cxx:76) in dimension 2 automatically.
+INFO: [XFORM 203-102] Partitioning array 'init_patch.points.radius' (ParticleCoverHLS/src/cover.cxx:76) in dimension 2 automatically.
+INFO: [XFORM 203-102] Partitioning array 'init_patch.points.phi' (ParticleCoverHLS/src/cover.cxx:76) in dimension 2 automatically.
+INFO: [XFORM 203-102] Partitioning array 'init_patch.points.z' (ParticleCoverHLS/src/cover.cxx:76) in dimension 2 automatically.
+INFO: [XFORM 203-102] Partitioning array 'init_patch.z_values' (ParticleCoverHLS/src/cover.cxx:76) in dimension 2 automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.0.3' automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.0.5' automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.0.7' automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.0.10' automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.0.0' in dimension 2 automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.0.1' in dimension 2 automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.0.2' in dimension 2 automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.0.3' in dimension 2 automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.2' in dimension 2 automatically.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (ParticleCoverHLS/src/cover.cxx:147:11) to (ParticleCoverHLS/src/cover.cxx:160:11) in function 'cover_make_patch_aligned_to_line'... converting 3 basic blocks.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 100 seconds. CPU system time: 1 seconds. Elapsed time: 100.279 seconds; current allocated memory: 382.721 MB.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_84_1' (ParticleCoverHLS/src/cover.cxx:84:32) in function 'cover_make_patch_aligned_to_line'.
+WARNING: [HLS 200-960] Cannot flatten loop 'VITIS_LOOP_91_3' (ParticleCoverHLS/src/cover.cxx:91:29) in function 'cover_make_patch_aligned_to_line' more than one sub loop.
+INFO: [HLS 200-472] Inferring partial write operation for 'row_data_size' (ParticleCoverHLS/src/cover.cxx:88:22)
+INFO: [HLS 200-472] Inferring partial write operation for 'row_data.layer_num' (ParticleCoverHLS/src/cover.cxx:86:22)
+INFO: [HLS 200-472] Inferring partial write operation for 'row_list' (ParticleCoverHLS/src/cover.cxx:98:19)
+INFO: [HLS 200-472] Inferring partial write operation for 'payload.z_values' (ParticleCoverHLS/src/cover.cxx:165:44)
+INFO: [HLS 200-472] Inferring partial write operation for 'payload.points.layer_num' (ParticleCoverHLS/src/cover.cxx:166:42)
+INFO: [HLS 200-472] Inferring partial write operation for 'init_patch[0].points.layer_num' (ParticleCoverHLS/src/cover.cxx:169:37)
+INFO: [HLS 200-472] Inferring partial write operation for 'payload.z_values.1' (ParticleCoverHLS/src/cover.cxx:176:57)
+INFO: [HLS 200-472] Inferring partial write operation for 'payload.points.layer_num.1' (ParticleCoverHLS/src/cover.cxx:177:55)
+INFO: [HLS 200-472] Inferring partial write operation for 'init_patch[0].points.layer_num' (ParticleCoverHLS/src/cover.cxx:180:37)
+INFO: [HLS 200-472] Inferring partial write operation for 'agg.tmp.11.0.0.0' (ParticleCoverHLS/src/patch.cxx:24:26)
+INFO: [HLS 200-472] Inferring partial write operation for 'prev_patch.superpoints.min' (ParticleCoverHLS/src/cover.cxx:46:26)
+INFO: [HLS 200-472] Inferring partial write operation for 'prev_sp.min' (ParticleCoverHLS/src/cover.cxx:50:18)
+INFO: [HLS 200-472] Inferring partial write operation for 'curr_sp.min' (ParticleCoverHLS/src/cover.cxx:56:18)
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 566 seconds. CPU system time: 0 seconds. Elapsed time: 568.082 seconds; current allocated memory: 841.193 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'system_top' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'cover_add_patch' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=mul_ln46) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=mul_ln64) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=mul_ln39) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_49_1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_49_1'
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_55_2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_55_2'
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_59_3'.
+WARNING: [HLS 200-878] Unable to schedule the loop exit test ('and' operation ('and_ln60_1', ParticleCoverHLS/src/cover.cxx:60)) in the first pipeline iteration (II = 1 cycles).
+WARNING: [HLS 200-878] Unable to schedule the loop exit test ('and' operation ('and_ln60_1', ParticleCoverHLS/src/cover.cxx:60)) in the first pipeline iteration (II = 2 cycles).
+WARNING: [HLS 200-878] Unable to schedule the loop exit test ('and' operation ('and_ln61_1', ParticleCoverHLS/src/cover.cxx:61)) in the first pipeline iteration (II = 3 cycles).
+WARNING: [HLS 200-878] Unable to schedule the loop exit test ('and' operation ('and_ln61_1', ParticleCoverHLS/src/cover.cxx:61)) in the first pipeline iteration (II = 4 cycles).
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 5, Depth = 5, loop 'VITIS_LOOP_59_3'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 102 seconds. CPU system time: 1 seconds. Elapsed time: 102.405 seconds; current allocated memory: 963.161 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 61 seconds. CPU system time: 0 seconds. Elapsed time: 62.292 seconds; current allocated memory: 1.299 GB.
+INFO: [HLS 200-10] ------------------------------------------------

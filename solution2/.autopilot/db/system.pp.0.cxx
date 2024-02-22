@@ -155,13 +155,19 @@ extern "C" {
 # 1 "C:/Projects/ParticleCoverHLS/include\\system.h" 1
 
 
-
 # 1 "C:/Projects/ParticleCoverHLS/include/constants.h" 1
-# 12 "C:/Projects/ParticleCoverHLS/include/constants.h"
+# 13 "C:/Projects/ParticleCoverHLS/include/constants.h"
 const double RADII[] = {5.0, 10.0, 15.0, 20.0, 25.0};
-# 5 "C:/Projects/ParticleCoverHLS/include\\system.h" 2
+# 4 "C:/Projects/ParticleCoverHLS/include\\system.h" 2
 # 1 "C:/Projects/ParticleCoverHLS/include/cover.h" 1
 
+
+
+# 1 "C:/Projects/ParticleCoverHLS/include/dataset.h" 1
+
+
+
+# 1 "C:/Projects/ParticleCoverHLS/include/environment.h" 1
 
 
 
@@ -225,23 +231,7 @@ namespace std
 
   using ::max_align_t;
 }
-# 7 "C:/Projects/ParticleCoverHLS/include/cover.h" 2
-
-typedef struct {
-  size_t n_paches;
-
-} wedge_cover_s;
-# 6 "C:/Projects/ParticleCoverHLS/include\\system.h" 2
-# 1 "C:/Projects/ParticleCoverHLS/include/dataset.h" 1
-
-
-
-# 1 "C:/Projects/ParticleCoverHLS/include/environment.h" 1
-
-
-
-
-
+# 6 "C:/Projects/ParticleCoverHLS/include/environment.h" 2
 # 1 "C:/Xilinx/Vitis_HLS/2020.2/tps/mingw/6.2.0/win64.o/nt\\lib\\gcc\\x86_64-w64-mingw32\\6.2.0\\include\\c++\\iostream" 1 3
 # 37 "C:/Xilinx/Vitis_HLS/2020.2/tps/mingw/6.2.0/win64.o/nt\\lib\\gcc\\x86_64-w64-mingw32\\6.2.0\\include\\c++\\iostream" 3
 
@@ -24745,7 +24735,7 @@ std::ostream &operator<<(std::ostream &os, const point_s &p);
 
 typedef struct {
   environment_s *env;
-  point_s array[5][1000];
+  point_s array[5][512];
   int n_points[5];
   size_t total_points;
   double boundaryPoint_offset;
@@ -24760,7 +24750,94 @@ void dataset_add_boundary_point(dataset_s &dataset, double offset = 0.0001);
 
 
 std::ostream &operator<<(std::ostream &os, const dataset_s &dataset);
-# 7 "C:/Projects/ParticleCoverHLS/include\\system.h" 2
+# 5 "C:/Projects/ParticleCoverHLS/include/cover.h" 2
+
+# 1 "C:/Projects/ParticleCoverHLS/include/patch.h" 1
+
+
+
+
+
+# 1 "C:/Projects/ParticleCoverHLS/include/superpoint.h" 1
+
+
+
+
+
+
+typedef struct {
+  point_s points[32];
+  size_t n_points;
+  double z_values[32];
+  double min;
+  double max;
+} superpoint_s;
+
+superpoint_s superpoint_init(point_s *points, size_t n_points);
+
+bool superpoint_eq(superpoint_s sp1, superpoint_s sp2);
+
+
+std::ostream &operator<<(std::ostream &os, const superpoint_s &sp);
+# 7 "C:/Projects/ParticleCoverHLS/include/patch.h" 2
+
+
+
+typedef struct {
+  environment_s env;
+  int end_layer;
+  int left_end_layer;
+  int right_end_layer;
+  int left_end_lambdaZ;
+  int right_end_lambdaZ;
+  double apexZ0;
+
+  int shadow_fromTopToInnermost_topL_jL;
+  int shadow_fromTopToInnermost_topL_jR;
+  int shadow_fromTopToInnermost_topR_jL;
+  int shadow_fromTopToInnermost_topR_jR;
+
+  superpoint_s superpoints[5];
+  size_t n_superpoints;
+} patch_s;
+
+patch_s patch_init(environment_s env, superpoint_s *superpoints,
+                   size_t n_superpoints, double apexZ0);
+
+
+std::ostream &operator<<(std::ostream &os, const patch_s &p);
+# 7 "C:/Projects/ParticleCoverHLS/include/cover.h" 2
+
+
+
+
+typedef struct {
+  size_t n_patches;
+  patch_s patches[32];
+  environment_s env;
+  dataset_s data;
+  int fitting_lines[512];
+  size_t n_fitting_lines;
+  superpoint_s superpoints[5];
+  size_t n_superpoints;
+  patch_s all_patches[32];
+  size_t n_all_patches;
+  bool real_patch_list[32];
+} cover_s;
+
+cover_s cover_init(environment_s env, dataset_s data);
+
+void cover_add_patch(cover_s &cover, patch_s curr_patch);
+
+void cover_make_patch_aligned_to_line(cover_s &cover, double apexZ0 = 0,
+                                      double z_top = -50, int ppl = 16,
+                                      bool leftRight = true,
+                                      bool double_middleLayers_ppl = false);
+
+
+std::ostream &operator<<(std::ostream &os, const cover_s &cover);
+# 5 "C:/Projects/ParticleCoverHLS/include\\system.h" 2
+
 
 # 1 "C:/Projects/ParticleCoverHLS/include/event.h" 1
 
@@ -24773,7 +24850,7 @@ std::ostream &operator<<(std::ostream &os, const dataset_s &dataset);
 
 typedef struct {
   environment_s env;
-  point_s list_of_points[1000];
+  point_s list_of_points[512];
   size_t num_points;
 } event_s;
 
@@ -24782,7 +24859,7 @@ event_s event_init(environment_s env, point_s list_of_points[],
 
 
 std::ostream &operator<<(std::ostream &os, const event_s &e);
-# 9 "C:/Projects/ParticleCoverHLS/include\\system.h" 2
+# 8 "C:/Projects/ParticleCoverHLS/include\\system.h" 2
 # 1 "C:/Projects/ParticleCoverHLS/include/file_reader.h" 1
 
 
@@ -28399,67 +28476,14 @@ std::vector<std::string> split_string(std::string str,
 
 event_s *file_reader_read(const std::string &filename,
                                  const int stop = 128);
-# 10 "C:/Projects/ParticleCoverHLS/include\\system.h" 2
-# 1 "C:/Projects/ParticleCoverHLS/include/patch.h" 1
+# 9 "C:/Projects/ParticleCoverHLS/include\\system.h" 2
 
-
-
-
-
-# 1 "C:/Projects/ParticleCoverHLS/include/superpoint.h" 1
-
-
-
-
-
-
-typedef struct {
-  point_s points[1000];
-  size_t n_points;
-  double z_values[1000];
-  double min;
-  double max;
-} superpoint_s;
-
-superpoint_s superpoint_init(point_s *points, size_t n_points);
-
-bool superpoint_eq(superpoint_s sp1, superpoint_s sp2);
-
-
-std::ostream &operator<<(std::ostream &os, const superpoint_s &sp);
-# 7 "C:/Projects/ParticleCoverHLS/include/patch.h" 2
-
-
-
-typedef struct {
-  environment_s env;
-  int end_layer;
-  int left_end_layer;
-  int right_end_layer;
-  int left_end_lambdaZ;
-  int right_end_lambdaZ;
-  double apexZ0;
-
-  int shadow_fromTopToInnermost_topL_jL;
-  int shadow_fromTopToInnermost_topL_jR;
-  int shadow_fromTopToInnermost_topR_jL;
-  int shadow_fromTopToInnermost_topR_jR;
-
-  superpoint_s superpoints[5];
-  size_t n_superpoints;
-} patch_s;
-
-patch_s patch_init(environment_s env, superpoint_s *superpoints, double apexZ0);
-
-
-std::ostream &operator<<(std::ostream &os, const patch_s &p);
-# 11 "C:/Projects/ParticleCoverHLS/include\\system.h" 2
 
 # 1 "C:/Projects/ParticleCoverHLS/include/sim_utils.h" 1
-# 13 "C:/Projects/ParticleCoverHLS/include\\system.h" 2
+# 12 "C:/Projects/ParticleCoverHLS/include\\system.h" 2
 
 
-__attribute__((sdx_kernel("system_top", 0))) void system_top(event_s event, size_t *total_result);
+__attribute__((sdx_kernel("system_top", 0))) void system_top(cover_s *cover_result);
 # 3 "ParticleCoverHLS/src/system.cxx" 2
 
 
@@ -28506,29 +28530,42 @@ using std::wcstombs;
 using std::wctomb;
 # 6 "ParticleCoverHLS/src/system.cxx" 2
 
+void presynthesis(event_s event) {
 
-__attribute__((sdx_kernel("system_top", 0))) void system_top(event_s event, size_t *total_result) {
-#pragma HLS TOP name=system_top
-# 8 "ParticleCoverHLS/src/system.cxx"
+
+
+
+  double apexZ0 = 7.75751;
+  int ppl = 16;
+  double z_top = -8.883753333333333;
+  bool leftRight = false;
+
+
+  environment_s env = event.env;
 
   point_s *points = event.list_of_points;
   size_t num_points = event.num_points;
-  environment_s env = event.env;
-
-  dataset_s ds = dataset_init(env);
-
-  dataset_import_data(ds, points, num_points);
-
-  dataset_add_boundary_point(ds, 0.0001);
-
-
-  *total_result = ds.total_points;
 
   return;
 }
 
 
+__attribute__((sdx_kernel("system_top", 0))) void system_top(cover_s *cover) {
+#pragma HLS TOP name=system_top
+# 27 "ParticleCoverHLS/src/system.cxx"
+
+# 40 "ParticleCoverHLS/src/system.cxx"
+  double apexZ0 = 7.75751;
+  int ppl = 16;
+  double z_top = -8.883753333333333;
+  bool leftRight = false;
+
+  cover_make_patch_aligned_to_line(*cover, apexZ0, z_top, ppl, leftRight);
+
+  return;
+}
+
 int main(void) {
-  std::cerr << "This is a dummy main function" << std::endl;
-  return 0;
+ std::cerr << "This is a dummy main function" << std::endl;
+ return 0;
 }
