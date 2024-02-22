@@ -11,4 +11,4 @@
 #include "sim_utils.h"
 #include "superpoint.h"
 
-void system_top(event_s event, size_t *total_result);
+void system_top(event_s event, cover_s *cover_result);

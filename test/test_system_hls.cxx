@@ -15,15 +15,15 @@ int main(void) {
 
   // run system
   std::cout << "[IMFO] Running System" << std::endl;
-  size_t *result = new size_t;
 
-  system_top(event, result);
+  cover_s cover;
 
-  // print result
-  std::cout << "[IMFO] Printing Result" << std::endl;
-  std::cout << "Result: " << *result << std::endl;
+  // system_top
+  std::cout << "[IMFO] Running system_top" << std::endl;
+  system_top(event, &cover);
 
-  std::cout << "[IMFO] Execution Finished" << std::endl;
+  // print the cover
+  std::cout << cover << std::endl;
 
   return 0;
 }
