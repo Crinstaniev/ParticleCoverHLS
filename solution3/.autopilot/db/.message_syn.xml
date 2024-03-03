@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Messages>
+	<Message severity="WARNING" prefix="[SYNCHK 200-77]" key="SYNCHK_RETURN_NULL_370" tag="" content="The top function &apos;system_top&apos; (ParticleCoverHLS/src/system.cxx:27) has no outputs. Possible cause(s) are: (1) Output parameters are passed by value; (2) intended outputs (parameters or global variables) are never written; (3) there are infinite loops." resolution=""/>
+	<Message severity="INFO" prefix="[SYNCHK 200-10]" key="SYNCHK_SYNCHK_SUMMARY_377" tag="" content="0 error(s), 1 warning(s)." resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="RUNTIME" content="Finished Checking Synthesizability: CPU user time: 63 seconds. CPU system time: 1 seconds. Elapsed time: 63.196 seconds; current allocated memory: 636.972 MB." resolution=""/>
+	<Message severity="ERROR" prefix="[HLS 200-70]" key="HLS_70_1855" tag="" content="could not read &quot;C:/Projects/ParticleCoverHLS/solution3/.autopilot/db/a.g.1.bc&quot;: no such file or directory" resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="RUNTIME" content="Finished Command csynth_design CPU user time: 95 seconds. CPU system time: 1 seconds. Elapsed time: 132.354 seconds; current allocated memory: 636.950 MB." resolution=""/>
+</Messages>

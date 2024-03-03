@@ -19,10 +19,9 @@ add_files ParticleCoverHLS/src/cover.cxx -cflags "-IC:/Projects/ParticleCoverHLS
 add_files -tb ParticleCoverHLS/test/test_hls_features.cxx -cflags "-Wno-unknown-pragmas" -csimflags "-Wno-unknown-pragmas"
 open_solution "solution1" -flow_target vivado
 set_part {xcvu11p-flga2577-1-e}
-create_clock -period 10 -name default
-config_export -format ip_catalog -output C:/Projects/system_top.zip -rtl verilog
+create_clock -period 5 -name default
 source "./ParticleCoverHLS/solution1/directives.tcl"
 csim_design -clean
 csynth_design
 cosim_design
-export_design -rtl verilog -format ip_catalog -output C:/Projects/system_top.zip
+export_design -format ip_catalog

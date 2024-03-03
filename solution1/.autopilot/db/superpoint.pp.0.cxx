@@ -156,7 +156,7 @@ extern "C" {
 
 
 # 1 "C:/Projects/ParticleCoverHLS/include/constants.h" 1
-# 12 "C:/Projects/ParticleCoverHLS/include/constants.h"
+# 14 "C:/Projects/ParticleCoverHLS/include/constants.h"
 const double RADII[] = {5.0, 10.0, 15.0, 20.0, 25.0};
 # 5 "C:/Projects/ParticleCoverHLS/include\\superpoint.h" 2
 # 1 "C:/Projects/ParticleCoverHLS/include/point.h" 1
@@ -24664,9 +24664,9 @@ std::ostream &operator<<(std::ostream &os, const point_s &p);
 # 6 "C:/Projects/ParticleCoverHLS/include\\superpoint.h" 2
 
 typedef struct {
-  point_s points[1000];
+  point_s points[32];
   size_t n_points;
-  double z_values[1000];
+  double z_values[32];
   double min;
   double max;
 } superpoint_s;
@@ -31821,7 +31821,7 @@ namespace std
 superpoint_s superpoint_init(point_s *points, size_t n_points) {
   superpoint_s superpoint;
 
-  double z_list[1000];
+  double z_list[512];
 
 
   VITIS_LOOP_12_1: for (size_t i = 0; i < n_points; i++) {

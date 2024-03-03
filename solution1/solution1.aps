@@ -5,26 +5,11 @@
     <downStreamTool>
         <DownStreamTool name=""/>
     </downStreamTool>
-    <targetInfo>
-        <TargetInfo value="xcvu11p:-flga2577:-1-e"/>
-    </targetInfo>
-    <libraryList>
-        <library name="DefaultPlatform" value="xilinx/Virtex-7/Virtex-7"/>
-        <library name="DefaultPlatform" value="xilinx/Virtex-7/Virtex-7_fpv7"/>
-        <library name="DefaultPlatform" value="xilinx/virtexuplus/virtexuplus"/>
-    </libraryList>
-    <flowTarget value="vivado"/>
-    <clockList>
-        <clock default="false" name="default" period="10"/>
-    </clockList>
-    <config>
-        <config_export format="ip_catalog" output="C:/Projects/system_top.zip" rtl="verilog"/>
-    </config>
+    <config/>
     <UIConfigurations>
-        <UIAutosynConf hideTrivialOp="true" isBasedOnBoard="false" isSolutionDirty="true" isStopAskAgain="false" showDetailDesignViewer="false">
+        <UIAutosynConf hideTrivialOp="true" isBasedOnBoard="false" isSolutionDirty="false" isStopAskAgain="false" showDetailDesignViewer="false">
             <Platform>xilinx/Virtex-7/Virtex-7</Platform>
             <Platform>xilinx/Virtex-7/Virtex-7_fpv7</Platform>
-            <Platform>xilinx/virtexuplus/virtexuplus</Platform>
             <customLibs/>
         </UIAutosynConf>
         <UIIPPackagerConf AskAgain="true" DescriptionButton="false" LibraryButton="false" RTLLanguage="verilog" UseNetList="none" VendorButton="false" VersionButton="false" evaluateRTL="false" setup="false">
@@ -53,7 +38,7 @@
             </RTLs>
         </UIAutoSimConf>
     </UIConfigurations>
-    <ExportDesign askAgain="true" evaluate="false" flow="false" flowChoice="syn" formatName="ip_catalog" output="C:/Projects/system_top.zip" rtl="verilog" rtlButton="true" rtlCombo="verilog">
+    <ExportDesign askAgain="true" evaluate="false" flow="false" flowChoice="syn" formatName="ip_catalog" rtl="verilog" rtlButton="false" rtlCombo="verilog">
         <Format formatName="ip_catalog"/>
         <Format formatName="sysgen"/>
         <Format formatName="sysgen_ise"/>
@@ -74,5 +59,17 @@
     <project>
         <value string="ParticleCoverHLS"/>
     </project>
+    <flowTarget value="vivado"/>
+    <targetInfo>
+        <TargetInfo value="xcvu11p:-flga2577:-1-e"/>
+    </targetInfo>
+    <libraryList>
+        <library name="DefaultPlatform" value="xilinx/Virtex-7/Virtex-7"/>
+        <library name="DefaultPlatform" value="xilinx/Virtex-7/Virtex-7_fpv7"/>
+        <library value="xilinx/virtexuplus/virtexuplus" name="DefaultPlatform"/>
+    </libraryList>
+    <clockList>
+        <clock default="false" name="default" period="5"/>
+    </clockList>
 </solution>
 
