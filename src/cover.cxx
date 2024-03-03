@@ -5,12 +5,6 @@
 #include <climits>
 
 cover_s cover_init(environment_s env, dataset_s data) {
-  // cover_s cover = {.n_patches = 0,
-  //                  .env = env,
-  //                  .data = data,
-  //                  .n_fitting_lines = 0,
-  //                  .n_superpoints = 0,
-  //                  .n_all_patches = 0};
   cover_s cover;
   cover.n_patches = 0;
   cover.env = env;
@@ -74,6 +68,7 @@ void cover_make_patch_aligned_to_line(cover_s &cover, double apexZ0,
                                       double z_top, int ppl, bool leftRight,
                                       bool double_middleLayers_ppl) {
   superpoint_s init_patch[NUM_LAYERS];
+  
   size_t init_patch_size = 0;
   int original_ppl = ppl;
   double alignmentAccuracy = 0.00001;
@@ -151,7 +146,8 @@ void cover_make_patch_aligned_to_line(cover_s &cover, double apexZ0,
         if (start_value < -1 * alignmentAccuracy) {
           start_index++;
           start_value = row_list[start_index] - projectionToRow;
-          // std::cout << "row " << i + 1 << " updated start_index " << start_index
+          // std::cout << "row " << i + 1 << " updated start_index " <<
+          // start_index
           //           << " start_value " << start_value
           //           << " z: " << row_list[start_index] << std::endl;
         }

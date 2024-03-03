@@ -1,5 +1,4 @@
-#ifndef __REFERENCE_H__
-#define __REFERENCE_H__
+#pragma once
 
 #include <climits>
 #include <fstream>
@@ -538,4 +537,3 @@ public:
   }
 };
 
-#endif

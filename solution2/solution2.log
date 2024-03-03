@@ -4781,4 +4781,85 @@ INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
 INFO: [HLS 200-111] Finished Binding: CPU user time: 61 seconds. CPU system time: 0 seconds. Elapsed time: 62.292 seconds; current allocated memory: 1.299 GB.
-INFO: [HLS 200-10] ------------------------------------------------
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'cover_make_patch_aligned_to_line' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_84_1_VITIS_LOOP_85_2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_84_1_VITIS_LOOP_85_2'
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_97_4'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_97_4'
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_111_5'.
+WARNING: [HLS 200-880] The II Violation in module 'cover_make_patch_aligned_to_line' (loop 'VITIS_LOOP_111_5'): Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 0) between 'select' operation ('start_value', ParticleCoverHLS/src/cover.cxx:112) and 'dcmp' operation ('tmp_2', ParticleCoverHLS/src/cover.cxx:112).
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 2, Depth = 7, loop 'VITIS_LOOP_111_5'
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_123_6'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 11, loop 'VITIS_LOOP_123_6'
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_175_8'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_175_8'
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_164_7'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_164_7'
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_23_1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_23_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 10 seconds. CPU system time: 1 seconds. Elapsed time: 10.21 seconds; current allocated memory: 1.306 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 2.285 seconds; current allocated memory: 1.314 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'system_top' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 4 seconds. CPU system time: 0 seconds. Elapsed time: 3.737 seconds; current allocated memory: 1.314 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.35 seconds; current allocated memory: 1.314 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'cover_add_patch' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-104] Estimated max fanout for 'cover_add_patch' is 47907 from HDL expression: (1'b1 == ap_CS_fsm_state358)
+INFO: [RTGEN 206-100] Generating core module 'dcmp_64ns_64ns_1_2_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_20s_14ns_20ns_20_4_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_mul_20s_14ns_20_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'cover_add_patch'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 290 seconds. CPU system time: 1 seconds. Elapsed time: 290.599 seconds; current allocated memory: 283.199 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'cover_make_patch_aligned_to_line' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'dadd_64ns_64ns_64_4_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'dadddsub_64ns_64ns_64_4_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'dcmp_64ns_64ns_1_2_no_dsp_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'ddiv_64ns_64ns_64_13_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'dmul_64ns_64ns_64_4_max_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'sitodp_32s_64_2_no_dsp_1': 2 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'cover_make_patch_aligned_to_line'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 39 seconds. CPU system time: 3 seconds. Elapsed time: 42.945 seconds; current allocated memory: 667.593 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'system_top' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'system_top/cover' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'system_top' to 'ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'system_top'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 12 seconds. CPU system time: 1 seconds. Elapsed time: 12.97 seconds; current allocated memory: 698.922 MB.
+INFO: [RTMG 210-278] Implementing memory 'system_top_cover_add_patch_prev_patch_superpoints_min_ram (RAM)' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'system_top_cover_add_patch_prev_sp_min_ram (RAM)' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'system_top_cover_make_patch_aligned_to_line_init_patch_0_points_layer_num_ram (RAM)' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'system_top_cover_make_patch_aligned_to_line_init_patch_n_points_ram (RAM)' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'system_top_cover_make_patch_aligned_to_line_row_data_layer_num_ram (RAM)' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'system_top_cover_make_patch_aligned_to_line_row_data_radius_ram (RAM)' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'system_top_cover_make_patch_aligned_to_line_row_list_ram (RAM)' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'system_top_cover_make_patch_aligned_to_line_payload_points_layer_num_ram (RAM)' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'system_top_cover_make_patch_aligned_to_line_payload_points_radius_ram (RAM)' using auto RAMs.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 15 seconds. CPU system time: 0 seconds. Elapsed time: 15.973 seconds; current allocated memory: 704.034 MB.
+INFO: [VHDL 208-304] Generating VHDL RTL for system_top.
+INFO: [VLOG 209-307] Generating Verilog RTL for system_top.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were NOT satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 138.60 MHz
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 1270 seconds. CPU system time: 8 seconds. Elapsed time: 1300.3 seconds; current allocated memory: 708.225 MB.
+INFO: [HLS 200-112] Total CPU user time: 1283 seconds. Total CPU system time: 9 seconds. Total elapsed time: 1312.12 seconds; peak allocated memory: 1.314 GB.

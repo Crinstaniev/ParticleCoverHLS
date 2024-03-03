@@ -1052,3 +1052,459 @@ Execute       get_config_rtl -module_auto_prefix
 Execute       get_config_rtl -module_prefix 
 Execute       get_config_rtl -module_auto_prefix 
 Execute       create_rtl_model cover_add_patch -top_prefix system_top_ -sub_prefix system_top_ -mg_file C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/cover_add_patch.compgen.tcl 
+INFO: [RTGEN 206-104] Estimated max fanout for 'cover_add_patch' is 47907 from HDL expression: (1'b1 == ap_CS_fsm_state358)
+INFO: [RTGEN 206-100] Generating core module 'dcmp_64ns_64ns_1_2_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_20s_14ns_20ns_20_4_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_mul_20s_14ns_20_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'cover_add_patch'.
+Command       create_rtl_model done; 278.331 sec.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 290 seconds. CPU system time: 1 seconds. Elapsed time: 290.599 seconds; current allocated memory: 283.199 MB.
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/system_top.rtl_wrap.cfg.tcl 
+Execute       gen_rtl cover_add_patch -style xilinx -f -lang vhdl -o C:/Projects/ParticleCoverHLS/solution2/syn/vhdl/system_top_cover_add_patch 
+Command       gen_rtl done; 0.233 sec.
+Execute       gen_rtl cover_add_patch -style xilinx -f -lang vlog -o C:/Projects/ParticleCoverHLS/solution2/syn/verilog/system_top_cover_add_patch 
+Command       gen_rtl done; 11.129 sec.
+Execute       syn_report -csynth -model cover_add_patch -o C:/Projects/ParticleCoverHLS/solution2/syn/report/cover_add_patch_csynth.rpt 
+Execute         AP::get_flow_target_display_name
+Execute           get_solution -flow_target 
+Command       syn_report done; 2.163 sec.
+Execute       syn_report -rtlxml -model cover_add_patch -o C:/Projects/ParticleCoverHLS/solution2/syn/report/cover_add_patch_csynth.xml 
+Execute         get_solution -flow_target
+Execute           get_solution -flow_target 
+Command       syn_report done; 1.076 sec.
+Execute       syn_report -verbosereport -model cover_add_patch -o C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/cover_add_patch.verbose.rpt 
+Execute         AP::get_flow_target_display_name
+Execute           get_solution -flow_target 
+Command       syn_report done; 7.083 sec.
+Execute       db_write -model cover_add_patch -f -o C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/cover_add_patch.adb 
+Command       db_write done; 5.545 sec.
+Execute       gen_tb_info cover_add_patch -p C:/Projects/ParticleCoverHLS/solution2/.autopilot/db -o C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/cover_add_patch 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'cover_make_patch_aligned_to_line' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+Execute       get_config_rtl -module_prefix 
+Execute       get_config_rtl -module_auto_prefix 
+Execute       get_config_rtl -module_prefix 
+Execute       get_config_rtl -module_auto_prefix 
+Execute       create_rtl_model cover_make_patch_aligned_to_line -top_prefix system_top_ -sub_prefix system_top_ -mg_file C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/cover_make_patch_aligned_to_line.compgen.tcl 
+INFO: [RTGEN 206-100] Generating core module 'dadd_64ns_64ns_64_4_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'dadddsub_64ns_64ns_64_4_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'dcmp_64ns_64ns_1_2_no_dsp_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'ddiv_64ns_64ns_64_13_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'dmul_64ns_64ns_64_4_max_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'sitodp_32s_64_2_no_dsp_1': 2 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'cover_make_patch_aligned_to_line'.
+Command       create_rtl_model done; 1.449 sec.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 39 seconds. CPU system time: 3 seconds. Elapsed time: 42.945 seconds; current allocated memory: 667.593 MB.
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/system_top.rtl_wrap.cfg.tcl 
+Execute       gen_rtl cover_make_patch_aligned_to_line -style xilinx -f -lang vhdl -o C:/Projects/ParticleCoverHLS/solution2/syn/vhdl/system_top_cover_make_patch_aligned_to_line 
+Execute       gen_rtl cover_make_patch_aligned_to_line -style xilinx -f -lang vlog -o C:/Projects/ParticleCoverHLS/solution2/syn/verilog/system_top_cover_make_patch_aligned_to_line 
+Execute       syn_report -csynth -model cover_make_patch_aligned_to_line -o C:/Projects/ParticleCoverHLS/solution2/syn/report/cover_make_patch_aligned_to_line_csynth.rpt 
+Execute         AP::get_flow_target_display_name
+Execute           get_solution -flow_target 
+Command       syn_report done; 0.295 sec.
+Execute       syn_report -rtlxml -model cover_make_patch_aligned_to_line -o C:/Projects/ParticleCoverHLS/solution2/syn/report/cover_make_patch_aligned_to_line_csynth.xml 
+Execute         get_solution -flow_target
+Execute           get_solution -flow_target 
+Command       syn_report done; 0.139 sec.
+Execute       syn_report -verbosereport -model cover_make_patch_aligned_to_line -o C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/cover_make_patch_aligned_to_line.verbose.rpt 
+Execute         AP::get_flow_target_display_name
+Execute           get_solution -flow_target 
+Command       syn_report done; 3 sec.
+Execute       db_write -model cover_make_patch_aligned_to_line -f -o C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/cover_make_patch_aligned_to_line.adb 
+Command       db_write done; 0.379 sec.
+Execute       gen_tb_info cover_make_patch_aligned_to_line -p C:/Projects/ParticleCoverHLS/solution2/.autopilot/db -o C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/cover_make_patch_aligned_to_line 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'system_top' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+Execute       get_config_rtl -module_prefix 
+Execute       get_config_rtl -module_prefix 
+Execute       get_config_rtl -module_auto_prefix 
+Execute       create_rtl_model system_top -top_prefix  -sub_prefix system_top_ -mg_file C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/system_top.compgen.tcl 
+INFO: [RTGEN 206-500] Setting interface mode on port 'system_top/cover' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'system_top' to 'ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'system_top'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 12 seconds. CPU system time: 1 seconds. Elapsed time: 12.97 seconds; current allocated memory: 698.922 MB.
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/system_top.rtl_wrap.cfg.tcl 
+Execute       gen_rtl system_top -istop -style xilinx -f -lang vhdl -o C:/Projects/ParticleCoverHLS/solution2/syn/vhdl/system_top 
+Execute       gen_rtl system_top -istop -style xilinx -f -lang vlog -o C:/Projects/ParticleCoverHLS/solution2/syn/verilog/system_top 
+Execute       syn_report -csynth -model system_top -o C:/Projects/ParticleCoverHLS/solution2/syn/report/system_top_csynth.rpt 
+Execute         AP::get_flow_target_display_name
+Execute           get_solution -flow_target 
+Execute       syn_report -rtlxml -model system_top -o C:/Projects/ParticleCoverHLS/solution2/syn/report/system_top_csynth.xml 
+Execute         get_solution -flow_target
+Execute           get_solution -flow_target 
+Execute       syn_report -verbosereport -model system_top -o C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/system_top.verbose.rpt 
+Execute         AP::get_flow_target_display_name
+Execute           get_solution -flow_target 
+Command       syn_report done; 2.492 sec.
+Execute       db_write -model system_top -f -o C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/system_top.adb 
+Execute       gen_tb_info system_top -p C:/Projects/ParticleCoverHLS/solution2/.autopilot/db -o C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/system_top 
+Execute       export_constraint_db -f -tool general -o C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/system_top.constraint.tcl 
+Execute       syn_report -designview -model system_top -o C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/system_top.design.xml 
+Command       syn_report done; 1.91 sec.
+Execute       syn_report -csynthDesign -model system_top -o C:/Projects/ParticleCoverHLS/solution2/syn/report/csynth.rpt 
+Execute         AP::get_flow_target_display_name
+Execute           get_solution -flow_target 
+Execute       get_config_rtl -disable_wave_debug 
+Execute       syn_report -wcfg -model system_top -o C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/system_top_dataflow_ana.wcfg 
+Execute       syn_report -protoinst -model system_top -o C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/system_top.protoinst 
+Execute       get_config_debug -directory 
+Execute       sc_get_clocks system_top 
+Execute       get_config_export -vivado_clock 
+Execute       get_config_rtl -module_prefix 
+Execute       get_config_rtl -module_prefix 
+Execute       get_config_rtl -module_auto_prefix 
+Execute       sc_get_portdomain system_top 
+INFO-FLOW: Model list for RTL component generation: cover_add_patch cover_make_patch_aligned_to_line system_top
+INFO-FLOW: Handling components in module [cover_add_patch] ... 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/cover_add_patch.compgen.tcl 
+INFO-FLOW: Found component system_top_dcmp_64ns_64ns_1_2_no_dsp_1.
+INFO-FLOW: Append model system_top_dcmp_64ns_64ns_1_2_no_dsp_1
+INFO-FLOW: Found component system_top_mul_mul_20s_14ns_20_4_1.
+INFO-FLOW: Append model system_top_mul_mul_20s_14ns_20_4_1
+INFO-FLOW: Found component system_top_mac_muladd_20s_14ns_20ns_20_4_1.
+INFO-FLOW: Append model system_top_mac_muladd_20s_14ns_20ns_20_4_1
+INFO-FLOW: Found component system_top_cover_add_patch_prev_patch_superpoints_min.
+INFO-FLOW: Append model system_top_cover_add_patch_prev_patch_superpoints_min
+INFO-FLOW: Found component system_top_cover_add_patch_prev_sp_min.
+INFO-FLOW: Append model system_top_cover_add_patch_prev_sp_min
+INFO-FLOW: Handling components in module [cover_make_patch_aligned_to_line] ... 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/cover_make_patch_aligned_to_line.compgen.tcl 
+INFO-FLOW: Found component system_top_dadddsub_64ns_64ns_64_4_full_dsp_1.
+INFO-FLOW: Append model system_top_dadddsub_64ns_64ns_64_4_full_dsp_1
+INFO-FLOW: Found component system_top_dadd_64ns_64ns_64_4_full_dsp_1.
+INFO-FLOW: Append model system_top_dadd_64ns_64ns_64_4_full_dsp_1
+INFO-FLOW: Found component system_top_dmul_64ns_64ns_64_4_max_dsp_1.
+INFO-FLOW: Append model system_top_dmul_64ns_64ns_64_4_max_dsp_1
+INFO-FLOW: Found component system_top_ddiv_64ns_64ns_64_13_no_dsp_1.
+INFO-FLOW: Append model system_top_ddiv_64ns_64ns_64_13_no_dsp_1
+INFO-FLOW: Found component system_top_sitodp_32s_64_2_no_dsp_1.
+INFO-FLOW: Append model system_top_sitodp_32s_64_2_no_dsp_1
+INFO-FLOW: Found component system_top_cover_make_patch_aligned_to_line_init_patch_0_points_layer_num.
+INFO-FLOW: Append model system_top_cover_make_patch_aligned_to_line_init_patch_0_points_layer_num
+INFO-FLOW: Found component system_top_cover_make_patch_aligned_to_line_init_patch_n_points.
+INFO-FLOW: Append model system_top_cover_make_patch_aligned_to_line_init_patch_n_points
+INFO-FLOW: Found component system_top_cover_make_patch_aligned_to_line_row_data_layer_num.
+INFO-FLOW: Append model system_top_cover_make_patch_aligned_to_line_row_data_layer_num
+INFO-FLOW: Found component system_top_cover_make_patch_aligned_to_line_row_data_radius.
+INFO-FLOW: Append model system_top_cover_make_patch_aligned_to_line_row_data_radius
+INFO-FLOW: Found component system_top_cover_make_patch_aligned_to_line_row_list.
+INFO-FLOW: Append model system_top_cover_make_patch_aligned_to_line_row_list
+INFO-FLOW: Found component system_top_cover_make_patch_aligned_to_line_payload_points_layer_num.
+INFO-FLOW: Append model system_top_cover_make_patch_aligned_to_line_payload_points_layer_num
+INFO-FLOW: Found component system_top_cover_make_patch_aligned_to_line_payload_points_radius.
+INFO-FLOW: Append model system_top_cover_make_patch_aligned_to_line_payload_points_radius
+INFO-FLOW: Handling components in module [system_top] ... 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/system_top.compgen.tcl 
+INFO-FLOW: Append model cover_add_patch
+INFO-FLOW: Append model cover_make_patch_aligned_to_line
+INFO-FLOW: Append model system_top
+INFO-FLOW: Generating RTL model list ...
+INFO-FLOW: All models in this session: system_top_dcmp_64ns_64ns_1_2_no_dsp_1 system_top_mul_mul_20s_14ns_20_4_1 system_top_mac_muladd_20s_14ns_20ns_20_4_1 system_top_cover_add_patch_prev_patch_superpoints_min system_top_cover_add_patch_prev_sp_min system_top_dadddsub_64ns_64ns_64_4_full_dsp_1 system_top_dadd_64ns_64ns_64_4_full_dsp_1 system_top_dmul_64ns_64ns_64_4_max_dsp_1 system_top_ddiv_64ns_64ns_64_13_no_dsp_1 system_top_sitodp_32s_64_2_no_dsp_1 system_top_cover_make_patch_aligned_to_line_init_patch_0_points_layer_num system_top_cover_make_patch_aligned_to_line_init_patch_n_points system_top_cover_make_patch_aligned_to_line_row_data_layer_num system_top_cover_make_patch_aligned_to_line_row_data_radius system_top_cover_make_patch_aligned_to_line_row_list system_top_cover_make_patch_aligned_to_line_payload_points_layer_num system_top_cover_make_patch_aligned_to_line_payload_points_radius cover_add_patch cover_make_patch_aligned_to_line system_top
+INFO-FLOW: To file: write model system_top_dcmp_64ns_64ns_1_2_no_dsp_1
+INFO-FLOW: To file: write model system_top_mul_mul_20s_14ns_20_4_1
+INFO-FLOW: To file: write model system_top_mac_muladd_20s_14ns_20ns_20_4_1
+INFO-FLOW: To file: write model system_top_cover_add_patch_prev_patch_superpoints_min
+INFO-FLOW: To file: write model system_top_cover_add_patch_prev_sp_min
+INFO-FLOW: To file: write model system_top_dadddsub_64ns_64ns_64_4_full_dsp_1
+INFO-FLOW: To file: write model system_top_dadd_64ns_64ns_64_4_full_dsp_1
+INFO-FLOW: To file: write model system_top_dmul_64ns_64ns_64_4_max_dsp_1
+INFO-FLOW: To file: write model system_top_ddiv_64ns_64ns_64_13_no_dsp_1
+INFO-FLOW: To file: write model system_top_sitodp_32s_64_2_no_dsp_1
+INFO-FLOW: To file: write model system_top_cover_make_patch_aligned_to_line_init_patch_0_points_layer_num
+INFO-FLOW: To file: write model system_top_cover_make_patch_aligned_to_line_init_patch_n_points
+INFO-FLOW: To file: write model system_top_cover_make_patch_aligned_to_line_row_data_layer_num
+INFO-FLOW: To file: write model system_top_cover_make_patch_aligned_to_line_row_data_radius
+INFO-FLOW: To file: write model system_top_cover_make_patch_aligned_to_line_row_list
+INFO-FLOW: To file: write model system_top_cover_make_patch_aligned_to_line_payload_points_layer_num
+INFO-FLOW: To file: write model system_top_cover_make_patch_aligned_to_line_payload_points_radius
+INFO-FLOW: To file: write model cover_add_patch
+INFO-FLOW: To file: write model cover_make_patch_aligned_to_line
+INFO-FLOW: To file: write model system_top
+INFO-FLOW: Finished generating RTL model list.
+
+
+INFO-FLOW: RTL Generation done.
+INFO-FLOW: CAS Generation done.
+INFO-FLOW: CBC Generation done.
+Execute       get_top 
+Execute       get_config_export -ipname 
+Execute       get_config_export -xo 
+Execute       get_config_export -format 
+Execute       get_config_rtl -module_auto_prefix 
+INFO-FLOW: DBG:CMD:   auto_impl: set ipname to top (module_auto_prefix): system_top
+INFO-FLOW: DBG:CMD: auto_generate_csynth_design
+INFO-FLOW: DBG:CMD:     auto_generate --sim-model -phase csynth_design -d C:/Projects/ParticleCoverHLS/solution2
+Execute       get_solution -flow_target 
+Execute       get_config_export -xo 
+Execute       get_config_export -format 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/global.setting.tcl 
+INFO-FLOW: DBG:CMD: read_platform_lib C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/global.setting.tcl
+Execute       source C:/Xilinx/Vitis_HLS/2020.2/common/technology/generic/autopilot/common.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/generic/autopilot/APCoreGen.gen 
+Execute       source C:/Xilinx/Vitis_HLS/2020.2/common/technology/generic/autopilot/op.gen 
+Execute       source C:/Xilinx/Vitis_HLS/2020.2/common/technology/generic/autopilot/op_simcore.gen 
+Execute       source C:/Xilinx/Vitis_HLS/2020.2/common/technology/generic/autopilot/interface.gen 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/global.setting.tcl 
+Execute       ap_family_info -name Virtex-7 -data parts 
+Execute       ap_part_info -name xc7vx485tffg1157-1 -data info 
+Execute       source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/common/xilinx.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/interface/plb46.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/interface/axi4.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/interface/saxilite.gen 
+Execute           source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/interface/maxi.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/ip/util.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/ip/xfft.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/ip/xfir.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/DSP48/dsp48.gen 
+Execute       source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/common/xilinx.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/interface/plb46.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/interface/axi4.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/interface/saxilite.gen 
+Execute           source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/interface/maxi.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/ip/util.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/ip/xfft.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/ip/xfir.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/DSP48/dsp48.gen 
+Execute       source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/common/xilinx.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/interface/plb46.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/interface/axi4.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/interface/saxilite.gen 
+Execute           source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/interface/maxi.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/ip/util.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/ip/xfft.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/ip/xfir.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/DSP48/dsp48.gen 
+INFO-FLOW: DBG:CMD:   using AESL_AUTOCG::g_clock_period=10.000 (was NA)
+INFO-FLOW: DBG:CMD:       generate_ip_cores sim=1 export=0 expOnly=0 dstVlogDir=syn/verilog
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/global.setting.tcl 
+Execute       ap_part_info -name xcvu11p-flga2577-1-e -data names -quiet 
+Execute       ap_part_info -name xcvu11p-flga2577-1-e -data info -quiet 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/global.setting.tcl 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/global.setting.tcl 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/cover_add_patch.compgen.tcl 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data names -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data info -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data names -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data info -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data names -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data info -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data info 
+INFO: [RTMG 210-278] Implementing memory 'system_top_cover_add_patch_prev_patch_superpoints_min_ram (RAM)' using auto RAMs.
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data names -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data info -quiet 
+INFO: [RTMG 210-278] Implementing memory 'system_top_cover_add_patch_prev_sp_min_ram (RAM)' using auto RAMs.
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data names -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data info -quiet 
+Command       ap_source done; 0.199 sec.
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/cover_make_patch_aligned_to_line.compgen.tcl 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data names -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data info -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data names -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data info -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data names -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data info -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data names -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data info -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data names -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data info -quiet 
+INFO: [RTMG 210-278] Implementing memory 'system_top_cover_make_patch_aligned_to_line_init_patch_0_points_layer_num_ram (RAM)' using auto RAMs.
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data names -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data info -quiet 
+INFO: [RTMG 210-278] Implementing memory 'system_top_cover_make_patch_aligned_to_line_init_patch_n_points_ram (RAM)' using auto RAMs.
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data names -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data info -quiet 
+INFO: [RTMG 210-278] Implementing memory 'system_top_cover_make_patch_aligned_to_line_row_data_layer_num_ram (RAM)' using auto RAMs.
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data names -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data info -quiet 
+INFO: [RTMG 210-278] Implementing memory 'system_top_cover_make_patch_aligned_to_line_row_data_radius_ram (RAM)' using auto RAMs.
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data names -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data info -quiet 
+INFO: [RTMG 210-278] Implementing memory 'system_top_cover_make_patch_aligned_to_line_row_list_ram (RAM)' using auto RAMs.
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data names -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data info -quiet 
+INFO: [RTMG 210-278] Implementing memory 'system_top_cover_make_patch_aligned_to_line_payload_points_layer_num_ram (RAM)' using auto RAMs.
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data names -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data info -quiet 
+INFO: [RTMG 210-278] Implementing memory 'system_top_cover_make_patch_aligned_to_line_payload_points_radius_ram (RAM)' using auto RAMs.
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data names -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data info -quiet 
+Command       ap_source done; 0.503 sec.
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/system_top.compgen.tcl 
+INFO-FLOW: DBG:CMD:     auto_generate -export -impltomg_flag -rtl both -tool Vivado -pcore_version 1.00.a -phase csynth_design -d C:/Projects/ParticleCoverHLS/solution2
+Execute       get_solution -flow_target 
+Execute       get_config_export -xo 
+Execute       get_config_export -format 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/global.setting.tcl 
+INFO-FLOW: DBG:CMD: read_platform_lib C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/global.setting.tcl
+Execute       source C:/Xilinx/Vitis_HLS/2020.2/common/technology/generic/autopilot/common.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/generic/autopilot/APCoreGen.gen 
+Execute       source C:/Xilinx/Vitis_HLS/2020.2/common/technology/generic/autopilot/op.gen 
+Execute       source C:/Xilinx/Vitis_HLS/2020.2/common/technology/generic/autopilot/op_simcore.gen 
+Execute       source C:/Xilinx/Vitis_HLS/2020.2/common/technology/generic/autopilot/interface.gen 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/global.setting.tcl 
+Execute       ap_family_info -name Virtex-7 -data parts 
+Execute       ap_part_info -name xc7vx485tffg1157-1 -data info 
+Execute       source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/common/xilinx.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/interface/plb46.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/interface/axi4.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/interface/saxilite.gen 
+Execute           source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/interface/maxi.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/ip/util.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/ip/xfft.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/ip/xfir.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/DSP48/dsp48.gen 
+Execute       source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/common/xilinx.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/interface/plb46.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/interface/axi4.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/interface/saxilite.gen 
+Execute           source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/interface/maxi.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/ip/util.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/ip/xfft.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/ip/xfir.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/DSP48/dsp48.gen 
+Execute       source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/common/xilinx.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/interface/plb46.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/interface/axi4.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/interface/saxilite.gen 
+Execute           source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/interface/maxi.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/ip/util.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/ip/xfft.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/ip/xfir.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2020.2/common/technology/xilinx/DSP48/dsp48.gen 
+INFO-FLOW: DBG:CMD:       initCTypeInfo top_module=system_top xml_exists=0
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/system_top.rtl_wrap.cfg.tcl 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/system_top.rtl_wrap.cfg.tcl 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/system_top.rtl_wrap.cfg.tcl 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/system_top.tbgen.tcl 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/system_top.tbgen.tcl 
+INFO-FLOW: DBG:CMD:       export_impl_rtl
+INFO-FLOW: DBG:CMD:       generate_ip_cores sim=0 export=0 expOnly=0 dstVlogDir=impl/.verilog
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/global.setting.tcl 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/cover_add_patch.compgen.tcl 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data names -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data info -quiet 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/cover_make_patch_aligned_to_line.compgen.tcl 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data names -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data info -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data names -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data info -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data names -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data info -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data names -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data info -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data names -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data info -quiet 
+Command       ap_source done; 0.114 sec.
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/system_top.compgen.tcl 
+INFO-FLOW: DBG:CMD:       generate_ip_cores sim=0 export=1 expOnly=1 dstVlogDir=impl/.pcores/verilog
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/global.setting.tcl 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/cover_add_patch.compgen.tcl 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/cover_make_patch_aligned_to_line.compgen.tcl 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/system_top.compgen.tcl 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data names -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data info -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data names -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data info -quiet 
+Execute         source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/system_top.tbgen.tcl 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data names -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data info -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data names -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data info -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data names -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data info -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data names -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data info -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data names -quiet 
+Execute         ap_part_info -name xcvu11p-flga2577-1-e -data info -quiet 
+Execute       ap_part_info -name xcvu11p-flga2577-1-e -data names -quiet 
+Execute       ap_part_info -name xcvu11p-flga2577-1-e -data info -quiet 
+INFO-FLOW: DBG:CMD:       generate_ip_cores sim=0 export=0 expOnly=0 dstVlogDir=impl/.pcores/verilog_sim
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/global.setting.tcl 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/cover_add_patch.compgen.tcl 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/cover_make_patch_aligned_to_line.compgen.tcl 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/system_top.compgen.tcl 
+Execute       ap_part_info -name xcvu11p-flga2577-1-e -data names -quiet 
+Execute       ap_part_info -name xcvu11p-flga2577-1-e -data info -quiet 
+Execute       ap_part_info -name xcvu11p-flga2577-1-e -data names -quiet 
+Execute       ap_part_info -name xcvu11p-flga2577-1-e -data info -quiet 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/global.setting.tcl 
+Execute       ap_part_info -name xcvu11p-flga2577-1-e -data names -quiet 
+Execute       ap_part_info -name xcvu11p-flga2577-1-e -data info -quiet 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/system_top.constraint.tcl 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/system_top.tbgen.tcl 
+INFO-FLOW: DBG:CMD:       hasPcoreIpAdapter=false #gSsdmPorts=4
+INFO-FLOW: DBG:CMD: Skipping loadAnalyze_DB, #g_database=1
+INFO-FLOW: DBG:CMD:       generate_json is_phase_csynth=1 g_has_adaptors=false generate_bd_files=0 #modelList=20 #gSsdmPorts=4
+Execute       source C:/Xilinx/Vitis_HLS/2020.2/tps/tcl/tcllib1.11.1/fileutil/fileutil.tcl 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/global.setting.tcl 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/global.setting.tcl 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/top-io-be.tcl 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/system_top.tbgen.tcl 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/system_top.rtl_wrap.cfg.tcl 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/system_top.compgen.dataonly.tcl 
+Execute       get_config_export -format 
+Execute       ap_part_info -name xcvu11p-flga2577-1-e -data names -quiet 
+Execute       ap_part_info -name xcvu11p-flga2577-1-e -data info -quiet 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/cover_add_patch.tbgen.tcl 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/cover_make_patch_aligned_to_line.tbgen.tcl 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/system_top.tbgen.tcl 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/global.setting.tcl 
+Execute       ap_part_info -name xcvu11p-flga2577-1-e -data names -quiet 
+Execute       ap_part_info -name xcvu11p-flga2577-1-e -data info -quiet 
+Execute       get_solution -flow_target 
+Execute       get_config_rtl -kernel_profile 
+Execute       get_config_rtl -kernel_profile 
+Execute       get_config_rtl -stall_sig_gen 
+Execute       get_config_rtl -profile 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/system_top.constraint.tcl 
+Execute       sc_get_clocks system_top 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/global.setting.tcl 
+Execute       get_config_debug -directory 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/impl/misc/system_top_ap_dadd_2_full_dsp_64_ip.tcl 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/impl/misc/system_top_ap_dadddsub_2_full_dsp_64_ip.tcl 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/impl/misc/system_top_ap_dcmp_0_no_dsp_64_ip.tcl 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/impl/misc/system_top_ap_ddiv_11_no_dsp_64_ip.tcl 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/impl/misc/system_top_ap_dmul_2_max_dsp_64_ip.tcl 
+Execute       source C:/Projects/ParticleCoverHLS/solution2/impl/misc/system_top_ap_sitodp_0_no_dsp_32_ip.tcl 
+INFO-FLOW: DBG:CMD:       delete-temp-dirs (skipped for debug)
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 15 seconds. CPU system time: 0 seconds. Elapsed time: 15.973 seconds; current allocated memory: 704.034 MB.
+INFO: [VHDL 208-304] Generating VHDL RTL for system_top.
+INFO: [VLOG 209-307] Generating Verilog RTL for system_top.
+INFO-FLOW: DBG:CMD:       update_csynth_xml_report append design.xml content design_xml=C:/Projects/ParticleCoverHLS/solution2/.autopilot/db/system_top.design.xml
+INFO-FLOW: DBG:CMD:       update_csynth_xml_report json2reportxml
+INFO-FLOW: DBG:CMD:       update_csynth_xml_report done
+Execute       syn_report -model system_top -printsummary 
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were NOT satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 138.60 MHz
+Command     autosyn done; 544.925 sec.
+Command   csynth_design done; 1291.8 sec.
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 1270 seconds. CPU system time: 8 seconds. Elapsed time: 1300.3 seconds; current allocated memory: 708.225 MB.
+Command ap_source done; 1301.71 sec.
+Execute cleanup_all 
+Command cleanup_all done; 3.066 sec.
