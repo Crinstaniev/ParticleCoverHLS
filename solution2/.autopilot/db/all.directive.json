@@ -132,6 +132,18 @@
                 "value": "system_top"
               }]
           }
+        },
+        {
+          "functionName": "system_top",
+          "label": "",
+          "functionLabel": "",
+          "pragma": {
+            "name": "TOP",
+            "option": [{
+                "name": "name",
+                "value": "system_top"
+              }]
+          }
         }
       ]
     }]}

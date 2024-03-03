@@ -1,7 +1,7 @@
 <root versionMajor = "1" versionMinor = "5">
   <kernel src_name="system_top" language="c" hwCtrl="ap_ctrl_hs" mem_layout="fpga64-xilinx-none">
     <args>
-      <arg id="0" access_type="rw" src_name="cover" src_type="*" src_isptr="1" src_bitwidth="4199872" src_size_or_depth="1">
+      <arg id="0" access_type="r" src_name="cover" src_type="*" src_isptr="1" src_bitwidth="4199872" src_size_or_depth="1">
         <hw hw_usage="data" hw_interface="BRAM" hw_name="cover" hw_bitwidth="256" hw_size_or_depth="16406">
           <constraint constraint_type="pragma interface" mode="ap_memory" register_option="0"/>
         </hw>

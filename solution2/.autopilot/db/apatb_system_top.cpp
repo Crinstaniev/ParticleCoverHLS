@@ -114,54 +114,7 @@ extern "C" void apatb_system_top_hw(volatile void * __xlx_apatb_param_cover) {
     CodeState = ENTER_WRAPC_PC;
     static unsigned AESL_transaction_pc = 0;
     string AESL_token;
-    string AESL_num;{
-      static ifstream rtl_tv_out_file;
-      if (!rtl_tv_out_file.is_open()) {
-        rtl_tv_out_file.open(AUTOTB_TVOUT_PC_cover);
-        if (rtl_tv_out_file.good()) {
-          rtl_tv_out_file >> AESL_token;
-          if (AESL_token != "[[[runtime]]]")
-            exit(1);
-        }
-      }
-  
-      if (rtl_tv_out_file.good()) {
-        rtl_tv_out_file >> AESL_token; 
-        rtl_tv_out_file >> AESL_num;  // transaction number
-        if (AESL_token != "[[transaction]]") {
-          cerr << "Unexpected token: " << AESL_token << endl;
-          exit(1);
-        }
-        if (atoi(AESL_num.c_str()) == AESL_transaction_pc) {
-          std::vector<sc_bv<256> > cover_pc_buffer(16406);
-          int i = 0;
-
-          rtl_tv_out_file >> AESL_token; //data
-          while (AESL_token != "[[/transaction]]"){
-
-            RTLOutputCheckAndReplacement(AESL_token, "cover");
-  
-            // push token into output port buffer
-            if (AESL_token != "") {
-              cover_pc_buffer[i] = AESL_token.c_str();;
-              i++;
-            }
-  
-            rtl_tv_out_file >> AESL_token; //data or [[/transaction]]
-            if (AESL_token == "[[[/runtime]]]" || rtl_tv_out_file.eof())
-              exit(1);
-          }
-          if (i > 0) {{
-            int i = 0;
-            for (int j = 0, e = 16406; j < e; j += 1, ++i) {((long long*)__xlx_apatb_param_cover)[j*4+0] = cover_pc_buffer[i].range(63,0).to_int64();
-((long long*)__xlx_apatb_param_cover)[j*4+1] = cover_pc_buffer[i].range(127,64).to_int64();
-((long long*)__xlx_apatb_param_cover)[j*4+2] = cover_pc_buffer[i].range(191,128).to_int64();
-((long long*)__xlx_apatb_param_cover)[j*4+3] = cover_pc_buffer[i].range(255,192).to_int64();
-}}}
-        } // end transaction
-      } // end file is good
-    } // end post check logic bolck
-  
+    string AESL_num;
     AESL_transaction_pc++;
     return ;
   }
@@ -200,28 +153,6 @@ __xlx_tmp_lv.range(255,192) = ((long long*)__xlx_apatb_param_cover)[j*4+3];
 CodeState = CALL_C_DUT;
 system_top_hw_stub_wrapper(__xlx_apatb_param_cover);
 CodeState = DUMP_OUTPUTS;
-// print cover Transactions
-{
-  sprintf(__xlx_sprintf_buffer.data(), "[[transaction]] %d\n", AESL_transaction);
-  aesl_fh.write(AUTOTB_TVOUT_cover, __xlx_sprintf_buffer.data());
-  {  __xlx_offset_byte_param_cover = 0*32;
-  if (__xlx_apatb_param_cover) {
-    for (int j = 0  - 0, e = 16406 - 0; j != e; ++j) {
-sc_bv<256> __xlx_tmp_lv;
-__xlx_tmp_lv.range(63,0) = ((long long*)__xlx_apatb_param_cover)[j*4+0];
-__xlx_tmp_lv.range(127,64) = ((long long*)__xlx_apatb_param_cover)[j*4+1];
-__xlx_tmp_lv.range(191,128) = ((long long*)__xlx_apatb_param_cover)[j*4+2];
-__xlx_tmp_lv.range(255,192) = ((long long*)__xlx_apatb_param_cover)[j*4+3];
-
-    sprintf(__xlx_sprintf_buffer.data(), "%s\n", __xlx_tmp_lv.to_string(SC_HEX).c_str());
-    aesl_fh.write(AUTOTB_TVOUT_cover, __xlx_sprintf_buffer.data()); 
-      }
-  }
-}
-  tcl_file.set_num(16406, &tcl_file.cover_depth);
-  sprintf(__xlx_sprintf_buffer.data(), "[[/transaction]] \n");
-  aesl_fh.write(AUTOTB_TVOUT_cover, __xlx_sprintf_buffer.data());
-}
 CodeState = DELETE_CHAR_BUFFERS;
 AESL_transaction++;
 tcl_file.set_num(AESL_transaction , &tcl_file.trans_num);

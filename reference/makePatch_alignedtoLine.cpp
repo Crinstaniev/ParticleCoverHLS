@@ -321,10 +321,12 @@ public:
 
       vector<double> row_list;
 
+      // copy z values from row_data to row_list
       for (int j = 0; j < row_data[i].size(); j++) {
         row_list.push_back(row_data[i][j].z);
       }
 
+      // r_max is the last element in radii (25)
       double r_max = env.radii.back();
 
       double projectionToRow =
@@ -341,6 +343,7 @@ public:
         }
       }
 
+      /////////////////////////////
       int left_bound = 0;
       double lbVal = INT_MAX;
       int right_bound = 0;
@@ -361,13 +364,16 @@ public:
                        env.boundaryPoint_offset));
         }
       }
-
+      /////////////////////////////
+      // this part can be deleted
       if ((double_middleLayers_ppl == true) && (i != 0) &&
           (i != env.num_layers - 1)) {
         ppl = original_ppl * 2 - 1;
       } else {
         ppl = original_ppl;
       }
+
+      /////////////////////////////
 
       if (leftRight == true) {
         if (start_index != 0) {

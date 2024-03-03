@@ -37,17 +37,30 @@ void system_top(cover_s *cover) {
 
   // cover_s cover = cover_init(env, ds);
 
-  double apexZ0 = 7.75751;
-  int ppl = 16;
-  double z_top = -8.883753333333333;
-  bool leftRight = false;
+  // double apexZ0 = 7.75751;
+  // int ppl = 16;
+  // double z_top = -8.883753333333333;
+  // bool leftRight = false;
 
-  cover_make_patch_aligned_to_line(*cover, apexZ0, z_top, ppl, leftRight);
+  // cover_make_patch_aligned_to_line(*cover, apexZ0, z_top, ppl, leftRight);
+
+  // extract trapezoid edges
+  for (size_t i = 0; i < NUM_LAYERS; i++) {
+    synth::trapezoid_edges[i] = cover->env.trapezoid_edges[i];
+  }
+
+  hls::stream<synth::point_arr_s> points_arr_stream;
+  hls::stream<patch_s> patch_stream;
+
+  synth::load_data(*cover, points_arr_stream);
+
+  // run system
+  synth::make_patch_aligned_to_line(points_arr_stream, patch_stream);
 
   return;
 }
 // dummy main function
 int main(void) {
- std::cerr << "This is a dummy main function" << std::endl;
- return 0;
+  std::cerr << "This is a dummy main function" << std::endl;
+  return 0;
 }

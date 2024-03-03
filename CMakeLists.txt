@@ -16,6 +16,9 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/reference)
 
+# include vitis libraries /home/crinstaniev/opt/Xilinx/Vitis_HLS/2020.2/include
+include_directories(/home/crinstaniev/opt/Xilinx/Vitis_HLS/2020.2/include)
+
 # Definition for Debug mode
 add_compile_definitions($<$<CONFIG:DEBUG>:DEBUG>)
 
@@ -58,3 +61,4 @@ patchmaker_add_test(test_patch)
 # patchmaker_add_test(test_file_reader_comp)
 patchmaker_add_test(test_system_hls)
 patchmaker_add_test(test_cover)
+patchmaker_add_test(test_hls_features)
