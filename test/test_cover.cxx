@@ -22,7 +22,7 @@ int main(void) {
   double z_top = -8.883753333333333;
   bool leftRight = false;
 
-  cover_make_patch_aligned_to_line(cover, apexZ0, z_top, ppl, leftRight);
+  // cover_make_patch_aligned_to_line(cover, apexZ0, z_top, ppl, leftRight);
 
   // print the cover
   // std::cout << cover << std::endl;

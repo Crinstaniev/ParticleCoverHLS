@@ -44,5 +44,5 @@ void make_patch_aligned_to_line(hls::stream<point_arr_s> &points_arr_stream_in,
 
 // top
 void make_patch_aligned_to_line_top(cover_s &cover, double apexZ0, double z_top,
-                                    hls::stream<point_arr_s> &points_arr_stream,
+                                    hls::stream<synth::point_arr_s> &points_arr_stream,
                                     hls::stream<patch_s> &patch_stream);
