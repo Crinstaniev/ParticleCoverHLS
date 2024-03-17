@@ -34,3 +34,17 @@ void patch_buffer_access_patch(patch_buffer_s *buffer, int depth,
 
   return;
 }
+
+// DEBUG FUNCTION
+std::ostream &operator<<(std::ostream &os, const patch_buffer_s &buffer) {
+  os << "Patch Buffer: " << std::endl;
+  os << "  Head: " << buffer.head_idx << std::endl;
+  os << "  Tail: " << buffer.tail << std::endl;
+  os << "  Size: " << buffer.size << std::endl;
+  os << "  Capacity: " << buffer.capacity << std::endl;
+  os << "  Patches: " << std::endl;
+  for (int i = 0; i < buffer.size; i++) {
+    os << "    " << buffer.patches[i] << std::endl;
+  }
+  return os;
+}

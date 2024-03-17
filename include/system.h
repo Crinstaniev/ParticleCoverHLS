@@ -6,7 +6,6 @@
 #include "environment.h"
 #include "event.h"
 #include "file_reader.h"
-#include "makepatch_hls.h"
 #include "patch.h"
 #include "patch_buffer.h"
 #include "point.h"

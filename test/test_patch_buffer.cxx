@@ -21,8 +21,6 @@ int main() {
   dataset_import_data(ds, points, events[0].num_points);
   dataset_add_boundary_point(ds, 0.0001);
 
-  cover_s cover = cover_init(env, ds);
-
   // make some dummy patches
   patch_s patches[NUM_PATCHES];
 
