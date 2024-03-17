@@ -31,4 +31,6 @@ void patch_buffer_access_patch(patch_buffer_s *buffer, int depth,
 
   int idx = (buffer->tail - 1 - depth + buffer->capacity) % buffer->capacity;
   *patch = buffer->patches[idx];
+
+  return;
 }
