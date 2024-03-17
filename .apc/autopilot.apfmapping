@@ -5,8 +5,8 @@
     <originFiles name="superpoint.cxx" path="C:\Projects\ParticleCoverHLS\src\superpoint.cxx"/>
     <originFiles name="sim_utils.cxx" path="C:\Projects\ParticleCoverHLS\src\sim_utils.cxx"/>
     <originFiles name="point.cxx" path="C:\Projects\ParticleCoverHLS\src\point.cxx"/>
+    <originFiles name="patch_buffer.cxx" path="C:\Projects\ParticleCoverHLS\src\patch_buffer.cxx"/>
     <originFiles name="patch.cxx" path="C:\Projects\ParticleCoverHLS\src\patch.cxx"/>
-    <originFiles name="makepatch_hls.cxx" path="C:\Projects\ParticleCoverHLS\src\makepatch_hls.cxx"/>
     <originFiles name="file_reader.cxx" path="C:\Projects\ParticleCoverHLS\src\file_reader.cxx"/>
     <originFiles name="event.cxx" path="C:\Projects\ParticleCoverHLS\src\event.cxx"/>
     <originFiles name="environment.cxx" path="C:\Projects\ParticleCoverHLS\src\environment.cxx"/>
@@ -14,6 +14,6 @@
     <originFiles name="cover.cxx" path="C:\Projects\ParticleCoverHLS\src\cover.cxx"/>
   </source>
   <testbench>
-    <originFiles name="test_hls_features.cxx" path="C:\Projects\ParticleCoverHLS\test\test_hls_features.cxx"/>
+    <originFiles name="test_system.cxx" path="C:\Projects\ParticleCoverHLS\test\test_system.cxx"/>
   </testbench>
 </autopilotfilemapping:AutoPilotFileMapping>

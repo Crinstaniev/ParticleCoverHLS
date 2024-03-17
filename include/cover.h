@@ -14,7 +14,11 @@ typedef struct {
   size_t n_patches;
 } cover_s;
 
-void cover_init(cover_s *cover, dataset_s data);
+void cover_init(cover_s *cover);
+
+void cover_make_patch_aligned_to_line(
+    cover_s *cover, point_s row_data[NUM_LAYERS][MAX_POINTS_PER_LAYER],
+    int num_points[NUM_LAYERS]);
 
 // DEBUG FUNCTION
 std::ostream &operator<<(std::ostream &os, const cover_s &cover);

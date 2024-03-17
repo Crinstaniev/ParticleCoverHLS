@@ -3,6 +3,7 @@
 
 #include "environment.h"
 #include "point.h"
+#include <climits>
 #include <cstddef>
 #include <iostream>
 

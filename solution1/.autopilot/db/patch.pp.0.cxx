@@ -24729,9 +24729,9 @@ std::ostream &operator<<(std::ostream &os, const point_s &p);
 # 6 "C:/Projects/ParticleCoverHLS/include/superpoint.h" 2
 
 typedef struct {
-  point_s points[32];
+  point_s points[16];
   size_t n_points;
-  double z_values[32];
+  double z_values[16];
   double min;
   double max;
 } superpoint_s;

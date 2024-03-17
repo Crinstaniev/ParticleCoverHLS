@@ -67,14 +67,14 @@
 			<location>C:/Projects/ParticleCoverHLS/src/file_reader.cxx</location>
 		</link>
 		<link>
-			<name>source/makepatch_hls.cxx</name>
-			<type>1</type>
-			<location>C:/Projects/ParticleCoverHLS/src/makepatch_hls.cxx</location>
-		</link>
-		<link>
 			<name>source/patch.cxx</name>
 			<type>1</type>
 			<location>C:/Projects/ParticleCoverHLS/src/patch.cxx</location>
+		</link>
+		<link>
+			<name>source/patch_buffer.cxx</name>
+			<type>1</type>
+			<location>C:/Projects/ParticleCoverHLS/src/patch_buffer.cxx</location>
 		</link>
 		<link>
 			<name>source/point.cxx</name>
@@ -97,9 +97,9 @@
 			<location>C:/Projects/ParticleCoverHLS/src/system.cxx</location>
 		</link>
 		<link>
-			<name>testbench/test_hls_features.cxx</name>
+			<name>testbench/test_system.cxx</name>
 			<type>1</type>
-			<location>C:/Projects/ParticleCoverHLS/test/test_hls_features.cxx</location>
+			<location>C:/Projects/ParticleCoverHLS/test/test_system.cxx</location>
 		</link>
 		<link>
 			<name>solution1/constraints/.xml.directive</name>

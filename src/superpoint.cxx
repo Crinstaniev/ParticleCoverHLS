@@ -8,8 +8,10 @@ superpoint_s superpoint_init(point_s *points, size_t n_points) {
 
   double z_list[MAX_NUM_POINTS];
 
-  // copy points
+// copy points
+loop_copy_points_to_superpoint:
   for (size_t i = 0; i < n_points; i++) {
+#pragma HLS UNROLL
     z_list[i] = points[i].z;
     superpoint.z_values[i] = z_list[i];
     superpoint.points[i] = points[i];

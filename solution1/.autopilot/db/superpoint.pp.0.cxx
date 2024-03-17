@@ -24664,9 +24664,9 @@ std::ostream &operator<<(std::ostream &os, const point_s &p);
 # 6 "C:/Projects/ParticleCoverHLS/include\\superpoint.h" 2
 
 typedef struct {
-  point_s points[32];
+  point_s points[16];
   size_t n_points;
-  double z_values[32];
+  double z_values[16];
   double min;
   double max;
 } superpoint_s;
@@ -31824,8 +31824,10 @@ superpoint_s superpoint_init(point_s *points, size_t n_points) {
   double z_list[512];
 
 
-  VITIS_LOOP_12_1: for (size_t i = 0; i < n_points; i++) {
-    z_list[i] = points[i].z;
+loop_copy_points_to_superpoint:
+  for (size_t i = 0; i < n_points; i++) {
+#pragma HLS UNROLL
+ z_list[i] = points[i].z;
     superpoint.z_values[i] = z_list[i];
     superpoint.points[i] = points[i];
   }
@@ -31853,7 +31855,7 @@ std::ostream &operator<<(std::ostream &os, const superpoint_s &sp) {
   os << "  min: " << sp.min << std::endl;
   os << "  max: " << sp.max << std::endl;
   os << "  z_values: ";
-  VITIS_LOOP_41_1: for (size_t i = 0; i < sp.n_points; i++) {
+  VITIS_LOOP_43_1: for (size_t i = 0; i < sp.n_points; i++) {
     os << sp.z_values[i] << " ";
   }
   os << std::endl;

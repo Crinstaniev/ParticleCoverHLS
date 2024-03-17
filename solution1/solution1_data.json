@@ -1,8 +1,8 @@
 {
-  "Top": "make_patch_aligned_to_line_top",
-  "RtlTop": "make_patch_aligned_to_line_top",
+  "Top": "system_top",
+  "RtlTop": "system_top",
   "RtlPrefix": "",
-  "RtlSubPrefix": "make_patch_aligned_to_line_top_",
+  "RtlSubPrefix": "system_top_",
   "SourceLanguage": "cpp",
   "HostMachineBits": "64",
   "FunctionProtocol": "ap_ctrl_hs",
@@ -17,9 +17,9 @@
   "Args": {
     "cover": {
       "index": "0",
-      "direction": "in",
-      "srcType": "&",
-      "srcSize": "4199872",
+      "direction": "inout",
+      "srcType": "*",
+      "srcSize": "86208",
       "hwRefs": [
         {
           "type": "port",
@@ -33,7 +33,21 @@
           "interface": "cover_ce0",
           "name": "cover_ce0",
           "usage": "control",
-          "direction": "in"
+          "direction": "inout"
+        },
+        {
+          "type": "port",
+          "interface": "cover_we0",
+          "name": "cover_we0",
+          "usage": "control",
+          "direction": "inout"
+        },
+        {
+          "type": "port",
+          "interface": "cover_d0",
+          "name": "cover_d0",
+          "usage": "data",
+          "direction": "out"
         },
         {
           "type": "port",
@@ -41,114 +55,160 @@
           "name": "cover_q0",
           "usage": "data",
           "direction": "in"
+        },
+        {
+          "type": "port",
+          "interface": "cover_address1",
+          "name": "cover_address1",
+          "usage": "address",
+          "direction": "out"
+        },
+        {
+          "type": "port",
+          "interface": "cover_ce1",
+          "name": "cover_ce1",
+          "usage": "control",
+          "direction": "inout"
+        },
+        {
+          "type": "port",
+          "interface": "cover_we1",
+          "name": "cover_we1",
+          "usage": "control",
+          "direction": "inout"
+        },
+        {
+          "type": "port",
+          "interface": "cover_d1",
+          "name": "cover_d1",
+          "usage": "data",
+          "direction": "out"
         }
       ]
     },
-    "apexZ0": {
+    "row_data": {
       "index": "1",
       "direction": "in",
-      "srcType": "double",
-      "srcSize": "64",
-      "hwRefs": [{
+      "srcType": "*",
+      "srcSize": "256",
+      "hwRefs": [
+        {
           "type": "port",
-          "interface": "apexZ0",
-          "name": "apexZ0",
+          "interface": "row_data_address0",
+          "name": "row_data_address0",
+          "usage": "address",
+          "direction": "out"
+        },
+        {
+          "type": "port",
+          "interface": "row_data_ce0",
+          "name": "row_data_ce0",
+          "usage": "control",
+          "direction": "in"
+        },
+        {
+          "type": "port",
+          "interface": "row_data_q0",
+          "name": "row_data_q0",
           "usage": "data",
           "direction": "in"
-        }]
+        },
+        {
+          "type": "port",
+          "interface": "row_data_address1",
+          "name": "row_data_address1",
+          "usage": "address",
+          "direction": "out"
+        },
+        {
+          "type": "port",
+          "interface": "row_data_ce1",
+          "name": "row_data_ce1",
+          "usage": "control",
+          "direction": "in"
+        },
+        {
+          "type": "port",
+          "interface": "row_data_q1",
+          "name": "row_data_q1",
+          "usage": "data",
+          "direction": "in"
+        }
+      ]
     },
-    "z_top": {
+    "num_points": {
       "index": "2",
       "direction": "in",
-      "srcType": "double",
-      "srcSize": "64",
-      "hwRefs": [{
-          "type": "port",
-          "interface": "z_top",
-          "name": "z_top",
-          "usage": "data",
-          "direction": "in"
-        }]
-    },
-    "ppl": {
-      "index": "3",
-      "direction": "in",
-      "srcType": "int",
+      "srcType": "int*",
       "srcSize": "32",
-      "hwRefs": [{
+      "hwRefs": [
+        {
           "type": "port",
-          "interface": "ppl",
-          "name": "ppl",
+          "interface": "num_points_address0",
+          "name": "num_points_address0",
+          "usage": "address",
+          "direction": "out"
+        },
+        {
+          "type": "port",
+          "interface": "num_points_ce0",
+          "name": "num_points_ce0",
+          "usage": "control",
+          "direction": "in"
+        },
+        {
+          "type": "port",
+          "interface": "num_points_q0",
+          "name": "num_points_q0",
           "usage": "data",
           "direction": "in"
-        }]
-    },
-    "leftRight": {
-      "index": "4",
-      "direction": "in",
-      "srcType": "bool",
-      "srcSize": "1",
-      "hwRefs": [{
-          "type": "port",
-          "interface": "leftRight",
-          "name": "leftRight",
-          "usage": "data",
-          "direction": "in"
-        }]
-    },
-    "double_middleLayers_ppl": {
-      "index": "5",
-      "direction": "in",
-      "srcType": "bool",
-      "srcSize": "1",
-      "hwRefs": [{
-          "type": "port",
-          "interface": "double_middleLayers_ppl",
-          "name": "double_middleLayers_ppl",
-          "usage": "data",
-          "direction": "in"
-        }]
+        }
+      ]
     }
   },
   "HlsSolution": {
     "FlowTarget": "vivado",
+    "ConfigTcl": [
+      "config_export -format=ip_catalog",
+      "config_export -rtl=verilog"
+    ],
     "DirectiveTcl": [
-      "set_directive_top make_patch_aligned_to_line_top -name make_patch_aligned_to_line_top",
-      "set_directive_top make_patch_aligned_to_line_top -name make_patch_aligned_to_line_top",
-      "set_directive_top make_patch_aligned_to_line_top -name make_patch_aligned_to_line_top",
-      "set_directive_top make_patch_aligned_to_line_top -name make_patch_aligned_to_line_top",
-      "set_directive_top make_patch_aligned_to_line_top -name make_patch_aligned_to_line_top",
-      "set_directive_top make_patch_aligned_to_line_top -name make_patch_aligned_to_line_top",
-      "set_directive_top make_patch_aligned_to_line_top -name make_patch_aligned_to_line_top",
-      "set_directive_top make_patch_aligned_to_line_top -name make_patch_aligned_to_line_top",
-      "set_directive_top make_patch_aligned_to_line_top -name make_patch_aligned_to_line_top",
-      "set_directive_top make_patch_aligned_to_line_top -name make_patch_aligned_to_line_top",
-      "set_directive_top make_patch_aligned_to_line_top -name make_patch_aligned_to_line_top"
+      "set_directive_top system_top -name system_top",
+      "set_directive_top system_top -name system_top",
+      "set_directive_top system_top -name system_top",
+      "set_directive_top system_top -name system_top",
+      "set_directive_top system_top -name system_top",
+      "set_directive_top system_top -name system_top",
+      "set_directive_top system_top -name system_top",
+      "set_directive_top system_top -name system_top",
+      "set_directive_top system_top -name system_top",
+      "set_directive_top system_top -name system_top",
+      "set_directive_top system_top -name system_top"
     ],
     "ProfileOption": "0",
     "ProfileType": "none",
-    "KernelName": "make_patch_aligned_to_line_top"
+    "KernelName": "system_top"
   },
   "ClockInfo": {
     "ClockName": "ap_clk",
-    "ClockPeriod": "5",
-    "Uncertainty": "1.35",
+    "ClockPeriod": "10",
+    "Uncertainty": "2.7",
     "IsCombinational": "0",
     "II": "x",
-    "Latency": "21785"
+    "Latency": "undef"
   },
-  "Xdc": {"OocClocks": ["create_clock -name ap_clk -period 5.000 [get_ports ap_clk]"]},
+  "Xdc": {"OocClocks": ["create_clock -name ap_clk -period 10.000 [get_ports ap_clk]"]},
   "Ipx": {
     "Vendor": "xilinx.com",
     "Library": "hls",
-    "Name": "make_patch_aligned_to_line_top",
+    "Name": "system_top",
     "Version": "1.0",
-    "DisplayName": "Make_patch_aligned_to_line_top",
+    "DisplayName": "System_top",
     "Revision": "",
     "Description": "An IP generated by Vitis HLS",
     "Taxonomy": "\/VITIS_HLS_IP",
     "AutoFamilySupport": "",
-    "ZipFile": "xilinx_com_hls_make_patch_aligned_to_line_top_1_0.zip"
+    "ZipFile": "xilinx_com_hls_system_top_1_0.zip"
   },
   "Files": {
     "CSource": [
@@ -157,48 +217,72 @@
       "..\/src\/environment.cxx",
       "..\/src\/event.cxx",
       "..\/src\/file_reader.cxx",
-      "..\/src\/makepatch_hls.cxx",
       "..\/src\/patch.cxx",
+      "..\/src\/patch_buffer.cxx",
       "..\/src\/point.cxx",
       "..\/src\/sim_utils.cxx",
       "..\/src\/superpoint.cxx",
       "..\/src\/system.cxx"
     ],
     "Vhdl": [
-      "impl\/vhdl\/make_patch_aligned_to_line_top_copy_row_data_from_points_arr.vhd",
-      "impl\/vhdl\/make_patch_aligned_to_line_top_fifo_w65535_d2_S.vhd",
-      "impl\/vhdl\/make_patch_aligned_to_line_top_load_data.vhd",
-      "impl\/vhdl\/make_patch_aligned_to_line_top_load_data_points_arr_points_layer_num.vhd",
-      "impl\/vhdl\/make_patch_aligned_to_line_top_load_data_points_arr_points_radius.vhd",
-      "impl\/vhdl\/make_patch_aligned_to_line_top_make_patch_aligned_to_line.vhd",
-      "impl\/vhdl\/make_patch_aligned_to_line_top_make_patch_aligned_to_line_agg_tmp_0_0.vhd",
-      "impl\/vhdl\/make_patch_aligned_to_line_top_make_patch_aligned_to_line_agg_tmp_0_1.vhd",
-      "impl\/vhdl\/make_patch_aligned_to_line_top_make_patch_aligned_to_line_row_data_0.vhd",
-      "impl\/vhdl\/make_patch_aligned_to_line_top_make_patch_aligned_to_line_row_data_1.vhd",
-      "impl\/vhdl\/make_patch_aligned_to_line_top.vhd"
+      "impl\/vhdl\/system_top_cover_make_patch_aligned_to_line.vhd",
+      "impl\/vhdl\/system_top_cover_make_patch_aligned_to_line_row_list.vhd",
+      "impl\/vhdl\/system_top_dadd_64ns_64ns_64_4_full_dsp_1.vhd",
+      "impl\/vhdl\/system_top_dcmp_64ns_64ns_1_2_no_dsp_1.vhd",
+      "impl\/vhdl\/system_top_dsub_64ns_64ns_64_4_full_dsp_1.vhd",
+      "impl\/vhdl\/system_top_p_copy_row_list.vhd",
+      "impl\/vhdl\/system_top_p_find_left_and_right_bound.vhd",
+      "impl\/vhdl\/system_top_p_find_left_and_right_bound_trapezoid_edges.vhd",
+      "impl\/vhdl\/system_top_p_find_start_index_and_value.vhd",
+      "impl\/vhdl\/system_top_srem_32ns_32ns_32_36_seq_1.vhd",
+      "impl\/vhdl\/system_top_superpoint_init.vhd",
+      "impl\/vhdl\/system_top.vhd"
     ],
     "Verilog": [
-      "impl\/verilog\/make_patch_aligned_to_line_top_copy_row_data_from_points_arr.v",
-      "impl\/verilog\/make_patch_aligned_to_line_top_fifo_w65535_d2_S.v",
-      "impl\/verilog\/make_patch_aligned_to_line_top_load_data.v",
-      "impl\/verilog\/make_patch_aligned_to_line_top_load_data_points_arr_points_layer_num.v",
-      "impl\/verilog\/make_patch_aligned_to_line_top_load_data_points_arr_points_radius.v",
-      "impl\/verilog\/make_patch_aligned_to_line_top_make_patch_aligned_to_line.v",
-      "impl\/verilog\/make_patch_aligned_to_line_top_make_patch_aligned_to_line_agg_tmp_0_0.v",
-      "impl\/verilog\/make_patch_aligned_to_line_top_make_patch_aligned_to_line_agg_tmp_0_1.v",
-      "impl\/verilog\/make_patch_aligned_to_line_top_make_patch_aligned_to_line_row_data_0.v",
-      "impl\/verilog\/make_patch_aligned_to_line_top_make_patch_aligned_to_line_row_data_1.v",
-      "impl\/verilog\/make_patch_aligned_to_line_top.v"
+      "impl\/verilog\/system_top_cover_make_patch_aligned_to_line.v",
+      "impl\/verilog\/system_top_cover_make_patch_aligned_to_line_row_list.v",
+      "impl\/verilog\/system_top_dadd_64ns_64ns_64_4_full_dsp_1.v",
+      "impl\/verilog\/system_top_dcmp_64ns_64ns_1_2_no_dsp_1.v",
+      "impl\/verilog\/system_top_dsub_64ns_64ns_64_4_full_dsp_1.v",
+      "impl\/verilog\/system_top_p_copy_row_list.v",
+      "impl\/verilog\/system_top_p_find_left_and_right_bound.v",
+      "impl\/verilog\/system_top_p_find_left_and_right_bound_trapezoid_edges.v",
+      "impl\/verilog\/system_top_p_find_left_and_right_bound_trapezoid_edges_rom.dat",
+      "impl\/verilog\/system_top_p_find_start_index_and_value.v",
+      "impl\/verilog\/system_top_srem_32ns_32ns_32_36_seq_1.v",
+      "impl\/verilog\/system_top_superpoint_init.v",
+      "impl\/verilog\/system_top.v"
     ],
     "IpMisc": ["impl\/misc\/logo.png"],
-    "DesignXml": ".autopilot\/db\/make_patch_aligned_to_line_top.design.xml",
+    "Subcore": [
+      "impl\/misc\/system_top_ap_dadd_2_full_dsp_64_ip.tcl",
+      "impl\/misc\/system_top_ap_dcmp_0_no_dsp_64_ip.tcl",
+      "impl\/misc\/system_top_ap_dsub_2_full_dsp_64_ip.tcl"
+    ],
+    "DesignXml": ".autopilot\/db\/system_top.design.xml",
     "DebugDir": ".debug",
-    "ProtoInst": ["C:\/Projects\/ParticleCoverHLS\/solution1\/.debug\/make_patch_aligned_to_line_top.protoinst"]
+    "ProtoInst": ["C:\/Projects\/ParticleCoverHLS\/solution1\/.debug\/system_top.protoinst"]
   },
   "SubcoreInfo": {
     "HasXpmMemory": false,
     "HasClockedDsp": false,
-    "Ip": []
+    "Ip": [
+      {
+        "Name": "system_top_ap_dadd_2_full_dsp_64",
+        "Vlnv": "xilinx.com:ip:floating_point:7.1",
+        "Params": "CONFIG.a_precision_type Double CONFIG.a_tuser_width 1 CONFIG.add_sub_value Add CONFIG.b_tuser_width 1 CONFIG.c_a_exponent_width 11 CONFIG.c_a_fraction_width 53 CONFIG.c_compare_operation Programmable CONFIG.c_has_divide_by_zero false CONFIG.c_has_invalid_op false CONFIG.c_has_overflow false CONFIG.c_has_underflow false CONFIG.c_latency 2 CONFIG.c_mult_usage Full_Usage CONFIG.c_optimization Speed_Optimized CONFIG.c_rate 1 CONFIG.c_result_exponent_width 11 CONFIG.c_result_fraction_width 53 CONFIG.component_name system_top_ap_dadd_2_full_dsp_64 CONFIG.flow_control NonBlocking CONFIG.has_a_tlast false CONFIG.has_a_tuser false CONFIG.has_aclken true CONFIG.has_aresetn false CONFIG.has_b_tlast false CONFIG.has_b_tuser false CONFIG.has_operation_tlast false CONFIG.has_operation_tuser false CONFIG.has_result_tready false CONFIG.maximum_latency false CONFIG.operation_tuser_width 1 CONFIG.operation_type Add_Subtract CONFIG.result_precision_type Double CONFIG.result_tlast_behv Null"
+      },
+      {
+        "Name": "system_top_ap_dcmp_0_no_dsp_64",
+        "Vlnv": "xilinx.com:ip:floating_point:7.1",
+        "Params": "CONFIG.a_precision_type Double CONFIG.a_tuser_width 1 CONFIG.add_sub_value Both CONFIG.b_tuser_width 1 CONFIG.c_a_exponent_width 11 CONFIG.c_a_fraction_width 53 CONFIG.c_compare_operation Programmable CONFIG.c_has_divide_by_zero false CONFIG.c_has_invalid_op false CONFIG.c_has_overflow false CONFIG.c_has_underflow false CONFIG.c_latency 0 CONFIG.c_mult_usage No_Usage CONFIG.c_optimization Speed_Optimized CONFIG.c_rate 1 CONFIG.c_result_exponent_width 1 CONFIG.c_result_fraction_width 0 CONFIG.component_name system_top_ap_dcmp_0_no_dsp_64 CONFIG.flow_control NonBlocking CONFIG.has_a_tlast false CONFIG.has_a_tuser false CONFIG.has_aclken false CONFIG.has_aresetn false CONFIG.has_b_tlast false CONFIG.has_b_tuser false CONFIG.has_operation_tlast false CONFIG.has_operation_tuser false CONFIG.has_result_tready false CONFIG.maximum_latency false CONFIG.operation_tuser_width 1 CONFIG.operation_type Compare CONFIG.result_precision_type Custom CONFIG.result_tlast_behv Null"
+      },
+      {
+        "Name": "system_top_ap_dsub_2_full_dsp_64",
+        "Vlnv": "xilinx.com:ip:floating_point:7.1",
+        "Params": "CONFIG.a_precision_type Double CONFIG.a_tuser_width 1 CONFIG.add_sub_value Subtract CONFIG.b_tuser_width 1 CONFIG.c_a_exponent_width 11 CONFIG.c_a_fraction_width 53 CONFIG.c_compare_operation Programmable CONFIG.c_has_divide_by_zero false CONFIG.c_has_invalid_op false CONFIG.c_has_overflow false CONFIG.c_has_underflow false CONFIG.c_latency 2 CONFIG.c_mult_usage Full_Usage CONFIG.c_optimization Speed_Optimized CONFIG.c_rate 1 CONFIG.c_result_exponent_width 11 CONFIG.c_result_fraction_width 53 CONFIG.component_name system_top_ap_dsub_2_full_dsp_64 CONFIG.flow_control NonBlocking CONFIG.has_a_tlast false CONFIG.has_a_tuser false CONFIG.has_aclken true CONFIG.has_aresetn false CONFIG.has_b_tlast false CONFIG.has_b_tuser false CONFIG.has_operation_tlast false CONFIG.has_operation_tuser false CONFIG.has_result_tready false CONFIG.maximum_latency false CONFIG.operation_tuser_width 1 CONFIG.operation_type Add_Subtract CONFIG.result_precision_type Double CONFIG.result_tlast_behv Null"
+      }
+    ]
   },
   "Interfaces": {
     "ap_clk": {
@@ -234,27 +318,55 @@
       "portMap": {"ap_rst": "RST"},
       "ports": ["ap_rst"]
     },
-    "apexZ0": {
-      "type": "data",
-      "busTypeName": "data",
-      "mode": "slave",
-      "dataWidth": "64",
-      "portMap": {"apexZ0": "DATA"},
-      "ports": ["apexZ0"],
-      "constraints": [{
-          "constraint_type": "pragma interface",
-          "mode": "ap_none",
-          "register_option": "0",
-          "argName": "apexZ0"
-        }]
-    },
     "cover_address0": {
       "type": "data",
       "busTypeName": "data",
       "mode": "master",
-      "dataWidth": "15",
+      "dataWidth": "9",
       "portMap": {"cover_address0": "DATA"},
       "ports": ["cover_address0"],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "ap_memory",
+          "register_option": "0",
+          "argName": "cover"
+        }]
+    },
+    "cover_address1": {
+      "type": "data",
+      "busTypeName": "data",
+      "mode": "master",
+      "dataWidth": "9",
+      "portMap": {"cover_address1": "DATA"},
+      "ports": ["cover_address1"],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "ap_memory",
+          "register_option": "0",
+          "argName": "cover"
+        }]
+    },
+    "cover_d0": {
+      "type": "data",
+      "busTypeName": "data",
+      "mode": "master",
+      "dataWidth": "256",
+      "portMap": {"cover_d0": "DATA"},
+      "ports": ["cover_d0"],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "ap_memory",
+          "register_option": "0",
+          "argName": "cover"
+        }]
+    },
+    "cover_d1": {
+      "type": "data",
+      "busTypeName": "data",
+      "mode": "master",
+      "dataWidth": "256",
+      "portMap": {"cover_d1": "DATA"},
+      "ports": ["cover_d1"],
       "constraints": [{
           "constraint_type": "pragma interface",
           "mode": "ap_memory",
@@ -276,60 +388,88 @@
           "argName": "cover"
         }]
     },
-    "double_middleLayers_ppl": {
+    "num_points_address0": {
       "type": "data",
       "busTypeName": "data",
-      "mode": "slave",
-      "dataWidth": "1",
-      "portMap": {"double_middleLayers_ppl": "DATA"},
-      "ports": ["double_middleLayers_ppl"],
+      "mode": "master",
+      "dataWidth": "3",
+      "portMap": {"num_points_address0": "DATA"},
+      "ports": ["num_points_address0"],
       "constraints": [{
           "constraint_type": "pragma interface",
-          "mode": "ap_none",
+          "mode": "ap_memory",
           "register_option": "0",
-          "argName": "double_middleLayers_ppl"
+          "argName": "num_points"
         }]
     },
-    "leftRight": {
-      "type": "data",
-      "busTypeName": "data",
-      "mode": "slave",
-      "dataWidth": "1",
-      "portMap": {"leftRight": "DATA"},
-      "ports": ["leftRight"],
-      "constraints": [{
-          "constraint_type": "pragma interface",
-          "mode": "ap_none",
-          "register_option": "0",
-          "argName": "leftRight"
-        }]
-    },
-    "ppl": {
+    "num_points_q0": {
       "type": "data",
       "busTypeName": "data",
       "mode": "slave",
       "dataWidth": "32",
-      "portMap": {"ppl": "DATA"},
-      "ports": ["ppl"],
+      "portMap": {"num_points_q0": "DATA"},
+      "ports": ["num_points_q0"],
       "constraints": [{
           "constraint_type": "pragma interface",
-          "mode": "ap_none",
+          "mode": "ap_memory",
           "register_option": "0",
-          "argName": "ppl"
+          "argName": "num_points"
         }]
     },
-    "z_top": {
+    "row_data_address0": {
+      "type": "data",
+      "busTypeName": "data",
+      "mode": "master",
+      "dataWidth": "11",
+      "portMap": {"row_data_address0": "DATA"},
+      "ports": ["row_data_address0"],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "ap_memory",
+          "register_option": "0",
+          "argName": "row_data"
+        }]
+    },
+    "row_data_address1": {
+      "type": "data",
+      "busTypeName": "data",
+      "mode": "master",
+      "dataWidth": "11",
+      "portMap": {"row_data_address1": "DATA"},
+      "ports": ["row_data_address1"],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "ap_memory",
+          "register_option": "0",
+          "argName": "row_data"
+        }]
+    },
+    "row_data_q0": {
       "type": "data",
       "busTypeName": "data",
       "mode": "slave",
-      "dataWidth": "64",
-      "portMap": {"z_top": "DATA"},
-      "ports": ["z_top"],
+      "dataWidth": "256",
+      "portMap": {"row_data_q0": "DATA"},
+      "ports": ["row_data_q0"],
       "constraints": [{
           "constraint_type": "pragma interface",
-          "mode": "ap_none",
+          "mode": "ap_memory",
           "register_option": "0",
-          "argName": "z_top"
+          "argName": "row_data"
+        }]
+    },
+    "row_data_q1": {
+      "type": "data",
+      "busTypeName": "data",
+      "mode": "slave",
+      "dataWidth": "256",
+      "portMap": {"row_data_q1": "DATA"},
+      "ports": ["row_data_q1"],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "ap_memory",
+          "register_option": "0",
+          "argName": "row_data"
         }]
     }
   },
@@ -360,78 +500,140 @@
     },
     "cover_address0": {
       "dir": "out",
-      "width": "15"
+      "width": "9"
     },
     "cover_ce0": {
       "dir": "out",
       "width": "1"
     },
+    "cover_we0": {
+      "dir": "out",
+      "width": "32"
+    },
+    "cover_d0": {
+      "dir": "out",
+      "width": "256"
+    },
     "cover_q0": {
       "dir": "in",
       "width": "256"
     },
-    "apexZ0": {
-      "dir": "in",
-      "width": "64"
+    "cover_address1": {
+      "dir": "out",
+      "width": "9"
     },
-    "z_top": {
-      "dir": "in",
-      "width": "64"
+    "cover_ce1": {
+      "dir": "out",
+      "width": "1"
     },
-    "ppl": {
-      "dir": "in",
+    "cover_we1": {
+      "dir": "out",
       "width": "32"
     },
-    "leftRight": {
-      "dir": "in",
+    "cover_d1": {
+      "dir": "out",
+      "width": "256"
+    },
+    "row_data_address0": {
+      "dir": "out",
+      "width": "11"
+    },
+    "row_data_ce0": {
+      "dir": "out",
       "width": "1"
     },
-    "double_middleLayers_ppl": {
+    "row_data_q0": {
       "dir": "in",
+      "width": "256"
+    },
+    "row_data_address1": {
+      "dir": "out",
+      "width": "11"
+    },
+    "row_data_ce1": {
+      "dir": "out",
       "width": "1"
+    },
+    "row_data_q1": {
+      "dir": "in",
+      "width": "256"
+    },
+    "num_points_address0": {
+      "dir": "out",
+      "width": "3"
+    },
+    "num_points_ce0": {
+      "dir": "out",
+      "width": "1"
+    },
+    "num_points_q0": {
+      "dir": "in",
+      "width": "32"
     }
   },
   "ModuleInfo": {
     "Hierarchy": {
-      "ModuleName": "make_patch_aligned_to_line_top",
-      "Instances": [
-        {
-          "ModuleName": "make_patch_aligned_to_line",
-          "InstanceName": "grp_make_patch_aligned_to_line_fu_63",
-          "Instances": [{
-              "ModuleName": "copy_row_data_from_points_arr",
-              "InstanceName": "grp_copy_row_data_from_points_arr_fu_12911"
-            }]
-        },
-        {
-          "ModuleName": "load_data",
-          "InstanceName": "grp_load_data_fu_68"
-        }
-      ]
+      "ModuleName": "system_top",
+      "Instances": [{
+          "ModuleName": "cover_make_patch_aligned_to_line",
+          "InstanceName": "grp_cover_make_patch_aligned_to_line_fu_51",
+          "Instances": [
+            {
+              "ModuleName": "p_copy_row_list",
+              "InstanceName": "grp_p_copy_row_list_fu_6677"
+            },
+            {
+              "ModuleName": "p_find_left_and_right_bound",
+              "InstanceName": "grp_p_find_left_and_right_bound_fu_6691"
+            },
+            {
+              "ModuleName": "p_find_start_index_and_value",
+              "InstanceName": "grp_p_find_start_index_and_value_fu_6705"
+            },
+            {
+              "ModuleName": "superpoint_init",
+              "InstanceName": "grp_superpoint_init_fu_6718"
+            }
+          ]
+        }]
     },
     "Info": {
-      "load_data": {
+      "p_copy_row_list": {
         "FunctionProtocol": "ap_ctrl_hs",
         "isTaskLevelControl": "0",
         "isPipelined": "0",
         "isCombinational": "0",
         "isOneStateSeq": "0"
       },
-      "copy_row_data_from_points_arr": {
+      "p_find_start_index_and_value": {
         "FunctionProtocol": "ap_ctrl_hs",
         "isTaskLevelControl": "0",
         "isPipelined": "0",
         "isCombinational": "0",
         "isOneStateSeq": "0"
       },
-      "make_patch_aligned_to_line": {
+      "p_find_left_and_right_bound": {
         "FunctionProtocol": "ap_ctrl_hs",
         "isTaskLevelControl": "0",
         "isPipelined": "0",
         "isCombinational": "0",
         "isOneStateSeq": "0"
       },
-      "make_patch_aligned_to_line_top": {
+      "superpoint_init": {
+        "FunctionProtocol": "ap_ctrl_hs",
+        "isTaskLevelControl": "0",
+        "isPipelined": "0",
+        "isCombinational": "1",
+        "isOneStateSeq": "0"
+      },
+      "cover_make_patch_aligned_to_line": {
+        "FunctionProtocol": "ap_ctrl_hs",
+        "isTaskLevelControl": "0",
+        "isPipelined": "0",
+        "isCombinational": "0",
+        "isOneStateSeq": "0"
+      },
+      "system_top": {
         "FunctionProtocol": "ap_ctrl_hs",
         "isTaskLevelControl": "0",
         "isPipelined": "0",
@@ -440,46 +642,7 @@
       }
     },
     "Metrics": {
-      "load_data": {
-        "Latency": {
-          "LatencyBest": "20486",
-          "LatencyAvg": "20486",
-          "LatencyWorst": "20486",
-          "PipelineII": "20486",
-          "PipelineDepth": "",
-          "PipelineType": "none"
-        },
-        "Timing": {
-          "Target": "5.00",
-          "Uncertainty": "1.35",
-          "Estimate": "3.372"
-        },
-        "Loops": [{
-            "Name": "VITIS_LOOP_22_1_VITIS_LOOP_26_2",
-            "TripCount": "1280",
-            "Latency": "20483",
-            "PipelineII": "16",
-            "PipelineDepth": "20"
-          }],
-        "Area": {
-          "BRAM_18K": "224",
-          "AVAIL_BRAM": "4032",
-          "UTIL_BRAM": "5",
-          "FF": "57532",
-          "AVAIL_FF": "2592000",
-          "UTIL_FF": "2",
-          "LUT": "5829",
-          "AVAIL_LUT": "1296000",
-          "UTIL_LUT": "~0",
-          "DSP": "0",
-          "AVAIL_DSP": "9216",
-          "UTIL_DSP": "0",
-          "URAM": "0",
-          "AVAIL_URAM": "960",
-          "UTIL_URAM": "0"
-        }
-      },
-      "copy_row_data_from_points_arr": {
+      "p_copy_row_list": {
         "Latency": {
           "LatencyBest": "128",
           "LatencyAvg": "128",
@@ -489,15 +652,15 @@
           "PipelineType": "none"
         },
         "Timing": {
-          "Target": "5.00",
-          "Uncertainty": "1.35",
+          "Target": "10.00",
+          "Uncertainty": "2.70",
           "Estimate": "2.594"
         },
         "Area": {
-          "FF": "129",
+          "FF": "132",
           "AVAIL_FF": "2592000",
           "UTIL_FF": "~0",
-          "LUT": "11531",
+          "LUT": "7556",
           "AVAIL_LUT": "1296000",
           "UTIL_LUT": "~0",
           "BRAM_18K": "0",
@@ -511,72 +674,175 @@
           "UTIL_URAM": "0"
         }
       },
-      "make_patch_aligned_to_line": {
+      "p_find_start_index_and_value": {
         "Latency": {
-          "LatencyBest": "1296",
-          "LatencyAvg": "1296",
-          "LatencyWorst": "1296",
-          "PipelineII": "1296",
+          "LatencyBest": "",
+          "LatencyAvg": "",
+          "LatencyWorst": "",
+          "PipelineII": "",
           "PipelineDepth": "",
           "PipelineType": "none"
         },
         "Timing": {
-          "Target": "5.00",
-          "Uncertainty": "1.35",
-          "Estimate": "3.122"
+          "Target": "10.00",
+          "Uncertainty": "2.70",
+          "Estimate": "7.215"
         },
         "Loops": [{
-            "Name": "VITIS_LOOP_94_1",
-            "TripCount": "5",
-            "Latency": "1295",
-            "PipelineII": "",
-            "PipelineDepth": "259"
+            "Name": "loop_find_start_index_and_value",
+            "TripCount": "",
+            "Latency": "",
+            "PipelineII": "1",
+            "PipelineDepth": "6"
           }],
         "Area": {
-          "BRAM_18K": "28",
-          "AVAIL_BRAM": "4032",
-          "UTIL_BRAM": "~0",
-          "FF": "57164",
-          "AVAIL_FF": "2592000",
-          "UTIL_FF": "2",
-          "LUT": "23266",
-          "AVAIL_LUT": "1296000",
-          "UTIL_LUT": "1",
-          "DSP": "0",
+          "DSP": "3",
           "AVAIL_DSP": "9216",
-          "UTIL_DSP": "0",
+          "UTIL_DSP": "~0",
+          "FF": "797",
+          "AVAIL_FF": "2592000",
+          "UTIL_FF": "~0",
+          "LUT": "1131",
+          "AVAIL_LUT": "1296000",
+          "UTIL_LUT": "~0",
+          "BRAM_18K": "0",
+          "AVAIL_BRAM": "4032",
+          "UTIL_BRAM": "0",
           "URAM": "0",
           "AVAIL_URAM": "960",
           "UTIL_URAM": "0"
         }
       },
-      "make_patch_aligned_to_line_top": {
+      "p_find_left_and_right_bound": {
         "Latency": {
-          "LatencyBest": "21785",
-          "LatencyAvg": "21785",
-          "LatencyWorst": "21785",
-          "PipelineII": "21786",
+          "LatencyBest": "",
+          "LatencyAvg": "",
+          "LatencyWorst": "",
+          "PipelineII": "",
           "PipelineDepth": "",
           "PipelineType": "none"
         },
         "Timing": {
-          "Target": "5.00",
-          "Uncertainty": "1.35",
-          "Estimate": "3.372"
+          "Target": "10.00",
+          "Uncertainty": "2.70",
+          "Estimate": "7.215"
+        },
+        "Loops": [{
+            "Name": "loop_find_left_and_right_bound",
+            "TripCount": "",
+            "Latency": "",
+            "PipelineII": "1",
+            "PipelineDepth": "10"
+          }],
+        "Area": {
+          "BRAM_18K": "0",
+          "AVAIL_BRAM": "4032",
+          "UTIL_BRAM": "0",
+          "DSP": "6",
+          "AVAIL_DSP": "9216",
+          "UTIL_DSP": "~0",
+          "FF": "1421",
+          "AVAIL_FF": "2592000",
+          "UTIL_FF": "~0",
+          "LUT": "1852",
+          "AVAIL_LUT": "1296000",
+          "UTIL_LUT": "~0",
+          "URAM": "0",
+          "AVAIL_URAM": "960",
+          "UTIL_URAM": "0"
+        }
+      },
+      "superpoint_init": {
+        "Latency": {
+          "LatencyBest": "0",
+          "LatencyAvg": "0",
+          "LatencyWorst": "0",
+          "PipelineII": "0",
+          "PipelineDepth": "",
+          "PipelineType": "none"
+        },
+        "Timing": {
+          "Target": "10.00",
+          "Uncertainty": "2.70",
+          "Estimate": "0.000"
         },
         "Area": {
-          "BRAM_18K": "252",
+          "BRAM_18K": "0",
           "AVAIL_BRAM": "4032",
-          "UTIL_BRAM": "6",
-          "FF": "114801",
-          "AVAIL_FF": "2592000",
-          "UTIL_FF": "4",
-          "LUT": "29206",
-          "AVAIL_LUT": "1296000",
-          "UTIL_LUT": "2",
+          "UTIL_BRAM": "0",
           "DSP": "0",
           "AVAIL_DSP": "9216",
           "UTIL_DSP": "0",
+          "FF": "0",
+          "AVAIL_FF": "2592000",
+          "UTIL_FF": "0",
+          "LUT": "0",
+          "AVAIL_LUT": "1296000",
+          "UTIL_LUT": "0",
+          "URAM": "0",
+          "AVAIL_URAM": "960",
+          "UTIL_URAM": "0"
+        }
+      },
+      "cover_make_patch_aligned_to_line": {
+        "Latency": {
+          "LatencyBest": "",
+          "LatencyAvg": "",
+          "LatencyWorst": "",
+          "PipelineII": "",
+          "PipelineDepth": "",
+          "PipelineType": "none"
+        },
+        "Timing": {
+          "Target": "10.00",
+          "Uncertainty": "2.70",
+          "Estimate": "7.215"
+        },
+        "Area": {
+          "BRAM_18K": "4",
+          "AVAIL_BRAM": "4032",
+          "UTIL_BRAM": "~0",
+          "DSP": "9",
+          "AVAIL_DSP": "9216",
+          "UTIL_DSP": "~0",
+          "FF": "52503",
+          "AVAIL_FF": "2592000",
+          "UTIL_FF": "2",
+          "LUT": "22148",
+          "AVAIL_LUT": "1296000",
+          "UTIL_LUT": "1",
+          "URAM": "0",
+          "AVAIL_URAM": "960",
+          "UTIL_URAM": "0"
+        }
+      },
+      "system_top": {
+        "Latency": {
+          "LatencyBest": "",
+          "LatencyAvg": "",
+          "LatencyWorst": "",
+          "PipelineII": "",
+          "PipelineDepth": "",
+          "PipelineType": "none"
+        },
+        "Timing": {
+          "Target": "10.00",
+          "Uncertainty": "2.70",
+          "Estimate": "7.215"
+        },
+        "Area": {
+          "BRAM_18K": "4",
+          "AVAIL_BRAM": "4032",
+          "UTIL_BRAM": "~0",
+          "DSP": "9",
+          "AVAIL_DSP": "9216",
+          "UTIL_DSP": "~0",
+          "FF": "52507",
+          "AVAIL_FF": "2592000",
+          "UTIL_FF": "2",
+          "LUT": "22242",
+          "AVAIL_LUT": "1296000",
+          "UTIL_LUT": "1",
           "URAM": "0",
           "AVAIL_URAM": "960",
           "UTIL_URAM": "0"
@@ -587,7 +853,7 @@
   "GenerateBdFiles": "0",
   "GenData": {
     "DataVersion": "0.2",
-    "Time": "2024-03-03 15:52:11 -0500",
+    "Time": "2024-03-17 15:47:40 -0400",
     "ToolName": "vivado_hls",
     "ToolVersion": "2020.2"
   }

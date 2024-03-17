@@ -1,5 +1,6 @@
 #include "dataset.h"
 #include <algorithm>
+#include <climits>
 
 dataset_s dataset_init(environment_s &env) {
   dataset_s dataset;
