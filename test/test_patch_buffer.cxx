@@ -2,6 +2,8 @@
 #include "patch_buffer.h"
 #include "superpoint.h"
 #include "system.h"
+#include "patch_buffer.h"
+#include "dataset.h"
 #include <iostream>
 #include <string>
 

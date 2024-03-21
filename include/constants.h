@@ -10,6 +10,14 @@
 #define TOP_LAYER_LIM 100.0
 #define BEAM_AXIS_LIM 15.0
 #define NUM_LAYERS 5
+#define RADII_INITIALIZER       \
+  {                             \
+    5.0, 10.0, 15.0, 20.0, 25.0 \
+  }
+#define TRAPEZOID_EDGES_INITIALIZER \
+  {                                 \
+    22, 29, 36, 43, 50              \
+  }
 
 const double RADII[] = {5.0, 10.0, 15.0, 20.0, 25.0};
 

@@ -12,8 +12,8 @@
 #define BOUNDARY_POINT_OFFSET 0.0001
 #define PPL 16
 
-static double radii[NUM_LAYERS] = {5, 10, 15, 20, 25};
-static double trapezoid_edges[NUM_LAYERS] = {22, 29, 36, 43, 50};
+static double radii[NUM_LAYERS] = RADII_INITIALIZER;
+static double trapezoid_edges[NUM_LAYERS] = TRAPEZOID_EDGES_INITIALIZER;
 
 /**
  * Prepare data for synthesis components.
@@ -151,6 +151,30 @@ void cover_make_patch_aligned_to_line(
   }
 
   patch_buffer_push_patch(&cover->patch_buffer, patch);
+
+  return;
+}
+
+void cover_make_patch_shadow_quilt_from_edges(cover_s *cover) {
+  bool fix42 = true;
+  float apexZ0 = trapezoid_edges[0];
+  float saved_apexZ0;
+
+  while (apexZ0 > -1 * trapezoid_edges[0]) {
+    float z_top_min = -1 * TOP_LAYER_LIM;
+    float complementary_apexZ0 = 0;
+    int first_row_count = 0;
+    float c_corner = LONG_MAX;
+    float z_top_max = TOP_LAYER_LIM + BOUNDARY_POINT_OFFSET;
+
+    if (cover->n_patches > 0) {
+      // z_top_max =
+      // min(z_top_max,
+      //     patches[patches.size() - 1].straightLineProjectorFromLayerIJtoK(
+      //         -1 * env.beam_axis_lim, apexZ0, 0, 1, env.num_layers));
+      
+    }
+  }
 
   return;
 }

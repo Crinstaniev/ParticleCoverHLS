@@ -20,5 +20,9 @@ void cover_make_patch_aligned_to_line(
     cover_s *cover, point_s row_data[NUM_LAYERS][MAX_POINTS_PER_LAYER],
     int num_points[NUM_LAYERS]);
 
+void cover_make_patch_shadow_quilt_from_edges(
+    cover_s *cover
+);
+
 // DEBUG FUNCTION
 std::ostream &operator<<(std::ostream &os, const cover_s &cover);

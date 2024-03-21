@@ -7,7 +7,8 @@
 
 #include <cstddef>
 
-typedef struct {
+typedef struct
+{
   environment_s env;
   int end_layer;
   int left_end_layer;
@@ -28,7 +29,12 @@ typedef struct {
 patch_s patch_init(environment_s env, superpoint_s *superpoints,
                    size_t n_superpoints, double apexZ0);
 
+void patch_straight_line_projector_from_layer_ij_to_k(
+    float *result,
+    float z_i, float z_j, float i, float j, float k);
+
 // DEBUG FUNCTION
-std::ostream &operator<<(std::ostream &os, const patch_s &p);
+std::ostream &
+operator<<(std::ostream &os, const patch_s &p);
 
 #endif // __PATCH_H__
