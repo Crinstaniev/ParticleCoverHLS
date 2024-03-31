@@ -1,8 +1,12 @@
 GCC=g++
-CLFAGS=-Wall -g -std=c++20
+CLFAGS=-fprofile-arcs -ftest-coverage -g -Wall -fPIC
 
 patchmaker:
 	$(GCC) $(CFLAGS) -o patchmaker patchmaker.cpp
 
+.PHONY: patchmaker
+
 clean:
 	rm -f patchmaker
+
+.PHONY: clean

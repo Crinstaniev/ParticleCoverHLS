@@ -1059,3 +1059,1371 @@ INFO: [VLOG 209-307] Generating Verilog RTL for system_top.
 INFO: [HLS 200-789] **** Estimated Fmax: 138.60 MHz
 INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 43 seconds. CPU system time: 2 seconds. Elapsed time: 62.47 seconds; current allocated memory: 597.245 MB.
 INFO: [HLS 200-112] Total CPU user time: 45 seconds. Total CPU system time: 3 seconds. Total elapsed time: 64.121 seconds; peak allocated memory: 594.772 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xcvu11p-flga2577-1-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
+INFO: [HLS 200-1510] Running: set_part xcvu11p-flga2577-1-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: config_export -format ip_catalog -rtl verilog 
+INFO: [HLS 200-1510] Running: set_directive_top -name system_top system_top 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.042 seconds; current allocated memory: 162.848 MB.
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/system.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/superpoint.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/sim_utils.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/point.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/patch_buffer.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/patch.cxx' ... 
+WARNING: [HLS 207-5301] unused parameter 'n_superpoints': ParticleCoverHLS/src/patch.cxx:9:27
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/file_reader.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/event.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/environment.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/dataset.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/cover.cxx' ... 
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: ParticleCoverHLS/src/cover.cxx:111:5
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: ParticleCoverHLS/src/cover.cxx:125:5
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: ParticleCoverHLS/src/cover.cxx:82:2
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: ParticleCoverHLS/src/cover.cxx:84:5
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: ParticleCoverHLS/src/cover.cxx:85:5
+WARNING: [HLS 214-169] There are a total of 16 such instances of non-canonical statements in the dataflow region: ParticleCoverHLS/src/cover.cxx:82:2
+WARNING: [HLS 200-471] Dataflow form checks found 6 issue(s) in file ParticleCoverHLS/src/cover.cxx
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 11.991 seconds; current allocated memory: 164.976 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<64, false>::ap_bit_ref(ap_int_base<64, false>*, int)' into 'ap_int_base<64, false>::operator[](int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:934:30)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<1, false>::ap_bit_ref(ap_int_base<1, false>*, int)' into 'ap_int_base<1, false>::operator[](int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:934:30)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<64, false>::operator bool() const' into 'ap_bit_ref<1, false>& ap_bit_ref<1, false>::operator=<64, false>(ap_bit_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:839:38)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<1, false>::operator=(unsigned long long)' into 'ap_bit_ref<1, false>& ap_bit_ref<1, false>::operator=<64, false>(ap_bit_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:839:12)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>::ap_range_ref(ap_int_base<64, false>*, int, int)' into 'ap_int_base<64, false>::range(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:853:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::range(int, int)' into 'ap_int_base<64, false>::operator()(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:890:18)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<11, false>::ap_range_ref(ap_int_base<11, false>*, int, int)' into 'ap_int_base<11, false>::range(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:853:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::range(int, int)' into 'ap_int_base<11, false>::operator()(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:890:18)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>::get() const' into 'ap_int_base<64, false>::ap_int_base<64, false>(ap_range_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:312:20)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::ap_int_base<64, false>(ap_int_base<64, false> const&)' into 'ap_range_ref<11, false>& ap_range_ref<11, false>::operator=<64, false>(ap_int_base<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:367:31)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::ap_int_base<64, false>(ap_range_ref<64, false> const&)' into 'ap_range_ref<11, false>& ap_range_ref<11, false>::operator=<64, false>(ap_range_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:22)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<11, false>& ap_range_ref<11, false>::operator=<64, false>(ap_int_base<64, false> const&)' into 'ap_range_ref<11, false>& ap_range_ref<11, false>::operator=<64, false>(ap_range_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:12)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<52, false>::ap_range_ref(ap_int_base<52, false>*, int, int)' into 'ap_int_base<52, false>::range(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:853:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::range(int, int)' into 'ap_int_base<52, false>::operator()(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:890:18)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::ap_int_base<64, false>(ap_int_base<64, false> const&)' into 'ap_range_ref<52, false>& ap_range_ref<52, false>::operator=<64, false>(ap_int_base<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:367:31)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::ap_int_base<64, false>(ap_range_ref<64, false> const&)' into 'ap_range_ref<52, false>& ap_range_ref<52, false>::operator=<64, false>(ap_range_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:22)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<52, false>& ap_range_ref<52, false>::operator=<64, false>(ap_int_base<64, false> const&)' into 'ap_range_ref<52, false>& ap_range_ref<52, false>::operator=<64, false>(ap_range_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:12)
+INFO: [HLS 214-131] Inlining function 'ap_uint<64>::ap_uint(unsigned long long)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:483:28)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<52, false>& ap_range_ref<52, false>::operator=<64, false>(ap_range_ref<64, false> const&)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:486:19)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::operator()(int, int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:486:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator()(int, int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:486:21)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<11, false>& ap_range_ref<11, false>::operator=<64, false>(ap_range_ref<64, false> const&)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:485:19)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::operator()(int, int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:485:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator()(int, int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:485:21)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<1, false>& ap_bit_ref<1, false>::operator=<64, false>(ap_bit_ref<64, false> const&)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:484:17)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<1, false>::operator[](int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:484:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator[](int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:484:19)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<1, false>::ap_bit_ref(ap_int_base<1, false> const*, int)' into 'ap_int_base<1, false>::operator[](int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:950:30)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<1, false>::to_bool() const' into 'ap_int_base<1, false>::operator[](int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:951:15)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<11, false>::ap_range_ref(ap_int_base<11, false>*, int, int)' into 'ap_int_base<11, false>::range(int, int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:860:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::range(int, int) const' into 'ap_int_base<11, false>::operator()(int, int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:894:18)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<11, false>::get() const' into 'ap_int_base<11, false>::ap_int_base<11, false>(ap_range_ref<11, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:312:20)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::ap_int_base<11, false>(ap_int_base<11, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<11, false>(ap_int_base<11, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:367:31)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::ap_int_base<11, false>(ap_range_ref<11, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<11, false>(ap_range_ref<11, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:22)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<11, false>(ap_int_base<11, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<11, false>(ap_range_ref<11, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:12)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<52, false>::ap_range_ref(ap_int_base<52, false>*, int, int)' into 'ap_int_base<52, false>::range(int, int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:860:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::range(int, int) const' into 'ap_int_base<52, false>::operator()(int, int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:894:18)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<52, false>::get() const' into 'ap_int_base<52, false>::ap_int_base<52, false>(ap_range_ref<52, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:312:20)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::ap_int_base<52, false>(ap_int_base<52, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<52, false>(ap_int_base<52, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:367:31)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::ap_int_base<52, false>(ap_range_ref<52, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<52, false>(ap_range_ref<52, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:22)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<52, false>(ap_int_base<52, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<52, false>(ap_range_ref<52, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<1, false>::operator[](int) const' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:501:36)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<52, false>(ap_range_ref<52, false> const&)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:503:25)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator()(int, int)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:503:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::operator()(int, int) const' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:503:27)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<11, false>(ap_range_ref<11, false> const&)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:502:41)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator()(int, int)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:502:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::operator()(int, int) const' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:502:43)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<64, false>::operator=(bool)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:501:34)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator[](int)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:501:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::to_uint64() const' into 'fp_struct<double>::to_double() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:520:24)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_149_4' (ParticleCoverHLS/src/cover.cxx:149:21) in function 'cover_make_patch_aligned_to_line' completely with a factor of 5 (ParticleCoverHLS/src/cover.cxx:149:21)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_137_3' (ParticleCoverHLS/src/cover.cxx:137:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:137:25)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_128_2' (ParticleCoverHLS/src/cover.cxx:128:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:128:25)
+INFO: [HLS 214-186] Unrolling loop 'loop_copy_row_list' (ParticleCoverHLS/src/cover.cxx:32:3) in function '_copy_row_list' completely with a factor of 256 (ParticleCoverHLS/src/cover.cxx:32:3)
+INFO: [HLS 214-186] Unrolling loop 'loop_copy_points_to_superpoint' (ParticleCoverHLS/src/superpoint.cxx:13:3) in function 'superpoint_init' completely with a factor of 16 (ParticleCoverHLS/src/superpoint.cxx:13:3)
+INFO: [HLS 214-178] Inlining function 'fp_struct<double>::data() const' into 'fp_struct<double>::to_double() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:518:0)
+INFO: [HLS 214-178] Inlining function 'fp_struct<double>::to_double() const' into 'fp_struct<double>::to_ieee() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:533:0)
+INFO: [HLS 214-178] Inlining function 'fp_struct<double>::fp_struct(double)' into 'double generic_copysign<double>(double, double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/hlsmath/include/FloatingPoint/hls_copysign.h:10:0)
+INFO: [HLS 214-178] Inlining function 'fp_struct<double>::to_ieee() const' into 'double generic_copysign<double>(double, double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/hlsmath/include/FloatingPoint/hls_copysign.h:10:0)
+INFO: [HLS 214-178] Inlining function 'double generic_copysign<double>(double, double)' into 'double generic_fabs<double>(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/hlsmath/include/FloatingPoint/hls_fabs.h:12:0)
+INFO: [HLS 214-178] Inlining function 'double generic_fabs<double>(double)' into 'fabs' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/hlsmath/src/c/fabsdouble.cpp:7:0)
+INFO: [HLS 214-178] Inlining function 'fabs' into 'std::abs(double)' (C:/Xilinx/Vitis_HLS/2020.2/tps/mingw/6.2.0/win64.o/nt\lib\gcc\x86_64-w64-mingw32\6.2.0\include\c++\cmath:86:0)
+INFO: [HLS 214-178] Inlining function 'std::abs(double)' into '_find_start_index_and_value(int*, double*, double*, int, double)' (ParticleCoverHLS/src/cover.cxx:40:0)
+INFO: [HLS 214-178] Inlining function 'std::abs(double)' into '_find_left_and_right_bound(int*, int*, double*, double*, double*, int, int)' (ParticleCoverHLS/src/cover.cxx:54:0)
+INFO: [HLS 214-178] Inlining function 'patch_buffer_push_patch(patch_buffer_s*, patch_s)' into 'cover_make_patch_aligned_to_line(cover_s*, point_s (*) [256], int*)' (ParticleCoverHLS/src/cover.cxx:76:0)
+INFO: [HLS 214-178] Inlining function 'patch_buffer_init(patch_buffer_s*)' into 'system_top(cover_s*, point_s (*) [256], int*)' (ParticleCoverHLS/src/system.cxx:9:0)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:82:13)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:98:33)
+INFO: [HLS 214-131] Inlining function '_llvm.fpga.pack.none.i28672.s_struct.patch_ss' into 'cover_make_patch_aligned_to_line(cover_s*, point_s (*) [256], int*) (.1)'
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 5 seconds. CPU system time: 0 seconds. Elapsed time: 10.829 seconds; current allocated memory: 181.921 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.041 seconds; current allocated memory: 181.922 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 2.037 seconds; current allocated memory: 223.231 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 3 seconds. CPU system time: 0 seconds. Elapsed time: 3.53 seconds; current allocated memory: 269.021 MB.
+INFO: [XFORM 203-510] Pipelining loop 'loop_find_start_index_and_value' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:500) in function '_find_start_index_and_value' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'loop_find_left_and_right_bound' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:500) in function '_find_left_and_right_bound' automatically.
+ERROR: [XFORM 203-313] Found conflicting loop unroll and dataflow directives, seeloop 'VITIS_LOOP_80_1' in 'cover_make_patch_aligned_to_line' function ParticleCoverHLS/src/cover.cxx line 82, 82
+ERROR: [HLS 200-70] Pre-synthesis failed.
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 15 seconds. CPU system time: 0 seconds. Elapsed time: 31.858 seconds; current allocated memory: 301.911 MB.
+INFO: [HLS 200-112] Total CPU user time: 17 seconds. Total CPU system time: 1 seconds. Total elapsed time: 33.554 seconds; peak allocated memory: 297.283 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xcvu11p-flga2577-1-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
+INFO: [HLS 200-1510] Running: set_part xcvu11p-flga2577-1-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: config_export -format ip_catalog -rtl verilog 
+INFO: [HLS 200-1510] Running: set_directive_top -name system_top system_top 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.041 seconds; current allocated memory: 162.877 MB.
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/system.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/superpoint.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/sim_utils.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/point.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/patch_buffer.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/patch.cxx' ... 
+WARNING: [HLS 207-5301] unused parameter 'n_superpoints': ParticleCoverHLS/src/patch.cxx:9:27
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/file_reader.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/event.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/environment.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/dataset.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/cover.cxx' ... 
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: ParticleCoverHLS/src/cover.cxx:81:3
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: ParticleCoverHLS/src/cover.cxx:149:3
+WARNING: [HLS 200-471] Dataflow form checks found 2 issue(s) in file ParticleCoverHLS/src/cover.cxx
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 11.289 seconds; current allocated memory: 164.972 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<64, false>::ap_bit_ref(ap_int_base<64, false>*, int)' into 'ap_int_base<64, false>::operator[](int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:934:30)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<1, false>::ap_bit_ref(ap_int_base<1, false>*, int)' into 'ap_int_base<1, false>::operator[](int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:934:30)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<64, false>::operator bool() const' into 'ap_bit_ref<1, false>& ap_bit_ref<1, false>::operator=<64, false>(ap_bit_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:839:38)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<1, false>::operator=(unsigned long long)' into 'ap_bit_ref<1, false>& ap_bit_ref<1, false>::operator=<64, false>(ap_bit_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:839:12)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>::ap_range_ref(ap_int_base<64, false>*, int, int)' into 'ap_int_base<64, false>::range(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:853:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::range(int, int)' into 'ap_int_base<64, false>::operator()(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:890:18)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<11, false>::ap_range_ref(ap_int_base<11, false>*, int, int)' into 'ap_int_base<11, false>::range(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:853:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::range(int, int)' into 'ap_int_base<11, false>::operator()(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:890:18)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>::get() const' into 'ap_int_base<64, false>::ap_int_base<64, false>(ap_range_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:312:20)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::ap_int_base<64, false>(ap_int_base<64, false> const&)' into 'ap_range_ref<11, false>& ap_range_ref<11, false>::operator=<64, false>(ap_int_base<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:367:31)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::ap_int_base<64, false>(ap_range_ref<64, false> const&)' into 'ap_range_ref<11, false>& ap_range_ref<11, false>::operator=<64, false>(ap_range_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:22)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<11, false>& ap_range_ref<11, false>::operator=<64, false>(ap_int_base<64, false> const&)' into 'ap_range_ref<11, false>& ap_range_ref<11, false>::operator=<64, false>(ap_range_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:12)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<52, false>::ap_range_ref(ap_int_base<52, false>*, int, int)' into 'ap_int_base<52, false>::range(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:853:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::range(int, int)' into 'ap_int_base<52, false>::operator()(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:890:18)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::ap_int_base<64, false>(ap_int_base<64, false> const&)' into 'ap_range_ref<52, false>& ap_range_ref<52, false>::operator=<64, false>(ap_int_base<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:367:31)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::ap_int_base<64, false>(ap_range_ref<64, false> const&)' into 'ap_range_ref<52, false>& ap_range_ref<52, false>::operator=<64, false>(ap_range_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:22)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<52, false>& ap_range_ref<52, false>::operator=<64, false>(ap_int_base<64, false> const&)' into 'ap_range_ref<52, false>& ap_range_ref<52, false>::operator=<64, false>(ap_range_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:12)
+INFO: [HLS 214-131] Inlining function 'ap_uint<64>::ap_uint(unsigned long long)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:483:28)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<52, false>& ap_range_ref<52, false>::operator=<64, false>(ap_range_ref<64, false> const&)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:486:19)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::operator()(int, int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:486:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator()(int, int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:486:21)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<11, false>& ap_range_ref<11, false>::operator=<64, false>(ap_range_ref<64, false> const&)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:485:19)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::operator()(int, int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:485:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator()(int, int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:485:21)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<1, false>& ap_bit_ref<1, false>::operator=<64, false>(ap_bit_ref<64, false> const&)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:484:17)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<1, false>::operator[](int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:484:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator[](int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:484:19)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<1, false>::ap_bit_ref(ap_int_base<1, false> const*, int)' into 'ap_int_base<1, false>::operator[](int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:950:30)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<1, false>::to_bool() const' into 'ap_int_base<1, false>::operator[](int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:951:15)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<11, false>::ap_range_ref(ap_int_base<11, false>*, int, int)' into 'ap_int_base<11, false>::range(int, int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:860:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::range(int, int) const' into 'ap_int_base<11, false>::operator()(int, int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:894:18)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<11, false>::get() const' into 'ap_int_base<11, false>::ap_int_base<11, false>(ap_range_ref<11, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:312:20)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::ap_int_base<11, false>(ap_int_base<11, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<11, false>(ap_int_base<11, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:367:31)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::ap_int_base<11, false>(ap_range_ref<11, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<11, false>(ap_range_ref<11, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:22)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<11, false>(ap_int_base<11, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<11, false>(ap_range_ref<11, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:12)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<52, false>::ap_range_ref(ap_int_base<52, false>*, int, int)' into 'ap_int_base<52, false>::range(int, int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:860:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::range(int, int) const' into 'ap_int_base<52, false>::operator()(int, int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:894:18)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<52, false>::get() const' into 'ap_int_base<52, false>::ap_int_base<52, false>(ap_range_ref<52, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:312:20)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::ap_int_base<52, false>(ap_int_base<52, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<52, false>(ap_int_base<52, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:367:31)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::ap_int_base<52, false>(ap_range_ref<52, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<52, false>(ap_range_ref<52, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:22)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<52, false>(ap_int_base<52, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<52, false>(ap_range_ref<52, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<1, false>::operator[](int) const' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:501:36)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<52, false>(ap_range_ref<52, false> const&)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:503:25)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator()(int, int)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:503:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::operator()(int, int) const' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:503:27)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<11, false>(ap_range_ref<11, false> const&)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:502:41)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator()(int, int)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:502:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::operator()(int, int) const' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:502:43)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<64, false>::operator=(bool)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:501:34)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator[](int)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:501:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::to_uint64() const' into 'fp_struct<double>::to_double() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:520:24)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_149_4' (ParticleCoverHLS/src/cover.cxx:149:21) in function 'cover_make_patch_aligned_to_line' completely with a factor of 5 (ParticleCoverHLS/src/cover.cxx:149:21)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_81_1' (ParticleCoverHLS/src/cover.cxx:81:20) in function 'cover_make_patch_aligned_to_line' completely with a factor of 5 (ParticleCoverHLS/src/cover.cxx:81:20)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_128_2' (ParticleCoverHLS/src/cover.cxx:128:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:128:25)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_137_3' (ParticleCoverHLS/src/cover.cxx:137:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:137:25)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_128_2' (ParticleCoverHLS/src/cover.cxx:128:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:128:25)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_137_3' (ParticleCoverHLS/src/cover.cxx:137:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:137:25)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_128_2' (ParticleCoverHLS/src/cover.cxx:128:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:128:25)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_137_3' (ParticleCoverHLS/src/cover.cxx:137:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:137:25)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_128_2' (ParticleCoverHLS/src/cover.cxx:128:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:128:25)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_137_3' (ParticleCoverHLS/src/cover.cxx:137:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:137:25)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_128_2' (ParticleCoverHLS/src/cover.cxx:128:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:128:25)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_137_3' (ParticleCoverHLS/src/cover.cxx:137:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:137:25)
+INFO: [HLS 214-186] Unrolling loop 'loop_copy_row_list' (ParticleCoverHLS/src/cover.cxx:32:3) in function '_copy_row_list' completely with a factor of 256 (ParticleCoverHLS/src/cover.cxx:32:3)
+INFO: [HLS 214-186] Unrolling loop 'loop_copy_points_to_superpoint' (ParticleCoverHLS/src/superpoint.cxx:13:3) in function 'superpoint_init' completely with a factor of 16 (ParticleCoverHLS/src/superpoint.cxx:13:3)
+INFO: [HLS 214-178] Inlining function 'fp_struct<double>::data() const' into 'fp_struct<double>::to_double() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:518:0)
+INFO: [HLS 214-178] Inlining function 'fp_struct<double>::to_double() const' into 'fp_struct<double>::to_ieee() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:533:0)
+INFO: [HLS 214-178] Inlining function 'fp_struct<double>::fp_struct(double)' into 'double generic_copysign<double>(double, double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/hlsmath/include/FloatingPoint/hls_copysign.h:10:0)
+INFO: [HLS 214-178] Inlining function 'fp_struct<double>::to_ieee() const' into 'double generic_copysign<double>(double, double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/hlsmath/include/FloatingPoint/hls_copysign.h:10:0)
+INFO: [HLS 214-178] Inlining function 'double generic_copysign<double>(double, double)' into 'double generic_fabs<double>(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/hlsmath/include/FloatingPoint/hls_fabs.h:12:0)
+INFO: [HLS 214-178] Inlining function 'double generic_fabs<double>(double)' into 'fabs' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/hlsmath/src/c/fabsdouble.cpp:7:0)
+INFO: [HLS 214-178] Inlining function 'fabs' into 'std::abs(double)' (C:/Xilinx/Vitis_HLS/2020.2/tps/mingw/6.2.0/win64.o/nt\lib\gcc\x86_64-w64-mingw32\6.2.0\include\c++\cmath:86:0)
+INFO: [HLS 214-178] Inlining function 'std::abs(double)' into '_find_start_index_and_value(int*, double*, double*, int, double)' (ParticleCoverHLS/src/cover.cxx:40:0)
+INFO: [HLS 214-178] Inlining function 'std::abs(double)' into '_find_left_and_right_bound(int*, int*, double*, double*, double*, int, int)' (ParticleCoverHLS/src/cover.cxx:54:0)
+INFO: [HLS 214-178] Inlining function 'patch_buffer_init(patch_buffer_s*)' into 'system_top(cover_s*, point_s (*) [256], int*)' (ParticleCoverHLS/src/system.cxx:9:0)
+INFO: [HLS 214-131] Inlining function '_llvm.fpga.pack.none.i28672.s_struct.patch_ss' into 'patch_buffer_push_patch(patch_buffer_s*, patch_s) (.1)'
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 10.019 seconds; current allocated memory: 173.218 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.039 seconds; current allocated memory: 173.219 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.174 seconds; current allocated memory: 227.211 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 4 seconds. CPU system time: 0 seconds. Elapsed time: 3.344 seconds; current allocated memory: 272.521 MB.
+INFO: [XFORM 203-510] Pipelining loop 'loop_find_start_index_and_value' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:500) in function '_find_start_index_and_value' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'loop_find_left_and_right_bound' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:500) in function '_find_left_and_right_bound' automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.superpoints.points.layer_num.0' automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.superpoints.points.layer_num.1' automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.superpoints.points.layer_num.2' automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.superpoints.points.layer_num.3' automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.superpoints.points.layer_num.4' automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.superpoints.points.radius.0' automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.superpoints.points.radius.1' automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.superpoints.points.radius.2' automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.superpoints.points.radius.3' automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.superpoints.points.radius.4' automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.superpoints.points.phi.0' automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.superpoints.points.phi.1' automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.superpoints.points.phi.2' automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.superpoints.points.phi.3' automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.superpoints.points.phi.4' automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.superpoints.points.z.0' automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.superpoints.points.z.1' automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.superpoints.points.z.2' automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.superpoints.points.z.3' automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.superpoints.points.z.4' automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.superpoints.z_values.0' automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.superpoints.z_values.1' automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.superpoints.z_values.2' automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.superpoints.z_values.3' automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.superpoints.z_values.4' automatically.
+INFO: [XFORM 203-102] Partitioning array 'points.layer_num' (ParticleCoverHLS/src/cover.cxx:127) automatically.
+INFO: [XFORM 203-102] Partitioning array 'points.radius' (ParticleCoverHLS/src/cover.cxx:127) automatically.
+INFO: [XFORM 203-102] Partitioning array 'points.phi' (ParticleCoverHLS/src/cover.cxx:127) automatically.
+INFO: [XFORM 203-102] Partitioning array 'points.z' (ParticleCoverHLS/src/cover.cxx:127) automatically.
+INFO: [XFORM 203-102] Partitioning array 'sp.points.layer_num' (ParticleCoverHLS/src/cover.cxx:132) automatically.
+INFO: [XFORM 203-102] Partitioning array 'sp.points.radius' (ParticleCoverHLS/src/cover.cxx:132) automatically.
+INFO: [XFORM 203-102] Partitioning array 'sp.points.phi' (ParticleCoverHLS/src/cover.cxx:132) automatically.
+INFO: [XFORM 203-102] Partitioning array 'sp.points.z' (ParticleCoverHLS/src/cover.cxx:132) automatically.
+INFO: [XFORM 203-102] Partitioning array 'sp.z_values' (ParticleCoverHLS/src/cover.cxx:132) automatically.
+INFO: [XFORM 203-102] Partitioning array 'points.layer_num.1' (ParticleCoverHLS/src/cover.cxx:136) automatically.
+INFO: [XFORM 203-102] Partitioning array 'points.radius.1' (ParticleCoverHLS/src/cover.cxx:136) automatically.
+INFO: [XFORM 203-102] Partitioning array 'points.phi.1' (ParticleCoverHLS/src/cover.cxx:136) automatically.
+INFO: [XFORM 203-102] Partitioning array 'points.z.1' (ParticleCoverHLS/src/cover.cxx:136) automatically.
+INFO: [XFORM 203-102] Partitioning array 'sp.points.layer_num.1' (ParticleCoverHLS/src/cover.cxx:141) automatically.
+INFO: [XFORM 203-102] Partitioning array 'sp.points.radius.1' (ParticleCoverHLS/src/cover.cxx:141) automatically.
+INFO: [XFORM 203-102] Partitioning array 'sp.points.phi.1' (ParticleCoverHLS/src/cover.cxx:141) automatically.
+INFO: [XFORM 203-102] Partitioning array 'sp.points.z.1' (ParticleCoverHLS/src/cover.cxx:141) automatically.
+INFO: [XFORM 203-102] Partitioning array 'sp.z_values.1' (ParticleCoverHLS/src/cover.cxx:141) automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.0.3' automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.0.5' automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.0.7' automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.0.10' automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.0.0' in dimension 1 automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.0.1' in dimension 1 automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.0.2' in dimension 1 automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.0.3' in dimension 1 automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.1' automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.2' in dimension 1 automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.3' automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.4' automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.0.0.0' automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.0.0.1' automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.0.0.2' automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.0.0.3' automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.0.0.4' automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.0.1.0' automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.0.1.1' automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.0.1.2' automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.0.1.3' automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.0.1.4' automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.0.2.0' automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.0.2.1' automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.0.2.2' automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.0.2.3' automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.0.2.4' automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.0.3.0' automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.0.3.1' automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.0.3.2' automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.0.3.3' automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.0.3.4' automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.2.0' automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.2.1' automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.2.2' automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.2.3' automatically.
+INFO: [XFORM 203-102] Partitioning array 'agg.tmp.11.2.4' automatically.
+INFO: [HLS 200-778] Automatically marking array 'row_data' (ParticleCoverHLS/src/cover.cxx:75) as shared between two reader processes.
+INFO: [HLS 200-755] Binding port 0 of memory 'row_data' (ParticleCoverHLS/src/cover.cxx:75) to function 'cover_make_patch_aligned_to_line_Block_.split2458_proc134' (ParticleCoverHLS/src/cover.cxx:85) 
+INFO: [HLS 200-755] Binding port 1 of memory 'row_data' (ParticleCoverHLS/src/cover.cxx:75) to function 'cover_make_patch_aligned_to_line_Block__proc132' (ParticleCoverHLS/src/cover.cxx:130:49) 
+INFO: [XFORM 203-712] Applying dataflow to function 'cover_make_patch_aligned_to_line' (ParticleCoverHLS/src/cover.cxx:75), detected/extracted 5 process function(s): 
+	 'cover_make_patch_aligned_to_line_Block_.split2458_proc134'
+	 '_find_left_and_right_bound135'
+	 'cover_make_patch_aligned_to_line_Block__proc'
+	 'cover_make_patch_aligned_to_line_Block__proc132'
+	 'patch_buffer_push_patch'.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 59 seconds. CPU system time: 0 seconds. Elapsed time: 60.043 seconds; current allocated memory: 362.130 MB.
+INFO: [HLS 200-472] Inferring partial write operation for 'row_list' (ParticleCoverHLS/src/cover.cxx:34:14)
+INFO: [XFORM 203-603] Evaluating the output(s) of a call to function '_ssdm_op_BitConcatenate.i256.i64.i32.i32.i64.i64' in function 'patch_buffer_push_patch' and propagating its result(s) since all actual argument(s) to the function are constants.
+INFO: [XFORM 203-603] Evaluating the output(s) of a call to function '_ssdm_op_BitConcatenate.i256.i64.i64.i64.i64' in function 'patch_buffer_push_patch' and propagating its result(s) since all actual argument(s) to the function are constants.
+INFO: [XFORM 203-603] Evaluating the output(s) of a call to function '_ssdm_op_BitConcatenate.i256.i128.i64.i64' in function 'patch_buffer_push_patch' and propagating its result(s) since all actual argument(s) to the function are constants.
+INFO: [HLS 200-634] Sharing array row_data among processes cover_make_patch_aligned_to_line_Block_.split2458_proc134 and cover_make_patch_aligned_to_line_Block__proc132
+WARNING: [HLS 200-1449] Process cover_make_patch_aligned_to_line_Block_.split2458_proc134 has both a predecessor and reads an input from its caller (see the GUI dataflow viewer). This may lead to lower throughput. Consider copying this input via a predecessor process.
+WARNING: [HLS 200-1449] Process cover_make_patch_aligned_to_line_Block__proc132 has both a predecessor and reads an input from its caller (see the GUI dataflow viewer). This may lead to lower throughput. Consider copying this input via a predecessor process.
+WARNING: [HLS 200-1449] Process patch_buffer_push_patch has both a predecessor and reads an input from its caller (see the GUI dataflow viewer). This may lead to lower throughput. Consider copying this input via a predecessor process.
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 32 seconds. CPU system time: 0 seconds. Elapsed time: 31.678 seconds; current allocated memory: 615.875 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'system_top' ...
+WARNING: [SYN 201-103] Legalizing function name '_copy_row_list146' to 'p_copy_row_list146'.
+WARNING: [SYN 201-103] Legalizing function name '_find_start_index_and_value' to 'p_find_start_index_and_value'.
+WARNING: [SYN 201-103] Legalizing function name '_find_left_and_right_bound' to 'p_find_left_and_right_bound'.
+WARNING: [SYN 201-103] Legalizing function name '_copy_row_list147' to 'p_copy_row_list147'.
+WARNING: [SYN 201-103] Legalizing function name '_copy_row_list148' to 'p_copy_row_list148'.
+WARNING: [SYN 201-103] Legalizing function name '_copy_row_list149' to 'p_copy_row_list149'.
+WARNING: [SYN 201-103] Legalizing function name '_copy_row_list' to 'p_copy_row_list'.
+WARNING: [SYN 201-103] Legalizing function name 'cover_make_patch_aligned_to_line_Block_.split2458_proc134' to 'cover_make_patch_aligned_to_line_Block_split2458_proc134'.
+WARNING: [SYN 201-103] Legalizing function name '_find_left_and_right_bound135' to 'p_find_left_and_right_bound135'.
+WARNING: [SYN 201-103] Legalizing function name 'cover_make_patch_aligned_to_line_Block__proc' to 'cover_make_patch_aligned_to_line_Block_proc'.
+WARNING: [SYN 201-103] Legalizing function name 'cover_make_patch_aligned_to_line_Block__proc132' to 'cover_make_patch_aligned_to_line_Block_proc132'.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'p_copy_row_list146' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 2.133 seconds; current allocated memory: 631.598 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.885 seconds; current allocated memory: 636.085 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'p_find_start_index_and_value' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'loop_find_start_index_and_value'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 6, loop 'loop_find_start_index_and_value'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.438 seconds; current allocated memory: 636.234 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.165 seconds; current allocated memory: 636.419 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'p_find_left_and_right_bound' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'loop_find_left_and_right_bound'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 10, loop 'loop_find_left_and_right_bound'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.199 seconds; current allocated memory: 636.578 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.188 seconds; current allocated memory: 636.804 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'superpoint_init' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.196 seconds; current allocated memory: 637.184 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.16 seconds; current allocated memory: 637.602 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'p_copy_row_list147' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.835 seconds; current allocated memory: 641.334 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 1.623 seconds; current allocated memory: 645.945 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'p_copy_row_list148' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 1.846 seconds; current allocated memory: 649.706 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.64 seconds; current allocated memory: 654.317 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'p_copy_row_list149' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 1.862 seconds; current allocated memory: 658.078 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 1.658 seconds; current allocated memory: 662.689 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'p_copy_row_list' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 1.858 seconds; current allocated memory: 666.421 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.654 seconds; current allocated memory: 671.061 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'cover_make_patch_aligned_to_line_Block_split2458_proc134' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 4 seconds. CPU system time: 1 seconds. Elapsed time: 4.09 seconds; current allocated memory: 680.528 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 3 seconds. CPU system time: 0 seconds. Elapsed time: 3.249 seconds; current allocated memory: 698.277 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'p_find_left_and_right_bound135' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'loop_find_left_and_right_bound'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 10, loop 'loop_find_left_and_right_bound'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 2.037 seconds; current allocated memory: 698.430 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.36 seconds; current allocated memory: 698.651 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'cover_make_patch_aligned_to_line_Block_proc' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.356 seconds; current allocated memory: 698.719 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.294 seconds; current allocated memory: 698.770 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'cover_make_patch_aligned_to_line_Block_proc132' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.175 seconds; current allocated memory: 701.809 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.92 seconds; current allocated memory: 707.596 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'patch_buffer_push_patch' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.323 seconds; current allocated memory: 710.834 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.94 seconds; current allocated memory: 714.512 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'cover_make_patch_aligned_to_line' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 1.284 seconds; current allocated memory: 717.307 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 2.779 seconds; current allocated memory: 726.886 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'system_top' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 1.773 seconds; current allocated memory: 726.992 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.687 seconds; current allocated memory: 727.064 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'p_copy_row_list146' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'p_copy_row_list146'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 1.926 seconds; current allocated memory: 734.947 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'p_find_start_index_and_value' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'dcmp_64ns_64ns_1_2_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'dsub_64ns_64ns_64_4_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'p_find_start_index_and_value'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 1 seconds. Elapsed time: 1.899 seconds; current allocated memory: 750.637 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'p_find_left_and_right_bound' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'dadd_64ns_64ns_64_4_full_dsp_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'dcmp_64ns_64ns_1_2_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'p_find_left_and_right_bound'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.54 seconds; current allocated memory: 751.822 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'superpoint_init' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'superpoint_init'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 1.235 seconds; current allocated memory: 767.896 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'p_copy_row_list147' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'p_copy_row_list147'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.989 seconds; current allocated memory: 777.167 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'p_copy_row_list148' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'p_copy_row_list148'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 2 seconds. CPU system time: 1 seconds. Elapsed time: 2.417 seconds; current allocated memory: 801.432 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'p_copy_row_list149' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'p_copy_row_list149'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 2.428 seconds; current allocated memory: 826.057 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'p_copy_row_list' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'p_copy_row_list'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 1 seconds. Elapsed time: 2.459 seconds; current allocated memory: 850.660 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'cover_make_patch_aligned_to_line_Block_split2458_proc134' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-104] Estimated max fanout for 'cover_make_patch_aligned_to_line_Block_split2458_proc134' is 35658 from HDL expression: (~((sp_z_values_1_out_full_n == 1'b0) | (sp_z_values_0_out_full_n == 1'b0) | (sp_n_points_out_full_n == 1'b0) | (sp_points_15_z_out_full_n == 1'b0) | (sp_points_14_z_out_full_n == 1'b0) | (sp_points_13_z_out_full_n == 1'b0) | (sp_points_12_z_out_full_n == 1'b0) | (sp_points_11_z_out_full_n == 1'b0) | (sp_points_10_z_out_full_n == 1'b0) | (sp_points_9_z_out_full_n == 1'b0) | (sp_points_8_z_out_full_n == 1'b0) | (sp_points_7_z_out_full_n == 1'b0) | (sp_points_6_z_out_full_n == 1'b0) | (sp_points_5_z_out_full_n == 1'b0) | (sp_points_4_z_out_full_n == 1'b0) | (sp_points_3_z_out_full_n == 1'b0) | (sp_points_2_z_out_full_n == 1'b0) | (sp_points_1_z_out_full_n == 1'b0) | (sp_points_0_z_out_full_n == 1'b0) | (sp_points_15_phi_out_full_n == 1'b0) | (sp_points_14_phi_out_full_n == 1'b0) | (sp_points_13_phi_out_full_n == 1'b0) | (sp_points_12_phi_out_full_n == 1'b0) | (sp_points_11_phi_out_full_n == 1'b0) | (sp_points_10_phi_out_full_n == 1'b0) | (sp_points_9_phi_out_full_n == 1'b0) | (sp_points_8_phi_out_full_n == 1'b0) | (sp_points_7_phi_out_full_n == 1'b0) | (sp_points_6_phi_out_full_n == 1'b0) | (sp_points_5_phi_out_full_n == 1'b0) | (sp_points_4_phi_out_full_n == 1'b0) | (sp_points_3_phi_out_full_n == 1'b0) | (sp_points_2_phi_out_full_n == 1'b0) | (sp_points_1_phi_out_full_n == 1'b0) | (sp_points_0_phi_out_full_n == 1'b0) | (sp_points_15_radius_out_full_n == 1'b0) | (sp_points_14_radius_out_full_n == 1'b0) | (sp_points_13_radius_out_full_n == 1'b0) | (sp_points_12_radius_out_full_n == 1'b0) | (sp_points_11_radius_out_full_n == 1'b0) | (sp_points_10_radius_out_full_n == 1'b0) | (sp_points_9_radius_out_full_n == 1'b0) | (sp_points_8_radius_out_full_n == 1'b0) | (sp_points_7_radius_out_full_n == 1'b0) | (sp_points_6_radius_out_full_n == 1'b0) | (sp_points_5_radius_out_full_n == 1'b0) | (sp_points_4_radius_out_full_n == 1'b0) | (sp_points_3_radius_out_full_n == 1'b0) | (sp_points_2_radius_out_full_n == 1'b0) | (sp_points_1_radius_out_full_n == 1'b0) | (sp_points_0_radius_out_full_n == 1'b0) | (sp_points_15_layer_num_out_full_n == 1'b0) | (sp_points_14_layer_num_out_full_n == 1'b0) | (sp_points_13_layer_num_out_full_n == 1'b0) | (sp_points_12_layer_num_out_full_n == 1'b0) | (sp_points_11_layer_num_out_full_n == 1'b0) | (sp_points_10_layer_num_out_full_n == 1'b0) | (sp_points_9_layer_num_out_full_n == 1'b0) | (sp_points_8_layer_num_out_full_n == 1'b0) | (sp_points_7_layer_num_out_full_n == 1'b0) | (sp_points_6_layer_num_out_full_n == 1'b0) | (sp_points_5_layer_num_out_full_n == 1'b0) | (sp_points_4_layer_num_out_full_n == 1'b0) | (sp_points_3_layer_num_out_full_n == 1'b0) | (sp_points_2_layer_num_out_full_n == 1'b0) | (sp_points_1_layer_num_out_full_n == 1'b0) | (sp_points_0_layer_num_out_full_n == 1'b0) | (points_z_15_10_out_full_n == 1'b0) | (points_phi_15_10_out_full_n == 1'b0) | (points_radius_15_10_out_full_n == 1'b0) | (points_layer_num_15_10_out_full_n == 1'b0) | (points_z_14_10_out_full_n == 1'b0) | (points_phi_14_10_out_full_n == 1'b0) | (points_radius_14_10_out_full_n == 1'b0) | (points_layer_num_14_10_out_full_n == 1'b0) | (points_z_13_10_out_full_n == 1'b0) | (points_phi_13_10_out_full_n == 1'b0) | (points_radius_13_10_out_full_n == 1'b0) | (points_layer_num_13_10_out_full_n == 1'b0) | (points_z_12_10_out_full_n == 1'b0) | (points_phi_12_10_out_full_n == 1'b0) | (points_radius_12_10_out_full_n == 1'b0) | (points_layer_num_12_10_out_full_n == 1'b0) | (points_z_11_10_out_full_n == 1'b0) | (points_phi_11_10_out_full_n == 1'b0) | (points_radius_11_10_out_full_n == 1'b0) | (points_layer_num_11_10_out_full_n == 1'b0) | (points_z_10_10_out_full_n == 1'b0) | (points_phi_10_10_out_full_n == 1'b0) | (points_radius_10_10_out_full_n == 1'b0) | (points_layer_num_10_10_out_full_n == 1'b0) | (points_z_9_10_out_full_n == 1'b0) | (points_phi_9_10_out_full_n == 1'b0) | (points_radius_9_10_out_full_n == 1'b0) | (points_layer_num_9_10_out_full_n == 1'b0) | (points_z_8_10_out_full_n == 1'b0) | (points_phi_8_10_out_full_n == 1'b0) | (points_radius_8_10_out_full_n == 1'b0) | (points_layer_num_8_10_out_full_n == 1'b0) | (points_z_7_10_out_full_n == 1'b0) | (points_phi_7_10_out_full_n == 1'b0) | (points_radius_7_10_out_full_n == 1'b0) | (points_layer_num_7_10_out_full_n == 1'b0) | (points_z_6_10_out_full_n == 1'b0) | (grp_p_find_start_index_and_value_fu_21886_ap_done == 1'b0) | (points_phi_6_10_out_full_n == 1'b0) | (points_radius_6_10_out_full_n == 1'b0) | (points_layer_num_6_10_out_full_n == 1'b0) | (points_z_5_10_out_full_n == 1'b0) | (points_phi_5_10_out_full_n == 1'b0) | (points_radius_5_10_out_full_n == 1'b0) | (points_layer_num_5_10_out_full_n == 1'b0) | (points_z_4_10_out_full_n == 1'b0) | (points_phi_4_10_out_full_n == 1'b0) | (points_radius_4_10_out_full_n == 1'b0) | (points_layer_num_4_10_out_full_n == 1'b0) | (points_z_3_10_out_full_n == 1'b0) | (points_phi_3_10_out_full_n == 1'b0) | (points_radius_3_10_out_full_n == 1'b0) | (points_layer_num_3_10_out_full_n == 1'b0) | (points_z_2_10_out_full_n == 1'b0) | (points_phi_2_10_out_full_n == 1'b0) | (points_radius_2_10_out_full_n == 1'b0) | (points_layer_num_2_10_out_full_n == 1'b0) | (points_z_1_10_out_full_n == 1'b0) | (points_phi_1_10_out_full_n == 1'b0) | (points_radius_1_10_out_full_n == 1'b0) | (points_layer_num_1_10_out_full_n == 1'b0) | (points_z_0_10_out_full_n == 1'b0) | (points_phi_0_10_out_full_n == 1'b0) | (points_radius_0_10_out_full_n == 1'b0) | (points_layer_num_0_10_out_full_n == 1'b0) | (points_z_15_8_out_full_n == 1'b0) | (points_phi_15_8_out_full_n == 1'b0) | (points_radius_15_8_out_full_n == 1'b0) | (points_layer_num_15_8_out_full_n == 1'b0) | (points_z_14_8_out_full_n == 1'b0) | (points_phi_14_8_out_full_n == 1'b0) | (points_radius_14_8_out_full_n == 1'b0) | (points_layer_num_14_8_out_full_n == 1'b0) | (points_z_13_8_out_full_n == 1'b0) | (points_phi_13_8_out_full_n == 1'b0) | (points_radius_13_8_out_full_n == 1'b0) | (points_layer_num_13_8_out_full_n == 1'b0) | (points_z_12_8_out_full_n == 1'b0) | (points_phi_12_8_out_full_n == 1'b0) | (points_radius_12_8_out_full_n == 1'b0) | (points_layer_num_12_8_out_full_n == 1'b0) | (points_z_11_8_out_full_n == 1'b0) | (points_phi_11_8_out_full_n == 1'b0) | (points_radius_11_8_out_full_n == 1'b0) | (points_layer_num_11_8_out_full_n == 1'b0) | (points_z_10_8_out_full_n == 1'b0) | (points_phi_10_8_out_full_n == 1'b0) | (points_radius_10_8_out_full_n == 1'b0) | (points_layer_num_10_8_out_full_n == 1'b0) | (points_z_9_8_out_full_n == 1'b0) | (points_phi_9_8_out_full_n == 1'b0) | (points_radius_9_8_out_full_n == 1'b0) | (points_layer_num_9_8_out_full_n == 1'b0) | (points_z_8_8_out_full_n == 1'b0) | (points_phi_8_8_out_full_n == 1'b0) | (points_radius_8_8_out_full_n == 1'b0) | (points_layer_num_8_8_out_full_n == 1'b0) | (points_z_7_8_out_full_n == 1'b0) | (points_phi_7_8_out_full_n == 1'b0) | (points_radius_7_8_out_full_n == 1'b0) | (points_layer_num_7_8_out_full_n == 1'b0) | (points_z_6_8_out_full_n == 1'b0) | (points_phi_6_8_out_full_n == 1'b0) | (points_radius_6_8_out_full_n == 1'b0) | (points_layer_num_6_8_out_full_n == 1'b0) | (points_z_5_8_out_full_n == 1'b0) | (points_phi_5_8_out_full_n == 1'b0) | (points_radius_5_8_out_full_n == 1'b0) | (points_layer_num_5_8_out_full_n == 1'b0) | (points_z_4_8_out_full_n == 1'b0) | (points_phi_4_8_out_full_n == 1'b0) | (points_radius_4_8_out_full_n == 1'b0) | (points_layer_num_4_8_out_full_n == 1'b0) | (points_z_3_8_out_full_n == 1'b0) | (points_phi_3_8_out_full_n == 1'b0) | (points_radius_3_8_out_full_n == 1'b0) | (points_layer_num_3_8_out_full_n == 1'b0) | (init_patch_1458_out_out_full_n == 1'b0) | (init_patch_1459_out_out_full_n == 1'b0) | (points_z_2_8_out_full_n == 1'b0) | (init_patch_1460_out_out_full_n == 1'b0) | (init_patch_1461_out_out_full_n == 1'b0) | (init_patch_1462_out_out_full_n == 1'b0) | (init_patch_1463_out_out_full_n == 1'b0) | (init_patch_1464_out_out_full_n == 1'b0) | (init_patch_1465_out_out_full_n == 1'b0) | (init_patch_1466_out_out_full_n == 1'b0) | (init_patch_1467_out_out_full_n == 1'b0) | (init_patch_1468_out_out_full_n == 1'b0) | (init_patch_1469_out_out_full_n == 1'b0) | (points_phi_2_8_out_full_n == 1'b0) | (init_patch_1470_out_out_full_n == 1'b0) | (init_patch_1471_out_out_full_n == 1'b0) | (init_patch_1472_out_out_full_n == 1'b0) | (init_patch_1473_out_out_full_n == 1'b0) | (init_patch_1474_out_out_full_n == 1'b0) | (init_patch_1475_out_out_full_n == 1'b0) | (init_patch_1476_out_out_full_n == 1'b0) | (init_patch_1477_out_out_full_n == 1'b0) | (init_patch_1478_out_out_full_n == 1'b0) | (init_patch_1479_out_out_full_n == 1'b0) | (points_radius_2_8_out_full_n == 1'b0) | (init_patch_1480_out_out_full_n == 1'b0) | (init_patch_1481_out_out_full_n == 1'b0) | (init_patch_1482_out_out_full_n == 1'b0) | (init_patch_1483_out_out_full_n == 1'b0) | (init_patch_1484_out_out_full_n == 1'b0) | (init_patch_1485_out_out_full_n == 1'b0) | (init_patch_1486_out_out_full_n == 1'b0) | (init_patch_1487_out_out_full_n == 1'b0) | (init_patch_1488_out_out_full_n == 1'b0) | (init_patch_1489_out_out_full_n == 1'b0) | (points_layer_num_2_8_out_full_n == 1'b0) | (init_patch_1490_out_out_full_n == 1'b0) | (init_patch_1491_out_out_full_n == 1'b0) | (init_patch_1492_out_out_full_n == 1'b0) | (init_patch_1493_out_out_full_n == 1'b0) | (init_patch_1494_out_out_full_n == 1'b0) | (init_patch_1495_out_out_full_n == 1'b0) | (init_patch_1496_out_out_full_n == 1'b0) | (init_patch_1497_out_out_full_n == 1'b0) | (init_patch_1498_out_out_full_n == 1'b0) | (init_patch_1499_out_out_full_n == 1'b0) | (points_z_1_8_out_full_n == 1'b0) | (init_patch_1500_out_out_full_n == 1'b0) | (init_patch_1501_out_out_full_n == 1'b0) | (init_patch_1502_out_out_full_n == 1'b0) | (init_patch_1503_out_out_full_n == 1'b0) | (init_patch_1504_out_out_full_n == 1'b0) | (init_patch_1505_out_out_full_n == 1'b0) | (init_patch_1506_out_out_full_n == 1'b0) | (init_patch_1507_out_out_full_n == 1'b0) | (init_patch_1508_out_out_full_n == 1'b0) | (init_patch_1509_out_out_full_n == 1'b0) | (points_phi_1_8_out_full_n == 1'b0) | (init_patch_1510_out_out_full_n == 1'b0) | (init_patch_1511_out_out_full_n == 1'b0) | (init_patch_1512_out_out_full_n == 1'b0) | (init_patch_1513_out_out_full_n == 1'b0) | (init_patch_1514_out_out_full_n == 1'b0) | (init_patch_1515_out_out_full_n == 1'b0) | (init_patch_1516_out_out_full_n == 1'b0) | (init_patch_1517_out_out_full_n == 1'b0) | (init_patch_1518_out_out_full_n == 1'b0) | (init_patch_1519_out_out_full_n == 1'b0) | (points_radius_1_8_out_full_n == 1'b0) | (init_patch_1520_out_out_full_n == 1'b0) | (init_patch_1521_out_out_full_n == 1'b0) | (init_patch_1522_out_out_full_n == 1'b0) | (init_patch_1523_out_out_full_n == 1'b0) | (init_patch_1524_out_out_full_n == 1'b0) | (init_patch_1525_out_out_full_n == 1'b0) | (init_patch_1526_out_out_full_n == 1'b0) | (init_patch_1527_out_out_full_n == 1'b0) | (init_patch_1528_out_out_full_n == 1'b0) | (init_patch_1529_out_out_full_n == 1'b0) | (points_layer_num_1_8_out_full_n == 1'b0) | (init_patch_1530_out_out_full_n == 1'b0) | (init_patch_1531_out_out_full_n == 1'b0) | (init_patch_1532_out_out_full_n == 1'b0) | (init_patch_1533_out_out_full_n == 1'b0) | (init_patch_1534_out_out_full_n == 1'b0) | (init_patch_1535_out_out_full_n == 1'b0) | (init_patch_1536_out_out_full_n == 1'b0) | (init_patch_1537_out_out_full_n == 1'b0) | (init_patch_1538_out_out_full_n == 1'b0) | (init_patch_1377_out_out_full_n == 1'b0) | (points_z_0_8_out_full_n == 1'b0) | (init_patch_1378_out_out_full_n == 1'b0) | (init_patch_1379_out_out_full_n == 1'b0) | (init_patch_1380_out_out_full_n == 1'b0) | (init_patch_1381_out_out_full_n == 1'b0) | (init_patch_1382_out_out_full_n == 1'b0) | (init_patch_1383_out_out_full_n == 1'b0) | (init_patch_1384_out_out_full_n == 1'b0) | (init_patch_1385_out_out_full_n == 1'b0) | (init_patch_1386_out_out_full_n == 1'b0) | (init_patch_1387_out_out_full_n == 1'b0) | (points_phi_0_8_out_full_n == 1'b0) | (init_patch_1388_out_out_full_n == 1'b0) | (init_patch_1389_out_out_full_n == 1'b0) | (init_patch_1390_out_out_full_n == 1'b0) | (init_patch_1391_out_out_full_n == 1'b0) | (init_patch_1392_out_out_full_n == 1'b0) | (init_patch_1393_out_out_full_n == 1'b0) | (init_patch_1394_out_out_full_n == 1'b0) | (init_patch_1395_out_out_full_n == 1'b0) | (init_patch_1396_out_out_full_n == 1'b0) | (init_patch_1397_out_out_full_n == 1'b0) | (points_radius_0_8_out_full_n == 1'b0) | (init_patch_1398_out_out_full_n == 1'b0) | (init_patch_1399_out_out_full_n == 1'b0) | (init_patch_1400_out_out_full_n == 1'b0) | (init_patch_1401_out_out_full_n == 1'b0) | (init_patch_1402_out_out_full_n == 1'b0) | (init_patch_1403_out_out_full_n == 1'b0) | (init_patch_1404_out_out_full_n == 1'b0) | (init_patch_1405_out_out_full_n == 1'b0) | (init_patch_1406_out_out_full_n == 1'b0) | (init_patch_1407_out_out_full_n == 1'b0) | (points_layer_num_0_8_out_full_n == 1'b0) | (init_patch_1408_out_out_full_n == 1'b0) | (init_patch_1409_out_out_full_n == 1'b0) | (init_patch_1410_out_out_full_n == 1'b0) | (init_patch_1411_out_out_full_n == 1'b0) | (init_patch_1412_out_out_full_n == 1'b0) | (init_patch_1413_out_out_full_n == 1'b0) | (init_patch_1414_out_out_full_n == 1'b0) | (init_patch_1415_out_out_full_n == 1'b0) | (init_patch_1416_out_out_full_n == 1'b0) | (init_patch_1417_out_out_full_n == 1'b0) | (rbVal_out_full_n == 1'b0) | (init_patch_1418_out_out_full_n == 1'b0) | (init_patch_1419_out_out_full_n == 1'b0) | (init_patch_1420_out_out_full_n == 1'b0) | (init_patch_1421_out_out_full_n == 1'b0) | (init_patch_1422_out_out_full_n == 1'b0) | (init_patch_1423_out_out_full_n == 1'b0) | (init_patch_1424_out_out_full_n == 1'b0) | (init_patch_1425_out_out_full_n == 1'b0) | (init_patch_1426_out_out_full_n == 1'b0) | (init_patch_1427_out_out_full_n == 1'b0) | (lbVal_out_full_n == 1'b0) | (init_patch_1428_out_out_full_n == 1'b0) | (init_patch_1429_out_out_full_n == 1'b0) | (init_patch_1430_out_out_full_n == 1'b0) | (init_patch_1431_out_out_full_n == 1'b0) | (init_patch_1432_out_out_full_n == 1'b0) | (init_patch_1433_out_out_full_n == 1'b0) | (init_patch_1434_out_out_full_n == 1'b0) | (init_patch_1435_out_out_full_n == 1'b0) | (init_patch_1436_out_out_full_n == 1'b0) | (init_patch_1437_out_out_full_n == 1'b0) | (start_index_out_full_n == 1'b0) | (init_patch_1438_out_out_full_n == 1'b0) | (init_patch_1439_out_out_full_n == 1'b0) | (init_patch_1440_out_out_full_n == 1'b0) | (init_patch_1441_out_out_full_n == 1'b0) | (init_patch_1442_out_out_full_n == 1'b0) | (init_patch_1443_out_out_full_n == 1'b0) | (init_patch_1444_out_out_full_n == 1'b0) | (init_patch_1445_out_out_full_n == 1'b0) | (init_patch_1446_out_out_full_n == 1'b0) | (init_patch_1447_out_out_full_n == 1'b0) | (init_patch_1448_out_out_full_n == 1'b0) | (init_patch_1449_out_out_full_n == 1'b0) | (init_patch_1450_out_out_full_n == 1'b0) | (init_patch_1451_out_out_full_n == 1'b0) | (init_patch_1452_out_out_full_n == 1'b0) | (init_patch_1453_out_out_full_n == 1'b0) | (init_patch_1454_out_out_full_n == 1'b0) | (init_patch_1455_out_out_full_n == 1'b0) | (init_patch_1456_out_out_full_n == 1'b0) | (init_patch_1457_out_out_full_n == 1'b0) | (init_patch_1296_out_out_full_n == 1'b0) | (init_patch_1297_out_out_full_n == 1'b0) | (init_patch_1298_out_out_full_n == 1'b0) | (init_patch_1299_out_out_full_n == 1'b0) | (init_patch_1300_out_out_full_n == 1'b0) | (init_patch_1301_out_out_full_n == 1'b0) | (init_patch_1302_out_out_full_n == 1'b0) | (init_patch_1303_out_out_full_n == 1'b0) | (init_patch_1304_out_out_full_n == 1'b0) | (init_patch_1305_out_out_full_n == 1'b0) | (init_patch_1306_out_out_full_n == 1'b0) | (init_patch_1307_out_out_full_n == 1'b0) | (init_patch_1308_out_out_full_n == 1'b0) | (init_patch_1309_out_out_full_n == 1'b0) | (init_patch_1310_out_out_full_n == 1'b0) | (init_patch_1311_out_out_full_n == 1'b0) | (init_patch_1312_out_out_full_n == 1'b0) | (init_patch_1313_out_out_full_n == 1'b0) | (init_patch_1314_out_out_full_n == 1'b0) | (init_patch_1315_out_out_full_n == 1'b0) | (init_patch_1316_out_out_full_n == 1'b0) | (init_patch_1317_out_out_full_n == 1'b0) | (init_patch_1318_out_out_full_n == 1'b0) | (init_patch_1319_out_out_full_n == 1'b0) | (init_patch_1320_out_out_full_n == 1'b0) | (init_patch_1321_out_out_full_n == 1'b0) | (init_patch_1322_out_out_full_n == 1'b0) | (init_patch_1323_out_out_full_n == 1'b0) | (init_patch_1324_out_out_full_n == 1'b0) | (init_patch_1325_out_out_full_n == 1'b0) | (init_patch_1326_out_out_full_n == 1'b0) | (init_patch_1327_out_out_full_n == 1'b0) | (init_patch_1328_out_out_full_n == 1'b0) | (init_patch_1329_out_out_full_n == 1'b0) | (init_patch_1330_out_out_full_n == 1'b0) | (init_patch_1331_out_out_full_n == 1'b0) | (init_patch_1332_out_out_full_n == 1'b0) | (init_patch_1333_out_out_full_n == 1'b0) | (init_patch_1334_out_out_full_n == 1'b0) | (init_patch_1335_out_out_full_n == 1'b0) | (init_patch_1336_out_out_full_n == 1'b0) | (init_patch_1337_out_out_full_n == 1'b0) | (init_patch_1338_out_out_full_n == 1'b0) | (init_patch_1339_out_out_full_n == 1'b0) | (init_patch_1340_out_out_full_n == 1'b0) | (init_patch_1341_out_out_full_n == 1'b0) | (init_patch_1342_out_out_full_n == 1'b0) | (init_patch_1343_out_out_full_n == 1'b0) | (init_patch_1344_out_out_full_n == 1'b0) | (init_patch_1345_out_out_full_n == 1'b0) | (init_patch_1346_out_out_full_n == 1'b0) | (init_patch_1347_out_out_full_n == 1'b0) | (init_patch_1348_out_out_full_n == 1'b0) | (init_patch_1349_out_out_full_n == 1'b0) | (init_patch_1350_out_out_full_n == 1'b0) | (init_patch_1351_out_out_full_n == 1'b0) | (init_patch_1352_out_out_full_n == 1'b0) | (init_patch_1353_out_out_full_n == 1'b0) | (init_patch_1354_out_out_full_n == 1'b0) | (init_patch_1355_out_out_full_n == 1'b0) | (init_patch_1356_out_out_full_n == 1'b0) | (init_patch_1357_out_out_full_n == 1'b0) | (init_patch_1358_out_out_full_n == 1'b0) | (init_patch_1359_out_out_full_n == 1'b0) | (init_patch_1360_out_out_full_n == 1'b0) | (init_patch_1361_out_out_full_n == 1'b0) | (init_patch_1362_out_out_full_n == 1'b0) | (init_patch_1363_out_out_full_n == 1'b0) | (init_patch_1364_out_out_full_n == 1'b0) | (init_patch_1365_out_out_full_n == 1'b0) | (init_patch_1366_out_out_full_n == 1'b0) | (init_patch_1367_out_out_full_n == 1'b0) | (init_patch_1368_out_out_full_n == 1'b0) | (init_patch_1369_out_out_full_n == 1'b0) | (init_patch_1370_out_out_full_n == 1'b0) | (init_patch_1371_out_out_full_n == 1'b0) | (init_patch_1372_out_out_full_n == 1'b0) | (init_patch_1373_out_out_full_n == 1'b0) | (init_patch_1374_out_out_full_n == 1'b0) | (init_patch_1375_out_out_full_n == 1'b0) | (init_patch_1376_out_out_full_n == 1'b0) | (init_patch_1215_out_out_full_n == 1'b0) | (init_patch_1216_out_out_full_n == 1'b0) | (init_patch_1217_out_out_full_n == 1'b0) | (init_patch_1218_out_out_full_n == 1'b0) | (init_patch_1219_out_out_full_n == 1'b0) | (init_patch_1220_out_out_full_n == 1'b0) | (init_patch_1221_out_out_full_n == 1'b0) | (init_patch_1222_out_out_full_n == 1'b0) | (init_patch_1223_out_out_full_n == 1'b0) | (init_patch_1224_out_out_full_n == 1'b0) | (init_patch_1225_out_out_full_n == 1'b0) | (init_patch_1226_out_out_full_n == 1'b0) | (init_patch_1227_out_out_full_n == 1'b0) | (init_patch_1228_out_out_full_n == 1'b0) | (init_patch_1229_out_out_full_n == 1'b0) | (init_patch_1230_out_out_full_n == 1'b0) | (init_patch_1231_out_out_full_n == 1'b0) | (init_patch_1232_out_out_full_n == 1'b0) | (init_patch_1233_out_out_full_n == 1'b0) | (init_patch_1234_out_out_full_n == 1'b0) | (init_patch_1235_out_out_full_n == 1'b0) | (init_patch_1236_out_out_full_n == 1'b0) | (init_patch_1237_out_out_full_n == 1'b0) | (init_patch_1238_out_out_full_n == 1'b0) | (init_patch_1239_out_out_full_n == 1'b0) | (init_patch_1240_out_out_full_n == 1'b0) | (init_patch_1241_out_out_full_n == 1'b0) | (init_patch_1242_out_out_full_n == 1'b0) | (init_patch_1243_out_out_full_n == 1'b0) | (init_patch_1244_out_out_full_n == 1'b0) | (init_patch_1245_out_out_full_n == 1'b0) | (init_patch_1246_out_out_full_n == 1'b0) | (init_patch_1247_out_out_full_n == 1'b0) | (init_patch_1248_out_out_full_n == 1'b0) | (init_patch_1249_out_out_full_n == 1'b0) | (init_patch_1250_out_out_full_n == 1'b0) | (init_patch_1251_out_out_full_n == 1'b0) | (init_patch_1252_out_out_full_n == 1'b0) | (init_patch_1253_out_out_full_n == 1'b0) | (init_patch_1254_out_out_full_n == 1'b0) | (init_patch_1255_out_out_full_n == 1'b0) | (init_patch_1256_out_out_full_n == 1'b0) | (init_patch_1257_out_out_full_n == 1'b0) | (init_patch_1258_out_out_full_n == 1'b0) | (init_patch_1259_out_out_full_n == 1'b0) | (init_patch_1260_out_out_full_n == 1'b0) | (init_patch_1261_out_out_full_n == 1'b0) | (init_patch_1262_out_out_full_n == 1'b0) | (init_patch_1263_out_out_full_n == 1'b0) | (init_patch_1264_out_out_full_n == 1'b0) | (init_patch_1265_out_out_full_n == 1'b0) | (init_patch_1266_out_out_full_n == 1'b0) | (init_patch_1267_out_out_full_n == 1'b0) | (init_patch_1268_out_out_full_n == 1'b0) | (init_patch_1269_out_out_full_n == 1'b0) | (init_patch_1270_out_out_full_n == 1'b0) | (init_patch_1271_out_out_full_n == 1'b0) | (init_patch_1272_out_out_full_n == 1'b0) | (init_patch_1273_out_out_full_n == 1'b0) | (init_patch_1274_out_out_full_n == 1'b0) | (init_patch_1275_out_out_full_n == 1'b0) | (init_patch_1276_out_out_full_n == 1'b0) | (init_patch_1277_out_out_full_n == 1'b0) | (init_patch_1278_out_out_full_n == 1'b0) | (init_patch_1279_out_out_full_n == 1'b0) | (init_patch_1280_out_out_full_n == 1'b0) | (init_patch_1281_out_out_full_n == 1'b0) | (init_patch_1282_out_out_full_n == 1'b0) | (init_patch_1283_out_out_full_n == 1'b0) | (init_patch_1284_out_out_full_n == 1'b0) | (init_patch_1285_out_out_full_n == 1'b0) | (init_patch_1286_out_out_full_n == 1'b0) | (init_patch_1287_out_out_full_n == 1'b0) | (init_patch_1288_out_out_full_n == 1'b0) | (init_patch_1289_out_out_full_n == 1'b0) | (init_patch_1290_out_out_full_n == 1'b0) | (init_patch_1291_out_out_full_n == 1'b0) | (init_patch_1292_out_out_full_n == 1'b0) | (init_patch_1293_out_out_full_n == 1'b0) | (init_patch_1294_out_out_full_n == 1'b0) | (init_patch_1295_out_out_full_n == 1'b0) | (sp_z_values_15_1_out_full_n == 1'b0) | (sp_z_values_14_1_out_full_n == 1'b0) | (sp_z_values_13_1_out_full_n == 1'b0) | (sp_z_values_12_1_out_full_n == 1'b0) | (sp_z_values_11_1_out_full_n == 1'b0) | (sp_z_values_10_1_out_full_n == 1'b0) | (sp_z_values_9_1_out_full_n == 1'b0) | (sp_z_values_8_1_out_full_n == 1'b0) | (sp_z_values_7_1_out_full_n == 1'b0) | (sp_z_values_6_1_out_full_n == 1'b0) | (sp_z_values_5_1_out_full_n == 1'b0) | (sp_z_values_4_1_out_full_n == 1'b0) | (sp_z_values_3_1_out_full_n == 1'b0) | (sp_z_values_2_1_out_full_n == 1'b0) | (sp_z_values_1_1_out_full_n == 1'b0) | (sp_z_values_0_1_out_full_n == 1'b0) | (sp_n_points_1_out_full_n == 1'b0) | (sp_points_15_z_1_out_full_n == 1'b0) | (sp_points_14_z_1_out_full_n == 1'b0) | (sp_points_13_z_1_out_full_n == 1'b0) | (sp_points_12_z_1_out_full_n == 1'b0) | (sp_points_11_z_1_out_full_n == 1'b0) | (sp_points_10_z_1_out_full_n == 1'b0) | (sp_points_9_z_1_out_full_n == 1'b0) | (sp_points_8_z_1_out_full_n == 1'b0) | (sp_points_7_z_1_out_full_n == 1'b0) | (sp_points_6_z_1_out_full_n == 1'b0) | (sp_points_5_z_1_out_full_n == 1'b0) | (sp_points_4_z_1_out_full_n == 1'b0) | (sp_points_3_z_1_out_full_n == 1'b0) | (sp_points_2_z_1_out_full_n == 1'b0) | (sp_points_1_z_1_out_full_n == 1'b0) | (sp_points_0_z_1_out_full_n == 1'b0) | (sp_points_15_phi_1_out_full_n == 1'b0) | (sp_points_14_phi_1_out_full_n == 1'b0) | (sp_points_13_phi_1_out_full_n == 1'b0) | (sp_points_12_phi_1_out_full_n == 1'b0) | (sp_points_11_phi_1_out_full_n == 1'b0) | (sp_points_10_phi_1_out_full_n == 1'b0) | (sp_points_9_phi_1_out_full_n == 1'b0) | (sp_points_8_phi_1_out_full_n == 1'b0) | (sp_points_7_phi_1_out_full_n == 1'b0) | (sp_points_6_phi_1_out_full_n == 1'b0) | (sp_points_5_phi_1_out_full_n == 1'b0) | (sp_points_4_phi_1_out_full_n == 1'b0) | (sp_points_3_phi_1_out_full_n == 1'b0) | (sp_points_2_phi_1_out_full_n == 1'b0) | (sp_points_1_phi_1_out_full_n == 1'b0) | (sp_points_0_phi_1_out_full_n == 1'b0) | (sp_points_15_radius_1_out_full_n == 1'b0) | (sp_points_14_radius_1_out_full_n == 1'b0) | (sp_points_13_radius_1_out_full_n == 1'b0) | (sp_points_12_radius_1_out_full_n == 1'b0) | (sp_points_11_radius_1_out_full_n == 1'b0) | (sp_points_10_radius_1_out_full_n == 1'b0) | (sp_points_9_radius_1_out_full_n == 1'b0) | (sp_points_8_radius_1_out_full_n == 1'b0) | (sp_points_7_radius_1_out_full_n == 1'b0) | (sp_points_6_radius_1_out_full_n == 1'b0) | (sp_points_5_radius_1_out_full_n == 1'b0) | (sp_points_4_radius_1_out_full_n == 1'b0) | (sp_points_3_radius_1_out_full_n == 1'b0) | (sp_points_2_radius_1_out_full_n == 1'b0) | (sp_points_1_radius_1_out_full_n == 1'b0) | (sp_points_0_radius_1_out_full_n == 1'b0) | (sp_points_15_layer_num_1_out_full_n == 1'b0) | (sp_points_14_layer_num_1_out_full_n == 1'b0) | (sp_points_13_layer_num_1_out_full_n == 1'b0) | (sp_points_12_layer_num_1_out_full_n == 1'b0) | (sp_points_11_layer_num_1_out_full_n == 1'b0) | (sp_points_10_layer_num_1_out_full_n == 1'b0) | (sp_points_9_layer_num_1_out_full_n == 1'b0) | (sp_points_8_layer_num_1_out_full_n == 1'b0) | (sp_points_7_layer_num_1_out_full_n == 1'b0) | (sp_points_6_layer_num_1_out_full_n == 1'b0) | (sp_points_5_layer_num_1_out_full_n == 1'b0) | (sp_points_4_layer_num_1_out_full_n == 1'b0) | (sp_points_3_layer_num_1_out_full_n == 1'b0) | (sp_points_2_layer_num_1_out_full_n == 1'b0) | (sp_points_1_layer_num_1_out_full_n == 1'b0) | (sp_points_0_layer_num_1_out_full_n == 1'b0) | (sp_z_values_15_out_full_n == 1'b0) | (sp_z_values_14_out_full_n == 1'b0) | (sp_z_values_13_out_full_n == 1'b0) | (sp_z_values_12_out_full_n == 1'b0) | (sp_z_values_11_out_full_n == 1'b0) | (sp_z_values_10_out_full_n == 1'b0) | (sp_z_values_9_out_full_n == 1'b0) | (sp_z_values_8_out_full_n == 1'b0) | (sp_z_values_7_out_full_n == 1'b0) | (sp_z_values_6_out_full_n == 1'b0) | (sp_z_values_5_out_full_n == 1'b0) | (sp_z_values_4_out_full_n == 1'b0) | (sp_z_values_3_out_full_n == 1'b0) | (sp_z_values_2_out_full_n == 1'b0)) & (1'b1 == ap_CS_fsm_state152))
+INFO: [RTGEN 206-100] Finished creating RTL model for 'cover_make_patch_aligned_to_line_Block_split2458_proc134'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 6 seconds. CPU system time: 1 seconds. Elapsed time: 6.641 seconds; current allocated memory: 903.306 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'p_find_left_and_right_bound135' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'dadd_64ns_64ns_64_4_full_dsp_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'dcmp_64ns_64ns_1_2_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'p_find_left_and_right_bound135'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 7 seconds. CPU system time: 1 seconds. Elapsed time: 7.908 seconds; current allocated memory: 960.604 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'cover_make_patch_aligned_to_line_Block_proc' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'cover_make_patch_aligned_to_line_Block_proc'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.652 seconds; current allocated memory: 961.450 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'cover_make_patch_aligned_to_line_Block_proc132' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-104] Estimated max fanout for 'cover_make_patch_aligned_to_line_Block_proc132' is 26652 from HDL expression: (1'b1 == ap_CS_fsm_state17)
+INFO: [RTGEN 206-100] Finished creating RTL model for 'cover_make_patch_aligned_to_line_Block_proc132'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 27 seconds. CPU system time: 0 seconds. Elapsed time: 26.709 seconds; current allocated memory: 1.307 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'patch_buffer_push_patch' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'srem_32ns_32ns_32_36_seq_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'patch_buffer_push_patch'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 2 seconds. CPU system time: 1 seconds. Elapsed time: 3.042 seconds; current allocated memory: 1.322 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'cover_make_patch_aligned_to_line' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'cover_make_patch_aligned_to_line'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 21 seconds. CPU system time: 0 seconds. Elapsed time: 20.99 seconds; current allocated memory: 1.374 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'system_top' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'system_top/cover' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'system_top/row_data' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'system_top/num_points' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'system_top' to 'ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'system_top'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 6 seconds. CPU system time: 0 seconds. Elapsed time: 6.916 seconds; current allocated memory: 1.394 GB.
+INFO: [RTMG 210-279] Implementing memory 'system_top_p_find_left_and_right_bound_trapezoid_edges_rom' using auto ROMs.
+INFO: [RTMG 210-282] Generating pipelined core: 'system_top_srem_32ns_32ns_32_36_seq_1_div'
+INFO: [HLS 200-741] Implementing PIPO system_top_cover_make_patch_aligned_to_line_row_list_memcore using a single memory for all blocks
+INFO: [RTMG 210-278] Implementing memory 'system_top_cover_make_patch_aligned_to_line_row_list_memcore_ram (RAM)' using auto RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'start_index_c_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'lbVal_c_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1295_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1294_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1293_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1292_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1291_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1290_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1289_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1288_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1287_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1286_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1285_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1284_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1283_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1282_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1281_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1280_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1279_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1278_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1277_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1276_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1275_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1274_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1273_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1272_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1271_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1270_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1269_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1268_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1267_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1266_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1265_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1264_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1263_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1262_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1261_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1260_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1259_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1258_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1257_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1256_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1255_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1254_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1253_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1252_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1251_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1250_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1249_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1248_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1247_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1246_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1245_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1244_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1243_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1242_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1241_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1240_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1239_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1238_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1237_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1236_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1235_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1234_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1233_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1232_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1231_loc_c_U(system_top_fifo_w5_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1230_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1229_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1228_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1227_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1226_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1225_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1224_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1223_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1222_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1221_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1220_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1219_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1218_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1217_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1216_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1215_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1376_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1375_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1374_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1373_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1372_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1371_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1370_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1369_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1368_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1367_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1366_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1365_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1364_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1363_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1362_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1361_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1360_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1359_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1358_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1357_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1356_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1355_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1354_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1353_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1352_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1351_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1350_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1349_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1348_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1347_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1346_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1345_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1344_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1343_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1342_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1341_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1340_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1339_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1338_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1337_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1336_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1335_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1334_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1333_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1332_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1331_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1330_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1329_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1328_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1327_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1326_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1325_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1324_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1323_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1322_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1321_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1320_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1319_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1318_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1317_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1316_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1315_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1314_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1313_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1312_loc_c_U(system_top_fifo_w5_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1311_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1310_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1309_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1308_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1307_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1306_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1305_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1304_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1303_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1302_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1301_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1300_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1299_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1298_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1297_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1296_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1457_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1456_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1455_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1454_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1453_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1452_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1451_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1450_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1449_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1448_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1447_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1446_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1445_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1444_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1443_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1442_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1441_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1440_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1439_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1438_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1437_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1436_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1435_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1434_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1433_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1432_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1431_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1430_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1429_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1428_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1427_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1426_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1425_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1424_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1423_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1422_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1421_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1420_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1419_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1418_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1417_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1416_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1415_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1414_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1413_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1412_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1411_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1410_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1409_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1408_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1407_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1406_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1405_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1404_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1403_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1402_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1401_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1400_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1399_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1398_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1397_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1396_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1395_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1394_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1393_loc_c_U(system_top_fifo_w5_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1392_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1391_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1390_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1389_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1388_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1387_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1386_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1385_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1384_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1383_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1382_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1381_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1380_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1379_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1378_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1377_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1538_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1537_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1536_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1535_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1534_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1533_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1532_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1531_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1530_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1529_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1528_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1527_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1526_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1525_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1524_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1523_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1522_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1521_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1520_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1519_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1518_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1517_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1516_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1515_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1514_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1513_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1512_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1511_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1510_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1509_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1508_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1507_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1506_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1505_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1504_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1503_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1502_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1501_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1500_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1499_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1498_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1497_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1496_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1495_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1494_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1493_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1492_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1491_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1490_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1489_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1488_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1487_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1486_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1485_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1484_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1483_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1482_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1481_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1480_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1479_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1478_loc_c_U(system_top_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1477_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1476_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1475_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1474_loc_c_U(system_top_fifo_w5_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1473_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1472_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1471_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1470_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1469_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1468_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1467_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1466_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1465_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1464_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1463_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1462_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1461_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1460_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1459_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'init_patch_1458_loc_c_U(system_top_fifo_w64_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'call_ret_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'left_bound_c_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'start_index_load_4_cast_loc_channel_U(system_top_fifo_w11_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'add_ln125_4_loc_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_0_0_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_0_0_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_0_0_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_0_0_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_0_1_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_0_1_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_0_1_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_0_1_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_0_2_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_0_2_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_0_2_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_0_2_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_0_3_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_0_3_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_0_3_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_0_3_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_0_4_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_0_4_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_0_4_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_0_4_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_0_5_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_0_5_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_0_5_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_0_5_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_0_6_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_0_6_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_0_6_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_0_6_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_0_7_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_0_7_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_0_7_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_0_7_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_0_8_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_0_8_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_0_8_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_0_8_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_0_9_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_0_9_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_0_9_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_0_9_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_0_10_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_0_10_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_0_10_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_0_10_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_0_11_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_0_11_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_0_11_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_0_11_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_0_12_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_0_12_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_0_12_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_0_12_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_0_13_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_0_13_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_0_13_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_0_13_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_0_14_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_0_14_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_0_14_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_0_14_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_0_15_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_0_15_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_0_15_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_0_15_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_1_0_channel_U(system_top_fifo_w5_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_0_0_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_0_1_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_0_2_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_0_3_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_0_4_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_0_5_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_0_6_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_0_7_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_0_8_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_0_9_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_0_10_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_0_11_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_0_12_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_0_13_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_0_14_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_0_15_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_1_0_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_1_0_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_1_0_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_1_0_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_1_1_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_1_1_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_1_1_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_1_1_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_1_2_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_1_2_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_1_2_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_1_2_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_1_3_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_1_3_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_1_3_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_1_3_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_1_4_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_1_4_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_1_4_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_1_4_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_1_5_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_1_5_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_1_5_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_1_5_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_1_6_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_1_6_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_1_6_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_1_6_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_1_7_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_1_7_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_1_7_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_1_7_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_1_8_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_1_8_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_1_8_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_1_8_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_1_9_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_1_9_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_1_9_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_1_9_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_1_10_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_1_10_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_1_10_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_1_10_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_1_11_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_1_11_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_1_11_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_1_11_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_1_12_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_1_12_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_1_12_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_1_12_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_1_13_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_1_13_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_1_13_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_1_13_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_1_14_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_1_14_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_1_14_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_1_14_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_1_15_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_1_15_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_1_15_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_1_15_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_1_1_channel_U(system_top_fifo_w5_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_1_0_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_1_1_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_1_2_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_1_3_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_1_4_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_1_5_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_1_6_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_1_7_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_1_8_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_1_9_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_1_10_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_1_11_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_1_12_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_1_13_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_1_14_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_1_15_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_2_0_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_2_0_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_2_0_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_2_0_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_2_1_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_2_1_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_2_1_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_2_1_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_2_2_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_2_2_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_2_2_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_2_2_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_2_3_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_2_3_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_2_3_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_2_3_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_2_4_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_2_4_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_2_4_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_2_4_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_2_5_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_2_5_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_2_5_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_2_5_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_2_6_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_2_6_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_2_6_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_2_6_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_2_7_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_2_7_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_2_7_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_2_7_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_2_8_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_2_8_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_2_8_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_2_8_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_2_9_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_2_9_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_2_9_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_2_9_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_2_10_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_2_10_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_2_10_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_2_10_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_2_11_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_2_11_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_2_11_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_2_11_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_2_12_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_2_12_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_2_12_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_2_12_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_2_13_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_2_13_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_2_13_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_2_13_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_2_14_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_2_14_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_2_14_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_2_14_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_2_15_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_2_15_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_2_15_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_2_15_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_1_2_channel_U(system_top_fifo_w5_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_2_0_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_2_1_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_2_2_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_2_3_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_2_4_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_2_5_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_2_6_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_2_7_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_2_8_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_2_9_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_2_10_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_2_11_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_2_12_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_2_13_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_2_14_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_2_15_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_3_0_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_3_0_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_3_0_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_3_0_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_3_1_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_3_1_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_3_1_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_3_1_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_3_2_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_3_2_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_3_2_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_3_2_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_3_3_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_3_3_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_3_3_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_3_3_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_3_4_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_3_4_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_3_4_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_3_4_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_3_5_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_3_5_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_3_5_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_3_5_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_3_6_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_3_6_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_3_6_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_3_6_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_3_7_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_3_7_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_3_7_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_3_7_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_3_8_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_3_8_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_3_8_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_3_8_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_3_9_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_3_9_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_3_9_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_3_9_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_3_10_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_3_10_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_3_10_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_3_10_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_3_11_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_3_11_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_3_11_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_3_11_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_3_12_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_3_12_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_3_12_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_3_12_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_3_13_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_3_13_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_3_13_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_3_13_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_3_14_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_3_14_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_3_14_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_3_14_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_3_15_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_3_15_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_3_15_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_3_15_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_1_3_channel_U(system_top_fifo_w5_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_3_0_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_3_1_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_3_2_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_3_3_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_3_4_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_3_5_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_3_6_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_3_7_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_3_8_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_3_9_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_3_10_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_3_11_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_3_12_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_3_13_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_3_14_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_3_15_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_4_0_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_4_0_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_4_0_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_4_0_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_4_1_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_4_1_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_4_1_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_4_1_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_4_2_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_4_2_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_4_2_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_4_2_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_4_3_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_4_3_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_4_3_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_4_3_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_4_4_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_4_4_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_4_4_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_4_4_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_4_5_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_4_5_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_4_5_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_4_5_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_4_6_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_4_6_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_4_6_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_4_6_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_4_7_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_4_7_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_4_7_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_4_7_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_4_8_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_4_8_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_4_8_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_4_8_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_4_9_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_4_9_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_4_9_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_4_9_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_4_10_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_4_10_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_4_10_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_4_10_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_4_11_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_4_11_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_4_11_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_4_11_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_4_12_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_4_12_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_4_12_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_4_12_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_4_13_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_4_13_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_4_13_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_4_13_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_4_14_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_4_14_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_4_14_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_4_14_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_0_4_15_channel_U(system_top_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_1_4_15_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_2_4_15_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_0_3_4_15_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_1_4_channel_U(system_top_fifo_w5_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_4_0_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_4_1_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_4_2_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_4_3_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_4_4_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_4_5_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_4_6_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_4_7_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_4_8_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_4_9_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_4_10_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_4_11_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_4_12_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_4_13_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_4_14_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'agg_tmp_11_2_4_15_channel_U(system_top_fifo_w64_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'start_for_cover_make_patch_aligned_to_line_Block_proc_U0_U(system_top_start_for_cover_make_patch_aligned_to_line_Block_proc_U0)' using Shift Registers.
+INFO: [HLS 200-741] Implementing PIPO system_top_cover_make_patch_aligned_to_line_row_list_memcore using a single memory for all blocks
+INFO: [HLS 200-741] Implementing PIPO system_top_cover_make_patch_aligned_to_line_row_list_memcore using a single memory for all blocks
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 51 seconds. CPU system time: 13 seconds. Elapsed time: 64.368 seconds; current allocated memory: 1.408 GB.
+INFO: [VHDL 208-304] Generating VHDL RTL for system_top.
+INFO: [VLOG 209-307] Generating Verilog RTL for system_top.
+INFO: [HLS 200-789] **** Estimated Fmax: 138.60 MHz
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 267 seconds. CPU system time: 20 seconds. Elapsed time: 308.655 seconds; current allocated memory: 1.417 GB.
+INFO: [HLS 200-112] Total CPU user time: 270 seconds. Total CPU system time: 21 seconds. Total elapsed time: 311.216 seconds; peak allocated memory: 1.408 GB.

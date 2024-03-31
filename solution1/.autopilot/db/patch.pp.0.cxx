@@ -156,7 +156,7 @@ extern "C" {
 
 
 # 1 "C:/Projects/ParticleCoverHLS/include/constants.h" 1
-# 14 "C:/Projects/ParticleCoverHLS/include/constants.h"
+# 25 "C:/Projects/ParticleCoverHLS/include/constants.h"
 const double RADII[] = {5.0, 10.0, 15.0, 20.0, 25.0};
 # 5 "C:/Projects/ParticleCoverHLS/include\\patch.h" 2
 # 1 "C:/Projects/ParticleCoverHLS/include/environment.h" 1
@@ -24746,7 +24746,8 @@ std::ostream &operator<<(std::ostream &os, const superpoint_s &sp);
 
 
 
-typedef struct {
+typedef struct
+{
   environment_s env;
   int end_layer;
   int left_end_layer;
@@ -24767,13 +24768,21 @@ typedef struct {
 patch_s patch_init(environment_s env, superpoint_s *superpoints,
                    size_t n_superpoints, double apexZ0);
 
+void patch_straight_line_projector_from_layer_ij_to_k(
+    float *result,
+    float z_i, float z_j, float i, float j, float k);
 
-std::ostream &operator<<(std::ostream &os, const patch_s &p);
+
+std::ostream &
+operator<<(std::ostream &os, const patch_s &p);
 # 2 "ParticleCoverHLS/src/patch.cxx" 2
 
 # 1 "C:/Xilinx/Vitis_HLS/2020.2/tps/mingw/6.2.0/win64.o/nt\\lib\\gcc\\x86_64-w64-mingw32\\6.2.0\\include\\c++\\climits" 1 3
 # 40 "C:/Xilinx/Vitis_HLS/2020.2/tps/mingw/6.2.0/win64.o/nt\\lib\\gcc\\x86_64-w64-mingw32\\6.2.0\\include\\c++\\climits" 3
 # 4 "ParticleCoverHLS/src/patch.cxx" 2
+
+static double radii[5] = { 5.0, 10.0, 15.0, 20.0, 25.0 };
+static double trapezoid_edges[5] = { 22, 29, 36, 43, 50 };
 
 patch_s patch_init(environment_s env, superpoint_s *superpoints,
                    size_t n_superpoints, double apexZ0) {
@@ -24793,11 +24802,25 @@ patch_s patch_init(environment_s env, superpoint_s *superpoints,
   patch.shadow_fromTopToInnermost_topR_jR = (-32768);
 
 
-  VITIS_LOOP_23_1: for (size_t i = 0; i < 5; i++) {
+  VITIS_LOOP_26_1: for (size_t i = 0; i < 5; i++) {
     patch.superpoints[i] = superpoints[i];
   }
 
   return patch;
+}
+
+void patch_straight_line_projector_from_layer_ij_to_k(float *result, float z_i,
+                                                      float z_j, float i,
+                                                      float j, float k) {
+  float radius_i = (i == 0) ? 0 : radii[(int)i - 1];
+  float radius_j = (j == 0) ? 0 : radii[(int)j - 1];
+  float radius_k = (k == 0) ? 0 : radii[(int)k - 1];
+
+  float denominator = radius_j - radius_i;
+  float numerator = radius_k - radius_i;
+  float radii_leverArm = numerator / denominator;
+
+  *result = z_i + (z_j - z_i) * radii_leverArm;
 }
 
 
@@ -24819,7 +24842,7 @@ std::ostream &operator<<(std::ostream &os, const patch_s &p) {
   os << "  shadow_fromTopToInnermost_topR_jR: "
      << p.shadow_fromTopToInnermost_topR_jR << std::endl;
   os << "  superpoints: " << std::endl;
-  VITIS_LOOP_49_1: for (size_t i = 0; i < p.n_superpoints; i++) {
+  VITIS_LOOP_66_1: for (size_t i = 0; i < p.n_superpoints; i++) {
     os << p.superpoints[i] << std::endl;
   }
 

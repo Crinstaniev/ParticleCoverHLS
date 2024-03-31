@@ -74,6 +74,7 @@ loop_find_left_and_right_bound:
 void cover_make_patch_aligned_to_line(
     cover_s *cover, point_s row_data[NUM_LAYERS][MAX_POINTS_PER_LAYER],
     int num_points[NUM_LAYERS]) {
+#pragma HLS DATAFLOW
 
   superpoint_s init_patch[NUM_LAYERS];
 
@@ -84,14 +85,14 @@ void cover_make_patch_aligned_to_line(
     double row_list[MAX_POINTS_PER_LAYER];
     size_t row_list_size = 0;
 
-    _copy_row_list(row_list, row_data[i]);
-
     double r_max = radii[NUM_LAYERS - 1];
     double projectionToRow =
         (Z_TOP - APEX_Z0) * (y - radii[0]) / (r_max - radii[0]) + APEX_Z0;
 
     int start_index = 0;
     double start_value = INT_MAX;
+
+    _copy_row_list(row_list, row_data[i]);
 
     _find_start_index_and_value(&start_index, &start_value, row_list,
                                 num_points[i], projectionToRow);
@@ -168,11 +169,102 @@ void cover_make_patch_shadow_quilt_from_edges(cover_s *cover) {
     float z_top_max = TOP_LAYER_LIM + BOUNDARY_POINT_OFFSET;
 
     if (cover->n_patches > 0) {
-      // z_top_max =
-      // min(z_top_max,
-      //     patches[patches.size() - 1].straightLineProjectorFromLayerIJtoK(
-      //         -1 * env.beam_axis_lim, apexZ0, 0, 1, env.num_layers));
-      
+      float z_top_max_candidate;
+      patch_straight_line_projector_from_layer_ij_to_k(
+          &z_top_max_candidate, -1 * BEAM_AXIS_LIM, apexZ0, 0, 1, NUM_LAYERS);
+      z_top_max = std::min(z_top_max, z_top_max_candidate);
+
+      int nPatchesInColumn = 0;
+      float projectionOfCornerToBeam = 0;
+
+      // while ((c_corner > -1 * trapezoid_edges[NUM_LAYERS - 1]) &&
+      //        (projectionOfCornerToBeam < BEAM_AXIS_LIM)) {
+      //   nPatchesInColumn++;
+      //   // TODO: DEBUG PRINTING HERE
+
+      //   // TODO: to be validated
+      //   // int iter_upper_bound =
+      //   //     cover->patch_buffer.patches[cover->n_patches -
+      //   1].n_superpoints -
+      //   //     1;
+      //   // for (int i = 0; i < iter_upper_bound; i++) {
+      //   // // TODO: Debug Printing
+
+      //   // }
+
+      //   // TODO: add c_corner and d_corner to patch
+      // }
+
+      // access last patch
+      patch_s *last_patch = patch_buffer_access_patch_ptr(&cover->patch_buffer,
+                                                          cover->n_patches - 1);
+      float original_c = last_patch->c_corner[1];
+      float original_d = last_patch->d_corner[1];
+
+      c_corner = original_c;
+
+      bool repeat_patch = false;
+      bool repeat_original = false;
+
+      if (cover->n_patches > 2) {
+        patch_s *patch_depth_0 =
+            patch_buffer_access_patch_ptr(&cover->patch_buffer, 0);
+        patch_s *patch_depth_2 = last_patch;
+
+        bool eq_0 = superpoint_eq(patch_depth_0->superpoints[NUM_LAYERS - 1],
+                                  patch_depth_2->superpoints[NUM_LAYERS - 1]);
+        bool eq_1 = superpoint_eq(patch_depth_0->superpoints[0],
+                                  patch_depth_2->superpoints[0]);
+        bool eq_2 = superpoint_eq(patch_depth_0->superpoints[1],
+                                  patch_depth_2->superpoints[1]);
+        bool eq_3 = superpoint_eq(patch_depth_0->superpoints[2],
+                                  patch_depth_2->superpoints[2]);
+        bool eq_4 = superpoint_eq(patch_depth_0->superpoints[3],
+                                  patch_depth_2->superpoints[3]);
+
+        repeat_original = eq_0 && eq_1 && eq_2 && eq_3 && eq_4;
+      }
+
+      float seed_apexZ0 = apexZ0;
+      float last_patch_c_corner_1 = last_patch->c_corner[1];
+      float last_patch_c_corner_0 = last_patch->c_corner[0];
+      patch_straight_line_projector_from_layer_ij_to_k(
+          &projectionOfCornerToBeam, last_patch_c_corner_1,
+          last_patch_c_corner_0, NUM_LAYERS, 1, 0);
+
+      float last_patch_a_corner_1 = last_patch->a_corner[1];
+      float last_patch_b_corner_1 = last_patch->b_corner[1];
+      float last_patch_flatBottom = last_patch->flatBottom;
+      bool squarePatch_alternate1 = (last_patch_a_corner_1 > z_top_max) &&
+                                    (last_patch_b_corner_1 > z_top_max) &&
+                                    (last_patch_flatBottom);
+
+      bool squarePatch_alternate2 =
+          (last_patch_a_corner_1 > z_top_max) && (last_patch_flatBottom);
+
+      bool last_patch_squareAcceptance = last_patch->squareAcceptance;
+      bool notChoppedPatch = (last_patch_squareAcceptance) ||
+                             squarePatch_alternate1 || squarePatch_alternate2;
+
+      bool madeComplementaryPatch = false;
+
+      int nPatchesAtOriginal = cover->n_patches;
+
+      if (!(notChoppedPatch) &&
+          (last_patch_c_corner_1 > -1 * trapezoid_edges[NUM_LAYERS - 1] &&
+           (projectionOfCornerToBeam < BEAM_AXIS_LIM))) {
+        // make complementary patch
+        complementary_apexZ0 = last_patch->superpoints[0].min;
+
+        if (last_patch->triangleAcceptance && !(repeat_original)) {
+          z_top_min = last_patch->d_corner[1];
+        } else {
+          z_top_min = std::max(-1 * TOP_LAYER_LIM,
+                               last_patch->superpoints[NUM_LAYERS - 1].min);
+        }
+
+        // RESUME HERE
+      }
     }
   }
 

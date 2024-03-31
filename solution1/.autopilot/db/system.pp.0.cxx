@@ -156,7 +156,7 @@ extern "C" {
 
 
 # 1 "C:/Projects/ParticleCoverHLS/include/constants.h" 1
-# 14 "C:/Projects/ParticleCoverHLS/include/constants.h"
+# 25 "C:/Projects/ParticleCoverHLS/include/constants.h"
 const double RADII[] = {5.0, 10.0, 15.0, 20.0, 25.0};
 # 4 "C:/Projects/ParticleCoverHLS/include\\system.h" 2
 # 1 "C:/Projects/ParticleCoverHLS/include/cover.h" 1
@@ -24786,7 +24786,8 @@ std::ostream &operator<<(std::ostream &os, const superpoint_s &sp);
 
 
 
-typedef struct {
+typedef struct
+{
   environment_s env;
   int end_layer;
   int left_end_layer;
@@ -24807,8 +24808,13 @@ typedef struct {
 patch_s patch_init(environment_s env, superpoint_s *superpoints,
                    size_t n_superpoints, double apexZ0);
 
+void patch_straight_line_projector_from_layer_ij_to_k(
+    float *result,
+    float z_i, float z_j, float i, float j, float k);
 
-std::ostream &operator<<(std::ostream &os, const patch_s &p);
+
+std::ostream &
+operator<<(std::ostream &os, const patch_s &p);
 # 7 "C:/Projects/ParticleCoverHLS/include/cover.h" 2
 # 1 "C:/Projects/ParticleCoverHLS/include/patch_buffer.h" 1
 # 14 "C:/Projects/ParticleCoverHLS/include/patch_buffer.h"
@@ -24844,6 +24850,10 @@ void cover_init(cover_s *cover);
 void cover_make_patch_aligned_to_line(
     cover_s *cover, point_s row_data[5][256],
     int num_points[5]);
+
+void cover_make_patch_shadow_quilt_from_edges(
+    cover_s *cover
+);
 
 
 std::ostream &operator<<(std::ostream &os, const cover_s &cover);

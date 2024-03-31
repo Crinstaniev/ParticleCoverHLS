@@ -26,5 +26,7 @@ void patch_buffer_push_patch(patch_buffer_s *buffer, patch_s patch);
 void patch_buffer_access_patch(patch_buffer_s *buffer, int depth,
                                patch_s *patch);
 
+patch_s *patch_buffer_access_patch_ptr(patch_buffer_s *buffer, int depth);
+
 // DEBUG FUNCTION
 std::ostream &operator<<(std::ostream &os, const patch_buffer_s &buffer);

@@ -19,6 +19,9 @@
     22, 29, 36, 43, 50              \
   }
 
+// TODO: FIGURE OUT THE CORRECT SIZE
+#define COVEER_CONER_LIST_SIZE 4
+
 const double RADII[] = {5.0, 10.0, 15.0, 20.0, 25.0};
 
 // FILE READER CONSTANTS

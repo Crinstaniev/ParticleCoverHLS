@@ -1,3 +1,4 @@
+#include <climits>
 #include <fstream>
 #include <iostream>
 #include <regex>
@@ -369,6 +370,7 @@ public:
   float shadow_fromTopToInnermost_topR_jL;
   float shadow_fromTopToInnermost_topR_jR;
 
+  // TODO: added fields
   vector<float> a_corner;
   vector<float> b_corner;
   vector<float> c_corner;
@@ -812,6 +814,8 @@ public:
       while ((c_corner > -1 * env.trapezoid_edges[env.num_layers - 1]) &&
              (projectionOfCornerToBeam < env.beam_axis_lim)) {
         nPatchesInColumn++;
+
+        // TODO: DEBUG PRINTING NOT TRANSLATED
         cout << apexZ0 << " " << ppl << " " << z_top_max << " " << leftRight
              << endl;
         makePatch_alignedToLine(apexZ0, z_top_max, ppl = ppl, false);
@@ -829,7 +833,11 @@ public:
              << patches[patches.size() - 1].c_corner[1] << "]" << endl;
         cout << "original: [" << patches[patches.size() - 1].d_corner[0] << ", "
              << patches[patches.size() - 1].d_corner[1] << "]" << endl;
+        // TODO: DEBUG PRINTING NOT TRANSLATED
 
+        // TODO: weird for condition
+
+        // TODO: DEBUG PRINTING
         for (int i = 1; i < patches[patches.size() - 1].superpoints.size() - 1;
              i++) {
           int j = i + 1;
@@ -862,7 +870,9 @@ public:
                           env.num_layers)
                << endl;
         }
+        // TODO: DEBUG PRINTING
 
+        // TODO: Why c_corner[1]??
         float original_c = patches[patches.size() - 1].c_corner[1];
         float original_d = patches[patches.size() - 1].d_corner[1];
 
@@ -872,6 +882,7 @@ public:
         bool repeat_original = false;
 
         if (patches.size() > 2) {
+          // TODO: resume here
           repeat_original =
               (patches[patches.size() - 1].superpoints[env.num_layers - 1] ==
                patches[patches.size() - 3].superpoints[env.num_layers - 1]) &&
@@ -904,12 +915,15 @@ public:
 
         int nPatchesAtOriginal = patches.size();
 
+        // DEBUG PRINTING NOT TRANSLATED
         cout << "squareAcceptance: "
              << patches[patches.size() - 1].squareAcceptance
              << " triangleAcceptance: "
              << patches[patches.size() - 1].triangleAcceptance
              << " projectionOfCornerToBeam: " << projectionOfCornerToBeam
              << " notChoppedPatch " << notChoppedPatch << endl;
+        // DEBUG PRINTING NOT TRANSLATED
+
         if (!(notChoppedPatch) &&
             (patches[patches.size() - 1].c_corner[1] >
              -1 * env.trapezoid_edges[env.num_layers - 1]) &&
@@ -919,17 +933,22 @@ public:
               !(repeat_original)) {
             z_top_min = patches[patches.size() - 1].d_corner[1];
           } else {
+            // DEBUG PRINTING NOT TRANSLATED
             cout << "z_top_min before: " << z_top_min
                  << " superpoints[self.env.num_layers-1].min: "
                  << patches[patches.size() - 1]
                         .superpoints[env.num_layers - 1]
                         .min
                  << endl;
+            // DEBUG PRINTING NOT TRANSLATED
+
             z_top_min =
                 max(-1 * env.top_layer_lim, patches[patches.size() - 1]
                                                 .superpoints[env.num_layers - 1]
                                                 .min);
           }
+
+          // RESUME HERE
 
           makePatch_alignedToLine(complementary_apexZ0, z_top_min, ppl, true);
           madeComplementaryPatch = true;

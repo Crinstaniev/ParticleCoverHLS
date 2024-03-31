@@ -22,8 +22,21 @@ typedef struct
   int shadow_fromTopToInnermost_topR_jL;
   int shadow_fromTopToInnermost_topR_jR;
 
+  float a_corner[NUM_LAYERS - 1];
+  float b_corner[NUM_LAYERS - 1];
+  float c_corner[NUM_LAYERS - 1];
+  float d_corner[NUM_LAYERS - 1];
+
   superpoint_s superpoints[NUM_LAYERS]; // TODO: figure out correct size
   size_t n_superpoints;
+
+  bool flatBottom;
+  bool flatTop;
+
+  bool squareAcceptance;
+  bool triangleAcceptance;
+
+  // TODO: Implement parallelograms
 } patch_s;
 
 patch_s patch_init(environment_s env, superpoint_s *superpoints,
