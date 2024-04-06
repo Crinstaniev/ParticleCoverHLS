@@ -7,17 +7,14 @@
 #define MAX_POINTS_PER_LAYER 256
 
 // ENVIRONMENT CONSTANTS
-#define TOP_LAYER_LIM 100.0
+// #define TOP_LAYER_LIM 100.0
+#define TOP_LAYER_LIM 50.0
 #define BEAM_AXIS_LIM 15.0
 #define NUM_LAYERS 5
-#define RADII_INITIALIZER       \
-  {                             \
-    5.0, 10.0, 15.0, 20.0, 25.0 \
-  }
-#define TRAPEZOID_EDGES_INITIALIZER \
-  {                                 \
-    22, 29, 36, 43, 50              \
-  }
+#define RADII_INITIALIZER                                                      \
+  { 5.0, 10.0, 15.0, 20.0, 25.0 }
+#define TRAPEZOID_EDGES_INITIALIZER                                            \
+  { 22, 29, 36, 43, 50 }
 
 // TODO: FIGURE OUT THE CORRECT SIZE
 #define COVEER_CONER_LIST_SIZE 4

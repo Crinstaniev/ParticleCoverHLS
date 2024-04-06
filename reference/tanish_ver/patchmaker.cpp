@@ -55,6 +55,8 @@ public:
     top_layer_lim = top_layer_limI;
     beam_axis_lim = beam_axis_limI;
 
+    // cout << "top_layer_lim initialized to: " << top_layer_lim << endl;
+
     if (radiiI.size() != num_layersI) {
       throw "The radii do not match the number of layers.";
     }
@@ -801,12 +803,21 @@ public:
 
       float z_top_max = env.top_layer_lim + env.boundaryPoint_offset;
 
+      // cout << "apexZ0: " << apexZ0 << endl;
+      // cout << "z_top_min: " << z_top_min << endl;
+      // cout << "complementary_apexZ0: " << complementary_apexZ0 << endl;
+      // cout << "first_row_count: " << first_row_count << endl;
+      // cout << "c_corner: " << c_corner << endl;
+      // cout << "z_top_max: " << z_top_max << endl;
+
       if (patches.size() > 0) {
         z_top_max =
             min(z_top_max,
                 patches[patches.size() - 1].straightLineProjectorFromLayerIJtoK(
                     -1 * env.beam_axis_lim, apexZ0, 0, 1, env.num_layers));
       }
+
+      cout << "z_top_max: " << z_top_max << endl;
 
       int nPatchesInColumn = 0;
       float projectionOfCornerToBeam = 0;
@@ -815,10 +826,14 @@ public:
              (projectionOfCornerToBeam < env.beam_axis_lim)) {
         nPatchesInColumn++;
 
+        cout << "nPatchesInColumn: " << nPatchesInColumn << endl;
+
         // TODO: DEBUG PRINTING NOT TRANSLATED
         cout << apexZ0 << " " << ppl << " " << z_top_max << " " << leftRight
              << endl;
+
         makePatch_alignedToLine(apexZ0, z_top_max, ppl = ppl, false);
+
         cout << "top layer from "
              << patches[patches.size() - 1].superpoints[env.num_layers - 1].max
              << " to "
@@ -833,6 +848,8 @@ public:
              << patches[patches.size() - 1].c_corner[1] << "]" << endl;
         cout << "original: [" << patches[patches.size() - 1].d_corner[0] << ", "
              << patches[patches.size() - 1].d_corner[1] << "]" << endl;
+
+        exit(0);
         // TODO: DEBUG PRINTING NOT TRANSLATED
 
         // TODO: weird for condition
@@ -882,7 +899,6 @@ public:
         bool repeat_original = false;
 
         if (patches.size() > 2) {
-          // TODO: resume here
           repeat_original =
               (patches[patches.size() - 1].superpoints[env.num_layers - 1] ==
                patches[patches.size() - 3].superpoints[env.num_layers - 1]) &&
@@ -947,8 +963,6 @@ public:
                                                 .superpoints[env.num_layers - 1]
                                                 .min);
           }
-
-          // RESUME HERE
 
           makePatch_alignedToLine(complementary_apexZ0, z_top_min, ppl, true);
           madeComplementaryPatch = true;
@@ -1434,6 +1448,8 @@ public:
     int original_ppl = ppl;
     float alignmentAccuracy = 0.00001;
 
+    std::cout << "apex_z0 in makePatch_alignedToLine: " << apexZ0 << std::endl;
+
     vector<vector<Point>> row_data = data->array;
 
     for (int i = 0; i < env.num_layers; i++) {
@@ -1451,6 +1467,13 @@ public:
           (z_top - apexZ0) * (y - env.radii[0]) / (r_max - env.radii[0]) +
           apexZ0;
 
+      // std::cout << "Z_TOP: " << z_top << std::endl;
+      // std::cout << "APEX_Z0: " << apexZ0 << std::endl;
+      // std::cout << "Y: " << y << std::endl;
+      // std::cout << "radii[0]: " << env.radii[0] << std::endl;
+      // std::cout << "r_max: " << r_max << std::endl;
+      // cout << "projectionToRow: " << projectionToRow << endl;
+
       int start_index = 0;
       float start_value = 1000000;
 
@@ -1460,6 +1483,10 @@ public:
           start_value = row_list[j] - projectionToRow;
         }
       }
+
+      // cout << "DEBUG START" << endl;
+      // cout << "start_index: " << start_index << endl;
+      // cout << "start_value: " << start_value << endl;
 
       int left_bound = 0;
       float lbVal = INT_MAX;
@@ -1481,6 +1508,12 @@ public:
                        env.boundaryPoint_offset));
         }
       }
+
+      // std::cout << "left_bound: " << left_bound << std::endl;
+      // std::cout << "right_bound: " << right_bound << std::endl;
+      // std::cout << "lbVal: " << lbVal << std::endl;
+      // std::cout << "rbVal: " << rbVal << std::endl;
+      // exit(0);
 
       if ((float_middleLayers_ppl == true) && (i != 0) &&
           (i != env.num_layers - 1)) {
@@ -1507,30 +1540,51 @@ public:
         }
       } else {
         if (start_index != (row_list.size() - 1)) {
-          cout << "row " + to_string(i + 1) + " start_index " +
-                      to_string(start_index) + " start_value " +
-                      to_string(start_value) +
-                      " z: " + to_string(row_list[start_index])
-               << endl;
+          // cout << "row " + to_string(i + 1) + " start_index " +
+          //             to_string(start_index) + " start_value " +
+          //             to_string(start_value) +
+          //             " z: " + to_string(row_list[start_index])
+          //      << endl;
           if (start_value < -1 * alignmentAccuracy) {
             start_index += 1;
             start_value = row_list[start_index] - projectionToRow;
-            cout << "row " + to_string(i + 1) + " updated start_index " +
-                        to_string(start_index) + " start_value " +
-                        to_string(start_value) +
-                        " z: " + to_string(row_list[start_index])
-                 << endl;
+            // cout << "row " + to_string(i + 1) + " updated start_index " +
+            //             to_string(start_index) + " start_value " +
+            //             to_string(start_value) +
+            //             " z: " + to_string(row_list[start_index])
+            //      << endl;
           }
         }
+
+        // cout << "start_index: " << start_index << endl;
+        // cout << "left_bound: " << left_bound << endl;
+        // cout << "ppl: " << ppl << endl;
 
         if ((start_index - ppl + 1) < left_bound) {
           vector<Point> temp(row_data[i].begin() + left_bound,
                              row_data[i].begin() + left_bound + ppl);
+
+          // cout << "max: " << wedgeSuperPoint(temp).max << endl;
+          // cout << "min: " << wedgeSuperPoint(temp).min << endl;
+
           init_patch.push_back(wedgeSuperPoint(temp));
         } else {
           vector<Point> temp(row_data[i].begin() + start_index + 1 - ppl,
                              row_data[i].begin() + start_index + 1);
           init_patch.push_back(wedgeSuperPoint(temp));
+
+          cout << "max: " << wedgeSuperPoint(temp).max << endl;
+          cout << "min: " << wedgeSuperPoint(temp).min << endl;
+
+          // print points in wedgeSuperPoint
+          wedgeSuperPoint temp_wedgeSuperPoint = wedgeSuperPoint(temp);
+          for (int i = 0; i < temp_wedgeSuperPoint.points.size(); i++) {
+            cout << "layer_num: " << temp_wedgeSuperPoint.points[i].layer_num;
+            cout << " z: " << temp_wedgeSuperPoint.points[i].z;
+            cout << " radius: " << temp_wedgeSuperPoint.points[i].radius;
+            cout << " phi: " << temp_wedgeSuperPoint.points[i].phi << endl;
+          }
+          exit(0);
         }
       }
     }

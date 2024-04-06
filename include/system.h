@@ -12,4 +12,7 @@
 #include "sim_utils.h"
 #include "superpoint.h"
 
-void system_top(cover_s *cover_result);
+// void system_top(cover_s *cover_result);
+void system_top(cover_s *cover,
+                point_s row_data[NUM_LAYERS][MAX_POINTS_PER_LAYER],
+                int num_points[NUM_LAYERS]);

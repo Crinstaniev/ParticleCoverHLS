@@ -35,13 +35,8 @@ add_executable(PatchMakerHLS src/system.cxx)
 target_link_libraries(PatchMakerHLS PRIVATE patchmaker)
 
 # PatchMakerHLS reference implementation
-# add_executable(PatchMakerHLS_ref ${CMAKE_CURRENT_SOURCE_DIR}/reference/makePatch_alignedtoLIne.cpp)
-# target_include_directories(PatchMakerHLS_ref PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/reference)
-# target_compile_options(PatchMakerHLS_ref PRIVATE -w) # Suppress all warnings
+add_executable(PatchMakerHLSRef reference/tanish_ver/patchmaker.cpp)
 
-# Reference library
-# add_library(reference SHARED ${CMAKE_CURRENT_SOURCE_DIR}/reference/makePatch_alignedtoLIne.cpp)
-# set_target_properties(reference PROPERTIES OUTPUT_NAME reference COMPILE_OPTIONS "-w") # Suppress all warnings
 
 enable_testing()
 

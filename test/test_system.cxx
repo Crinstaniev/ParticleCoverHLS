@@ -19,11 +19,6 @@ int main(void) {
   dataset_import_data(ds, points, events[0].num_points);
   dataset_add_boundary_point(ds, 0.0001);
 
-  // // print trapezoid_edges
-  // for (int i = 0; i < NUM_LAYERS; i++) {
-  //   std::cout << env.trapezoid_edges[i] << std::endl;
-  // }
-
   double apexZ0 = 7.75751;
   int ppl = 16;
   double z_top = -8.883753333333333;
@@ -45,7 +40,7 @@ int main(void) {
     num_points[i] = ds.n_points[i];
   }
 
-  cover_make_patch_aligned_to_line(&cover, row_data, num_points);
+  system_top(&cover, row_data, num_points);
 
   return 0;
 }

@@ -47,7 +47,7 @@ void patch_straight_line_projector_from_layer_ij_to_k(float *result, float z_i,
 // DEBUG FUNCTION
 std::ostream &operator<<(std::ostream &os, const patch_s &p) {
   os << "patch_s: " << std::endl;
-  os << "  env: " << p.env << std::endl;
+  // os << "  env: " << p.env << std::endl;
   os << "  end_layer: " << p.end_layer << std::endl;
   os << "  left_end_layer: " << p.left_end_layer << std::endl;
   os << "  right_end_layer: " << p.right_end_layer << std::endl;
@@ -62,10 +62,10 @@ std::ostream &operator<<(std::ostream &os, const patch_s &p) {
      << p.shadow_fromTopToInnermost_topR_jL << std::endl;
   os << "  shadow_fromTopToInnermost_topR_jR: "
      << p.shadow_fromTopToInnermost_topR_jR << std::endl;
-  os << "  superpoints: " << std::endl;
-  for (size_t i = 0; i < p.n_superpoints; i++) {
-    os << p.superpoints[i] << std::endl;
-  }
+  // os << "  superpoints: " << std::endl;
+  // for (size_t i = 0; i < p.n_superpoints; i++) {
+  //   os << p.superpoints[i] << std::endl;
+  // }
 
   os << std::endl;
 

@@ -8,7 +8,10 @@ void system_top(cover_s *cover,
                 point_s row_data[NUM_LAYERS][MAX_POINTS_PER_LAYER],
                 int num_points[NUM_LAYERS]) {
   patch_buffer_init(&cover->patch_buffer);
-  cover_make_patch_aligned_to_line(cover, row_data, num_points);
+
+  std::cout << "Everything Prepared" << std::endl;
+
+  cover_make_patch_shadow_quilt_from_edges(cover, row_data, num_points);
 
   return;
 }
