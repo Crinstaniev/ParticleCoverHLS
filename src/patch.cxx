@@ -236,7 +236,66 @@ void patch_get_acceptance_corners(patch_s *patch) {
   }
 }
 
-void patch_get_end_layers(patch_s *patch) {}
+void patch_get_end_layers(patch_s *patch) {
+  float lambdaZ_left_list[NUM_LAYERS] = {0};
+  float lambdaZ_right_list[NUM_LAYERS] = {0};
+
+  for (int i = 0; i < NUM_LAYERS; i++) {
+    lambdaZ_left_list[i] =
+        (patch->superpoints[i].min - patch->apexZ0) / radii[i];
+    lambdaZ_right_list[i] =
+        (patch->superpoints[i].max - patch->apexZ0) / radii[i];
+  }
+
+  // print lambdaZ lists: guaranteed
+  // for (int i = 0; i < NUM_LAYERS; i++) {
+  //   std::cout << "lambdaZ_left_list[" << i << "]: " << lambdaZ_left_list[i]
+  //             << std::endl;
+  //   std::cout << "lambdaZ_right_list[" << i << "]: " << lambdaZ_right_list[i]
+  //             << std::endl;
+  // }
+
+  float lambdaZLeftMax = -1 * INT_MAX + 2;
+  float lambdaZRightMin = INT_MAX - 2;
+
+  for (int i = 0; i < NUM_LAYERS; i++) {
+    if (lambdaZ_left_list[i] > lambdaZLeftMax) {
+      patch->left_end_layer = i;
+      lambdaZLeftMax = lambdaZ_left_list[i];
+    }
+  }
+
+  // print left_end_layer and lambdaZLeftMax: guaranteed
+  // std::cout << "left_end_layer: " << patch->left_end_layer << std::endl;
+  // std::cout << "lambdaZLeftMax: " << lambdaZLeftMax << std::endl;
+
+  for (int i = 0; i < NUM_LAYERS; i++) {
+    if (lambdaZ_right_list[i] < lambdaZRightMin) {
+      patch->right_end_layer = i;
+      lambdaZRightMin = lambdaZ_right_list[i];
+    }
+  }
+
+  float min_lambdaZ_left_list =
+      std::max(std::max(std::max(lambdaZ_left_list[0], lambdaZ_left_list[1]),
+                        std::max(lambdaZ_left_list[2], lambdaZ_left_list[3])),
+               lambdaZ_left_list[4]);
+  float max_lambdaZ_right_list =
+      std::min(std::min(std::min(lambdaZ_right_list[0], lambdaZ_right_list[1]),
+                        std::min(lambdaZ_right_list[2], lambdaZ_right_list[3])),
+               lambdaZ_right_list[4]);
+
+  patch->left_end_lambdaZ = min_lambdaZ_left_list;
+  patch->right_end_lambdaZ = max_lambdaZ_right_list;
+
+  // // print lambdaZ_left_list and lambdaZ_right_list: guaranteed
+  // for (int i = 0; i < NUM_LAYERS; i++) {
+  //   std::cout << "lambdaZ_left_list[" << i << "]: " << lambdaZ_left_list[i]
+  //             << std::endl;
+  //   std::cout << "lambdaZ_right_list[" << i << "]: " << lambdaZ_right_list[i]
+  //             << std::endl;
+  // }
+}
 
 // DEBUG FUNCTION
 std::ostream &operator<<(std::ostream &os, const patch_s &p) {

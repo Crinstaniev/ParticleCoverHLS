@@ -685,6 +685,14 @@ public:
                                    env.radii[i]);
     }
 
+    // print lambdaZ lists
+    // for (int i = 0; i < lambdaZ_left_list.size(); i++) {
+    //   cout << "lambdaZ_left_list[" << i << "]: " << lambdaZ_left_list[i]
+    //        << endl;
+    //   cout << "lambdaZ_right_list[" << i << "]: " << lambdaZ_right_list[i]
+    //        << endl;
+    // }
+
     float lambdaZLeftMax = -1 * INT_MAX + 2;
     float lambdaZRightMin = INT_MAX - 2;
 
@@ -694,6 +702,10 @@ public:
         lambdaZLeftMax = lambdaZ_left_list[i];
       }
     }
+
+    // print left_end_layer and lambdaZLeftMax: guaranteed
+    // cout << "left_end_layer: " << left_end_layer << endl;
+    // cout << "lambdaZLeftMax: " << lambdaZLeftMax << endl;
 
     for (int i = 0; i < lambdaZ_right_list.size(); i++) {
       if (lambdaZ_right_list[i] < lambdaZRightMin) {
@@ -706,6 +718,17 @@ public:
         *max_element(lambdaZ_left_list.begin(), lambdaZ_left_list.end());
     right_end_lambdaZ =
         *min_element(lambdaZ_right_list.begin(), lambdaZ_right_list.end());
+
+    cout << "left_end_lambdaZ: " << left_end_lambdaZ << endl;
+    cout << "right_end_lambdaZ: " << right_end_lambdaZ << endl;
+
+    // // print lambdaZ_left_list and lambdaZ_right_list: guaranteed
+    // for (int i = 0; i < lambdaZ_left_list.size(); i++) {
+    //   cout << "lambdaZ_left_list[" << i << "]: " << lambdaZ_left_list[i]
+    //        << endl;
+    //   cout << "lambdaZ_right_list[" << i << "]: " << lambdaZ_right_list[i]
+    //        << endl;
+    // }
   }
 };
 

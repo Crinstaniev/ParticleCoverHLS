@@ -13,8 +13,8 @@ typedef struct {
   int end_layer;
   int left_end_layer;
   int right_end_layer;
-  int left_end_lambdaZ;
-  int right_end_lambdaZ;
+  float left_end_lambdaZ;
+  float right_end_lambdaZ;
   double apexZ0;
 
   int shadow_fromTopToInnermost_topL_jL;
