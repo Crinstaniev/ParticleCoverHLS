@@ -173,17 +173,18 @@ void cover_make_patch_aligned_to_line(
       std::cout << "max: " << sp.max << std::endl;
       std::cout << "min: " << sp.min << std::endl;
 
+      // this part guaranteed!
       // print points in sp
-      for (int j = 0; j < PPL; j++) {
-        // layer number
-        std::cout << "layer_num: " << sp.points[j].layer_num;
-        // print z values
-        std::cout << " z: " << sp.points[j].z;
-        // radius
-        std::cout << " radius: " << sp.points[j].radius;
-        // phi
-        std::cout << " phi: " << sp.points[j].phi << std::endl;
-      }
+      // for (int j = 0; j < PPL; j++) {
+      //   // layer number
+      //   std::cout << "layer_num: " << sp.points[j].layer_num;
+      //   // print z values
+      //   std::cout << " z: " << sp.points[j].z;
+      //   // radius
+      //   std::cout << " radius: " << sp.points[j].radius;
+      //   // phi
+      //   std::cout << " phi: " << sp.points[j].phi << std::endl;
+      // }
 
       exit(0);
     }

@@ -1578,12 +1578,13 @@ public:
 
           // print points in wedgeSuperPoint
           wedgeSuperPoint temp_wedgeSuperPoint = wedgeSuperPoint(temp);
-          for (int i = 0; i < temp_wedgeSuperPoint.points.size(); i++) {
-            cout << "layer_num: " << temp_wedgeSuperPoint.points[i].layer_num;
-            cout << " z: " << temp_wedgeSuperPoint.points[i].z;
-            cout << " radius: " << temp_wedgeSuperPoint.points[i].radius;
-            cout << " phi: " << temp_wedgeSuperPoint.points[i].phi << endl;
-          }
+          // for (int i = 0; i < temp_wedgeSuperPoint.points.size(); i++) {
+          //   cout << "layer_num: " <<
+          //   temp_wedgeSuperPoint.points[i].layer_num; cout << " z: " <<
+          //   temp_wedgeSuperPoint.points[i].z; cout << " radius: " <<
+          //   temp_wedgeSuperPoint.points[i].radius; cout << " phi: " <<
+          //   temp_wedgeSuperPoint.points[i].phi << endl;
+          // }
           exit(0);
         }
       }

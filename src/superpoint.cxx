@@ -19,11 +19,16 @@ loop_copy_points_to_superpoint:
 
   superpoint.n_points = n_points;
 
-#ifdef DEBUG
-  // This should be replaced by synthesizable code
-  superpoint.max = *std::max_element(z_list, z_list + n_points);
-  superpoint.min = *std::min_element(z_list, z_list + n_points);
-#endif
+  // this part should be opimized
+  double min = z_list[0];
+  double max = z_list[0];
+  for (size_t i = 1; i < n_points; i++) {
+#pragma HLS PIPELINE
+    min = std::min(min, z_list[i]);
+    max = std::max(max, z_list[i]);
+  }
+  superpoint.min = min;
+  superpoint.max = max;
 
   return superpoint;
 }
