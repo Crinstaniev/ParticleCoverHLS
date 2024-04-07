@@ -411,7 +411,9 @@ public:
     superpoints = superpointsI;
 
     getParallelograms();
-    getParallelograms_v1();
+
+    getParallelograms_v1(); // deprecated
+
     get_acceptanceCorners();
     get_end_layer();
   }
@@ -454,8 +456,8 @@ public:
       z1_max = z1_min;
     }
 
-    cout << "z1_min: " << z1_min << endl;
-    cout << "z1_max: " << z1_max << endl;
+    // cout << "z1_min: " << z1_min << endl;
+    // cout << "z1_max: " << z1_max << endl;
 
     for (int i = 1; i < superpoints.size(); i++) {
       int j = i + 1;
@@ -463,8 +465,8 @@ public:
       float z_j_min = superpoints[i].min;
       float z_j_max = superpoints[i].max;
 
-      cout << "z_j_min: " << z_j_min << endl;
-      cout << "z_j_max: " << z_j_max << endl;
+      // cout << "z_j_min: " << z_j_min << endl;
+      // cout << "z_j_max: " << z_j_max << endl;
 
       float a = straightLineProjectorFromLayerIJtoK(z1_min, z_j_max, 1, j,
                                                     env.num_layers);
@@ -475,10 +477,10 @@ public:
       float d = straightLineProjectorFromLayerIJtoK(z1_max, z_j_min, 1, j,
                                                     env.num_layers);
 
-      cout << "a: " << a << endl;
-      cout << "b: " << b << endl;
-      cout << "c: " << c << endl;
-      cout << "d: " << d << endl;
+      // cout << "a: " << a << endl;
+      // cout << "b: " << b << endl;
+      // cout << "c: " << c << endl;
+      // cout << "d: " << d << endl;
 
       float pSlope;
 
@@ -603,18 +605,37 @@ public:
       d_corner_list.push_back(parallelograms[i].shadow_bottomR_jL);
     }
 
+    // // print corner lists
+    // for (int i = 0; i < parallelograms.size(); i++) {
+    //   cout << "a_corner_list[" << i << "]: " << a_corner_list[i] << endl;
+    //   cout << "b_corner_list[" << i << "]: " << b_corner_list[i] << endl;
+    //   cout << "c_corner_list[" << i << "]: " << c_corner_list[i] << endl;
+    //   cout << "d_corner_list[" << i << "]: " << d_corner_list[i] << endl;
+    // }
+
+    // up to here, corners are empty
+
     a_corner.push_back(parallelograms[0].z1_min);
     a_corner.push_back(
         *min_element(a_corner_list.begin(), a_corner_list.end()));
+
     b_corner.push_back(parallelograms[0].z1_max);
     b_corner.push_back(
         *min_element(b_corner_list.begin(), b_corner_list.end()));
+
     c_corner.push_back(parallelograms[0].z1_min);
     c_corner.push_back(
         *max_element(c_corner_list.begin(), c_corner_list.end()));
+
     d_corner.push_back(parallelograms[0].z1_max);
     d_corner.push_back(
         *max_element(d_corner_list.begin(), d_corner_list.end()));
+
+    // print these corners: guaranteed
+    // cout << "a_corner: " << a_corner[0] << " " << a_corner[1] << endl;
+    // cout << "b_corner: " << b_corner[0] << " " << b_corner[1] << endl;
+    // cout << "c_corner: " << c_corner[0] << " " << c_corner[1] << endl;
+    // cout << "d_corner: " << d_corner[0] << " " << d_corner[1] << endl;
 
     if (*min_element(a_corner_list.begin(), a_corner_list.end()) !=
         a_corner_list[env.num_layers - 2]) {
@@ -636,6 +657,10 @@ public:
       squareAcceptance = false;
       flatBottom = false;
     }
+
+    // print squareAcceptance and flatBottom: guaranteed
+    // cout << "squareAcceptance: " << squareAcceptance << endl;
+    // cout << "flatBottom: " << flatBottom << endl;
 
     if (c_corner[1] > a_corner[1]) {
       triangleAcceptance = true;
@@ -1603,8 +1628,8 @@ public:
                              row_data[i].begin() + start_index + 1);
           init_patch.push_back(wedgeSuperPoint(temp));
 
-          cout << "max: " << wedgeSuperPoint(temp).max << endl;
-          cout << "min: " << wedgeSuperPoint(temp).min << endl;
+          // cout << "max: " << wedgeSuperPoint(temp).max << endl;
+          // cout << "min: " << wedgeSuperPoint(temp).min << endl;
 
           // print points in wedgeSuperPoint
           wedgeSuperPoint temp_wedgeSuperPoint = wedgeSuperPoint(temp);

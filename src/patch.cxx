@@ -4,9 +4,6 @@
 #include <climits>
 #include <iostream>
 
-// static double radii[NUM_LAYERS] = RADII_INITIALIZER;
-// static double trapezoid_edges[NUM_LAYERS] = TRAPEZOID_EDGES_INITIALIZER;
-
 patch_s patch_init(superpoint_s *superpoints, size_t n_superpoints,
                    double apexZ0) {
   patch_s patch;
@@ -30,6 +27,8 @@ patch_s patch_init(superpoint_s *superpoints, size_t n_superpoints,
   }
 
   patch_get_parallelograms(&patch);
+  patch_get_acceptance_corners(&patch);
+  patch_get_end_layers(&patch);
 
   return patch;
 }
@@ -73,8 +72,8 @@ void patch_get_parallelograms(patch_s *patch) {
   }
 
   // this part guaranteed!
-  std::cout << "z1_min: " << z1_min << std::endl;
-  std::cout << "z1_max: " << z1_max << std::endl;
+  // std::cout << "z1_min: " << z1_min << std::endl;
+  // std::cout << "z1_max: " << z1_max << std::endl;
 
   // print superpoint 0
   // std::cout << patch->superpoints[0] << std::endl;
@@ -85,8 +84,8 @@ void patch_get_parallelograms(patch_s *patch) {
     float z_j_min = patch->superpoints[i].min;
     float z_j_max = patch->superpoints[i].max;
 
-    std::cout << "z_j_min: " << z_j_min << std::endl;
-    std::cout << "z_j_max: " << z_j_max << std::endl;
+    // std::cout << "z_j_min: " << z_j_min << std::endl;
+    // std::cout << "z_j_max: " << z_j_max << std::endl;
 
     // print this superpoint
     // std::cout << patch->superpoints[i] << std::endl;
@@ -131,6 +130,113 @@ void patch_get_parallelograms(patch_s *patch) {
 
   return;
 }
+
+void patch_get_acceptance_corners(patch_s *patch) {
+  patch->squareAcceptance = true;
+  patch->flatTop = true;
+  patch->flatBottom = true;
+  patch->triangleAcceptance = false;
+
+  float a_corner_list[NUM_LAYERS - 1];
+  float b_corner_list[NUM_LAYERS - 1];
+  float c_corner_list[NUM_LAYERS - 1];
+  float d_corner_list[NUM_LAYERS - 1];
+
+  for (int i = 0; i < NUM_LAYERS - 1; i++) {
+    a_corner_list[i] = patch->parallelograms[i].shadow_bottomL_jR;
+    b_corner_list[i] = patch->parallelograms[i].shadow_bottomR_jR;
+    c_corner_list[i] = patch->parallelograms[i].shadow_bottomL_jL;
+    d_corner_list[i] = patch->parallelograms[i].shadow_bottomR_jL;
+  }
+
+  // // print corner lists: guaranteed
+  // for (int i = 0; i < NUM_LAYERS - 1; i++) {
+  //   std::cout << "a_corner_list[" << i << "]: " << a_corner_list[i]
+  //             << std::endl;
+  //   std::cout << "b_corner_list[" << i << "]: " << b_corner_list[i]
+  //             << std::endl;
+  //   std::cout << "c_corner_list[" << i << "]: " << c_corner_list[i]
+  //             << std::endl;
+  //   std::cout << "d_corner_list[" << i << "]: " << d_corner_list[i]
+  //             << std::endl;
+  // }
+
+  float a_corner_list_min =
+      std::min(std::min(a_corner_list[0], a_corner_list[1]),
+               std::min(a_corner_list[2], a_corner_list[3]));
+  float b_corner_list_min =
+      std::min(std::min(b_corner_list[0], b_corner_list[1]),
+               std::min(b_corner_list[2], b_corner_list[3]));
+  float c_corner_list_max =
+      std::max(std::max(c_corner_list[0], c_corner_list[1]),
+               std::max(c_corner_list[2], c_corner_list[3]));
+  float d_corner_list_max =
+      std::max(std::max(d_corner_list[0], d_corner_list[1]),
+               std::max(d_corner_list[2], d_corner_list[3]));
+
+  patch->a_corner[0] = patch->parallelograms[0].z1_min;
+  patch->a_corner[1] = a_corner_list_min;
+
+  patch->b_corner[0] = patch->parallelograms[0].z1_max;
+  patch->b_corner[1] = b_corner_list_min;
+
+  patch->c_corner[0] = patch->parallelograms[0].z1_min;
+  patch->c_corner[1] = c_corner_list_max;
+
+  patch->d_corner[0] = patch->parallelograms[0].z1_max;
+  patch->d_corner[1] = d_corner_list_max;
+
+  // print these values: guaranteed
+  // std::cout << "a_corner: " << patch->a_corner[0] << " " <<
+  // patch->a_corner[1]
+  //           << std::endl;
+  // std::cout << "b_corner: " << patch->b_corner[0] << " " <<
+  // patch->b_corner[1]
+  //           << std::endl;
+  // std::cout << "c_corner: " << patch->c_corner[0] << " " <<
+  // patch->c_corner[1]
+  //           << std::endl;
+  // std::cout << "d_corner: " << patch->d_corner[0] << " " <<
+  // patch->d_corner[1]
+  //           << std::endl;
+
+  if (a_corner_list_min != a_corner_list[NUM_LAYERS - 2]) {
+    patch->squareAcceptance = false;
+    patch->flatTop = false;
+  }
+
+  if (b_corner_list_min != b_corner_list[NUM_LAYERS - 2]) {
+    patch->squareAcceptance = false;
+    patch->flatTop = false;
+  }
+
+  if (c_corner_list_max != c_corner_list[NUM_LAYERS - 2]) {
+    patch->squareAcceptance = false;
+    patch->flatBottom = false;
+  }
+
+  if (d_corner_list_max != d_corner_list[NUM_LAYERS - 2]) {
+    patch->squareAcceptance = false;
+    patch->flatBottom = false;
+  }
+
+  // std::cout << "squareAcceptance: " << patch->squareAcceptance << std::endl;
+  // std::cout << "flatBottom: " << patch->flatBottom << std::endl;
+
+  if (patch->c_corner[1] > patch->a_corner[1]) {
+    patch->triangleAcceptance = true;
+    patch->c_corner[1] = patch->b_corner[1];
+    patch->a_corner[1] = patch->b_corner[1];
+  }
+
+  if (patch->b_corner[1] < patch->d_corner[1]) {
+    patch->triangleAcceptance = true;
+    patch->b_corner[1] = patch->c_corner[1];
+    patch->d_corner[1] = patch->c_corner[1];
+  }
+}
+
+void patch_get_end_layers(patch_s *patch) {}
 
 // DEBUG FUNCTION
 std::ostream &operator<<(std::ostream &os, const patch_s &p) {

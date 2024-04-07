@@ -44,6 +44,10 @@ patch_s patch_init(superpoint_s *superpoints, size_t n_superpoints,
 
 void patch_get_parallelograms(patch_s *patch);
 
+void patch_get_acceptance_corners(patch_s *patch);
+
+void patch_get_end_layers(patch_s *patch);
+
 float patch_straight_line_projector_from_layer_ij_to_k(float z_i, float z_j,
                                                        int i, int j, int k);
 
