@@ -7,9 +7,10 @@
 void system_top(cover_s *cover,
                 point_s row_data[NUM_LAYERS][MAX_POINTS_PER_LAYER],
                 int num_points[NUM_LAYERS]) {
-  patch_buffer_init(&cover->patch_buffer);
+  CONST_ARRAY_INITIALIZER;
+  // PRINT_CONST_ARRAYS;
 
-  std::cout << "Everything Prepared" << std::endl;
+  patch_buffer_init(&cover->patch_buffer);
 
   cover_make_patch_shadow_quilt_from_edges(cover, row_data, num_points);
 

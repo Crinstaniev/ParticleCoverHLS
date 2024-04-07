@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+
 typedef struct {
   int layer_num;
   float pSlope;
@@ -17,3 +19,5 @@ void parallelogram_init(parallelogram_s *p, int layer_numI, float z1_minI,
                         float z1_maxI, float shadow_bottomL_jRI,
                         float shadow_bottomR_jRI, float shadow_bottomL_jLI,
                         float shadow_bottomR_jLI, float pSlopeI);
+
+std::ostream &operator<<(std::ostream &os, const parallelogram_s &p);

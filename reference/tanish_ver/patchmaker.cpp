@@ -454,11 +454,17 @@ public:
       z1_max = z1_min;
     }
 
+    cout << "z1_min: " << z1_min << endl;
+    cout << "z1_max: " << z1_max << endl;
+
     for (int i = 1; i < superpoints.size(); i++) {
       int j = i + 1;
 
       float z_j_min = superpoints[i].min;
       float z_j_max = superpoints[i].max;
+
+      cout << "z_j_min: " << z_j_min << endl;
+      cout << "z_j_max: " << z_j_max << endl;
 
       float a = straightLineProjectorFromLayerIJtoK(z1_min, z_j_max, 1, j,
                                                     env.num_layers);
@@ -469,6 +475,11 @@ public:
       float d = straightLineProjectorFromLayerIJtoK(z1_max, z_j_min, 1, j,
                                                     env.num_layers);
 
+      cout << "a: " << a << endl;
+      cout << "b: " << b << endl;
+      cout << "c: " << c << endl;
+      cout << "d: " << d << endl;
+
       float pSlope;
 
       if (j != env.num_layers) {
@@ -477,12 +488,31 @@ public:
         pSlope = INT_MAX;
       }
 
+      // cout << "pSlope: " << pSlope << endl;
+
       parallelogram Parallelogram =
           parallelogram(j, z1_min, z1_max, a, b, c, d, pSlope);
       parallelogramsI.push_back(Parallelogram);
     }
 
     parallelograms = parallelogramsI;
+
+    // print all parallelograms
+    // for (int i = 0; i < parallelograms.size(); i++) {
+    //   cout << "Parallelogram " << i << endl;
+    //   cout << "Layer number: " << parallelograms[i].layer_num << endl;
+    //   cout << "pSlope: " << parallelograms[i].pSlope << endl;
+    //   cout << "shadow_bottomL_jR: " << parallelograms[i].shadow_bottomL_jR
+    //        << endl;
+    //   cout << "shadow_bottomR_jR: " << parallelograms[i].shadow_bottomR_jR
+    //        << endl;
+    //   cout << "shadow_bottomL_jL: " << parallelograms[i].shadow_bottomL_jL
+    //        << endl;
+    //   cout << "shadow_bottomR_jL: " << parallelograms[i].shadow_bottomR_jL
+    //        << endl;
+    //   cout << "z1_min: " << parallelograms[i].z1_min << endl;
+    //   cout << "z1_max: " << parallelograms[i].z1_max << endl;
+    // }
   }
 
   void getShadows(float zTopMin, float zTopMax) {
@@ -1585,7 +1615,6 @@ public:
           //   temp_wedgeSuperPoint.points[i].radius; cout << " phi: " <<
           //   temp_wedgeSuperPoint.points[i].phi << endl;
           // }
-          exit(0);
         }
       }
     }

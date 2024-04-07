@@ -3,12 +3,12 @@
 
 #include "constants.h"
 #include "environment.h"
+#include "parallelogram.h"
 #include "superpoint.h"
 
 #include <cstddef>
 
-typedef struct
-{
+typedef struct {
   environment_s env;
   int end_layer;
   int left_end_layer;
@@ -27,7 +27,7 @@ typedef struct
   float c_corner[NUM_LAYERS - 1];
   float d_corner[NUM_LAYERS - 1];
 
-  superpoint_s superpoints[NUM_LAYERS]; // TODO: figure out correct size
+  superpoint_s superpoints[NUM_LAYERS];
   size_t n_superpoints;
 
   bool flatBottom;
@@ -36,18 +36,18 @@ typedef struct
   bool squareAcceptance;
   bool triangleAcceptance;
 
-  // TODO: Implement parallelograms
+  parallelogram_s parallelograms[NUM_LAYERS - 1];
 } patch_s;
 
-patch_s patch_init(environment_s env, superpoint_s *superpoints,
-                   size_t n_superpoints, double apexZ0);
+patch_s patch_init(superpoint_s *superpoints, size_t n_superpoints,
+                   double apexZ0);
 
-void patch_straight_line_projector_from_layer_ij_to_k(
-    float *result,
-    float z_i, float z_j, float i, float j, float k);
+void patch_get_parallelograms(patch_s *patch);
+
+float patch_straight_line_projector_from_layer_ij_to_k(float z_i, float z_j,
+                                                       int i, int j, int k);
 
 // DEBUG FUNCTION
-std::ostream &
-operator<<(std::ostream &os, const patch_s &p);
+std::ostream &operator<<(std::ostream &os, const patch_s &p);
 
 #endif // __PATCH_H__

@@ -1,4 +1,5 @@
 #include "cover.h"
+#include "constants.h"
 #include "patch.h"
 #include "system.h"
 
@@ -11,9 +12,6 @@
 #define APEX_Z0 7.75751
 #define BOUNDARY_POINT_OFFSET 0.0001
 #define PPL 16
-
-static double radii[NUM_LAYERS] = RADII_INITIALIZER;
-static double trapezoid_edges[NUM_LAYERS] = TRAPEZOID_EDGES_INITIALIZER;
 
 /**
  * Prepare data for synthesis components.
@@ -170,8 +168,8 @@ void cover_make_patch_aligned_to_line(
       superpoint_s sp = superpoint_init(points, PPL);
       init_patch[i] = sp;
 
-      std::cout << "max: " << sp.max << std::endl;
-      std::cout << "min: " << sp.min << std::endl;
+      // std::cout << "max: " << sp.max << std::endl;
+      // std::cout << "min: " << sp.min << std::endl;
 
       // this part guaranteed!
       // print points in sp
@@ -185,18 +183,18 @@ void cover_make_patch_aligned_to_line(
       //   // phi
       //   std::cout << " phi: " << sp.points[j].phi << std::endl;
       // }
-
-      exit(0);
     }
   }
 
   // add patch to cover
-  patch_s patch;
-  // copy superpoints to patch
-  for (int i = 0; i < NUM_LAYERS; i++) {
-#pragma HLS UNROLL
-    patch.superpoints[i] = init_patch[i];
-  }
+  // patch_s patch;
+  //   // copy superpoints to patch
+  //   for (int i = 0; i < NUM_LAYERS; i++) {
+  // #pragma HLS UNROLL
+  //     patch.superpoints[i] = init_patch[i];
+  //   }
+
+  patch_s patch = patch_init(init_patch, NUM_LAYERS, apexZ0);
 
   patch_buffer_push_patch(&cover->patch_buffer, patch);
   cover->n_patches++;
@@ -207,6 +205,8 @@ void cover_make_patch_aligned_to_line(
 void cover_make_patch_shadow_quilt_from_edges(
     cover_s *cover, point_s row_data[NUM_LAYERS][MAX_POINTS_PER_LAYER],
     int num_points[NUM_LAYERS]) {
+  CONST_ARRAY_INITIALIZER;
+
   bool fix42 = true;
   float apexZ0 = trapezoid_edges[0];
   float saved_apexZ0;
@@ -230,8 +230,12 @@ void cover_make_patch_shadow_quilt_from_edges(
 
     if (cover->n_patches > 0) {
       float z_top_max_candidate;
-      patch_straight_line_projector_from_layer_ij_to_k(
-          &z_top_max_candidate, -1 * BEAM_AXIS_LIM, apexZ0, 0, 1, NUM_LAYERS);
+      // TODO: fix this
+      // patch_straight_line_projector_from_layer_ij_to_k(
+      //     &z_top_max_candidate, -1 * BEAM_AXIS_LIM, apexZ0, 0, 1,
+      //     NUM_LAYERS);
+      z_top_max_candidate = patch_straight_line_projector_from_layer_ij_to_k(
+          -1 * BEAM_AXIS_LIM, apexZ0, 0, 1, NUM_LAYERS);
       z_top_max = std::min(z_top_max, z_top_max_candidate);
     }
 
