@@ -35,11 +35,6 @@ void dataset_import_data(dataset_s &dataset, point_s *data_array,
   int ln = 0;
 
   for (size_t i = 0; i < NUM_LAYERS; i++) {
-    // sort dataset.array[i] by z
-    // std::sort(
-    //     dataset.array[i], dataset.array[i] + dataset.n_points[i],
-    //     [](const point_s &a, const point_s &b) -> bool { return a.z < b.z;
-    //     });
     // hls implementation, sort by z, using bubble sort (temporary solution)
     for (size_t j = 0; j < dataset.n_points[i]; j++) {
       for (size_t k = 0; k < dataset.n_points[i] - j - 1; k++) {
@@ -78,11 +73,6 @@ void dataset_add_boundary_point(dataset_s &dataset, double offset) {
   int ln = 0;
 
   for (size_t i = 0; i < NUM_LAYERS; i++) {
-    // std::sort(
-    //     dataset.array[i], dataset.array[i] + dataset.n_points[i],
-    //     [](const point_s &a, const point_s &b) -> bool { return a.z < b.z;
-    //     });
-
     // implement using hls-compatible sort
     for (size_t j = 0; j < dataset.n_points[i]; j++) {
       for (size_t k = 0; k < dataset.n_points[i] - j - 1; k++) {

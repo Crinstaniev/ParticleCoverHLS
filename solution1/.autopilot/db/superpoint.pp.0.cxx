@@ -156,8 +156,22 @@ extern "C" {
 
 
 # 1 "C:/Projects/ParticleCoverHLS/include/constants.h" 1
-# 25 "C:/Projects/ParticleCoverHLS/include/constants.h"
+# 22 "C:/Projects/ParticleCoverHLS/include/constants.h"
 const double RADII[] = {5.0, 10.0, 15.0, 20.0, 25.0};
+
+static double radii[5] = {5.0, 10.0, 15.0, 20.0, 25.0};
+static double trapezoid_edges[5] = {0};
+static double parallelogram_slopes[5 - 1] = {0};
+static double radii_leverArm[5 - 1] = {0};
+
+void radii_initializer(double *radii);
+void trapezoid_edges_initializer(double *trapezoid_edges);
+void parallelogram_slopes_initializer(double *parallelogram_slopes);
+void radii_leverArm_initializer(double *radii_leverArm);
+
+void const_array_initializer(double *radii, double *trapezoid_edges,
+                             double *parallelogram_slopes,
+                             double *radii_leverArm);
 # 5 "C:/Projects/ParticleCoverHLS/include\\superpoint.h" 2
 # 1 "C:/Projects/ParticleCoverHLS/include/point.h" 1
 
@@ -31835,10 +31849,15 @@ loop_copy_points_to_superpoint:
   superpoint.n_points = n_points;
 
 
-
-
-
-
+  double min = z_list[0];
+  double max = z_list[0];
+  VITIS_LOOP_25_1: for (size_t i = 1; i < n_points; i++) {
+#pragma HLS PIPELINE
+ min = std::min(min, z_list[i]);
+    max = std::max(max, z_list[i]);
+  }
+  superpoint.min = min;
+  superpoint.max = max;
 
   return superpoint;
 }
@@ -31855,16 +31874,9 @@ std::ostream &operator<<(std::ostream &os, const superpoint_s &sp) {
   os << "  min: " << sp.min << std::endl;
   os << "  max: " << sp.max << std::endl;
   os << "  z_values: ";
-  VITIS_LOOP_43_1: for (size_t i = 0; i < sp.n_points; i++) {
+  VITIS_LOOP_48_1: for (size_t i = 0; i < sp.n_points; i++) {
     os << sp.z_values[i] << " ";
   }
-  os << std::endl;
-
-
-
-
-
-
   os << std::endl;
 
   return os;

@@ -42,6 +42,11 @@
 			<location>C:/Projects/ParticleCoverHLS/solution1/.tcls</location>
 		</link>
 		<link>
+			<name>source/constants.cxx</name>
+			<type>1</type>
+			<location>C:/Projects/ParticleCoverHLS/src/constants.cxx</location>
+		</link>
+		<link>
 			<name>source/cover.cxx</name>
 			<type>1</type>
 			<location>C:/Projects/ParticleCoverHLS/src/cover.cxx</location>
@@ -65,6 +70,11 @@
 			<name>source/file_reader.cxx</name>
 			<type>1</type>
 			<location>C:/Projects/ParticleCoverHLS/src/file_reader.cxx</location>
+		</link>
+		<link>
+			<name>source/parallelogram.cxx</name>
+			<type>1</type>
+			<location>C:/Projects/ParticleCoverHLS/src/parallelogram.cxx</location>
 		</link>
 		<link>
 			<name>source/patch.cxx</name>

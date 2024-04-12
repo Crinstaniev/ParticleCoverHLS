@@ -156,8 +156,22 @@ extern "C" {
 
 
 # 1 "C:/Projects/ParticleCoverHLS/include/constants.h" 1
-# 25 "C:/Projects/ParticleCoverHLS/include/constants.h"
+# 22 "C:/Projects/ParticleCoverHLS/include/constants.h"
 const double RADII[] = {5.0, 10.0, 15.0, 20.0, 25.0};
+
+static double radii[5] = {5.0, 10.0, 15.0, 20.0, 25.0};
+static double trapezoid_edges[5] = {0};
+static double parallelogram_slopes[5 - 1] = {0};
+static double radii_leverArm[5 - 1] = {0};
+
+void radii_initializer(double *radii);
+void trapezoid_edges_initializer(double *trapezoid_edges);
+void parallelogram_slopes_initializer(double *parallelogram_slopes);
+void radii_leverArm_initializer(double *radii_leverArm);
+
+void const_array_initializer(double *radii, double *trapezoid_edges,
+                             double *parallelogram_slopes,
+                             double *radii_leverArm);
 # 4 "C:/Projects/ParticleCoverHLS/include\\system.h" 2
 # 1 "C:/Projects/ParticleCoverHLS/include/cover.h" 1
 
@@ -24761,6 +24775,31 @@ std::ostream &operator<<(std::ostream &os, const dataset_s &dataset);
 
 
 
+# 1 "C:/Projects/ParticleCoverHLS/include/parallelogram.h" 1
+
+
+
+
+typedef struct {
+  int layer_num;
+  float pSlope;
+
+  float shadow_bottomL_jR;
+  float shadow_bottomR_jR;
+  float shadow_bottomL_jL;
+  float shadow_bottomR_jL;
+
+  float z1_min;
+  float z1_max;
+} parallelogram_s;
+
+void parallelogram_init(parallelogram_s *p, int layer_numI, float z1_minI,
+                        float z1_maxI, float shadow_bottomL_jRI,
+                        float shadow_bottomR_jRI, float shadow_bottomL_jLI,
+                        float shadow_bottomR_jLI, float pSlopeI);
+
+std::ostream &operator<<(std::ostream &os, const parallelogram_s &p);
+# 7 "C:/Projects/ParticleCoverHLS/include/patch.h" 2
 # 1 "C:/Projects/ParticleCoverHLS/include/superpoint.h" 1
 
 
@@ -24782,18 +24821,17 @@ bool superpoint_eq(superpoint_s sp1, superpoint_s sp2);
 
 
 std::ostream &operator<<(std::ostream &os, const superpoint_s &sp);
-# 7 "C:/Projects/ParticleCoverHLS/include/patch.h" 2
+# 8 "C:/Projects/ParticleCoverHLS/include/patch.h" 2
 
 
 
-typedef struct
-{
+typedef struct {
   environment_s env;
   int end_layer;
   int left_end_layer;
   int right_end_layer;
-  int left_end_lambdaZ;
-  int right_end_lambdaZ;
+  float left_end_lambdaZ;
+  float right_end_lambdaZ;
   double apexZ0;
 
   int shadow_fromTopToInnermost_topL_jL;
@@ -24801,20 +24839,37 @@ typedef struct
   int shadow_fromTopToInnermost_topR_jL;
   int shadow_fromTopToInnermost_topR_jR;
 
+  float a_corner[5 - 1];
+  float b_corner[5 - 1];
+  float c_corner[5 - 1];
+  float d_corner[5 - 1];
+
   superpoint_s superpoints[5];
   size_t n_superpoints;
+
+  bool flatBottom;
+  bool flatTop;
+
+  bool squareAcceptance;
+  bool triangleAcceptance;
+
+  parallelogram_s parallelograms[5 - 1];
 } patch_s;
 
-patch_s patch_init(environment_s env, superpoint_s *superpoints,
-                   size_t n_superpoints, double apexZ0);
+patch_s patch_init(superpoint_s *superpoints, size_t n_superpoints,
+                   double apexZ0);
 
-void patch_straight_line_projector_from_layer_ij_to_k(
-    float *result,
-    float z_i, float z_j, float i, float j, float k);
+void patch_get_parallelograms(patch_s *patch);
+
+void patch_get_acceptance_corners(patch_s *patch);
+
+void patch_get_end_layers(patch_s *patch);
+
+float patch_straight_line_projector_from_layer_ij_to_k(float z_i, float z_j,
+                                                       int i, int j, int k);
 
 
-std::ostream &
-operator<<(std::ostream &os, const patch_s &p);
+std::ostream &operator<<(std::ostream &os, const patch_s &p);
 # 7 "C:/Projects/ParticleCoverHLS/include/cover.h" 2
 # 1 "C:/Projects/ParticleCoverHLS/include/patch_buffer.h" 1
 # 14 "C:/Projects/ParticleCoverHLS/include/patch_buffer.h"
@@ -24833,6 +24888,8 @@ void patch_buffer_push_patch(patch_buffer_s *buffer, patch_s patch);
 void patch_buffer_access_patch(patch_buffer_s *buffer, int depth,
                                patch_s *patch);
 
+patch_s *patch_buffer_access_patch_ptr(patch_buffer_s *buffer, int depth);
+
 
 std::ostream &operator<<(std::ostream &os, const patch_buffer_s &buffer);
 # 8 "C:/Projects/ParticleCoverHLS/include/cover.h" 2
@@ -24849,11 +24906,11 @@ void cover_init(cover_s *cover);
 
 void cover_make_patch_aligned_to_line(
     cover_s *cover, point_s row_data[5][256],
-    int num_points[5]);
+    int num_points[5], double apexZ0, double z_top);
 
 void cover_make_patch_shadow_quilt_from_edges(
-    cover_s *cover
-);
+    cover_s *cover, point_s row_data[5][256],
+    int num_points[5]);
 
 
 std::ostream &operator<<(std::ostream &os, const cover_s &cover);
@@ -28505,8 +28562,12 @@ event_s *file_reader_read(const std::string &filename,
 # 13 "C:/Projects/ParticleCoverHLS/include\\system.h" 2
 
 
-void system_top(cover_s *cover_result);
+
+__attribute__((sdx_kernel("system_top", 0))) void system_top(cover_s *cover,
+                point_s row_data[5][256],
+                int num_points[5]);
 # 3 "ParticleCoverHLS/src/system.cxx" 2
+
 
 
 # 1 "C:/Xilinx/Vitis_HLS/2020.2/tps/mingw/6.2.0/win64.o/nt\\lib\\gcc\\x86_64-w64-mingw32\\6.2.0\\include\\c++\\stdlib.h" 1 3
@@ -28550,19 +28611,26 @@ using std::system;
 
 using std::wcstombs;
 using std::wctomb;
-# 6 "ParticleCoverHLS/src/system.cxx" 2
+# 7 "ParticleCoverHLS/src/system.cxx" 2
 
 __attribute__((sdx_kernel("system_top", 0))) void system_top(cover_s *cover,
                 point_s row_data[5][256],
                 int num_points[5]) {_ssdm_SpecArrayDimSize(row_data, 5);_ssdm_SpecArrayDimSize(num_points, 5);
 #pragma HLS TOP name=system_top
-# 9 "ParticleCoverHLS/src/system.cxx"
+# 10 "ParticleCoverHLS/src/system.cxx"
+
+
+
 
   patch_buffer_init(&cover->patch_buffer);
-  cover_make_patch_aligned_to_line(cover, row_data, num_points);
+
+  cover_make_patch_shadow_quilt_from_edges(cover, row_data, num_points);
+
+
 
   return;
 }
+
 
 
 int main(void) {

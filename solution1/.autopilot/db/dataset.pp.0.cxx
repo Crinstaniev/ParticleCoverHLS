@@ -160,8 +160,22 @@ extern "C" {
 
 
 # 1 "C:/Projects/ParticleCoverHLS/include/constants.h" 1
-# 25 "C:/Projects/ParticleCoverHLS/include/constants.h"
+# 22 "C:/Projects/ParticleCoverHLS/include/constants.h"
 const double RADII[] = {5.0, 10.0, 15.0, 20.0, 25.0};
+
+static double radii[5] = {5.0, 10.0, 15.0, 20.0, 25.0};
+static double trapezoid_edges[5] = {0};
+static double parallelogram_slopes[5 - 1] = {0};
+static double radii_leverArm[5 - 1] = {0};
+
+void radii_initializer(double *radii);
+void trapezoid_edges_initializer(double *trapezoid_edges);
+void parallelogram_slopes_initializer(double *parallelogram_slopes);
+void radii_leverArm_initializer(double *radii_leverArm);
+
+void const_array_initializer(double *radii, double *trapezoid_edges,
+                             double *parallelogram_slopes,
+                             double *radii_leverArm);
 # 5 "C:/Projects/ParticleCoverHLS/include/environment.h" 2
 # 1 "C:/Xilinx/Vitis_HLS/2020.2/tps/mingw/6.2.0/win64.o/nt\\lib\\gcc\\x86_64-w64-mingw32\\6.2.0\\include\\c++\\cstddef" 1 3
 # 43 "C:/Xilinx/Vitis_HLS/2020.2/tps/mingw/6.2.0/win64.o/nt\\lib\\gcc\\x86_64-w64-mingw32\\6.2.0\\include\\c++\\cstddef" 3
@@ -31920,13 +31934,8 @@ void dataset_import_data(dataset_s &dataset, point_s *data_array,
 
   VITIS_LOOP_37_2: for (size_t i = 0; i < 5; i++) {
 
-
-
-
-
-
-    VITIS_LOOP_44_3: for (size_t j = 0; j < dataset.n_points[i]; j++) {
-      VITIS_LOOP_45_4: for (size_t k = 0; k < dataset.n_points[i] - j - 1; k++) {
+    VITIS_LOOP_39_3: for (size_t j = 0; j < dataset.n_points[i]; j++) {
+      VITIS_LOOP_40_4: for (size_t k = 0; k < dataset.n_points[i] - j - 1; k++) {
         if (dataset.array[i][k].z > dataset.array[i][k + 1].z) {
           point_s temp = dataset.array[i][k];
           dataset.array[i][k] = dataset.array[i][k + 1];
@@ -31944,7 +31953,7 @@ void dataset_import_data(dataset_s &dataset, point_s *data_array,
 void dataset_add_boundary_point(dataset_s &dataset, double offset) {
   dataset.boundaryPoint_offset = offset;
 
-  VITIS_LOOP_63_1: for (size_t i = 0; i < dataset.env->trapezoid_edges_size; i++) {
+  VITIS_LOOP_58_1: for (size_t i = 0; i < dataset.env->trapezoid_edges_size; i++) {
     double phi0 = dataset.array[i][0].phi;
 
     dataset.array[i][dataset.n_points[i]] =
@@ -31961,15 +31970,10 @@ void dataset_add_boundary_point(dataset_s &dataset, double offset) {
 
   int ln = 0;
 
-  VITIS_LOOP_80_2: for (size_t i = 0; i < 5; i++) {
+  VITIS_LOOP_75_2: for (size_t i = 0; i < 5; i++) {
 
-
-
-
-
-
-    VITIS_LOOP_87_3: for (size_t j = 0; j < dataset.n_points[i]; j++) {
-      VITIS_LOOP_88_4: for (size_t k = 0; k < dataset.n_points[i] - j - 1; k++) {
+    VITIS_LOOP_77_3: for (size_t j = 0; j < dataset.n_points[i]; j++) {
+      VITIS_LOOP_78_4: for (size_t k = 0; k < dataset.n_points[i] - j - 1; k++) {
         if (dataset.array[i][k].z > dataset.array[i][k + 1].z) {
           point_s temp = dataset.array[i][k];
           dataset.array[i][k] = dataset.array[i][k + 1];
@@ -31981,7 +31985,7 @@ void dataset_add_boundary_point(dataset_s &dataset, double offset) {
     ln++;
   }
 
-  VITIS_LOOP_100_5: for (size_t i = 0; i < dataset.env->trapezoid_edges_size; i++) {
+  VITIS_LOOP_90_5: for (size_t i = 0; i < dataset.env->trapezoid_edges_size; i++) {
     dataset.env->trapezoid_edges[i] += offset;
   }
 }
@@ -31993,7 +31997,7 @@ std::ostream &operator<<(std::ostream &os, const dataset_s &dataset) {
   os << "  Boundary Point Offset: " << dataset.boundaryPoint_offset
      << std::endl;
 
-  VITIS_LOOP_112_1: for (size_t i = 0; i < 5; i++) {
+  VITIS_LOOP_102_1: for (size_t i = 0; i < 5; i++) {
     os << "  Layer " << i + 1 << " Points: " << dataset.n_points[i]
        << std::endl;
   }

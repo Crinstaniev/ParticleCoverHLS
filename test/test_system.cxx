@@ -5,10 +5,10 @@
 // #define SYNTHESIS
 
 int main(void) {
-#ifndef SYNTHESES
-  std::string file_path = "../data/wedgeData_v3_128.txt";
+#ifdef IS_SYNTHESIS
+  std::string file_path = "../../../data/wedgeData_v3_128.txt";
 #else
-  std::string file_path = "../../data/wedgeData_v3_128.txt";
+  std::string file_path = "../data/wedgeData_v3_128.txt";
 #endif
 
   event_s *events = file_reader_read(file_path, 128);

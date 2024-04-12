@@ -927,15 +927,10 @@ public:
         cout << "original: [" << patches[patches.size() - 1].d_corner[0] << ", "
              << patches[patches.size() - 1].d_corner[1] << "]" << endl;
 
-        exit(0);
-        // TODO: DEBUG PRINTING NOT TRANSLATED
-
-        // TODO: weird for condition
-
-        // TODO: DEBUG PRINTING
         for (int i = 1; i < patches[patches.size() - 1].superpoints.size() - 1;
              i++) {
           int j = i + 1;
+
           cout << j << " superpoint: "
                << patches[patches.size() - 1].superpoints[i].min << " "
                << patches[patches.size() - 1].superpoints[i].max
@@ -964,10 +959,9 @@ public:
                           patches[patches.size() - 1].superpoints[i].max, 1, j,
                           env.num_layers)
                << endl;
+          exit(0);
         }
-        // TODO: DEBUG PRINTING
 
-        // TODO: Why c_corner[1]??
         float original_c = patches[patches.size() - 1].c_corner[1];
         float original_d = patches[patches.size() - 1].d_corner[1];
 
@@ -1405,7 +1399,7 @@ public:
                  << complementaryPartialBottom << " " << original_topR_jL << " "
                  << original_topL_jL << " " << complementary_topR_jR << " "
                  << complementary_topL_jR
-                 << " h orizontalOverlapTop: " << horizontalOverlapTop
+                 << " horizontalOverlapTop: " << horizontalOverlapTop
                  << " horizontalOverlapBottom: " << horizontalOverlapBottom
                  << endl;
           }

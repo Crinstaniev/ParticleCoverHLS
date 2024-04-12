@@ -21,56 +21,19 @@
 
 const double RADII[] = {5.0, 10.0, 15.0, 20.0, 25.0};
 
-static double radii[NUM_LAYERS] = {0};
+static double radii[NUM_LAYERS] = {5.0, 10.0, 15.0, 20.0, 25.0};
 static double trapezoid_edges[NUM_LAYERS] = {0};
 static double parallelogram_slopes[NUM_LAYERS - 1] = {0};
 static double radii_leverArm[NUM_LAYERS - 1] = {0};
 
-constexpr void radii_initializer(double radii[NUM_LAYERS]) {
-  for (int i = 0; i < NUM_LAYERS; i++) {
-    radii[i] = (i + 1) * 5.0;
-  }
+void radii_initializer(double *radii);
+void trapezoid_edges_initializer(double *trapezoid_edges);
+void parallelogram_slopes_initializer(double *parallelogram_slopes);
+void radii_leverArm_initializer(double *radii_leverArm);
 
-  return;
-}
-
-constexpr void trapezoid_edges_initializer(double trapezoid_edges[NUM_LAYERS]) {
-  for (int i = 0; i < NUM_LAYERS; i++) {
-    double currentVal =
-        radii[i] * (TOP_LAYER_LIM - BEAM_AXIS_LIM) / radii[NUM_LAYERS - 1] +
-        BEAM_AXIS_LIM;
-    trapezoid_edges[i] = currentVal;
-  }
-
-  return;
-}
-
-constexpr void
-parallelogram_slopes_initializer(double parallelogram_slopes[NUM_LAYERS - 1]) {
-  for (int i = 0; i < NUM_LAYERS - 1; i++) {
-    parallelogram_slopes[i] =
-        (radii[0] - radii[i]) / (radii[NUM_LAYERS - 1] - radii[i]);
-  }
-
-  return;
-}
-
-constexpr void
-radii_leverArm_initializer(double radii_leverArm[NUM_LAYERS - 1]) {
-  for (int i = 0; i < NUM_LAYERS - 1; i++) {
-    radii_leverArm[i] = (1 - parallelogram_slopes[i]);
-  }
-
-  return;
-}
-
-#define CONST_ARRAY_INITIALIZER                                                \
-  {                                                                            \
-    radii_initializer(radii);                                                  \
-    parallelogram_slopes_initializer(parallelogram_slopes);                    \
-    radii_leverArm_initializer(radii_leverArm);                                \
-    trapezoid_edges_initializer(trapezoid_edges);                              \
-  }
+void const_array_initializer(double *radii, double *trapezoid_edges,
+                             double *parallelogram_slopes,
+                             double *radii_leverArm);
 
 #define PRINT_CONST_ARRAYS                                                     \
   {                                                                            \
