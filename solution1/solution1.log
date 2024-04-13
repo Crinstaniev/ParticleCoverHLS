@@ -8120,3 +8120,1263 @@ INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were satis
 INFO: [HLS 200-789] **** Estimated Fmax: 100.70 MHz
 INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 92 seconds. CPU system time: 3 seconds. Elapsed time: 122.869 seconds; current allocated memory: 768.299 MB.
 INFO: [HLS 200-112] Total CPU user time: 94 seconds. Total CPU system time: 4 seconds. Total elapsed time: 124.485 seconds; peak allocated memory: 764.758 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 0ns.
+INFO: [HLS 200-10] Setting target device to 'xcvu11p-flga2577-1-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
+INFO: [HLS 200-1510] Running: set_part xcvu11p-flga2577-1-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: config_export -format ip_catalog -rtl verilog 
+INFO: [HLS 200-1510] Running: set_clock_uncertainty 0 
+INFO: [HLS 200-1510] Running: set_directive_top -name system_top system_top 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 162.973 MB.
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/constants.cxx' ... 
+WARNING: [HLS 207-5301] unused parameter 'radii': ParticleCoverHLS/src/constants.cxx:42:38
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/cover.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/dataset.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/environment.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/event.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/file_reader.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/parallelogram.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/patch.cxx' ... 
+WARNING: [HLS 207-5301] unused parameter 'n_superpoints': ParticleCoverHLS/src/patch.cxx:7:54
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/patch_buffer.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/point.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/sim_utils.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/superpoint.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/system.cxx' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 12.409 seconds; current allocated memory: 165.226 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<64, false>::ap_bit_ref(ap_int_base<64, false>*, int)' into 'ap_int_base<64, false>::operator[](int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:934:30)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<1, false>::ap_bit_ref(ap_int_base<1, false>*, int)' into 'ap_int_base<1, false>::operator[](int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:934:30)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<64, false>::operator bool() const' into 'ap_bit_ref<1, false>& ap_bit_ref<1, false>::operator=<64, false>(ap_bit_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:839:38)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<1, false>::operator=(unsigned long long)' into 'ap_bit_ref<1, false>& ap_bit_ref<1, false>::operator=<64, false>(ap_bit_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:839:12)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>::ap_range_ref(ap_int_base<64, false>*, int, int)' into 'ap_int_base<64, false>::range(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:853:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::range(int, int)' into 'ap_int_base<64, false>::operator()(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:890:18)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<11, false>::ap_range_ref(ap_int_base<11, false>*, int, int)' into 'ap_int_base<11, false>::range(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:853:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::range(int, int)' into 'ap_int_base<11, false>::operator()(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:890:18)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>::get() const' into 'ap_int_base<64, false>::ap_int_base<64, false>(ap_range_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:312:20)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::ap_int_base<64, false>(ap_int_base<64, false> const&)' into 'ap_range_ref<11, false>& ap_range_ref<11, false>::operator=<64, false>(ap_int_base<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:367:31)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::ap_int_base<64, false>(ap_range_ref<64, false> const&)' into 'ap_range_ref<11, false>& ap_range_ref<11, false>::operator=<64, false>(ap_range_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:22)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<11, false>& ap_range_ref<11, false>::operator=<64, false>(ap_int_base<64, false> const&)' into 'ap_range_ref<11, false>& ap_range_ref<11, false>::operator=<64, false>(ap_range_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:12)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<52, false>::ap_range_ref(ap_int_base<52, false>*, int, int)' into 'ap_int_base<52, false>::range(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:853:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::range(int, int)' into 'ap_int_base<52, false>::operator()(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:890:18)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::ap_int_base<64, false>(ap_int_base<64, false> const&)' into 'ap_range_ref<52, false>& ap_range_ref<52, false>::operator=<64, false>(ap_int_base<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:367:31)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::ap_int_base<64, false>(ap_range_ref<64, false> const&)' into 'ap_range_ref<52, false>& ap_range_ref<52, false>::operator=<64, false>(ap_range_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:22)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<52, false>& ap_range_ref<52, false>::operator=<64, false>(ap_int_base<64, false> const&)' into 'ap_range_ref<52, false>& ap_range_ref<52, false>::operator=<64, false>(ap_range_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:12)
+INFO: [HLS 214-131] Inlining function 'ap_uint<64>::ap_uint(unsigned long long)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:483:28)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<52, false>& ap_range_ref<52, false>::operator=<64, false>(ap_range_ref<64, false> const&)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:486:19)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::operator()(int, int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:486:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator()(int, int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:486:21)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<11, false>& ap_range_ref<11, false>::operator=<64, false>(ap_range_ref<64, false> const&)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:485:19)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::operator()(int, int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:485:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator()(int, int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:485:21)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<1, false>& ap_bit_ref<1, false>::operator=<64, false>(ap_bit_ref<64, false> const&)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:484:17)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<1, false>::operator[](int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:484:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator[](int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:484:19)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<1, false>::ap_bit_ref(ap_int_base<1, false> const*, int)' into 'ap_int_base<1, false>::operator[](int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:950:30)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<1, false>::to_bool() const' into 'ap_int_base<1, false>::operator[](int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:951:15)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<11, false>::ap_range_ref(ap_int_base<11, false>*, int, int)' into 'ap_int_base<11, false>::range(int, int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:860:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::range(int, int) const' into 'ap_int_base<11, false>::operator()(int, int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:894:18)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<11, false>::get() const' into 'ap_int_base<11, false>::ap_int_base<11, false>(ap_range_ref<11, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:312:20)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::ap_int_base<11, false>(ap_int_base<11, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<11, false>(ap_int_base<11, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:367:31)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::ap_int_base<11, false>(ap_range_ref<11, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<11, false>(ap_range_ref<11, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:22)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<11, false>(ap_int_base<11, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<11, false>(ap_range_ref<11, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:12)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<52, false>::ap_range_ref(ap_int_base<52, false>*, int, int)' into 'ap_int_base<52, false>::range(int, int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:860:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::range(int, int) const' into 'ap_int_base<52, false>::operator()(int, int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:894:18)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<52, false>::get() const' into 'ap_int_base<52, false>::ap_int_base<52, false>(ap_range_ref<52, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:312:20)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::ap_int_base<52, false>(ap_int_base<52, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<52, false>(ap_int_base<52, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:367:31)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::ap_int_base<52, false>(ap_range_ref<52, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<52, false>(ap_range_ref<52, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:22)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<52, false>(ap_int_base<52, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<52, false>(ap_range_ref<52, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<1, false>::operator[](int) const' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:501:36)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<52, false>(ap_range_ref<52, false> const&)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:503:25)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator()(int, int)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:503:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::operator()(int, int) const' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:503:27)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<11, false>(ap_range_ref<11, false> const&)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:502:41)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator()(int, int)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:502:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::operator()(int, int) const' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:502:43)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<64, false>::operator=(bool)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:501:34)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator[](int)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:501:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::to_uint64() const' into 'fp_struct<double>::to_double() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:520:24)
+INFO: [HLS 214-186] Unrolling loop 'loop_copy_row_list' (ParticleCoverHLS/src/cover.cxx:31:3) in function '_copy_row_list' completely with a factor of 256 (ParticleCoverHLS/src/cover.cxx:31:3)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_95_1' (ParticleCoverHLS/src/cover.cxx:95:20) in function 'cover_make_patch_aligned_to_line' completely with a factor of 5 (ParticleCoverHLS/src/cover.cxx:95:20)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_139_2' (ParticleCoverHLS/src/cover.cxx:139:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:139:25)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_148_3' (ParticleCoverHLS/src/cover.cxx:148:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:148:25)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_139_2' (ParticleCoverHLS/src/cover.cxx:139:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:139:25)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_148_3' (ParticleCoverHLS/src/cover.cxx:148:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:148:25)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_139_2' (ParticleCoverHLS/src/cover.cxx:139:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:139:25)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_148_3' (ParticleCoverHLS/src/cover.cxx:148:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:148:25)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_139_2' (ParticleCoverHLS/src/cover.cxx:139:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:139:25)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_148_3' (ParticleCoverHLS/src/cover.cxx:148:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:148:25)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_139_2' (ParticleCoverHLS/src/cover.cxx:139:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:139:25)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_148_3' (ParticleCoverHLS/src/cover.cxx:148:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:148:25)
+INFO: [HLS 214-186] Unrolling loop 'loop_copy_points_to_superpoint' (ParticleCoverHLS/src/superpoint.cxx:13:3) in function 'superpoint_init' completely with a factor of 16 (ParticleCoverHLS/src/superpoint.cxx:13:3)
+INFO: [HLS 214-178] Inlining function 'parallelogram_slopes_initializer(double*)' into 'const_array_initializer(double*, double*, double*, double*)' (ParticleCoverHLS/src/constants.cxx:44:0)
+INFO: [HLS 214-178] Inlining function 'radii_leverArm_initializer(double*)' into 'const_array_initializer(double*, double*, double*, double*)' (ParticleCoverHLS/src/constants.cxx:44:0)
+INFO: [HLS 214-178] Inlining function 'trapezoid_edges_initializer(double*)' into 'const_array_initializer(double*, double*, double*, double*)' (ParticleCoverHLS/src/constants.cxx:44:0)
+INFO: [HLS 214-178] Inlining function 'fp_struct<double>::data() const' into 'fp_struct<double>::to_double() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:518:0)
+INFO: [HLS 214-178] Inlining function 'fp_struct<double>::to_double() const' into 'fp_struct<double>::to_ieee() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:533:0)
+INFO: [HLS 214-178] Inlining function 'fp_struct<double>::fp_struct(double)' into 'double generic_copysign<double>(double, double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/hlsmath/include/FloatingPoint/hls_copysign.h:10:0)
+INFO: [HLS 214-178] Inlining function 'fp_struct<double>::to_ieee() const' into 'double generic_copysign<double>(double, double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/hlsmath/include/FloatingPoint/hls_copysign.h:10:0)
+INFO: [HLS 214-178] Inlining function 'double generic_copysign<double>(double, double)' into 'double generic_fabs<double>(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/hlsmath/include/FloatingPoint/hls_fabs.h:12:0)
+INFO: [HLS 214-178] Inlining function 'double generic_fabs<double>(double)' into 'fabs' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/hlsmath/src/c/fabsdouble.cpp:7:0)
+INFO: [HLS 214-178] Inlining function 'fabs' into 'std::abs(double)' (C:/Xilinx/Vitis_HLS/2020.2/tps/mingw/6.2.0/win64.o/nt\lib\gcc\x86_64-w64-mingw32\6.2.0\include\c++\cmath:86:0)
+INFO: [HLS 214-178] Inlining function 'std::abs(double)' into '_find_start_index_and_value(int*, double*, double*, int, double)' (ParticleCoverHLS/src/cover.cxx:39:0)
+INFO: [HLS 214-178] Inlining function 'std::abs(double)' into '_find_left_and_right_bound(int*, int*, double*, double*, double*, int, int)' (ParticleCoverHLS/src/cover.cxx:61:0)
+INFO: [HLS 214-178] Inlining function 'double const& std::min<double>(double const&, double const&)' into 'superpoint_init(point_s*, unsigned long)' (ParticleCoverHLS/src/superpoint.cxx:6:0)
+INFO: [HLS 214-178] Inlining function 'double const& std::max<double>(double const&, double const&)' into 'superpoint_init(point_s*, unsigned long)' (ParticleCoverHLS/src/superpoint.cxx:6:0)
+INFO: [HLS 214-178] Inlining function 'const_array_initializer(double*, double*, double*, double*)' into 'patch_get_parallelograms(patch_s*)' (ParticleCoverHLS/src/patch.cxx:63:0)
+INFO: [HLS 214-178] Inlining function 'double const& std::max<double>(double const&, double const&)' into 'patch_get_parallelograms(patch_s*)' (ParticleCoverHLS/src/patch.cxx:63:0)
+INFO: [HLS 214-178] Inlining function 'double const& std::min<double>(double const&, double const&)' into 'patch_get_parallelograms(patch_s*)' (ParticleCoverHLS/src/patch.cxx:63:0)
+INFO: [HLS 214-178] Inlining function 'patch_straight_line_projector_from_layer_ij_to_k(float, float, int, int, int)' into 'patch_get_parallelograms(patch_s*)' (ParticleCoverHLS/src/patch.cxx:63:0)
+INFO: [HLS 214-178] Inlining function 'parallelogram_init(parallelogram_s*, int, float, float, float, float, float, float, float)' into 'patch_get_parallelograms(patch_s*)' (ParticleCoverHLS/src/patch.cxx:63:0)
+INFO: [HLS 214-178] Inlining function 'float const& std::min<float>(float const&, float const&)' into 'patch_get_acceptance_corners(patch_s*)' (ParticleCoverHLS/src/patch.cxx:111:0)
+INFO: [HLS 214-178] Inlining function 'float const& std::max<float>(float const&, float const&)' into 'patch_get_acceptance_corners(patch_s*)' (ParticleCoverHLS/src/patch.cxx:111:0)
+INFO: [HLS 214-178] Inlining function 'float const& std::max<float>(float const&, float const&)' into 'patch_get_end_layers(patch_s*)' (ParticleCoverHLS/src/patch.cxx:187:0)
+INFO: [HLS 214-178] Inlining function 'float const& std::min<float>(float const&, float const&)' into 'patch_get_end_layers(patch_s*)' (ParticleCoverHLS/src/patch.cxx:187:0)
+INFO: [HLS 214-178] Inlining function 'patch_init(superpoint_s*, unsigned long, double)' into 'cover_make_patch_aligned_to_line(cover_s*, point_s (*) [256], int*, double, double)' (ParticleCoverHLS/src/cover.cxx:91:0)
+INFO: [HLS 214-178] Inlining function 'patch_buffer_push_patch(patch_buffer_s*, patch_s)' into 'cover_make_patch_aligned_to_line(cover_s*, point_s (*) [256], int*, double, double)' (ParticleCoverHLS/src/cover.cxx:91:0)
+INFO: [HLS 214-178] Inlining function 'const_array_initializer(double*, double*, double*, double*)' into 'cover_make_patch_shadow_quilt_from_edges(cover_s*, point_s (*) [256], int*)' (ParticleCoverHLS/src/cover.cxx:177:0)
+INFO: [HLS 214-178] Inlining function 'patch_straight_line_projector_from_layer_ij_to_k(float, float, int, int, int)' into 'cover_make_patch_shadow_quilt_from_edges(cover_s*, point_s (*) [256], int*)' (ParticleCoverHLS/src/cover.cxx:177:0)
+INFO: [HLS 214-178] Inlining function 'float const& std::min<float>(float const&, float const&)' into 'cover_make_patch_shadow_quilt_from_edges(cover_s*, point_s (*) [256], int*)' (ParticleCoverHLS/src/cover.cxx:177:0)
+INFO: [HLS 214-178] Inlining function 'patch_buffer_access_patch_ptr(patch_buffer_s*, int)' into 'cover_make_patch_shadow_quilt_from_edges(cover_s*, point_s (*) [256], int*)' (ParticleCoverHLS/src/cover.cxx:177:0)
+INFO: [HLS 214-178] Inlining function 'patch_buffer_init(patch_buffer_s*)' into 'system_top(cover_s*, point_s (*) [256], int*)' (ParticleCoverHLS/src/system.cxx:10:0)
+WARNING: [HLS 214-167] The program may have out of bound array access (C:/Xilinx/Vitis_HLS/2020.2/tps/mingw/6.2.0/win64.o/nt\lib\gcc\x86_64-w64-mingw32\6.2.0\include\c++\bits/stl_algobase.h:200:11)
+INFO: [HLS 214-131] Inlining function '_llvm.fpga.pack.none.i30272.s_struct.patch_ss' into 'cover_make_patch_aligned_to_line(cover_s*, point_s (*) [256], int*, double, double) (.1)'
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 21 seconds. CPU system time: 0 seconds. Elapsed time: 37.695 seconds; current allocated memory: 206.167 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.079 seconds; current allocated memory: 206.168 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 11 seconds. CPU system time: 0 seconds. Elapsed time: 11.334 seconds; current allocated memory: 266.592 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 9 seconds. CPU system time: 0 seconds. Elapsed time: 9.076 seconds; current allocated memory: 309.905 MB.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_122_1' (ParticleCoverHLS/src/patch.cxx:122) in function 'patch_get_acceptance_corners' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-2' in function 'patch_get_end_layers' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-3' in function 'patch_get_end_layers' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_191_1' (ParticleCoverHLS/src/patch.cxx:191) in function 'patch_get_end_layers' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_201_2' (ParticleCoverHLS/src/patch.cxx:201) in function 'patch_get_end_layers' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_208_3' (ParticleCoverHLS/src/patch.cxx:199) in function 'patch_get_end_layers' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_15_1' (ParticleCoverHLS/src/constants.cxx:15) in function 'patch_get_parallelograms' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_75_1' (ParticleCoverHLS/src/patch.cxx:75) in function 'patch_get_parallelograms' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'loop_find_start_index_and_value' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:500) in function '_find_start_index_and_value' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'loop_find_left_and_right_bound' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:500) in function '_find_left_and_right_bound' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_25_1' (ParticleCoverHLS/src/patch.cxx:25) in function 'cover_make_patch_aligned_to_line' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_15_1' (ParticleCoverHLS/src/constants.cxx:15) in function 'cover_make_patch_shadow_quilt_from_edges' automatically.
+INFO: [XFORM 203-102] Partitioning array 'init_patch.points.layer_num' (ParticleCoverHLS/src/cover.cxx:93) in dimension 2 automatically.
+INFO: [XFORM 203-102] Partitioning array 'init_patch.points.radius' (ParticleCoverHLS/src/cover.cxx:93) in dimension 2 automatically.
+INFO: [XFORM 203-102] Partitioning array 'init_patch.points.phi' (ParticleCoverHLS/src/cover.cxx:93) in dimension 2 automatically.
+INFO: [XFORM 203-102] Partitioning array 'init_patch.points.z' (ParticleCoverHLS/src/cover.cxx:93) in dimension 2 automatically.
+INFO: [XFORM 203-102] Partitioning array 'init_patch.z_values' (ParticleCoverHLS/src/cover.cxx:93) in dimension 2 automatically.
+INFO: [XFORM 203-102] Partitioning array 'points.layer_num' (ParticleCoverHLS/src/cover.cxx:138) automatically.
+INFO: [XFORM 203-102] Partitioning array 'points.radius' (ParticleCoverHLS/src/cover.cxx:138) automatically.
+INFO: [XFORM 203-102] Partitioning array 'points.phi' (ParticleCoverHLS/src/cover.cxx:138) automatically.
+INFO: [XFORM 203-102] Partitioning array 'points.z' (ParticleCoverHLS/src/cover.cxx:138) automatically.
+INFO: [XFORM 203-102] Partitioning array 'sp.points.layer_num' (ParticleCoverHLS/src/cover.cxx:143) automatically.
+INFO: [XFORM 203-102] Partitioning array 'sp.points.radius' (ParticleCoverHLS/src/cover.cxx:143) automatically.
+INFO: [XFORM 203-102] Partitioning array 'sp.points.phi' (ParticleCoverHLS/src/cover.cxx:143) automatically.
+INFO: [XFORM 203-102] Partitioning array 'sp.points.z' (ParticleCoverHLS/src/cover.cxx:143) automatically.
+INFO: [XFORM 203-102] Partitioning array 'sp.z_values' (ParticleCoverHLS/src/cover.cxx:143) automatically.
+INFO: [XFORM 203-102] Partitioning array 'points.layer_num.1' (ParticleCoverHLS/src/cover.cxx:147) automatically.
+INFO: [XFORM 203-102] Partitioning array 'points.radius.1' (ParticleCoverHLS/src/cover.cxx:147) automatically.
+INFO: [XFORM 203-102] Partitioning array 'points.phi.1' (ParticleCoverHLS/src/cover.cxx:147) automatically.
+INFO: [XFORM 203-102] Partitioning array 'points.z.1' (ParticleCoverHLS/src/cover.cxx:147) automatically.
+INFO: [XFORM 203-102] Partitioning array 'sp.points.layer_num.1' (ParticleCoverHLS/src/cover.cxx:152) automatically.
+INFO: [XFORM 203-102] Partitioning array 'sp.points.radius.1' (ParticleCoverHLS/src/cover.cxx:152) automatically.
+INFO: [XFORM 203-102] Partitioning array 'sp.points.phi.1' (ParticleCoverHLS/src/cover.cxx:152) automatically.
+INFO: [XFORM 203-102] Partitioning array 'sp.points.z.1' (ParticleCoverHLS/src/cover.cxx:152) automatically.
+INFO: [XFORM 203-102] Partitioning array 'sp.z_values.1' (ParticleCoverHLS/src/cover.cxx:152) automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.a_corner' (ParticleCoverHLS/src/cover.cxx:165) automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.b_corner' (ParticleCoverHLS/src/cover.cxx:165) automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.c_corner' (ParticleCoverHLS/src/cover.cxx:165) automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.d_corner' (ParticleCoverHLS/src/cover.cxx:165) automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.superpoints.points.layer_num' (ParticleCoverHLS/src/cover.cxx:165) in dimension 2 automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.superpoints.points.radius' (ParticleCoverHLS/src/cover.cxx:165) in dimension 2 automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.superpoints.points.phi' (ParticleCoverHLS/src/cover.cxx:165) in dimension 2 automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.superpoints.points.z' (ParticleCoverHLS/src/cover.cxx:165) in dimension 2 automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.superpoints.z_values' (ParticleCoverHLS/src/cover.cxx:165) in dimension 2 automatically.
+INFO: [XFORM 203-102] Automatically partitioning small array 'parallelogram_slopes' completely based on array size.
+INFO: [XFORM 203-102] Automatically partitioning small array 'a_corner_list' (ParticleCoverHLS/src/patch.cxx:117) completely based on array size.
+INFO: [XFORM 203-102] Automatically partitioning small array 'b_corner_list' (ParticleCoverHLS/src/patch.cxx:118) completely based on array size.
+INFO: [XFORM 203-102] Automatically partitioning small array 'c_corner_list' (ParticleCoverHLS/src/patch.cxx:119) completely based on array size.
+INFO: [XFORM 203-102] Automatically partitioning small array 'd_corner_list' (ParticleCoverHLS/src/patch.cxx:120) completely based on array size.
+INFO: [XFORM 203-102] Automatically partitioning small array 'patch.parallelograms.layer_num' (ParticleCoverHLS/src/cover.cxx:165) completely based on array size.
+INFO: [XFORM 203-102] Automatically partitioning small array 'patch.parallelograms.pSlope' (ParticleCoverHLS/src/cover.cxx:165) completely based on array size.
+INFO: [XFORM 203-102] Automatically partitioning small array 'patch.parallelograms.shadow_bottomL_jR' (ParticleCoverHLS/src/cover.cxx:165) completely based on array size.
+INFO: [XFORM 203-102] Automatically partitioning small array 'patch.parallelograms.shadow_bottomR_jR' (ParticleCoverHLS/src/cover.cxx:165) completely based on array size.
+INFO: [XFORM 203-102] Automatically partitioning small array 'patch.parallelograms.shadow_bottomL_jL' (ParticleCoverHLS/src/cover.cxx:165) completely based on array size.
+INFO: [XFORM 203-102] Automatically partitioning small array 'patch.parallelograms.shadow_bottomR_jL' (ParticleCoverHLS/src/cover.cxx:165) completely based on array size.
+INFO: [XFORM 203-102] Automatically partitioning small array 'patch.parallelograms.z1_min' (ParticleCoverHLS/src/cover.cxx:165) completely based on array size.
+INFO: [XFORM 203-102] Automatically partitioning small array 'patch.parallelograms.z1_max' (ParticleCoverHLS/src/cover.cxx:165) completely based on array size.
+INFO: [XFORM 203-101] Partitioning array 'parallelogram_slopes' in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'a_corner_list' (ParticleCoverHLS/src/patch.cxx:117) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'b_corner_list' (ParticleCoverHLS/src/patch.cxx:118) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'c_corner_list' (ParticleCoverHLS/src/patch.cxx:119) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'd_corner_list' (ParticleCoverHLS/src/patch.cxx:120) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'patch.parallelograms.layer_num' (ParticleCoverHLS/src/cover.cxx:165) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'patch.parallelograms.pSlope' (ParticleCoverHLS/src/cover.cxx:165) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'patch.parallelograms.shadow_bottomL_jR' (ParticleCoverHLS/src/cover.cxx:165) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'patch.parallelograms.shadow_bottomR_jR' (ParticleCoverHLS/src/cover.cxx:165) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'patch.parallelograms.shadow_bottomL_jL' (ParticleCoverHLS/src/cover.cxx:165) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'patch.parallelograms.shadow_bottomR_jL' (ParticleCoverHLS/src/cover.cxx:165) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'patch.parallelograms.z1_min' (ParticleCoverHLS/src/cover.cxx:165) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'patch.parallelograms.z1_max' (ParticleCoverHLS/src/cover.cxx:165) in dimension 1 completely.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (ParticleCoverHLS/src/patch.cxx:75:29) in function 'patch_get_parallelograms'... converting 6 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:500:21) in function '_find_start_index_and_value'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:500:21) in function '_find_left_and_right_bound'... converting 4 basic blocks.
+INFO: [XFORM 203-11] Balancing expressions in function 'cover_make_patch_aligned_to_line' (ParticleCoverHLS/src/cover.cxx:15:3)...14 expression(s) balanced.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 19 seconds. CPU system time: 0 seconds. Elapsed time: 18.557 seconds; current allocated memory: 388.676 MB.
+INFO: [HLS 200-472] Inferring partial write operation for 'z_list' (ParticleCoverHLS/src/superpoint.cxx:15:12)
+INFO: [HLS 200-472] Inferring partial write operation for 'lambdaZ_left_list' 
+INFO: [HLS 200-472] Inferring partial write operation for 'lambdaZ_right_list' 
+INFO: [HLS 200-472] Inferring partial write operation for 'lambdaZ_left_list' (ParticleCoverHLS/src/patch.cxx:192:26)
+INFO: [HLS 200-472] Inferring partial write operation for 'lambdaZ_right_list' (ParticleCoverHLS/src/patch.cxx:194:27)
+INFO: [HLS 200-472] Inferring partial write operation for 'trapezoid_edges' (ParticleCoverHLS/src/constants.cxx:19:24)
+INFO: [HLS 200-472] Inferring partial write operation for 'init_patch[0].points.layer_num' (ParticleCoverHLS/src/cover.cxx:144:21)
+INFO: [HLS 200-472] Inferring partial write operation for 'init_patch[0].points.layer_num' (ParticleCoverHLS/src/cover.cxx:153:21)
+INFO: [HLS 200-472] Inferring partial write operation for 'patch.superpoints[0].points.layer_num' (ParticleCoverHLS/src/patch.cxx:26:26)
+INFO: [HLS 200-472] Inferring partial write operation for 'row_list' (ParticleCoverHLS/src/cover.cxx:33:14)
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 15 seconds. CPU system time: 0 seconds. Elapsed time: 15.316 seconds; current allocated memory: 521.542 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'system_top' ...
+WARNING: [SYN 201-103] Legalizing function name '_copy_row_list' to 'p_copy_row_list'.
+WARNING: [SYN 201-103] Legalizing function name '_find_start_index_and_value' to 'p_find_start_index_and_value'.
+WARNING: [SYN 201-103] Legalizing function name '_find_left_and_right_bound' to 'p_find_left_and_right_bound'.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'p_copy_row_list' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 1.97 seconds; current allocated memory: 530.529 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.255 seconds; current allocated memory: 536.103 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'p_find_start_index_and_value' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'loop_find_start_index_and_value'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 5, loop 'loop_find_start_index_and_value'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.792 seconds; current allocated memory: 536.278 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.229 seconds; current allocated memory: 536.517 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'p_find_left_and_right_bound' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'loop_find_left_and_right_bound'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 8, loop 'loop_find_left_and_right_bound'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.289 seconds; current allocated memory: 536.715 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.241 seconds; current allocated memory: 536.914 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'superpoint_init' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_25_1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'VITIS_LOOP_25_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.346 seconds; current allocated memory: 537.433 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.278 seconds; current allocated memory: 538.153 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'patch_get_parallelograms' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_75_1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 14, loop 'VITIS_LOOP_75_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.496 seconds; current allocated memory: 538.863 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.442 seconds; current allocated memory: 539.970 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'patch_get_acceptance_corners' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_122_1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 1, loop 'VITIS_LOOP_122_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.743 seconds; current allocated memory: 541.033 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.447 seconds; current allocated memory: 542.127 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'patch_get_end_layers' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 1, loop 'Loop 1'
+INFO: [SCHED 204-61] Pipelining loop 'Loop 2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 1, loop 'Loop 2'
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_191_1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 15, loop 'VITIS_LOOP_191_1'
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_201_2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_201_2'
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_208_3'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_208_3'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.909 seconds; current allocated memory: 542.959 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.496 seconds; current allocated memory: 543.836 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'cover_make_patch_aligned_to_line' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=empty_37) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_25_1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_25_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 6 seconds. CPU system time: 0 seconds. Elapsed time: 5.653 seconds; current allocated memory: 563.898 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 7 seconds. CPU system time: 1 seconds. Elapsed time: 7.331 seconds; current allocated memory: 583.334 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'cover_make_patch_shadow_quilt_from_edges' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_15_1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 18, loop 'VITIS_LOOP_15_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 4 seconds. CPU system time: 0 seconds. Elapsed time: 4.101 seconds; current allocated memory: 583.482 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.935 seconds; current allocated memory: 583.627 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'system_top' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 2.145 seconds; current allocated memory: 583.709 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.863 seconds; current allocated memory: 583.822 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'p_copy_row_list' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'p_copy_row_list'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 2.643 seconds; current allocated memory: 591.693 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'p_find_start_index_and_value' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'dcmp_64ns_64ns_1_1_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'dsub_64ns_64ns_64_3_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'p_find_start_index_and_value'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 3 seconds. CPU system time: 1 seconds. Elapsed time: 3.169 seconds; current allocated memory: 613.247 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'p_find_left_and_right_bound' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'dadd_64ns_64ns_64_3_full_dsp_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'dcmp_64ns_64ns_1_1_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'p_find_left_and_right_bound'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.478 seconds; current allocated memory: 614.481 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'superpoint_init' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'dcmp_64ns_64ns_1_1_no_dsp_1': 2 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'superpoint_init'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.208 seconds; current allocated memory: 631.665 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'patch_get_parallelograms' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'dcmp_64ns_64ns_1_1_no_dsp_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fadd_32ns_32ns_32_2_full_dsp_1': 5 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fcmp_32ns_32ns_1_1_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fdiv_32ns_32ns_32_6_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fmul_32ns_32ns_32_2_max_dsp_1': 4 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fptrunc_64ns_32_1_no_dsp_1': 3 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fsub_32ns_32ns_32_2_full_dsp_1': 4 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mux_42_1_1_1': 16 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mux_42_32_1_1': 4 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'patch_get_parallelograms'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.826 seconds; current allocated memory: 638.530 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'patch_get_acceptance_corners' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'fcmp_32ns_32ns_1_1_no_dsp_1': 8 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mux_42_32_1_1': 8 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'patch_get_acceptance_corners'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.39 seconds; current allocated memory: 644.693 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'patch_get_end_layers' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'dadd_64ns_64ns_64_3_full_dsp_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'ddiv_64ns_64ns_64_10_no_dsp_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fcmp_32ns_32ns_1_1_no_dsp_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fptrunc_64ns_32_1_no_dsp_1': 2 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'patch_get_end_layers'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.651 seconds; current allocated memory: 651.563 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'cover_make_patch_aligned_to_line' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-104] Estimated max fanout for 'cover_make_patch_aligned_to_line' is 34203 from HDL expression: (1'b1 == ap_CS_fsm_state121)
+INFO: [RTGEN 206-100] Generating core module 'dadd_64ns_64ns_64_3_full_dsp_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'dcmp_64ns_64ns_1_1_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_mul_14s_13ns_14_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'srem_32ns_32ns_32_36_seq_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'cover_make_patch_aligned_to_line'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 11 seconds. CPU system time: 0 seconds. Elapsed time: 10.326 seconds; current allocated memory: 700.510 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'cover_make_patch_shadow_quilt_from_edges' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'dadd_64ns_64ns_64_3_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'ddiv_64ns_64ns_64_10_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'dmul_64ns_64ns_64_3_max_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'cover_make_patch_shadow_quilt_from_edges'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 7 seconds. CPU system time: 3 seconds. Elapsed time: 10.67 seconds; current allocated memory: 770.123 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'system_top' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'system_top/cover' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'system_top/row_data' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'system_top/num_points' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'system_top' to 'ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'system_top'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 2 seconds. CPU system time: 1 seconds. Elapsed time: 2.364 seconds; current allocated memory: 770.796 MB.
+INFO: [RTMG 210-278] Implementing memory 'system_top_superpoint_init_z_list_ram (RAM)' using auto RAMs.
+INFO: [RTMG 210-279] Implementing memory 'system_top_patch_get_parallelograms_radii_1_rom' using auto ROMs.
+INFO: [RTMG 210-278] Implementing memory 'system_top_patch_get_end_layers_lambdaZ_left_list_ram (RAM)' using auto RAMs.
+INFO: [RTMG 210-282] Generating pipelined core: 'system_top_srem_32ns_32ns_32_36_seq_1_div'
+INFO: [RTMG 210-278] Implementing memory 'system_top_cover_make_patch_aligned_to_line_init_patch_0_points_layer_num_ram (RAM)' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'system_top_cover_make_patch_aligned_to_line_init_patch_0_points_radius_ram (RAM)' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'system_top_cover_make_patch_aligned_to_line_init_patch_n_points_ram (RAM)' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'system_top_cover_make_patch_aligned_to_line_row_list_ram (RAM)' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'system_top_cover_make_patch_aligned_to_line_patch_superpoints_0_points_radius_ram (RAM)' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'system_top_cover_make_patch_aligned_to_line_patch_superpoints_n_points_ram (RAM)' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'system_top_cover_make_patch_shadow_quilt_from_edges_trapezoid_edges_ram (RAM)' using auto RAMs with power-on initialization.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 8 seconds. CPU system time: 1 seconds. Elapsed time: 9.797 seconds; current allocated memory: 775.111 MB.
+INFO: [VHDL 208-304] Generating VHDL RTL for system_top.
+INFO: [VLOG 209-307] Generating Verilog RTL for system_top.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 100.70 MHz
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 143 seconds. CPU system time: 7 seconds. Elapsed time: 179.744 seconds; current allocated memory: 778.757 MB.
+INFO: [HLS 200-112] Total CPU user time: 145 seconds. Total CPU system time: 8 seconds. Total elapsed time: 181.582 seconds; peak allocated memory: 775.111 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 0ns.
+INFO: [HLS 200-10] Setting target device to 'xcvu11p-flga2577-1-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
+INFO: [HLS 200-1510] Running: set_part xcvu11p-flga2577-1-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: config_export -format ip_catalog -rtl verilog 
+INFO: [HLS 200-1510] Running: set_clock_uncertainty 0 
+INFO: [HLS 200-1510] Running: set_directive_top -name system_top system_top 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.043 seconds; current allocated memory: 162.973 MB.
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/constants.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/cover.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/dataset.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/environment.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/event.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/file_reader.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/parallelogram.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/patch.cxx' ... 
+WARNING: [HLS 207-5301] unused parameter 'n_superpoints': ParticleCoverHLS/src/patch.cxx:9:54
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/patch_buffer.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/point.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/sim_utils.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/superpoint.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/system.cxx' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 12.832 seconds; current allocated memory: 165.181 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<64, false>::ap_bit_ref(ap_int_base<64, false>*, int)' into 'ap_int_base<64, false>::operator[](int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:934:30)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<1, false>::ap_bit_ref(ap_int_base<1, false>*, int)' into 'ap_int_base<1, false>::operator[](int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:934:30)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<64, false>::operator bool() const' into 'ap_bit_ref<1, false>& ap_bit_ref<1, false>::operator=<64, false>(ap_bit_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:839:38)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<1, false>::operator=(unsigned long long)' into 'ap_bit_ref<1, false>& ap_bit_ref<1, false>::operator=<64, false>(ap_bit_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:839:12)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>::ap_range_ref(ap_int_base<64, false>*, int, int)' into 'ap_int_base<64, false>::range(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:853:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::range(int, int)' into 'ap_int_base<64, false>::operator()(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:890:18)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<11, false>::ap_range_ref(ap_int_base<11, false>*, int, int)' into 'ap_int_base<11, false>::range(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:853:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::range(int, int)' into 'ap_int_base<11, false>::operator()(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:890:18)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>::get() const' into 'ap_int_base<64, false>::ap_int_base<64, false>(ap_range_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:312:20)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::ap_int_base<64, false>(ap_int_base<64, false> const&)' into 'ap_range_ref<11, false>& ap_range_ref<11, false>::operator=<64, false>(ap_int_base<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:367:31)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::ap_int_base<64, false>(ap_range_ref<64, false> const&)' into 'ap_range_ref<11, false>& ap_range_ref<11, false>::operator=<64, false>(ap_range_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:22)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<11, false>& ap_range_ref<11, false>::operator=<64, false>(ap_int_base<64, false> const&)' into 'ap_range_ref<11, false>& ap_range_ref<11, false>::operator=<64, false>(ap_range_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:12)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<52, false>::ap_range_ref(ap_int_base<52, false>*, int, int)' into 'ap_int_base<52, false>::range(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:853:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::range(int, int)' into 'ap_int_base<52, false>::operator()(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:890:18)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::ap_int_base<64, false>(ap_int_base<64, false> const&)' into 'ap_range_ref<52, false>& ap_range_ref<52, false>::operator=<64, false>(ap_int_base<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:367:31)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::ap_int_base<64, false>(ap_range_ref<64, false> const&)' into 'ap_range_ref<52, false>& ap_range_ref<52, false>::operator=<64, false>(ap_range_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:22)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<52, false>& ap_range_ref<52, false>::operator=<64, false>(ap_int_base<64, false> const&)' into 'ap_range_ref<52, false>& ap_range_ref<52, false>::operator=<64, false>(ap_range_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:12)
+INFO: [HLS 214-131] Inlining function 'ap_uint<64>::ap_uint(unsigned long long)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:483:28)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<52, false>& ap_range_ref<52, false>::operator=<64, false>(ap_range_ref<64, false> const&)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:486:19)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::operator()(int, int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:486:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator()(int, int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:486:21)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<11, false>& ap_range_ref<11, false>::operator=<64, false>(ap_range_ref<64, false> const&)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:485:19)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::operator()(int, int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:485:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator()(int, int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:485:21)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<1, false>& ap_bit_ref<1, false>::operator=<64, false>(ap_bit_ref<64, false> const&)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:484:17)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<1, false>::operator[](int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:484:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator[](int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:484:19)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<1, false>::ap_bit_ref(ap_int_base<1, false> const*, int)' into 'ap_int_base<1, false>::operator[](int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:950:30)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<1, false>::to_bool() const' into 'ap_int_base<1, false>::operator[](int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:951:15)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<11, false>::ap_range_ref(ap_int_base<11, false>*, int, int)' into 'ap_int_base<11, false>::range(int, int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:860:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::range(int, int) const' into 'ap_int_base<11, false>::operator()(int, int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:894:18)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<11, false>::get() const' into 'ap_int_base<11, false>::ap_int_base<11, false>(ap_range_ref<11, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:312:20)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::ap_int_base<11, false>(ap_int_base<11, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<11, false>(ap_int_base<11, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:367:31)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::ap_int_base<11, false>(ap_range_ref<11, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<11, false>(ap_range_ref<11, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:22)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<11, false>(ap_int_base<11, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<11, false>(ap_range_ref<11, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:12)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<52, false>::ap_range_ref(ap_int_base<52, false>*, int, int)' into 'ap_int_base<52, false>::range(int, int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:860:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::range(int, int) const' into 'ap_int_base<52, false>::operator()(int, int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:894:18)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<52, false>::get() const' into 'ap_int_base<52, false>::ap_int_base<52, false>(ap_range_ref<52, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:312:20)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::ap_int_base<52, false>(ap_int_base<52, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<52, false>(ap_int_base<52, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:367:31)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::ap_int_base<52, false>(ap_range_ref<52, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<52, false>(ap_range_ref<52, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:22)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<52, false>(ap_int_base<52, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<52, false>(ap_range_ref<52, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<1, false>::operator[](int) const' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:501:36)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<52, false>(ap_range_ref<52, false> const&)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:503:25)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator()(int, int)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:503:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::operator()(int, int) const' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:503:27)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<11, false>(ap_range_ref<11, false> const&)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:502:41)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator()(int, int)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:502:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::operator()(int, int) const' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:502:43)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<64, false>::operator=(bool)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:501:34)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator[](int)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:501:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::to_uint64() const' into 'fp_struct<double>::to_double() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:520:24)
+INFO: [HLS 214-186] Unrolling loop 'loop_copy_row_list' (ParticleCoverHLS/src/cover.cxx:33:3) in function '_copy_row_list' completely with a factor of 256 (ParticleCoverHLS/src/cover.cxx:33:3)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_97_1' (ParticleCoverHLS/src/cover.cxx:97:20) in function 'cover_make_patch_aligned_to_line' completely with a factor of 5 (ParticleCoverHLS/src/cover.cxx:97:20)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_141_2' (ParticleCoverHLS/src/cover.cxx:141:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:141:25)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_150_3' (ParticleCoverHLS/src/cover.cxx:150:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:150:25)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_141_2' (ParticleCoverHLS/src/cover.cxx:141:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:141:25)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_150_3' (ParticleCoverHLS/src/cover.cxx:150:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:150:25)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_141_2' (ParticleCoverHLS/src/cover.cxx:141:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:141:25)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_150_3' (ParticleCoverHLS/src/cover.cxx:150:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:150:25)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_141_2' (ParticleCoverHLS/src/cover.cxx:141:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:141:25)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_150_3' (ParticleCoverHLS/src/cover.cxx:150:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:150:25)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_141_2' (ParticleCoverHLS/src/cover.cxx:141:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:141:25)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_150_3' (ParticleCoverHLS/src/cover.cxx:150:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:150:25)
+INFO: [HLS 214-186] Unrolling loop 'loop_copy_points_to_superpoint' (ParticleCoverHLS/src/superpoint.cxx:13:3) in function 'superpoint_init' completely with a factor of 16 (ParticleCoverHLS/src/superpoint.cxx:13:3)
+INFO: [HLS 214-178] Inlining function 'radii_initializer(double*)' into 'const_array_initializer(double*, double*, double*, double*)' (ParticleCoverHLS/src/constants.cxx:48:0)
+INFO: [HLS 214-178] Inlining function 'parallelogram_slopes_initializer(double*, double*)' into 'const_array_initializer(double*, double*, double*, double*)' (ParticleCoverHLS/src/constants.cxx:48:0)
+INFO: [HLS 214-178] Inlining function 'radii_leverArm_initializer(double*, double*)' into 'const_array_initializer(double*, double*, double*, double*)' (ParticleCoverHLS/src/constants.cxx:48:0)
+INFO: [HLS 214-178] Inlining function 'trapezoid_edges_initializer(double*, double*)' into 'const_array_initializer(double*, double*, double*, double*)' (ParticleCoverHLS/src/constants.cxx:48:0)
+INFO: [HLS 214-178] Inlining function 'fp_struct<double>::data() const' into 'fp_struct<double>::to_double() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:518:0)
+INFO: [HLS 214-178] Inlining function 'fp_struct<double>::to_double() const' into 'fp_struct<double>::to_ieee() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:533:0)
+INFO: [HLS 214-178] Inlining function 'fp_struct<double>::fp_struct(double)' into 'double generic_copysign<double>(double, double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/hlsmath/include/FloatingPoint/hls_copysign.h:10:0)
+INFO: [HLS 214-178] Inlining function 'fp_struct<double>::to_ieee() const' into 'double generic_copysign<double>(double, double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/hlsmath/include/FloatingPoint/hls_copysign.h:10:0)
+INFO: [HLS 214-178] Inlining function 'double generic_copysign<double>(double, double)' into 'double generic_fabs<double>(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/hlsmath/include/FloatingPoint/hls_fabs.h:12:0)
+INFO: [HLS 214-178] Inlining function 'double generic_fabs<double>(double)' into 'fabs' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/hlsmath/src/c/fabsdouble.cpp:7:0)
+INFO: [HLS 214-178] Inlining function 'fabs' into 'std::abs(double)' (C:/Xilinx/Vitis_HLS/2020.2/tps/mingw/6.2.0/win64.o/nt\lib\gcc\x86_64-w64-mingw32\6.2.0\include\c++\cmath:86:0)
+INFO: [HLS 214-178] Inlining function 'std::abs(double)' into '_find_start_index_and_value(int*, double*, double*, int, double)' (ParticleCoverHLS/src/cover.cxx:41:0)
+INFO: [HLS 214-178] Inlining function 'std::abs(double)' into '_find_left_and_right_bound(int*, int*, double*, double*, double*, int, int)' (ParticleCoverHLS/src/cover.cxx:63:0)
+INFO: [HLS 214-178] Inlining function 'double const& std::min<double>(double const&, double const&)' into 'superpoint_init(point_s*, unsigned long)' (ParticleCoverHLS/src/superpoint.cxx:6:0)
+INFO: [HLS 214-178] Inlining function 'double const& std::max<double>(double const&, double const&)' into 'superpoint_init(point_s*, unsigned long)' (ParticleCoverHLS/src/superpoint.cxx:6:0)
+INFO: [HLS 214-178] Inlining function 'const_array_initializer(double*, double*, double*, double*)' into 'patch_get_parallelograms(patch_s*)' (ParticleCoverHLS/src/patch.cxx:65:0)
+INFO: [HLS 214-178] Inlining function 'double const& std::max<double>(double const&, double const&)' into 'patch_get_parallelograms(patch_s*)' (ParticleCoverHLS/src/patch.cxx:65:0)
+INFO: [HLS 214-178] Inlining function 'double const& std::min<double>(double const&, double const&)' into 'patch_get_parallelograms(patch_s*)' (ParticleCoverHLS/src/patch.cxx:65:0)
+INFO: [HLS 214-178] Inlining function 'patch_straight_line_projector_from_layer_ij_to_k(float, float, int, int, int)' into 'patch_get_parallelograms(patch_s*)' (ParticleCoverHLS/src/patch.cxx:65:0)
+INFO: [HLS 214-178] Inlining function 'parallelogram_init(parallelogram_s*, int, float, float, float, float, float, float, float)' into 'patch_get_parallelograms(patch_s*)' (ParticleCoverHLS/src/patch.cxx:65:0)
+INFO: [HLS 214-178] Inlining function 'float const& std::min<float>(float const&, float const&)' into 'patch_get_acceptance_corners(patch_s*)' (ParticleCoverHLS/src/patch.cxx:113:0)
+INFO: [HLS 214-178] Inlining function 'float const& std::max<float>(float const&, float const&)' into 'patch_get_acceptance_corners(patch_s*)' (ParticleCoverHLS/src/patch.cxx:113:0)
+INFO: [HLS 214-178] Inlining function 'float const& std::max<float>(float const&, float const&)' into 'patch_get_end_layers(patch_s*)' (ParticleCoverHLS/src/patch.cxx:189:0)
+INFO: [HLS 214-178] Inlining function 'float const& std::min<float>(float const&, float const&)' into 'patch_get_end_layers(patch_s*)' (ParticleCoverHLS/src/patch.cxx:189:0)
+INFO: [HLS 214-178] Inlining function 'patch_init(superpoint_s*, unsigned long, double)' into 'cover_make_patch_aligned_to_line(cover_s*, point_s (*) [256], int*, double, double)' (ParticleCoverHLS/src/cover.cxx:93:0)
+INFO: [HLS 214-178] Inlining function 'patch_buffer_push_patch(patch_buffer_s*, patch_s)' into 'cover_make_patch_aligned_to_line(cover_s*, point_s (*) [256], int*, double, double)' (ParticleCoverHLS/src/cover.cxx:93:0)
+INFO: [HLS 214-178] Inlining function 'patch_straight_line_projector_from_layer_ij_to_k(float, float, int, int, int)' into 'cover_make_patch_shadow_quilt_from_edges(cover_s*, point_s (*) [256], int*)' (ParticleCoverHLS/src/cover.cxx:179:0)
+INFO: [HLS 214-178] Inlining function 'float const& std::min<float>(float const&, float const&)' into 'cover_make_patch_shadow_quilt_from_edges(cover_s*, point_s (*) [256], int*)' (ParticleCoverHLS/src/cover.cxx:179:0)
+INFO: [HLS 214-178] Inlining function 'patch_buffer_access_patch_ptr(patch_buffer_s*, int)' into 'cover_make_patch_shadow_quilt_from_edges(cover_s*, point_s (*) [256], int*)' (ParticleCoverHLS/src/cover.cxx:179:0)
+INFO: [HLS 214-178] Inlining function 'const_array_initializer(double*, double*, double*, double*)' into 'system_top(cover_s*, point_s (*) [256], int*)' (ParticleCoverHLS/src/system.cxx:12:0)
+INFO: [HLS 214-178] Inlining function 'patch_buffer_init(patch_buffer_s*)' into 'system_top(cover_s*, point_s (*) [256], int*)' (ParticleCoverHLS/src/system.cxx:12:0)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:6:12)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:7:12)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:8:12)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:9:12)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:10:12)
+WARNING: [HLS 214-167] The program may have out of bound array access
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:18:9)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/patch.cxx:69:59)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:99:13)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:104:20)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:99:13)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:104:20)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:106:33)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:99:13)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:104:20)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:106:33)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:99:13)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:104:20)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:106:33)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:99:13)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:106:33)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:186:18)
+WARNING: [HLS 214-167] The program may have out of bound array access
+WARNING: [HLS 214-167] The program may have out of bound array access
+WARNING: [HLS 214-167] The program may have out of bound array access
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:6:12)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:7:12)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:8:12)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:9:12)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:10:12)
+WARNING: [HLS 214-167] The program may have out of bound array access
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:18:9)
+INFO: [HLS 214-131] Inlining function '_llvm.fpga.pack.none.i30272.s_struct.patch_ss' into 'cover_make_patch_aligned_to_line(cover_s*, point_s (*) [256], int*, double, double) (.1)'
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 12 seconds. CPU system time: 0 seconds. Elapsed time: 26.918 seconds; current allocated memory: 206.767 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.041 seconds; current allocated memory: 206.768 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 7 seconds. CPU system time: 0 seconds. Elapsed time: 6.472 seconds; current allocated memory: 267.243 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+WARNING: [SYNCHK 200-62] warning: out of bound array access on variable 'parallelogram_slopes'.
+INFO: [SYNCHK 200-10] 0 error(s), 1 warning(s).
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 4 seconds. CPU system time: 0 seconds. Elapsed time: 4.347 seconds; current allocated memory: 266.880 MB.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_124_1' (ParticleCoverHLS/src/patch.cxx:124) in function 'patch_get_acceptance_corners' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-2' in function 'patch_get_end_layers' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-3' in function 'patch_get_end_layers' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_193_1' (ParticleCoverHLS/src/patch.cxx:193) in function 'patch_get_end_layers' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_203_2' (ParticleCoverHLS/src/patch.cxx:203) in function 'patch_get_end_layers' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_210_3' (ParticleCoverHLS/src/patch.cxx:201) in function 'patch_get_end_layers' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_29_1' (ParticleCoverHLS/src/constants.cxx:29) in function 'patch_get_parallelograms' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_39_1' (ParticleCoverHLS/src/constants.cxx:39) in function 'patch_get_parallelograms' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_16_1' (ParticleCoverHLS/src/constants.cxx:16) in function 'patch_get_parallelograms' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_77_1' (ParticleCoverHLS/src/patch.cxx:77) in function 'patch_get_parallelograms' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'loop_find_start_index_and_value' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:500) in function '_find_start_index_and_value' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'loop_find_left_and_right_bound' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:500) in function '_find_left_and_right_bound' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_27_1' (ParticleCoverHLS/src/patch.cxx:27) in function 'cover_make_patch_aligned_to_line' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_189_1' (ParticleCoverHLS/src/cover.cxx:190) in function 'cover_make_patch_shadow_quilt_from_edges' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_29_1' (ParticleCoverHLS/src/constants.cxx:29) in function 'system_top' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_39_1' (ParticleCoverHLS/src/constants.cxx:39) in function 'system_top' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_16_1' (ParticleCoverHLS/src/constants.cxx:16) in function 'system_top' automatically.
+WARNING: [ANALYSIS 214-31] The program may have out of bound access of array variable 'parallelogram_slopes' in function 'system_top' (ParticleCoverHLS/src/constants.cxx:18:9).
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 5 seconds. CPU system time: 0 seconds. Elapsed time: 5.237 seconds; current allocated memory: 312.970 MB.
+INFO: [HLS 200-472] Inferring partial write operation for 'parallelogram_slopes' (ParticleCoverHLS/src/constants.cxx:30:29)
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.079 seconds; current allocated memory: 305.696 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'system_top' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'system_top' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_29_1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 15, loop 'VITIS_LOOP_29_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.112 seconds; current allocated memory: 305.837 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.11 seconds; current allocated memory: 306.033 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'system_top' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'system_top/cover' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'system_top/row_data' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'system_top/num_points' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'system_top' to 'ap_ctrl_hs'.
+WARNING: [RTGEN 206-101] Port 'system_top/row_data_address0' has no fanin or fanout and is left dangling.
+               Please use C simulation to confirm this function argument can be read from or written to.
+WARNING: [RTGEN 206-101] Setting dangling out port 'system_top/row_data_address0' to 0.
+WARNING: [RTGEN 206-101] Port 'system_top/row_data_ce0' has no fanin or fanout and is left dangling.
+               Please use C simulation to confirm this function argument can be read from or written to.
+WARNING: [RTGEN 206-101] Setting dangling out port 'system_top/row_data_ce0' to 0.
+WARNING: [RTGEN 206-101] Port 'system_top/row_data_we0' has no fanin or fanout and is left dangling.
+               Please use C simulation to confirm this function argument can be read from or written to.
+WARNING: [RTGEN 206-101] Setting dangling out port 'system_top/row_data_we0' to 0.
+WARNING: [RTGEN 206-101] Port 'system_top/row_data_d0' has no fanin or fanout and is left dangling.
+               Please use C simulation to confirm this function argument can be read from or written to.
+WARNING: [RTGEN 206-101] Setting dangling out port 'system_top/row_data_d0' to 0.
+WARNING: [RTGEN 206-101] Port 'system_top/row_data_q0' has no fanin or fanout and is left dangling.
+               Please use C simulation to confirm this function argument can be read from or written to.
+WARNING: [RTGEN 206-101] Port 'system_top/row_data_address1' has no fanin or fanout and is left dangling.
+               Please use C simulation to confirm this function argument can be read from or written to.
+WARNING: [RTGEN 206-101] Setting dangling out port 'system_top/row_data_address1' to 0.
+WARNING: [RTGEN 206-101] Port 'system_top/row_data_ce1' has no fanin or fanout and is left dangling.
+               Please use C simulation to confirm this function argument can be read from or written to.
+WARNING: [RTGEN 206-101] Setting dangling out port 'system_top/row_data_ce1' to 0.
+WARNING: [RTGEN 206-101] Port 'system_top/row_data_we1' has no fanin or fanout and is left dangling.
+               Please use C simulation to confirm this function argument can be read from or written to.
+WARNING: [RTGEN 206-101] Setting dangling out port 'system_top/row_data_we1' to 0.
+WARNING: [RTGEN 206-101] Port 'system_top/row_data_d1' has no fanin or fanout and is left dangling.
+               Please use C simulation to confirm this function argument can be read from or written to.
+WARNING: [RTGEN 206-101] Setting dangling out port 'system_top/row_data_d1' to 0.
+WARNING: [RTGEN 206-101] Port 'system_top/row_data_q1' has no fanin or fanout and is left dangling.
+               Please use C simulation to confirm this function argument can be read from or written to.
+WARNING: [RTGEN 206-101] Port 'system_top/num_points_address0' has no fanin or fanout and is left dangling.
+               Please use C simulation to confirm this function argument can be read from or written to.
+WARNING: [RTGEN 206-101] Setting dangling out port 'system_top/num_points_address0' to 0.
+WARNING: [RTGEN 206-101] Port 'system_top/num_points_ce0' has no fanin or fanout and is left dangling.
+               Please use C simulation to confirm this function argument can be read from or written to.
+WARNING: [RTGEN 206-101] Setting dangling out port 'system_top/num_points_ce0' to 0.
+WARNING: [RTGEN 206-101] Port 'system_top/num_points_we0' has no fanin or fanout and is left dangling.
+               Please use C simulation to confirm this function argument can be read from or written to.
+WARNING: [RTGEN 206-101] Setting dangling out port 'system_top/num_points_we0' to 0.
+WARNING: [RTGEN 206-101] Port 'system_top/num_points_d0' has no fanin or fanout and is left dangling.
+               Please use C simulation to confirm this function argument can be read from or written to.
+WARNING: [RTGEN 206-101] Setting dangling out port 'system_top/num_points_d0' to 0.
+WARNING: [RTGEN 206-101] Port 'system_top/num_points_q0' has no fanin or fanout and is left dangling.
+               Please use C simulation to confirm this function argument can be read from or written to.
+WARNING: [RTGEN 206-101] Port 'system_top/num_points_address1' has no fanin or fanout and is left dangling.
+               Please use C simulation to confirm this function argument can be read from or written to.
+WARNING: [RTGEN 206-101] Setting dangling out port 'system_top/num_points_address1' to 0.
+WARNING: [RTGEN 206-101] Port 'system_top/num_points_ce1' has no fanin or fanout and is left dangling.
+               Please use C simulation to confirm this function argument can be read from or written to.
+WARNING: [RTGEN 206-101] Setting dangling out port 'system_top/num_points_ce1' to 0.
+WARNING: [RTGEN 206-101] Port 'system_top/num_points_we1' has no fanin or fanout and is left dangling.
+               Please use C simulation to confirm this function argument can be read from or written to.
+WARNING: [RTGEN 206-101] Setting dangling out port 'system_top/num_points_we1' to 0.
+WARNING: [RTGEN 206-101] Port 'system_top/num_points_d1' has no fanin or fanout and is left dangling.
+               Please use C simulation to confirm this function argument can be read from or written to.
+WARNING: [RTGEN 206-101] Setting dangling out port 'system_top/num_points_d1' to 0.
+WARNING: [RTGEN 206-101] Port 'system_top/num_points_q1' has no fanin or fanout and is left dangling.
+               Please use C simulation to confirm this function argument can be read from or written to.
+INFO: [RTGEN 206-100] Generating core module 'ddiv_64ns_64ns_64_10_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'dsub_64ns_64ns_64_3_full_dsp_1': 2 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'system_top'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.381 seconds; current allocated memory: 306.538 MB.
+INFO: [RTMG 210-279] Implementing memory 'system_top_radii_rom' using auto ROMs.
+INFO: [RTMG 210-278] Implementing memory 'system_top_parallelogram_slopes_ram (RAM)' using auto RAMs with power-on initialization.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.421 seconds; current allocated memory: 310.457 MB.
+INFO: [VHDL 208-304] Generating VHDL RTL for system_top.
+INFO: [VLOG 209-307] Generating Verilog RTL for system_top.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 105.47 MHz
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 31 seconds. CPU system time: 0 seconds. Elapsed time: 58.206 seconds; current allocated memory: 313.213 MB.
+INFO: [HLS 200-112] Total CPU user time: 33 seconds. Total CPU system time: 1 seconds. Total elapsed time: 59.768 seconds; peak allocated memory: 312.970 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 0ns.
+INFO: [HLS 200-10] Setting target device to 'xcvu11p-flga2577-1-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
+INFO: [HLS 200-1510] Running: set_part xcvu11p-flga2577-1-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: config_export -format ip_catalog -rtl verilog 
+INFO: [HLS 200-1510] Running: set_clock_uncertainty 0 
+INFO: [HLS 200-1510] Running: set_directive_top -name system_top system_top 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.041 seconds; current allocated memory: 162.973 MB.
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/constants.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/cover.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/dataset.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/environment.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/event.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/file_reader.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/parallelogram.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/patch.cxx' ... 
+WARNING: [HLS 207-5301] unused parameter 'n_superpoints': ParticleCoverHLS/src/patch.cxx:9:54
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/patch_buffer.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/point.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/sim_utils.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/superpoint.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/system.cxx' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 12.415 seconds; current allocated memory: 165.181 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<64, false>::ap_bit_ref(ap_int_base<64, false>*, int)' into 'ap_int_base<64, false>::operator[](int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:934:30)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<1, false>::ap_bit_ref(ap_int_base<1, false>*, int)' into 'ap_int_base<1, false>::operator[](int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:934:30)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<64, false>::operator bool() const' into 'ap_bit_ref<1, false>& ap_bit_ref<1, false>::operator=<64, false>(ap_bit_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:839:38)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<1, false>::operator=(unsigned long long)' into 'ap_bit_ref<1, false>& ap_bit_ref<1, false>::operator=<64, false>(ap_bit_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:839:12)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>::ap_range_ref(ap_int_base<64, false>*, int, int)' into 'ap_int_base<64, false>::range(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:853:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::range(int, int)' into 'ap_int_base<64, false>::operator()(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:890:18)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<11, false>::ap_range_ref(ap_int_base<11, false>*, int, int)' into 'ap_int_base<11, false>::range(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:853:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::range(int, int)' into 'ap_int_base<11, false>::operator()(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:890:18)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>::get() const' into 'ap_int_base<64, false>::ap_int_base<64, false>(ap_range_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:312:20)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::ap_int_base<64, false>(ap_int_base<64, false> const&)' into 'ap_range_ref<11, false>& ap_range_ref<11, false>::operator=<64, false>(ap_int_base<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:367:31)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::ap_int_base<64, false>(ap_range_ref<64, false> const&)' into 'ap_range_ref<11, false>& ap_range_ref<11, false>::operator=<64, false>(ap_range_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:22)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<11, false>& ap_range_ref<11, false>::operator=<64, false>(ap_int_base<64, false> const&)' into 'ap_range_ref<11, false>& ap_range_ref<11, false>::operator=<64, false>(ap_range_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:12)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<52, false>::ap_range_ref(ap_int_base<52, false>*, int, int)' into 'ap_int_base<52, false>::range(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:853:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::range(int, int)' into 'ap_int_base<52, false>::operator()(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:890:18)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::ap_int_base<64, false>(ap_int_base<64, false> const&)' into 'ap_range_ref<52, false>& ap_range_ref<52, false>::operator=<64, false>(ap_int_base<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:367:31)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::ap_int_base<64, false>(ap_range_ref<64, false> const&)' into 'ap_range_ref<52, false>& ap_range_ref<52, false>::operator=<64, false>(ap_range_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:22)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<52, false>& ap_range_ref<52, false>::operator=<64, false>(ap_int_base<64, false> const&)' into 'ap_range_ref<52, false>& ap_range_ref<52, false>::operator=<64, false>(ap_range_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:12)
+INFO: [HLS 214-131] Inlining function 'ap_uint<64>::ap_uint(unsigned long long)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:483:28)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<52, false>& ap_range_ref<52, false>::operator=<64, false>(ap_range_ref<64, false> const&)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:486:19)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::operator()(int, int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:486:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator()(int, int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:486:21)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<11, false>& ap_range_ref<11, false>::operator=<64, false>(ap_range_ref<64, false> const&)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:485:19)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::operator()(int, int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:485:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator()(int, int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:485:21)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<1, false>& ap_bit_ref<1, false>::operator=<64, false>(ap_bit_ref<64, false> const&)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:484:17)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<1, false>::operator[](int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:484:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator[](int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:484:19)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<1, false>::ap_bit_ref(ap_int_base<1, false> const*, int)' into 'ap_int_base<1, false>::operator[](int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:950:30)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<1, false>::to_bool() const' into 'ap_int_base<1, false>::operator[](int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:951:15)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<11, false>::ap_range_ref(ap_int_base<11, false>*, int, int)' into 'ap_int_base<11, false>::range(int, int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:860:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::range(int, int) const' into 'ap_int_base<11, false>::operator()(int, int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:894:18)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<11, false>::get() const' into 'ap_int_base<11, false>::ap_int_base<11, false>(ap_range_ref<11, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:312:20)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::ap_int_base<11, false>(ap_int_base<11, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<11, false>(ap_int_base<11, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:367:31)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::ap_int_base<11, false>(ap_range_ref<11, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<11, false>(ap_range_ref<11, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:22)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<11, false>(ap_int_base<11, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<11, false>(ap_range_ref<11, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:12)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<52, false>::ap_range_ref(ap_int_base<52, false>*, int, int)' into 'ap_int_base<52, false>::range(int, int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:860:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::range(int, int) const' into 'ap_int_base<52, false>::operator()(int, int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:894:18)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<52, false>::get() const' into 'ap_int_base<52, false>::ap_int_base<52, false>(ap_range_ref<52, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:312:20)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::ap_int_base<52, false>(ap_int_base<52, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<52, false>(ap_int_base<52, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:367:31)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::ap_int_base<52, false>(ap_range_ref<52, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<52, false>(ap_range_ref<52, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:22)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<52, false>(ap_int_base<52, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<52, false>(ap_range_ref<52, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<1, false>::operator[](int) const' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:501:36)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<52, false>(ap_range_ref<52, false> const&)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:503:25)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator()(int, int)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:503:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::operator()(int, int) const' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:503:27)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<11, false>(ap_range_ref<11, false> const&)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:502:41)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator()(int, int)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:502:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::operator()(int, int) const' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:502:43)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<64, false>::operator=(bool)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:501:34)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator[](int)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:501:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::to_uint64() const' into 'fp_struct<double>::to_double() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:520:24)
+INFO: [HLS 214-186] Unrolling loop 'loop_copy_row_list' (ParticleCoverHLS/src/cover.cxx:33:3) in function '_copy_row_list' completely with a factor of 256 (ParticleCoverHLS/src/cover.cxx:33:3)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_97_1' (ParticleCoverHLS/src/cover.cxx:97:20) in function 'cover_make_patch_aligned_to_line' completely with a factor of 5 (ParticleCoverHLS/src/cover.cxx:97:20)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_141_2' (ParticleCoverHLS/src/cover.cxx:141:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:141:25)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_150_3' (ParticleCoverHLS/src/cover.cxx:150:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:150:25)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_141_2' (ParticleCoverHLS/src/cover.cxx:141:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:141:25)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_150_3' (ParticleCoverHLS/src/cover.cxx:150:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:150:25)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_141_2' (ParticleCoverHLS/src/cover.cxx:141:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:141:25)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_150_3' (ParticleCoverHLS/src/cover.cxx:150:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:150:25)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_141_2' (ParticleCoverHLS/src/cover.cxx:141:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:141:25)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_150_3' (ParticleCoverHLS/src/cover.cxx:150:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:150:25)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_141_2' (ParticleCoverHLS/src/cover.cxx:141:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:141:25)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_150_3' (ParticleCoverHLS/src/cover.cxx:150:25) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:150:25)
+INFO: [HLS 214-186] Unrolling loop 'loop_copy_points_to_superpoint' (ParticleCoverHLS/src/superpoint.cxx:13:3) in function 'superpoint_init' completely with a factor of 16 (ParticleCoverHLS/src/superpoint.cxx:13:3)
+INFO: [HLS 214-178] Inlining function 'radii_initializer(double*)' into 'const_array_initializer(double*, double*, double*, double*)' (ParticleCoverHLS/src/constants.cxx:48:0)
+INFO: [HLS 214-178] Inlining function 'parallelogram_slopes_initializer(double*, double*)' into 'const_array_initializer(double*, double*, double*, double*)' (ParticleCoverHLS/src/constants.cxx:48:0)
+INFO: [HLS 214-178] Inlining function 'radii_leverArm_initializer(double*, double*)' into 'const_array_initializer(double*, double*, double*, double*)' (ParticleCoverHLS/src/constants.cxx:48:0)
+INFO: [HLS 214-178] Inlining function 'trapezoid_edges_initializer(double*, double*)' into 'const_array_initializer(double*, double*, double*, double*)' (ParticleCoverHLS/src/constants.cxx:48:0)
+INFO: [HLS 214-178] Inlining function 'fp_struct<double>::data() const' into 'fp_struct<double>::to_double() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:518:0)
+INFO: [HLS 214-178] Inlining function 'fp_struct<double>::to_double() const' into 'fp_struct<double>::to_ieee() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:533:0)
+INFO: [HLS 214-178] Inlining function 'fp_struct<double>::fp_struct(double)' into 'double generic_copysign<double>(double, double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/hlsmath/include/FloatingPoint/hls_copysign.h:10:0)
+INFO: [HLS 214-178] Inlining function 'fp_struct<double>::to_ieee() const' into 'double generic_copysign<double>(double, double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/hlsmath/include/FloatingPoint/hls_copysign.h:10:0)
+INFO: [HLS 214-178] Inlining function 'double generic_copysign<double>(double, double)' into 'double generic_fabs<double>(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/hlsmath/include/FloatingPoint/hls_fabs.h:12:0)
+INFO: [HLS 214-178] Inlining function 'double generic_fabs<double>(double)' into 'fabs' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/hlsmath/src/c/fabsdouble.cpp:7:0)
+INFO: [HLS 214-178] Inlining function 'fabs' into 'std::abs(double)' (C:/Xilinx/Vitis_HLS/2020.2/tps/mingw/6.2.0/win64.o/nt\lib\gcc\x86_64-w64-mingw32\6.2.0\include\c++\cmath:86:0)
+INFO: [HLS 214-178] Inlining function 'std::abs(double)' into '_find_start_index_and_value(int*, double*, double*, int, double)' (ParticleCoverHLS/src/cover.cxx:41:0)
+INFO: [HLS 214-178] Inlining function 'std::abs(double)' into '_find_left_and_right_bound(int*, int*, double*, double*, double*, int, int)' (ParticleCoverHLS/src/cover.cxx:63:0)
+INFO: [HLS 214-178] Inlining function 'double const& std::min<double>(double const&, double const&)' into 'superpoint_init(point_s*, unsigned long)' (ParticleCoverHLS/src/superpoint.cxx:6:0)
+INFO: [HLS 214-178] Inlining function 'double const& std::max<double>(double const&, double const&)' into 'superpoint_init(point_s*, unsigned long)' (ParticleCoverHLS/src/superpoint.cxx:6:0)
+INFO: [HLS 214-178] Inlining function 'const_array_initializer(double*, double*, double*, double*)' into 'patch_get_parallelograms(patch_s*)' (ParticleCoverHLS/src/patch.cxx:65:0)
+INFO: [HLS 214-178] Inlining function 'double const& std::max<double>(double const&, double const&)' into 'patch_get_parallelograms(patch_s*)' (ParticleCoverHLS/src/patch.cxx:65:0)
+INFO: [HLS 214-178] Inlining function 'double const& std::min<double>(double const&, double const&)' into 'patch_get_parallelograms(patch_s*)' (ParticleCoverHLS/src/patch.cxx:65:0)
+INFO: [HLS 214-178] Inlining function 'patch_straight_line_projector_from_layer_ij_to_k(float, float, int, int, int)' into 'patch_get_parallelograms(patch_s*)' (ParticleCoverHLS/src/patch.cxx:65:0)
+INFO: [HLS 214-178] Inlining function 'parallelogram_init(parallelogram_s*, int, float, float, float, float, float, float, float)' into 'patch_get_parallelograms(patch_s*)' (ParticleCoverHLS/src/patch.cxx:65:0)
+INFO: [HLS 214-178] Inlining function 'float const& std::min<float>(float const&, float const&)' into 'patch_get_acceptance_corners(patch_s*)' (ParticleCoverHLS/src/patch.cxx:113:0)
+INFO: [HLS 214-178] Inlining function 'float const& std::max<float>(float const&, float const&)' into 'patch_get_acceptance_corners(patch_s*)' (ParticleCoverHLS/src/patch.cxx:113:0)
+INFO: [HLS 214-178] Inlining function 'float const& std::max<float>(float const&, float const&)' into 'patch_get_end_layers(patch_s*)' (ParticleCoverHLS/src/patch.cxx:189:0)
+INFO: [HLS 214-178] Inlining function 'float const& std::min<float>(float const&, float const&)' into 'patch_get_end_layers(patch_s*)' (ParticleCoverHLS/src/patch.cxx:189:0)
+INFO: [HLS 214-178] Inlining function 'patch_init(superpoint_s*, unsigned long, double)' into 'cover_make_patch_aligned_to_line(cover_s*, point_s (*) [256], int*, double, double)' (ParticleCoverHLS/src/cover.cxx:93:0)
+INFO: [HLS 214-178] Inlining function 'patch_buffer_push_patch(patch_buffer_s*, patch_s)' into 'cover_make_patch_aligned_to_line(cover_s*, point_s (*) [256], int*, double, double)' (ParticleCoverHLS/src/cover.cxx:93:0)
+INFO: [HLS 214-178] Inlining function 'patch_straight_line_projector_from_layer_ij_to_k(float, float, int, int, int)' into 'cover_make_patch_shadow_quilt_from_edges(cover_s*, point_s (*) [256], int*)' (ParticleCoverHLS/src/cover.cxx:179:0)
+INFO: [HLS 214-178] Inlining function 'float const& std::min<float>(float const&, float const&)' into 'cover_make_patch_shadow_quilt_from_edges(cover_s*, point_s (*) [256], int*)' (ParticleCoverHLS/src/cover.cxx:179:0)
+INFO: [HLS 214-178] Inlining function 'patch_buffer_access_patch_ptr(patch_buffer_s*, int)' into 'cover_make_patch_shadow_quilt_from_edges(cover_s*, point_s (*) [256], int*)' (ParticleCoverHLS/src/cover.cxx:179:0)
+INFO: [HLS 214-178] Inlining function 'const_array_initializer(double*, double*, double*, double*)' into 'system_top(cover_s*, point_s (*) [256], int*)' (ParticleCoverHLS/src/system.cxx:12:0)
+INFO: [HLS 214-178] Inlining function 'patch_buffer_init(patch_buffer_s*)' into 'system_top(cover_s*, point_s (*) [256], int*)' (ParticleCoverHLS/src/system.cxx:12:0)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:6:12)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:7:12)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:8:12)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:9:12)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:10:12)
+WARNING: [HLS 214-167] The program may have out of bound array access
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:18:9)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/patch.cxx:69:59)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:99:13)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:104:20)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:99:13)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:104:20)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:106:33)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:99:13)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:104:20)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:106:33)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:99:13)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:104:20)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:106:33)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:99:13)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:106:33)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:186:18)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:189:42)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/patch.cxx:52:16)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/patch.cxx:57:16)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:206:47)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:6:12)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:7:12)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:8:12)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:9:12)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:10:12)
+WARNING: [HLS 214-167] The program may have out of bound array access
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:18:9)
+INFO: [HLS 214-131] Inlining function '_llvm.fpga.pack.none.i30272.s_struct.patch_ss' into 'cover_make_patch_aligned_to_line(cover_s*, point_s (*) [256], int*, double, double) (.1)'
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 12 seconds. CPU system time: 0 seconds. Elapsed time: 26.963 seconds; current allocated memory: 206.822 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.041 seconds; current allocated memory: 206.823 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 7 seconds. CPU system time: 0 seconds. Elapsed time: 6.706 seconds; current allocated memory: 267.304 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+WARNING: [SYNCHK 200-62] warning: out of bound array access on variable 'parallelogram_slopes'.
+INFO: [SYNCHK 200-10] 0 error(s), 1 warning(s).
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 5 seconds. CPU system time: 0 seconds. Elapsed time: 5.478 seconds; current allocated memory: 310.726 MB.
+INFO: [XFORM 203-510] Pipelining loop 'loop_find_start_index_and_value' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:500) in function '_find_start_index_and_value' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'loop_find_left_and_right_bound' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:500) in function '_find_left_and_right_bound' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_29_1' (ParticleCoverHLS/src/constants.cxx:29) in function 'system_top' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_39_1' (ParticleCoverHLS/src/constants.cxx:39) in function 'system_top' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_16_1' (ParticleCoverHLS/src/constants.cxx:16) in function 'system_top' automatically.
+INFO: [XFORM 203-102] Partitioning array 'init_patch.points.layer_num' (ParticleCoverHLS/src/cover.cxx:95) in dimension 2 automatically.
+INFO: [XFORM 203-102] Partitioning array 'init_patch.points.radius' (ParticleCoverHLS/src/cover.cxx:95) in dimension 2 automatically.
+INFO: [XFORM 203-102] Partitioning array 'init_patch.points.phi' (ParticleCoverHLS/src/cover.cxx:95) in dimension 2 automatically.
+INFO: [XFORM 203-102] Partitioning array 'init_patch.points.z' (ParticleCoverHLS/src/cover.cxx:95) in dimension 2 automatically.
+INFO: [XFORM 203-102] Partitioning array 'init_patch.z_values' (ParticleCoverHLS/src/cover.cxx:95) in dimension 2 automatically.
+INFO: [XFORM 203-102] Partitioning array 'points.layer_num' (ParticleCoverHLS/src/cover.cxx:140) automatically.
+INFO: [XFORM 203-102] Partitioning array 'points.radius' (ParticleCoverHLS/src/cover.cxx:140) automatically.
+INFO: [XFORM 203-102] Partitioning array 'points.phi' (ParticleCoverHLS/src/cover.cxx:140) automatically.
+INFO: [XFORM 203-102] Partitioning array 'points.z' (ParticleCoverHLS/src/cover.cxx:140) automatically.
+INFO: [XFORM 203-102] Partitioning array 'sp.points.layer_num' (ParticleCoverHLS/src/cover.cxx:145) automatically.
+INFO: [XFORM 203-102] Partitioning array 'sp.points.radius' (ParticleCoverHLS/src/cover.cxx:145) automatically.
+INFO: [XFORM 203-102] Partitioning array 'sp.points.phi' (ParticleCoverHLS/src/cover.cxx:145) automatically.
+INFO: [XFORM 203-102] Partitioning array 'sp.points.z' (ParticleCoverHLS/src/cover.cxx:145) automatically.
+INFO: [XFORM 203-102] Partitioning array 'sp.z_values' (ParticleCoverHLS/src/cover.cxx:145) automatically.
+INFO: [XFORM 203-102] Partitioning array 'points.layer_num.1' (ParticleCoverHLS/src/cover.cxx:149) automatically.
+INFO: [XFORM 203-102] Partitioning array 'points.radius.1' (ParticleCoverHLS/src/cover.cxx:149) automatically.
+INFO: [XFORM 203-102] Partitioning array 'points.phi.1' (ParticleCoverHLS/src/cover.cxx:149) automatically.
+INFO: [XFORM 203-102] Partitioning array 'points.z.1' (ParticleCoverHLS/src/cover.cxx:149) automatically.
+INFO: [XFORM 203-102] Partitioning array 'sp.points.layer_num.1' (ParticleCoverHLS/src/cover.cxx:154) automatically.
+INFO: [XFORM 203-102] Partitioning array 'sp.points.radius.1' (ParticleCoverHLS/src/cover.cxx:154) automatically.
+INFO: [XFORM 203-102] Partitioning array 'sp.points.phi.1' (ParticleCoverHLS/src/cover.cxx:154) automatically.
+INFO: [XFORM 203-102] Partitioning array 'sp.points.z.1' (ParticleCoverHLS/src/cover.cxx:154) automatically.
+INFO: [XFORM 203-102] Partitioning array 'sp.z_values.1' (ParticleCoverHLS/src/cover.cxx:154) automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.a_corner' (ParticleCoverHLS/src/cover.cxx:167) automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.b_corner' (ParticleCoverHLS/src/cover.cxx:167) automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.c_corner' (ParticleCoverHLS/src/cover.cxx:167) automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.d_corner' (ParticleCoverHLS/src/cover.cxx:167) automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.superpoints.points.layer_num' (ParticleCoverHLS/src/cover.cxx:167) in dimension 2 automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.superpoints.points.radius' (ParticleCoverHLS/src/cover.cxx:167) in dimension 2 automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.superpoints.points.phi' (ParticleCoverHLS/src/cover.cxx:167) in dimension 2 automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.superpoints.points.z' (ParticleCoverHLS/src/cover.cxx:167) in dimension 2 automatically.
+INFO: [XFORM 203-102] Partitioning array 'patch.superpoints.z_values' (ParticleCoverHLS/src/cover.cxx:167) in dimension 2 automatically.
+INFO: [XFORM 203-102] Automatically partitioning small array 'a_corner_list' (ParticleCoverHLS/src/patch.cxx:119) completely based on array size.
+INFO: [XFORM 203-102] Automatically partitioning small array 'b_corner_list' (ParticleCoverHLS/src/patch.cxx:120) completely based on array size.
+INFO: [XFORM 203-102] Automatically partitioning small array 'c_corner_list' (ParticleCoverHLS/src/patch.cxx:121) completely based on array size.
+INFO: [XFORM 203-102] Automatically partitioning small array 'd_corner_list' (ParticleCoverHLS/src/patch.cxx:122) completely based on array size.
+INFO: [XFORM 203-102] Automatically partitioning small array 'patch.parallelograms.layer_num' (ParticleCoverHLS/src/cover.cxx:167) completely based on array size.
+INFO: [XFORM 203-102] Automatically partitioning small array 'patch.parallelograms.pSlope' (ParticleCoverHLS/src/cover.cxx:167) completely based on array size.
+INFO: [XFORM 203-102] Automatically partitioning small array 'patch.parallelograms.shadow_bottomL_jR' (ParticleCoverHLS/src/cover.cxx:167) completely based on array size.
+INFO: [XFORM 203-102] Automatically partitioning small array 'patch.parallelograms.shadow_bottomR_jR' (ParticleCoverHLS/src/cover.cxx:167) completely based on array size.
+INFO: [XFORM 203-102] Automatically partitioning small array 'patch.parallelograms.shadow_bottomL_jL' (ParticleCoverHLS/src/cover.cxx:167) completely based on array size.
+INFO: [XFORM 203-102] Automatically partitioning small array 'patch.parallelograms.shadow_bottomR_jL' (ParticleCoverHLS/src/cover.cxx:167) completely based on array size.
+INFO: [XFORM 203-102] Automatically partitioning small array 'patch.parallelograms.z1_min' (ParticleCoverHLS/src/cover.cxx:167) completely based on array size.
+INFO: [XFORM 203-102] Automatically partitioning small array 'patch.parallelograms.z1_max' (ParticleCoverHLS/src/cover.cxx:167) completely based on array size.
+INFO: [XFORM 203-101] Partitioning array 'a_corner_list' (ParticleCoverHLS/src/patch.cxx:119) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'b_corner_list' (ParticleCoverHLS/src/patch.cxx:120) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'c_corner_list' (ParticleCoverHLS/src/patch.cxx:121) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'd_corner_list' (ParticleCoverHLS/src/patch.cxx:122) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'patch.parallelograms.layer_num' (ParticleCoverHLS/src/cover.cxx:167) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'patch.parallelograms.pSlope' (ParticleCoverHLS/src/cover.cxx:167) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'patch.parallelograms.shadow_bottomL_jR' (ParticleCoverHLS/src/cover.cxx:167) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'patch.parallelograms.shadow_bottomR_jR' (ParticleCoverHLS/src/cover.cxx:167) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'patch.parallelograms.shadow_bottomL_jL' (ParticleCoverHLS/src/cover.cxx:167) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'patch.parallelograms.shadow_bottomR_jL' (ParticleCoverHLS/src/cover.cxx:167) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'patch.parallelograms.z1_min' (ParticleCoverHLS/src/cover.cxx:167) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'patch.parallelograms.z1_max' (ParticleCoverHLS/src/cover.cxx:167) in dimension 1 completely.
+WARNING: [ANALYSIS 214-31] The program may have out of bound access of array variable 'parallelogram_slopes' in function 'system_top' (ParticleCoverHLS/src/constants.cxx:18:9).
+WARNING: [ANALYSIS 214-31] The program may have out of bound access of array variable 'parallelogram_slopes' in function 'patch_get_parallelograms' (ParticleCoverHLS/src/constants.cxx:18:9).
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (ParticleCoverHLS/src/patch.cxx:77:29) in function 'patch_get_parallelograms'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:500:21) in function '_find_start_index_and_value'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:500:21) in function '_find_left_and_right_bound'... converting 4 basic blocks.
+INFO: [XFORM 203-11] Balancing expressions in function 'cover_make_patch_aligned_to_line' (ParticleCoverHLS/src/cover.cxx:92)...15 expression(s) balanced.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 16 seconds. CPU system time: 0 seconds. Elapsed time: 15.506 seconds; current allocated memory: 389.582 MB.
+INFO: [HLS 200-472] Inferring partial write operation for 'radii' (ParticleCoverHLS/src/constants.cxx:6:12)
+INFO: [HLS 200-472] Inferring partial write operation for 'radii' (ParticleCoverHLS/src/constants.cxx:7:12)
+INFO: [HLS 200-472] Inferring partial write operation for 'radii' (ParticleCoverHLS/src/constants.cxx:8:12)
+INFO: [HLS 200-472] Inferring partial write operation for 'radii' (ParticleCoverHLS/src/constants.cxx:9:12)
+INFO: [HLS 200-472] Inferring partial write operation for 'radii' (ParticleCoverHLS/src/constants.cxx:10:12)
+INFO: [HLS 200-472] Inferring partial write operation for 'parallelogram_slopes' (ParticleCoverHLS/src/constants.cxx:30:29)
+INFO: [HLS 200-472] Inferring partial write operation for 'trapezoid_edges' (ParticleCoverHLS/src/constants.cxx:21:24)
+INFO: [HLS 200-472] Inferring partial write operation for 'z_list' (ParticleCoverHLS/src/superpoint.cxx:15:12)
+INFO: [HLS 200-472] Inferring partial write operation for 'lambdaZ_left_list' 
+INFO: [HLS 200-472] Inferring partial write operation for 'lambdaZ_right_list' 
+INFO: [HLS 200-472] Inferring partial write operation for 'lambdaZ_left_list' (ParticleCoverHLS/src/patch.cxx:194:26)
+INFO: [HLS 200-472] Inferring partial write operation for 'lambdaZ_right_list' (ParticleCoverHLS/src/patch.cxx:196:27)
+INFO: [HLS 200-472] Inferring partial write operation for 'init_patch[0].points.layer_num' (ParticleCoverHLS/src/cover.cxx:146:21)
+INFO: [HLS 200-472] Inferring partial write operation for 'init_patch[0].points.layer_num' (ParticleCoverHLS/src/cover.cxx:155:21)
+INFO: [HLS 200-472] Inferring partial write operation for 'patch.superpoints[0].points.layer_num' (ParticleCoverHLS/src/patch.cxx:28:26)
+INFO: [HLS 200-472] Inferring partial write operation for 'row_list' (ParticleCoverHLS/src/cover.cxx:35:14)
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 12 seconds. CPU system time: 0 seconds. Elapsed time: 12.243 seconds; current allocated memory: 523.043 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'system_top' ...
+WARNING: [SYN 201-103] Legalizing function name '_copy_row_list' to 'p_copy_row_list'.
+WARNING: [SYN 201-103] Legalizing function name '_find_start_index_and_value' to 'p_find_start_index_and_value'.
+WARNING: [SYN 201-103] Legalizing function name '_find_left_and_right_bound' to 'p_find_left_and_right_bound'.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'p_copy_row_list' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.198 seconds; current allocated memory: 532.052 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.69 seconds; current allocated memory: 537.664 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'p_find_start_index_and_value' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'loop_find_start_index_and_value'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 5, loop 'loop_find_start_index_and_value'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.42 seconds; current allocated memory: 537.868 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.134 seconds; current allocated memory: 538.078 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'p_find_left_and_right_bound' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'loop_find_left_and_right_bound'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 8, loop 'loop_find_left_and_right_bound'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.171 seconds; current allocated memory: 538.247 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.141 seconds; current allocated memory: 538.446 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'superpoint_init' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_25_1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'VITIS_LOOP_25_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.204 seconds; current allocated memory: 538.994 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.16 seconds; current allocated memory: 539.714 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'patch_get_parallelograms' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.336 seconds; current allocated memory: 540.588 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.607 seconds; current allocated memory: 541.826 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'patch_get_acceptance_corners' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.803 seconds; current allocated memory: 542.883 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.45 seconds; current allocated memory: 544.014 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'patch_get_end_layers' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.812 seconds; current allocated memory: 544.811 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.491 seconds; current allocated memory: 545.659 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'cover_make_patch_aligned_to_line' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=empty_44) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 6 seconds. CPU system time: 0 seconds. Elapsed time: 5.999 seconds; current allocated memory: 565.756 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 8 seconds. CPU system time: 0 seconds. Elapsed time: 7.847 seconds; current allocated memory: 586.075 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'cover_make_patch_shadow_quilt_from_edges' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 4 seconds. CPU system time: 0 seconds. Elapsed time: 4.281 seconds; current allocated memory: 586.346 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.997 seconds; current allocated memory: 586.635 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'system_top' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_29_1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 15, loop 'VITIS_LOOP_29_1'
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_16_1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 18, loop 'VITIS_LOOP_16_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 2.382 seconds; current allocated memory: 586.862 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.07 seconds; current allocated memory: 587.139 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'p_copy_row_list' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'p_copy_row_list'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 3 seconds. CPU system time: 1 seconds. Elapsed time: 2.8 seconds; current allocated memory: 595.025 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'p_find_start_index_and_value' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'dcmp_64ns_64ns_1_1_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'dsub_64ns_64ns_64_3_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'p_find_start_index_and_value'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 3.173 seconds; current allocated memory: 616.608 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'p_find_left_and_right_bound' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'dadd_64ns_64ns_64_3_full_dsp_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'dcmp_64ns_64ns_1_1_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'p_find_left_and_right_bound'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 1 seconds. Elapsed time: 0.477 seconds; current allocated memory: 617.813 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'superpoint_init' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'dcmp_64ns_64ns_1_1_no_dsp_1': 2 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'superpoint_init'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 1.221 seconds; current allocated memory: 635.025 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'patch_get_parallelograms' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'dadddsub_64ns_64ns_64_3_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'dcmp_64ns_64ns_1_1_no_dsp_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'ddiv_64ns_64ns_64_10_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'dmul_64ns_64ns_64_3_max_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'dsub_64ns_64ns_64_3_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'faddfsub_32ns_32ns_32_2_full_dsp_1': 4 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fcmp_32ns_32ns_1_1_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fdiv_32ns_32ns_32_6_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fmul_32ns_32ns_32_2_max_dsp_1': 4 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fptrunc_64ns_32_1_no_dsp_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mux_42_1_1_1': 16 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mux_42_32_1_1': 4 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'patch_get_parallelograms'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.876 seconds; current allocated memory: 642.260 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'patch_get_acceptance_corners' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'fcmp_32ns_32ns_1_1_no_dsp_1': 8 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mux_42_32_1_1': 8 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'patch_get_acceptance_corners'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 1.517 seconds; current allocated memory: 649.252 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'patch_get_end_layers' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'ddiv_64ns_64ns_64_10_no_dsp_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'dsub_64ns_64ns_64_3_full_dsp_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fcmp_32ns_32ns_1_1_no_dsp_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fptrunc_64ns_32_1_no_dsp_1': 2 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'patch_get_end_layers'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.658 seconds; current allocated memory: 655.946 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'cover_make_patch_aligned_to_line' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-104] Estimated max fanout for 'cover_make_patch_aligned_to_line' is 34203 from HDL expression: (1'b1 == ap_CS_fsm_state205)
+INFO: [RTGEN 206-100] Generating core module 'dadddsub_64ns_64ns_64_3_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'dcmp_64ns_64ns_1_1_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'ddiv_64ns_64ns_64_10_no_dsp_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'dmul_64ns_64ns_64_3_max_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'dsub_64ns_64ns_64_3_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_mul_14s_13ns_14_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'srem_32ns_32ns_32_36_seq_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'cover_make_patch_aligned_to_line'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 10 seconds. CPU system time: 0 seconds. Elapsed time: 10.473 seconds; current allocated memory: 705.827 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'cover_make_patch_shadow_quilt_from_edges' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'dcmp_64ns_64ns_1_1_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fadd_32ns_32ns_32_2_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fcmp_32ns_32ns_1_1_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fdiv_32ns_32ns_32_6_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fmul_32ns_32ns_32_2_max_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fpext_32ns_64_1_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fptrunc_64ns_32_1_no_dsp_1': 2 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'cover_make_patch_shadow_quilt_from_edges'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 8 seconds. CPU system time: 3 seconds. Elapsed time: 10.906 seconds; current allocated memory: 776.310 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'system_top' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'system_top/cover' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'system_top/row_data' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'system_top/num_points' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'system_top' to 'ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Generating core module 'dadddsub_64ns_64ns_64_3_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'ddiv_64ns_64ns_64_10_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'dmul_64ns_64ns_64_3_max_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'dsub_64ns_64ns_64_3_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'system_top'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 2.603 seconds; current allocated memory: 778.315 MB.
+INFO: [RTMG 210-278] Implementing memory 'system_top_superpoint_init_z_list_ram (RAM)' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'system_top_patch_get_end_layers_lambdaZ_left_list_ram (RAM)' using auto RAMs.
+INFO: [RTMG 210-282] Generating pipelined core: 'system_top_srem_32ns_32ns_32_36_seq_1_div'
+INFO: [RTMG 210-278] Implementing memory 'system_top_cover_make_patch_aligned_to_line_init_patch_0_points_layer_num_ram (RAM)' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'system_top_cover_make_patch_aligned_to_line_init_patch_0_points_radius_ram (RAM)' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'system_top_cover_make_patch_aligned_to_line_init_patch_n_points_ram (RAM)' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'system_top_cover_make_patch_aligned_to_line_row_list_ram (RAM)' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'system_top_cover_make_patch_aligned_to_line_patch_superpoints_0_points_radius_ram (RAM)' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'system_top_cover_make_patch_aligned_to_line_patch_superpoints_n_points_ram (RAM)' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'system_top_radii_ram (RAM)' using auto RAMs with power-on initialization.
+INFO: [RTMG 210-278] Implementing memory 'system_top_parallelogram_slopes_ram (RAM)' using auto RAMs with power-on initialization.
+INFO: [RTMG 210-278] Implementing memory 'system_top_trapezoid_edges_ram (RAM)' using auto RAMs with power-on initialization.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 9 seconds. CPU system time: 2 seconds. Elapsed time: 11.018 seconds; current allocated memory: 783.503 MB.
+INFO: [VHDL 208-304] Generating VHDL RTL for system_top.
+INFO: [VLOG 209-307] Generating Verilog RTL for system_top.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 100.03 MHz
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 120 seconds. CPU system time: 7 seconds. Elapsed time: 156.069 seconds; current allocated memory: 787.404 MB.
+INFO: [HLS 200-112] Total CPU user time: 123 seconds. Total CPU system time: 8 seconds. Total elapsed time: 157.852 seconds; peak allocated memory: 783.503 MB.

@@ -82,6 +82,7 @@ public:
       float currentVal =
           radii[i] * (top_layer_lim - beam_axis_lim) / radii[radii.size() - 1] +
           beam_axis_lim;
+
       trapezoid_edges.push_back(currentVal);
     }
   }
@@ -910,6 +911,12 @@ public:
         cout << apexZ0 << " " << ppl << " " << z_top_max << " " << leftRight
              << endl;
 
+        // std::cout << "apexZ0: " << apexZ0 << " z_top_max: " << z_top_max
+        //         << " z_top_min: " << z_top_min << std::endl;
+        cout << "apexZ0: " << apexZ0 << " z_top_max: " << z_top_max
+             << " z_top_min: " << z_top_min << endl;
+        exit(0);
+
         makePatch_alignedToLine(apexZ0, z_top_max, ppl = ppl, false);
 
         cout << "top layer from "
@@ -1539,6 +1546,13 @@ public:
           (z_top - apexZ0) * (y - env.radii[0]) / (r_max - env.radii[0]) +
           apexZ0;
 
+      // print z_top, apexZ0, y, radii[0], r_max, radii[0], apexZ0
+      std::cout << "z_top: " << z_top << " apexZ0: " << apexZ0 << " y: " << y
+                << " radii[0]: " << env.radii[0] << " r_max: " << r_max
+                << " radii[0]: " << env.radii[0] << " apexZ0: " << apexZ0
+                << " projectionToRow: " << projectionToRow << std::endl;
+      exit(0);
+
       // std::cout << "Z_TOP: " << z_top << std::endl;
       // std::cout << "APEX_Z0: " << apexZ0 << std::endl;
       // std::cout << "Y: " << y << std::endl;
@@ -1550,15 +1564,21 @@ public:
       float start_value = 1000000;
 
       for (int j = 0; j < row_list.size(); j++) {
+
+        std::cout << "current row_list[" << j << "]: " << row_list[j]
+                  << " projectionToRow: " << projectionToRow << std::endl;
+
         if (abs(row_list[j] - projectionToRow) < abs(start_value)) {
           start_index = j;
           start_value = row_list[j] - projectionToRow;
         }
       }
 
-      // cout << "DEBUG START" << endl;
-      // cout << "start_index: " << start_index << endl;
-      // cout << "start_value: " << start_value << endl;
+      cout << "num_points[" << i << "]: " << row_list.size() << endl;
+
+      cout << "start_index: " << start_index << " start_value: " << start_value
+           << endl;
+      exit(0);
 
       int left_bound = 0;
       float lbVal = INT_MAX;
@@ -1660,6 +1680,8 @@ public:
         }
       }
     }
+
+    wedgePatch patch_payload = wedgePatch(env, init_patch, apexZ0 = apexZ0);
 
     add_patch(wedgePatch(env, init_patch, apexZ0 = apexZ0));
   }

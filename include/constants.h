@@ -21,38 +21,31 @@
 
 const double RADII[] = {5.0, 10.0, 15.0, 20.0, 25.0};
 
-static double radii[NUM_LAYERS] = {5.0, 10.0, 15.0, 20.0, 25.0};
-static double trapezoid_edges[NUM_LAYERS] = {0};
-static double parallelogram_slopes[NUM_LAYERS - 1] = {0};
-static double radii_leverArm[NUM_LAYERS - 1] = {0};
+#define CLAIM_CONST_ARRAYS                                                     \
+  double radii[NUM_LAYERS] = {0};                                              \
+  double trapezoid_edges[NUM_LAYERS] = {0};                                    \
+  double parallelogram_slopes[NUM_LAYERS - 1] = {0};                           \
+  double radii_leverArm[NUM_LAYERS - 1] = {0};
+
+#define LINK_CONST_ARRAYS                                                      \
+  extern double radii[NUM_LAYERS];                                             \
+  extern double trapezoid_edges[NUM_LAYERS];                                   \
+  extern double parallelogram_slopes[NUM_LAYERS - 1];                          \
+  extern double radii_leverArm[NUM_LAYERS - 1];
 
 void radii_initializer(double *radii);
-void trapezoid_edges_initializer(double *trapezoid_edges);
-void parallelogram_slopes_initializer(double *parallelogram_slopes);
-void radii_leverArm_initializer(double *radii_leverArm);
+void trapezoid_edges_initializer(double *trapezoid_edges, double *radii);
+void parallelogram_slopes_initializer(double *parallelogram_slopes,
+                                      double *radii);
+void radii_leverArm_initializer(double *radii_leverArm,
+                                double *parallelogram_slopes);
 
 void const_array_initializer(double *radii, double *trapezoid_edges,
                              double *parallelogram_slopes,
                              double *radii_leverArm);
 
-#define PRINT_CONST_ARRAYS                                                     \
-  {                                                                            \
-    for (int i = 0; i < NUM_LAYERS; i++) {                                     \
-      std::cout << "radii[" << i << "] = " << radii[i] << std::endl;           \
-    }                                                                          \
-    for (int i = 0; i < NUM_LAYERS; i++) {                                     \
-      std::cout << "trapezoid_edges[" << i << "] = " << trapezoid_edges[i]     \
-                << std::endl;                                                  \
-    }                                                                          \
-    for (int i = 0; i < NUM_LAYERS - 1; i++) {                                 \
-      std::cout << "parallelogram_slopes[" << i                                \
-                << "] = " << parallelogram_slopes[i] << std::endl;             \
-    }                                                                          \
-    for (int i = 0; i < NUM_LAYERS - 1; i++) {                                 \
-      std::cout << "radii_leverArm[" << i << "] = " << radii_leverArm[i]       \
-                << std::endl;                                                  \
-    }                                                                          \
-  }
+void print_const_arrays(double *radii, double *trapezoid_edges,
+                        double *parallelogram_slopes, double *radii_leverArm);
 
 // FILE READER CONSTANTS
 #define MAX_NUM_EVENTS 8192

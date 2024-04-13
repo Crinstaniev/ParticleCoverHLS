@@ -14,6 +14,8 @@
 #define BOUNDARY_POINT_OFFSET 0.0001
 #define PPL 16
 
+LINK_CONST_ARRAYS
+
 /**
  * Prepare data for synthesis components.
  */
@@ -37,16 +39,16 @@ loop_copy_row_list:
 void _find_start_index_and_value(int *start_index, double *start_value,
                                  double row_list[MAX_POINTS_PER_LAYER],
                                  int num_points, double projectionToRow) {
-  // Initialize start_index and start_value with something meaningful
-  *start_index = -1;      // Indicate an invalid index initially
-  *start_value = INT_MAX; // Use maximum double value for initial comparison
-
+  *start_index = 0;
+  *start_value = 1000000;
 loop_find_start_index_and_value:
   for (int i = 0; i < MAX_POINTS_PER_LAYER; i++) {
-    if (i <
-        num_points) { // Check if the current index is within the valid range
-      double current_distance = abs(row_list[i] - projectionToRow);
-      if (current_distance < abs(*start_value)) {
+    if (i < num_points) {
+
+      std::cout << "current row_list[" << i << "]: " << row_list[i]
+                << " projectionToRow: " << projectionToRow << std::endl;
+
+      if (std::abs(row_list[i] - projectionToRow) < std::abs(*start_value)) {
         *start_index = i;
         *start_value = row_list[i] - projectionToRow;
       }
@@ -103,6 +105,13 @@ void cover_make_patch_aligned_to_line(
     double projectionToRow =
         (z_top - apexZ0) * (y - radii[0]) / (r_max - radii[0]) + apexZ0;
 
+    // print z_top, apexZ0, y, radii[0], r_max, radii[0], apexZ0
+    std::cout << "z_top: " << z_top << " apexZ0: " << apexZ0 << " y: " << y
+              << " radii[0]: " << radii[0] << " r_max: " << r_max
+              << " radii[0]: " << radii[0] << " apexZ0: " << apexZ0
+              << " projectionToRow: " << projectionToRow << std::endl;
+    exit(0);
+
     int start_index = 0;
     double start_value = 1000000;
 
@@ -110,6 +119,18 @@ void cover_make_patch_aligned_to_line(
 
     _find_start_index_and_value(&start_index, &start_value, row_list,
                                 num_points[i], projectionToRow);
+
+    // print row_list
+    for (int j = 0; j < num_points[i]; j++) {
+      std::cout << "row_list[" << j << "]: " << row_list[j] << std::endl;
+    }
+
+    // print num_points[i]
+    std::cout << "num_points[" << i << "]: " << num_points[i] << std::endl;
+
+    std::cout << "start_index: " << start_index
+              << " start_value: " << start_value << std::endl;
+    exit(0);
 
     int left_bound = 0;
     int right_bound = 0;
@@ -154,20 +175,11 @@ void cover_make_patch_aligned_to_line(
     }
   }
 
-  // add patch to cover
-  // patch_s patch;
-  //   // copy superpoints to patch
-  //   for (int i = 0; i < NUM_LAYERS; i++) {
-  // #pragma HLS UNROLL
-  //     patch.superpoints[i] = init_patch[i];
-  //   }
-
   patch_s patch = patch_init(init_patch, NUM_LAYERS, apexZ0);
 
   patch_buffer_push_patch(&cover->patch_buffer, patch);
-  // std::cout << "cover->n_patches: " << cover->n_patches << std::endl;
+
   cover->n_patches++;
-  // std::cout << "cover->n_patches: " << cover->n_patches << std::endl;
 
   return;
 }
@@ -175,8 +187,10 @@ void cover_make_patch_aligned_to_line(
 void cover_make_patch_shadow_quilt_from_edges(
     cover_s *cover, point_s row_data[NUM_LAYERS][MAX_POINTS_PER_LAYER],
     int num_points[NUM_LAYERS]) {
-  const_array_initializer(radii, trapezoid_edges, parallelogram_slopes,
-                          radii_leverArm);
+#pragma HLS INLINE off
+
+  DEBUG(print_const_arrays(radii, trapezoid_edges, parallelogram_slopes,
+                           radii_leverArm);)
 
   bool fix42 = true;
   float apexZ0 = trapezoid_edges[0];
@@ -205,12 +219,32 @@ void cover_make_patch_shadow_quilt_from_edges(
 
       bool leftRight = false;
 
+      std::cout << "apexZ0: " << apexZ0 << " z_top_max: " << z_top_max
+                << " z_top_min: " << z_top_min << std::endl;
+      exit(0);
+
       cover_make_patch_aligned_to_line(cover, row_data, num_points, apexZ0,
                                        z_top_max);
 
-      // access last patch
       patch_s *last_patch = patch_buffer_access_patch_ptr(&cover->patch_buffer,
                                                           cover->n_patches - 1);
+
+      DEBUG(std::cout << "top layer from "
+                      << last_patch->superpoints[NUM_LAYERS - 1].max << " to "
+                      << last_patch->superpoints[NUM_LAYERS - 1].min
+                      << " z_top_max: " << z_top_max << std::endl;
+            std::cout << "original: [" << last_patch->a_corner[0] << ", "
+                      << last_patch->a_corner[1] << "] for patch "
+                      << cover->n_patches << std::endl;
+            std::cout << "original: [" << last_patch->b_corner[0] << ", "
+                      << last_patch->b_corner[1] << "] for patch "
+                      << cover->n_patches << std::endl;
+            std::cout << "original: [" << last_patch->c_corner[0] << ", "
+                      << last_patch->c_corner[1] << "] for patch "
+                      << cover->n_patches << std::endl;
+            std::cout << "original: [" << last_patch->d_corner[0] << ", "
+                      << last_patch->d_corner[1] << "] for patch "
+                      << cover->n_patches << std::endl;)
 
       for (int i = 0; i < NUM_LAYERS - 1; i++) {
         int j = i + 1;
@@ -232,7 +266,7 @@ void cover_make_patch_shadow_quilt_from_edges(
                                last_patch->superpoints[i].min, 1, j, NUM_LAYERS)
                         << std::endl;)
 
-        return;
+        DEBUG(exit(0);)
       }
     }
   }

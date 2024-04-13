@@ -158,20 +158,20 @@ extern "C" {
 # 1 "C:/Projects/ParticleCoverHLS/include/constants.h" 1
 # 22 "C:/Projects/ParticleCoverHLS/include/constants.h"
 const double RADII[] = {5.0, 10.0, 15.0, 20.0, 25.0};
-
-static double radii[5] = {5.0, 10.0, 15.0, 20.0, 25.0};
-static double trapezoid_edges[5] = {0};
-static double parallelogram_slopes[5 - 1] = {0};
-static double radii_leverArm[5 - 1] = {0};
-
+# 36 "C:/Projects/ParticleCoverHLS/include/constants.h"
 void radii_initializer(double *radii);
-void trapezoid_edges_initializer(double *trapezoid_edges);
-void parallelogram_slopes_initializer(double *parallelogram_slopes);
-void radii_leverArm_initializer(double *radii_leverArm);
+void trapezoid_edges_initializer(double *trapezoid_edges, double *radii);
+void parallelogram_slopes_initializer(double *parallelogram_slopes,
+                                      double *radii);
+void radii_leverArm_initializer(double *radii_leverArm,
+                                double *parallelogram_slopes);
 
 void const_array_initializer(double *radii, double *trapezoid_edges,
                              double *parallelogram_slopes,
                              double *radii_leverArm);
+
+void print_const_arrays(double *radii, double *trapezoid_edges,
+                        double *parallelogram_slopes, double *radii_leverArm);
 # 4 "C:/Projects/ParticleCoverHLS/include\\system.h" 2
 # 1 "C:/Projects/ParticleCoverHLS/include/cover.h" 1
 
@@ -28613,13 +28613,16 @@ using std::wcstombs;
 using std::wctomb;
 # 7 "ParticleCoverHLS/src/system.cxx" 2
 
+double radii[5] = {5.0, 10.0, 15.0, 20.0, 25.0}; double trapezoid_edges[5] = {0}; double parallelogram_slopes[5 - 1] = {0}; double radii_leverArm[5 - 1] = {0};
+
 __attribute__((sdx_kernel("system_top", 0))) void system_top(cover_s *cover,
                 point_s row_data[5][256],
                 int num_points[5]) {_ssdm_SpecArrayDimSize(row_data, 5);_ssdm_SpecArrayDimSize(num_points, 5);
 #pragma HLS TOP name=system_top
-# 10 "ParticleCoverHLS/src/system.cxx"
+# 12 "ParticleCoverHLS/src/system.cxx"
 
-
+  const_array_initializer(radii, trapezoid_edges, parallelogram_slopes,
+                          radii_leverArm);
 
 
   patch_buffer_init(&cover->patch_buffer);

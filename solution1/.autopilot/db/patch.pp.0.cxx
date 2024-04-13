@@ -158,20 +158,20 @@ extern "C" {
 # 1 "C:/Projects/ParticleCoverHLS/include/constants.h" 1
 # 22 "C:/Projects/ParticleCoverHLS/include/constants.h"
 const double RADII[] = {5.0, 10.0, 15.0, 20.0, 25.0};
-
-static double radii[5] = {5.0, 10.0, 15.0, 20.0, 25.0};
-static double trapezoid_edges[5] = {0};
-static double parallelogram_slopes[5 - 1] = {0};
-static double radii_leverArm[5 - 1] = {0};
-
+# 36 "C:/Projects/ParticleCoverHLS/include/constants.h"
 void radii_initializer(double *radii);
-void trapezoid_edges_initializer(double *trapezoid_edges);
-void parallelogram_slopes_initializer(double *parallelogram_slopes);
-void radii_leverArm_initializer(double *radii_leverArm);
+void trapezoid_edges_initializer(double *trapezoid_edges, double *radii);
+void parallelogram_slopes_initializer(double *parallelogram_slopes,
+                                      double *radii);
+void radii_leverArm_initializer(double *radii_leverArm,
+                                double *parallelogram_slopes);
 
 void const_array_initializer(double *radii, double *trapezoid_edges,
                              double *parallelogram_slopes,
                              double *radii_leverArm);
+
+void print_const_arrays(double *radii, double *trapezoid_edges,
+                        double *parallelogram_slopes, double *radii_leverArm);
 # 5 "C:/Projects/ParticleCoverHLS/include\\patch.h" 2
 # 1 "C:/Projects/ParticleCoverHLS/include/environment.h" 1
 
@@ -24838,6 +24838,8 @@ std::ostream &operator<<(std::ostream &os, const patch_s &p);
 # 5 "ParticleCoverHLS/src/patch.cxx" 2
 
 
+extern double radii[5]; extern double trapezoid_edges[5]; extern double parallelogram_slopes[5 - 1]; extern double radii_leverArm[5 - 1];
+
 patch_s patch_init(superpoint_s *superpoints, size_t n_superpoints,
                    double apexZ0) {
   patch_s patch;
@@ -24856,7 +24858,7 @@ patch_s patch_init(superpoint_s *superpoints, size_t n_superpoints,
   patch.shadow_fromTopToInnermost_topR_jR = (-32768);
 
 
-  VITIS_LOOP_25_1: for (size_t i = 0; i < 5; i++) {
+  VITIS_LOOP_27_1: for (size_t i = 0; i < 5; i++) {
     patch.superpoints[i] = superpoints[i];
   }
 
@@ -24906,7 +24908,7 @@ void patch_get_parallelograms(patch_s *patch) {
     z1_max = z1_min;
   }
 
-  VITIS_LOOP_75_1: for (int i = 1; i < 5; i++) {
+  VITIS_LOOP_77_1: for (int i = 1; i < 5; i++) {
     int j = i + 1;
 
     float z_j_min = patch->superpoints[i].min;
@@ -24953,7 +24955,7 @@ void patch_get_acceptance_corners(patch_s *patch) {
   float c_corner_list[5 - 1];
   float d_corner_list[5 - 1];
 
-  VITIS_LOOP_122_1: for (int i = 0; i < 5 - 1; i++) {
+  VITIS_LOOP_124_1: for (int i = 0; i < 5 - 1; i++) {
     a_corner_list[i] = patch->parallelograms[i].shadow_bottomL_jR;
     b_corner_list[i] = patch->parallelograms[i].shadow_bottomR_jR;
     c_corner_list[i] = patch->parallelograms[i].shadow_bottomL_jL;
@@ -25022,7 +25024,7 @@ void patch_get_end_layers(patch_s *patch) {
   float lambdaZ_left_list[5] = {0};
   float lambdaZ_right_list[5] = {0};
 
-  VITIS_LOOP_191_1: for (int i = 0; i < 5; i++) {
+  VITIS_LOOP_193_1: for (int i = 0; i < 5; i++) {
     lambdaZ_left_list[i] =
         (patch->superpoints[i].min - patch->apexZ0) / radii[i];
     lambdaZ_right_list[i] =
@@ -25032,14 +25034,14 @@ void patch_get_end_layers(patch_s *patch) {
   float lambdaZLeftMax = -1 * 2147483647 + 2;
   float lambdaZRightMin = 2147483647 - 2;
 
-  VITIS_LOOP_201_2: for (int i = 0; i < 5; i++) {
+  VITIS_LOOP_203_2: for (int i = 0; i < 5; i++) {
     if (lambdaZ_left_list[i] > lambdaZLeftMax) {
       patch->left_end_layer = i;
       lambdaZLeftMax = lambdaZ_left_list[i];
     }
   }
 
-  VITIS_LOOP_208_3: for (int i = 0; i < 5; i++) {
+  VITIS_LOOP_210_3: for (int i = 0; i < 5; i++) {
     if (lambdaZ_right_list[i] < lambdaZRightMin) {
       patch->right_end_layer = i;
       lambdaZRightMin = lambdaZ_right_list[i];

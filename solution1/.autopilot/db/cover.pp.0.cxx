@@ -157,20 +157,20 @@ extern "C" {
 # 1 "C:/Projects/ParticleCoverHLS/include/constants.h" 1
 # 22 "C:/Projects/ParticleCoverHLS/include/constants.h"
 const double RADII[] = {5.0, 10.0, 15.0, 20.0, 25.0};
-
-static double radii[5] = {5.0, 10.0, 15.0, 20.0, 25.0};
-static double trapezoid_edges[5] = {0};
-static double parallelogram_slopes[5 - 1] = {0};
-static double radii_leverArm[5 - 1] = {0};
-
+# 36 "C:/Projects/ParticleCoverHLS/include/constants.h"
 void radii_initializer(double *radii);
-void trapezoid_edges_initializer(double *trapezoid_edges);
-void parallelogram_slopes_initializer(double *parallelogram_slopes);
-void radii_leverArm_initializer(double *radii_leverArm);
+void trapezoid_edges_initializer(double *trapezoid_edges, double *radii);
+void parallelogram_slopes_initializer(double *parallelogram_slopes,
+                                      double *radii);
+void radii_leverArm_initializer(double *radii_leverArm,
+                                double *parallelogram_slopes);
 
 void const_array_initializer(double *radii, double *trapezoid_edges,
                              double *parallelogram_slopes,
                              double *radii_leverArm);
+
+void print_const_arrays(double *radii, double *trapezoid_edges,
+                        double *parallelogram_slopes, double *radii_leverArm);
 # 4 "C:/Projects/ParticleCoverHLS/include\\cover.h" 2
 # 1 "C:/Projects/ParticleCoverHLS/include/dataset.h" 1
 
@@ -30596,7 +30596,19 @@ using std::scalbn;
 using std::tgamma;
 using std::trunc;
 # 9 "ParticleCoverHLS/src/cover.cxx" 2
-# 20 "ParticleCoverHLS/src/cover.cxx"
+
+
+
+
+
+
+
+
+extern double radii[5]; extern double trapezoid_edges[5]; extern double parallelogram_slopes[5 - 1]; extern double radii_leverArm[5 - 1];
+
+
+
+
 void cover_init(cover_s *cover) {
   patch_buffer_init(&cover->patch_buffer);
   cover->n_patches = 0;
@@ -30672,7 +30684,7 @@ void cover_make_patch_aligned_to_line(
 
   superpoint_s init_patch[5];
 
-  VITIS_LOOP_95_1: for (int i = 0; i < 5; i++) {
+  VITIS_LOOP_97_1: for (int i = 0; i < 5; i++) {
 #pragma HLS UNROLL
  double y = radii[i];
 
@@ -30716,7 +30728,7 @@ void cover_make_patch_aligned_to_line(
     if ((start_index - 16 + 1) < left_bound) {
 
       point_s points[16];
-      VITIS_LOOP_139_2: for (int j = 0; j < 16; j++) {
+      VITIS_LOOP_141_2: for (int j = 0; j < 16; j++) {
 #pragma HLS UNROLL
  points[j] = row_data[i][left_bound + j];
       }
@@ -30725,7 +30737,7 @@ void cover_make_patch_aligned_to_line(
     } else {
 
       point_s points[16];
-      VITIS_LOOP_148_3: for (int j = 0; j < 16; j++) {
+      VITIS_LOOP_150_3: for (int j = 0; j < 16; j++) {
 #pragma HLS UNROLL
  points[j] = row_data[i][start_index - 16 + 1 + j];
       }
@@ -30733,7 +30745,7 @@ void cover_make_patch_aligned_to_line(
       init_patch[i] = sp;
     }
   }
-# 165 "ParticleCoverHLS/src/cover.cxx"
+# 167 "ParticleCoverHLS/src/cover.cxx"
   patch_s patch = patch_init(init_patch, 5, apexZ0);
 
   patch_buffer_push_patch(&cover->patch_buffer, patch);
@@ -30747,14 +30759,16 @@ void cover_make_patch_aligned_to_line(
 void cover_make_patch_shadow_quilt_from_edges(
     cover_s *cover, point_s row_data[5][256],
     int num_points[5]) {
-  const_array_initializer(radii, trapezoid_edges, parallelogram_slopes,
-                          radii_leverArm);
+#pragma HLS INLINE off
 
-  bool fix42 = true;
+
+
+
+ bool fix42 = true;
   float apexZ0 = trapezoid_edges[0];
   float saved_apexZ0;
 
-  VITIS_LOOP_185_1: while (apexZ0 > -1 * trapezoid_edges[0]) {
+  VITIS_LOOP_189_1: while (apexZ0 > -1 * trapezoid_edges[0]) {
     float z_top_min = -1 * 50.0;
     float complementary_apexZ0 = 0;
     int first_row_count = 0;
@@ -30771,7 +30785,7 @@ void cover_make_patch_shadow_quilt_from_edges(
     int nPatchesInColumn = 0;
     float projectionOfCornerToBeam = 0;
 
-    VITIS_LOOP_202_2: while ((c_corner > -1 * trapezoid_edges[5 - 1]) &&
+    VITIS_LOOP_206_2: while ((c_corner > -1 * trapezoid_edges[5 - 1]) &&
            (projectionOfCornerToBeam < 15.0)) {
       nPatchesInColumn++;
 
@@ -30780,14 +30794,12 @@ void cover_make_patch_shadow_quilt_from_edges(
       cover_make_patch_aligned_to_line(cover, row_data, num_points, apexZ0,
                                        z_top_max);
 
-
       patch_s *last_patch = patch_buffer_access_patch_ptr(&cover->patch_buffer,
                                                           cover->n_patches - 1);
-
-      VITIS_LOOP_215_3: for (int i = 0; i < 5 - 1; i++) {
-        int j = i + 1;
 # 235 "ParticleCoverHLS/src/cover.cxx"
-        return;
+      VITIS_LOOP_235_3: for (int i = 0; i < 5 - 1; i++) {
+        int j = i + 1;
+# 256 "ParticleCoverHLS/src/cover.cxx"
       }
     }
   }

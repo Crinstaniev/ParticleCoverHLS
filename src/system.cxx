@@ -5,10 +5,13 @@
 #include <iostream>
 #include <stdlib.h>
 
+CLAIM_CONST_ARRAYS
+
 void system_top(cover_s *cover,
                 point_s row_data[NUM_LAYERS][MAX_POINTS_PER_LAYER],
                 int num_points[NUM_LAYERS]) {
-  // CONST_ARRAY_INITIALIZER;
+  const_array_initializer(radii, trapezoid_edges, parallelogram_slopes,
+                          radii_leverArm);
   // PRINT_CONST_ARRAYS;
 
   patch_buffer_init(&cover->patch_buffer);

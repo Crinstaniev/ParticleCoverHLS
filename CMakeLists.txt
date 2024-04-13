@@ -19,9 +19,6 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 # include vitis libraries /home/crinstaniev/opt/Xilinx/Vitis_HLS/2020.2/include
 include_directories(/home/crinstaniev/opt/Xilinx/Vitis_HLS/2020.2/include)
 
-# Definition for Debug mode
-add_compile_definitions($<$<CONFIG:DEBUG>:DEBUG>)
-
 
 # Source files
 file(GLOB SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cxx)

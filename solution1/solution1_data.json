@@ -205,7 +205,7 @@
     "Uncertainty": "0",
     "IsCombinational": "0",
     "II": "x",
-    "Latency": "3639"
+    "Latency": "undef"
   },
   "Xdc": {"OocClocks": ["create_clock -name ap_clk -period 10.000 [get_ports ap_clk]"]},
   "Ipx": {
@@ -244,28 +244,32 @@
       "impl\/vhdl\/system_top_cover_make_patch_aligned_to_line_patch_superpoints_0_points_radius.vhd",
       "impl\/vhdl\/system_top_cover_make_patch_aligned_to_line_patch_superpoints_n_points.vhd",
       "impl\/vhdl\/system_top_cover_make_patch_aligned_to_line_row_list.vhd",
+      "impl\/vhdl\/system_top_cover_make_patch_shadow_quilt_from_edges.vhd",
       "impl\/vhdl\/system_top_dadd_64ns_64ns_64_3_full_dsp_1.vhd",
+      "impl\/vhdl\/system_top_dadddsub_64ns_64ns_64_3_full_dsp_1.vhd",
       "impl\/vhdl\/system_top_dcmp_64ns_64ns_1_1_no_dsp_1.vhd",
       "impl\/vhdl\/system_top_ddiv_64ns_64ns_64_10_no_dsp_1.vhd",
       "impl\/vhdl\/system_top_dmul_64ns_64ns_64_3_max_dsp_1.vhd",
       "impl\/vhdl\/system_top_dsub_64ns_64ns_64_3_full_dsp_1.vhd",
       "impl\/vhdl\/system_top_fadd_32ns_32ns_32_2_full_dsp_1.vhd",
+      "impl\/vhdl\/system_top_faddfsub_32ns_32ns_32_2_full_dsp_1.vhd",
       "impl\/vhdl\/system_top_fcmp_32ns_32ns_1_1_no_dsp_1.vhd",
       "impl\/vhdl\/system_top_fdiv_32ns_32ns_32_6_no_dsp_1.vhd",
       "impl\/vhdl\/system_top_fmul_32ns_32ns_32_2_max_dsp_1.vhd",
+      "impl\/vhdl\/system_top_fpext_32ns_64_1_no_dsp_1.vhd",
       "impl\/vhdl\/system_top_fptrunc_64ns_32_1_no_dsp_1.vhd",
-      "impl\/vhdl\/system_top_fsub_32ns_32ns_32_2_full_dsp_1.vhd",
       "impl\/vhdl\/system_top_mul_mul_14s_13ns_14_4_1.vhd",
       "impl\/vhdl\/system_top_mux_42_1_1_1.vhd",
       "impl\/vhdl\/system_top_mux_42_32_1_1.vhd",
       "impl\/vhdl\/system_top_p_copy_row_list.vhd",
       "impl\/vhdl\/system_top_p_find_left_and_right_bound.vhd",
       "impl\/vhdl\/system_top_p_find_start_index_and_value.vhd",
+      "impl\/vhdl\/system_top_parallelogram_slopes.vhd",
       "impl\/vhdl\/system_top_patch_get_acceptance_corners.vhd",
       "impl\/vhdl\/system_top_patch_get_end_layers.vhd",
       "impl\/vhdl\/system_top_patch_get_end_layers_lambdaZ_left_list.vhd",
       "impl\/vhdl\/system_top_patch_get_parallelograms.vhd",
-      "impl\/vhdl\/system_top_patch_get_parallelograms_radii_1.vhd",
+      "impl\/vhdl\/system_top_radii.vhd",
       "impl\/vhdl\/system_top_srem_32ns_32ns_32_36_seq_1.vhd",
       "impl\/vhdl\/system_top_superpoint_init.vhd",
       "impl\/vhdl\/system_top_superpoint_init_z_list.vhd",
@@ -280,29 +284,34 @@
       "impl\/verilog\/system_top_cover_make_patch_aligned_to_line_patch_superpoints_0_points_radius.v",
       "impl\/verilog\/system_top_cover_make_patch_aligned_to_line_patch_superpoints_n_points.v",
       "impl\/verilog\/system_top_cover_make_patch_aligned_to_line_row_list.v",
+      "impl\/verilog\/system_top_cover_make_patch_shadow_quilt_from_edges.v",
       "impl\/verilog\/system_top_dadd_64ns_64ns_64_3_full_dsp_1.v",
+      "impl\/verilog\/system_top_dadddsub_64ns_64ns_64_3_full_dsp_1.v",
       "impl\/verilog\/system_top_dcmp_64ns_64ns_1_1_no_dsp_1.v",
       "impl\/verilog\/system_top_ddiv_64ns_64ns_64_10_no_dsp_1.v",
       "impl\/verilog\/system_top_dmul_64ns_64ns_64_3_max_dsp_1.v",
       "impl\/verilog\/system_top_dsub_64ns_64ns_64_3_full_dsp_1.v",
       "impl\/verilog\/system_top_fadd_32ns_32ns_32_2_full_dsp_1.v",
+      "impl\/verilog\/system_top_faddfsub_32ns_32ns_32_2_full_dsp_1.v",
       "impl\/verilog\/system_top_fcmp_32ns_32ns_1_1_no_dsp_1.v",
       "impl\/verilog\/system_top_fdiv_32ns_32ns_32_6_no_dsp_1.v",
       "impl\/verilog\/system_top_fmul_32ns_32ns_32_2_max_dsp_1.v",
+      "impl\/verilog\/system_top_fpext_32ns_64_1_no_dsp_1.v",
       "impl\/verilog\/system_top_fptrunc_64ns_32_1_no_dsp_1.v",
-      "impl\/verilog\/system_top_fsub_32ns_32ns_32_2_full_dsp_1.v",
       "impl\/verilog\/system_top_mul_mul_14s_13ns_14_4_1.v",
       "impl\/verilog\/system_top_mux_42_1_1_1.v",
       "impl\/verilog\/system_top_mux_42_32_1_1.v",
       "impl\/verilog\/system_top_p_copy_row_list.v",
       "impl\/verilog\/system_top_p_find_left_and_right_bound.v",
       "impl\/verilog\/system_top_p_find_start_index_and_value.v",
+      "impl\/verilog\/system_top_parallelogram_slopes.v",
+      "impl\/verilog\/system_top_parallelogram_slopes_ram.dat",
       "impl\/verilog\/system_top_patch_get_acceptance_corners.v",
       "impl\/verilog\/system_top_patch_get_end_layers.v",
       "impl\/verilog\/system_top_patch_get_end_layers_lambdaZ_left_list.v",
       "impl\/verilog\/system_top_patch_get_parallelograms.v",
-      "impl\/verilog\/system_top_patch_get_parallelograms_radii_1.v",
-      "impl\/verilog\/system_top_patch_get_parallelograms_radii_1_rom.dat",
+      "impl\/verilog\/system_top_radii.v",
+      "impl\/verilog\/system_top_radii_ram.dat",
       "impl\/verilog\/system_top_srem_32ns_32ns_32_36_seq_1.v",
       "impl\/verilog\/system_top_superpoint_init.v",
       "impl\/verilog\/system_top_superpoint_init_z_list.v",
@@ -313,16 +322,18 @@
     "IpMisc": ["impl\/misc\/logo.png"],
     "Subcore": [
       "impl\/misc\/system_top_ap_dadd_1_full_dsp_64_ip.tcl",
+      "impl\/misc\/system_top_ap_dadddsub_1_full_dsp_64_ip.tcl",
       "impl\/misc\/system_top_ap_dcmp_0_no_dsp_64_ip.tcl",
       "impl\/misc\/system_top_ap_ddiv_8_no_dsp_64_ip.tcl",
       "impl\/misc\/system_top_ap_dmul_1_max_dsp_64_ip.tcl",
       "impl\/misc\/system_top_ap_dsub_1_full_dsp_64_ip.tcl",
       "impl\/misc\/system_top_ap_fadd_0_full_dsp_32_ip.tcl",
+      "impl\/misc\/system_top_ap_faddfsub_0_full_dsp_32_ip.tcl",
       "impl\/misc\/system_top_ap_fcmp_0_no_dsp_32_ip.tcl",
       "impl\/misc\/system_top_ap_fdiv_4_no_dsp_32_ip.tcl",
       "impl\/misc\/system_top_ap_fmul_0_max_dsp_32_ip.tcl",
-      "impl\/misc\/system_top_ap_fptrunc_0_no_dsp_64_ip.tcl",
-      "impl\/misc\/system_top_ap_fsub_0_full_dsp_32_ip.tcl"
+      "impl\/misc\/system_top_ap_fpext_0_no_dsp_32_ip.tcl",
+      "impl\/misc\/system_top_ap_fptrunc_0_no_dsp_64_ip.tcl"
     ],
     "DesignXml": ".autopilot\/db\/system_top.design.xml",
     "DebugDir": ".debug",
@@ -336,6 +347,11 @@
         "Name": "system_top_ap_dadd_1_full_dsp_64",
         "Vlnv": "xilinx.com:ip:floating_point:7.1",
         "Params": "CONFIG.a_precision_type Double CONFIG.a_tuser_width 1 CONFIG.add_sub_value Add CONFIG.b_tuser_width 1 CONFIG.c_a_exponent_width 11 CONFIG.c_a_fraction_width 53 CONFIG.c_compare_operation Programmable CONFIG.c_has_divide_by_zero false CONFIG.c_has_invalid_op false CONFIG.c_has_overflow false CONFIG.c_has_underflow false CONFIG.c_latency 1 CONFIG.c_mult_usage Full_Usage CONFIG.c_optimization Speed_Optimized CONFIG.c_rate 1 CONFIG.c_result_exponent_width 11 CONFIG.c_result_fraction_width 53 CONFIG.component_name system_top_ap_dadd_1_full_dsp_64 CONFIG.flow_control NonBlocking CONFIG.has_a_tlast false CONFIG.has_a_tuser false CONFIG.has_aclken true CONFIG.has_aresetn false CONFIG.has_b_tlast false CONFIG.has_b_tuser false CONFIG.has_operation_tlast false CONFIG.has_operation_tuser false CONFIG.has_result_tready false CONFIG.maximum_latency false CONFIG.operation_tuser_width 1 CONFIG.operation_type Add_Subtract CONFIG.result_precision_type Double CONFIG.result_tlast_behv Null"
+      },
+      {
+        "Name": "system_top_ap_dadddsub_1_full_dsp_64",
+        "Vlnv": "xilinx.com:ip:floating_point:7.1",
+        "Params": "CONFIG.a_precision_type Double CONFIG.a_tuser_width 1 CONFIG.add_sub_value Both CONFIG.b_tuser_width 1 CONFIG.c_a_exponent_width 11 CONFIG.c_a_fraction_width 53 CONFIG.c_compare_operation Programmable CONFIG.c_has_divide_by_zero false CONFIG.c_has_invalid_op false CONFIG.c_has_overflow false CONFIG.c_has_underflow false CONFIG.c_latency 1 CONFIG.c_mult_usage Full_Usage CONFIG.c_optimization Speed_Optimized CONFIG.c_rate 1 CONFIG.c_result_exponent_width 11 CONFIG.c_result_fraction_width 53 CONFIG.component_name system_top_ap_dadddsub_1_full_dsp_64 CONFIG.flow_control NonBlocking CONFIG.has_a_tlast false CONFIG.has_a_tuser false CONFIG.has_aclken true CONFIG.has_aresetn false CONFIG.has_b_tlast false CONFIG.has_b_tuser false CONFIG.has_operation_tlast false CONFIG.has_operation_tuser false CONFIG.has_result_tready false CONFIG.maximum_latency false CONFIG.operation_tuser_width 1 CONFIG.operation_type Add_Subtract CONFIG.result_precision_type Double CONFIG.result_tlast_behv Null"
       },
       {
         "Name": "system_top_ap_dcmp_0_no_dsp_64",
@@ -363,6 +379,11 @@
         "Params": "CONFIG.a_precision_type Single CONFIG.a_tuser_width 1 CONFIG.add_sub_value Add CONFIG.b_tuser_width 1 CONFIG.c_a_exponent_width 8 CONFIG.c_a_fraction_width 24 CONFIG.c_compare_operation Programmable CONFIG.c_has_divide_by_zero false CONFIG.c_has_invalid_op false CONFIG.c_has_overflow false CONFIG.c_has_underflow false CONFIG.c_latency 0 CONFIG.c_mult_usage Full_Usage CONFIG.c_optimization Speed_Optimized CONFIG.c_rate 1 CONFIG.c_result_exponent_width 8 CONFIG.c_result_fraction_width 24 CONFIG.component_name system_top_ap_fadd_0_full_dsp_32 CONFIG.flow_control NonBlocking CONFIG.has_a_tlast false CONFIG.has_a_tuser false CONFIG.has_aclken false CONFIG.has_aresetn false CONFIG.has_b_tlast false CONFIG.has_b_tuser false CONFIG.has_operation_tlast false CONFIG.has_operation_tuser false CONFIG.has_result_tready false CONFIG.maximum_latency false CONFIG.operation_tuser_width 1 CONFIG.operation_type Add_Subtract CONFIG.result_precision_type Single CONFIG.result_tlast_behv Null"
       },
       {
+        "Name": "system_top_ap_faddfsub_0_full_dsp_32",
+        "Vlnv": "xilinx.com:ip:floating_point:7.1",
+        "Params": "CONFIG.a_precision_type Single CONFIG.a_tuser_width 1 CONFIG.add_sub_value Both CONFIG.b_tuser_width 1 CONFIG.c_a_exponent_width 8 CONFIG.c_a_fraction_width 24 CONFIG.c_compare_operation Programmable CONFIG.c_has_divide_by_zero false CONFIG.c_has_invalid_op false CONFIG.c_has_overflow false CONFIG.c_has_underflow false CONFIG.c_latency 0 CONFIG.c_mult_usage Full_Usage CONFIG.c_optimization Speed_Optimized CONFIG.c_rate 1 CONFIG.c_result_exponent_width 8 CONFIG.c_result_fraction_width 24 CONFIG.component_name system_top_ap_faddfsub_0_full_dsp_32 CONFIG.flow_control NonBlocking CONFIG.has_a_tlast false CONFIG.has_a_tuser false CONFIG.has_aclken false CONFIG.has_aresetn false CONFIG.has_b_tlast false CONFIG.has_b_tuser false CONFIG.has_operation_tlast false CONFIG.has_operation_tuser false CONFIG.has_result_tready false CONFIG.maximum_latency false CONFIG.operation_tuser_width 1 CONFIG.operation_type Add_Subtract CONFIG.result_precision_type Single CONFIG.result_tlast_behv Null"
+      },
+      {
         "Name": "system_top_ap_fcmp_0_no_dsp_32",
         "Vlnv": "xilinx.com:ip:floating_point:7.1",
         "Params": "CONFIG.a_precision_type Single CONFIG.a_tuser_width 1 CONFIG.add_sub_value Both CONFIG.b_tuser_width 1 CONFIG.c_a_exponent_width 8 CONFIG.c_a_fraction_width 24 CONFIG.c_compare_operation Programmable CONFIG.c_has_divide_by_zero false CONFIG.c_has_invalid_op false CONFIG.c_has_overflow false CONFIG.c_has_underflow false CONFIG.c_latency 0 CONFIG.c_mult_usage No_Usage CONFIG.c_optimization Speed_Optimized CONFIG.c_rate 1 CONFIG.c_result_exponent_width 1 CONFIG.c_result_fraction_width 0 CONFIG.component_name system_top_ap_fcmp_0_no_dsp_32 CONFIG.flow_control NonBlocking CONFIG.has_a_tlast false CONFIG.has_a_tuser false CONFIG.has_aclken false CONFIG.has_aresetn false CONFIG.has_b_tlast false CONFIG.has_b_tuser false CONFIG.has_operation_tlast false CONFIG.has_operation_tuser false CONFIG.has_result_tready false CONFIG.maximum_latency false CONFIG.operation_tuser_width 1 CONFIG.operation_type Compare CONFIG.result_precision_type Custom CONFIG.result_tlast_behv Null"
@@ -378,14 +399,14 @@
         "Params": "CONFIG.a_precision_type Single CONFIG.a_tuser_width 1 CONFIG.add_sub_value Both CONFIG.b_tuser_width 1 CONFIG.c_a_exponent_width 8 CONFIG.c_a_fraction_width 24 CONFIG.c_compare_operation Programmable CONFIG.c_has_divide_by_zero false CONFIG.c_has_invalid_op false CONFIG.c_has_overflow false CONFIG.c_has_underflow false CONFIG.c_latency 0 CONFIG.c_mult_usage Max_Usage CONFIG.c_optimization Speed_Optimized CONFIG.c_rate 1 CONFIG.c_result_exponent_width 8 CONFIG.c_result_fraction_width 24 CONFIG.component_name system_top_ap_fmul_0_max_dsp_32 CONFIG.flow_control NonBlocking CONFIG.has_a_tlast false CONFIG.has_a_tuser false CONFIG.has_aclken false CONFIG.has_aresetn false CONFIG.has_b_tlast false CONFIG.has_b_tuser false CONFIG.has_operation_tlast false CONFIG.has_operation_tuser false CONFIG.has_result_tready false CONFIG.maximum_latency false CONFIG.operation_tuser_width 1 CONFIG.operation_type Multiply CONFIG.result_precision_type Single CONFIG.result_tlast_behv Null"
       },
       {
+        "Name": "system_top_ap_fpext_0_no_dsp_32",
+        "Vlnv": "xilinx.com:ip:floating_point:7.1",
+        "Params": "CONFIG.a_precision_type Single CONFIG.a_tuser_width 1 CONFIG.add_sub_value Both CONFIG.b_tuser_width 1 CONFIG.c_a_exponent_width 8 CONFIG.c_a_fraction_width 24 CONFIG.c_compare_operation Programmable CONFIG.c_has_divide_by_zero false CONFIG.c_has_invalid_op false CONFIG.c_has_overflow false CONFIG.c_has_underflow false CONFIG.c_latency 0 CONFIG.c_mult_usage No_Usage CONFIG.c_optimization Speed_Optimized CONFIG.c_rate 1 CONFIG.c_result_exponent_width 11 CONFIG.c_result_fraction_width 53 CONFIG.component_name system_top_ap_fpext_0_no_dsp_32 CONFIG.flow_control NonBlocking CONFIG.has_a_tlast false CONFIG.has_a_tuser false CONFIG.has_aclken false CONFIG.has_aresetn false CONFIG.has_b_tlast false CONFIG.has_b_tuser false CONFIG.has_operation_tlast false CONFIG.has_operation_tuser false CONFIG.has_result_tready false CONFIG.maximum_latency false CONFIG.operation_tuser_width 1 CONFIG.operation_type Float_to_Float CONFIG.result_precision_type Double CONFIG.result_tlast_behv Null"
+      },
+      {
         "Name": "system_top_ap_fptrunc_0_no_dsp_64",
         "Vlnv": "xilinx.com:ip:floating_point:7.1",
         "Params": "CONFIG.a_precision_type Double CONFIG.a_tuser_width 1 CONFIG.add_sub_value Both CONFIG.b_tuser_width 1 CONFIG.c_a_exponent_width 11 CONFIG.c_a_fraction_width 53 CONFIG.c_compare_operation Programmable CONFIG.c_has_divide_by_zero false CONFIG.c_has_invalid_op false CONFIG.c_has_overflow false CONFIG.c_has_underflow false CONFIG.c_latency 0 CONFIG.c_mult_usage No_Usage CONFIG.c_optimization Speed_Optimized CONFIG.c_rate 1 CONFIG.c_result_exponent_width 8 CONFIG.c_result_fraction_width 24 CONFIG.component_name system_top_ap_fptrunc_0_no_dsp_64 CONFIG.flow_control NonBlocking CONFIG.has_a_tlast false CONFIG.has_a_tuser false CONFIG.has_aclken false CONFIG.has_aresetn false CONFIG.has_b_tlast false CONFIG.has_b_tuser false CONFIG.has_operation_tlast false CONFIG.has_operation_tuser false CONFIG.has_result_tready false CONFIG.maximum_latency false CONFIG.operation_tuser_width 1 CONFIG.operation_type Float_to_Float CONFIG.result_precision_type Single CONFIG.result_tlast_behv Null"
-      },
-      {
-        "Name": "system_top_ap_fsub_0_full_dsp_32",
-        "Vlnv": "xilinx.com:ip:floating_point:7.1",
-        "Params": "CONFIG.a_precision_type Single CONFIG.a_tuser_width 1 CONFIG.add_sub_value Subtract CONFIG.b_tuser_width 1 CONFIG.c_a_exponent_width 8 CONFIG.c_a_fraction_width 24 CONFIG.c_compare_operation Programmable CONFIG.c_has_divide_by_zero false CONFIG.c_has_invalid_op false CONFIG.c_has_overflow false CONFIG.c_has_underflow false CONFIG.c_latency 0 CONFIG.c_mult_usage Full_Usage CONFIG.c_optimization Speed_Optimized CONFIG.c_rate 1 CONFIG.c_result_exponent_width 8 CONFIG.c_result_fraction_width 24 CONFIG.component_name system_top_ap_fsub_0_full_dsp_32 CONFIG.flow_control NonBlocking CONFIG.has_a_tlast false CONFIG.has_a_tuser false CONFIG.has_aclken false CONFIG.has_aresetn false CONFIG.has_b_tlast false CONFIG.has_b_tuser false CONFIG.has_operation_tlast false CONFIG.has_operation_tuser false CONFIG.has_result_tready false CONFIG.maximum_latency false CONFIG.operation_tuser_width 1 CONFIG.operation_type Add_Subtract CONFIG.result_precision_type Single CONFIG.result_tlast_behv Null"
       }
     ]
   },
@@ -698,38 +719,42 @@
     "Hierarchy": {
       "ModuleName": "system_top",
       "Instances": [{
-          "ModuleName": "cover_make_patch_aligned_to_line",
-          "InstanceName": "grp_cover_make_patch_aligned_to_line_fu_136",
-          "Instances": [
-            {
-              "ModuleName": "patch_get_parallelograms",
-              "InstanceName": "grp_patch_get_parallelograms_fu_16822"
-            },
-            {
-              "ModuleName": "p_copy_row_list",
-              "InstanceName": "grp_p_copy_row_list_fu_16830"
-            },
-            {
-              "ModuleName": "patch_get_end_layers",
-              "InstanceName": "grp_patch_get_end_layers_fu_16844"
-            },
-            {
-              "ModuleName": "superpoint_init",
-              "InstanceName": "grp_superpoint_init_fu_16852"
-            },
-            {
-              "ModuleName": "patch_get_acceptance_corners",
-              "InstanceName": "grp_patch_get_acceptance_corners_fu_16920"
-            },
-            {
-              "ModuleName": "p_find_left_and_right_bound",
-              "InstanceName": "grp_p_find_left_and_right_bound_fu_16942"
-            },
-            {
-              "ModuleName": "p_find_start_index_and_value",
-              "InstanceName": "grp_p_find_start_index_and_value_fu_16956"
-            }
-          ]
+          "ModuleName": "cover_make_patch_shadow_quilt_from_edges",
+          "InstanceName": "grp_cover_make_patch_shadow_quilt_from_edges_fu_207",
+          "Instances": [{
+              "ModuleName": "cover_make_patch_aligned_to_line",
+              "InstanceName": "grp_cover_make_patch_aligned_to_line_fu_122",
+              "Instances": [
+                {
+                  "ModuleName": "patch_get_parallelograms",
+                  "InstanceName": "grp_patch_get_parallelograms_fu_16856"
+                },
+                {
+                  "ModuleName": "p_copy_row_list",
+                  "InstanceName": "grp_p_copy_row_list_fu_16868"
+                },
+                {
+                  "ModuleName": "patch_get_end_layers",
+                  "InstanceName": "grp_patch_get_end_layers_fu_16882"
+                },
+                {
+                  "ModuleName": "superpoint_init",
+                  "InstanceName": "grp_superpoint_init_fu_16891"
+                },
+                {
+                  "ModuleName": "patch_get_acceptance_corners",
+                  "InstanceName": "grp_patch_get_acceptance_corners_fu_16959"
+                },
+                {
+                  "ModuleName": "p_find_left_and_right_bound",
+                  "InstanceName": "grp_p_find_left_and_right_bound_fu_16981"
+                },
+                {
+                  "ModuleName": "p_find_start_index_and_value",
+                  "InstanceName": "grp_p_find_start_index_and_value_fu_16995"
+                }
+              ]
+            }]
         }]
     },
     "Info": {
@@ -783,6 +808,13 @@
         "isOneStateSeq": "0"
       },
       "cover_make_patch_aligned_to_line": {
+        "FunctionProtocol": "ap_ctrl_hs",
+        "isTaskLevelControl": "0",
+        "isPipelined": "0",
+        "isCombinational": "0",
+        "isOneStateSeq": "0"
+      },
+      "cover_make_patch_shadow_quilt_from_edges": {
         "FunctionProtocol": "ap_ctrl_hs",
         "isTaskLevelControl": "0",
         "isPipelined": "0",
@@ -949,38 +981,54 @@
       },
       "patch_get_parallelograms": {
         "Latency": {
-          "LatencyBest": "21",
-          "LatencyAvg": "21",
-          "LatencyWorst": "21",
-          "PipelineII": "21",
+          "LatencyBest": "216",
+          "LatencyAvg": "216",
+          "LatencyWorst": "216",
+          "PipelineII": "216",
           "PipelineDepth": "",
           "PipelineType": "none"
         },
         "Timing": {
           "Target": "10.00",
           "Uncertainty": "0.00",
-          "Estimate": "9.829"
+          "Estimate": "9.997"
         },
-        "Loops": [{
-            "Name": "VITIS_LOOP_75_1",
+        "Loops": [
+          {
+            "Name": "VITIS_LOOP_29_1",
             "TripCount": "4",
-            "Latency": "16",
-            "PipelineII": "1",
+            "Latency": "60",
+            "PipelineII": "",
+            "PipelineDepth": "15"
+          },
+          {
+            "Name": "VITIS_LOOP_16_1",
+            "TripCount": "5",
+            "Latency": "90",
+            "PipelineII": "",
+            "PipelineDepth": "18"
+          },
+          {
+            "Name": "VITIS_LOOP_77_1",
+            "TripCount": "4",
+            "Latency": "56",
+            "PipelineII": "",
             "PipelineDepth": "14"
-          }],
+          }
+        ],
         "Area": {
+          "DSP": "20",
+          "AVAIL_DSP": "9216",
+          "UTIL_DSP": "~0",
+          "FF": "4988",
+          "AVAIL_FF": "2592000",
+          "UTIL_FF": "~0",
+          "LUT": "5375",
+          "AVAIL_LUT": "1296000",
+          "UTIL_LUT": "~0",
           "BRAM_18K": "0",
           "AVAIL_BRAM": "4032",
           "UTIL_BRAM": "0",
-          "DSP": "30",
-          "AVAIL_DSP": "9216",
-          "UTIL_DSP": "~0",
-          "FF": "4686",
-          "AVAIL_FF": "2592000",
-          "UTIL_FF": "~0",
-          "LUT": "5639",
-          "AVAIL_LUT": "1296000",
-          "UTIL_LUT": "~0",
           "URAM": "0",
           "AVAIL_URAM": "960",
           "UTIL_URAM": "0"
@@ -988,10 +1036,10 @@
       },
       "patch_get_acceptance_corners": {
         "Latency": {
-          "LatencyBest": "8",
-          "LatencyAvg": "8",
-          "LatencyWorst": "8",
-          "PipelineII": "8",
+          "LatencyBest": "7",
+          "LatencyAvg": "7",
+          "LatencyWorst": "7",
+          "PipelineII": "7",
           "PipelineDepth": "",
           "PipelineType": "none"
         },
@@ -1001,17 +1049,17 @@
           "Estimate": "9.930"
         },
         "Loops": [{
-            "Name": "VITIS_LOOP_122_1",
+            "Name": "VITIS_LOOP_124_1",
             "TripCount": "4",
             "Latency": "4",
-            "PipelineII": "1",
+            "PipelineII": "",
             "PipelineDepth": "1"
           }],
         "Area": {
-          "FF": "1180",
+          "FF": "1435",
           "AVAIL_FF": "2592000",
           "UTIL_FF": "~0",
-          "LUT": "1801",
+          "LUT": "1796",
           "AVAIL_LUT": "1296000",
           "UTIL_LUT": "~0",
           "BRAM_18K": "0",
@@ -1027,10 +1075,10 @@
       },
       "patch_get_end_layers": {
         "Latency": {
-          "LatencyBest": "54",
-          "LatencyAvg": "54",
-          "LatencyWorst": "54",
-          "PipelineII": "54",
+          "LatencyBest": "115",
+          "LatencyAvg": "115",
+          "LatencyWorst": "115",
+          "PipelineII": "115",
           "PipelineDepth": "",
           "PipelineType": "none"
         },
@@ -1044,35 +1092,35 @@
             "Name": "Loop 1",
             "TripCount": "5",
             "Latency": "5",
-            "PipelineII": "1",
+            "PipelineII": "",
             "PipelineDepth": "1"
           },
           {
             "Name": "Loop 2",
             "TripCount": "5",
             "Latency": "5",
-            "PipelineII": "1",
+            "PipelineII": "",
             "PipelineDepth": "1"
           },
           {
-            "Name": "VITIS_LOOP_191_1",
+            "Name": "VITIS_LOOP_193_1",
             "TripCount": "5",
-            "Latency": "18",
-            "PipelineII": "1",
+            "Latency": "75",
+            "PipelineII": "",
             "PipelineDepth": "15"
           },
           {
-            "Name": "VITIS_LOOP_201_2",
+            "Name": "VITIS_LOOP_203_2",
             "TripCount": "5",
-            "Latency": "6",
-            "PipelineII": "1",
+            "Latency": "10",
+            "PipelineII": "",
             "PipelineDepth": "2"
           },
           {
-            "Name": "VITIS_LOOP_208_3",
+            "Name": "VITIS_LOOP_210_3",
             "TripCount": "5",
-            "Latency": "5",
-            "PipelineII": "1",
+            "Latency": "10",
+            "PipelineII": "",
             "PipelineDepth": "2"
           }
         ],
@@ -1080,10 +1128,10 @@
           "BRAM_18K": "0",
           "AVAIL_BRAM": "4032",
           "UTIL_BRAM": "0",
-          "FF": "1032",
+          "FF": "832",
           "AVAIL_FF": "2592000",
           "UTIL_FF": "~0",
-          "LUT": "1534",
+          "LUT": "1446",
           "AVAIL_LUT": "1296000",
           "UTIL_LUT": "~0",
           "DSP": "0",
@@ -1096,36 +1144,82 @@
       },
       "cover_make_patch_aligned_to_line": {
         "Latency": {
-          "LatencyBest": "3615",
-          "LatencyAvg": "3615",
-          "LatencyWorst": "3615",
-          "PipelineII": "3615",
+          "LatencyBest": "3960",
+          "LatencyAvg": "3960",
+          "LatencyWorst": "3960",
+          "PipelineII": "3960",
           "PipelineDepth": "",
           "PipelineType": "none"
         },
         "Timing": {
           "Target": "10.00",
           "Uncertainty": "0.00",
-          "Estimate": "9.930"
+          "Estimate": "9.997"
         },
         "Loops": [{
-            "Name": "VITIS_LOOP_25_1",
+            "Name": "VITIS_LOOP_27_1",
             "TripCount": "5",
-            "Latency": "5",
-            "PipelineII": "1",
+            "Latency": "10",
+            "PipelineII": "",
             "PipelineDepth": "2"
           }],
         "Area": {
           "BRAM_18K": "8",
           "AVAIL_BRAM": "4032",
           "UTIL_BRAM": "~0",
-          "DSP": "46",
+          "DSP": "44",
           "AVAIL_DSP": "9216",
           "UTIL_DSP": "~0",
-          "FF": "117760",
+          "FF": "118906",
           "AVAIL_FF": "2592000",
           "UTIL_FF": "4",
-          "LUT": "53005",
+          "LUT": "53580",
+          "AVAIL_LUT": "1296000",
+          "UTIL_LUT": "4",
+          "URAM": "0",
+          "AVAIL_URAM": "960",
+          "UTIL_URAM": "0"
+        }
+      },
+      "cover_make_patch_shadow_quilt_from_edges": {
+        "Latency": {
+          "LatencyBest": "",
+          "LatencyAvg": "",
+          "LatencyWorst": "",
+          "PipelineII": "",
+          "PipelineDepth": "",
+          "PipelineType": "none"
+        },
+        "Timing": {
+          "Target": "10.00",
+          "Uncertainty": "0.00",
+          "Estimate": "9.997"
+        },
+        "Loops": [{
+            "Name": "VITIS_LOOP_189_1",
+            "TripCount": "",
+            "Latency": "",
+            "PipelineII": "",
+            "PipelineDepth": "",
+            "Loops": [{
+                "Name": "VITIS_LOOP_206_2",
+                "TripCount": "",
+                "Latency": "",
+                "PipelineII": "",
+                "PipelineDepth": "3964"
+              }]
+          }],
+        "Area": {
+          "BRAM_18K": "8",
+          "AVAIL_BRAM": "4032",
+          "UTIL_BRAM": "~0",
+          "DSP": "49",
+          "AVAIL_DSP": "9216",
+          "UTIL_DSP": "~0",
+          "FF": "119589",
+          "AVAIL_FF": "2592000",
+          "UTIL_FF": "4",
+          "LUT": "54596",
           "AVAIL_LUT": "1296000",
           "UTIL_LUT": "4",
           "URAM": "0",
@@ -1135,36 +1229,45 @@
       },
       "system_top": {
         "Latency": {
-          "LatencyBest": "3639",
-          "LatencyAvg": "3639",
-          "LatencyWorst": "3639",
-          "PipelineII": "3640",
+          "LatencyBest": "",
+          "LatencyAvg": "",
+          "LatencyWorst": "",
+          "PipelineII": "",
           "PipelineDepth": "",
           "PipelineType": "none"
         },
         "Timing": {
           "Target": "10.00",
           "Uncertainty": "0.00",
-          "Estimate": "9.930"
+          "Estimate": "9.997"
         },
-        "Loops": [{
-            "Name": "VITIS_LOOP_15_1",
+        "Loops": [
+          {
+            "Name": "VITIS_LOOP_29_1",
+            "TripCount": "4",
+            "Latency": "17",
+            "PipelineII": "1",
+            "PipelineDepth": "15"
+          },
+          {
+            "Name": "VITIS_LOOP_16_1",
             "TripCount": "5",
             "Latency": "21",
             "PipelineII": "1",
             "PipelineDepth": "18"
-          }],
+          }
+        ],
         "Area": {
           "BRAM_18K": "8",
           "AVAIL_BRAM": "4032",
           "UTIL_BRAM": "~0",
-          "DSP": "57",
+          "DSP": "63",
           "AVAIL_DSP": "9216",
           "UTIL_DSP": "~0",
-          "FF": "118901",
+          "FF": "121613",
           "AVAIL_FF": "2592000",
           "UTIL_FF": "4",
-          "LUT": "54102",
+          "LUT": "56866",
           "AVAIL_LUT": "1296000",
           "UTIL_LUT": "4",
           "URAM": "0",
@@ -1177,7 +1280,7 @@
   "GenerateBdFiles": "0",
   "GenData": {
     "DataVersion": "0.2",
-    "Time": "2024-04-12 18:08:57 -0400",
+    "Time": "2024-04-12 20:10:56 -0400",
     "ToolName": "vivado_hls",
     "ToolVersion": "2020.2"
   }
