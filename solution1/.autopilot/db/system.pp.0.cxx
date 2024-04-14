@@ -24906,7 +24906,7 @@ void cover_init(cover_s *cover);
 
 void cover_make_patch_aligned_to_line(
     cover_s *cover, point_s row_data[5][256],
-    int num_points[5], double apexZ0, double z_top);
+    int num_points[5], double apexZ0, double z_top, bool leftRight);
 
 void cover_make_patch_shadow_quilt_from_edges(
     cover_s *cover, point_s row_data[5][256],
@@ -28613,7 +28613,7 @@ using std::wcstombs;
 using std::wctomb;
 # 7 "ParticleCoverHLS/src/system.cxx" 2
 
-double radii[5] = {5.0, 10.0, 15.0, 20.0, 25.0}; double trapezoid_edges[5] = {0}; double parallelogram_slopes[5 - 1] = {0}; double radii_leverArm[5 - 1] = {0};
+double radii[5] = {0}; double trapezoid_edges[5] = {0}; double parallelogram_slopes[5 - 1] = {0}; double radii_leverArm[5 - 1] = {0};
 
 __attribute__((sdx_kernel("system_top", 0))) void system_top(cover_s *cover,
                 point_s row_data[5][256],
@@ -28632,11 +28632,4 @@ __attribute__((sdx_kernel("system_top", 0))) void system_top(cover_s *cover,
 
 
   return;
-}
-
-
-
-int main(void) {
-  std::cerr << "This is a dummy main function" << std::endl;
-  return 0;
 }

@@ -6,6 +6,21 @@
 #include <string>
 #include <vector>
 
+#define CONFIG_DEBUG_PRINT_ALL 0
+#define CONFIG_IS_SYNTHESIS 0
+
+#if CONFIG_IS_SYNTHESIS == 0
+#define DEBUG(x) x
+#else
+#define DEBUG(x)
+#endif // IS_SYNTHESIS
+
+#if CONFIG_DEBUG_PRINT_ALL == 1
+#define DEBUG_PRINT_ALL(x) x
+#else
+#define DEBUG_PRINT_ALL(x)
+#endif // DEBUG_PRINT_ALL
+
 using namespace std;
 
 class Point {
@@ -720,8 +735,8 @@ public:
     right_end_lambdaZ =
         *min_element(lambdaZ_right_list.begin(), lambdaZ_right_list.end());
 
-    cout << "left_end_lambdaZ: " << left_end_lambdaZ << endl;
-    cout << "right_end_lambdaZ: " << right_end_lambdaZ << endl;
+    // cout << "left_end_lambdaZ: " << left_end_lambdaZ << endl;
+    // cout << "right_end_lambdaZ: " << right_end_lambdaZ << endl;
 
     // // print lambdaZ_left_list and lambdaZ_right_list: guaranteed
     // for (int i = 0; i < lambdaZ_left_list.size(); i++) {
@@ -896,7 +911,7 @@ public:
                     -1 * env.beam_axis_lim, apexZ0, 0, 1, env.num_layers));
       }
 
-      cout << "z_top_max: " << z_top_max << endl;
+      // cout << "z_top_max: " << z_top_max << endl;
 
       int nPatchesInColumn = 0;
       float projectionOfCornerToBeam = 0;
@@ -905,68 +920,81 @@ public:
              (projectionOfCornerToBeam < env.beam_axis_lim)) {
         nPatchesInColumn++;
 
-        cout << "nPatchesInColumn: " << nPatchesInColumn << endl;
+        // cout << "nPatchesInColumn: " << nPatchesInColumn << endl;
 
         // TODO: DEBUG PRINTING NOT TRANSLATED
-        cout << apexZ0 << " " << ppl << " " << z_top_max << " " << leftRight
-             << endl;
+        // cout << apexZ0 << " " << ppl << " " << z_top_max << " " << leftRight
+        //      << endl;
 
         // std::cout << "apexZ0: " << apexZ0 << " z_top_max: " << z_top_max
         //         << " z_top_min: " << z_top_min << std::endl;
-        cout << "apexZ0: " << apexZ0 << " z_top_max: " << z_top_max
-             << " z_top_min: " << z_top_min << endl;
-        exit(0);
+        // cout << "apexZ0: " << apexZ0 << " z_top_max: " << z_top_max
+        //      << " z_top_min: " << z_top_min << endl;
 
         makePatch_alignedToLine(apexZ0, z_top_max, ppl = ppl, false);
 
-        cout << "top layer from "
-             << patches[patches.size() - 1].superpoints[env.num_layers - 1].max
-             << " to "
-             << patches[patches.size() - 1].superpoints[env.num_layers - 1].min
-             << " z_top_max: " << z_top_max << endl;
-        cout << "original: [" << patches[patches.size() - 1].a_corner[0] << ", "
-             << patches[patches.size() - 1].a_corner[1] << "] for patch "
-             << patches.size() << endl;
-        cout << "original: [" << patches[patches.size() - 1].b_corner[0] << ", "
-             << patches[patches.size() - 1].b_corner[1] << "]" << endl;
-        cout << "original: [" << patches[patches.size() - 1].c_corner[0] << ", "
-             << patches[patches.size() - 1].c_corner[1] << "]" << endl;
-        cout << "original: [" << patches[patches.size() - 1].d_corner[0] << ", "
-             << patches[patches.size() - 1].d_corner[1] << "]" << endl;
+        // cout << "top layer from "
+        //      << patches[patches.size() - 1].superpoints[env.num_layers -
+        //      1].max
+        //      << " to "
+        //      << patches[patches.size() - 1].superpoints[env.num_layers -
+        //      1].min
+        //      << " z_top_max: " << z_top_max << endl;
+        // cout << "original: [" << patches[patches.size() - 1].a_corner[0] <<
+        // ", "
+        //      << patches[patches.size() - 1].a_corner[1] << "] for patch "
+        //      << patches.size() << endl;
+        // cout << "original: [" << patches[patches.size() - 1].b_corner[0] <<
+        // ", "
+        //      << patches[patches.size() - 1].b_corner[1] << "]" << endl;
+        // cout << "original: [" << patches[patches.size() - 1].c_corner[0] <<
+        // ", "
+        //      << patches[patches.size() - 1].c_corner[1] << "]" << endl;
+        // cout << "original: [" << patches[patches.size() - 1].d_corner[0] <<
+        // ", "
+        //      << patches[patches.size() - 1].d_corner[1] << "]" << endl;
+
+        // print superpoints of last patch
+        // for (int i = 0; i < 5; i++) {
+        //   cout << "superpoints[" << i
+        //        << "]: " << patches[patches.size() - 1].superpoints[i].min <<
+        //        " "
+        //        << patches[patches.size() - 1].superpoints[i].max << endl;
+        // }
 
         for (int i = 1; i < patches[patches.size() - 1].superpoints.size() - 1;
              i++) {
           int j = i + 1;
 
-          cout << j << " superpoint: "
-               << patches[patches.size() - 1].superpoints[i].min << " "
-               << patches[patches.size() - 1].superpoints[i].max
-               << " shadowTop from L1Max: "
-               << patches[patches.size() - 1]
-                      .straightLineProjectorFromLayerIJtoK(
-                          patches[patches.size() - 1].superpoints[0].max,
-                          patches[patches.size() - 1].superpoints[i].min, 1, j,
-                          env.num_layers)
-               << " "
-               << patches[patches.size() - 1]
-                      .straightLineProjectorFromLayerIJtoK(
-                          patches[patches.size() - 1].superpoints[0].max,
-                          patches[patches.size() - 1].superpoints[i].max, 1, j,
-                          env.num_layers)
-               << " from L1 min: "
-               << patches[patches.size() - 1]
-                      .straightLineProjectorFromLayerIJtoK(
-                          patches[patches.size() - 1].superpoints[0].min,
-                          patches[patches.size() - 1].superpoints[i].min, 1, j,
-                          env.num_layers)
-               << " "
-               << patches[patches.size() - 1]
-                      .straightLineProjectorFromLayerIJtoK(
-                          patches[patches.size() - 1].superpoints[0].min,
-                          patches[patches.size() - 1].superpoints[i].max, 1, j,
-                          env.num_layers)
-               << endl;
-          exit(0);
+          DEBUG_PRINT_ALL(
+              cout << j << " superpoint: "
+                   << patches[patches.size() - 1].superpoints[i].min << " "
+                   << patches[patches.size() - 1].superpoints[i].max
+                   << " shadowTop from L1Max: "
+                   << patches[patches.size() - 1]
+                          .straightLineProjectorFromLayerIJtoK(
+                              patches[patches.size() - 1].superpoints[0].max,
+                              patches[patches.size() - 1].superpoints[i].min, 1,
+                              j, env.num_layers)
+                   << " "
+                   << patches[patches.size() - 1]
+                          .straightLineProjectorFromLayerIJtoK(
+                              patches[patches.size() - 1].superpoints[0].max,
+                              patches[patches.size() - 1].superpoints[i].max, 1,
+                              j, env.num_layers)
+                   << " from L1 min: "
+                   << patches[patches.size() - 1]
+                          .straightLineProjectorFromLayerIJtoK(
+                              patches[patches.size() - 1].superpoints[0].min,
+                              patches[patches.size() - 1].superpoints[i].min, 1,
+                              j, env.num_layers)
+                   << " "
+                   << patches[patches.size() - 1]
+                          .straightLineProjectorFromLayerIJtoK(
+                              patches[patches.size() - 1].superpoints[0].min,
+                              patches[patches.size() - 1].superpoints[i].max, 1,
+                              j, env.num_layers)
+                   << endl;)
         }
 
         float original_c = patches[patches.size() - 1].c_corner[1];
@@ -976,6 +1004,10 @@ public:
 
         bool repeat_patch = false;
         bool repeat_original = false;
+
+        DEBUG_PRINT_ALL(cout << "original c_corner: " << c_corner << endl;
+                        cout << "original d_corner: " << original_d << endl;
+                        cout << "patch size: " << n_patches << endl;)
 
         if (patches.size() > 2) {
           repeat_original =
@@ -990,6 +1022,10 @@ public:
               (patches[patches.size() - 1].superpoints[3] ==
                patches[patches.size() - 3].superpoints[3]);
         }
+
+        // DEBUG(std::cout << "original c_corner: " << c_corner << std::endl;
+        //       std::cout << "original d_corner: " << original_d << std::endl;
+        //       std::cout << "patch size: " << cover->n_patches << std::endl;);
 
         float seed_apexZ0 = apexZ0;
         projectionOfCornerToBeam =
@@ -1010,13 +1046,51 @@ public:
 
         int nPatchesAtOriginal = patches.size();
 
+        // print all ingredients
+        // std::cout << "last_patch_c_corner[0]: " << last_patch->c_corner[0]
+        //           << std::endl;
+        // std::cout << "last_patch_c_corner[1]: " << last_patch->c_corner[1]
+        //           << std::endl;
+        // std::cout << "last_patch_a_corner[0]: " << last_patch->a_corner[0]
+        //           << std::endl;
+        // std::cout << "last_patch_a_corner[1]: " << last_patch->a_corner[1]
+        //           << std::endl;
+        // std::cout << "last_patch_b_corner[0]: " << last_patch->b_corner[0]
+        //           << std::endl;
+        // std::cout << "last_patch_b_corner[1]: " << last_patch->b_corner[1]
+        //           << std::endl;
+        // std::cout << "projectionOfCornerToBeam: " << projectionOfCornerToBeam
+        //           << std::endl;
+        // std::cout << "z_top_max: " << z_top_max << std::endl;
+        // std::cout << "last_patch_flatBottom: " << last_patch->flatBottom
+        //           << std::endl;
+
+        DEBUG_PRINT_ALL(cout << "last_patch_c_corner[0]: "
+                             << patches[patches.size() - 1].c_corner[0] << endl;
+                        cout << "last_patch_c_corner[1]: "
+                             << patches[patches.size() - 1].c_corner[1] << endl;
+                        cout << "last_patch_a_corner[0]: "
+                             << patches[patches.size() - 1].a_corner[0] << endl;
+                        cout << "last_patch_a_corner[1]: "
+                             << patches[patches.size() - 1].a_corner[1] << endl;
+                        cout << "last_patch_b_corner[0]: "
+                             << patches[patches.size() - 1].b_corner[0] << endl;
+                        cout << "last_patch_b_corner[1]: "
+                             << patches[patches.size() - 1].b_corner[1] << endl;
+                        cout << "projectionOfCornerToBeam: "
+                             << projectionOfCornerToBeam << endl;
+                        cout << "z_top_max: " << z_top_max << endl;
+                        cout << "last_patch_flatBottom: "
+                             << patches[patches.size() - 1].flatBottom << endl;)
+
         // DEBUG PRINTING NOT TRANSLATED
-        cout << "squareAcceptance: "
-             << patches[patches.size() - 1].squareAcceptance
-             << " triangleAcceptance: "
-             << patches[patches.size() - 1].triangleAcceptance
-             << " projectionOfCornerToBeam: " << projectionOfCornerToBeam
-             << " notChoppedPatch " << notChoppedPatch << endl;
+        DEBUG_PRINT_ALL(
+            cout << "squareAcceptance: "
+                 << patches[patches.size() - 1].squareAcceptance
+                 << " triangleAcceptance: "
+                 << patches[patches.size() - 1].triangleAcceptance
+                 << " projectionOfCornerToBeam: " << projectionOfCornerToBeam
+                 << " notChoppedPatch: " << notChoppedPatch << endl;)
         // DEBUG PRINTING NOT TRANSLATED
 
         if (!(notChoppedPatch) &&
@@ -1024,26 +1098,58 @@ public:
              -1 * env.trapezoid_edges[env.num_layers - 1]) &&
             (projectionOfCornerToBeam < env.beam_axis_lim)) {
           complementary_apexZ0 = patches[patches.size() - 1].superpoints[0].min;
+
+          DEBUG_PRINT_ALL(
+              cout << "complementary_apexZ0: " << complementary_apexZ0 << endl;)
+
           if ((patches[patches.size() - 1].triangleAcceptance) &&
               !(repeat_original)) {
             z_top_min = patches[patches.size() - 1].d_corner[1];
           } else {
             // DEBUG PRINTING NOT TRANSLATED
-            cout << "z_top_min before: " << z_top_min
-                 << " superpoints[self.env.num_layers-1].min: "
-                 << patches[patches.size() - 1]
-                        .superpoints[env.num_layers - 1]
-                        .min
-                 << endl;
-            // DEBUG PRINTING NOT TRANSLATED
+            DEBUG_PRINT_ALL(cout << "z_top_min_before: " << z_top_min
+                                 << " superpoints[self.env.num_layers-1].min: "
+                                 << patches[patches.size() - 1]
+                                        .superpoints[env.num_layers - 1]
+                                        .min
+                                 << endl;)
 
             z_top_min =
                 max(-1 * env.top_layer_lim, patches[patches.size() - 1]
                                                 .superpoints[env.num_layers - 1]
                                                 .min);
+            DEBUG_PRINT_ALL(cout << "z_top_min_after: " << z_top_min << endl;)
           }
 
           makePatch_alignedToLine(complementary_apexZ0, z_top_min, ppl, true);
+
+          DEBUG_PRINT_ALL(
+              cout << "superpoints of patch_depth_1" << endl;
+              for (int i = 0; i < env.num_layers; i++) {
+                cout << "superpoint " << i << " min: "
+                     << patches[patches.size() - 1].superpoints[i].min
+                     << " max: "
+                     << patches[patches.size() - 1].superpoints[i].max << endl;
+              })
+
+          DEBUG_PRINT_ALL(
+              cout << "superpoints of patch_depth_2" << endl;
+              for (int i = 0; i < env.num_layers; i++) {
+                cout << "superpoint " << i << " min: "
+                     << patches[patches.size() - 2].superpoints[i].min
+                     << " max: "
+                     << patches[patches.size() - 2].superpoints[i].max << endl;
+              })
+
+          DEBUG_PRINT_ALL(cout << "size of patches: " << patches.size()
+                               << endl;)
+
+          DEBUG_PRINT_ALL(
+              cout << "complementary_apexZ0: " << complementary_apexZ0 << endl;
+              cout << "z_top_min: " << z_top_min << endl;)
+
+          exit(0);
+
           madeComplementaryPatch = true;
           cout << "complementary: [" << patches[patches.size() - 1].a_corner[0]
                << ", " << patches[patches.size() - 1].a_corner[1]
@@ -1527,7 +1633,8 @@ public:
     int original_ppl = ppl;
     float alignmentAccuracy = 0.00001;
 
-    std::cout << "apex_z0 in makePatch_alignedToLine: " << apexZ0 << std::endl;
+    // std::cout << "apex_z0 in makePatch_alignedToLine: " << apexZ0 <<
+    // std::endl;
 
     vector<vector<Point>> row_data = data->array;
 
@@ -1547,11 +1654,10 @@ public:
           apexZ0;
 
       // print z_top, apexZ0, y, radii[0], r_max, radii[0], apexZ0
-      std::cout << "z_top: " << z_top << " apexZ0: " << apexZ0 << " y: " << y
-                << " radii[0]: " << env.radii[0] << " r_max: " << r_max
-                << " radii[0]: " << env.radii[0] << " apexZ0: " << apexZ0
-                << " projectionToRow: " << projectionToRow << std::endl;
-      exit(0);
+      // std::cout << "z_top: " << z_top << " apexZ0: " << apexZ0 << " y: " << y
+      //           << " radii[0]: " << env.radii[0] << " r_max: " << r_max
+      //           << " radii[0]: " << env.radii[0] << " apexZ0: " << apexZ0
+      //           << " projectionToRow: " << projectionToRow << std::endl;
 
       // std::cout << "Z_TOP: " << z_top << std::endl;
       // std::cout << "APEX_Z0: " << apexZ0 << std::endl;
@@ -1560,13 +1666,26 @@ public:
       // std::cout << "r_max: " << r_max << std::endl;
       // cout << "projectionToRow: " << projectionToRow << endl;
 
+      DEBUG_PRINT_ALL(if (this->n_patches == 1) {
+        // print row_list
+        DEBUG_PRINT_ALL(for (int j = 0; j < row_list.size(); j++) {
+          cout << "row_list[" << j << "]: " << row_list[j] << endl;
+        })
+
+        DEBUG_PRINT_ALL(
+            cout << "z_top: " << z_top << " apexZ0: " << apexZ0 << " y: " << y
+                 << " radii[0]: " << env.radii[0] << " r_max: " << r_max
+                 << " radii[0]: " << env.radii[0] << " apexZ0: " << apexZ0
+                 << " projectionToRow: " << projectionToRow << endl;)
+      })
+
       int start_index = 0;
       float start_value = 1000000;
 
       for (int j = 0; j < row_list.size(); j++) {
 
-        std::cout << "current row_list[" << j << "]: " << row_list[j]
-                  << " projectionToRow: " << projectionToRow << std::endl;
+        // std::cout << "current row_list[" << j << "]: " << row_list[j]
+        //           << " projectionToRow: " << projectionToRow << std::endl;
 
         if (abs(row_list[j] - projectionToRow) < abs(start_value)) {
           start_index = j;
@@ -1574,11 +1693,11 @@ public:
         }
       }
 
-      cout << "num_points[" << i << "]: " << row_list.size() << endl;
+      // cout << "num_points[" << i << "]: " << row_list.size() << endl;
 
-      cout << "start_index: " << start_index << " start_value: " << start_value
-           << endl;
-      exit(0);
+      // cout << "start_index: " << start_index << " start_value: " <<
+      // start_value
+      //      << endl;
 
       int left_bound = 0;
       float lbVal = INT_MAX;
@@ -1605,8 +1724,18 @@ public:
       // std::cout << "right_bound: " << right_bound << std::endl;
       // std::cout << "lbVal: " << lbVal << std::endl;
       // std::cout << "rbVal: " << rbVal << std::endl;
-      // exit(0);
 
+      DEBUG_PRINT_ALL(if (this->n_patches == 1) {
+        cout << "num_points[" << i << "]: " << row_list.size() << endl;
+        cout << "start_index: " << start_index
+             << " start_value: " << start_value << endl;
+        cout << "left_bound: " << left_bound << endl;
+        cout << "right_bound: " << right_bound << endl;
+        cout << "lbVal: " << lbVal << endl;
+        cout << "rbVal: " << rbVal << endl;
+      })
+
+      // this part not translated yet
       if ((float_middleLayers_ppl == true) && (i != 0) &&
           (i != env.num_layers - 1)) {
         ppl = original_ppl * 2 - 1;
@@ -1625,6 +1754,12 @@ public:
           vector<Point> temp(row_data[i].begin() + right_bound + 1 - ppl,
                              row_data[i].begin() + right_bound + 1);
           init_patch.push_back(wedgeSuperPoint(temp));
+
+          // print this superpoint
+          DEBUG_PRINT_ALL(cout << "superpoint " << i
+                               << " min: " << wedgeSuperPoint(temp).min
+                               << " max: " << wedgeSuperPoint(temp).max
+                               << endl;)
         } else {
           vector<Point> temp(row_data[i].begin() + start_index,
                              row_data[i].begin() + start_index + ppl);
@@ -1632,19 +1767,20 @@ public:
         }
       } else {
         if (start_index != (row_list.size() - 1)) {
-          // cout << "row " + to_string(i + 1) + " start_index " +
-          //             to_string(start_index) + " start_value " +
-          //             to_string(start_value) +
-          //             " z: " + to_string(row_list[start_index])
-          //      << endl;
+          DEBUG_PRINT_ALL(cout << "row " + to_string(i + 1) + " start_index " +
+                                      to_string(start_index) + " start_value " +
+                                      to_string(start_value) +
+                                      " z: " + to_string(row_list[start_index])
+                               << endl;)
           if (start_value < -1 * alignmentAccuracy) {
             start_index += 1;
             start_value = row_list[start_index] - projectionToRow;
-            // cout << "row " + to_string(i + 1) + " updated start_index " +
-            //             to_string(start_index) + " start_value " +
-            //             to_string(start_value) +
-            //             " z: " + to_string(row_list[start_index])
-            //      << endl;
+            DEBUG_PRINT_ALL(
+                cout << "row " + to_string(i + 1) + " updated start_index " +
+                            to_string(start_index) + " start_value " +
+                            to_string(start_value) +
+                            " z: " + to_string(row_list[start_index])
+                     << endl;)
           }
         }
 
@@ -1682,6 +1818,14 @@ public:
     }
 
     wedgePatch patch_payload = wedgePatch(env, init_patch, apexZ0 = apexZ0);
+
+    // print superpoints
+
+    // for (int i = 0; i < 5; i++) {
+    //   cout << "superpoint " << i << " min: " <<
+    //   patch_payload.superpoints[i].min
+    //        << " max: " << patch_payload.superpoints[i].max << endl;
+    // }
 
     add_patch(wedgePatch(env, init_patch, apexZ0 = apexZ0));
   }
@@ -1859,7 +2003,7 @@ public:
     int ik = 0;
 
     for (int k = wedges[0]; k < wedges[1]; k++) {
-      cout << "wedge: " << k << endl;
+      // cout << "wedge: " << k << endl;
 
       Environment env = all_data[k].env;
       vector<Point> points = all_data[k].list_of_Points;

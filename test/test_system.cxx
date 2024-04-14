@@ -2,10 +2,8 @@
 #include <iostream>
 #include <string>
 
-// #define SYNTHESIS
-
 int main(void) {
-#ifdef IS_SYNTHESIS
+#if CONFIG_IS_SYNTHESIS == false
   std::string file_path = "../../../data/wedgeData_v3_128.txt";
 #else
   std::string file_path = "../data/wedgeData_v3_128.txt";
