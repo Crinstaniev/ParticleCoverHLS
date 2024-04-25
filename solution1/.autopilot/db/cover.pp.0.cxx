@@ -158,7 +158,7 @@ extern "C" {
 # 22 "C:/Projects/ParticleCoverHLS/include/constants.h"
 const double RADII[] = {5.0, 10.0, 15.0, 20.0, 25.0};
 # 36 "C:/Projects/ParticleCoverHLS/include/constants.h"
-void radii_initializer(double *radii);
+void radii_initializer(double radii[5]);
 void trapezoid_edges_initializer(double *trapezoid_edges, double *radii);
 void parallelogram_slopes_initializer(double *parallelogram_slopes,
                                       double *radii);
@@ -30810,12 +30810,12 @@ void backup_cover_make_patch_aligned_to_line(
     double start_value = 1000000;
 
     _copy_row_list(row_list, row_data[i]);
-# 291 "ParticleCoverHLS/src/cover.cxx"
+# 292 "ParticleCoverHLS/src/cover.cxx"
     _find_start_index_and_value(&start_index, &start_value, row_list,
                                 num_points[i], projectionToRow);
-# 398 "ParticleCoverHLS/src/cover.cxx"
+# 399 "ParticleCoverHLS/src/cover.cxx"
   }
-# 410 "ParticleCoverHLS/src/cover.cxx"
+# 411 "ParticleCoverHLS/src/cover.cxx"
   cover->n_patches++;
 
   return;
@@ -30833,7 +30833,7 @@ void cover_make_patch_shadow_quilt_from_edges(
   float apexZ0 = trapezoid_edges[0];
   float saved_apexZ0;
 
-  VITIS_LOOP_427_1: while (apexZ0 > -1 * trapezoid_edges[0]) {
+  VITIS_LOOP_428_1: while (apexZ0 > -1 * trapezoid_edges[0]) {
     float z_top_min = -1 * 50.0;
     float complementary_apexZ0 = 0;
     int first_row_count = 0;
@@ -30850,7 +30850,7 @@ void cover_make_patch_shadow_quilt_from_edges(
     int nPatchesInColumn = 0;
     float projectionOfCornerToBeam = 0;
 
-    VITIS_LOOP_444_2: while ((c_corner > -1 * trapezoid_edges[5 - 1]) &&
+    VITIS_LOOP_445_2: while ((c_corner > -1 * trapezoid_edges[5 - 1]) &&
            (projectionOfCornerToBeam < 15.0)) {
       nPatchesInColumn++;
 
@@ -30865,10 +30865,10 @@ void cover_make_patch_shadow_quilt_from_edges(
 
       patch_s *last_patch = patch_buffer_access_patch_ptr(&cover->patch_buffer,
                                                           cover->n_patches - 1);
-# 486 "ParticleCoverHLS/src/cover.cxx"
-      VITIS_LOOP_486_3: for (int i = 1; i < 5 - 1; i++) {
+# 487 "ParticleCoverHLS/src/cover.cxx"
+      VITIS_LOOP_487_3: for (int i = 1; i < 5 - 1; i++) {
         int j = i + 1;
-# 509 "ParticleCoverHLS/src/cover.cxx"
+# 510 "ParticleCoverHLS/src/cover.cxx"
       }
 
       float original_c = last_patch->c_corner[1];
@@ -30923,7 +30923,7 @@ void cover_make_patch_shadow_quilt_from_edges(
       bool madeComplementaryPatch = false;
 
       int nPatchesAtOriginal = cover->n_patches;
-# 590 "ParticleCoverHLS/src/cover.cxx"
+# 591 "ParticleCoverHLS/src/cover.cxx"
       if (!notChoppedPatch &&
           (last_patch->c_corner[1] > -1 * trapezoid_edges[5 - 1]) &&
           (projectionOfCornerToBeam < 15.0)) {
@@ -30950,6 +30950,7 @@ void cover_make_patch_shadow_quilt_from_edges(
         }
       }
 
+
       backup_cover_make_patch_aligned_to_line(
           cover, row_data, num_points, complementary_apexZ0, z_top_min, true);
 
@@ -30962,7 +30963,7 @@ void cover_make_patch_shadow_quilt_from_edges(
           &cover->patch_buffer, cover->n_patches - 1);
       patch_s *patch_depth_2 = patch_buffer_access_patch_ptr(
           &cover->patch_buffer, cover->n_patches - 2);
-# 653 "ParticleCoverHLS/src/cover.cxx"
+# 655 "ParticleCoverHLS/src/cover.cxx"
       return;
     }
   }

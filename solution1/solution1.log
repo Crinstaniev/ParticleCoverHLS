@@ -5781,3 +5781,330 @@ WARNING: [HLS 214-167] The program may have out of bound array access (ParticleC
 WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:10:12)
 INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 13 seconds. CPU system time: 0 seconds. Elapsed time: 39.143 seconds; current allocated memory: 206.923 MB.
 INFO: [HLS 200-112] Total CPU user time: 15 seconds. Total CPU system time: 1 seconds. Total elapsed time: 40.654 seconds; peak allocated memory: 206.560 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xcvu11p-flga2577-1-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1510] Running: set_part xcvu11p-flga2577-1-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1510] Running: set_directive_top -name system_top system_top 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.044 seconds; current allocated memory: 162.891 MB.
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/constants.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/cover.cxx' ... 
+WARNING: [HLS 207-5301] unused parameter 'leftRight': ParticleCoverHLS/src/cover.cxx:252:58
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/dataset.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/environment.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/event.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/file_reader.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/parallelogram.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/patch.cxx' ... 
+WARNING: [HLS 207-5301] unused parameter 'n_superpoints': ParticleCoverHLS/src/patch.cxx:9:54
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/patch_buffer.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/point.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/sim_utils.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/superpoint.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/system.cxx' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 13.34 seconds; current allocated memory: 165.098 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<64, false>::ap_bit_ref(ap_int_base<64, false>*, int)' into 'ap_int_base<64, false>::operator[](int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:934:30)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<1, false>::ap_bit_ref(ap_int_base<1, false>*, int)' into 'ap_int_base<1, false>::operator[](int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:934:30)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<64, false>::operator bool() const' into 'ap_bit_ref<1, false>& ap_bit_ref<1, false>::operator=<64, false>(ap_bit_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:839:38)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<1, false>::operator=(unsigned long long)' into 'ap_bit_ref<1, false>& ap_bit_ref<1, false>::operator=<64, false>(ap_bit_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:839:12)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>::ap_range_ref(ap_int_base<64, false>*, int, int)' into 'ap_int_base<64, false>::range(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:853:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::range(int, int)' into 'ap_int_base<64, false>::operator()(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:890:18)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<11, false>::ap_range_ref(ap_int_base<11, false>*, int, int)' into 'ap_int_base<11, false>::range(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:853:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::range(int, int)' into 'ap_int_base<11, false>::operator()(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:890:18)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>::get() const' into 'ap_int_base<64, false>::ap_int_base<64, false>(ap_range_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:312:20)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::ap_int_base<64, false>(ap_int_base<64, false> const&)' into 'ap_range_ref<11, false>& ap_range_ref<11, false>::operator=<64, false>(ap_int_base<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:367:31)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::ap_int_base<64, false>(ap_range_ref<64, false> const&)' into 'ap_range_ref<11, false>& ap_range_ref<11, false>::operator=<64, false>(ap_range_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:22)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<11, false>& ap_range_ref<11, false>::operator=<64, false>(ap_int_base<64, false> const&)' into 'ap_range_ref<11, false>& ap_range_ref<11, false>::operator=<64, false>(ap_range_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:12)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<52, false>::ap_range_ref(ap_int_base<52, false>*, int, int)' into 'ap_int_base<52, false>::range(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:853:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::range(int, int)' into 'ap_int_base<52, false>::operator()(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:890:18)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::ap_int_base<64, false>(ap_int_base<64, false> const&)' into 'ap_range_ref<52, false>& ap_range_ref<52, false>::operator=<64, false>(ap_int_base<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:367:31)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::ap_int_base<64, false>(ap_range_ref<64, false> const&)' into 'ap_range_ref<52, false>& ap_range_ref<52, false>::operator=<64, false>(ap_range_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:22)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<52, false>& ap_range_ref<52, false>::operator=<64, false>(ap_int_base<64, false> const&)' into 'ap_range_ref<52, false>& ap_range_ref<52, false>::operator=<64, false>(ap_range_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:12)
+INFO: [HLS 214-131] Inlining function 'ap_uint<64>::ap_uint(unsigned long long)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:483:28)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<52, false>& ap_range_ref<52, false>::operator=<64, false>(ap_range_ref<64, false> const&)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:486:19)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::operator()(int, int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:486:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator()(int, int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:486:21)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<11, false>& ap_range_ref<11, false>::operator=<64, false>(ap_range_ref<64, false> const&)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:485:19)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::operator()(int, int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:485:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator()(int, int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:485:21)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<1, false>& ap_bit_ref<1, false>::operator=<64, false>(ap_bit_ref<64, false> const&)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:484:17)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<1, false>::operator[](int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:484:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator[](int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:484:19)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<1, false>::ap_bit_ref(ap_int_base<1, false> const*, int)' into 'ap_int_base<1, false>::operator[](int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:950:30)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<1, false>::to_bool() const' into 'ap_int_base<1, false>::operator[](int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:951:15)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<11, false>::ap_range_ref(ap_int_base<11, false>*, int, int)' into 'ap_int_base<11, false>::range(int, int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:860:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::range(int, int) const' into 'ap_int_base<11, false>::operator()(int, int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:894:18)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<11, false>::get() const' into 'ap_int_base<11, false>::ap_int_base<11, false>(ap_range_ref<11, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:312:20)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::ap_int_base<11, false>(ap_int_base<11, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<11, false>(ap_int_base<11, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:367:31)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::ap_int_base<11, false>(ap_range_ref<11, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<11, false>(ap_range_ref<11, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:22)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<11, false>(ap_int_base<11, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<11, false>(ap_range_ref<11, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:12)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<52, false>::ap_range_ref(ap_int_base<52, false>*, int, int)' into 'ap_int_base<52, false>::range(int, int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:860:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::range(int, int) const' into 'ap_int_base<52, false>::operator()(int, int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:894:18)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<52, false>::get() const' into 'ap_int_base<52, false>::ap_int_base<52, false>(ap_range_ref<52, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:312:20)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::ap_int_base<52, false>(ap_int_base<52, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<52, false>(ap_int_base<52, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:367:31)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::ap_int_base<52, false>(ap_range_ref<52, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<52, false>(ap_range_ref<52, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:22)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<52, false>(ap_int_base<52, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<52, false>(ap_range_ref<52, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<1, false>::operator[](int) const' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:501:36)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<52, false>(ap_range_ref<52, false> const&)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:503:25)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator()(int, int)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:503:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::operator()(int, int) const' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:503:27)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<11, false>(ap_range_ref<11, false> const&)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:502:41)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator()(int, int)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:502:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::operator()(int, int) const' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:502:43)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<64, false>::operator=(bool)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:501:34)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator[](int)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:501:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::to_uint64() const' into 'fp_struct<double>::to_double() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:520:24)
+INFO: [HLS 214-186] Unrolling loop 'loop_copy_row_list' (ParticleCoverHLS/src/cover.cxx:33:3) in function '_copy_row_list' completely with a factor of 256 (ParticleCoverHLS/src/cover.cxx:33:3)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_98_1' (ParticleCoverHLS/src/cover.cxx:98:20) in function 'cover_make_patch_aligned_to_line' completely with a factor of 5 (ParticleCoverHLS/src/cover.cxx:98:20)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_216_2' (ParticleCoverHLS/src/cover.cxx:216:27) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:216:27)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_225_3' (ParticleCoverHLS/src/cover.cxx:225:27) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:225:27)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_216_2' (ParticleCoverHLS/src/cover.cxx:216:27) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:216:27)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_225_3' (ParticleCoverHLS/src/cover.cxx:225:27) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:225:27)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_216_2' (ParticleCoverHLS/src/cover.cxx:216:27) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:216:27)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_225_3' (ParticleCoverHLS/src/cover.cxx:225:27) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:225:27)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_216_2' (ParticleCoverHLS/src/cover.cxx:216:27) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:216:27)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_225_3' (ParticleCoverHLS/src/cover.cxx:225:27) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:225:27)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_216_2' (ParticleCoverHLS/src/cover.cxx:216:27) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:216:27)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_225_3' (ParticleCoverHLS/src/cover.cxx:225:27) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:225:27)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_255_1' (ParticleCoverHLS/src/cover.cxx:255:21) in function 'backup_cover_make_patch_aligned_to_line' completely with a factor of 5 (ParticleCoverHLS/src/cover.cxx:255:21)
+INFO: [HLS 214-186] Unrolling loop 'loop_copy_points_to_superpoint' (ParticleCoverHLS/src/superpoint.cxx:13:3) in function 'superpoint_init' completely with a factor of 16 (ParticleCoverHLS/src/superpoint.cxx:13:3)
+INFO: [HLS 214-178] Inlining function 'radii_initializer(double*)' into 'const_array_initializer(double*, double*, double*, double*)' (ParticleCoverHLS/src/constants.cxx:48:0)
+INFO: [HLS 214-178] Inlining function 'parallelogram_slopes_initializer(double*, double*)' into 'const_array_initializer(double*, double*, double*, double*)' (ParticleCoverHLS/src/constants.cxx:48:0)
+INFO: [HLS 214-178] Inlining function 'radii_leverArm_initializer(double*, double*)' into 'const_array_initializer(double*, double*, double*, double*)' (ParticleCoverHLS/src/constants.cxx:48:0)
+INFO: [HLS 214-178] Inlining function 'trapezoid_edges_initializer(double*, double*)' into 'const_array_initializer(double*, double*, double*, double*)' (ParticleCoverHLS/src/constants.cxx:48:0)
+INFO: [HLS 214-178] Inlining function 'fp_struct<double>::data() const' into 'fp_struct<double>::to_double() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:518:0)
+INFO: [HLS 214-178] Inlining function 'fp_struct<double>::to_double() const' into 'fp_struct<double>::to_ieee() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:533:0)
+INFO: [HLS 214-178] Inlining function 'fp_struct<double>::fp_struct(double)' into 'double generic_copysign<double>(double, double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/hlsmath/include/FloatingPoint/hls_copysign.h:10:0)
+INFO: [HLS 214-178] Inlining function 'fp_struct<double>::to_ieee() const' into 'double generic_copysign<double>(double, double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/hlsmath/include/FloatingPoint/hls_copysign.h:10:0)
+INFO: [HLS 214-178] Inlining function 'double generic_copysign<double>(double, double)' into 'double generic_fabs<double>(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/hlsmath/include/FloatingPoint/hls_fabs.h:12:0)
+INFO: [HLS 214-178] Inlining function 'double generic_fabs<double>(double)' into 'fabs' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/hlsmath/src/c/fabsdouble.cpp:7:0)
+INFO: [HLS 214-178] Inlining function 'fabs' into 'std::abs(double)' (C:/Xilinx/Vitis_HLS/2020.2/tps/mingw/6.2.0/win64.o/nt\lib\gcc\x86_64-w64-mingw32\6.2.0\include\c++\cmath:86:0)
+INFO: [HLS 214-178] Inlining function 'std::abs(double)' into '_find_start_index_and_value(int*, double*, double*, int, double)' (ParticleCoverHLS/src/cover.cxx:41:0)
+INFO: [HLS 214-178] Inlining function 'std::abs(double)' into '_find_left_and_right_bound(int*, int*, double*, double*, double*, int, int)' (ParticleCoverHLS/src/cover.cxx:64:0)
+INFO: [HLS 214-178] Inlining function 'double const& std::min<double>(double const&, double const&)' into 'superpoint_init(point_s*, unsigned long)' (ParticleCoverHLS/src/superpoint.cxx:6:0)
+INFO: [HLS 214-178] Inlining function 'double const& std::max<double>(double const&, double const&)' into 'superpoint_init(point_s*, unsigned long)' (ParticleCoverHLS/src/superpoint.cxx:6:0)
+INFO: [HLS 214-178] Inlining function 'const_array_initializer(double*, double*, double*, double*)' into 'patch_get_parallelograms(patch_s*)' (ParticleCoverHLS/src/patch.cxx:65:0)
+INFO: [HLS 214-178] Inlining function 'double const& std::max<double>(double const&, double const&)' into 'patch_get_parallelograms(patch_s*)' (ParticleCoverHLS/src/patch.cxx:65:0)
+INFO: [HLS 214-178] Inlining function 'double const& std::min<double>(double const&, double const&)' into 'patch_get_parallelograms(patch_s*)' (ParticleCoverHLS/src/patch.cxx:65:0)
+INFO: [HLS 214-178] Inlining function 'parallelogram_init(parallelogram_s*, int, float, float, float, float, float, float, float)' into 'patch_get_parallelograms(patch_s*)' (ParticleCoverHLS/src/patch.cxx:65:0)
+INFO: [HLS 214-178] Inlining function 'float const& std::min<float>(float const&, float const&)' into 'patch_get_acceptance_corners(patch_s*)' (ParticleCoverHLS/src/patch.cxx:113:0)
+INFO: [HLS 214-178] Inlining function 'float const& std::max<float>(float const&, float const&)' into 'patch_get_acceptance_corners(patch_s*)' (ParticleCoverHLS/src/patch.cxx:113:0)
+INFO: [HLS 214-178] Inlining function 'float const& std::max<float>(float const&, float const&)' into 'patch_get_end_layers(patch_s*)' (ParticleCoverHLS/src/patch.cxx:189:0)
+INFO: [HLS 214-178] Inlining function 'float const& std::min<float>(float const&, float const&)' into 'patch_get_end_layers(patch_s*)' (ParticleCoverHLS/src/patch.cxx:189:0)
+INFO: [HLS 214-178] Inlining function 'patch_init(superpoint_s*, unsigned long, double)' into 'cover_make_patch_aligned_to_line(cover_s*, point_s (*) [256], int*, double, double, bool)' (ParticleCoverHLS/src/cover.cxx:94:0)
+INFO: [HLS 214-178] Inlining function 'patch_buffer_push_patch(patch_buffer_s*, patch_s)' into 'cover_make_patch_aligned_to_line(cover_s*, point_s (*) [256], int*, double, double, bool)' (ParticleCoverHLS/src/cover.cxx:94:0)
+INFO: [HLS 214-178] Inlining function 'patch_straight_line_projector_from_layer_ij_to_k(float, float, int, int, int)' into 'cover_make_patch_shadow_quilt_from_edges(cover_s*, point_s (*) [256], int*)' (ParticleCoverHLS/src/cover.cxx:418:0)
+INFO: [HLS 214-178] Inlining function 'float const& std::min<float>(float const&, float const&)' into 'cover_make_patch_shadow_quilt_from_edges(cover_s*, point_s (*) [256], int*)' (ParticleCoverHLS/src/cover.cxx:418:0)
+INFO: [HLS 214-178] Inlining function 'patch_buffer_access_patch_ptr(patch_buffer_s*, int)' into 'cover_make_patch_shadow_quilt_from_edges(cover_s*, point_s (*) [256], int*)' (ParticleCoverHLS/src/cover.cxx:418:0)
+INFO: [HLS 214-178] Inlining function 'superpoint_eq(superpoint_s, superpoint_s)' into 'cover_make_patch_shadow_quilt_from_edges(cover_s*, point_s (*) [256], int*)' (ParticleCoverHLS/src/cover.cxx:418:0)
+INFO: [HLS 214-178] Inlining function 'double const& std::max<double>(double const&, double const&)' into 'cover_make_patch_shadow_quilt_from_edges(cover_s*, point_s (*) [256], int*)' (ParticleCoverHLS/src/cover.cxx:418:0)
+INFO: [HLS 214-178] Inlining function 'backup_cover_make_patch_aligned_to_line(cover_s*, point_s (*) [256], int*, double, double, bool)' into 'cover_make_patch_shadow_quilt_from_edges(cover_s*, point_s (*) [256], int*)' (ParticleCoverHLS/src/cover.cxx:418:0)
+INFO: [HLS 214-178] Inlining function 'const_array_initializer(double*, double*, double*, double*)' into 'system_top(cover_s*, point_s (*) [256], int*)' (ParticleCoverHLS/src/system.cxx:12:0)
+INFO: [HLS 214-178] Inlining function 'patch_buffer_init(patch_buffer_s*)' into 'system_top(cover_s*, point_s (*) [256], int*)' (ParticleCoverHLS/src/system.cxx:12:0)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:6:12)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:7:12)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:8:12)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:9:12)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:10:12)
+WARNING: [HLS 214-167] The program may have out of bound array access (C:/Xilinx/Vitis_HLS/2020.2/tps/mingw/6.2.0/win64.o/nt\lib\gcc\x86_64-w64-mingw32\6.2.0\include\c++\bits/stl_algobase.h:200:11)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:100:13)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:105:20)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:100:13)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:105:20)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:107:33)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:100:13)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:105:20)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:107:33)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:100:13)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:105:20)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:107:33)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:100:13)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:107:33)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:425:18)
+WARNING: [HLS 214-167] The program may have out of bound array access
+WARNING: [HLS 214-167] The program may have out of bound array access
+WARNING: [HLS 214-167] The program may have out of bound array access
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/patch.cxx:47:16)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/patch.cxx:52:16)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:592:43)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:257:13)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:257:13)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:257:13)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:6:12)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:7:12)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:8:12)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:9:12)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:10:12)
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 14 seconds. CPU system time: 0 seconds. Elapsed time: 40.526 seconds; current allocated memory: 206.971 MB.
+INFO: [HLS 200-112] Total CPU user time: 16 seconds. Total CPU system time: 1 seconds. Total elapsed time: 42.161 seconds; peak allocated memory: 206.607 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xcvu11p-flga2577-1-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1510] Running: set_part xcvu11p-flga2577-1-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: set_directive_top -name system_top system_top 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.046 seconds; current allocated memory: 162.861 MB.
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/constants.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/cover.cxx' ... 
+WARNING: [HLS 207-5301] unused parameter 'leftRight': ParticleCoverHLS/src/cover.cxx:252:58
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/dataset.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/environment.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/event.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/file_reader.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/parallelogram.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/patch.cxx' ... 
+WARNING: [HLS 207-5301] unused parameter 'n_superpoints': ParticleCoverHLS/src/patch.cxx:9:54
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/patch_buffer.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/point.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/sim_utils.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/superpoint.cxx' ... 
+INFO: [HLS 200-10] Analyzing design file 'ParticleCoverHLS/src/system.cxx' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 12.96 seconds; current allocated memory: 165.084 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<64, false>::ap_bit_ref(ap_int_base<64, false>*, int)' into 'ap_int_base<64, false>::operator[](int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:934:30)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<1, false>::ap_bit_ref(ap_int_base<1, false>*, int)' into 'ap_int_base<1, false>::operator[](int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:934:30)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<64, false>::operator bool() const' into 'ap_bit_ref<1, false>& ap_bit_ref<1, false>::operator=<64, false>(ap_bit_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:839:38)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<1, false>::operator=(unsigned long long)' into 'ap_bit_ref<1, false>& ap_bit_ref<1, false>::operator=<64, false>(ap_bit_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:839:12)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>::ap_range_ref(ap_int_base<64, false>*, int, int)' into 'ap_int_base<64, false>::range(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:853:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::range(int, int)' into 'ap_int_base<64, false>::operator()(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:890:18)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<11, false>::ap_range_ref(ap_int_base<11, false>*, int, int)' into 'ap_int_base<11, false>::range(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:853:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::range(int, int)' into 'ap_int_base<11, false>::operator()(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:890:18)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>::get() const' into 'ap_int_base<64, false>::ap_int_base<64, false>(ap_range_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:312:20)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::ap_int_base<64, false>(ap_int_base<64, false> const&)' into 'ap_range_ref<11, false>& ap_range_ref<11, false>::operator=<64, false>(ap_int_base<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:367:31)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::ap_int_base<64, false>(ap_range_ref<64, false> const&)' into 'ap_range_ref<11, false>& ap_range_ref<11, false>::operator=<64, false>(ap_range_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:22)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<11, false>& ap_range_ref<11, false>::operator=<64, false>(ap_int_base<64, false> const&)' into 'ap_range_ref<11, false>& ap_range_ref<11, false>::operator=<64, false>(ap_range_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:12)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<52, false>::ap_range_ref(ap_int_base<52, false>*, int, int)' into 'ap_int_base<52, false>::range(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:853:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::range(int, int)' into 'ap_int_base<52, false>::operator()(int, int)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:890:18)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::ap_int_base<64, false>(ap_int_base<64, false> const&)' into 'ap_range_ref<52, false>& ap_range_ref<52, false>::operator=<64, false>(ap_int_base<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:367:31)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::ap_int_base<64, false>(ap_range_ref<64, false> const&)' into 'ap_range_ref<52, false>& ap_range_ref<52, false>::operator=<64, false>(ap_range_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:22)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<52, false>& ap_range_ref<52, false>::operator=<64, false>(ap_int_base<64, false> const&)' into 'ap_range_ref<52, false>& ap_range_ref<52, false>::operator=<64, false>(ap_range_ref<64, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:12)
+INFO: [HLS 214-131] Inlining function 'ap_uint<64>::ap_uint(unsigned long long)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:483:28)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<52, false>& ap_range_ref<52, false>::operator=<64, false>(ap_range_ref<64, false> const&)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:486:19)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::operator()(int, int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:486:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator()(int, int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:486:21)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<11, false>& ap_range_ref<11, false>::operator=<64, false>(ap_range_ref<64, false> const&)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:485:19)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::operator()(int, int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:485:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator()(int, int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:485:21)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<1, false>& ap_bit_ref<1, false>::operator=<64, false>(ap_bit_ref<64, false> const&)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:484:17)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<1, false>::operator[](int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:484:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator[](int)' into 'fp_struct<double>::fp_struct(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:484:19)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<1, false>::ap_bit_ref(ap_int_base<1, false> const*, int)' into 'ap_int_base<1, false>::operator[](int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:950:30)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<1, false>::to_bool() const' into 'ap_int_base<1, false>::operator[](int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:951:15)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<11, false>::ap_range_ref(ap_int_base<11, false>*, int, int)' into 'ap_int_base<11, false>::range(int, int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:860:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::range(int, int) const' into 'ap_int_base<11, false>::operator()(int, int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:894:18)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<11, false>::get() const' into 'ap_int_base<11, false>::ap_int_base<11, false>(ap_range_ref<11, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:312:20)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::ap_int_base<11, false>(ap_int_base<11, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<11, false>(ap_int_base<11, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:367:31)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::ap_int_base<11, false>(ap_range_ref<11, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<11, false>(ap_range_ref<11, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:22)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<11, false>(ap_int_base<11, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<11, false>(ap_range_ref<11, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:12)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<52, false>::ap_range_ref(ap_int_base<52, false>*, int, int)' into 'ap_int_base<52, false>::range(int, int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:860:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::range(int, int) const' into 'ap_int_base<52, false>::operator()(int, int) const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:894:18)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<52, false>::get() const' into 'ap_int_base<52, false>::ap_int_base<52, false>(ap_range_ref<52, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_base.h:312:20)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::ap_int_base<52, false>(ap_int_base<52, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<52, false>(ap_int_base<52, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:367:31)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::ap_int_base<52, false>(ap_range_ref<52, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<52, false>(ap_range_ref<52, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:22)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<52, false>(ap_int_base<52, false> const&)' into 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<52, false>(ap_range_ref<52, false> const&)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/include/header_files\ap_int_ref.h:382:12)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<1, false>::operator[](int) const' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:501:36)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<52, false>(ap_range_ref<52, false> const&)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:503:25)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator()(int, int)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:503:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<52, false>::operator()(int, int) const' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:503:27)
+INFO: [HLS 214-131] Inlining function 'ap_range_ref<64, false>& ap_range_ref<64, false>::operator=<11, false>(ap_range_ref<11, false> const&)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:502:41)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator()(int, int)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:502:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<11, false>::operator()(int, int) const' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:502:43)
+INFO: [HLS 214-131] Inlining function 'ap_bit_ref<64, false>::operator=(bool)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:501:34)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::operator[](int)' into 'fp_struct<double>::data() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:501:9)
+INFO: [HLS 214-131] Inlining function 'ap_int_base<64, false>::to_uint64() const' into 'fp_struct<double>::to_double() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:520:24)
+INFO: [HLS 214-186] Unrolling loop 'loop_copy_row_list' (ParticleCoverHLS/src/cover.cxx:33:3) in function '_copy_row_list' completely with a factor of 256 (ParticleCoverHLS/src/cover.cxx:33:3)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_98_1' (ParticleCoverHLS/src/cover.cxx:98:20) in function 'cover_make_patch_aligned_to_line' completely with a factor of 5 (ParticleCoverHLS/src/cover.cxx:98:20)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_216_2' (ParticleCoverHLS/src/cover.cxx:216:27) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:216:27)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_225_3' (ParticleCoverHLS/src/cover.cxx:225:27) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:225:27)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_216_2' (ParticleCoverHLS/src/cover.cxx:216:27) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:216:27)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_225_3' (ParticleCoverHLS/src/cover.cxx:225:27) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:225:27)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_216_2' (ParticleCoverHLS/src/cover.cxx:216:27) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:216:27)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_225_3' (ParticleCoverHLS/src/cover.cxx:225:27) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:225:27)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_216_2' (ParticleCoverHLS/src/cover.cxx:216:27) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:216:27)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_225_3' (ParticleCoverHLS/src/cover.cxx:225:27) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:225:27)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_216_2' (ParticleCoverHLS/src/cover.cxx:216:27) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:216:27)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_225_3' (ParticleCoverHLS/src/cover.cxx:225:27) in function 'cover_make_patch_aligned_to_line' completely with a factor of 16 (ParticleCoverHLS/src/cover.cxx:225:27)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_255_1' (ParticleCoverHLS/src/cover.cxx:255:21) in function 'backup_cover_make_patch_aligned_to_line' completely with a factor of 5 (ParticleCoverHLS/src/cover.cxx:255:21)
+INFO: [HLS 214-186] Unrolling loop 'loop_copy_points_to_superpoint' (ParticleCoverHLS/src/superpoint.cxx:13:3) in function 'superpoint_init' completely with a factor of 16 (ParticleCoverHLS/src/superpoint.cxx:13:3)
+INFO: [HLS 214-178] Inlining function 'radii_initializer(double*)' into 'const_array_initializer(double*, double*, double*, double*)' (ParticleCoverHLS/src/constants.cxx:48:0)
+INFO: [HLS 214-178] Inlining function 'parallelogram_slopes_initializer(double*, double*)' into 'const_array_initializer(double*, double*, double*, double*)' (ParticleCoverHLS/src/constants.cxx:48:0)
+INFO: [HLS 214-178] Inlining function 'radii_leverArm_initializer(double*, double*)' into 'const_array_initializer(double*, double*, double*, double*)' (ParticleCoverHLS/src/constants.cxx:48:0)
+INFO: [HLS 214-178] Inlining function 'trapezoid_edges_initializer(double*, double*)' into 'const_array_initializer(double*, double*, double*, double*)' (ParticleCoverHLS/src/constants.cxx:48:0)
+INFO: [HLS 214-178] Inlining function 'fp_struct<double>::data() const' into 'fp_struct<double>::to_double() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:518:0)
+INFO: [HLS 214-178] Inlining function 'fp_struct<double>::to_double() const' into 'fp_struct<double>::to_ieee() const' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/src/hls\utils/x_hls_utils.h:533:0)
+INFO: [HLS 214-178] Inlining function 'fp_struct<double>::fp_struct(double)' into 'double generic_copysign<double>(double, double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/hlsmath/include/FloatingPoint/hls_copysign.h:10:0)
+INFO: [HLS 214-178] Inlining function 'fp_struct<double>::to_ieee() const' into 'double generic_copysign<double>(double, double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/hlsmath/include/FloatingPoint/hls_copysign.h:10:0)
+INFO: [HLS 214-178] Inlining function 'double generic_copysign<double>(double, double)' into 'double generic_fabs<double>(double)' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/hlsmath/include/FloatingPoint/hls_fabs.h:12:0)
+INFO: [HLS 214-178] Inlining function 'double generic_fabs<double>(double)' into 'fabs' (r:/ci/prod/2020.2/rdi_builds/continuous/2020_11_18_3064766/src/shared/hls/clib/hlsmath/src/c/fabsdouble.cpp:7:0)
+INFO: [HLS 214-178] Inlining function 'fabs' into 'std::abs(double)' (C:/Xilinx/Vitis_HLS/2020.2/tps/mingw/6.2.0/win64.o/nt\lib\gcc\x86_64-w64-mingw32\6.2.0\include\c++\cmath:86:0)
+INFO: [HLS 214-178] Inlining function 'std::abs(double)' into '_find_start_index_and_value(int*, double*, double*, int, double)' (ParticleCoverHLS/src/cover.cxx:41:0)
+INFO: [HLS 214-178] Inlining function 'std::abs(double)' into '_find_left_and_right_bound(int*, int*, double*, double*, double*, int, int)' (ParticleCoverHLS/src/cover.cxx:64:0)
+INFO: [HLS 214-178] Inlining function 'double const& std::min<double>(double const&, double const&)' into 'superpoint_init(point_s*, unsigned long)' (ParticleCoverHLS/src/superpoint.cxx:6:0)
+INFO: [HLS 214-178] Inlining function 'double const& std::max<double>(double const&, double const&)' into 'superpoint_init(point_s*, unsigned long)' (ParticleCoverHLS/src/superpoint.cxx:6:0)
+INFO: [HLS 214-178] Inlining function 'const_array_initializer(double*, double*, double*, double*)' into 'patch_get_parallelograms(patch_s*)' (ParticleCoverHLS/src/patch.cxx:65:0)
+INFO: [HLS 214-178] Inlining function 'double const& std::max<double>(double const&, double const&)' into 'patch_get_parallelograms(patch_s*)' (ParticleCoverHLS/src/patch.cxx:65:0)
+INFO: [HLS 214-178] Inlining function 'double const& std::min<double>(double const&, double const&)' into 'patch_get_parallelograms(patch_s*)' (ParticleCoverHLS/src/patch.cxx:65:0)
+INFO: [HLS 214-178] Inlining function 'parallelogram_init(parallelogram_s*, int, float, float, float, float, float, float, float)' into 'patch_get_parallelograms(patch_s*)' (ParticleCoverHLS/src/patch.cxx:65:0)
+INFO: [HLS 214-178] Inlining function 'float const& std::min<float>(float const&, float const&)' into 'patch_get_acceptance_corners(patch_s*)' (ParticleCoverHLS/src/patch.cxx:113:0)
+INFO: [HLS 214-178] Inlining function 'float const& std::max<float>(float const&, float const&)' into 'patch_get_acceptance_corners(patch_s*)' (ParticleCoverHLS/src/patch.cxx:113:0)
+INFO: [HLS 214-178] Inlining function 'float const& std::max<float>(float const&, float const&)' into 'patch_get_end_layers(patch_s*)' (ParticleCoverHLS/src/patch.cxx:189:0)
+INFO: [HLS 214-178] Inlining function 'float const& std::min<float>(float const&, float const&)' into 'patch_get_end_layers(patch_s*)' (ParticleCoverHLS/src/patch.cxx:189:0)
+INFO: [HLS 214-178] Inlining function 'patch_init(superpoint_s*, unsigned long, double)' into 'cover_make_patch_aligned_to_line(cover_s*, point_s (*) [256], int*, double, double, bool)' (ParticleCoverHLS/src/cover.cxx:94:0)
+INFO: [HLS 214-178] Inlining function 'patch_buffer_push_patch(patch_buffer_s*, patch_s)' into 'cover_make_patch_aligned_to_line(cover_s*, point_s (*) [256], int*, double, double, bool)' (ParticleCoverHLS/src/cover.cxx:94:0)
+INFO: [HLS 214-178] Inlining function 'patch_straight_line_projector_from_layer_ij_to_k(float, float, int, int, int)' into 'cover_make_patch_shadow_quilt_from_edges(cover_s*, point_s (*) [256], int*)' (ParticleCoverHLS/src/cover.cxx:418:0)
+INFO: [HLS 214-178] Inlining function 'float const& std::min<float>(float const&, float const&)' into 'cover_make_patch_shadow_quilt_from_edges(cover_s*, point_s (*) [256], int*)' (ParticleCoverHLS/src/cover.cxx:418:0)
+INFO: [HLS 214-178] Inlining function 'patch_buffer_access_patch_ptr(patch_buffer_s*, int)' into 'cover_make_patch_shadow_quilt_from_edges(cover_s*, point_s (*) [256], int*)' (ParticleCoverHLS/src/cover.cxx:418:0)
+INFO: [HLS 214-178] Inlining function 'superpoint_eq(superpoint_s, superpoint_s)' into 'cover_make_patch_shadow_quilt_from_edges(cover_s*, point_s (*) [256], int*)' (ParticleCoverHLS/src/cover.cxx:418:0)
+INFO: [HLS 214-178] Inlining function 'double const& std::max<double>(double const&, double const&)' into 'cover_make_patch_shadow_quilt_from_edges(cover_s*, point_s (*) [256], int*)' (ParticleCoverHLS/src/cover.cxx:418:0)
+INFO: [HLS 214-178] Inlining function 'backup_cover_make_patch_aligned_to_line(cover_s*, point_s (*) [256], int*, double, double, bool)' into 'cover_make_patch_shadow_quilt_from_edges(cover_s*, point_s (*) [256], int*)' (ParticleCoverHLS/src/cover.cxx:418:0)
+INFO: [HLS 214-178] Inlining function 'const_array_initializer(double*, double*, double*, double*)' into 'system_top(cover_s*, point_s (*) [256], int*)' (ParticleCoverHLS/src/system.cxx:12:0)
+INFO: [HLS 214-178] Inlining function 'patch_buffer_init(patch_buffer_s*)' into 'system_top(cover_s*, point_s (*) [256], int*)' (ParticleCoverHLS/src/system.cxx:12:0)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:6:12)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:7:12)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:8:12)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:9:12)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:10:12)
+WARNING: [HLS 214-167] The program may have out of bound array access (C:/Xilinx/Vitis_HLS/2020.2/tps/mingw/6.2.0/win64.o/nt\lib\gcc\x86_64-w64-mingw32\6.2.0\include\c++\bits/stl_algobase.h:200:11)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:100:13)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:105:20)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:100:13)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:105:20)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:107:33)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:100:13)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:105:20)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:107:33)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:100:13)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:105:20)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:107:33)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:100:13)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:107:33)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:425:18)
+WARNING: [HLS 214-167] The program may have out of bound array access
+WARNING: [HLS 214-167] The program may have out of bound array access
+WARNING: [HLS 214-167] The program may have out of bound array access
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/patch.cxx:47:16)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/patch.cxx:52:16)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:592:43)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:257:13)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:257:13)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/cover.cxx:257:13)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:6:12)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:7:12)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:8:12)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:9:12)
+WARNING: [HLS 214-167] The program may have out of bound array access (ParticleCoverHLS/src/constants.cxx:10:12)
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 14 seconds. CPU system time: 0 seconds. Elapsed time: 40.103 seconds; current allocated memory: 206.972 MB.
+INFO: [HLS 200-112] Total CPU user time: 16 seconds. Total CPU system time: 1 seconds. Total elapsed time: 41.687 seconds; peak allocated memory: 206.608 MB.

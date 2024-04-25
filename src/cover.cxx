@@ -614,6 +614,7 @@ void cover_make_patch_shadow_quilt_from_edges(
         }
       }
 
+
       backup_cover_make_patch_aligned_to_line(
           cover, row_data, num_points, complementary_apexZ0, z_top_min, true);
 

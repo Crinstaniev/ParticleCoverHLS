@@ -2,7 +2,7 @@
 #include "debug.h"
 #include <iostream>
 
-void radii_initializer(double *radii) {
+void radii_initializer(double radii[NUM_LAYERS]) {
   radii[0] = 5.0;
   radii[1] = 10.0;
   radii[2] = 15.0;

@@ -19,7 +19,7 @@
 // TODO: FIGURE OUT THE CORRECT SIZE
 #define COVEER_CONER_LIST_SIZE 4
 
-const double RADII[] = {5.0, 10.0, 15.0, 20.0, 25.0};
+const double RADII[] = {5.0, 10.0, 15.0, 20.0, 25.0}; // remove
 
 #define CLAIM_CONST_ARRAYS                                                     \
   double radii[NUM_LAYERS] = {0};                                              \
@@ -33,7 +33,7 @@ const double RADII[] = {5.0, 10.0, 15.0, 20.0, 25.0};
   extern double parallelogram_slopes[NUM_LAYERS - 1];                          \
   extern double radii_leverArm[NUM_LAYERS - 1];
 
-void radii_initializer(double *radii);
+void radii_initializer(double radii[NUM_LAYERS]);
 void trapezoid_edges_initializer(double *trapezoid_edges, double *radii);
 void parallelogram_slopes_initializer(double *parallelogram_slopes,
                                       double *radii);
