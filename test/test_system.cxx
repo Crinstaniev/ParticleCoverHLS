@@ -17,9 +17,9 @@ int main(void) {
   dataset_import_data(ds, points, events[0].num_points);
   dataset_add_boundary_point(ds, 0.0001);
 
-  double apexZ0 = 7.75751;
+  float apexZ0 = 7.75751;
   int ppl = 16;
-  double z_top = -8.883753333333333;
+  float z_top = -8.883753333333333;
   bool leftRight = false;
 
   cover_s cover;

@@ -27,7 +27,7 @@ void cover_init(cover_s *cover) {
 }
 
 // copy z values from row_data to row_list
-void _copy_row_list(double row_list[MAX_POINTS_PER_LAYER],
+void _copy_row_list(float row_list[MAX_POINTS_PER_LAYER],
                     point_s row_data[MAX_POINTS_PER_LAYER]) {
 loop_copy_row_list:
   for (int i = 0; i < MAX_POINTS_PER_LAYER; i++) {
@@ -36,9 +36,9 @@ loop_copy_row_list:
   }
 }
 
-void _find_start_index_and_value(int *start_index, double *start_value,
-                                 double row_list[MAX_POINTS_PER_LAYER],
-                                 int num_points, double projectionToRow) {
+void _find_start_index_and_value(int *start_index, float *start_value,
+                                 float row_list[MAX_POINTS_PER_LAYER],
+                                 int num_points, float projectionToRow) {
   *start_index = 0;
   *start_value = 1000000;
 loop_find_start_index_and_value:
@@ -58,9 +58,9 @@ loop_find_start_index_and_value:
 }
 
 // TODO: fix the function. The final values are close but not exact.
-void _find_left_and_right_bound(int *left_bound, int *right_bound,
-                                double *lbVal, double *rbVal,
-                                double row_list[MAX_POINTS_PER_LAYER],
+void _find_left_and_right_bound(int *left_bound, int *right_bound, float *lbVal,
+                                float *rbVal,
+                                float row_list[MAX_POINTS_PER_LAYER],
                                 int num_points, int layer_index) {
   // Initialize boundaries and values
   *left_bound = -1;
@@ -72,14 +72,14 @@ void _find_left_and_right_bound(int *left_bound, int *right_bound,
 loop_find_left_and_right_bound:
   for (int j = 0; j < MAX_POINTS_PER_LAYER; j++) {
     if (j < num_points) { // Only operate within the valid range
-      double currentLbVal = abs(
+      float currentLbVal = abs(
           (row_list[j] + trapezoid_edges[layer_index] + BOUNDARY_POINT_OFFSET));
       if (currentLbVal < *lbVal) {
         *left_bound = j;
         *lbVal = currentLbVal;
       }
 
-      double currentRbVal = abs(
+      float currentRbVal = abs(
           (row_list[j] - trapezoid_edges[layer_index] - BOUNDARY_POINT_OFFSET));
       if (currentRbVal < *rbVal) {
         *right_bound = j;
@@ -91,19 +91,19 @@ loop_find_left_and_right_bound:
 
 void cover_make_patch_aligned_to_line(
     cover_s *cover, point_s row_data[NUM_LAYERS][MAX_POINTS_PER_LAYER],
-    int num_points[NUM_LAYERS], double apexZ0, double z_top, bool leftRight) {
+    int num_points[NUM_LAYERS], float apexZ0, float z_top, bool leftRight) {
   // #pragma HLS DATAFLOW
   superpoint_s init_patch[NUM_LAYERS];
 
   for (int i = 0; i < NUM_LAYERS; i++) {
 #pragma HLS UNROLL
-    double y = radii[i];
+    float y = radii[i];
 
-    double row_list[MAX_POINTS_PER_LAYER];
+    float row_list[MAX_POINTS_PER_LAYER];
     size_t row_list_size = 0;
 
-    double r_max = radii[NUM_LAYERS - 1];
-    double projectionToRow =
+    float r_max = radii[NUM_LAYERS - 1];
+    float projectionToRow =
         (z_top - apexZ0) * (y - radii[0]) / (r_max - radii[0]) + apexZ0;
 
     // print z_top, apexZ0, y, radii[0], r_max, radii[0], apexZ0
@@ -114,7 +114,7 @@ void cover_make_patch_aligned_to_line(
                   << " projectionToRow: " << projectionToRow << std::endl;)
 
     int start_index = 0;
-    double start_value = 1000000;
+    float start_value = 1000000;
 
     _copy_row_list(row_list, row_data[i]);
 
@@ -148,8 +148,8 @@ void cover_make_patch_aligned_to_line(
 
     int left_bound = 0;
     int right_bound = 0;
-    double lbVal = INT_MAX;
-    double rbVal = INT_MAX;
+    float lbVal = INT_MAX;
+    float rbVal = INT_MAX;
 
     _find_left_and_right_bound(&left_bound, &right_bound, &lbVal, &rbVal,
                                row_list, num_points[i], i);
@@ -249,18 +249,18 @@ void cover_make_patch_aligned_to_line(
 
 void backup_cover_make_patch_aligned_to_line(
     cover_s *cover, point_s row_data[NUM_LAYERS][MAX_POINTS_PER_LAYER],
-    int num_points[NUM_LAYERS], double apexZ0, double z_top, bool leftRight) {
+    int num_points[NUM_LAYERS], float apexZ0, float z_top, bool leftRight) {
   superpoint_s init_patch[NUM_LAYERS];
 
   for (int i = 0; i < NUM_LAYERS; i++) {
 #pragma HLS UNROLL
-    double y = radii[i];
+    float y = radii[i];
 
-    double row_list[MAX_POINTS_PER_LAYER];
+    float row_list[MAX_POINTS_PER_LAYER];
     size_t row_list_size = 0;
 
-    double r_max = radii[NUM_LAYERS - 1];
-    double projectionToRow =
+    float r_max = radii[NUM_LAYERS - 1];
+    float projectionToRow =
         (z_top - apexZ0) * (y - radii[0]) / (r_max - radii[0]) + apexZ0;
 
     // print z_top, apexZ0, y, radii[0], r_max, radii[0], apexZ0
@@ -271,7 +271,7 @@ void backup_cover_make_patch_aligned_to_line(
                   << " projectionToRow: " << projectionToRow << std::endl;)
 
     int start_index = 0;
-    double start_value = 1000000;
+    float start_value = 1000000;
 
     _copy_row_list(row_list, row_data[i]);
 
@@ -307,8 +307,8 @@ void backup_cover_make_patch_aligned_to_line(
 
     // int left_bound = 0;
     // int right_bound = 0;
-    // double lbVal = INT_MAX;
-    // double rbVal = INT_MAX;
+    // float lbVal = INT_MAX;
+    // float rbVal = INT_MAX;
 
     // _find_left_and_right_bound(&left_bound, &right_bound, &lbVal, &rbVal,
     //                            row_list, num_points[i], i);
@@ -606,14 +606,13 @@ void cover_make_patch_shadow_quilt_from_edges(
                               << last_patch->superpoints[NUM_LAYERS - 1].min
                               << std::endl;)
 
-          z_top_min = std::max(-1 * TOP_LAYER_LIM,
+          z_top_min = std::max((float)(-1 * TOP_LAYER_LIM),
                                last_patch->superpoints[NUM_LAYERS - 1].min);
 
           DEBUG_PRINT_ALL(std::cout << "z_top_min_after: " << z_top_min
                                     << std::endl;)
         }
       }
-
 
       backup_cover_make_patch_aligned_to_line(
           cover, row_data, num_points, complementary_apexZ0, z_top_min, true);

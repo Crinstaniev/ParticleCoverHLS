@@ -24,7 +24,7 @@ void system_top(cover_s *cover,
 }
 
 // dummy main function
-#if CONFIG_IS_SYNTHESIS == true
+#if CONFIG_IS_SYNTHESIS == flase
 int main(void) {
   std::cerr << "This is a dummy main function" << std::endl;
   return 0;

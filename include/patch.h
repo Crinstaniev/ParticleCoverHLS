@@ -15,7 +15,7 @@ typedef struct {
   int right_end_layer;
   float left_end_lambdaZ;
   float right_end_lambdaZ;
-  double apexZ0;
+  float apexZ0;
 
   int shadow_fromTopToInnermost_topL_jL;
   int shadow_fromTopToInnermost_topL_jR;
@@ -40,7 +40,7 @@ typedef struct {
 } patch_s;
 
 patch_s patch_init(superpoint_s *superpoints, size_t n_superpoints,
-                   double apexZ0);
+                   float apexZ0);
 
 void patch_get_parallelograms(patch_s *patch);
 

@@ -6,17 +6,17 @@
 #include <iostream>
 
 typedef struct {
-  double top_layer_lim;
-  double beam_axis_lim;
+  float top_layer_lim;
+  float beam_axis_lim;
   int num_layers;
-  double radii[NUM_LAYERS];
+  float radii[NUM_LAYERS];
   size_t radii_size;
-  double parallelogramSlopes[NUM_LAYERS - 1];
+  float parallelogramSlopes[NUM_LAYERS - 1];
   size_t parallelogramSlopes_size;
-  double radii_leverArm[NUM_LAYERS - 1];
+  float radii_leverArm[NUM_LAYERS - 1];
   size_t radii_leverArm_size;
-  double boundaryPoint_offset;
-  double trapezoid_edges[NUM_LAYERS];
+  float boundaryPoint_offset;
+  float trapezoid_edges[NUM_LAYERS];
   size_t trapezoid_edges_size;
 } environment_s;
 

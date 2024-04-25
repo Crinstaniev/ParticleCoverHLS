@@ -6,7 +6,7 @@
 superpoint_s superpoint_init(point_s *points, size_t n_points) {
   superpoint_s superpoint;
 
-  double z_list[MAX_NUM_POINTS];
+  float z_list[MAX_NUM_POINTS];
 
 // copy points
 loop_copy_points_to_superpoint:
@@ -20,8 +20,8 @@ loop_copy_points_to_superpoint:
   superpoint.n_points = n_points;
 
   // this part should be opimized
-  double min = z_list[0];
-  double max = z_list[0];
+  float min = z_list[0];
+  float max = z_list[0];
   for (size_t i = 1; i < n_points; i++) {
 #pragma HLS PIPELINE
     min = std::min(min, z_list[i]);

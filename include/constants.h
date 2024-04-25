@@ -19,33 +19,33 @@
 // TODO: FIGURE OUT THE CORRECT SIZE
 #define COVEER_CONER_LIST_SIZE 4
 
-const double RADII[] = {5.0, 10.0, 15.0, 20.0, 25.0}; // remove
+const float RADII[] = {5.0, 10.0, 15.0, 20.0, 25.0}; // remove
 
 #define CLAIM_CONST_ARRAYS                                                     \
-  double radii[NUM_LAYERS] = {0};                                              \
-  double trapezoid_edges[NUM_LAYERS] = {0};                                    \
-  double parallelogram_slopes[NUM_LAYERS - 1] = {0};                           \
-  double radii_leverArm[NUM_LAYERS - 1] = {0};
+  float radii[NUM_LAYERS] = {0};                                              \
+  float trapezoid_edges[NUM_LAYERS] = {0};                                    \
+  float parallelogram_slopes[NUM_LAYERS - 1] = {0};                           \
+  float radii_leverArm[NUM_LAYERS - 1] = {0};
 
 #define LINK_CONST_ARRAYS                                                      \
-  extern double radii[NUM_LAYERS];                                             \
-  extern double trapezoid_edges[NUM_LAYERS];                                   \
-  extern double parallelogram_slopes[NUM_LAYERS - 1];                          \
-  extern double radii_leverArm[NUM_LAYERS - 1];
+  extern float radii[NUM_LAYERS];                                             \
+  extern float trapezoid_edges[NUM_LAYERS];                                   \
+  extern float parallelogram_slopes[NUM_LAYERS - 1];                          \
+  extern float radii_leverArm[NUM_LAYERS - 1];
 
-void radii_initializer(double radii[NUM_LAYERS]);
-void trapezoid_edges_initializer(double *trapezoid_edges, double *radii);
-void parallelogram_slopes_initializer(double *parallelogram_slopes,
-                                      double *radii);
-void radii_leverArm_initializer(double *radii_leverArm,
-                                double *parallelogram_slopes);
+void radii_initializer(float radii[NUM_LAYERS]);
+void trapezoid_edges_initializer(float *trapezoid_edges, float *radii);
+void parallelogram_slopes_initializer(float *parallelogram_slopes,
+                                      float *radii);
+void radii_leverArm_initializer(float *radii_leverArm,
+                                float *parallelogram_slopes);
 
-void const_array_initializer(double *radii, double *trapezoid_edges,
-                             double *parallelogram_slopes,
-                             double *radii_leverArm);
+void const_array_initializer(float *radii, float *trapezoid_edges,
+                             float *parallelogram_slopes,
+                             float *radii_leverArm);
 
-void print_const_arrays(double *radii, double *trapezoid_edges,
-                        double *parallelogram_slopes, double *radii_leverArm);
+void print_const_arrays(float *radii, float *trapezoid_edges,
+                        float *parallelogram_slopes, float *radii_leverArm);
 
 // FILE READER CONSTANTS
 #define MAX_NUM_EVENTS 8192

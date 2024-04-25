@@ -2,7 +2,7 @@
 #include "debug.h"
 #include <iostream>
 
-void radii_initializer(double radii[NUM_LAYERS]) {
+void radii_initializer(float radii[NUM_LAYERS]) {
   radii[0] = 5.0;
   radii[1] = 10.0;
   radii[2] = 15.0;
@@ -12,9 +12,9 @@ void radii_initializer(double radii[NUM_LAYERS]) {
   return;
 }
 
-void trapezoid_edges_initializer(double *trapezoid_edges, double *radii) {
+void trapezoid_edges_initializer(float *trapezoid_edges, float *radii) {
   for (int i = 0; i < NUM_LAYERS; i++) {
-    double currentVal =
+    float currentVal =
         radii[i] * (TOP_LAYER_LIM - BEAM_AXIS_LIM) / radii[NUM_LAYERS - 1] +
         BEAM_AXIS_LIM;
     trapezoid_edges[i] = currentVal;
@@ -23,8 +23,8 @@ void trapezoid_edges_initializer(double *trapezoid_edges, double *radii) {
   return;
 }
 
-void parallelogram_slopes_initializer(double *parallelogram_slopes,
-                                      double *radii) {
+void parallelogram_slopes_initializer(float *parallelogram_slopes,
+                                      float *radii) {
 
   for (int i = 0; i < NUM_LAYERS - 1; i++) {
     parallelogram_slopes[i] =
@@ -34,8 +34,8 @@ void parallelogram_slopes_initializer(double *parallelogram_slopes,
   return;
 }
 
-void radii_leverArm_initializer(double *radii_leverArm,
-                                double *parallelogram_slopes) {
+void radii_leverArm_initializer(float *radii_leverArm,
+                                float *parallelogram_slopes) {
   for (int i = 0; i < NUM_LAYERS - 1; i++) {
     radii_leverArm[i] = (1 - parallelogram_slopes[i]);
   }
@@ -43,9 +43,9 @@ void radii_leverArm_initializer(double *radii_leverArm,
   return;
 }
 
-void const_array_initializer(double *radii, double *trapezoid_edges,
-                             double *parallelogram_slopes,
-                             double *radii_leverArm) {
+void const_array_initializer(float *radii, float *trapezoid_edges,
+                             float *parallelogram_slopes,
+                             float *radii_leverArm) {
 
   radii_initializer(radii);
   parallelogram_slopes_initializer(parallelogram_slopes, radii);
@@ -55,8 +55,8 @@ void const_array_initializer(double *radii, double *trapezoid_edges,
   return;
 }
 
-void print_const_arrays(double *radii, double *trapezoid_edges,
-                        double *parallelogram_slopes, double *radii_leverArm) {
+void print_const_arrays(float *radii, float *trapezoid_edges,
+                        float *parallelogram_slopes, float *radii_leverArm) {
   std::cout << "radii: ";
   for (int i = 0; i < NUM_LAYERS; i++) {
     std::cout << radii[i] << " ";

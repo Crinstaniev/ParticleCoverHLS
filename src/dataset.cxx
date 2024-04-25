@@ -52,11 +52,11 @@ void dataset_import_data(dataset_s &dataset, point_s *data_array,
   return;
 }
 
-void dataset_add_boundary_point(dataset_s &dataset, double offset) {
+void dataset_add_boundary_point(dataset_s &dataset, float offset) {
   dataset.boundaryPoint_offset = offset;
 
   for (size_t i = 0; i < dataset.env->trapezoid_edges_size; i++) {
-    double phi0 = dataset.array[i][0].phi;
+    float phi0 = dataset.array[i][0].phi;
 
     dataset.array[i][dataset.n_points[i]] =
         point_init(i + 1, (i + 1) * 5, phi0,

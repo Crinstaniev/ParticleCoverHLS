@@ -7,7 +7,7 @@
 LINK_CONST_ARRAYS
 
 patch_s patch_init(superpoint_s *superpoints, size_t n_superpoints,
-                   double apexZ0) {
+                   float apexZ0) {
   patch_s patch;
 
   //   patch.env = env;
