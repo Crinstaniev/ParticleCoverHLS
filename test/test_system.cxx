@@ -3,7 +3,7 @@
 #include <string>
 
 int main(void) {
-#if CONFIG_IS_SYNTHESIS == false
+#if CONFIG_IS_SYNTHESIS == true
   std::string file_path = "../../../data/wedgeData_v3_128.txt";
 #else
   std::string file_path = "../data/wedgeData_v3_128.txt";
