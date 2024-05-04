@@ -1,4 +1,0 @@
-#+title: Developer's Note
-
-* 4/7/2024
-In order to proceeded, some constant value arrays, like radii_leverArm, parallelogram_slopes, should be re-written, either in the way of having an initializer or global variables.

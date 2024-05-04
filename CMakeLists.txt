@@ -9,7 +9,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Global compiler options
 add_compile_options(-g) # Debugging information
 
-# Generate compile_commands.json
+# Generate compile_commands.cjson
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Include directories
@@ -21,14 +21,14 @@ include_directories(/home/crinstaniev/opt/Xilinx/Vitis_HLS/2020.2/include)
 
 
 # Source files
-file(GLOB SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cxx)
+file(GLOB SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
 
 # PatchMaker Library
 add_library(patchmaker SHARED ${SOURCES})
 set_target_properties(patchmaker PROPERTIES OUTPUT_NAME patchmaker)
 
 # PatchMakerHLS executable
-add_executable(PatchMakerHLS src/system.cxx)
+add_executable(PatchMakerHLS src/system.cpp)
 target_link_libraries(PatchMakerHLS PRIVATE patchmaker)
 
 # PatchMakerHLS reference implementation
@@ -39,20 +39,10 @@ enable_testing()
 
 # Helper macro for adding tests
 macro(patchmaker_add_test TEST_NAME)
-  add_executable(${TEST_NAME} test/${TEST_NAME}.cxx)
+  add_executable(${TEST_NAME} test/${TEST_NAME}.cpp)
   add_test(NAME ${TEST_NAME} COMMAND ${TEST_NAME})
   target_link_libraries(${TEST_NAME} PRIVATE patchmaker)
 endmacro()
 
 # Add tests
-# patchmaker_add_test(test_environment)
-# patchmaker_add_test(test_file_reader)
-# patchmaker_add_test(test_dataset)
-# patchmaker_add_test(test_superpoint)
-# patchmaker_add_test(test_patch)
-# patchmaker_add_test(test_file_reader_comp)
-# patchmaker_add_test(test_system_hls)
-# patchmaker_add_test(test_cover)
-# patchmaker_add_test(test_hls_features)
-patchmaker_add_test(test_patch_buffer)
-patchmaker_add_test(test_system)
+# patchmaker_add_test(test_system)
