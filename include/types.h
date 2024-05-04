@@ -23,6 +23,8 @@ typedef ap_fixed<PHI_VALUE_TOTAL_BITS, PHI_VALUE_INT_BITS> phi_value_t;
 #define POINT_BITS_SIZE                                                        \
   Z_VALUE_TOTAL_BITS + RADIUS_VALUE_TOTAL_BITS + PHI_VALUE_TOTAL_BITS
 
+typedef ap_fixed<Z_VALUE_TOTAL_BITS, Z_VALUE_INT_BITS> float_value_t;
+
 typedef ap_uint<POINT_BITS_SIZE> point_t;
 
 point_t point_create(z_value_t z, radius_value_t radius, phi_value_t phi);

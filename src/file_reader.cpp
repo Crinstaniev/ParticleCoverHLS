@@ -1333,7 +1333,10 @@ public:
 #include "types.h"
 
 void read_file(string file_path, point_t points[NUM_LAYERS][MAX_NUM_POINTS],
-               index_t num_points[NUM_LAYERS]) {
+               index_t num_points[NUM_LAYERS], float_value_t radii[NUM_LAYERS],
+               float_value_t trapezoid_edges[NUM_LAYERS],
+               float_value_t parallelogram_slopes[NUM_LAYERS - 1],
+               float_value_t radii_leverArm[NUM_LAYERS - 1]) {
   vector<Event> events = FileReader::readFile(file_path);
   Environment env = events[0].env;
   vector<Point> _points = events[0].list_of_Points;
@@ -1356,4 +1359,18 @@ void read_file(string file_path, point_t points[NUM_LAYERS][MAX_NUM_POINTS],
       num_points[i]++;
     }
   }
+
+  // copy radii and trapezoid_edges
+  for (int i = 0; i < NUM_LAYERS; i++) {
+    radii[i] = env.radii[i];
+    trapezoid_edges[i] = env.trapezoid_edges[i];
+  }
+
+  // copy parallelogram_slopes and radii_leverArm
+  for (int i = 0; i < NUM_LAYERS - 1; i++) {
+    parallelogram_slopes[i] = env.parallelogramSlopes[i];
+    radii_leverArm[i] = env.radii_leverArm[i];
+  }
+
+  return;
 }

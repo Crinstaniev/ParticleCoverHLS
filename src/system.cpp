@@ -5,7 +5,7 @@ using namespace std;
 
 void system_top() {
   // real system top function for synthesis
-
+  
   return;
 }
 
