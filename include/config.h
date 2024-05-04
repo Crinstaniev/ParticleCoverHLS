@@ -2,7 +2,7 @@
 
 // debug config
 #define CONFIG_DEBUG_PRINT_ALL false
-#define CONFIG_IS_SYNTHESIS false
+#define CONFIG_IS_SYNTHESIS true
 
 #ifdef DEBUG
 #define D(x) x
