@@ -45,4 +45,4 @@ macro(patchmaker_add_test TEST_NAME)
 endmacro()
 
 # Add tests
-# patchmaker_add_test(test_system)
+patchmaker_add_test(test_system)
