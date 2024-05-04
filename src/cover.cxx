@@ -2,6 +2,7 @@
 #include "constants.h"
 #include "debug.h"
 #include "patch.h"
+#include "point.h"
 #include "system.h"
 
 #include <climits>
@@ -27,31 +28,27 @@ void cover_init(cover_s *cover) {
 }
 
 // copy z values from row_data to row_list
-void _copy_row_list(float row_list[MAX_POINTS_PER_LAYER],
-                    point_s row_data[MAX_POINTS_PER_LAYER]) {
-loop_copy_row_list:
-  for (int i = 0; i < MAX_POINTS_PER_LAYER; i++) {
-#pragma HLS UNROLL
-    row_list[i] = row_data[i].z;
-  }
-}
+// void _copy_row_list(float row_list[MAX_POINTS_PER_LAYER],
+//                     point_s row_data[MAX_POINTS_PER_LAYER]) {
+// loop_copy_row_list:
+//   for (int i = 0; i < MAX_POINTS_PER_LAYER; i++) {
+// #pragma HLS UNROLL
+//     row_list[i] = row_data[i].z;
+//   }
+// }
 
 void _find_start_index_and_value(int *start_index, float *start_value,
-                                 float row_list[MAX_POINTS_PER_LAYER],
+                                 point_s row_list[MAX_POINTS_PER_LAYER],
                                  int num_points, float projectionToRow) {
   *start_index = 0;
   *start_value = 1000000;
 loop_find_start_index_and_value:
   for (int i = 0; i < MAX_POINTS_PER_LAYER; i++) {
+#pragma HLS PIPELINE
     if (i < num_points) {
-
-      DEBUG_PRINT_ALL(std::cout << "current row_list[" << i
-                                << "]: " << row_list[i] << " projectionToRow: "
-                                << projectionToRow << std::endl;)
-
-      if (std::abs(row_list[i] - projectionToRow) < std::abs(*start_value)) {
+      if (abs(row_list[i].z - projectionToRow) < abs(*start_value)) {
         *start_index = i;
-        *start_value = row_list[i] - projectionToRow;
+        *start_value = row_list[i].z - projectionToRow;
       }
     }
   }
@@ -60,7 +57,7 @@ loop_find_start_index_and_value:
 // TODO: fix the function. The final values are close but not exact.
 void _find_left_and_right_bound(int *left_bound, int *right_bound, float *lbVal,
                                 float *rbVal,
-                                float row_list[MAX_POINTS_PER_LAYER],
+                                point_s row_list[MAX_POINTS_PER_LAYER],
                                 int num_points, int layer_index) {
   // Initialize boundaries and values
   *left_bound = -1;
@@ -71,16 +68,17 @@ void _find_left_and_right_bound(int *left_bound, int *right_bound, float *lbVal,
   // Adjust the loop to run for a fixed number of iterations
 loop_find_left_and_right_bound:
   for (int j = 0; j < MAX_POINTS_PER_LAYER; j++) {
+#pragma HLS PIPELINE
     if (j < num_points) { // Only operate within the valid range
-      float currentLbVal = abs(
-          (row_list[j] + trapezoid_edges[layer_index] + BOUNDARY_POINT_OFFSET));
+      float currentLbVal = abs((row_list[j].z + trapezoid_edges[layer_index] +
+                                BOUNDARY_POINT_OFFSET));
       if (currentLbVal < *lbVal) {
         *left_bound = j;
         *lbVal = currentLbVal;
       }
 
-      float currentRbVal = abs(
-          (row_list[j] - trapezoid_edges[layer_index] - BOUNDARY_POINT_OFFSET));
+      float currentRbVal = abs((row_list[j].z - trapezoid_edges[layer_index] -
+                                BOUNDARY_POINT_OFFSET));
       if (currentRbVal < *rbVal) {
         *right_bound = j;
         *rbVal = currentRbVal;
@@ -99,8 +97,8 @@ void cover_make_patch_aligned_to_line(
 #pragma HLS UNROLL
     float y = radii[i];
 
-    float row_list[MAX_POINTS_PER_LAYER];
-    size_t row_list_size = 0;
+    // float row_list[MAX_POINTS_PER_LAYER];
+    // size_t row_list_size = 0;
 
     float r_max = radii[NUM_LAYERS - 1];
     float projectionToRow =
@@ -116,12 +114,12 @@ void cover_make_patch_aligned_to_line(
     int start_index = 0;
     float start_value = 1000000;
 
-    _copy_row_list(row_list, row_data[i]);
+    // _copy_row_list(row_list, row_data[i]);
 
     DEBUG_PRINT_ALL(if (cover->n_patches == 1) {
       // print row_list: same
       DEBUG_PRINT_ALL(for (int j = 0; j < num_points[i]; j++) {
-        std::cout << "row_list[" << j << "]: " << row_list[j] << std::endl;
+        std::cout << "row_list[" << j << "]: " << row_data[i][j].z << std::endl;
       })
 
       DEBUG_PRINT_ALL(
@@ -131,12 +129,12 @@ void cover_make_patch_aligned_to_line(
                     << " projectionToRow: " << projectionToRow << std::endl;)
     })
 
-    _find_start_index_and_value(&start_index, &start_value, row_list,
-                                num_points[i], projectionToRow);
+    // _find_start_index_and_value(&start_index, &start_value, row_data[i],
+    //                             num_points[i], projectionToRow);
 
     // print row_list
     DEBUG_PRINT_ALL(for (int j = 0; j < num_points[i]; j++) {
-      std::cout << "row_list[" << j << "]: " << row_list[j] << std::endl;
+      std::cout << "row_list[" << j << "]: " << row_data[i][j] << std::endl;
     })
 
     // print num_points[i]
@@ -146,18 +144,21 @@ void cover_make_patch_aligned_to_line(
                     std::cout << "start_index: " << start_index
                               << " start_value: " << start_value << std::endl;)
 
+    // now here
     int left_bound = 0;
     int right_bound = 0;
     float lbVal = INT_MAX;
     float rbVal = INT_MAX;
 
-    _find_left_and_right_bound(&left_bound, &right_bound, &lbVal, &rbVal,
-                               row_list, num_points[i], i);
+    // _find_left_and_right_bound(&left_bound, &right_bound, &lbVal, &rbVal,
+    //                            row_data[i], num_points[i], i);
 
     DEBUG_PRINT_ALL(std::cout << "left_bound: " << left_bound << std::endl;
                     std::cout << "right_bound: " << right_bound << std::endl;
                     std::cout << "lbVal: " << lbVal << std::endl;
                     std::cout << "rbVal: " << rbVal << std::endl;)
+
+    // now here
 
     DEBUG_PRINT_ALL(if (cover->n_patches == 1) {
       std::cout << "num_points[" << i << "]: " << num_points[i] << std::endl;
@@ -195,18 +196,18 @@ void cover_make_patch_aligned_to_line(
       }
     } else {
       if (start_index != num_points[i] - 1) {
-        DEBUG_PRINT_ALL(std::cout
-                            << "row " << i + 1 << " start_index " << start_index
-                            << " start_value " << start_value
-                            << " z: " << row_list[start_index] << std::endl;)
+        DEBUG_PRINT_ALL(std::cout << "row " << i + 1 << " start_index "
+                                  << start_index << " start_value "
+                                  << start_value << " z: "
+                                  << row_data[i][start_index].z << std::endl;)
 
         if (start_value < -1 * ALIGNMENT_ACCURACY) {
           start_index++;
-          start_value = row_list[start_index] - projectionToRow;
-          DEBUG_PRINT_ALL(std::cout
-                              << "row " << i + 1 << " updated start_index "
-                              << start_index << " start_value " << start_value
-                              << " z: " << row_list[start_index] << std::endl;)
+          start_value = row_data[i][start_index].z - projectionToRow;
+          DEBUG_PRINT_ALL(std::cout << "row " << i + 1
+                                    << " updated start_index " << start_index
+                                    << " start_value " << start_value << " z: "
+                                    << row_data[i][start_index].z << std::endl;)
         }
       }
 
@@ -232,7 +233,7 @@ void cover_make_patch_aligned_to_line(
     }
   }
 
-  patch_s patch = patch_init(init_patch, NUM_LAYERS, apexZ0);
+  patch_s patch = patch_init(init_patch, apexZ0);
 
   // print superpoints
   DEBUG_PRINT_ALL(for (int i = 0; i < NUM_LAYERS; i++) {
@@ -250,14 +251,16 @@ void cover_make_patch_aligned_to_line(
 void backup_cover_make_patch_aligned_to_line(
     cover_s *cover, point_s row_data[NUM_LAYERS][MAX_POINTS_PER_LAYER],
     int num_points[NUM_LAYERS], float apexZ0, float z_top, bool leftRight) {
+
+  // #pragma HLS DATAFLOW
   superpoint_s init_patch[NUM_LAYERS];
 
   for (int i = 0; i < NUM_LAYERS; i++) {
 #pragma HLS UNROLL
     float y = radii[i];
 
-    float row_list[MAX_POINTS_PER_LAYER];
-    size_t row_list_size = 0;
+    // float row_list[MAX_POINTS_PER_LAYER];
+    // size_t row_list_size = 0;
 
     float r_max = radii[NUM_LAYERS - 1];
     float projectionToRow =
@@ -273,12 +276,12 @@ void backup_cover_make_patch_aligned_to_line(
     int start_index = 0;
     float start_value = 1000000;
 
-    _copy_row_list(row_list, row_data[i]);
+    // _copy_row_list(row_list, row_data[i]);
 
     DEBUG_PRINT_ALL(if (cover->n_patches == 1) {
       // print row_list: same
       DEBUG_PRINT_ALL(for (int j = 0; j < num_points[i]; j++) {
-        std::cout << "row_list[" << j << "]: " << row_list[j] << std::endl;
+        std::cout << "row_list[" << j << "]: " << row_data[i][j].z << std::endl;
       })
 
       DEBUG_PRINT_ALL(
@@ -288,129 +291,133 @@ void backup_cover_make_patch_aligned_to_line(
                     << " projectionToRow: " << projectionToRow << std::endl;)
     })
 
-    // this function is not synthesizable, TODO: fix this
-    _find_start_index_and_value(&start_index, &start_value, row_list,
-                                num_points[i], projectionToRow);
+    // _find_start_index_and_value(&start_index, &start_value, row_data[i],
+    //                             num_points[i], projectionToRow);
 
-    // // print row_list
-    // DEBUG_PRINT_ALL(for (int j = 0; j < num_points[i]; j++) {
-    //   std::cout << "row_list[" << j << "]: " << row_list[j] << std::endl;
-    // })
+    // return;
 
-    // // print num_points[i]
-    // DEBUG_PRINT_ALL(std::cout << "num_points[" << i << "]: " << num_points[i]
-    //                           << std::endl;
+    // print row_list
+    DEBUG_PRINT_ALL(for (int j = 0; j < num_points[i]; j++) {
+      std::cout << "row_list[" << j << "]: " << row_data[i][j] << std::endl;
+    })
 
-    //                 std::cout << "start_index: " << start_index
-    //                           << " start_value: " << start_value <<
-    //                           std::endl;)
+    // print num_points[i]
+    DEBUG_PRINT_ALL(std::cout << "num_points[" << i << "]: " << num_points[i]
+                              << std::endl;
 
-    // int left_bound = 0;
-    // int right_bound = 0;
-    // float lbVal = INT_MAX;
-    // float rbVal = INT_MAX;
+                    std::cout << "start_index: " << start_index
+                              << " start_value: " << start_value << std::endl;)
 
-    // _find_left_and_right_bound(&left_bound, &right_bound, &lbVal, &rbVal,
-    //                            row_list, num_points[i], i);
+    // now here
+    int left_bound = 0;
+    int right_bound = 0;
+    float lbVal = INT_MAX;
+    float rbVal = INT_MAX;
 
-    // DEBUG_PRINT_ALL(std::cout << "left_bound: " << left_bound << std::endl;
-    //                 std::cout << "right_bound: " << right_bound << std::endl;
-    //                 std::cout << "lbVal: " << lbVal << std::endl;
-    //                 std::cout << "rbVal: " << rbVal << std::endl;)
+    _find_left_and_right_bound(&left_bound, &right_bound, &lbVal, &rbVal,
+                               row_data[i], num_points[i], i);
 
-    // DEBUG_PRINT_ALL(if (cover->n_patches == 1) {
-    //   std::cout << "num_points[" << i << "]: " << num_points[i] << std::endl;
-    //   std::cout << "start_index: " << start_index
-    //             << " start_value: " << start_value << std::endl;
-    //   std::cout << "left_bound: " << left_bound << std::endl;
-    //   std::cout << "right_bound: " << right_bound << std::endl;
-    //   std::cout << "lbVal: " << lbVal << std::endl;
-    //   std::cout << "rbVal: " << rbVal << std::endl;
-    // })
+    DEBUG_PRINT_ALL(std::cout << "left_bound: " << left_bound << std::endl;
+                    std::cout << "right_bound: " << right_bound << std::endl;
+                    std::cout << "lbVal: " << lbVal << std::endl;
+                    std::cout << "rbVal: " << rbVal << std::endl;)
 
-    // if (leftRight == true) {
-    //   // if (start_index != 0) {
-    //   //   if (start_value > ALIGNMENT_ACCURACY) {
-    //   //     start_index--;
-    //   //   }
-    //   // }
+    //     // now here
 
-    //   if ((start_index + PPL) > (right_bound + 1)) {
-    //     // init_patch[i] =
-    //     //     superpoint_init(row_data[i] + right_bound - PPL + 1, PPL);
+    DEBUG_PRINT_ALL(if (cover->n_patches == 1) {
+      std::cout << "num_points[" << i << "]: " << num_points[i] << std::endl;
+      std::cout << "start_index: " << start_index
+                << " start_value: " << start_value << std::endl;
+      std::cout << "left_bound: " << left_bound << std::endl;
+      std::cout << "right_bound: " << right_bound << std::endl;
+      std::cout << "lbVal: " << lbVal << std::endl;
+      std::cout << "rbVal: " << rbVal << std::endl;
+    })
 
-    //     // // print superpoint
-    //     // DEBUG_PRINT_ALL(std::cout << "superpoint " << i
-    //     //                           << " min: " << init_patch[i].min << "
-    //     max: "
-    //     //                           << init_patch[i].max << std::endl;)
+    //     if (leftRight == true) {
+    //       if (start_index != 0) {
+    //         if (start_value > ALIGNMENT_ACCURACY) {
+    //           start_index--;
+    //         }
+    //       }
 
-    //   } else {
-    //     // init_patch[i] = superpoint_init(row_data[i] + start_index, PPL);
+    //       if ((start_index + PPL) > (right_bound + 1)) {
+    //         init_patch[i] =
+    //             superpoint_init(row_data[i] + right_bound - PPL + 1, PPL);
 
-    //     // // print superpoint
-    //     // DEBUG_PRINT_ALL(std::cout << "superpoint " << i
-    //     //                           << " min: " << init_patch[i].min << "
-    //     max: "
-    //     //                           << init_patch[i].max << std::endl;)
+    //         // print superpoint
+    //         DEBUG_PRINT_ALL(std::cout << "superpoint " << i
+    //                                   << " min: " << init_patch[i].min << "
+    //                                   max: "
+    //                                   << init_patch[i].max << std::endl;)
+
+    //       } else {
+    //         init_patch[i] = superpoint_init(row_data[i] + start_index, PPL);
+
+    //         // print superpoint
+    //         DEBUG_PRINT_ALL(std::cout << "superpoint " << i
+    //                                   << " min: " << init_patch[i].min << "
+    //                                   max: "
+    //                                   << init_patch[i].max << std::endl;)
+    //       }
+    //     } else {
+    //       if (start_index != num_points[i] - 1) {
+    //         DEBUG_PRINT_ALL(std::cout << "row " << i + 1 << " start_index "
+    //                                   << start_index << " start_value "
+    //                                   << start_value << " z: "
+    //                                   << row_data[i][start_index].z <<
+    //                                   std::endl;)
+
+    //         if (start_value < -1 * ALIGNMENT_ACCURACY) {
+    //           start_index++;
+    //           start_value = row_data[i][start_index].z - projectionToRow;
+    //           DEBUG_PRINT_ALL(std::cout << "row " << i + 1
+    //                                     << " updated start_index " <<
+    //                                     start_index
+    //                                     << " start_value " << start_value <<
+    //                                     " z: "
+    //                                     << row_data[i][start_index].z <<
+    //                                     std::endl;)
+    //         }
+    //       }
+
+    //       if ((start_index - PPL + 1) < left_bound) {
+    //         // make superpoint, add to init_patch
+    //         point_s points[MAX_NUM_POINTS_IN_SUPERPOINT];
+    //         for (int j = 0; j < PPL; j++) {
+    // #pragma HLS UNROLL
+    //           points[j] = row_data[i][left_bound + j];
+    //         }
+    //         superpoint_s sp = superpoint_init(points, PPL);
+    //         init_patch[i] = sp;
+    //       } else {
+    //         // make superpoint, add to init_patch
+    //         point_s points[MAX_NUM_POINTS_IN_SUPERPOINT];
+    //         for (int j = 0; j < PPL; j++) {
+    // #pragma HLS UNROLL
+    //           points[j] = row_data[i][start_index - PPL + 1 + j];
+    //         }
+    //         superpoint_s sp = superpoint_init(points, PPL);
+    //         init_patch[i] = sp;
+    //       }
+    //     }
     //   }
-    // } else {
-    //   // if (start_index != num_points[i] - 1) {
-    //   //   DEBUG_PRINT_ALL(std::cout
-    //   //                       << "row " << i + 1 << " start_index " <<
-    //   start_index
-    //   //                       << " start_value " << start_value
-    //   //                       << " z: " << row_list[start_index] <<
-    //   std::endl;)
 
-    //   //   if (start_value < -1 * ALIGNMENT_ACCURACY) {
-    //   //     start_index++;
-    //   //     start_value = row_list[start_index] - projectionToRow;
-    //   //     DEBUG_PRINT_ALL(std::cout
-    //   //                         << "row " << i + 1 << " updated start_index
-    //   "
-    //   //                         << start_index << " start_value " <<
-    //   start_value
-    //   //                         << " z: " << row_list[start_index] <<
-    //   std::endl;)
-    //   //   }
-    //   // }
+    //   patch_s patch = patch_init(init_patch, NUM_LAYERS, apexZ0);
 
-    //   //       if ((start_index - PPL + 1) < left_bound) {
-    //   //         // make superpoint, add to init_patch
-    //   //         point_s points[MAX_NUM_POINTS_IN_SUPERPOINT];
-    //   //         for (int j = 0; j < PPL; j++) {
-    //   // #pragma HLS UNROLL
-    //   //           points[j] = row_data[i][left_bound + j];
-    //   //         }
-    //   //         superpoint_s sp = superpoint_init(points, PPL);
-    //   //         init_patch[i] = sp;
-    //   //       } else {
-    //   //         // make superpoint, add to init_patch
-    //   //         point_s points[MAX_NUM_POINTS_IN_SUPERPOINT];
-    //   //         for (int j = 0; j < PPL; j++) {
-    //   // #pragma HLS UNROLL
-    //   //           points[j] = row_data[i][start_index - PPL + 1 + j];
-    //   //         }
-    //   //         superpoint_s sp = superpoint_init(points, PPL);
-    //   //         init_patch[i] = sp;
-    //   //       }
-    // }
+    //   // print superpoints
+    //   DEBUG_PRINT_ALL(for (int i = 0; i < NUM_LAYERS; i++) {
+    //     std::cout << "superpoint " << i << " min: " <<
+    //     patch.superpoints[i].min
+    //               << " max: " << patch.superpoints[i].max << std::endl;
+    //   })
+
+    //   patch_buffer_push_patch(&cover->patch_buffer, patch);
+
+    //   cover->n_patches++;
+
+    return;
   }
-
-  // patch_s patch = patch_init(init_patch, NUM_LAYERS, apexZ0);
-
-  // // print superpoints
-  // DEBUG_PRINT_ALL(for (int i = 0; i < NUM_LAYERS; i++) {
-  //   std::cout << "superpoint " << i << " min: " << patch.superpoints[i].min
-  //             << " max: " << patch.superpoints[i].max << std::endl;
-  // })
-
-  // patch_buffer_push_patch(&cover->patch_buffer, patch);
-
-  cover->n_patches++;
-
-  return;
 }
 
 void cover_make_patch_shadow_quilt_from_edges(
@@ -614,8 +621,12 @@ void cover_make_patch_shadow_quilt_from_edges(
         }
       }
 
-      backup_cover_make_patch_aligned_to_line(
-          cover, row_data, num_points, complementary_apexZ0, z_top_min, true);
+      // backup_cover_make_patch_aligned_to_line(
+      //     cover, row_data, num_points, complementary_apexZ0, z_top_min,
+      //     true);
+
+      // cover_make_patch_aligned_to_line(cover, row_data, num_points,
+      //                                  complementary_apexZ0, z_top_min, true);
 
       return;
 

@@ -1735,6 +1735,8 @@ public:
         cout << "rbVal: " << rbVal << endl;
       })
 
+      exit(0);
+
       // this part not translated yet
       if ((float_middleLayers_ppl == true) && (i != 0) &&
           (i != env.num_layers - 1)) {

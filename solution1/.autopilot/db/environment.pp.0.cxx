@@ -157,21 +157,21 @@ extern "C" {
 
 # 1 "C:/Projects/ParticleCoverHLS/include/constants.h" 1
 # 22 "C:/Projects/ParticleCoverHLS/include/constants.h"
-const double RADII[] = {5.0, 10.0, 15.0, 20.0, 25.0};
+const float RADII[] = {5.0, 10.0, 15.0, 20.0, 25.0};
 # 36 "C:/Projects/ParticleCoverHLS/include/constants.h"
-void radii_initializer(double radii[5]);
-void trapezoid_edges_initializer(double *trapezoid_edges, double *radii);
-void parallelogram_slopes_initializer(double *parallelogram_slopes,
-                                      double *radii);
-void radii_leverArm_initializer(double *radii_leverArm,
-                                double *parallelogram_slopes);
+void radii_initializer(float radii[5]);
+void trapezoid_edges_initializer(float *trapezoid_edges, float *radii);
+void parallelogram_slopes_initializer(float *parallelogram_slopes,
+                                      float *radii);
+void radii_leverArm_initializer(float *radii_leverArm,
+                                float *parallelogram_slopes);
 
-void const_array_initializer(double *radii, double *trapezoid_edges,
-                             double *parallelogram_slopes,
-                             double *radii_leverArm);
+void const_array_initializer(float *radii, float *trapezoid_edges,
+                             float *parallelogram_slopes,
+                             float *radii_leverArm);
 
-void print_const_arrays(double *radii, double *trapezoid_edges,
-                        double *parallelogram_slopes, double *radii_leverArm);
+void print_const_arrays(float *radii, float *trapezoid_edges,
+                        float *parallelogram_slopes, float *radii_leverArm);
 # 5 "C:/Projects/ParticleCoverHLS/include\\environment.h" 2
 # 1 "C:/Xilinx/Vitis_HLS/2020.2/tps/mingw/6.2.0/win64.o/nt\\lib\\gcc\\x86_64-w64-mingw32\\6.2.0\\include\\c++\\cstddef" 1 3
 # 43 "C:/Xilinx/Vitis_HLS/2020.2/tps/mingw/6.2.0/win64.o/nt\\lib\\gcc\\x86_64-w64-mingw32\\6.2.0\\include\\c++\\cstddef" 3
@@ -24694,17 +24694,17 @@ namespace std
 # 7 "C:/Projects/ParticleCoverHLS/include\\environment.h" 2
 
 typedef struct {
-  double top_layer_lim;
-  double beam_axis_lim;
+  float top_layer_lim;
+  float beam_axis_lim;
   int num_layers;
-  double radii[5];
+  float radii[5];
   size_t radii_size;
-  double parallelogramSlopes[5 - 1];
+  float parallelogramSlopes[5 - 1];
   size_t parallelogramSlopes_size;
-  double radii_leverArm[5 - 1];
+  float radii_leverArm[5 - 1];
   size_t radii_leverArm_size;
-  double boundaryPoint_offset;
-  double trapezoid_edges[5];
+  float boundaryPoint_offset;
+  float trapezoid_edges[5];
   size_t trapezoid_edges_size;
 } environment_s;
 
@@ -24737,7 +24737,7 @@ environment_s environment_init() {
 
 
   VITIS_LOOP_25_1: for (size_t i = 0; i < 5 - 1; ++i) {
-    double currentVal = (env.radii[0] - env.radii[i]) /
+    float currentVal = (env.radii[0] - env.radii[i]) /
                         (env.radii[5 - 1] - env.radii[i]);
     env.parallelogramSlopes[i] = currentVal;
     env.parallelogramSlopes_size++;
@@ -24753,7 +24753,7 @@ environment_s environment_init() {
 
 
   VITIS_LOOP_41_3: for (size_t i = 0; i < env.num_layers; ++i) {
-    double currentVal = env.radii[i] * (env.top_layer_lim - env.beam_axis_lim) /
+    float currentVal = env.radii[i] * (env.top_layer_lim - env.beam_axis_lim) /
                             env.radii[env.num_layers - 1] +
                         env.beam_axis_lim;
     env.trapezoid_edges[i] = currentVal;

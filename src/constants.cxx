@@ -3,11 +3,11 @@
 #include <iostream>
 
 void radii_initializer(float radii[NUM_LAYERS]) {
-  radii[0] = 5.0;
-  radii[1] = 10.0;
-  radii[2] = 15.0;
-  radii[3] = 20.0;
-  radii[4] = 25.0;
+  if (NUM_LAYERS > 0) radii[0] = 5.0;
+  if (NUM_LAYERS > 1) radii[1] = 10.0;
+  if (NUM_LAYERS > 2) radii[2] = 15.0;
+  if (NUM_LAYERS > 3) radii[3] = 20.0;
+  if (NUM_LAYERS > 4) radii[4] = 25.0;
 
   return;
 }

@@ -3,7 +3,7 @@
 #include <iostream>
 
 #define CONFIG_DEBUG_PRINT_ALL false
-#define CONFIG_IS_SYNTHESIS flase
+#define CONFIG_IS_SYNTHESIS false
 
 #if CONFIG_IS_SYNTHESIS == 0
 #define DEBUG(x) x

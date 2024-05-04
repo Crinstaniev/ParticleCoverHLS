@@ -156,21 +156,21 @@ extern "C" {
 
 # 1 "C:/Projects/ParticleCoverHLS/include/constants.h" 1
 # 22 "C:/Projects/ParticleCoverHLS/include/constants.h"
-const double RADII[] = {5.0, 10.0, 15.0, 20.0, 25.0};
+const float RADII[] = {5.0, 10.0, 15.0, 20.0, 25.0};
 # 36 "C:/Projects/ParticleCoverHLS/include/constants.h"
-void radii_initializer(double radii[5]);
-void trapezoid_edges_initializer(double *trapezoid_edges, double *radii);
-void parallelogram_slopes_initializer(double *parallelogram_slopes,
-                                      double *radii);
-void radii_leverArm_initializer(double *radii_leverArm,
-                                double *parallelogram_slopes);
+void radii_initializer(float radii[5]);
+void trapezoid_edges_initializer(float *trapezoid_edges, float *radii);
+void parallelogram_slopes_initializer(float *parallelogram_slopes,
+                                      float *radii);
+void radii_leverArm_initializer(float *radii_leverArm,
+                                float *parallelogram_slopes);
 
-void const_array_initializer(double *radii, double *trapezoid_edges,
-                             double *parallelogram_slopes,
-                             double *radii_leverArm);
+void const_array_initializer(float *radii, float *trapezoid_edges,
+                             float *parallelogram_slopes,
+                             float *radii_leverArm);
 
-void print_const_arrays(double *radii, double *trapezoid_edges,
-                        double *parallelogram_slopes, double *radii_leverArm);
+void print_const_arrays(float *radii, float *trapezoid_edges,
+                        float *parallelogram_slopes, float *radii_leverArm);
 # 4 "C:/Projects/ParticleCoverHLS/include\\cover.h" 2
 # 1 "C:/Projects/ParticleCoverHLS/include/dataset.h" 1
 
@@ -24702,17 +24702,17 @@ namespace std
 # 7 "C:/Projects/ParticleCoverHLS/include/environment.h" 2
 
 typedef struct {
-  double top_layer_lim;
-  double beam_axis_lim;
+  float top_layer_lim;
+  float beam_axis_lim;
   int num_layers;
-  double radii[5];
+  float radii[5];
   size_t radii_size;
-  double parallelogramSlopes[5 - 1];
+  float parallelogramSlopes[5 - 1];
   size_t parallelogramSlopes_size;
-  double radii_leverArm[5 - 1];
+  float radii_leverArm[5 - 1];
   size_t radii_leverArm_size;
-  double boundaryPoint_offset;
-  double trapezoid_edges[5];
+  float boundaryPoint_offset;
+  float trapezoid_edges[5];
   size_t trapezoid_edges_size;
 } environment_s;
 
@@ -24729,12 +24729,12 @@ std::ostream &operator<<(std::ostream &os, const environment_s &env);
 
 typedef struct {
   int layer_num;
-  double radius;
-  double phi;
-  double z;
+  float radius;
+  float phi;
+  float z;
 } point_s;
 
-point_s point_init(int layer_num, double radius, double phi, double z);
+point_s point_init(int layer_num, float radius, float phi, float z);
 
 
 std::ostream &operator<<(std::ostream &os, const point_s &p);
@@ -24750,7 +24750,7 @@ typedef struct {
   point_s array[5][512];
   int n_points[5];
   size_t total_points;
-  double boundaryPoint_offset;
+  float boundaryPoint_offset;
 } dataset_s;
 
 dataset_s dataset_init(environment_s &env);
@@ -24758,7 +24758,7 @@ dataset_s dataset_init(environment_s &env);
 void dataset_import_data(dataset_s &dataset, point_s *data_array,
                          size_t data_array_size);
 
-void dataset_add_boundary_point(dataset_s &dataset, double offset = 0.0001);
+void dataset_add_boundary_point(dataset_s &dataset, float offset = 0.0001);
 
 
 std::ostream &operator<<(std::ostream &os, const dataset_s &dataset);
@@ -24805,9 +24805,9 @@ std::ostream &operator<<(std::ostream &os, const parallelogram_s &p);
 typedef struct {
   point_s points[16];
   size_t n_points;
-  double z_values[16];
-  double min;
-  double max;
+  float z_values[16];
+  float min;
+  float max;
 } superpoint_s;
 
 superpoint_s superpoint_init(point_s *points, size_t n_points);
@@ -24827,7 +24827,7 @@ typedef struct {
   int right_end_layer;
   float left_end_lambdaZ;
   float right_end_lambdaZ;
-  double apexZ0;
+  float apexZ0;
 
   int shadow_fromTopToInnermost_topL_jL;
   int shadow_fromTopToInnermost_topL_jR;
@@ -24851,8 +24851,7 @@ typedef struct {
   parallelogram_s parallelograms[5 - 1];
 } patch_s;
 
-patch_s patch_init(superpoint_s *superpoints, size_t n_superpoints,
-                   double apexZ0);
+patch_s patch_init(superpoint_s *superpoints, float apexZ0);
 
 void patch_get_parallelograms(patch_s *patch);
 
@@ -24901,7 +24900,7 @@ void cover_init(cover_s *cover);
 
 void cover_make_patch_aligned_to_line(
     cover_s *cover, point_s row_data[5][256],
-    int num_points[5], double apexZ0, double z_top, bool leftRight);
+    int num_points[5], float apexZ0, float z_top, bool leftRight);
 
 void cover_make_patch_shadow_quilt_from_edges(
     cover_s *cover, point_s row_data[5][256],
@@ -24913,6 +24912,7 @@ std::ostream &operator<<(std::ostream &os, const cover_s &cover);
 
 # 1 "C:/Projects/ParticleCoverHLS/include\\debug.h" 1
 # 4 "ParticleCoverHLS/src/cover.cxx" 2
+
 
 # 1 "C:/Projects/ParticleCoverHLS/include\\system.h" 1
 
@@ -28570,11 +28570,11 @@ event_s *file_reader_read(const std::string &filename,
 void system_top(cover_s *cover,
                 point_s row_data[5][256],
                 int num_points[5]);
-# 6 "ParticleCoverHLS/src/cover.cxx" 2
+# 7 "ParticleCoverHLS/src/cover.cxx" 2
 
 # 1 "C:/Xilinx/Vitis_HLS/2020.2/tps/mingw/6.2.0/win64.o/nt\\lib\\gcc\\x86_64-w64-mingw32\\6.2.0\\include\\c++\\climits" 1 3
 # 40 "C:/Xilinx/Vitis_HLS/2020.2/tps/mingw/6.2.0/win64.o/nt\\lib\\gcc\\x86_64-w64-mingw32\\6.2.0\\include\\c++\\climits" 3
-# 8 "ParticleCoverHLS/src/cover.cxx" 2
+# 9 "ParticleCoverHLS/src/cover.cxx" 2
 # 1 "C:/Xilinx/Vitis_HLS/2020.2/tps/mingw/6.2.0/win64.o/nt\\lib\\gcc\\x86_64-w64-mingw32\\6.2.0\\include\\c++\\math.h" 1 3
 # 36 "C:/Xilinx/Vitis_HLS/2020.2/tps/mingw/6.2.0/win64.o/nt\\lib\\gcc\\x86_64-w64-mingw32\\6.2.0\\include\\c++\\math.h" 3
 # 1 "C:/Xilinx/Vitis_HLS/2020.2/tps/mingw/6.2.0/win64.o/nt\\lib\\gcc\\x86_64-w64-mingw32\\6.2.0\\include\\c++\\cmath" 1 3
@@ -30595,7 +30595,7 @@ using std::scalbln;
 using std::scalbn;
 using std::tgamma;
 using std::trunc;
-# 9 "ParticleCoverHLS/src/cover.cxx" 2
+# 10 "ParticleCoverHLS/src/cover.cxx" 2
 
 
 
@@ -30604,7 +30604,7 @@ using std::trunc;
 
 
 
-extern double radii[5]; extern double trapezoid_edges[5]; extern double parallelogram_slopes[5 - 1]; extern double radii_leverArm[5 - 1];
+extern float radii[5]; extern float trapezoid_edges[5]; extern float parallelogram_slopes[5 - 1]; extern float radii_leverArm[5 - 1];
 
 
 
@@ -30615,42 +30615,28 @@ void cover_init(cover_s *cover) {
 
   return;
 }
-
-
-void _copy_row_list(double row_list[256],
-                    point_s row_data[256]) {
-loop_copy_row_list:
-  for (int i = 0; i < 256; i++) {
-#pragma HLS UNROLL
- row_list[i] = row_data[i].z;
-  }
-}
-
-void _find_start_index_and_value(int *start_index, double *start_value,
-                                 double row_list[256],
-                                 int num_points, double projectionToRow) {
+# 40 "ParticleCoverHLS/src/cover.cxx"
+void _find_start_index_and_value(int *start_index, float *start_value,
+                                 point_s row_list[256],
+                                 int num_points, float projectionToRow) {
   *start_index = 0;
   *start_value = 1000000;
 loop_find_start_index_and_value:
   for (int i = 0; i < 256; i++) {
-    if (i < num_points) {
-
-
-
-
-
-      if (std::abs(row_list[i] - projectionToRow) < std::abs(*start_value)) {
+#pragma HLS PIPELINE
+ if (i < num_points) {
+      if (abs(row_list[i].z - projectionToRow) < abs(*start_value)) {
         *start_index = i;
-        *start_value = row_list[i] - projectionToRow;
+        *start_value = row_list[i].z - projectionToRow;
       }
     }
   }
 }
 
 
-void _find_left_and_right_bound(int *left_bound, int *right_bound,
-                                double *lbVal, double *rbVal,
-                                double row_list[256],
+void _find_left_and_right_bound(int *left_bound, int *right_bound, float *lbVal,
+                                float *rbVal,
+                                point_s row_list[256],
                                 int num_points, int layer_index) {
 
   *left_bound = -1;
@@ -30661,16 +30647,17 @@ void _find_left_and_right_bound(int *left_bound, int *right_bound,
 
 loop_find_left_and_right_bound:
   for (int j = 0; j < 256; j++) {
-    if (j < num_points) {
-      double currentLbVal = abs(
-          (row_list[j] + trapezoid_edges[layer_index] + 0.0001));
+#pragma HLS PIPELINE
+ if (j < num_points) {
+      float currentLbVal = abs((row_list[j].z + trapezoid_edges[layer_index] +
+                                0.0001));
       if (currentLbVal < *lbVal) {
         *left_bound = j;
         *lbVal = currentLbVal;
       }
 
-      double currentRbVal = abs(
-          (row_list[j] - trapezoid_edges[layer_index] - 0.0001));
+      float currentRbVal = abs((row_list[j].z - trapezoid_edges[layer_index] -
+                                0.0001));
       if (currentRbVal < *rbVal) {
         *right_bound = j;
         *rbVal = currentRbVal;
@@ -30681,37 +30668,29 @@ loop_find_left_and_right_bound:
 
 void cover_make_patch_aligned_to_line(
     cover_s *cover, point_s row_data[5][256],
-    int num_points[5], double apexZ0, double z_top, bool leftRight) {
+    int num_points[5], float apexZ0, float z_top, bool leftRight) {
 
   superpoint_s init_patch[5];
 
-  VITIS_LOOP_98_1: for (int i = 0; i < 5; i++) {
+  VITIS_LOOP_96_1: for (int i = 0; i < 5; i++) {
 #pragma HLS UNROLL
- double y = radii[i];
+ float y = radii[i];
 
-    double row_list[256];
-    size_t row_list_size = 0;
 
-    double r_max = radii[5 - 1];
-    double projectionToRow =
+
+
+    float r_max = radii[5 - 1];
+    float projectionToRow =
         (z_top - apexZ0) * (y - radii[0]) / (r_max - radii[0]) + apexZ0;
-# 116 "ParticleCoverHLS/src/cover.cxx"
+# 114 "ParticleCoverHLS/src/cover.cxx"
     int start_index = 0;
-    double start_value = 1000000;
-
-    _copy_row_list(row_list, row_data[i]);
-# 134 "ParticleCoverHLS/src/cover.cxx"
-    _find_start_index_and_value(&start_index, &start_value, row_list,
-                                num_points[i], projectionToRow);
-# 149 "ParticleCoverHLS/src/cover.cxx"
+    float start_value = 1000000;
+# 148 "ParticleCoverHLS/src/cover.cxx"
     int left_bound = 0;
     int right_bound = 0;
-    double lbVal = 2147483647;
-    double rbVal = 2147483647;
-
-    _find_left_and_right_bound(&left_bound, &right_bound, &lbVal, &rbVal,
-                               row_list, num_points[i], i);
-# 172 "ParticleCoverHLS/src/cover.cxx"
+    float lbVal = 2147483647;
+    float rbVal = 2147483647;
+# 173 "ParticleCoverHLS/src/cover.cxx"
     if (leftRight == true) {
       if (start_index != 0) {
         if (start_value > 0.00001) {
@@ -30745,7 +30724,7 @@ void cover_make_patch_aligned_to_line(
 
         if (start_value < -1 * 0.00001) {
           start_index++;
-          start_value = row_list[start_index] - projectionToRow;
+          start_value = row_data[i][start_index].z - projectionToRow;
 
 
 
@@ -30756,7 +30735,7 @@ void cover_make_patch_aligned_to_line(
       if ((start_index - 16 + 1) < left_bound) {
 
         point_s points[16];
-        VITIS_LOOP_216_2: for (int j = 0; j < 16; j++) {
+        VITIS_LOOP_217_2: for (int j = 0; j < 16; j++) {
 #pragma HLS UNROLL
  points[j] = row_data[i][left_bound + j];
         }
@@ -30765,7 +30744,7 @@ void cover_make_patch_aligned_to_line(
       } else {
 
         point_s points[16];
-        VITIS_LOOP_225_3: for (int j = 0; j < 16; j++) {
+        VITIS_LOOP_226_3: for (int j = 0; j < 16; j++) {
 #pragma HLS UNROLL
  points[j] = row_data[i][start_index - 16 + 1 + j];
         }
@@ -30775,7 +30754,7 @@ void cover_make_patch_aligned_to_line(
     }
   }
 
-  patch_s patch = patch_init(init_patch, 5, apexZ0);
+  patch_s patch = patch_init(init_patch, apexZ0);
 
 
 
@@ -30792,33 +30771,35 @@ void cover_make_patch_aligned_to_line(
 
 void backup_cover_make_patch_aligned_to_line(
     cover_s *cover, point_s row_data[5][256],
-    int num_points[5], double apexZ0, double z_top, bool leftRight) {
+    int num_points[5], float apexZ0, float z_top, bool leftRight) {
+
+
   superpoint_s init_patch[5];
 
-  VITIS_LOOP_255_1: for (int i = 0; i < 5; i++) {
+  VITIS_LOOP_258_1: for (int i = 0; i < 5; i++) {
 #pragma HLS UNROLL
- double y = radii[i];
+ float y = radii[i];
 
-    double row_list[256];
-    size_t row_list_size = 0;
 
-    double r_max = radii[5 - 1];
-    double projectionToRow =
+
+
+    float r_max = radii[5 - 1];
+    float projectionToRow =
         (z_top - apexZ0) * (y - radii[0]) / (r_max - radii[0]) + apexZ0;
-# 273 "ParticleCoverHLS/src/cover.cxx"
+# 276 "ParticleCoverHLS/src/cover.cxx"
     int start_index = 0;
-    double start_value = 1000000;
+    float start_value = 1000000;
+# 312 "ParticleCoverHLS/src/cover.cxx"
+    int left_bound = 0;
+    int right_bound = 0;
+    float lbVal = 2147483647;
+    float rbVal = 2147483647;
 
-    _copy_row_list(row_list, row_data[i]);
-# 292 "ParticleCoverHLS/src/cover.cxx"
-    _find_start_index_and_value(&start_index, &start_value, row_list,
-                                num_points[i], projectionToRow);
-# 399 "ParticleCoverHLS/src/cover.cxx"
+    _find_left_and_right_bound(&left_bound, &right_bound, &lbVal, &rbVal,
+                               row_data[i], num_points[i], i);
+# 419 "ParticleCoverHLS/src/cover.cxx"
+    return;
   }
-# 411 "ParticleCoverHLS/src/cover.cxx"
-  cover->n_patches++;
-
-  return;
 }
 
 void cover_make_patch_shadow_quilt_from_edges(
@@ -30833,7 +30814,7 @@ void cover_make_patch_shadow_quilt_from_edges(
   float apexZ0 = trapezoid_edges[0];
   float saved_apexZ0;
 
-  VITIS_LOOP_428_1: while (apexZ0 > -1 * trapezoid_edges[0]) {
+  VITIS_LOOP_435_1: while (apexZ0 > -1 * trapezoid_edges[0]) {
     float z_top_min = -1 * 50.0;
     float complementary_apexZ0 = 0;
     int first_row_count = 0;
@@ -30850,7 +30831,7 @@ void cover_make_patch_shadow_quilt_from_edges(
     int nPatchesInColumn = 0;
     float projectionOfCornerToBeam = 0;
 
-    VITIS_LOOP_445_2: while ((c_corner > -1 * trapezoid_edges[5 - 1]) &&
+    VITIS_LOOP_452_2: while ((c_corner > -1 * trapezoid_edges[5 - 1]) &&
            (projectionOfCornerToBeam < 15.0)) {
       nPatchesInColumn++;
 
@@ -30865,10 +30846,10 @@ void cover_make_patch_shadow_quilt_from_edges(
 
       patch_s *last_patch = patch_buffer_access_patch_ptr(&cover->patch_buffer,
                                                           cover->n_patches - 1);
-# 487 "ParticleCoverHLS/src/cover.cxx"
-      VITIS_LOOP_487_3: for (int i = 1; i < 5 - 1; i++) {
+# 494 "ParticleCoverHLS/src/cover.cxx"
+      VITIS_LOOP_494_3: for (int i = 1; i < 5 - 1; i++) {
         int j = i + 1;
-# 510 "ParticleCoverHLS/src/cover.cxx"
+# 517 "ParticleCoverHLS/src/cover.cxx"
       }
 
       float original_c = last_patch->c_corner[1];
@@ -30923,7 +30904,7 @@ void cover_make_patch_shadow_quilt_from_edges(
       bool madeComplementaryPatch = false;
 
       int nPatchesAtOriginal = cover->n_patches;
-# 591 "ParticleCoverHLS/src/cover.cxx"
+# 598 "ParticleCoverHLS/src/cover.cxx"
       if (!notChoppedPatch &&
           (last_patch->c_corner[1] > -1 * trapezoid_edges[5 - 1]) &&
           (projectionOfCornerToBeam < 15.0)) {
@@ -30942,18 +30923,14 @@ void cover_make_patch_shadow_quilt_from_edges(
 
 
 
-          z_top_min = std::max(-1 * 50.0,
+          z_top_min = std::max((float)(-1 * 50.0),
                                last_patch->superpoints[5 - 1].min);
 
 
 
         }
       }
-
-
-      backup_cover_make_patch_aligned_to_line(
-          cover, row_data, num_points, complementary_apexZ0, z_top_min, true);
-
+# 631 "ParticleCoverHLS/src/cover.cxx"
       return;
 
 
@@ -30963,7 +30940,7 @@ void cover_make_patch_shadow_quilt_from_edges(
           &cover->patch_buffer, cover->n_patches - 1);
       patch_s *patch_depth_2 = patch_buffer_access_patch_ptr(
           &cover->patch_buffer, cover->n_patches - 2);
-# 655 "ParticleCoverHLS/src/cover.cxx"
+# 665 "ParticleCoverHLS/src/cover.cxx"
       return;
     }
   }

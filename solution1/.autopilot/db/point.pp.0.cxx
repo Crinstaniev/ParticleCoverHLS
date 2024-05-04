@@ -24644,19 +24644,19 @@ namespace std
 
 typedef struct {
   int layer_num;
-  double radius;
-  double phi;
-  double z;
+  float radius;
+  float phi;
+  float z;
 } point_s;
 
-point_s point_init(int layer_num, double radius, double phi, double z);
+point_s point_init(int layer_num, float radius, float phi, float z);
 
 
 std::ostream &operator<<(std::ostream &os, const point_s &p);
 # 2 "ParticleCoverHLS/src/point.cxx" 2
 
 
-point_s point_init(int layer_num, double radius, double phi, double z) {
+point_s point_init(int layer_num, float radius, float phi, float z) {
   point_s p;
   p.layer_num = layer_num;
   p.radius = radius;

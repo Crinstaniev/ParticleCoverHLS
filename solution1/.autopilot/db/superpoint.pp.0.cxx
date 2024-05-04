@@ -157,21 +157,21 @@ extern "C" {
 
 # 1 "C:/Projects/ParticleCoverHLS/include/constants.h" 1
 # 22 "C:/Projects/ParticleCoverHLS/include/constants.h"
-const double RADII[] = {5.0, 10.0, 15.0, 20.0, 25.0};
+const float RADII[] = {5.0, 10.0, 15.0, 20.0, 25.0};
 # 36 "C:/Projects/ParticleCoverHLS/include/constants.h"
-void radii_initializer(double radii[5]);
-void trapezoid_edges_initializer(double *trapezoid_edges, double *radii);
-void parallelogram_slopes_initializer(double *parallelogram_slopes,
-                                      double *radii);
-void radii_leverArm_initializer(double *radii_leverArm,
-                                double *parallelogram_slopes);
+void radii_initializer(float radii[5]);
+void trapezoid_edges_initializer(float *trapezoid_edges, float *radii);
+void parallelogram_slopes_initializer(float *parallelogram_slopes,
+                                      float *radii);
+void radii_leverArm_initializer(float *radii_leverArm,
+                                float *parallelogram_slopes);
 
-void const_array_initializer(double *radii, double *trapezoid_edges,
-                             double *parallelogram_slopes,
-                             double *radii_leverArm);
+void const_array_initializer(float *radii, float *trapezoid_edges,
+                             float *parallelogram_slopes,
+                             float *radii_leverArm);
 
-void print_const_arrays(double *radii, double *trapezoid_edges,
-                        double *parallelogram_slopes, double *radii_leverArm);
+void print_const_arrays(float *radii, float *trapezoid_edges,
+                        float *parallelogram_slopes, float *radii_leverArm);
 # 5 "C:/Projects/ParticleCoverHLS/include\\superpoint.h" 2
 # 1 "C:/Projects/ParticleCoverHLS/include/point.h" 1
 
@@ -24666,12 +24666,12 @@ namespace std
 
 typedef struct {
   int layer_num;
-  double radius;
-  double phi;
-  double z;
+  float radius;
+  float phi;
+  float z;
 } point_s;
 
-point_s point_init(int layer_num, double radius, double phi, double z);
+point_s point_init(int layer_num, float radius, float phi, float z);
 
 
 std::ostream &operator<<(std::ostream &os, const point_s &p);
@@ -24680,9 +24680,9 @@ std::ostream &operator<<(std::ostream &os, const point_s &p);
 typedef struct {
   point_s points[16];
   size_t n_points;
-  double z_values[16];
-  double min;
-  double max;
+  float z_values[16];
+  float min;
+  float max;
 } superpoint_s;
 
 superpoint_s superpoint_init(point_s *points, size_t n_points);
@@ -31835,7 +31835,7 @@ namespace std
 superpoint_s superpoint_init(point_s *points, size_t n_points) {
   superpoint_s superpoint;
 
-  double z_list[512];
+  float z_list[512];
 
 
 loop_copy_points_to_superpoint:
@@ -31849,8 +31849,8 @@ loop_copy_points_to_superpoint:
   superpoint.n_points = n_points;
 
 
-  double min = z_list[0];
-  double max = z_list[0];
+  float min = z_list[0];
+  float max = z_list[0];
   VITIS_LOOP_25_1: for (size_t i = 1; i < n_points; i++) {
 #pragma HLS PIPELINE
  min = std::min(min, z_list[i]);

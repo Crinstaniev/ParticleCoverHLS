@@ -157,21 +157,21 @@ extern "C" {
 
 # 1 "C:/Projects/ParticleCoverHLS/include/constants.h" 1
 # 22 "C:/Projects/ParticleCoverHLS/include/constants.h"
-const double RADII[] = {5.0, 10.0, 15.0, 20.0, 25.0};
+const float RADII[] = {5.0, 10.0, 15.0, 20.0, 25.0};
 # 36 "C:/Projects/ParticleCoverHLS/include/constants.h"
-void radii_initializer(double radii[5]);
-void trapezoid_edges_initializer(double *trapezoid_edges, double *radii);
-void parallelogram_slopes_initializer(double *parallelogram_slopes,
-                                      double *radii);
-void radii_leverArm_initializer(double *radii_leverArm,
-                                double *parallelogram_slopes);
+void radii_initializer(float radii[5]);
+void trapezoid_edges_initializer(float *trapezoid_edges, float *radii);
+void parallelogram_slopes_initializer(float *parallelogram_slopes,
+                                      float *radii);
+void radii_leverArm_initializer(float *radii_leverArm,
+                                float *parallelogram_slopes);
 
-void const_array_initializer(double *radii, double *trapezoid_edges,
-                             double *parallelogram_slopes,
-                             double *radii_leverArm);
+void const_array_initializer(float *radii, float *trapezoid_edges,
+                             float *parallelogram_slopes,
+                             float *radii_leverArm);
 
-void print_const_arrays(double *radii, double *trapezoid_edges,
-                        double *parallelogram_slopes, double *radii_leverArm);
+void print_const_arrays(float *radii, float *trapezoid_edges,
+                        float *parallelogram_slopes, float *radii_leverArm);
 # 5 "C:/Projects/ParticleCoverHLS/include\\file_reader.h" 2
 # 1 "C:/Projects/ParticleCoverHLS/include/event.h" 1
 
@@ -24704,17 +24704,17 @@ namespace std
 # 7 "C:/Projects/ParticleCoverHLS/include/environment.h" 2
 
 typedef struct {
-  double top_layer_lim;
-  double beam_axis_lim;
+  float top_layer_lim;
+  float beam_axis_lim;
   int num_layers;
-  double radii[5];
+  float radii[5];
   size_t radii_size;
-  double parallelogramSlopes[5 - 1];
+  float parallelogramSlopes[5 - 1];
   size_t parallelogramSlopes_size;
-  double radii_leverArm[5 - 1];
+  float radii_leverArm[5 - 1];
   size_t radii_leverArm_size;
-  double boundaryPoint_offset;
-  double trapezoid_edges[5];
+  float boundaryPoint_offset;
+  float trapezoid_edges[5];
   size_t trapezoid_edges_size;
 } environment_s;
 
@@ -24731,12 +24731,12 @@ std::ostream &operator<<(std::ostream &os, const environment_s &env);
 
 typedef struct {
   int layer_num;
-  double radius;
-  double phi;
-  double z;
+  float radius;
+  float phi;
+  float z;
 } point_s;
 
-point_s point_init(int layer_num, double radius, double phi, double z);
+point_s point_init(int layer_num, float radius, float phi, float z);
 
 
 std::ostream &operator<<(std::ostream &os, const point_s &p);
@@ -63705,7 +63705,7 @@ event_s *file_reader_read(const std::string &filename, const int stop) {
         list_of_points.push_back(temp);
       }
 
-      std::vector<double> radii;
+      std::vector<float> radii;
 
       VITIS_LOOP_77_4: for (size_t i = 0; i < list_of_points.size(); ++i) {
         radii.push_back(list_of_points[i].radius);

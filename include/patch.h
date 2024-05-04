@@ -39,8 +39,7 @@ typedef struct {
   parallelogram_s parallelograms[NUM_LAYERS - 1];
 } patch_s;
 
-patch_s patch_init(superpoint_s *superpoints, size_t n_superpoints,
-                   float apexZ0);
+patch_s patch_init(superpoint_s *superpoints, float apexZ0);
 
 void patch_get_parallelograms(patch_s *patch);
 
