@@ -2,6 +2,8 @@
 #include "patch_buffer.h"
 #include "superpoint.h"
 #include "system.h"
+#include "patch_buffer.h"
+#include "dataset.h"
 #include <iostream>
 #include <string>
 
@@ -20,8 +22,6 @@ int main() {
 
   dataset_import_data(ds, points, events[0].num_points);
   dataset_add_boundary_point(ds, 0.0001);
-
-  cover_s cover = cover_init(env, ds);
 
   // make some dummy patches
   patch_s patches[NUM_PATCHES];

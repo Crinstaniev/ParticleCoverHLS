@@ -1,66 +1,32 @@
 
 #include "system.h"
+#include "constants.h"
 
 #include <iostream>
 #include <stdlib.h>
 
-void presynthesis(event_s event) {
-  /**
-   * This function prepares data to feed the circuitry.
-   */
-  // some constants
-  double apexZ0 = 7.75751;
-  int ppl = 16;
-  double z_top = -8.883753333333333;
-  bool leftRight = false;
+CLAIM_CONST_ARRAYS
 
-  // prepare environment
-  environment_s env = event.env;
-  // prepare points
-  point_s *points = event.list_of_points;
-  size_t num_points = event.num_points;
+void system_top(cover_s *cover,
+                point_s row_data[NUM_LAYERS][MAX_POINTS_PER_LAYER],
+                int num_points[NUM_LAYERS]) {
+  const_array_initializer(radii, trapezoid_edges, parallelogram_slopes,
+                          radii_leverArm);
+  // PRINT_CONST_ARRAYS;
 
-  return;
-}
+  patch_buffer_init(&cover->patch_buffer);
 
-// TOP-LEVEL FUNCTION
-void system_top(cover_s *cover) {
-  // point_s *points = event.list_of_points;
-  // size_t num_points = event.num_points;
-  // environment_s env = event.env;
+  cover_make_patch_shadow_quilt_from_edges(cover, row_data, num_points);
 
-  // dataset_s ds = dataset_init(env);
-  // // import data
-  // dataset_import_data(ds, points, num_points);
-  // // add boundary point
-  // dataset_add_boundary_point(ds, 0.0001);
-
-  // cover_s cover = cover_init(env, ds);
-
-  // double apexZ0 = 7.75751;
-  // int ppl = 16;
-  // double z_top = -8.883753333333333;
-  // bool leftRight = false;
-
-  // cover_make_patch_aligned_to_line(*cover, apexZ0, z_top, ppl, leftRight);
-
-  // extract trapezoid edges
-  for (size_t i = 0; i < NUM_LAYERS; i++) {
-    synth::trapezoid_edges[i] = cover->env.trapezoid_edges[i];
-  }
-
-  hls::stream<synth::point_arr_s> points_arr_stream;
-  hls::stream<patch_s> patch_stream;
-
-  synth::load_data(*cover, points_arr_stream);
-
-  // run system
-  synth::make_patch_aligned_to_line(points_arr_stream, patch_stream);
+  // std::cout << "cover->n_patches = " << cover->n_patches << std::endl;
 
   return;
 }
+
 // dummy main function
+#if CONFIG_IS_SYNTHESIS == flase
 int main(void) {
   std::cerr << "This is a dummy main function" << std::endl;
   return 0;
 }
+#endif

@@ -156,8 +156,22 @@ extern "C" {
 
 
 # 1 "C:/Projects/ParticleCoverHLS/include/constants.h" 1
-# 14 "C:/Projects/ParticleCoverHLS/include/constants.h"
+# 22 "C:/Projects/ParticleCoverHLS/include/constants.h"
 const double RADII[] = {5.0, 10.0, 15.0, 20.0, 25.0};
+# 36 "C:/Projects/ParticleCoverHLS/include/constants.h"
+void radii_initializer(double radii[5]);
+void trapezoid_edges_initializer(double *trapezoid_edges, double *radii);
+void parallelogram_slopes_initializer(double *parallelogram_slopes,
+                                      double *radii);
+void radii_leverArm_initializer(double *radii_leverArm,
+                                double *parallelogram_slopes);
+
+void const_array_initializer(double *radii, double *trapezoid_edges,
+                             double *parallelogram_slopes,
+                             double *radii_leverArm);
+
+void print_const_arrays(double *radii, double *trapezoid_edges,
+                        double *parallelogram_slopes, double *radii_leverArm);
 # 5 "C:/Projects/ParticleCoverHLS/include\\superpoint.h" 2
 # 1 "C:/Projects/ParticleCoverHLS/include/point.h" 1
 
@@ -24664,9 +24678,9 @@ std::ostream &operator<<(std::ostream &os, const point_s &p);
 # 6 "C:/Projects/ParticleCoverHLS/include\\superpoint.h" 2
 
 typedef struct {
-  point_s points[32];
+  point_s points[16];
   size_t n_points;
-  double z_values[32];
+  double z_values[16];
   double min;
   double max;
 } superpoint_s;
@@ -31824,8 +31838,10 @@ superpoint_s superpoint_init(point_s *points, size_t n_points) {
   double z_list[512];
 
 
-  VITIS_LOOP_12_1: for (size_t i = 0; i < n_points; i++) {
-    z_list[i] = points[i].z;
+loop_copy_points_to_superpoint:
+  for (size_t i = 0; i < n_points; i++) {
+#pragma HLS UNROLL
+ z_list[i] = points[i].z;
     superpoint.z_values[i] = z_list[i];
     superpoint.points[i] = points[i];
   }
@@ -31833,10 +31849,15 @@ superpoint_s superpoint_init(point_s *points, size_t n_points) {
   superpoint.n_points = n_points;
 
 
-
-
-
-
+  double min = z_list[0];
+  double max = z_list[0];
+  VITIS_LOOP_25_1: for (size_t i = 1; i < n_points; i++) {
+#pragma HLS PIPELINE
+ min = std::min(min, z_list[i]);
+    max = std::max(max, z_list[i]);
+  }
+  superpoint.min = min;
+  superpoint.max = max;
 
   return superpoint;
 }
@@ -31853,16 +31874,9 @@ std::ostream &operator<<(std::ostream &os, const superpoint_s &sp) {
   os << "  min: " << sp.min << std::endl;
   os << "  max: " << sp.max << std::endl;
   os << "  z_values: ";
-  VITIS_LOOP_41_1: for (size_t i = 0; i < sp.n_points; i++) {
+  VITIS_LOOP_48_1: for (size_t i = 0; i < sp.n_points; i++) {
     os << sp.z_values[i] << " ";
   }
-  os << std::endl;
-
-
-
-
-
-
   os << std::endl;
 
   return os;

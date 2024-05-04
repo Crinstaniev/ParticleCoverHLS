@@ -72,7 +72,7 @@ event_s *file_reader_read(const std::string &filename, const int stop) {
         list_of_points.push_back(temp);
       }
 
-      std::vector<double> radii;
+      std::vector<float> radii;
 
       for (size_t i = 0; i < list_of_points.size(); ++i) {
         radii.push_back(list_of_points[i].radius);

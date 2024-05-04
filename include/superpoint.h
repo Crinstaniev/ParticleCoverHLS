@@ -7,9 +7,9 @@
 typedef struct {
   point_s points[MAX_NUM_POINTS_IN_SUPERPOINT];
   size_t n_points;
-  double z_values[MAX_NUM_POINTS_IN_SUPERPOINT];
-  double min;
-  double max;
+  float z_values[MAX_NUM_POINTS_IN_SUPERPOINT];
+  float min;
+  float max;
 } superpoint_s;
 
 superpoint_s superpoint_init(point_s *points, size_t n_points);

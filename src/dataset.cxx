@@ -1,5 +1,6 @@
 #include "dataset.h"
 #include <algorithm>
+#include <climits>
 
 dataset_s dataset_init(environment_s &env) {
   dataset_s dataset;
@@ -34,11 +35,6 @@ void dataset_import_data(dataset_s &dataset, point_s *data_array,
   int ln = 0;
 
   for (size_t i = 0; i < NUM_LAYERS; i++) {
-    // sort dataset.array[i] by z
-    // std::sort(
-    //     dataset.array[i], dataset.array[i] + dataset.n_points[i],
-    //     [](const point_s &a, const point_s &b) -> bool { return a.z < b.z;
-    //     });
     // hls implementation, sort by z, using bubble sort (temporary solution)
     for (size_t j = 0; j < dataset.n_points[i]; j++) {
       for (size_t k = 0; k < dataset.n_points[i] - j - 1; k++) {
@@ -56,11 +52,11 @@ void dataset_import_data(dataset_s &dataset, point_s *data_array,
   return;
 }
 
-void dataset_add_boundary_point(dataset_s &dataset, double offset) {
+void dataset_add_boundary_point(dataset_s &dataset, float offset) {
   dataset.boundaryPoint_offset = offset;
 
   for (size_t i = 0; i < dataset.env->trapezoid_edges_size; i++) {
-    double phi0 = dataset.array[i][0].phi;
+    float phi0 = dataset.array[i][0].phi;
 
     dataset.array[i][dataset.n_points[i]] =
         point_init(i + 1, (i + 1) * 5, phi0,
@@ -77,11 +73,6 @@ void dataset_add_boundary_point(dataset_s &dataset, double offset) {
   int ln = 0;
 
   for (size_t i = 0; i < NUM_LAYERS; i++) {
-    // std::sort(
-    //     dataset.array[i], dataset.array[i] + dataset.n_points[i],
-    //     [](const point_s &a, const point_s &b) -> bool { return a.z < b.z;
-    //     });
-
     // implement using hls-compatible sort
     for (size_t j = 0; j < dataset.n_points[i]; j++) {
       for (size_t k = 0; k < dataset.n_points[i] - j - 1; k++) {

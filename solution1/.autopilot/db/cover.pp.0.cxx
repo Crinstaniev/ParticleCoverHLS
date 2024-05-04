@@ -155,8 +155,22 @@ extern "C" {
 
 
 # 1 "C:/Projects/ParticleCoverHLS/include/constants.h" 1
-# 14 "C:/Projects/ParticleCoverHLS/include/constants.h"
+# 22 "C:/Projects/ParticleCoverHLS/include/constants.h"
 const double RADII[] = {5.0, 10.0, 15.0, 20.0, 25.0};
+# 36 "C:/Projects/ParticleCoverHLS/include/constants.h"
+void radii_initializer(double radii[5]);
+void trapezoid_edges_initializer(double *trapezoid_edges, double *radii);
+void parallelogram_slopes_initializer(double *parallelogram_slopes,
+                                      double *radii);
+void radii_leverArm_initializer(double *radii_leverArm,
+                                double *parallelogram_slopes);
+
+void const_array_initializer(double *radii, double *trapezoid_edges,
+                             double *parallelogram_slopes,
+                             double *radii_leverArm);
+
+void print_const_arrays(double *radii, double *trapezoid_edges,
+                        double *parallelogram_slopes, double *radii_leverArm);
 # 4 "C:/Projects/ParticleCoverHLS/include\\cover.h" 2
 # 1 "C:/Projects/ParticleCoverHLS/include/dataset.h" 1
 
@@ -24725,6 +24739,9 @@ point_s point_init(int layer_num, double radius, double phi, double z);
 
 std::ostream &operator<<(std::ostream &os, const point_s &p);
 # 6 "C:/Projects/ParticleCoverHLS/include/dataset.h" 2
+# 1 "C:/Xilinx/Vitis_HLS/2020.2/tps/mingw/6.2.0/win64.o/nt\\lib\\gcc\\x86_64-w64-mingw32\\6.2.0\\include\\c++\\climits" 1 3
+# 40 "C:/Xilinx/Vitis_HLS/2020.2/tps/mingw/6.2.0/win64.o/nt\\lib\\gcc\\x86_64-w64-mingw32\\6.2.0\\include\\c++\\climits" 3
+# 7 "C:/Projects/ParticleCoverHLS/include/dataset.h" 2
 
 
 
@@ -24753,6 +24770,31 @@ std::ostream &operator<<(std::ostream &os, const dataset_s &dataset);
 
 
 
+# 1 "C:/Projects/ParticleCoverHLS/include/parallelogram.h" 1
+
+
+
+
+typedef struct {
+  int layer_num;
+  float pSlope;
+
+  float shadow_bottomL_jR;
+  float shadow_bottomR_jR;
+  float shadow_bottomL_jL;
+  float shadow_bottomR_jL;
+
+  float z1_min;
+  float z1_max;
+} parallelogram_s;
+
+void parallelogram_init(parallelogram_s *p, int layer_numI, float z1_minI,
+                        float z1_maxI, float shadow_bottomL_jRI,
+                        float shadow_bottomR_jRI, float shadow_bottomL_jLI,
+                        float shadow_bottomR_jLI, float pSlopeI);
+
+std::ostream &operator<<(std::ostream &os, const parallelogram_s &p);
+# 7 "C:/Projects/ParticleCoverHLS/include/patch.h" 2
 # 1 "C:/Projects/ParticleCoverHLS/include/superpoint.h" 1
 
 
@@ -24761,9 +24803,9 @@ std::ostream &operator<<(std::ostream &os, const dataset_s &dataset);
 
 
 typedef struct {
-  point_s points[32];
+  point_s points[16];
   size_t n_points;
-  double z_values[32];
+  double z_values[16];
   double min;
   double max;
 } superpoint_s;
@@ -24774,7 +24816,7 @@ bool superpoint_eq(superpoint_s sp1, superpoint_s sp2);
 
 
 std::ostream &operator<<(std::ostream &os, const superpoint_s &sp);
-# 7 "C:/Projects/ParticleCoverHLS/include/patch.h" 2
+# 8 "C:/Projects/ParticleCoverHLS/include/patch.h" 2
 
 
 
@@ -24783,8 +24825,8 @@ typedef struct {
   int end_layer;
   int left_end_layer;
   int right_end_layer;
-  int left_end_lambdaZ;
-  int right_end_lambdaZ;
+  float left_end_lambdaZ;
+  float right_end_lambdaZ;
   double apexZ0;
 
   int shadow_fromTopToInnermost_topL_jL;
@@ -24792,46 +24834,85 @@ typedef struct {
   int shadow_fromTopToInnermost_topR_jL;
   int shadow_fromTopToInnermost_topR_jR;
 
+  float a_corner[5 - 1];
+  float b_corner[5 - 1];
+  float c_corner[5 - 1];
+  float d_corner[5 - 1];
+
   superpoint_s superpoints[5];
   size_t n_superpoints;
+
+  bool flatBottom;
+  bool flatTop;
+
+  bool squareAcceptance;
+  bool triangleAcceptance;
+
+  parallelogram_s parallelograms[5 - 1];
 } patch_s;
 
-patch_s patch_init(environment_s env, superpoint_s *superpoints,
-                   size_t n_superpoints, double apexZ0);
+patch_s patch_init(superpoint_s *superpoints, size_t n_superpoints,
+                   double apexZ0);
+
+void patch_get_parallelograms(patch_s *patch);
+
+void patch_get_acceptance_corners(patch_s *patch);
+
+void patch_get_end_layers(patch_s *patch);
+
+float patch_straight_line_projector_from_layer_ij_to_k(float z_i, float z_j,
+                                                       int i, int j, int k);
 
 
 std::ostream &operator<<(std::ostream &os, const patch_s &p);
 # 7 "C:/Projects/ParticleCoverHLS/include\\cover.h" 2
+# 1 "C:/Projects/ParticleCoverHLS/include/patch_buffer.h" 1
+# 14 "C:/Projects/ParticleCoverHLS/include/patch_buffer.h"
+typedef struct patch_buffer_s {
+  patch_s patches[3];
+  int head_idx;
+  int size;
+  int capacity;
+  int tail;
+} patch_buffer_s;
+
+void patch_buffer_init(patch_buffer_s *buffer);
+
+void patch_buffer_push_patch(patch_buffer_s *buffer, patch_s patch);
+
+void patch_buffer_access_patch(patch_buffer_s *buffer, int depth,
+                               patch_s *patch);
+
+patch_s *patch_buffer_access_patch_ptr(patch_buffer_s *buffer, int depth);
+
+
+std::ostream &operator<<(std::ostream &os, const patch_buffer_s &buffer);
+# 8 "C:/Projects/ParticleCoverHLS/include\\cover.h" 2
 
 
 
 
 typedef struct {
+  patch_buffer_s patch_buffer;
   size_t n_patches;
-  patch_s patches[32];
-  environment_s env;
-  dataset_s data;
-  int fitting_lines[512];
-  size_t n_fitting_lines;
-  superpoint_s superpoints[5];
-  size_t n_superpoints;
-  patch_s all_patches[32];
-  size_t n_all_patches;
-  bool real_patch_list[32];
 } cover_s;
 
-cover_s cover_init(environment_s env, dataset_s data);
+void cover_init(cover_s *cover);
 
-void cover_add_patch(cover_s &cover, patch_s curr_patch);
+void cover_make_patch_aligned_to_line(
+    cover_s *cover, point_s row_data[5][256],
+    int num_points[5], double apexZ0, double z_top, bool leftRight);
 
-void cover_make_patch_aligned_to_line(cover_s &cover, double apexZ0 = 0,
-                                      double z_top = -50, int ppl = 16,
-                                      bool leftRight = true,
-                                      bool double_middleLayers_ppl = false);
+void cover_make_patch_shadow_quilt_from_edges(
+    cover_s *cover, point_s row_data[5][256],
+    int num_points[5]);
 
 
 std::ostream &operator<<(std::ostream &os, const cover_s &cover);
 # 2 "ParticleCoverHLS/src/cover.cxx" 2
+
+# 1 "C:/Projects/ParticleCoverHLS/include\\debug.h" 1
+# 4 "ParticleCoverHLS/src/cover.cxx" 2
 
 # 1 "C:/Projects/ParticleCoverHLS/include\\system.h" 1
 
@@ -28480,213 +28561,22 @@ event_s *file_reader_read(const std::string &filename,
 # 9 "C:/Projects/ParticleCoverHLS/include\\system.h" 2
 
 
+
 # 1 "C:/Projects/ParticleCoverHLS/include/sim_utils.h" 1
-# 12 "C:/Projects/ParticleCoverHLS/include\\system.h" 2
-
-# 1 "C:/Projects/ParticleCoverHLS/include/makepatch_hls.h" 1
-
-
-# 1 "C:/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot\\hls_stream.h" 1
-# 61 "C:/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot\\hls_stream.h"
-# 1 "C:/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_stream_39.h" 1
-# 67 "C:/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_stream_39.h"
-# 1 "C:/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/etc/autopilot_enum.h" 1
-# 59 "C:/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/etc/autopilot_enum.h"
-enum SsdmDataTypes {
-    _ssdm_sc_int = 0,
-    _ssdm_c_int = _ssdm_sc_int,
-    _ssdm_sc_uint = 1,
-    _ssdm_c_uint = _ssdm_sc_uint,
-    _ssdm_sc_bigint = 2,
-    _ssdm_sc_biguint = 3,
-};
+# 13 "C:/Projects/ParticleCoverHLS/include\\system.h" 2
 
 
 
-enum SsdmPortTypes {
-    _ssdm_sc_in = 0,
-    _ssdm_sc_out = 1,
-    _ssdm_sc_inout = 2,
-    _ssdm_sc_in_clk,
+void system_top(cover_s *cover,
+                point_s row_data[5][256],
+                int num_points[5]);
+# 6 "ParticleCoverHLS/src/cover.cxx" 2
 
-    _ssdm_fifo_in,
-    _ssdm_sc_fifo_in = _ssdm_fifo_in,
-    _ssdm_tlm_fifo_in = _ssdm_fifo_in,
-    _ssdm_fifo_out,
-    _ssdm_sc_fifo_out = _ssdm_fifo_out,
-    _ssdm_tlm_fifo_out = _ssdm_fifo_out,
-    _ssdm_fifo_inout,
-    _ssdm_sc_fifo_inout = _ssdm_fifo_inout,
-    _ssdm_tlm_fifo_inout = _ssdm_fifo_inout,
-    _ssdm_sc_bus,
-    _ssdm_hls_bus_port = _ssdm_sc_bus,
-    _ssdm_AXI4M_bus_port = _ssdm_sc_bus,
-    _ssdm_port_end,
-};
-
-
-
-enum SsdmProcessTypes {
-    _ssdm_method = 0,
-    _ssdm_sc_method = _ssdm_method,
-    _ssdm_thread = 1,
-    _ssdm_sc_thread = _ssdm_thread,
-    _ssdm_cthread = 2,
-    _ssdm_sc_cthread = _ssdm_cthread,
-    _ssdm_process_end,
-};
-
-
-
-enum SsdmSensitiveTypes {
-    _ssdm_sensitive = 0,
-    _ssdm_sensitive_pos,
-    _ssdm_sensitive_neg,
-    _ssdm_sensitive_reset0,
-    _ssdm_sensitive_reset1,
-    _ssdm_sensitive_end,
-};
-
-
-
-enum SsdmChannelTypes {
-    _ssdm_sc_sig,
-    _ssdm_fifo,
-    _ssdm_sc_fifo = _ssdm_fifo,
-    _ssdm_mem_fifo,
-    _ssdm_sc_mem_fifo = _ssdm_mem_fifo,
-};
-
-
-enum SsdmRegionTypes {
-    _ssdm_region_reset,
-    _ssdm_region_protocol,
-    _ssdm_region_pipeline,
-    _ssdm_region_parallel,
-};
-# 68 "C:/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_stream_39.h" 2
-
-
-
-
-
-namespace hls {
-# 95 "C:/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_stream_39.h"
-template<typename __STREAM_T__, int DEPTH=0>
-class stream;
-
-template<typename __STREAM_T__>
-class stream<__STREAM_T__, 0>
-{
-  public:
-
-    inline __attribute__((always_inline)) stream() {
-      __fpga_set_stream_depth(&this->V, 0);
-    }
-
-    inline __attribute__((always_inline)) stream(const char* name) {
-      (void)(name);
-      __fpga_set_stream_depth(&this->V, 0);
-    }
-
-
-  private:
-    inline __attribute__((always_inline)) stream(const stream< __STREAM_T__ >& chn):V(chn.V) {
-    }
-
-    inline __attribute__((always_inline)) stream& operator= (const stream< __STREAM_T__ >& chn) {
-        V = chn.V;
-        return *this;
-    }
-
-  public:
-
-    inline __attribute__((always_inline)) void operator >> (__STREAM_T__& rdata) {
-        read(rdata);
-    }
-
-    inline __attribute__((always_inline)) void operator << (const __STREAM_T__& wdata) {
-        write(wdata);
-    }
-
-
-  public:
-
-    inline __attribute__((always_inline)) bool empty() const {
-        return !__fpga_fifo_not_empty(&V);
-    }
-
-    inline __attribute__((always_inline)) bool full() const {
-        return !__fpga_fifo_not_full(&V);
-    }
-
-
-    inline __attribute__((always_inline)) void read(__STREAM_T__& dout) {
-        __fpga_fifo_pop(&V, &dout);
-    }
-
-
-    inline __attribute__((noinline)) bool read_dep(__STREAM_T__& dout, volatile bool flag) {
-        __fpga_fifo_pop(&V, &dout);
-        return flag;
-    }
-
-    inline __attribute__((always_inline)) __STREAM_T__ read() {
-        __STREAM_T__ tmp;
-        read(tmp);
-        return tmp;
-    }
-
-
-    inline __attribute__((always_inline)) bool read_nb(__STREAM_T__& dout) {
-        __STREAM_T__ tmp;
-
-        if (__fpga_fifo_nb_pop(&V, &tmp)) {
-            dout = tmp;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-
-    inline __attribute__((always_inline)) void write(const __STREAM_T__& din) {
-        __fpga_fifo_push(&V, &din);
-    }
-
-
-    inline __attribute__((noinline)) bool write_dep(const __STREAM_T__& din, volatile bool flag) {
-        __fpga_fifo_push(&V, &din);
-        return flag;
-    }
-
-
-    inline __attribute__((always_inline)) bool write_nb(const __STREAM_T__& din) {
-        return __fpga_fifo_nb_push(&V, &din);
-    }
-
-  public:
-    __STREAM_T__ V __attribute__((no_ctor));
-};
-
-template<typename __STREAM_T__, int DEPTH>
-class stream : public stream<__STREAM_T__, 0> {
-  public:
-    inline __attribute__((always_inline)) stream() {
-      __fpga_set_stream_depth(&this->V, DEPTH);
-    }
-
-    inline __attribute__((always_inline)) stream(const char* name) {
-      (void)(name);
-      __fpga_set_stream_depth(&this->V, DEPTH);
-    }
-};
-}
-# 62 "C:/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot\\hls_stream.h" 2
-# 4 "C:/Projects/ParticleCoverHLS/include/makepatch_hls.h" 2
 # 1 "C:/Xilinx/Vitis_HLS/2020.2/tps/mingw/6.2.0/win64.o/nt\\lib\\gcc\\x86_64-w64-mingw32\\6.2.0\\include\\c++\\climits" 1 3
 # 40 "C:/Xilinx/Vitis_HLS/2020.2/tps/mingw/6.2.0/win64.o/nt\\lib\\gcc\\x86_64-w64-mingw32\\6.2.0\\include\\c++\\climits" 3
-# 5 "C:/Projects/ParticleCoverHLS/include/makepatch_hls.h" 2
+# 8 "ParticleCoverHLS/src/cover.cxx" 2
+# 1 "C:/Xilinx/Vitis_HLS/2020.2/tps/mingw/6.2.0/win64.o/nt\\lib\\gcc\\x86_64-w64-mingw32\\6.2.0\\include\\c++\\math.h" 1 3
+# 36 "C:/Xilinx/Vitis_HLS/2020.2/tps/mingw/6.2.0/win64.o/nt\\lib\\gcc\\x86_64-w64-mingw32\\6.2.0\\include\\c++\\math.h" 3
 # 1 "C:/Xilinx/Vitis_HLS/2020.2/tps/mingw/6.2.0/win64.o/nt\\lib\\gcc\\x86_64-w64-mingw32\\6.2.0\\include\\c++\\cmath" 1 3
 # 40 "C:/Xilinx/Vitis_HLS/2020.2/tps/mingw/6.2.0/win64.o/nt\\lib\\gcc\\x86_64-w64-mingw32\\6.2.0\\include\\c++\\cmath" 3
 
@@ -30629,78 +30519,454 @@ namespace std
 }
 # 1797 "C:/Xilinx/Vitis_HLS/2020.2/tps/mingw/6.2.0/win64.o/nt\\lib\\gcc\\x86_64-w64-mingw32\\6.2.0\\include\\c++\\cmath" 3
 }
-# 6 "C:/Projects/ParticleCoverHLS/include/makepatch_hls.h" 2
-# 18 "C:/Projects/ParticleCoverHLS/include/makepatch_hls.h"
-namespace synth {
+# 37 "C:/Xilinx/Vitis_HLS/2020.2/tps/mingw/6.2.0/win64.o/nt\\lib\\gcc\\x86_64-w64-mingw32\\6.2.0\\include\\c++\\math.h" 2 3
 
-static double trapezoid_edges[5] = {0.0, 0.0, 0.0, 0.0, 0.0};
+using std::abs;
+using std::acos;
+using std::asin;
+using std::atan;
+using std::atan2;
+using std::cos;
+using std::sin;
+using std::tan;
+using std::cosh;
+using std::sinh;
+using std::tanh;
+using std::exp;
+using std::frexp;
+using std::ldexp;
+using std::log;
+using std::log10;
+using std::modf;
+using std::pow;
+using std::sqrt;
+using std::ceil;
+using std::fabs;
+using std::floor;
+using std::fmod;
 
-typedef struct {
-  point_s points[256];
-  int num_points;
-} point_arr_s;
 
-void load_data(cover_s &cover, hls::stream<point_arr_s> &points_stream);
+using std::fpclassify;
+using std::isfinite;
+using std::isinf;
+using std::isnan;
+using std::isnormal;
+using std::signbit;
+using std::isgreater;
+using std::isgreaterequal;
+using std::isless;
+using std::islessequal;
+using std::islessgreater;
+using std::isunordered;
 
-void read_data(hls::stream<point_arr_s> &points_arr_stream,
-               point_arr_s *points_arr);
 
-void copy_row_data_from_points_arr(point_arr_s points_arr, point_s row_data[]);
 
-void find_start_index(point_s row_data[], double projectionToRow,
-                      int &start_index, double &start_value);
+using std::acosh;
+using std::asinh;
+using std::atanh;
+using std::cbrt;
+using std::copysign;
+using std::erf;
+using std::erfc;
+using std::exp2;
+using std::expm1;
+using std::fdim;
+using std::fma;
+using std::fmax;
+using std::fmin;
+using std::hypot;
+using std::ilogb;
+using std::lgamma;
+using std::llrint;
+using std::llround;
+using std::log1p;
+using std::log2;
+using std::logb;
+using std::lrint;
+using std::lround;
+using std::nearbyint;
+using std::nextafter;
+using std::nexttoward;
+using std::remainder;
+using std::remquo;
+using std::rint;
+using std::round;
+using std::scalbln;
+using std::scalbn;
+using std::tgamma;
+using std::trunc;
+# 9 "ParticleCoverHLS/src/cover.cxx" 2
 
-void find_bounds(int *left_bound, int *right_bound, point_s row_data[],
-                 double projectionToRow, double trapezoid_edge);
 
-void make_patch_aligned_to_line(hls::stream<point_arr_s> &points_arr_stream_in,
-                                hls::stream<patch_s> &patch_stream_out);
 
+
+
+
+
+
+extern double radii[5]; extern double trapezoid_edges[5]; extern double parallelogram_slopes[5 - 1]; extern double radii_leverArm[5 - 1];
+
+
+
+
+void cover_init(cover_s *cover) {
+  patch_buffer_init(&cover->patch_buffer);
+  cover->n_patches = 0;
+
+  return;
 }
 
 
-void make_patch_aligned_to_line_top(cover_s &cover, double apexZ0, double z_top,
-                                    hls::stream<synth::point_arr_s> &points_arr_stream,
-                                    hls::stream<patch_s> &patch_stream);
-# 14 "C:/Projects/ParticleCoverHLS/include/system.h" 2
-
-void system_top(cover_s *cover_result);
-# 4 "ParticleCoverHLS/src/cover.cxx" 2
-
-# 1 "C:/Xilinx/Vitis_HLS/2020.2/tps/mingw/6.2.0/win64.o/nt\\lib\\gcc\\x86_64-w64-mingw32\\6.2.0\\include\\c++\\climits" 1 3
-# 40 "C:/Xilinx/Vitis_HLS/2020.2/tps/mingw/6.2.0/win64.o/nt\\lib\\gcc\\x86_64-w64-mingw32\\6.2.0\\include\\c++\\climits" 3
-# 6 "ParticleCoverHLS/src/cover.cxx" 2
-
-cover_s cover_init(environment_s env, dataset_s data) {
-  cover_s cover;
-  cover.n_patches = 0;
-  cover.env = env;
-  cover.data = data;
-  cover.n_fitting_lines = 0;
-  cover.n_superpoints = 0;
-  cover.n_all_patches = 0;
-
-
-loop_set_real_patch_list_to_false:
-  for (size_t i = 0; i < 32; i++) {
-#pragma HLS unroll
- cover.real_patch_list[i] = false;
+void _copy_row_list(double row_list[256],
+                    point_s row_data[256]) {
+loop_copy_row_list:
+  for (int i = 0; i < 256; i++) {
+#pragma HLS UNROLL
+ row_list[i] = row_data[i].z;
   }
-
-  return cover;
 }
-# 191 "ParticleCoverHLS/src/cover.cxx"
-std::ostream &operator<<(std::ostream &os, const cover_s &cover) {
-  os << "cover_s: " << std::endl;
-  os << "  n_patches: " << cover.n_patches << std::endl;
-  os << "  n_fitting_lines: " << cover.n_fitting_lines << std::endl;
-  os << "  n_superpoints: " << cover.n_superpoints << std::endl;
-  os << "  n_all_patches: " << cover.n_all_patches << std::endl;
-  os << "  real_patch_list: ";
-  VITIS_LOOP_198_1: for (size_t i = 0; i < 32; i++) {
-    os << cover.real_patch_list[i] << " ";
-  }
-  os << std::endl;
 
-  return os;
+void _find_start_index_and_value(int *start_index, double *start_value,
+                                 double row_list[256],
+                                 int num_points, double projectionToRow) {
+  *start_index = 0;
+  *start_value = 1000000;
+loop_find_start_index_and_value:
+  for (int i = 0; i < 256; i++) {
+    if (i < num_points) {
+
+
+
+
+
+      if (std::abs(row_list[i] - projectionToRow) < std::abs(*start_value)) {
+        *start_index = i;
+        *start_value = row_list[i] - projectionToRow;
+      }
+    }
+  }
+}
+
+
+void _find_left_and_right_bound(int *left_bound, int *right_bound,
+                                double *lbVal, double *rbVal,
+                                double row_list[256],
+                                int num_points, int layer_index) {
+
+  *left_bound = -1;
+  *right_bound = -1;
+  *lbVal = 2147483647;
+  *rbVal = 2147483647;
+
+
+loop_find_left_and_right_bound:
+  for (int j = 0; j < 256; j++) {
+    if (j < num_points) {
+      double currentLbVal = abs(
+          (row_list[j] + trapezoid_edges[layer_index] + 0.0001));
+      if (currentLbVal < *lbVal) {
+        *left_bound = j;
+        *lbVal = currentLbVal;
+      }
+
+      double currentRbVal = abs(
+          (row_list[j] - trapezoid_edges[layer_index] - 0.0001));
+      if (currentRbVal < *rbVal) {
+        *right_bound = j;
+        *rbVal = currentRbVal;
+      }
+    }
+  }
+}
+
+void cover_make_patch_aligned_to_line(
+    cover_s *cover, point_s row_data[5][256],
+    int num_points[5], double apexZ0, double z_top, bool leftRight) {
+
+  superpoint_s init_patch[5];
+
+  VITIS_LOOP_98_1: for (int i = 0; i < 5; i++) {
+#pragma HLS UNROLL
+ double y = radii[i];
+
+    double row_list[256];
+    size_t row_list_size = 0;
+
+    double r_max = radii[5 - 1];
+    double projectionToRow =
+        (z_top - apexZ0) * (y - radii[0]) / (r_max - radii[0]) + apexZ0;
+# 116 "ParticleCoverHLS/src/cover.cxx"
+    int start_index = 0;
+    double start_value = 1000000;
+
+    _copy_row_list(row_list, row_data[i]);
+# 134 "ParticleCoverHLS/src/cover.cxx"
+    _find_start_index_and_value(&start_index, &start_value, row_list,
+                                num_points[i], projectionToRow);
+# 149 "ParticleCoverHLS/src/cover.cxx"
+    int left_bound = 0;
+    int right_bound = 0;
+    double lbVal = 2147483647;
+    double rbVal = 2147483647;
+
+    _find_left_and_right_bound(&left_bound, &right_bound, &lbVal, &rbVal,
+                               row_list, num_points[i], i);
+# 172 "ParticleCoverHLS/src/cover.cxx"
+    if (leftRight == true) {
+      if (start_index != 0) {
+        if (start_value > 0.00001) {
+          start_index--;
+        }
+      }
+
+      if ((start_index + 16) > (right_bound + 1)) {
+        init_patch[i] =
+            superpoint_init(row_data[i] + right_bound - 16 + 1, 16);
+
+
+
+
+
+
+      } else {
+        init_patch[i] = superpoint_init(row_data[i] + start_index, 16);
+
+
+
+
+
+      }
+    } else {
+      if (start_index != num_points[i] - 1) {
+
+
+
+
+
+        if (start_value < -1 * 0.00001) {
+          start_index++;
+          start_value = row_list[start_index] - projectionToRow;
+
+
+
+
+        }
+      }
+
+      if ((start_index - 16 + 1) < left_bound) {
+
+        point_s points[16];
+        VITIS_LOOP_216_2: for (int j = 0; j < 16; j++) {
+#pragma HLS UNROLL
+ points[j] = row_data[i][left_bound + j];
+        }
+        superpoint_s sp = superpoint_init(points, 16);
+        init_patch[i] = sp;
+      } else {
+
+        point_s points[16];
+        VITIS_LOOP_225_3: for (int j = 0; j < 16; j++) {
+#pragma HLS UNROLL
+ points[j] = row_data[i][start_index - 16 + 1 + j];
+        }
+        superpoint_s sp = superpoint_init(points, 16);
+        init_patch[i] = sp;
+      }
+    }
+  }
+
+  patch_s patch = patch_init(init_patch, 5, apexZ0);
+
+
+
+
+
+
+
+  patch_buffer_push_patch(&cover->patch_buffer, patch);
+
+  cover->n_patches++;
+
+  return;
+}
+
+void backup_cover_make_patch_aligned_to_line(
+    cover_s *cover, point_s row_data[5][256],
+    int num_points[5], double apexZ0, double z_top, bool leftRight) {
+  superpoint_s init_patch[5];
+
+  VITIS_LOOP_255_1: for (int i = 0; i < 5; i++) {
+#pragma HLS UNROLL
+ double y = radii[i];
+
+    double row_list[256];
+    size_t row_list_size = 0;
+
+    double r_max = radii[5 - 1];
+    double projectionToRow =
+        (z_top - apexZ0) * (y - radii[0]) / (r_max - radii[0]) + apexZ0;
+# 273 "ParticleCoverHLS/src/cover.cxx"
+    int start_index = 0;
+    double start_value = 1000000;
+
+    _copy_row_list(row_list, row_data[i]);
+# 292 "ParticleCoverHLS/src/cover.cxx"
+    _find_start_index_and_value(&start_index, &start_value, row_list,
+                                num_points[i], projectionToRow);
+# 399 "ParticleCoverHLS/src/cover.cxx"
+  }
+# 411 "ParticleCoverHLS/src/cover.cxx"
+  cover->n_patches++;
+
+  return;
+}
+
+void cover_make_patch_shadow_quilt_from_edges(
+    cover_s *cover, point_s row_data[5][256],
+    int num_points[5]) {
+#pragma HLS INLINE off
+
+
+
+
+ bool fix42 = true;
+  float apexZ0 = trapezoid_edges[0];
+  float saved_apexZ0;
+
+  VITIS_LOOP_428_1: while (apexZ0 > -1 * trapezoid_edges[0]) {
+    float z_top_min = -1 * 50.0;
+    float complementary_apexZ0 = 0;
+    int first_row_count = 0;
+    float c_corner = 9223372036854775807L;
+    float z_top_max = 50.0 + 0.0001;
+
+    if (cover->n_patches > 0) {
+      float z_top_max_candidate;
+      z_top_max_candidate = patch_straight_line_projector_from_layer_ij_to_k(
+          -1 * 15.0, apexZ0, 0, 1, 5);
+      z_top_max = std::min(z_top_max, z_top_max_candidate);
+    }
+
+    int nPatchesInColumn = 0;
+    float projectionOfCornerToBeam = 0;
+
+    VITIS_LOOP_445_2: while ((c_corner > -1 * trapezoid_edges[5 - 1]) &&
+           (projectionOfCornerToBeam < 15.0)) {
+      nPatchesInColumn++;
+
+      bool leftRight = false;
+
+
+
+
+
+      cover_make_patch_aligned_to_line(cover, row_data, num_points, apexZ0,
+                                       z_top_max, false);
+
+      patch_s *last_patch = patch_buffer_access_patch_ptr(&cover->patch_buffer,
+                                                          cover->n_patches - 1);
+# 487 "ParticleCoverHLS/src/cover.cxx"
+      VITIS_LOOP_487_3: for (int i = 1; i < 5 - 1; i++) {
+        int j = i + 1;
+# 510 "ParticleCoverHLS/src/cover.cxx"
+      }
+
+      float original_c = last_patch->c_corner[1];
+      float original_d = last_patch->d_corner[1];
+
+      c_corner = original_c;
+
+      bool repeat_patch = false;
+      bool repeat_original = false;
+
+
+
+
+
+
+      if (cover->n_patches > 2) {
+        patch_s *patch_depth_3 = patch_buffer_access_patch_ptr(
+            &cover->patch_buffer, cover->n_patches - 3);
+
+        bool cond_eq_0 =
+            superpoint_eq(last_patch->superpoints[5 - 1],
+                          patch_depth_3->superpoints[5 - 1]);
+        bool cond_eq_1 = superpoint_eq(last_patch->superpoints[0],
+                                       patch_depth_3->superpoints[0]);
+        bool cond_eq_2 = superpoint_eq(last_patch->superpoints[1],
+                                       patch_depth_3->superpoints[1]);
+        bool cond_eq_3 = superpoint_eq(last_patch->superpoints[2],
+                                       patch_depth_3->superpoints[2]);
+        bool cond_eq_4 = superpoint_eq(last_patch->superpoints[3],
+                                       patch_depth_3->superpoints[3]);
+        repeat_original =
+            cond_eq_0 && cond_eq_1 && cond_eq_2 && cond_eq_3 && cond_eq_4;
+      }
+
+      float seed_apexZ0 = apexZ0;
+
+      projectionOfCornerToBeam =
+          patch_straight_line_projector_from_layer_ij_to_k(
+              last_patch->c_corner[1], last_patch->c_corner[0], 5, 1,
+              0);
+
+      bool squarePatch_alternate1 = (last_patch->a_corner[1] > z_top_max) &&
+                                    (last_patch->b_corner[1] > z_top_max) &&
+                                    (last_patch->flatBottom);
+
+      bool squarePatch_alternate2 =
+          (last_patch->a_corner[1] > z_top_max) && (last_patch->flatBottom);
+
+      bool notChoppedPatch = (last_patch->squareAcceptance) ||
+                             squarePatch_alternate1 || squarePatch_alternate2;
+
+      bool madeComplementaryPatch = false;
+
+      int nPatchesAtOriginal = cover->n_patches;
+# 591 "ParticleCoverHLS/src/cover.cxx"
+      if (!notChoppedPatch &&
+          (last_patch->c_corner[1] > -1 * trapezoid_edges[5 - 1]) &&
+          (projectionOfCornerToBeam < 15.0)) {
+        complementary_apexZ0 = last_patch->superpoints[0].min;
+
+
+
+
+        if ((last_patch->triangleAcceptance) && (!repeat_original)) {
+
+        } else {
+
+
+
+
+
+
+
+          z_top_min = std::max(-1 * 50.0,
+                               last_patch->superpoints[5 - 1].min);
+
+
+
+        }
+      }
+
+
+      backup_cover_make_patch_aligned_to_line(
+          cover, row_data, num_points, complementary_apexZ0, z_top_min, true);
+
+      return;
+
+
+
+
+      patch_s *patch_depth_1 = patch_buffer_access_patch_ptr(
+          &cover->patch_buffer, cover->n_patches - 1);
+      patch_s *patch_depth_2 = patch_buffer_access_patch_ptr(
+          &cover->patch_buffer, cover->n_patches - 2);
+# 655 "ParticleCoverHLS/src/cover.cxx"
+      return;
+    }
+  }
+
+  return;
 }

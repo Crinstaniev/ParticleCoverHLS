@@ -333,9 +333,14 @@ public:
           (z_top - apexZ0) * (y - env.radii[0]) / (r_max - env.radii[0]) +
           apexZ0;
 
+      // std::cout << "projectionToRow: " << projectionToRow << std::endl;
+
+      // continue;
+
       int start_index = 0;
       double start_value = INT_MAX;
 
+      // find the closest z value to the projectionToRow
       for (int j = 0; j < row_list.size(); j++) {
         if (abs(row_list[j] - projectionToRow) < abs(start_value)) {
           start_index = j;
@@ -343,11 +348,34 @@ public:
         }
       }
 
+      // std::cout << "start_index: " << start_index << std::endl;
+      // std::cout << "start_value: " << start_value << std::endl;
+
+      // continue;
+
       /////////////////////////////
       int left_bound = 0;
       double lbVal = INT_MAX;
       int right_bound = 0;
       double rbVal = INT_MAX;
+
+      // print trapezoid_edges
+      // std::cout << "trapezoid_edges: " << std::endl;
+      // for (int i = 0; i < env.trapezoid_edges.size(); i++) {
+      //   std::cout << env.trapezoid_edges[i] << std::endl;
+      // }
+
+      // // print row_list
+      // for (int j = 0; j < row_list.size(); j++) {
+      //   std::cout << "row_list[" << j << "]: " << row_list[j] << std::endl;
+      // }
+
+      // print row_list size
+      std::cout << "row_list size: " << row_list.size() << std::endl;
+
+      // print boundaryPoint_offset
+      std::cout << "boundaryPoint_offset: " << env.boundaryPoint_offset
+                << std::endl;
 
       for (int j = 0; j < row_list.size(); j++) {
         if (abs((row_list[j] + env.trapezoid_edges[i] +
@@ -364,6 +392,11 @@ public:
                        env.boundaryPoint_offset));
         }
       }
+
+      // std::cout << "left_bound: " << left_bound << std::endl;
+      // std::cout << "right_bound: " << right_bound << std::endl;
+      // continue;
+
       /////////////////////////////
       // this part can be deleted
       if ((double_middleLayers_ppl == true) && (i != 0) &&

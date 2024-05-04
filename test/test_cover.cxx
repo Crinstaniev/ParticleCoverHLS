@@ -17,9 +17,9 @@ int main(void) {
 
   cover_s cover = cover_init(env, ds);
 
-  double apexZ0 = 7.75751;
+  float apexZ0 = 7.75751;
   int ppl = 16;
-  double z_top = -8.883753333333333;
+  float z_top = -8.883753333333333;
   bool leftRight = false;
 
   // cover_make_patch_aligned_to_line(cover, apexZ0, z_top, ppl, leftRight);

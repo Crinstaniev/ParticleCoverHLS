@@ -23,7 +23,7 @@ environment_s environment_init() {
 
   // calculate parallelogram slopes
   for (size_t i = 0; i < NUM_LAYERS - 1; ++i) {
-    double currentVal = (env.radii[0] - env.radii[i]) /
+    float currentVal = (env.radii[0] - env.radii[i]) /
                         (env.radii[NUM_LAYERS - 1] - env.radii[i]);
     env.parallelogramSlopes[i] = currentVal;
     env.parallelogramSlopes_size++;
@@ -39,7 +39,7 @@ environment_s environment_init() {
 
   // calculate trapezoid edges
   for (size_t i = 0; i < env.num_layers; ++i) {
-    double currentVal = env.radii[i] * (env.top_layer_lim - env.beam_axis_lim) /
+    float currentVal = env.radii[i] * (env.top_layer_lim - env.beam_axis_lim) /
                             env.radii[env.num_layers - 1] +
                         env.beam_axis_lim;
     env.trapezoid_edges[i] = currentVal;

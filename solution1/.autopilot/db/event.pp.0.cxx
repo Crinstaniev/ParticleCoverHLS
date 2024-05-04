@@ -156,8 +156,22 @@ extern "C" {
 
 
 # 1 "C:/Projects/ParticleCoverHLS/include/constants.h" 1
-# 14 "C:/Projects/ParticleCoverHLS/include/constants.h"
+# 22 "C:/Projects/ParticleCoverHLS/include/constants.h"
 const double RADII[] = {5.0, 10.0, 15.0, 20.0, 25.0};
+# 36 "C:/Projects/ParticleCoverHLS/include/constants.h"
+void radii_initializer(double radii[5]);
+void trapezoid_edges_initializer(double *trapezoid_edges, double *radii);
+void parallelogram_slopes_initializer(double *parallelogram_slopes,
+                                      double *radii);
+void radii_leverArm_initializer(double *radii_leverArm,
+                                double *parallelogram_slopes);
+
+void const_array_initializer(double *radii, double *trapezoid_edges,
+                             double *parallelogram_slopes,
+                             double *radii_leverArm);
+
+void print_const_arrays(double *radii, double *trapezoid_edges,
+                        double *parallelogram_slopes, double *radii_leverArm);
 # 5 "C:/Projects/ParticleCoverHLS/include\\event.h" 2
 # 1 "C:/Projects/ParticleCoverHLS/include/environment.h" 1
 
