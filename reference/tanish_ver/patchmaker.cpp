@@ -888,6 +888,7 @@ public:
     apexZ0 = env.trapezoid_edges[0];
     float saved_apexZ0;
 
+  makepatch_main_loop:
     while (apexZ0 > -1 * env.trapezoid_edges[0]) {
       float z_top_min = -1 * env.top_layer_lim;
 
@@ -897,12 +898,13 @@ public:
 
       float z_top_max = env.top_layer_lim + env.boundaryPoint_offset;
 
-      // cout << "apexZ0: " << apexZ0 << endl;
-      // cout << "z_top_min: " << z_top_min << endl;
-      // cout << "complementary_apexZ0: " << complementary_apexZ0 << endl;
-      // cout << "first_row_count: " << first_row_count << endl;
-      // cout << "c_corner: " << c_corner << endl;
-      // cout << "z_top_max: " << z_top_max << endl;
+      DEBUG_PRINT_ALL(cout << "apexZ0: " << apexZ0 << endl;
+                      cout << "z_top_min: " << z_top_min << endl;
+                      cout << "complementary_apexZ0: " << complementary_apexZ0
+                           << endl;
+                      cout << "first_row_count: " << first_row_count << endl;
+                      cout << "c_corner: " << c_corner << endl;
+                      cout << "z_top_max: " << z_top_max << endl;)
 
       if (patches.size() > 0) {
         z_top_max =

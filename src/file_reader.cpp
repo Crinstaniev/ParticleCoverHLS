@@ -986,8 +986,6 @@ public:
         cout << "rbVal: " << rbVal << endl;
       })
 
-      exit(0);
-
       // this part not translated yet
       if ((float_middleLayers_ppl == true) && (i != 0) &&
           (i != env.num_layers - 1)) {
@@ -1362,12 +1360,21 @@ void read_file(string file_path, point_t points[NUM_LAYERS][MAX_NUM_POINTS],
   for (int i = 0; i < NUM_LAYERS; i++) {
     radii[i] = env.radii[i];
     trapezoid_edges[i] = env.trapezoid_edges[i];
+
+    DEBUG_PRINT_ALL(cout << "radii[" << i << "]: " << radii[i] << endl;
+                    cout << "trapezoid_edges[" << i
+                         << "]: " << trapezoid_edges[i] << endl;)
   }
 
   // copy parallelogram_slopes and radii_leverArm
   for (int i = 0; i < NUM_LAYERS - 1; i++) {
     parallelogram_slopes[i] = env.parallelogramSlopes[i];
     radii_leverArm[i] = env.radii_leverArm[i];
+
+    DEBUG_PRINT_ALL(cout << "parallelogram_slopes[" << i
+                         << "]: " << env.parallelogramSlopes[i] << endl;
+                    cout << "radii_leverArm[" << i
+                         << "]: " << env.radii_leverArm[i] << endl;)
   }
 
   // copy constant values

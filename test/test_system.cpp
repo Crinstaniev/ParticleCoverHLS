@@ -26,14 +26,19 @@ int main() {
   float_value_t beam_axis_lim;
   float_value_t boundaryPoint_offset;
 
-  read_file(file_path, points, num_points, radii, trapezoid_edges,
-            parallelogram_slopes, radii_leverArm, top_layer_lim, beam_axis_lim,
-            boundaryPoint_offset);
+  read_file(file_path, points, num_points, trapezoid_edges,
+            parallelogram_slopes, radii, radii_leverArm, top_layer_lim,
+            beam_axis_lim, boundaryPoint_offset);
+
+  top_layer_lim = 50.0;
+
+  // stream to hold the generated patches: point_t, size = 5 * 16
+  hls::stream<PointArr5x16_t> patch_stream;
 
   // pass to system_top
-  system_top(points, num_points, radii, trapezoid_edges, parallelogram_slopes,
-             radii_leverArm, top_layer_lim, beam_axis_lim,
-             boundaryPoint_offset);
+  system_top(points, num_points, trapezoid_edges, parallelogram_slopes, radii,
+             radii_leverArm, top_layer_lim, beam_axis_lim, boundaryPoint_offset,
+             patch_stream);
 
   return 0;
 }

@@ -2,7 +2,7 @@
 
 // debug config
 #define CONFIG_DEBUG_PRINT_ALL false
-#define CONFIG_IS_SYNTHESIS true
+#define CONFIG_IS_SYNTHESIS false
 
 #ifdef DEBUG
 #define D(x) x
@@ -21,6 +21,8 @@
 #define MAX_NUM_PATCHES 32
 #define MAX_POINTS_PER_LAYER 256
 #define MAX_PARALLELOGRAMS_PER_PATCH 32
+#define PATCH_BUFFER_SIZE 3
+#define NUM_POINTS_IN_SUPERPOINT 16
 
 // constants
 #define NUM_POINTS_IN_SUPERPOINT 16

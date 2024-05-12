@@ -1,5 +1,7 @@
 #pragma once
 
+#include "config.h"
+
 #include <ap_int.h>
 
 typedef unsigned int index_t;
@@ -37,6 +39,10 @@ radius_value_t point_get_radius(point_t p);
 
 phi_value_t point_get_phi(point_t p);
 
+typedef struct {
+  point_t points[NUM_LAYERS][MAX_NUM_POINTS];
+} PointArr5x16_t;
+
 #define CONST_VALUE_ARGS                                                       \
   float_value_t &top_layer_lim, float_value_t &beam_axis_lim,                  \
       float_value_t &boundaryPoint_offset
@@ -46,3 +52,9 @@ phi_value_t point_get_phi(point_t p);
       float_value_t parallelogram_slopes[NUM_LAYERS - 1],                      \
       float_value_t radii[NUM_LAYERS],                                         \
       float_value_t radii_leverArm[NUM_LAYERS - 1]
+
+#define PATCH_BUFFER_ARGS                                                      \
+  point_t patch_buffer[PATCH_BUFFER_SIZE][NUM_LAYERS]                          \
+                      [NUM_POINTS_IN_SUPERPOINT],                              \
+      index_t &latest_patch_index, index_t &num_patches,                       \
+      hls::stream<PointArr5x16_t> &patch_stream
