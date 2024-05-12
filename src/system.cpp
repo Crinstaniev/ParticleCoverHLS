@@ -9,9 +9,34 @@
 
 using namespace std;
 
-void makePatch_alignedToLine(z_value_t &apexZ0, z_value_t z_top_max,
-                             bool leftRight, PATCH_BUFFER_ARGS) {
+void alignedtoline_per_layer_loop(z_value_t &apexZ0, z_value_t z_top_max,
+                                  bool leftRight,
+                                  point_t points[NUM_LAYERS][MAX_NUM_POINTS],
+                                  index_t num_points[NUM_LAYERS],
+                                  PATCH_BUFFER_ARGS, int i) {
   // variable declarations
+  float_value_t y = get_radii(i);
+  float_value_t r_max = get_radii(NUM_LAYERS - 1);
+  float_value_t projectionToRow;
+}
+
+void makePatch_alignedToLine(z_value_t &apexZ0, z_value_t z_top_max,
+                             bool leftRight,
+                             point_t points[NUM_LAYERS][MAX_NUM_POINTS],
+                             index_t num_points[NUM_LAYERS],
+                             PATCH_BUFFER_ARGS) {
+  // variable declarations
+  point_t init_patch[NUM_LAYERS][NUM_POINTS_IN_SUPERPOINT];
+  int_value_t original_ppl = PPL;
+  float_value_t alignmentAccuracy = 0.00001;
+
+alignedtoline_layer_loop:
+#pragma HLS UNROLL
+  for (size_t i = 0; i < NUM_LAYERS; i++) {
+    alignedtoline_per_layer_loop(apexZ0, z_top_max, false, points, num_points,
+                                 patch_buffer, latest_patch_index, num_patches,
+                                 patch_stream, i);
+  }
 
   return;
 }
@@ -57,8 +82,9 @@ _shadowquilt_column_loop:
   while (cond_shadowquilt_column_loop) {
     nPatchesInColumn++;
 
-    makePatch_alignedToLine(apexZ0, z_top_max, false, patch_buffer,
-                            latest_patch_index, num_patches, patch_stream);
+    makePatch_alignedToLine(apexZ0, z_top_max, false, points, num_points,
+                            patch_buffer, latest_patch_index, num_patches,
+                            patch_stream);
 
     return;
 

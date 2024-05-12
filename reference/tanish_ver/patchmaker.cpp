@@ -1624,49 +1624,12 @@ public:
     int original_ppl = ppl;
     float alignmentAccuracy = 0.00001;
 
-    // std::cout << "apex_z0 in makePatch_alignedToLine: " << apexZ0 <<
-    // std::endl;
-
-    // print top_layer_lim
-    cout << "top_layer_lim: " << env.top_layer_lim << endl;
-    cout << "beam_axis_lim: " << env.beam_axis_lim << endl;
-    cout << "boundaryPoint_offset: " << env.boundaryPoint_offset << endl;
-
-    // print trapezoid_edges
-    cout << "trapezoid_edges: ";
-    for (int i = 0; i < env.trapezoid_edges.size(); i++) {
-      cout << env.trapezoid_edges[i] << " ";
-    }
-    cout << endl;
-
-    // print parallelogram_slopes
-    cout << "parallelogram_slopes: ";
-    for (int i = 0; i < env.parallelogramSlopes.size(); i++) {
-      cout << env.parallelogramSlopes[i] << " ";
-    }
-    cout << endl;
-
-    // print radii
-    cout << "radii: ";
-    for (int i = 0; i < env.radii.size(); i++) {
-      cout << env.radii[i] << " ";
-    }
-    cout << endl;
-
-    // print radii_leverArm
-    cout << "radii_leverArm: ";
-    for (int i = 0; i < env.radii_leverArm.size(); i++) {
-      cout << env.radii_leverArm[i] << " ";
-    }
-    cout << endl;
-
-    exit(0);
-
     vector<vector<Point>> row_data = data->array;
 
+  alignedtoline_layer_loop:
     for (int i = 0; i < env.num_layers; i++) {
-      float y = env.radii[i];
 
+      float y = env.radii[i];
       vector<float> row_list;
 
       for (int j = 0; j < row_data[i].size(); j++) {
@@ -1678,6 +1641,8 @@ public:
       float projectionToRow =
           (z_top - apexZ0) * (y - env.radii[0]) / (r_max - env.radii[0]) +
           apexZ0;
+
+      exit(0);
 
       // print z_top, apexZ0, y, radii[0], r_max, radii[0], apexZ0
       // std::cout << "z_top: " << z_top << " apexZ0: " << apexZ0 << " y: " << y

@@ -27,3 +27,4 @@
 // constants
 #define NUM_POINTS_IN_SUPERPOINT 16
 #define NUM_LAYERS 5
+#define PPL 16
