@@ -922,9 +922,10 @@ public:
              (projectionOfCornerToBeam < env.beam_axis_lim)) {
         nPatchesInColumn++;
 
-        // cout << "nPatchesInColumn: " << nPatchesInColumn << endl;
 
         // TODO: DEBUG PRINTING NOT TRANSLATED
+        
+        // cout << "nPatchesInColumn: " << nPatchesInColumn << endl;
         // cout << apexZ0 << " " << ppl << " " << z_top_max << " " << leftRight
         //      << endl;
 

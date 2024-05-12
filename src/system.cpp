@@ -9,6 +9,15 @@
 
 using namespace std;
 
+void _shadowquilt_column_loop_get_cond(
+    float_value_t &c_corner, float_value_t trapezoid_edges[NUM_LAYERS],
+    float_value_t &projectionOfCornerToBeam, float_value_t &beam_axis_lim,
+    bool &cond) {
+  bool cond_and_0 = c_corner > -1 * trapezoid_edges[NUM_LAYERS - 1];
+  bool cond_and_1 = projectionOfCornerToBeam < beam_axis_lim;
+  cond = cond_and_0 && cond_and_1;
+}
+
 void _shadowquilt_main_loop(point_t points[NUM_LAYERS][MAX_NUM_POINTS],
                             index_t num_points[NUM_LAYERS], z_value_t &apexZ0,
                             CONST_ARRAY_ARGS, CONST_VALUE_ARGS,
@@ -17,8 +26,11 @@ void _shadowquilt_main_loop(point_t points[NUM_LAYERS][MAX_NUM_POINTS],
   z_value_t z_top_min = -1 * top_layer_lim;
   float_value_t complementary_apexZ0 = 0x0;
   float_value_t c_corner = 1ULL << 11 - 1;
-  int_value_t first_row_count = 0x0;
+  int_value_t first_row_count = 0;
   float_value_t z_top_max = top_layer_lim + boundaryPoint_offset;
+  int_value_t nPatchesInColumn = 0;
+  float_value_t projectionOfCornerToBeam = 0;
+  bool cond_shadowquilt_column_loop = false;
 
   DEBUG_PRINT_ALL(cout << "apexZ0: " << apexZ0 << endl;
                   cout << "z_top_min: " << z_top_min << endl;
@@ -28,6 +40,25 @@ void _shadowquilt_main_loop(point_t points[NUM_LAYERS][MAX_NUM_POINTS],
                   cout << "c_corner: " << c_corner << endl;
                   cout << "z_top_max: " << z_top_max << endl;
                   cout << "top_layer_lim: " << top_layer_lim << endl;)
+
+  if (num_patches > 0) {
+    // not implemented
+  }
+
+  // calculate initial loop condition
+  _shadowquilt_column_loop_get_cond(c_corner, trapezoid_edges,
+                                    projectionOfCornerToBeam, beam_axis_lim,
+                                    cond_shadowquilt_column_loop);
+_shadowquilt_column_loop:
+  while (cond_shadowquilt_column_loop) {
+    nPatchesInColumn++;
+    
+
+    // get condition for next iteration
+    _shadowquilt_column_loop_get_cond(c_corner, trapezoid_edges,
+                                      projectionOfCornerToBeam, beam_axis_lim,
+                                      cond_shadowquilt_column_loop);
+  }
 }
 
 void makePatches_ShadowQuilt_fromEdges(
