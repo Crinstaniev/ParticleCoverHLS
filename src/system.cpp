@@ -9,25 +9,30 @@
 
 using namespace std;
 
-void _shadowquilt_column_loop_get_cond(
-    float_value_t &c_corner, float_value_t trapezoid_edges[NUM_LAYERS],
-    float_value_t &projectionOfCornerToBeam, float_value_t &beam_axis_lim,
-    bool &cond) {
-  bool cond_and_0 = c_corner > -1 * trapezoid_edges[NUM_LAYERS - 1];
-  bool cond_and_1 = projectionOfCornerToBeam < beam_axis_lim;
+void makePatch_alignedToLine(z_value_t &apexZ0, z_value_t z_top_max,
+                             bool leftRight, PATCH_BUFFER_ARGS) {
+  // variable declarations
+
+  return;
+}
+
+void _shadowquilt_column_loop_get_cond(float_value_t &c_corner,
+                                       float_value_t &projectionOfCornerToBeam,
+                                       bool &cond) {
+  bool cond_and_0 = (float)c_corner > -1 * get_trapezoid_edges(NUM_LAYERS - 1);
+  bool cond_and_1 = projectionOfCornerToBeam < BEAM_AXIS_LIM;
   cond = cond_and_0 && cond_and_1;
 }
 
 void _shadowquilt_main_loop(point_t points[NUM_LAYERS][MAX_NUM_POINTS],
                             index_t num_points[NUM_LAYERS], z_value_t &apexZ0,
-                            CONST_ARRAY_ARGS, CONST_VALUE_ARGS,
                             PATCH_BUFFER_ARGS) {
   // variable declarations
-  z_value_t z_top_min = -1 * top_layer_lim;
+  z_value_t z_top_min = -1 * TOP_LAYER_LIM;
   float_value_t complementary_apexZ0 = 0x0;
   float_value_t c_corner = 1ULL << 11 - 1;
   int_value_t first_row_count = 0;
-  float_value_t z_top_max = top_layer_lim + boundaryPoint_offset;
+  float_value_t z_top_max = TOP_LAYER_LIM + BOUNDARYPOINT_OFFSET;
   int_value_t nPatchesInColumn = 0;
   float_value_t projectionOfCornerToBeam = 0;
   bool cond_shadowquilt_column_loop = false;
@@ -46,38 +51,38 @@ void _shadowquilt_main_loop(point_t points[NUM_LAYERS][MAX_NUM_POINTS],
   }
 
   // calculate initial loop condition
-  _shadowquilt_column_loop_get_cond(c_corner, trapezoid_edges,
-                                    projectionOfCornerToBeam, beam_axis_lim,
+  _shadowquilt_column_loop_get_cond(c_corner, projectionOfCornerToBeam,
                                     cond_shadowquilt_column_loop);
 _shadowquilt_column_loop:
   while (cond_shadowquilt_column_loop) {
     nPatchesInColumn++;
-    
+
+    makePatch_alignedToLine(apexZ0, z_top_max, false, patch_buffer,
+                            latest_patch_index, num_patches, patch_stream);
+
+    return;
 
     // get condition for next iteration
-    _shadowquilt_column_loop_get_cond(c_corner, trapezoid_edges,
-                                      projectionOfCornerToBeam, beam_axis_lim,
+    _shadowquilt_column_loop_get_cond(c_corner, projectionOfCornerToBeam,
                                       cond_shadowquilt_column_loop);
   }
 }
 
 void makePatches_ShadowQuilt_fromEdges(
     point_t points[NUM_LAYERS][MAX_NUM_POINTS], index_t num_points[NUM_LAYERS],
-    CONST_ARRAY_ARGS, CONST_VALUE_ARGS, PATCH_BUFFER_ARGS) {
+    PATCH_BUFFER_ARGS) {
   // variable declarations
   bool fix42 = true;
-  z_value_t apexZ0 = trapezoid_edges[0];
+  z_value_t apexZ0 = get_trapezoid_edges(0);
   float_value_t saved_apexZ0;
   float_value_t original_apexZ0 = apexZ0;
 
   int_value_t first_row_count = 0;
 
 makepatch_main_loop:
-  while (apexZ0 > -1 * trapezoid_edges[0]) {
+  while ((float)apexZ0 > -1 * get_trapezoid_edges(0)) {
 #pragma HLS PIPELINE II = 1
-    _shadowquilt_main_loop(points, num_points, apexZ0, radii, trapezoid_edges,
-                           parallelogram_slopes, radii_leverArm, top_layer_lim,
-                           beam_axis_lim, boundaryPoint_offset, patch_buffer,
+    _shadowquilt_main_loop(points, num_points, apexZ0, patch_buffer,
                            latest_patch_index, num_patches, patch_stream);
 
     return;
@@ -85,15 +90,8 @@ makepatch_main_loop:
 }
 
 void system_top(point_t points[NUM_LAYERS][MAX_NUM_POINTS],
-                index_t num_points[NUM_LAYERS], CONST_ARRAY_ARGS,
-                CONST_VALUE_ARGS, hls::stream<PointArr5x16_t> &patch_stream) {
-  // tmp fix: trapezoid_edges adjustment
-  trapezoid_edges[0] -= 10;
-  trapezoid_edges[1] -= 10;
-  trapezoid_edges[2] -= 30;
-  trapezoid_edges[3] -= 40;
-  trapezoid_edges[4] -= 50;
-
+                index_t num_points[NUM_LAYERS],
+                hls::stream<PointArr5x16_t> &patch_stream) {
   // variable declarations
 
   // patch buffer: circular buffer, three patches
@@ -103,10 +101,9 @@ void system_top(point_t points[NUM_LAYERS][MAX_NUM_POINTS],
   index_t latest_patch_index = 0;
   index_t num_patches = 0;
 
-  makePatches_ShadowQuilt_fromEdges(
-      points, num_points, trapezoid_edges, parallelogram_slopes, radii,
-      radii_leverArm, top_layer_lim, beam_axis_lim, boundaryPoint_offset,
-      patch_buffer, latest_patch_index, num_patches, patch_stream);
+  makePatches_ShadowQuilt_fromEdges(points, num_points, patch_buffer,
+                                    latest_patch_index, num_patches,
+                                    patch_stream);
 
   return;
 }

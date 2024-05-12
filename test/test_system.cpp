@@ -36,9 +36,7 @@ int main() {
   hls::stream<PointArr5x16_t> patch_stream;
 
   // pass to system_top
-  system_top(points, num_points, trapezoid_edges, parallelogram_slopes, radii,
-             radii_leverArm, top_layer_lim, beam_axis_lim, boundaryPoint_offset,
-             patch_stream);
+  system_top(points, num_points, patch_stream);
 
   return 0;
 }

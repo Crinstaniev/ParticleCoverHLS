@@ -922,18 +922,6 @@ public:
              (projectionOfCornerToBeam < env.beam_axis_lim)) {
         nPatchesInColumn++;
 
-
-        // TODO: DEBUG PRINTING NOT TRANSLATED
-        
-        // cout << "nPatchesInColumn: " << nPatchesInColumn << endl;
-        // cout << apexZ0 << " " << ppl << " " << z_top_max << " " << leftRight
-        //      << endl;
-
-        // std::cout << "apexZ0: " << apexZ0 << " z_top_max: " << z_top_max
-        //         << " z_top_min: " << z_top_min << std::endl;
-        // cout << "apexZ0: " << apexZ0 << " z_top_max: " << z_top_max
-        //      << " z_top_min: " << z_top_min << endl;
-
         makePatch_alignedToLine(apexZ0, z_top_max, ppl = ppl, false);
 
         // cout << "top layer from "
@@ -1638,6 +1626,41 @@ public:
 
     // std::cout << "apex_z0 in makePatch_alignedToLine: " << apexZ0 <<
     // std::endl;
+
+    // print top_layer_lim
+    cout << "top_layer_lim: " << env.top_layer_lim << endl;
+    cout << "beam_axis_lim: " << env.beam_axis_lim << endl;
+    cout << "boundaryPoint_offset: " << env.boundaryPoint_offset << endl;
+
+    // print trapezoid_edges
+    cout << "trapezoid_edges: ";
+    for (int i = 0; i < env.trapezoid_edges.size(); i++) {
+      cout << env.trapezoid_edges[i] << " ";
+    }
+    cout << endl;
+
+    // print parallelogram_slopes
+    cout << "parallelogram_slopes: ";
+    for (int i = 0; i < env.parallelogramSlopes.size(); i++) {
+      cout << env.parallelogramSlopes[i] << " ";
+    }
+    cout << endl;
+
+    // print radii
+    cout << "radii: ";
+    for (int i = 0; i < env.radii.size(); i++) {
+      cout << env.radii[i] << " ";
+    }
+    cout << endl;
+
+    // print radii_leverArm
+    cout << "radii_leverArm: ";
+    for (int i = 0; i < env.radii_leverArm.size(); i++) {
+      cout << env.radii_leverArm[i] << " ";
+    }
+    cout << endl;
+
+    exit(0);
 
     vector<vector<Point>> row_data = data->array;
 
