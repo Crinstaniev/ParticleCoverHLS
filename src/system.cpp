@@ -5,23 +5,76 @@
 
 #include <hls_stream.h>
 
+#include <cmath>
 #include <iostream>
 
 using namespace std;
 
-void alignedtoline_per_layer_loop(z_value_t &apexZ0, z_value_t z_top_max,
+void _find_starting_index_and_value(int i,
+                                    point_t points[NUM_LAYERS][MAX_NUM_POINTS],
+                                    index_t num_points[NUM_LAYERS],
+                                    float_value_t &projectionToRow,
+                                    int_value_t &start_index,
+                                    float_value_t &start_value) {
+loop_find_start_index_and_value:
+  for (int j = 0; j < num_points[i]; j++) {
+    z_value_t rowlist_j_z = point_get_z(points[i][j]);
+
+    cout << "rowlist[" << j << "]: " << rowlist_j_z << endl;
+
+    bool cond =
+        (abs((float)(rowlist_j_z - projectionToRow)) < abs((float)start_value));
+    if (cond) {
+      start_index = j;
+      start_value = rowlist_j_z - projectionToRow;
+    }
+  }
+
+  exit(0);
+}
+
+void _calculate_projectionToRow(float_value_t &projectionToRow, z_value_t z_top,
+                                z_value_t apexZ0, float_value_t y,
+                                float_value_t r_max) {
+  projectionToRow =
+      (z_top - apexZ0) * (y - get_radii(0)) / (r_max - get_radii(0)) + apexZ0;
+}
+
+void alignedtoline_per_layer_loop(z_value_t &apexZ0, z_value_t z_top,
                                   bool leftRight,
                                   point_t points[NUM_LAYERS][MAX_NUM_POINTS],
                                   index_t num_points[NUM_LAYERS],
                                   PATCH_BUFFER_ARGS, int i) {
-  // variable declarations
   float_value_t y = get_radii(i);
   float_value_t r_max = get_radii(NUM_LAYERS - 1);
   float_value_t projectionToRow;
+
+  // variables for finding starting index and value
+  int_value_t start_index = 0;
+  float_value_t start_value = 1000000;
+
+  _calculate_projectionToRow(projectionToRow, z_top, apexZ0, y, r_max);
+
+  _find_starting_index_and_value(i, points, num_points, projectionToRow,
+                                 start_index, start_value);
+
+  // cout << "num_points[i]: " << num_points[i] << endl;
+  // cout << "projectionToRow: " << projectionToRow << endl;
+  // cout << "start_index: " << start_index << endl;
+  // cout << "start_value: " << start_value << endl;
+
+  // exit(0);
+
+  // cout << "start_index: " << start_index << endl;
+
+  // cout << "start_value: " << start_value << endl;
+
+  // exit(0);
+
+  return;
 }
 
-void makePatch_alignedToLine(z_value_t &apexZ0, z_value_t z_top_max,
-                             bool leftRight,
+void makePatch_alignedToLine(z_value_t &apexZ0, z_value_t z_top, bool leftRight,
                              point_t points[NUM_LAYERS][MAX_NUM_POINTS],
                              index_t num_points[NUM_LAYERS],
                              PATCH_BUFFER_ARGS) {
@@ -31,9 +84,9 @@ void makePatch_alignedToLine(z_value_t &apexZ0, z_value_t z_top_max,
   float_value_t alignmentAccuracy = 0.00001;
 
 alignedtoline_layer_loop:
+  for (int i = 0; i < NUM_LAYERS; i++) {
 #pragma HLS UNROLL
-  for (size_t i = 0; i < NUM_LAYERS; i++) {
-    alignedtoline_per_layer_loop(apexZ0, z_top_max, false, points, num_points,
+    alignedtoline_per_layer_loop(apexZ0, z_top, false, points, num_points,
                                  patch_buffer, latest_patch_index, num_patches,
                                  patch_stream, i);
   }
@@ -79,6 +132,7 @@ void _shadowquilt_main_loop(point_t points[NUM_LAYERS][MAX_NUM_POINTS],
   _shadowquilt_column_loop_get_cond(c_corner, projectionOfCornerToBeam,
                                     cond_shadowquilt_column_loop);
 _shadowquilt_column_loop:
+#pragma HLS PIPELINE II = 1
   while (cond_shadowquilt_column_loop) {
     nPatchesInColumn++;
 
@@ -106,8 +160,8 @@ void makePatches_ShadowQuilt_fromEdges(
   int_value_t first_row_count = 0;
 
 makepatch_main_loop:
-  while ((float)apexZ0 > -1 * get_trapezoid_edges(0)) {
 #pragma HLS PIPELINE II = 1
+  while ((float)apexZ0 > -1 * get_trapezoid_edges(0)) {
     _shadowquilt_main_loop(points, num_points, apexZ0, patch_buffer,
                            latest_patch_index, num_patches, patch_stream);
 

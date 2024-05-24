@@ -30,6 +30,35 @@ int main() {
             parallelogram_slopes, radii, radii_leverArm, top_layer_lim,
             beam_axis_lim, boundaryPoint_offset);
 
+  for (int i = 0; i < NUM_LAYERS; i++) {
+    bool foundIdentical = false;
+    bool firstTime = true;
+
+    while (foundIdentical || firstTime) {
+      foundIdentical = false;
+      for (int x = 0; x < num_points[i] - 1; x++) {
+        z_value_t z_x0 = point_get_z(points[i][x]);
+        z_value_t z_x1 = point_get_z(points[i][x + 1]);
+        bool cond = ((float)z_x0) == ((float)z_x1);
+        if (cond) {
+          // update point[i][x+1]
+          z_value_t original_z = point_get_z(points[i][x + 1]);
+          radius_value_t original_r = point_get_radius(points[i][x + 1]);
+          phi_value_t original_phi = point_get_phi(points[i][x + 1]);
+          original_z = original_z + (z_value_t)0.00001;
+          points[i][x + 1] = point_create(original_z, original_r, original_phi);
+
+          foundIdentical = true;
+        }
+      }
+
+      firstTime = false;
+      if (foundIdentical) {
+        // sort according to z value
+      }
+    }
+  }
+
   top_layer_lim = 50.0;
 
   // stream to hold the generated patches: point_t, size = 5 * 16

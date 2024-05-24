@@ -65,26 +65,26 @@ typedef struct {
 #define BOUNDARYPOINT_OFFSET 0
 
 // const array values
-constexpr float get_trapezoid_edges(size_t idx) {
+constexpr float get_trapezoid_edges(int idx) {
   float trapezoid_edges[NUM_LAYERS] = {22.0001, 29.0001, 36.0001, 43.0001,
                                        50.0001};
 
   return trapezoid_edges[idx];
 }
 
-constexpr float get_parallelogram_slopes(size_t idx) {
+constexpr float get_parallelogram_slopes(int idx) {
   float parallelogram_slopes[NUM_LAYERS - 1] = {0, -(float)(1.0 / 3.0), -1, -3};
 
   return parallelogram_slopes[idx];
 }
 
-constexpr int get_radii(size_t idx) {
+constexpr int get_radii(int idx) {
   int radii[NUM_LAYERS] = {5, 10, 15, 20, 25};
 
   return radii[idx];
 }
 
-constexpr float get_radii_leverArm(size_t idx) {
+constexpr float get_radii_leverArm(int idx) {
   float radii_leverArm[NUM_LAYERS - 1] = {1, 1.0 + 1.0 / 3.0, 2, 4};
 
   return radii_leverArm[idx];

@@ -6,20 +6,22 @@
 #include <string>
 #include <vector>
 
-#define CONFIG_DEBUG_PRINT_ALL 0
-#define CONFIG_IS_SYNTHESIS 0
+#include "config.h"
 
-#if CONFIG_IS_SYNTHESIS == 0
-#define DEBUG(x) x
-#else
-#define DEBUG(x)
-#endif // IS_SYNTHESIS
+// #define CONFIG_DEBUG_PRINT_ALL 0
+// #define CONFIG_IS_SYNTHESIS 0
 
-#if CONFIG_DEBUG_PRINT_ALL == 1
-#define DEBUG_PRINT_ALL(x) x
-#else
-#define DEBUG_PRINT_ALL(x)
-#endif // DEBUG_PRINT_ALL
+// #if CONFIG_IS_SYNTHESIS == 0
+// #define DEBUG(x) x
+// #else
+// #define DEBUG(x)
+// #endif // IS_SYNTHESIS
+
+// #if CONFIG_DEBUG_PRINT_ALL == 1
+// #define DEBUG_PRINT_ALL(x) x
+// #else
+// #define DEBUG_PRINT_ALL(x)
+// #endif // DEBUG_PRINT_ALL
 
 using namespace std;
 
@@ -1351,9 +1353,14 @@ void read_file(string file_path, point_t points[NUM_LAYERS][MAX_NUM_POINTS],
 
       point_t point = point_create(z_value, radius, phi);
 
+      z_value_t z_retrieved = point_get_z(point);
+      cout << "z_retrieved: " << z_retrieved << endl;
+
       points[i][j] = point;
       num_points[i]++;
     }
+
+    // exit(0);
   }
 
   // copy radii and trapezoid_edges

@@ -1642,21 +1642,7 @@ public:
           (z_top - apexZ0) * (y - env.radii[0]) / (r_max - env.radii[0]) +
           apexZ0;
 
-      exit(0);
-
-      // print z_top, apexZ0, y, radii[0], r_max, radii[0], apexZ0
-      // std::cout << "z_top: " << z_top << " apexZ0: " << apexZ0 << " y: " << y
-      //           << " radii[0]: " << env.radii[0] << " r_max: " << r_max
-      //           << " radii[0]: " << env.radii[0] << " apexZ0: " << apexZ0
-      //           << " projectionToRow: " << projectionToRow << std::endl;
-
-      // std::cout << "Z_TOP: " << z_top << std::endl;
-      // std::cout << "APEX_Z0: " << apexZ0 << std::endl;
-      // std::cout << "Y: " << y << std::endl;
-      // std::cout << "radii[0]: " << env.radii[0] << std::endl;
-      // std::cout << "r_max: " << r_max << std::endl;
-      // cout << "projectionToRow: " << projectionToRow << endl;
-
+      // not translated yet
       DEBUG_PRINT_ALL(if (this->n_patches == 1) {
         // print row_list
         DEBUG_PRINT_ALL(for (int j = 0; j < row_list.size(); j++) {
@@ -1675,8 +1661,7 @@ public:
 
       for (int j = 0; j < row_list.size(); j++) {
 
-        // std::cout << "current row_list[" << j << "]: " << row_list[j]
-        //           << " projectionToRow: " << projectionToRow << std::endl;
+        cout << "rowlist[" << j << "]: " << row_list[j] << endl;
 
         if (abs(row_list[j] - projectionToRow) < abs(start_value)) {
           start_index = j;
@@ -1684,11 +1669,12 @@ public:
         }
       }
 
-      // cout << "num_points[" << i << "]: " << row_list.size() << endl;
+      cout << "num_points[i]: " << row_list.size() << endl;
+      cout << "projectionToRow: " << projectionToRow << endl;
+      cout << "start_index: " << start_index << endl;
+      cout << "start_value: " << start_value << endl;
 
-      // cout << "start_index: " << start_index << " start_value: " <<
-      // start_value
-      //      << endl;
+      exit(0);
 
       int left_bound = 0;
       float lbVal = INT_MAX;
