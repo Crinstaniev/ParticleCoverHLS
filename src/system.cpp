@@ -10,9 +10,28 @@
 
 using namespace std;
 
-void _find_starting_index_and_value(
+float_value_t _cal_projection_to_row(z_value_t z_top, z_value_t apexZ0,
+                                     float_value_t y, float_value_t r_max) {
+  float_value_t projectionToRow = 0;
+  projectionToRow =
+      (z_top - apexZ0) * (y - get_radii(0)) / (r_max - get_radii(0)) + apexZ0;
+  return projectionToRow;
+}
 
-) {}
+void _find_starting_index_and_value(index_t num_points[NUM_LAYERS],
+                                    point_t points[NUM_LAYERS][MAX_NUM_POINTS],
+                                    float_value_t projectionToRow,
+                                    int_value_t &start_index,
+                                    float_value_t &start_value, int i) {
+  for (int j = 0; j < num_points[i]; j++) {
+    z_value_t row_list_j = point_get_z(points[i][j]);
+    if (abs(row_list_j.to_float() - projectionToRow.to_float()) <
+        abs(start_value.to_float())) {
+      start_index = j;
+      start_value = row_list_j - projectionToRow;
+    }
+  }
+}
 
 void alignedtoline_per_layer_loop(z_value_t &apexZ0, z_value_t z_top_max,
                                   bool leftRight,
@@ -21,11 +40,24 @@ void alignedtoline_per_layer_loop(z_value_t &apexZ0, z_value_t z_top_max,
                                   PATCH_BUFFER_ARGS, int i) {
   float_value_t y = get_radii(i);
   float_value_t r_max = get_radii(NUM_LAYERS - 1);
-  float_value_t projectionToRow;
+  float_value_t projectionToRow =
+      _cal_projection_to_row(z_top_max, apexZ0, y, r_max);
 
   // variables for finding starting index and value
   int_value_t start_index = 0;
   float_value_t start_value = 1000000;
+
+  // finding starting index and value
+  _find_starting_index_and_value(num_points, points, projectionToRow,
+                                 start_index, start_value, i);
+
+  // print start_index and start_value
+  cout << "num_points[i]: " << num_points[i] << endl;
+  cout << "projectionToRow: " << projectionToRow << endl;
+  cout << "start_index: " << start_index << endl;
+  cout << "start_value: " << start_value << endl;
+
+  exit(0);
 
   return;
 }

@@ -1660,9 +1660,6 @@ public:
       float start_value = 1000000;
 
       for (int j = 0; j < row_list.size(); j++) {
-
-        cout << "rowlist[" << j << "]: " << row_list[j] << endl;
-
         if (abs(row_list[j] - projectionToRow) < abs(start_value)) {
           start_index = j;
           start_value = row_list[j] - projectionToRow;

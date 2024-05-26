@@ -1279,6 +1279,12 @@ public:
       wedgeCover cover(env, data);
 
       // port data out
+      // empty ds_out
+      for (int i = 0; i < ds_out.array.size(); i++) {
+        // empty each layer
+        ds_out.array[i].clear();
+      }
+
       // copy data to ds_out
       for (int i = 0; i < data.array.size(); i++) {
         for (int j = 0; j < data.array[i].size(); j++) {
