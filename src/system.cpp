@@ -10,37 +10,11 @@
 
 using namespace std;
 
-void _find_starting_index_and_value(int i,
-                                    point_t points[NUM_LAYERS][MAX_NUM_POINTS],
-                                    index_t num_points[NUM_LAYERS],
-                                    float_value_t &projectionToRow,
-                                    int_value_t &start_index,
-                                    float_value_t &start_value) {
-loop_find_start_index_and_value:
-  for (int j = 0; j < num_points[i]; j++) {
-    z_value_t rowlist_j_z = point_get_z(points[i][j]);
+void _find_starting_index_and_value(
 
-    cout << "rowlist[" << j << "]: " << rowlist_j_z << endl;
+) {}
 
-    bool cond =
-        (abs((float)(rowlist_j_z - projectionToRow)) < abs((float)start_value));
-    if (cond) {
-      start_index = j;
-      start_value = rowlist_j_z - projectionToRow;
-    }
-  }
-
-  exit(0);
-}
-
-void _calculate_projectionToRow(float_value_t &projectionToRow, z_value_t z_top,
-                                z_value_t apexZ0, float_value_t y,
-                                float_value_t r_max) {
-  projectionToRow =
-      (z_top - apexZ0) * (y - get_radii(0)) / (r_max - get_radii(0)) + apexZ0;
-}
-
-void alignedtoline_per_layer_loop(z_value_t &apexZ0, z_value_t z_top,
+void alignedtoline_per_layer_loop(z_value_t &apexZ0, z_value_t z_top_max,
                                   bool leftRight,
                                   point_t points[NUM_LAYERS][MAX_NUM_POINTS],
                                   index_t num_points[NUM_LAYERS],
@@ -53,28 +27,11 @@ void alignedtoline_per_layer_loop(z_value_t &apexZ0, z_value_t z_top,
   int_value_t start_index = 0;
   float_value_t start_value = 1000000;
 
-  _calculate_projectionToRow(projectionToRow, z_top, apexZ0, y, r_max);
-
-  _find_starting_index_and_value(i, points, num_points, projectionToRow,
-                                 start_index, start_value);
-
-  // cout << "num_points[i]: " << num_points[i] << endl;
-  // cout << "projectionToRow: " << projectionToRow << endl;
-  // cout << "start_index: " << start_index << endl;
-  // cout << "start_value: " << start_value << endl;
-
-  // exit(0);
-
-  // cout << "start_index: " << start_index << endl;
-
-  // cout << "start_value: " << start_value << endl;
-
-  // exit(0);
-
   return;
 }
 
-void makePatch_alignedToLine(z_value_t &apexZ0, z_value_t z_top, bool leftRight,
+void makePatch_alignedToLine(z_value_t &apexZ0, z_value_t z_top_max,
+                             bool leftRight,
                              point_t points[NUM_LAYERS][MAX_NUM_POINTS],
                              index_t num_points[NUM_LAYERS],
                              PATCH_BUFFER_ARGS) {
@@ -86,7 +43,7 @@ void makePatch_alignedToLine(z_value_t &apexZ0, z_value_t z_top, bool leftRight,
 alignedtoline_layer_loop:
   for (int i = 0; i < NUM_LAYERS; i++) {
 #pragma HLS UNROLL
-    alignedtoline_per_layer_loop(apexZ0, z_top, false, points, num_points,
+    alignedtoline_per_layer_loop(apexZ0, z_top_max, false, points, num_points,
                                  patch_buffer, latest_patch_index, num_patches,
                                  patch_stream, i);
   }

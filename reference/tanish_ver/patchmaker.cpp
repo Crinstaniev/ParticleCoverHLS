@@ -2086,6 +2086,7 @@ int main() {
   vector<int> wedgesToTest;
   wedgesToTest.push_back(0);
   wedgesToTest.push_back(1);
+
   test.wedge_test("makePatches_ShadowQuilt_fromEdges", 0, 0.5, 16, 15.0,
                   wedgesToTest, 1000, "v3", 50, 15.0, false, false, "Analytic",
                   false, true, false, 6, 3);

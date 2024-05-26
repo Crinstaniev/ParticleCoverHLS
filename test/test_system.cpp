@@ -6,6 +6,16 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
+
+// point comparison function
+bool compare_points(point_t p1, point_t p2) {
+  z_value_t z1 = point_get_z(p1);
+  z_value_t z2 = point_get_z(p2);
+
+  return (float)z1 < (float)z2;
+}
+
 int main() {
 // main function for testing
 #if CONFIG_IS_SYNTHESIS == false
@@ -54,7 +64,8 @@ int main() {
 
       firstTime = false;
       if (foundIdentical) {
-        // sort according to z value
+        // sort array points[i] by z value
+        std::sort(points[i], points[i] + num_points[i], compare_points);
       }
     }
   }

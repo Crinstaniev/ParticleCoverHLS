@@ -1186,17 +1186,15 @@ public:
 
 class Tester {
 public:
-  void wedge_test(string lining = "makePatches_Projective_center",
-                  float apexZ0 = 0, float z0_spacing = 0.5, int ppl = 16,
-                  float z0_luminousRegion = 15.0,
-                  vector<int> wedges = vector<int>(), int lines = 1000,
-                  string v = "v3", float top_layer_cutoff = 50.0,
-                  float accept_cutoff = 10.0, bool leftRightAlign = true,
-                  bool uniform_N_points = false,
-                  string acceptance_method = "Analytic",
-                  bool show_acceptance_of_cover = false, bool movie = false,
-                  bool savefig = false, int figSizeScale = 6,
-                  int movieFigSizeScale = 3) {
+  void wedge_test(
+      DataSet &ds_out, string lining = "makePatches_Projective_center",
+      float apexZ0 = 0, float z0_spacing = 0.5, int ppl = 16,
+      float z0_luminousRegion = 15.0, vector<int> wedges = vector<int>(),
+      int lines = 1000, string v = "v3", float top_layer_cutoff = 50.0,
+      float accept_cutoff = 10.0, bool leftRightAlign = true,
+      bool uniform_N_points = false, string acceptance_method = "Analytic",
+      bool show_acceptance_of_cover = false, bool movie = false,
+      bool savefig = false, int figSizeScale = 6, int movieFigSizeScale = 3) {
     if (wedges.empty()) {
       wedges.push_back(0);
       wedges.push_back(128);
@@ -1280,6 +1278,16 @@ public:
 
       wedgeCover cover(env, data);
 
+      // port data out
+      // copy data to ds_out
+      for (int i = 0; i < data.array.size(); i++) {
+        for (int j = 0; j < data.array[i].size(); j++) {
+          ds_out.array[i].push_back(data.array[i][j]);
+        }
+      }
+
+      return;
+
       cover.solve(lining, apexZ0, ppl, 100, leftRightAlign, false);
 
       num_covers.push_back(cover.n_patches);
@@ -1342,6 +1350,16 @@ void read_file(string file_path, point_t points[NUM_LAYERS][MAX_NUM_POINTS],
   ds.importData(_points);
   ds.addBoundaryPoint();
 
+  wedgeCover cov = wedgeCover(env, ds);
+  Tester test;
+  vector<int> wedgesToTest;
+  wedgesToTest.push_back(0);
+  wedgesToTest.push_back(1);
+
+  test.wedge_test(ds, "makePatches_ShadowQuilt_fromEdges", 0, 0.5, 16, 15.0,
+                  wedgesToTest, 1000, "v3", 50, 15.0, false, false, "Analytic",
+                  false, true, false, 6, 3);
+
   // extract points from ds
   vector<vector<Point>> row_data = ds.array;
 
@@ -1353,14 +1371,9 @@ void read_file(string file_path, point_t points[NUM_LAYERS][MAX_NUM_POINTS],
 
       point_t point = point_create(z_value, radius, phi);
 
-      z_value_t z_retrieved = point_get_z(point);
-      cout << "z_retrieved: " << z_retrieved << endl;
-
       points[i][j] = point;
       num_points[i]++;
     }
-
-    // exit(0);
   }
 
   // copy radii and trapezoid_edges
