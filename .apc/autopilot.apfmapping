@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
   <source>
-    <originFiles name="file_reader.cpp" path="C:\Projects\ParticleCoverHLS\src\file_reader.cpp"/>
-    <originFiles name="system.cpp" path="C:\Projects\ParticleCoverHLS\src\system.cpp"/>
     <originFiles name="types.cpp" path="C:\Projects\ParticleCoverHLS\src\types.cpp"/>
+    <originFiles name="system.cpp" path="C:\Projects\ParticleCoverHLS\src\system.cpp"/>
+    <originFiles name="file_reader.cpp" path="C:\Projects\ParticleCoverHLS\src\file_reader.cpp"/>
   </source>
   <testbench>
     <originFiles name="test_system.cpp" path="C:\Projects\ParticleCoverHLS\test\test_system.cpp"/>

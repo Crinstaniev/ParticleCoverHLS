@@ -1666,12 +1666,10 @@ public:
         }
       }
 
-      cout << "num_points[i]: " << row_list.size() << endl;
-      cout << "projectionToRow: " << projectionToRow << endl;
-      cout << "start_index: " << start_index << endl;
-      cout << "start_value: " << start_value << endl;
-
-      exit(0);
+      DEBUG_PRINT_ALL(cout << "num_points[i]: " << row_list.size() << endl;
+                      cout << "projectionToRow: " << projectionToRow << endl;
+                      cout << "start_index: " << start_index << endl;
+                      cout << "start_value: " << start_value << endl;)
 
       int left_bound = 0;
       float lbVal = INT_MAX;
@@ -1694,10 +1692,10 @@ public:
         }
       }
 
-      // std::cout << "left_bound: " << left_bound << std::endl;
-      // std::cout << "right_bound: " << right_bound << std::endl;
-      // std::cout << "lbVal: " << lbVal << std::endl;
-      // std::cout << "rbVal: " << rbVal << std::endl;
+      DEBUG_PRINT_ALL(std::cout << "left_bound: " << left_bound << std::endl;
+                      std::cout << "right_bound: " << right_bound << std::endl;
+                      std::cout << "lbVal: " << lbVal << std::endl;
+                      std::cout << "rbVal: " << rbVal << std::endl;)
 
       DEBUG_PRINT_ALL(if (this->n_patches == 1) {
         cout << "num_points[" << i << "]: " << row_list.size() << endl;
@@ -1741,11 +1739,13 @@ public:
         }
       } else {
         if (start_index != (row_list.size() - 1)) {
+
           DEBUG_PRINT_ALL(cout << "row " + to_string(i + 1) + " start_index " +
                                       to_string(start_index) + " start_value " +
                                       to_string(start_value) +
                                       " z: " + to_string(row_list[start_index])
                                << endl;)
+
           if (start_value < -1 * alignmentAccuracy) {
             start_index += 1;
             start_value = row_list[start_index] - projectionToRow;
@@ -1758,9 +1758,9 @@ public:
           }
         }
 
-        // cout << "start_index: " << start_index << endl;
-        // cout << "left_bound: " << left_bound << endl;
-        // cout << "ppl: " << ppl << endl;
+        DEBUG_PRINT_ALL(cout << "start_index: " << start_index << endl;
+                        cout << "left_bound: " << left_bound << endl;
+                        cout << "ppl: " << ppl << endl;)
 
         if ((start_index - ppl + 1) < left_bound) {
           vector<Point> temp(row_data[i].begin() + left_bound,
@@ -1773,8 +1773,14 @@ public:
         } else {
           vector<Point> temp(row_data[i].begin() + start_index + 1 - ppl,
                              row_data[i].begin() + start_index + 1);
+
+          DEBUG_PRINT_ALL(for (int j = 0; j < temp.size(); j++) {
+            cout << "temp_superpoint[" << j << "]: " << temp[j].z << endl;
+          })
+
           init_patch.push_back(wedgeSuperPoint(temp));
 
+          exit(0);
           // cout << "max: " << wedgeSuperPoint(temp).max << endl;
           // cout << "min: " << wedgeSuperPoint(temp).min << endl;
 

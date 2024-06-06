@@ -78,5 +78,19 @@ int main() {
   // pass to system_top
   system_top(points, num_points, patch_stream);
 
+  // read all patches from the stream
+  while (!patch_stream.empty()) {
+    PointArr5x16_t patch = patch_stream.read();
+    for (int i = 0; i < 5; i++) {
+      for (int j = 0; j < 16; j++) {
+        point_t point = patch.points[i][j];
+        z_value_t z = point_get_z(point);
+        radius_value_t r = point_get_radius(point);
+        phi_value_t phi = point_get_phi(point);
+        cout << "z: " << z << ", r: " << r << ", phi: " << phi << endl;
+      }
+    }
+  }
+
   return 0;
 }

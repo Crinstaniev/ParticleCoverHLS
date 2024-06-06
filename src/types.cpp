@@ -15,10 +15,10 @@ point_t point_create(z_value_t z, radius_value_t radius, phi_value_t phi) {
   p.range(POINT_BITS_SIZE - 1, Z_VALUE_TOTAL_BITS + RADIUS_VALUE_TOTAL_BITS) =
       phi.range(PHI_VALUE_TOTAL_BITS - 1, 0);
 
-  // retrieve and compare with original values
-  z_value_t z2 = point_get_z(p);
-  radius_value_t radius2 = point_get_radius(p);
-  phi_value_t phi2 = point_get_phi(p);
+  // // retrieve and compare with original values
+  // z_value_t z2 = point_get_z(p);
+  // radius_value_t radius2 = point_get_radius(p);
+  // phi_value_t phi2 = point_get_phi(p);
 
   return p;
 }

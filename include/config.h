@@ -3,6 +3,7 @@
 // debug config
 #define CONFIG_DEBUG_PRINT_ALL false
 #define CONFIG_IS_SYNTHESIS false
+#define ARRAY_PARTITION false
 
 #ifdef DEBUG
 #define D(x) x
@@ -28,3 +29,5 @@
 #define NUM_POINTS_IN_SUPERPOINT 16
 #define NUM_LAYERS 5
 #define PPL 16
+#define ALIGNMENT_ACCURACY 0.00001
+

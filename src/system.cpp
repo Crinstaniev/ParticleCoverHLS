@@ -15,6 +15,7 @@ float_value_t _cal_projection_to_row(z_value_t z_top, z_value_t apexZ0,
   float_value_t projectionToRow = 0;
   projectionToRow =
       (z_top - apexZ0) * (y - get_radii(0)) / (r_max - get_radii(0)) + apexZ0;
+
   return projectionToRow;
 }
 
@@ -33,6 +34,61 @@ void _find_starting_index_and_value(index_t num_points[NUM_LAYERS],
   }
 }
 
+void _find_left_and_right_boundaries(index_t num_points[NUM_LAYERS],
+                                     point_t points[NUM_LAYERS][MAX_NUM_POINTS],
+                                     int_value_t &left_bound,
+                                     float_value_t &lbVal,
+                                     int_value_t &right_bound,
+                                     float_value_t &rbVal, int i) {
+  for (int j = 0; j < num_points[i]; j++) {
+    z_value_t row_list_j = point_get_z(points[i][j]);
+    float_value_t diff_0 =
+        std::abs(row_list_j.to_float() + get_trapezoid_edges(i) +
+                 BOUNDARYPOINT_OFFSET) -
+        lbVal.to_float();
+    float_value_t diff_1 =
+        std::abs(row_list_j.to_float() - get_trapezoid_edges(i) -
+                 BOUNDARYPOINT_OFFSET) -
+        rbVal.to_float();
+
+    if (diff_0 < 0) {
+      left_bound = j;
+      lbVal = std::abs(row_list_j.to_float() + get_trapezoid_edges(i) +
+                       BOUNDARYPOINT_OFFSET);
+    }
+
+    if (diff_1 < 0) {
+      right_bound = j;
+      rbVal = std::abs(row_list_j.to_float() - get_trapezoid_edges(i) -
+                       BOUNDARYPOINT_OFFSET);
+    }
+  }
+}
+
+void _find_boundaries_and_starting_index_and_value(
+    index_t num_points[NUM_LAYERS], point_t points[NUM_LAYERS][MAX_NUM_POINTS],
+    int_value_t &left_bound, float_value_t &lbVal, int_value_t &right_bound,
+    float_value_t &rbVal, float_value_t projectionToRow,
+    int_value_t &start_index, float_value_t &start_value, int i) {
+#pragma HLS DATAFLOW
+  // finding left and right boundaries
+  _find_left_and_right_boundaries(num_points, points, left_bound, lbVal,
+                                  right_bound, rbVal, i);
+
+  // finding starting index and value
+  _find_starting_index_and_value(num_points, points, projectionToRow,
+                                 start_index, start_value, i);
+
+  DEBUG_PRINT_ALL(std::cout << "left_bound: " << left_bound << std::endl;
+                  std::cout << "right_bound: " << right_bound << std::endl;
+                  std::cout << "lbVal: " << lbVal << std::endl;
+                  std::cout << "rbVal: " << rbVal << std::endl;
+                  std::cout << "start_index: " << start_index << std::endl;
+                  std::cout << "start_value: " << start_value << std::endl;)
+
+  return;
+}
+
 void alignedtoline_per_layer_loop(z_value_t &apexZ0, z_value_t z_top_max,
                                   bool leftRight,
                                   point_t points[NUM_LAYERS][MAX_NUM_POINTS],
@@ -45,19 +101,70 @@ void alignedtoline_per_layer_loop(z_value_t &apexZ0, z_value_t z_top_max,
 
   // variables for finding starting index and value
   int_value_t start_index = 0;
-  float_value_t start_value = 1000000;
+  float_value_t start_value = 1ULL << 10;
 
-  // finding starting index and value
-  _find_starting_index_and_value(num_points, points, projectionToRow,
-                                 start_index, start_value, i);
+  // variables of finding left and right boundary
+  int_value_t left_bound = 0;
+  float_value_t lbVal = 1ULL << 10;
+  int_value_t right_bound = 0;
+  float_value_t rbVal = 1ULL << 10;
 
-  // print start_index and start_value
-  cout << "num_points[i]: " << num_points[i] << endl;
-  cout << "projectionToRow: " << projectionToRow << endl;
-  cout << "start_index: " << start_index << endl;
-  cout << "start_value: " << start_value << endl;
+  _find_boundaries_and_starting_index_and_value(
+      num_points, points, left_bound, lbVal, right_bound, rbVal,
+      projectionToRow, start_index, start_value, i);
 
-  exit(0);
+  if (leftRight) {
+    // not implemented
+  } else {
+    if (start_index != num_points[i] - 1) {
+      DEBUG_PRINT_ALL(cout << "row " << i + 1 << " start_index " << start_index
+                           << " start_value " << start_value << " z: "
+                           << point_get_z(points[i][start_index]) << endl;)
+
+      if (start_value < -1 * ALIGNMENT_ACCURACY) {
+        // not triggered for the first patch, so not tested yet
+        z_value_t start_index_z = point_get_z(points[i][start_index]);
+        start_index += 1;
+        start_value = start_index_z - projectionToRow;
+
+        DEBUG_PRINT_ALL(cout << "row " << i + 1 << " start_index "
+                             << start_index << " start_value " << start_value
+                             << " z: " << start_index_z << endl;)
+      }
+    }
+  }
+
+  DEBUG_PRINT_ALL(cout << "start_index: " << start_index << endl;
+                  cout << "left_bound: " << left_bound << endl;
+                  cout << "ppl: " << PPL << endl;)
+
+  if ((start_index - PPL + 1) < left_bound) {
+    // not implemented yet, not for the first patch.
+  } else {
+    // push the patch into the patch buffer
+    point_t temp_superpoint[NUM_POINTS_IN_SUPERPOINT];
+
+  loop_copy_points_to_superpoint:
+    for (int j = 0; j < NUM_POINTS_IN_SUPERPOINT; j++) {
+#pragma HLS UNROLL
+      temp_superpoint[j] = points[i][start_index - PPL + 1 + j];
+
+      DEBUG_PRINT_ALL(cout << "temp_superpoint[" << j
+                           << "]: " << point_get_z(temp_superpoint[j]) << endl;)
+
+      // TODO: implemente patch buffer
+
+      // >>>>> TEMPORARY OUTPUT <<<<<
+      PointArr5x16_t patch;
+      for (int k = 0; k < NUM_POINTS_IN_SUPERPOINT; k++) {
+        patch.points[0][k] = temp_superpoint[k];
+      }
+      patch_stream.write(patch);
+      // >>>>> END TEMPORARY OUTPUT <<<<<
+    }
+  }
+
+  // exit(0);
 
   return;
 }
@@ -169,6 +276,14 @@ void system_top(point_t points[NUM_LAYERS][MAX_NUM_POINTS],
   point_t patch_buffer[PATCH_BUFFER_SIZE][NUM_LAYERS][NUM_POINTS_IN_SUPERPOINT];
   index_t latest_patch_index = 0;
   index_t num_patches = 0;
+
+#if ARRAY_PARTITION == true
+// partition array: points
+#pragma HLS ARRAY_PARTITION variable = points complete dim = 0
+#pragma HLS ARRAY_PARTITION variable = points complete dim = 1
+// partition array: num_points
+#pragma HLS ARRAY_PARTITION variable = num_points complete dim = 0
+#endif
 
   makePatches_ShadowQuilt_fromEdges(points, num_points, patch_buffer,
                                     latest_patch_index, num_patches,
