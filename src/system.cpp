@@ -152,14 +152,19 @@ void alignedtoline_per_layer_loop(z_value_t &apexZ0, z_value_t z_top_max,
       DEBUG_PRINT_ALL(cout << "temp_superpoint[" << j
                            << "]: " << point_get_z(temp_superpoint[j]) << endl;)
 
-      // TODO: implemente patch buffer
-
       // >>>>> TEMPORARY OUTPUT <<<<<
-      PointArr5x16_t patch;
+      //   PointArr5x16_t patch;
+      // loop_copy_superpoint_to_patch_temp:
+      //   for (int k = 0; k < NUM_POINTS_IN_SUPERPOINT; k++) {
+      //     patch.points[0][k] = temp_superpoint[k];
+      //   }
+      //   patch_stream.write(patch);
+      point_t new_patch[NUM_LAYERS][NUM_POINTS_IN_SUPERPOINT];
       for (int k = 0; k < NUM_POINTS_IN_SUPERPOINT; k++) {
-        patch.points[0][k] = temp_superpoint[k];
+        new_patch[i][k] = temp_superpoint[k];
       }
-      patch_stream.write(patch);
+      patch_buffer_add_patch(new_patch, patch_buffer, latest_patch_index,
+                             num_patches);
       // >>>>> END TEMPORARY OUTPUT <<<<<
     }
   }
@@ -198,9 +203,9 @@ void _shadowquilt_column_loop_get_cond(float_value_t &c_corner,
   cond = cond_and_0 && cond_and_1;
 }
 
-void _shadowquilt_main_loop(point_t points[NUM_LAYERS][MAX_NUM_POINTS],
-                            index_t num_points[NUM_LAYERS], z_value_t &apexZ0,
-                            PATCH_BUFFER_ARGS) {
+void _shadowquilt_main_loop_make_verticle_strip(
+    point_t points[NUM_LAYERS][MAX_NUM_POINTS], index_t num_points[NUM_LAYERS],
+    z_value_t &apexZ0, PATCH_BUFFER_ARGS) {
   // variable declarations
   z_value_t z_top_min = -1 * TOP_LAYER_LIM;
   float_value_t complementary_apexZ0 = 0x0;
@@ -224,9 +229,6 @@ void _shadowquilt_main_loop(point_t points[NUM_LAYERS][MAX_NUM_POINTS],
     // not implemented
   }
 
-  // calculate initial loop condition
-  _shadowquilt_column_loop_get_cond(c_corner, projectionOfCornerToBeam,
-                                    cond_shadowquilt_column_loop);
 _shadowquilt_column_loop:
 #pragma HLS PIPELINE II = 1
   while (cond_shadowquilt_column_loop) {
@@ -237,6 +239,8 @@ _shadowquilt_column_loop:
                             patch_stream);
 
     return;
+
+    // complementary patch logic, not implemented yet
 
     // get condition for next iteration
     _shadowquilt_column_loop_get_cond(c_corner, projectionOfCornerToBeam,
@@ -256,10 +260,11 @@ void makePatches_ShadowQuilt_fromEdges(
   int_value_t first_row_count = 0;
 
 makepatch_main_loop:
-#pragma HLS PIPELINE II = 1
   while ((float)apexZ0 > -1 * get_trapezoid_edges(0)) {
-    _shadowquilt_main_loop(points, num_points, apexZ0, patch_buffer,
-                           latest_patch_index, num_patches, patch_stream);
+#pragma HLS PIPELINE II = 1
+    _shadowquilt_main_loop_make_verticle_strip(points, num_points, apexZ0,
+                                               patch_buffer, latest_patch_index,
+                                               num_patches, patch_stream);
 
     return;
   }

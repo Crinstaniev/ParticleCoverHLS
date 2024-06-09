@@ -47,6 +47,11 @@
 			<location>C:/Projects/ParticleCoverHLS/src/file_reader.cpp</location>
 		</link>
 		<link>
+			<name>source/patch_buffer.cpp</name>
+			<type>1</type>
+			<location>C:/Projects/ParticleCoverHLS/src/patch_buffer.cpp</location>
+		</link>
+		<link>
 			<name>source/system.cpp</name>
 			<type>1</type>
 			<location>C:/Projects/ParticleCoverHLS/src/system.cpp</location>

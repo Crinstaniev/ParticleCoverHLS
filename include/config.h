@@ -30,4 +30,3 @@
 #define NUM_LAYERS 5
 #define PPL 16
 #define ALIGNMENT_ACCURACY 0.00001
-
