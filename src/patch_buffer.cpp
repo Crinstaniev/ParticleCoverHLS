@@ -16,15 +16,17 @@ void patch_buffer_add_patch(
   num_patches++;
 
 // copy new patch to buffer
-loop_copy_patch_layer:
-  for (index_t l = 0; l < NUM_LAYERS; l++) {
-#pragma HLS unroll
-  loop_copy_patch_point:
-    for (index_t p = 0; p < MAX_POINTS_PER_LAYER; p++) {
-#pragma HLS unroll
-      patch_buffer[latest_patch_index][l][p] = new_patch[l][p];
+loop_copy_patch_buffer_layer:
+  for (index_t layer = 0; layer < NUM_LAYERS; layer++) {
+#pragma HLS UNROLL
+  loop_copy_patch_buffer_superpoint:
+    for (index_t point = 0; point < NUM_POINTS_IN_SUPERPOINT; point++) {
+#pragma HLS UNROLL
+      patch_buffer[latest_patch_index][layer][point] = new_patch[layer][point];
     }
   }
+
+  return;
 }
 
 // read and write stream

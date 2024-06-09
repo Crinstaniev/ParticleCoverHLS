@@ -89,11 +89,11 @@ void _find_boundaries_and_starting_index_and_value(
   return;
 }
 
-void alignedtoline_per_layer_loop(z_value_t &apexZ0, z_value_t z_top_max,
-                                  bool leftRight,
-                                  point_t points[NUM_LAYERS][MAX_NUM_POINTS],
-                                  index_t num_points[NUM_LAYERS],
-                                  PATCH_BUFFER_ARGS, int i) {
+void alignedtoline_per_layer_loop(
+    z_value_t &apexZ0, z_value_t z_top_max, bool leftRight,
+    point_t points[NUM_LAYERS][MAX_NUM_POINTS], index_t num_points[NUM_LAYERS],
+    point_t init_patch[NUM_LAYERS][NUM_POINTS_IN_SUPERPOINT], PATCH_BUFFER_ARGS,
+    int i) {
   float_value_t y = get_radii(i);
   float_value_t r_max = get_radii(NUM_LAYERS - 1);
   float_value_t projectionToRow =
@@ -152,24 +152,13 @@ void alignedtoline_per_layer_loop(z_value_t &apexZ0, z_value_t z_top_max,
       DEBUG_PRINT_ALL(cout << "temp_superpoint[" << j
                            << "]: " << point_get_z(temp_superpoint[j]) << endl;)
 
-      // >>>>> TEMPORARY OUTPUT <<<<<
-      //   PointArr5x16_t patch;
-      // loop_copy_superpoint_to_patch_temp:
-      //   for (int k = 0; k < NUM_POINTS_IN_SUPERPOINT; k++) {
-      //     patch.points[0][k] = temp_superpoint[k];
-      //   }
-      //   patch_stream.write(patch);
-      point_t new_patch[NUM_LAYERS][NUM_POINTS_IN_SUPERPOINT];
+    loop_copy_superpoint_to_init_patch:
       for (int k = 0; k < NUM_POINTS_IN_SUPERPOINT; k++) {
-        new_patch[i][k] = temp_superpoint[k];
+#pragma HLS UNROLL
+        init_patch[i][k] = temp_superpoint[k];
       }
-      patch_buffer_add_patch(new_patch, patch_buffer, latest_patch_index,
-                             num_patches);
-      // >>>>> END TEMPORARY OUTPUT <<<<<
     }
   }
-
-  // exit(0);
 
   return;
 }
@@ -187,10 +176,26 @@ void makePatch_alignedToLine(z_value_t &apexZ0, z_value_t z_top_max,
 alignedtoline_layer_loop:
   for (int i = 0; i < NUM_LAYERS; i++) {
 #pragma HLS UNROLL
+#pragma HLS ARRAY_PARTITION variable = init_patch complete dim = 0
+#pragma HLS ARRAY_PARTITION variable = points complete dim = 0
+#pragma HLS ARRAY_PARTITION variable = num_points complete dim = 0
+
     alignedtoline_per_layer_loop(apexZ0, z_top_max, false, points, num_points,
-                                 patch_buffer, latest_patch_index, num_patches,
-                                 patch_stream, i);
+                                 init_patch, patch_buffer, latest_patch_index,
+                                 num_patches, patch_stream, i);
   }
+
+  // print init_patch
+  DEBUG_PRINT_ALL(for (int i = 0; i < NUM_LAYERS; i++) {
+    for (int j = 0; j < NUM_POINTS_IN_SUPERPOINT; j++) {
+      cout << "init_patch[" << i << "][" << j
+           << "]: " << point_get_z(init_patch[i][j]) << endl;
+    }
+  })
+
+  // add patch to buffer
+  patch_buffer_add_patch(init_patch, patch_buffer, latest_patch_index,
+                         num_patches);
 
   return;
 }
@@ -229,22 +234,41 @@ void _shadowquilt_main_loop_make_verticle_strip(
     // not implemented
   }
 
+  _shadowquilt_column_loop_get_cond(c_corner, projectionOfCornerToBeam,
+                                    cond_shadowquilt_column_loop);
+
 _shadowquilt_column_loop:
-#pragma HLS PIPELINE II = 1
   while (cond_shadowquilt_column_loop) {
+#pragma HLS PIPELINE II = 1
+
     nPatchesInColumn++;
 
     makePatch_alignedToLine(apexZ0, z_top_max, false, points, num_points,
                             patch_buffer, latest_patch_index, num_patches,
                             patch_stream);
 
-    return;
+    // >>>>> PRINT FIRST PATCH MADE <<<<<
+    DEBUG_PRINT_ALL(
+        cout << "latest_patch_index: " << latest_patch_index << endl;
+        cout << "num_patches: " << num_patches << endl;
+
+        // print first patch
+        for (int i = 0; i < NUM_LAYERS; i++) {
+          for (int j = 0; j < NUM_POINTS_IN_SUPERPOINT; j++) {
+            cout << "patch_buffer[1][" << i << "][" << j
+                 << "]: " << point_get_z(patch_buffer[latest_patch_index][i][j])
+                 << endl;
+          }
+        })
+    // >>>>> END PRINT FIRST PATCH MADE <<<<<
 
     // complementary patch logic, not implemented yet
 
     // get condition for next iteration
     _shadowquilt_column_loop_get_cond(c_corner, projectionOfCornerToBeam,
                                       cond_shadowquilt_column_loop);
+
+    return;
   }
 }
 
