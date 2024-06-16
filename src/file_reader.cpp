@@ -1122,6 +1122,11 @@ public:
                                 bool performance = false) {
     ifstream currentFile;
     vector<Event> events;
+
+#if CONFIG_IS_SYNTHESIS == true
+    filepath = "C:\\wedgeData_v3_128.txt";
+#endif
+
     currentFile.open(filepath);
     string line;
     if (currentFile.is_open()) {
@@ -1178,6 +1183,8 @@ public:
       currentFile.close();
     } else {
       cout << "Error opening file." << endl;
+      // print file path
+      cout << "File path: " << filepath << endl;
     }
 
     return events;

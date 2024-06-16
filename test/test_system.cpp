@@ -1,11 +1,12 @@
 #include "config.h"
 #include "file_reader.h"
+#include "patch_buffer.h"
 #include "system.h"
 #include "types.h"
 
+#include <algorithm>
 #include <iostream>
 #include <string>
-#include <algorithm>
 
 using namespace std;
 
@@ -18,12 +19,15 @@ bool compare_points(point_t p1, point_t p2) {
 }
 
 int main() {
-// main function for testing
-#if CONFIG_IS_SYNTHESIS == false
-  string file_path = "./wedgeData_v3_128.txt";
-#else
-  string file_path = "../../../data/wedgeData_v3_128.txt";
-#endif
+  // main function for testing
+  // #if CONFIG_IS_SYNTHSIS == false
+  //   string file_path = "./wedgeData_v3_128.txt";
+  // #else
+  // #endif
+  string file_path = "C:\\wedgeData_v3_128.txt";
+
+  cout << "reading file: " << file_path
+       << "\n"; // read the file and store the data in the arrays
 
   point_t points[NUM_LAYERS][MAX_NUM_POINTS];
   index_t num_points[NUM_LAYERS];
@@ -74,22 +78,23 @@ int main() {
   top_layer_lim = 50.0;
 
   // stream to hold the generated patches: point_t, size = 5 * 16
-  hls::stream<PointArr5x16_t> patch_stream;
+  hls::stream<point_t> patch_stream;
 
   // pass to system_top
   system_top(points, num_points, patch_stream);
 
-  // read all patches from the stream
-  while (!patch_stream.empty()) {
-    PointArr5x16_t patch = patch_stream.read();
-    for (int i = 0; i < 5; i++) {
-      for (int j = 0; j < 16; j++) {
-        point_t point = patch.points[i][j];
-        z_value_t z = point_get_z(point);
-        radius_value_t r = point_get_radius(point);
-        phi_value_t phi = point_get_phi(point);
-        cout << "z: " << z << ", r: " << r << ", phi: " << phi << endl;
-      }
+  // retrieve the patches from the stream
+  point_t patch[NUM_LAYERS][NUM_POINTS_IN_SUPERPOINT];
+  read_patch_stream(patch_stream, patch);
+
+  // print the patches
+  for (int i = 0; i < NUM_LAYERS; i++) {
+    for (int j = 0; j < NUM_POINTS_IN_SUPERPOINT; j++) {
+      z_value_t z = point_get_z(patch[i][j]);
+      radius_value_t r = point_get_radius(patch[i][j]);
+      phi_value_t phi = point_get_phi(patch[i][j]);
+      cout << "Layer: " << i << " Point: " << j << " Z: " << z
+           << " Radius: " << r << " Phi: " << phi << endl;
     }
   }
 

@@ -30,16 +30,26 @@ loop_copy_patch_buffer_layer:
 }
 
 // read and write stream
-void write_patch_stream(hls::stream<PointArr5x16_t> &patch_stream,
-                        point_t patch_buffer[PATCH_BUFFER_SIZE][NUM_LAYERS]
-                                            [NUM_POINTS_IN_SUPERPOINT],
-                        index_t &latest_patch_index, index_t &num_patches) {
-  // write patch buffer to stream
+void write_patch_stream(hls::stream<point_t> &patch_stream,
+                        point_t patch[NUM_LAYERS][NUM_POINTS_IN_SUPERPOINT]) {
+// write patch buffer to stream
+loop_write_patch_stream_layer:
+  for (index_t layer = 0; layer < NUM_LAYERS; layer++) {
+  loop_write_patch_stream_superpoint:
+    for (index_t point = 0; point < NUM_POINTS_IN_SUPERPOINT; point++) {
+      patch_stream.write(patch[layer][point]);
+    }
+  }
 }
 
-void read_patch_stream(hls::stream<PointArr5x16_t> &patch_stream,
-                       point_t patch_buffer[PATCH_BUFFER_SIZE][NUM_LAYERS]
-                                           [NUM_POINTS_IN_SUPERPOINT],
-                       index_t &latest_patch_index, index_t &num_patches) {
+void read_patch_stream(hls::stream<point_t> &patch_stream,
+                       point_t patch[NUM_LAYERS][NUM_POINTS_IN_SUPERPOINT]) {
   // read patch stream to buffer
+loop_read_patch_stream_layer:
+  for (index_t layer = 0; layer < NUM_LAYERS; layer++) {
+  loop_read_patch_stream_superpoint:
+    for (index_t point = 0; point < NUM_POINTS_IN_SUPERPOINT; point++) {
+      patch[layer][point] = patch_stream.read();
+    }
+  }
 }

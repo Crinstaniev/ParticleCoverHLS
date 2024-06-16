@@ -7,4 +7,4 @@
 
 void system_top(point_t points[NUM_LAYERS][MAX_NUM_POINTS],
                 index_t num_points[NUM_LAYERS],
-                hls::stream<PointArr5x16_t> &patch_stream);
+                hls::stream<point_t> &patch_stream);

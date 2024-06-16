@@ -57,7 +57,7 @@ typedef struct {
   point_t patch_buffer[PATCH_BUFFER_SIZE][NUM_LAYERS]                          \
                       [NUM_POINTS_IN_SUPERPOINT],                              \
       index_t &latest_patch_index, index_t &num_patches,                       \
-      hls::stream<PointArr5x16_t> &patch_stream
+      hls::stream<point_t> &patch_stream
 
 // constant values
 #define TOP_LAYER_LIM 50

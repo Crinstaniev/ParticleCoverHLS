@@ -24,6 +24,7 @@ void _find_starting_index_and_value(index_t num_points[NUM_LAYERS],
                                     float_value_t projectionToRow,
                                     int_value_t &start_index,
                                     float_value_t &start_value, int i) {
+loop_find_starting_index_and_value:
   for (int j = 0; j < num_points[i]; j++) {
     z_value_t row_list_j = point_get_z(points[i][j]);
     if (abs(row_list_j.to_float() - projectionToRow.to_float()) <
@@ -40,6 +41,7 @@ void _find_left_and_right_boundaries(index_t num_points[NUM_LAYERS],
                                      float_value_t &lbVal,
                                      int_value_t &right_bound,
                                      float_value_t &rbVal, int i) {
+loop_find_left_and_right_boundaries:
   for (int j = 0; j < num_points[i]; j++) {
     z_value_t row_list_j = point_get_z(points[i][j]);
     float_value_t diff_0 =
@@ -163,6 +165,11 @@ void alignedtoline_per_layer_loop(
   return;
 }
 
+// values z_value_t, int, float etc...
+// reference to values, int &
+// arrays, only specified size. point_t point[xxx][xxx], no point_t **point
+// no struct pointers! ->
+
 void makePatch_alignedToLine(z_value_t &apexZ0, z_value_t z_top_max,
                              bool leftRight,
                              point_t points[NUM_LAYERS][MAX_NUM_POINTS],
@@ -176,9 +183,12 @@ void makePatch_alignedToLine(z_value_t &apexZ0, z_value_t z_top_max,
 alignedtoline_layer_loop:
   for (int i = 0; i < NUM_LAYERS; i++) {
 #pragma HLS UNROLL
+
+#if ARRAY_PARTITION == true
 #pragma HLS ARRAY_PARTITION variable = init_patch complete dim = 0
 #pragma HLS ARRAY_PARTITION variable = points complete dim = 0
 #pragma HLS ARRAY_PARTITION variable = num_points complete dim = 0
+#endif
 
     alignedtoline_per_layer_loop(apexZ0, z_top_max, false, points, num_points,
                                  init_patch, patch_buffer, latest_patch_index,
@@ -196,6 +206,9 @@ alignedtoline_layer_loop:
   // add patch to buffer
   patch_buffer_add_patch(init_patch, patch_buffer, latest_patch_index,
                          num_patches);
+
+  // add patch to stream
+  write_patch_stream(patch_stream, init_patch);
 
   return;
 }
@@ -296,7 +309,7 @@ makepatch_main_loop:
 
 void system_top(point_t points[NUM_LAYERS][MAX_NUM_POINTS],
                 index_t num_points[NUM_LAYERS],
-                hls::stream<PointArr5x16_t> &patch_stream) {
+                hls::stream<point_t> &patch_stream) {
   // variable declarations
 
   // patch buffer: circular buffer, three patches
