@@ -5,10 +5,175 @@
 
 #include <hls_stream.h>
 
+#include <algorithm>
 #include <cmath>
 #include <iostream>
 
 using namespace std;
+
+// >>>>> PARALLELOGRAMS COMPUTATION <<<<<
+float_value_t straightLineProjectorFromLayerIJtoK(float_value_t z_i,
+                                                  float_value_t z_j,
+                                                  int_value_t i, int_value_t j,
+                                                  int_value_t k) {
+  float_value_t radius_i = 0;
+  float_value_t radius_j = 0;
+  float_value_t radius_k = 0;
+
+  if (i == 0) {
+    radius_i = 0;
+  } else {
+    radius_i = get_radii(i - 1);
+  }
+  if (j == 0) {
+    radius_j = 0;
+  } else {
+    radius_j = get_radii(j - 1);
+  }
+  if (k == 0) {
+    radius_k = 0;
+  } else {
+    radius_k = get_radii(k - 1);
+  }
+
+  float_value_t radii_leverArm = (radius_k - radius_i) / (radius_j - radius_i);
+
+  return z_i + (z_j - z_i) * radii_leverArm;
+}
+
+z_value_t get_superpoint_min_z(point_t superpoint[NUM_POINTS_IN_SUPERPOINT]) {
+  z_value_t min_z = 1ULL << 10;
+
+loop_get_superpoint_min_z:
+  for (int i = 0; i < NUM_POINTS_IN_SUPERPOINT; i++) {
+    z_value_t z = point_get_z(superpoint[i]);
+    if (z < min_z) {
+      min_z = z;
+    }
+  }
+
+  return min_z;
+}
+
+z_value_t get_superpoint_max_z(point_t superpoint[NUM_POINTS_IN_SUPERPOINT]) {
+  z_value_t max_z = 0x0;
+
+loop_get_superpoint_max_z:
+  for (int i = 0; i < NUM_POINTS_IN_SUPERPOINT; i++) {
+    z_value_t z = point_get_z(superpoint[i]);
+    if (z > max_z) {
+      max_z = z;
+    }
+  }
+
+  return max_z;
+}
+
+void getParallelograms(
+    point_t superpoints[NUM_LAYERS][NUM_POINTS_IN_SUPERPOINT]) {
+  /**
+   * Parallelogram structure:
+   * int layer_num
+   * float pSlope
+   *
+   * float shadow_bottomL_jR
+   * float shadow_bottomR_jR
+   * float shadow_bottomL_jL
+   * float shadow_bottomR_jL
+   *
+   * float z1_min
+   * float z1_max
+   */
+  // declare parallelogram
+  float_value_t pSlope[NUM_LAYERS];
+  float_value_t shadow_bottomL_jR[NUM_LAYERS];
+  float_value_t shadow_bottomR_jR[NUM_LAYERS];
+  float_value_t shadow_bottomL_jL[NUM_LAYERS];
+  float_value_t shadow_bottomR_jL[NUM_LAYERS];
+  float_value_t z1_min[NUM_LAYERS];
+  float_value_t z1_max[NUM_LAYERS];
+
+  // parallelogram auxiliary variables
+  float_value_t pSlope_tmp = 0;
+
+  // compute parallelogram
+  z_value_t superpoint_0_min_z = get_superpoint_min_z(superpoints[0]);
+  z_value_t superpoint_0_max_z = get_superpoint_max_z(superpoints[0]);
+  z_value_t comp_0 = -1 * get_trapezoid_edges(0);
+  z_value_t comp_1 = get_trapezoid_edges(0);
+
+  z_value_t z1_min_tmp = std::max(superpoint_0_min_z, comp_0);
+  z_value_t z1_max_tmp = std::min(superpoint_0_max_z, comp_1);
+
+  if (z1_min_tmp > z1_max_tmp) {
+    z1_min_tmp = get_trapezoid_edges(0) + 1;
+    z1_max_tmp = z1_min_tmp;
+  }
+
+loop_compute_parallelogram:
+  for (int i = 1; i < NUM_LAYERS; i++) {
+    int j = i + 1;
+
+    z_value_t z_j_min = get_superpoint_min_z(superpoints[i]);
+    z_value_t z_j_max = get_superpoint_max_z(superpoints[i]);
+
+    float_value_t a = straightLineProjectorFromLayerIJtoK(z1_min_tmp, z_j_max,
+                                                          1, j, NUM_LAYERS);
+    float_value_t b = straightLineProjectorFromLayerIJtoK(z1_max_tmp, z_j_max,
+                                                          1, j, NUM_LAYERS);
+    float_value_t c = straightLineProjectorFromLayerIJtoK(z1_min_tmp, z_j_min,
+                                                          1, j, NUM_LAYERS);
+    float_value_t d = straightLineProjectorFromLayerIJtoK(z1_max_tmp, z_j_min,
+                                                          1, j, NUM_LAYERS);
+
+    DEBUG_PRINT_ALL(cout << "----------------------" << endl;
+                    cout << "j: " << j << endl;
+
+                    cout << "a: " << a << endl; cout << "b: " << b << endl;
+                    cout << "c: " << c << endl; cout << "d: " << d << endl;)
+
+    if (j != NUM_LAYERS) {
+      pSlope_tmp = get_parallelogram_slopes(j - 1);
+    } else {
+      pSlope_tmp = 1ULL << 10;
+    }
+
+    DEBUG_PRINT_ALL(cout << "pSlope_tmp: " << pSlope_tmp << endl;)
+
+    // make parallelogram: array index = layer number - 2
+    char parallelogram_index = j - 2;
+    pSlope[parallelogram_index] = pSlope_tmp;
+
+    z1_min[parallelogram_index] = z1_min_tmp;
+    z1_max[parallelogram_index] = z1_max_tmp;
+
+    shadow_bottomL_jR[parallelogram_index] = a;
+    shadow_bottomR_jR[parallelogram_index] = b;
+    shadow_bottomL_jL[parallelogram_index] = c;
+    shadow_bottomR_jL[parallelogram_index] = d;
+
+    DEBUG_PRINT_ALL(cout << "New Parallelogram" << endl;
+                    cout << "----------------------" << endl;
+                    cout << "Layer number: " << j << endl;
+                    cout << "pSlope: " << pSlope[parallelogram_index] << endl;
+
+                    cout << "shadow_bottomL_jR: " << a << endl;
+                    cout << "shadow_bottomR_jR: " << b << endl;
+                    cout << "shadow_bottomL_jL: " << c << endl;
+                    cout << "shadow_bottomR_jL: " << d << endl;
+
+                    cout << "z1_min: " << z1_min[parallelogram_index] << endl;
+                    cout << "z1_max: " << z1_max[parallelogram_index] << endl;)
+  }
+
+  // print parallelogram
+  //  for (int i = 0; i < NUM_LAYERS; i++) {
+  //    cout << "pSlope[" << i << "]: " << pSlope[i] << endl;
+  //  }
+
+  return;
+}
+// >>>>> END PARALLELOGRAMS COMPUTATION <<<<<
 
 float_value_t _cal_projection_to_row(z_value_t z_top, z_value_t apexZ0,
                                      float_value_t y, float_value_t r_max) {
@@ -260,11 +425,15 @@ _shadowquilt_column_loop:
                             patch_buffer, latest_patch_index, num_patches,
                             patch_stream);
 
+    // TODO: implement calculating corners, getParallelograms, get_end_layer
+    getParallelograms(patch_buffer[latest_patch_index]);
+
+    exit(0);
+
     // >>>>> PRINT FIRST PATCH MADE <<<<<
     DEBUG_PRINT_ALL(
         cout << "latest_patch_index: " << latest_patch_index << endl;
         cout << "num_patches: " << num_patches << endl;
-
         // print first patch
         for (int i = 0; i < NUM_LAYERS; i++) {
           for (int j = 0; j < NUM_POINTS_IN_SUPERPOINT; j++) {
@@ -273,6 +442,14 @@ _shadowquilt_column_loop:
                  << endl;
           }
         })
+
+    // cout << "top layer from "
+    //      << point_get_z(patch_buffer[latest_patch_index][NUM_LAYERS - 1]
+    //                                 [NUM_POINTS_IN_SUPERPOINT - 1])
+    //      << " to "
+    //      << point_get_z(patch_buffer[latest_patch_index][NUM_LAYERS - 1][0])
+    //      << " z_top_max: " << z_top_max << endl;
+
     // >>>>> END PRINT FIRST PATCH MADE <<<<<
 
     // complementary patch logic, not implemented yet

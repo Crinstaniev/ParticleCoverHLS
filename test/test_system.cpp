@@ -19,15 +19,15 @@ bool compare_points(point_t p1, point_t p2) {
 }
 
 int main() {
-  // main function for testing
-  // #if CONFIG_IS_SYNTHSIS == false
-  //   string file_path = "./wedgeData_v3_128.txt";
-  // #else
-  // #endif
-  string file_path = "C:\\wedgeData_v3_128.txt";
+// main function for testing
+#if CONFIG_IS_SYNTHSIS == false
+  string file_path = "./wedgeData_v3_128.txt";
+#else
+  string file_path = "wedgeData_v3_128.txt";
+#endif
 
-  cout << "reading file: " << file_path
-       << "\n"; // read the file and store the data in the arrays
+  // cout << "reading file: " << file_path
+  //      << "\n"; // read the file and store the data in the arrays
 
   point_t points[NUM_LAYERS][MAX_NUM_POINTS];
   index_t num_points[NUM_LAYERS];

@@ -472,17 +472,14 @@ public:
       z1_max = z1_min;
     }
 
-    // cout << "z1_min: " << z1_min << endl;
-    // cout << "z1_max: " << z1_max << endl;
+    DEBUG_PRINT_ALL(cout << "z1_min: " << z1_min << endl;
+                    cout << "z1_max: " << z1_max << endl;)
 
     for (int i = 1; i < superpoints.size(); i++) {
       int j = i + 1;
 
       float z_j_min = superpoints[i].min;
       float z_j_max = superpoints[i].max;
-
-      // cout << "z_j_min: " << z_j_min << endl;
-      // cout << "z_j_max: " << z_j_max << endl;
 
       float a = straightLineProjectorFromLayerIJtoK(z1_min, z_j_max, 1, j,
                                                     env.num_layers);
@@ -493,10 +490,11 @@ public:
       float d = straightLineProjectorFromLayerIJtoK(z1_max, z_j_min, 1, j,
                                                     env.num_layers);
 
-      // cout << "a: " << a << endl;
-      // cout << "b: " << b << endl;
-      // cout << "c: " << c << endl;
-      // cout << "d: " << d << endl;
+      DEBUG_PRINT_ALL(cout << "----------------------" << endl;
+                      cout << "j: " << j << endl;
+
+                      cout << "a: " << a << endl; cout << "b: " << b << endl;
+                      cout << "c: " << c << endl; cout << "d: " << d << endl;)
 
       float pSlope;
 
@@ -506,31 +504,32 @@ public:
         pSlope = INT_MAX;
       }
 
+      DEBUG_PRINT_ALL(cout << "pSlope: " << pSlope << endl;)
+
       // cout << "pSlope: " << pSlope << endl;
 
       parallelogram Parallelogram =
           parallelogram(j, z1_min, z1_max, a, b, c, d, pSlope);
       parallelogramsI.push_back(Parallelogram);
+
+      DEBUG_PRINT_ALL( // print Parallelogram
+          cout << "New Parallelogram" << endl;
+          cout << "----------------------" << endl;
+          cout << "Layer number: " << j << endl;
+          cout << "pSlope: " << pSlope << endl;
+
+          cout << "shadow_bottomL_jR: " << a << endl;
+          cout << "shadow_bottomR_jR: " << b << endl;
+          cout << "shadow_bottomL_jL: " << c << endl;
+          cout << "shadow_bottomR_jL: " << d << endl;
+
+          cout << "z1_min: " << z1_min << endl;
+          cout << "z1_max: " << z1_max << endl;)
     }
 
     parallelograms = parallelogramsI;
 
-    // print all parallelograms
-    // for (int i = 0; i < parallelograms.size(); i++) {
-    //   cout << "Parallelogram " << i << endl;
-    //   cout << "Layer number: " << parallelograms[i].layer_num << endl;
-    //   cout << "pSlope: " << parallelograms[i].pSlope << endl;
-    //   cout << "shadow_bottomL_jR: " << parallelograms[i].shadow_bottomL_jR
-    //        << endl;
-    //   cout << "shadow_bottomR_jR: " << parallelograms[i].shadow_bottomR_jR
-    //        << endl;
-    //   cout << "shadow_bottomL_jL: " << parallelograms[i].shadow_bottomL_jL
-    //        << endl;
-    //   cout << "shadow_bottomR_jL: " << parallelograms[i].shadow_bottomR_jL
-    //        << endl;
-    //   cout << "z1_min: " << parallelograms[i].z1_min << endl;
-    //   cout << "z1_max: " << parallelograms[i].z1_max << endl;
-    // }
+    exit(0);
   }
 
   void getShadows(float zTopMin, float zTopMax) {
@@ -924,26 +923,22 @@ public:
 
         makePatch_alignedToLine(apexZ0, z_top_max, ppl = ppl, false);
 
-        // cout << "top layer from "
-        //      << patches[patches.size() - 1].superpoints[env.num_layers -
-        //      1].max
-        //      << " to "
-        //      << patches[patches.size() - 1].superpoints[env.num_layers -
-        //      1].min
-        //      << " z_top_max: " << z_top_max << endl;
-        // cout << "original: [" << patches[patches.size() - 1].a_corner[0] <<
-        // ", "
-        //      << patches[patches.size() - 1].a_corner[1] << "] for patch "
-        //      << patches.size() << endl;
-        // cout << "original: [" << patches[patches.size() - 1].b_corner[0] <<
-        // ", "
-        //      << patches[patches.size() - 1].b_corner[1] << "]" << endl;
-        // cout << "original: [" << patches[patches.size() - 1].c_corner[0] <<
-        // ", "
-        //      << patches[patches.size() - 1].c_corner[1] << "]" << endl;
-        // cout << "original: [" << patches[patches.size() - 1].d_corner[0] <<
-        // ", "
-        //      << patches[patches.size() - 1].d_corner[1] << "]" << endl;
+        cout << "top layer from "
+             << patches[patches.size() - 1].superpoints[env.num_layers - 1].max
+             << " to "
+             << patches[patches.size() - 1].superpoints[env.num_layers - 1].min
+             << " z_top_max: " << z_top_max << endl;
+        cout << "original: [" << patches[patches.size() - 1].a_corner[0] << ", "
+             << patches[patches.size() - 1].a_corner[1] << "] for patch "
+             << patches.size() << endl;
+        cout << "original: [" << patches[patches.size() - 1].b_corner[0] << ", "
+             << patches[patches.size() - 1].b_corner[1] << "]" << endl;
+        cout << "original: [" << patches[patches.size() - 1].c_corner[0] << ", "
+             << patches[patches.size() - 1].c_corner[1] << "]" << endl;
+        cout << "original: [" << patches[patches.size() - 1].d_corner[0] << ", "
+             << patches[patches.size() - 1].d_corner[1] << "]" << endl;
+
+        exit(0);
 
         // print superpoints of last patch
         // for (int i = 0; i < 5; i++) {
@@ -1780,7 +1775,6 @@ public:
 
           init_patch.push_back(wedgeSuperPoint(temp));
 
-          exit(0);
           // cout << "max: " << wedgeSuperPoint(temp).max << endl;
           // cout << "min: " << wedgeSuperPoint(temp).min << endl;
 
