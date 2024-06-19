@@ -70,29 +70,13 @@ loop_get_superpoint_max_z:
 }
 
 void getParallelograms(
-    point_t superpoints[NUM_LAYERS][NUM_POINTS_IN_SUPERPOINT]) {
-  /**
-   * Parallelogram structure:
-   * int layer_num
-   * float pSlope
-   *
-   * float shadow_bottomL_jR
-   * float shadow_bottomR_jR
-   * float shadow_bottomL_jL
-   * float shadow_bottomR_jL
-   *
-   * float z1_min
-   * float z1_max
-   */
-  // declare parallelogram
-  float_value_t pSlope[NUM_LAYERS];
-  float_value_t shadow_bottomL_jR[NUM_LAYERS];
-  float_value_t shadow_bottomR_jR[NUM_LAYERS];
-  float_value_t shadow_bottomL_jL[NUM_LAYERS];
-  float_value_t shadow_bottomR_jL[NUM_LAYERS];
-  float_value_t z1_min[NUM_LAYERS];
-  float_value_t z1_max[NUM_LAYERS];
-
+    point_t superpoints[NUM_LAYERS][NUM_POINTS_IN_SUPERPOINT],
+    float_value_t pSlope[NUM_LAYERS],
+    float_value_t shadow_bottomL_jR[NUM_LAYERS],
+    float_value_t shadow_bottomR_jR[NUM_LAYERS],
+    float_value_t shadow_bottomL_jL[NUM_LAYERS],
+    float_value_t shadow_bottomR_jL[NUM_LAYERS],
+    float_value_t z1_min[NUM_LAYERS], float_value_t z1_max[NUM_LAYERS]) {
   // parallelogram auxiliary variables
   float_value_t pSlope_tmp = 0;
 
@@ -355,9 +339,11 @@ alignedtoline_layer_loop:
 #pragma HLS ARRAY_PARTITION variable = num_points complete dim = 0
 #endif
 
-    alignedtoline_per_layer_loop(apexZ0, z_top_max, false, points, num_points,
-                                 init_patch, patch_buffer, latest_patch_index,
-                                 num_patches, patch_stream, i);
+    alignedtoline_per_layer_loop(
+        apexZ0, z_top_max, false, points, num_points, init_patch, patch_buffer,
+        latest_patch_index, num_patches, pSlope, shadow_bottomL_jR,
+        shadow_bottomR_jR, shadow_bottomL_jL, shadow_bottomR_jL, z1_min, z1_max,
+        patch_stream, i);
   }
 
   // print init_patch
@@ -423,10 +409,18 @@ _shadowquilt_column_loop:
 
     makePatch_alignedToLine(apexZ0, z_top_max, false, points, num_points,
                             patch_buffer, latest_patch_index, num_patches,
-                            patch_stream);
+                            pSlope, shadow_bottomL_jR, shadow_bottomR_jR,
+                            shadow_bottomL_jL, shadow_bottomR_jL, z1_min,
+                            z1_max, patch_stream);
 
     // TODO: implement calculating corners, getParallelograms, get_end_layer
-    getParallelograms(patch_buffer[latest_patch_index]);
+    getParallelograms(patch_buffer[latest_patch_index],
+                      pSlope[latest_patch_index],
+                      shadow_bottomL_jR[latest_patch_index],
+                      shadow_bottomR_jR[latest_patch_index],
+                      shadow_bottomL_jL[latest_patch_index],
+                      shadow_bottomR_jL[latest_patch_index],
+                      z1_min[latest_patch_index], z1_max[latest_patch_index]);
 
     exit(0);
 
@@ -476,9 +470,10 @@ void makePatches_ShadowQuilt_fromEdges(
 makepatch_main_loop:
   while ((float)apexZ0 > -1 * get_trapezoid_edges(0)) {
 #pragma HLS PIPELINE II = 1
-    _shadowquilt_main_loop_make_verticle_strip(points, num_points, apexZ0,
-                                               patch_buffer, latest_patch_index,
-                                               num_patches, patch_stream);
+    _shadowquilt_main_loop_make_verticle_strip(
+        points, num_points, apexZ0, patch_buffer, latest_patch_index,
+        num_patches, pSlope, shadow_bottomL_jR, shadow_bottomR_jR,
+        shadow_bottomL_jL, shadow_bottomR_jL, z1_min, z1_max, patch_stream);
 
     return;
   }
@@ -496,6 +491,15 @@ void system_top(point_t points[NUM_LAYERS][MAX_NUM_POINTS],
   index_t latest_patch_index = 0;
   index_t num_patches = 0;
 
+  // parallelogram arrays
+  float_value_t pSlope[PATCH_BUFFER_SIZE][NUM_LAYERS];
+  float_value_t shadow_bottomL_jR[PATCH_BUFFER_SIZE][NUM_LAYERS];
+  float_value_t shadow_bottomR_jR[PATCH_BUFFER_SIZE][NUM_LAYERS];
+  float_value_t shadow_bottomL_jL[PATCH_BUFFER_SIZE][NUM_LAYERS];
+  float_value_t shadow_bottomR_jL[PATCH_BUFFER_SIZE][NUM_LAYERS];
+  float_value_t z1_min[PATCH_BUFFER_SIZE][NUM_LAYERS];
+  float_value_t z1_max[PATCH_BUFFER_SIZE][NUM_LAYERS];
+
 #if ARRAY_PARTITION == true
 // partition array: points
 #pragma HLS ARRAY_PARTITION variable = points complete dim = 0
@@ -504,9 +508,10 @@ void system_top(point_t points[NUM_LAYERS][MAX_NUM_POINTS],
 #pragma HLS ARRAY_PARTITION variable = num_points complete dim = 0
 #endif
 
-  makePatches_ShadowQuilt_fromEdges(points, num_points, patch_buffer,
-                                    latest_patch_index, num_patches,
-                                    patch_stream);
+  makePatches_ShadowQuilt_fromEdges(
+      points, num_points, patch_buffer, latest_patch_index, num_patches, pSlope,
+      shadow_bottomL_jR, shadow_bottomR_jR, shadow_bottomL_jL,
+      shadow_bottomR_jL, z1_min, z1_max, patch_stream);
 
   return;
 }

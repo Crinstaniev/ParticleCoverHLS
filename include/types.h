@@ -57,6 +57,13 @@ typedef struct {
   point_t patch_buffer[PATCH_BUFFER_SIZE][NUM_LAYERS]                          \
                       [NUM_POINTS_IN_SUPERPOINT],                              \
       index_t &latest_patch_index, index_t &num_patches,                       \
+      float_value_t pSlope[PATCH_BUFFER_SIZE][NUM_LAYERS],                     \
+      float_value_t shadow_bottomL_jR[PATCH_BUFFER_SIZE][NUM_LAYERS],          \
+      float_value_t shadow_bottomR_jR[PATCH_BUFFER_SIZE][NUM_LAYERS],          \
+      float_value_t shadow_bottomL_jL[PATCH_BUFFER_SIZE][NUM_LAYERS],          \
+      float_value_t shadow_bottomR_jL[PATCH_BUFFER_SIZE][NUM_LAYERS],          \
+      float_value_t z1_min[PATCH_BUFFER_SIZE][NUM_LAYERS],                     \
+      float_value_t z1_max[PATCH_BUFFER_SIZE][NUM_LAYERS],                     \
       hls::stream<point_t> &patch_stream
 
 // constant values
