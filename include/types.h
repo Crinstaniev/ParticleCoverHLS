@@ -64,6 +64,10 @@ typedef struct {
       float_value_t shadow_bottomR_jL[PATCH_BUFFER_SIZE][NUM_LAYERS],          \
       float_value_t z1_min[PATCH_BUFFER_SIZE][NUM_LAYERS],                     \
       float_value_t z1_max[PATCH_BUFFER_SIZE][NUM_LAYERS],                     \
+      float_value_t a_corner[PATCH_BUFFER_SIZE][2],                            \
+      float_value_t b_corner[PATCH_BUFFER_SIZE][2],                            \
+      float_value_t c_corner[PATCH_BUFFER_SIZE][2],                            \
+      float_value_t d_corner[PATCH_BUFFER_SIZE][2],                            \
       hls::stream<point_t> &patch_stream
 
 // constant values

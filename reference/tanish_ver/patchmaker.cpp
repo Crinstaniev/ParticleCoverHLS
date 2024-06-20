@@ -528,8 +528,6 @@ public:
     }
 
     parallelograms = parallelogramsI;
-
-    exit(0);
   }
 
   void getShadows(float zTopMin, float zTopMax) {
@@ -628,7 +626,7 @@ public:
     //   cout << "d_corner_list[" << i << "]: " << d_corner_list[i] << endl;
     // }
 
-    // up to here, corners are empty
+    // TODO: TRANSLATION RESUME HERE!
 
     a_corner.push_back(parallelograms[0].z1_min);
     a_corner.push_back(
@@ -645,6 +643,8 @@ public:
     d_corner.push_back(parallelograms[0].z1_max);
     d_corner.push_back(
         *max_element(d_corner_list.begin(), d_corner_list.end()));
+
+    exit(0);
 
     // print these corners: guaranteed
     // cout << "a_corner: " << a_corner[0] << " " << a_corner[1] << endl;
@@ -923,6 +923,8 @@ public:
 
         makePatch_alignedToLine(apexZ0, z_top_max, ppl = ppl, false);
 
+        exit(0);
+
         cout << "top layer from "
              << patches[patches.size() - 1].superpoints[env.num_layers - 1].max
              << " to "
@@ -937,8 +939,6 @@ public:
              << patches[patches.size() - 1].c_corner[1] << "]" << endl;
         cout << "original: [" << patches[patches.size() - 1].d_corner[0] << ", "
              << patches[patches.size() - 1].d_corner[1] << "]" << endl;
-
-        exit(0);
 
         // print superpoints of last patch
         // for (int i = 0; i < 5; i++) {
@@ -1134,7 +1134,7 @@ public:
               cout << "complementary_apexZ0: " << complementary_apexZ0 << endl;
               cout << "z_top_min: " << z_top_min << endl;)
 
-          exit(0);
+          // exit(0);
 
           madeComplementaryPatch = true;
           cout << "complementary: [" << patches[patches.size() - 1].a_corner[0]

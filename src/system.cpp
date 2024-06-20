@@ -11,7 +11,6 @@
 
 using namespace std;
 
-// >>>>> PARALLELOGRAMS COMPUTATION <<<<<
 float_value_t straightLineProjectorFromLayerIJtoK(float_value_t z_i,
                                                   float_value_t z_j,
                                                   int_value_t i, int_value_t j,
@@ -41,6 +40,7 @@ float_value_t straightLineProjectorFromLayerIJtoK(float_value_t z_i,
   return z_i + (z_j - z_i) * radii_leverArm;
 }
 
+// >>>>> PARALLELOGRAMS COMPUTATION <<<<<
 z_value_t get_superpoint_min_z(point_t superpoint[NUM_POINTS_IN_SUPERPOINT]) {
   z_value_t min_z = 1ULL << 10;
 
@@ -150,14 +150,38 @@ loop_compute_parallelogram:
                     cout << "z1_max: " << z1_max[parallelogram_index] << endl;)
   }
 
-  // print parallelogram
-  //  for (int i = 0; i < NUM_LAYERS; i++) {
-  //    cout << "pSlope[" << i << "]: " << pSlope[i] << endl;
-  //  }
-
   return;
 }
 // >>>>> END PARALLELOGRAMS COMPUTATION <<<<<
+
+// >>>>> ACCEPTANCE CORNER CALCULATION <<<<<
+/**
+ * Acceptance corners are calculated
+ * based on the parallelograms
+ */
+
+void get_acceptanceCorners(PATCH_BUFFER_ARGS) {
+  bool squareAcceptance = true;
+  bool flatTop = true;
+  bool flatBottom = true;
+  bool triangleAcceptance = false;
+
+  // tmp corners
+  float_value_t a_corner_list[4];
+  float_value_t b_corner_list[4];
+  float_value_t c_corner_list[4];
+  float_value_t d_corner_list[4];
+
+loop_init_acceptance_corners_from_parallelograms:
+  for (int i = 0; i < 4; i++) {
+#pragma HLS UNROLL
+    a_corner_list[i] = shadow_bottomL_jR[i];
+    b_corner_list[i] = shadow_bottomR_jR[i];
+    c_corner_list[i] = shadow_bottomL_jL[i];
+    d_corner_list[i] = shadow_bottomR_jL[i];
+  }
+}
+// >>>>> END ACCEPTANCE CORNER CALCULATION <<<<<
 
 float_value_t _cal_projection_to_row(z_value_t z_top, z_value_t apexZ0,
                                      float_value_t y, float_value_t r_max) {
@@ -343,7 +367,7 @@ alignedtoline_layer_loop:
         apexZ0, z_top_max, false, points, num_points, init_patch, patch_buffer,
         latest_patch_index, num_patches, pSlope, shadow_bottomL_jR,
         shadow_bottomR_jR, shadow_bottomL_jL, shadow_bottomR_jL, z1_min, z1_max,
-        patch_stream, i);
+        a_corner, b_corner, c_corner, d_corner, patch_stream, i);
   }
 
   // print init_patch
@@ -364,10 +388,11 @@ alignedtoline_layer_loop:
   return;
 }
 
-void _shadowquilt_column_loop_get_cond(float_value_t &c_corner,
+void _shadowquilt_column_loop_get_cond(float_value_t &c_corner_tmp,
                                        float_value_t &projectionOfCornerToBeam,
                                        bool &cond) {
-  bool cond_and_0 = (float)c_corner > -1 * get_trapezoid_edges(NUM_LAYERS - 1);
+  bool cond_and_0 =
+      (float)c_corner_tmp > -1 * get_trapezoid_edges(NUM_LAYERS - 1);
   bool cond_and_1 = projectionOfCornerToBeam < BEAM_AXIS_LIM;
   cond = cond_and_0 && cond_and_1;
 }
@@ -378,7 +403,7 @@ void _shadowquilt_main_loop_make_verticle_strip(
   // variable declarations
   z_value_t z_top_min = -1 * TOP_LAYER_LIM;
   float_value_t complementary_apexZ0 = 0x0;
-  float_value_t c_corner = 1ULL << 11 - 1;
+  float_value_t c_corner_tmp = 1ULL << 11 - 1;
   int_value_t first_row_count = 0;
   float_value_t z_top_max = TOP_LAYER_LIM + BOUNDARYPOINT_OFFSET;
   int_value_t nPatchesInColumn = 0;
@@ -398,7 +423,7 @@ void _shadowquilt_main_loop_make_verticle_strip(
     // not implemented
   }
 
-  _shadowquilt_column_loop_get_cond(c_corner, projectionOfCornerToBeam,
+  _shadowquilt_column_loop_get_cond(c_corner_tmp, projectionOfCornerToBeam,
                                     cond_shadowquilt_column_loop);
 
 _shadowquilt_column_loop:
@@ -407,11 +432,11 @@ _shadowquilt_column_loop:
 
     nPatchesInColumn++;
 
-    makePatch_alignedToLine(apexZ0, z_top_max, false, points, num_points,
-                            patch_buffer, latest_patch_index, num_patches,
-                            pSlope, shadow_bottomL_jR, shadow_bottomR_jR,
-                            shadow_bottomL_jL, shadow_bottomR_jL, z1_min,
-                            z1_max, patch_stream);
+    makePatch_alignedToLine(
+        apexZ0, z_top_max, false, points, num_points, patch_buffer,
+        latest_patch_index, num_patches, pSlope, shadow_bottomL_jR,
+        shadow_bottomR_jR, shadow_bottomL_jL, shadow_bottomR_jL, z1_min, z1_max,
+        a_corner, b_corner, c_corner, d_corner, patch_stream);
 
     // TODO: implement calculating corners, getParallelograms, get_end_layer
     getParallelograms(patch_buffer[latest_patch_index],
@@ -421,8 +446,6 @@ _shadowquilt_column_loop:
                       shadow_bottomL_jL[latest_patch_index],
                       shadow_bottomR_jL[latest_patch_index],
                       z1_min[latest_patch_index], z1_max[latest_patch_index]);
-
-    exit(0);
 
     // >>>>> PRINT FIRST PATCH MADE <<<<<
     DEBUG_PRINT_ALL(
@@ -437,19 +460,22 @@ _shadowquilt_column_loop:
           }
         })
 
-    // cout << "top layer from "
-    //      << point_get_z(patch_buffer[latest_patch_index][NUM_LAYERS - 1]
-    //                                 [NUM_POINTS_IN_SUPERPOINT - 1])
-    //      << " to "
-    //      << point_get_z(patch_buffer[latest_patch_index][NUM_LAYERS - 1][0])
-    //      << " z_top_max: " << z_top_max << endl;
+    DEBUG_PRINT_ALL(
+        cout << "top layer from "
+             << point_get_z(patch_buffer[latest_patch_index][NUM_LAYERS - 1]
+                                        [NUM_POINTS_IN_SUPERPOINT - 1])
+             << " to "
+             << point_get_z(patch_buffer[latest_patch_index][NUM_LAYERS - 1][0])
+             << " z_top_max: " << z_top_max << endl;)
+
+    exit(0);
 
     // >>>>> END PRINT FIRST PATCH MADE <<<<<
 
     // complementary patch logic, not implemented yet
 
     // get condition for next iteration
-    _shadowquilt_column_loop_get_cond(c_corner, projectionOfCornerToBeam,
+    _shadowquilt_column_loop_get_cond(c_corner_tmp, projectionOfCornerToBeam,
                                       cond_shadowquilt_column_loop);
 
     return;
@@ -473,7 +499,8 @@ makepatch_main_loop:
     _shadowquilt_main_loop_make_verticle_strip(
         points, num_points, apexZ0, patch_buffer, latest_patch_index,
         num_patches, pSlope, shadow_bottomL_jR, shadow_bottomR_jR,
-        shadow_bottomL_jL, shadow_bottomR_jL, z1_min, z1_max, patch_stream);
+        shadow_bottomL_jL, shadow_bottomR_jL, z1_min, z1_max, a_corner,
+        b_corner, c_corner, d_corner, patch_stream);
 
     return;
   }
@@ -500,6 +527,12 @@ void system_top(point_t points[NUM_LAYERS][MAX_NUM_POINTS],
   float_value_t z1_min[PATCH_BUFFER_SIZE][NUM_LAYERS];
   float_value_t z1_max[PATCH_BUFFER_SIZE][NUM_LAYERS];
 
+  // acceptance corners arrays
+  float_value_t a_corner[PATCH_BUFFER_SIZE][2];
+  float_value_t b_corner[PATCH_BUFFER_SIZE][2];
+  float_value_t c_corner[PATCH_BUFFER_SIZE][2];
+  float_value_t d_corner[PATCH_BUFFER_SIZE][2];
+
 #if ARRAY_PARTITION == true
 // partition array: points
 #pragma HLS ARRAY_PARTITION variable = points complete dim = 0
@@ -511,7 +544,8 @@ void system_top(point_t points[NUM_LAYERS][MAX_NUM_POINTS],
   makePatches_ShadowQuilt_fromEdges(
       points, num_points, patch_buffer, latest_patch_index, num_patches, pSlope,
       shadow_bottomL_jR, shadow_bottomR_jR, shadow_bottomL_jL,
-      shadow_bottomR_jL, z1_min, z1_max, patch_stream);
+      shadow_bottomR_jL, z1_min, z1_max, a_corner, b_corner, c_corner, d_corner,
+      patch_stream);
 
   return;
 }
