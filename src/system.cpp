@@ -175,11 +175,110 @@ void get_acceptanceCorners(PATCH_BUFFER_ARGS) {
 loop_init_acceptance_corners_from_parallelograms:
   for (int i = 0; i < 4; i++) {
 #pragma HLS UNROLL
-    a_corner_list[i] = shadow_bottomL_jR[i];
-    b_corner_list[i] = shadow_bottomR_jR[i];
-    c_corner_list[i] = shadow_bottomL_jL[i];
-    d_corner_list[i] = shadow_bottomR_jL[i];
+    a_corner_list[i] = shadow_bottomL_jR[latest_patch_index][i];
+    b_corner_list[i] = shadow_bottomR_jR[latest_patch_index][i];
+    c_corner_list[i] = shadow_bottomL_jL[latest_patch_index][i];
+    d_corner_list[i] = shadow_bottomR_jL[latest_patch_index][i];
   }
+
+  DEBUG_PRINT_ALL( // print corner lists
+      for (int i = 0; i < 4; i++) {
+        cout << "a_corner_list[" << i << "]: " << a_corner_list[i] << endl;
+        cout << "b_corner_list[" << i << "]: " << b_corner_list[i] << endl;
+        cout << "c_corner_list[" << i << "]: " << c_corner_list[i] << endl;
+        cout << "d_corner_list[" << i << "]: " << d_corner_list[i] << endl;
+      })
+
+  // calculate min_element of corner lists
+  float_value_t a_corner_min = 1ULL << 10;
+  float_value_t b_corner_min = 1ULL << 10;
+  float_value_t c_corner_max = 0x0;
+  float_value_t d_corner_max = 0x0;
+
+loop_calculate_min_max_element_of_corner_lists:
+  for (int i = 0; i < 4; i++) {
+#pragma HLS PIPELINE II = 1
+    if (a_corner_list[i] < a_corner_min) {
+      a_corner_min = a_corner_list[i];
+    }
+    if (b_corner_list[i] < b_corner_min) {
+      b_corner_min = b_corner_list[i];
+    }
+    if (c_corner_list[i] > c_corner_max) {
+      c_corner_max = c_corner_list[i];
+    }
+    if (d_corner_list[i] > d_corner_max) {
+      d_corner_max = d_corner_list[i];
+    }
+  }
+
+  a_corner[latest_patch_index][0] = z1_min[latest_patch_index][0];
+  a_corner[latest_patch_index][1] = a_corner_min;
+  b_corner[latest_patch_index][0] = z1_max[latest_patch_index][0];
+  b_corner[latest_patch_index][1] = b_corner_min;
+  c_corner[latest_patch_index][0] = z1_min[latest_patch_index][0];
+  c_corner[latest_patch_index][1] = c_corner_max;
+  d_corner[latest_patch_index][0] = z1_max[latest_patch_index][0];
+  d_corner[latest_patch_index][1] = d_corner_max;
+
+  // print these corners
+  DEBUG_PRINT_ALL(cout << "a_corner: " << a_corner[latest_patch_index][0] << " "
+                       << a_corner[latest_patch_index][1] << endl;
+                  cout << "b_corner: " << b_corner[latest_patch_index][0] << " "
+                       << b_corner[latest_patch_index][1] << endl;
+                  cout << "c_corner: " << c_corner[latest_patch_index][0] << " "
+                       << c_corner[latest_patch_index][1] << endl;
+                  cout << "d_corner: " << d_corner[latest_patch_index][0] << " "
+                       << d_corner[latest_patch_index][1] << endl;)
+
+  // determine acceptance type
+  if (a_corner_min != a_corner_list[NUM_LAYERS - 2]) {
+    squareAcceptance = false;
+    flatTop = false;
+  }
+
+  if (b_corner_min != b_corner_list[NUM_LAYERS - 2]) {
+    squareAcceptance = false;
+    flatTop = false;
+  }
+
+  if (c_corner_max != c_corner_list[NUM_LAYERS - 2]) {
+    squareAcceptance = false;
+    flatBottom = false;
+  }
+
+  if (d_corner_max != d_corner_list[NUM_LAYERS - 2]) {
+    squareAcceptance = false;
+    flatBottom = false;
+  }
+
+  DEBUG_PRINT_ALL(cout << "squareAcceptance: " << squareAcceptance << endl;
+                  cout << "flatTop: " << flatTop << endl;)
+
+  if (c_corner[latest_patch_index][1] > a_corner[latest_patch_index][1]) {
+    triangleAcceptance = true;
+    c_corner[latest_patch_index][1] = b_corner[latest_patch_index][1];
+    a_corner[latest_patch_index][1] = b_corner[latest_patch_index][1];
+  }
+
+  if (b_corner[latest_patch_index][1] < d_corner[latest_patch_index][1]) {
+    triangleAcceptance = true;
+    b_corner[latest_patch_index][1] = c_corner[latest_patch_index][1];
+    d_corner[latest_patch_index][1] = c_corner[latest_patch_index][1];
+  }
+
+  // print x_corner[latest_patch_index][1]
+  DEBUG_PRINT_ALL(cout << "triangleAcceptance: " << triangleAcceptance << endl;
+                  cout << "a_corner[latest_patch_index][1]: "
+                       << a_corner[latest_patch_index][1] << endl;
+                  cout << "b_corner[latest_patch_index][1]: "
+                       << b_corner[latest_patch_index][1] << endl;
+                  cout << "c_corner[latest_patch_index][1]: "
+                       << c_corner[latest_patch_index][1] << endl;
+                  cout << "d_corner[latest_patch_index][1]: "
+                       << d_corner[latest_patch_index][1] << endl;)
+
+  return;
 }
 // >>>>> END ACCEPTANCE CORNER CALCULATION <<<<<
 
@@ -447,6 +546,11 @@ _shadowquilt_column_loop:
                       shadow_bottomR_jL[latest_patch_index],
                       z1_min[latest_patch_index], z1_max[latest_patch_index]);
 
+    get_acceptanceCorners(patch_buffer, latest_patch_index, num_patches, pSlope,
+                          shadow_bottomL_jR, shadow_bottomR_jR,
+                          shadow_bottomL_jL, shadow_bottomR_jL, z1_min, z1_max,
+                          a_corner, b_corner, c_corner, d_corner, patch_stream);
+
     // >>>>> PRINT FIRST PATCH MADE <<<<<
     DEBUG_PRINT_ALL(
         cout << "latest_patch_index: " << latest_patch_index << endl;
@@ -468,7 +572,7 @@ _shadowquilt_column_loop:
              << point_get_z(patch_buffer[latest_patch_index][NUM_LAYERS - 1][0])
              << " z_top_max: " << z_top_max << endl;)
 
-    exit(0);
+    // exit(0);
 
     // >>>>> END PRINT FIRST PATCH MADE <<<<<
 

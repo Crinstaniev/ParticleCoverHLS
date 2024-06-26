@@ -618,15 +618,13 @@ public:
       d_corner_list.push_back(parallelograms[i].shadow_bottomR_jL);
     }
 
-    // // print corner lists
-    // for (int i = 0; i < parallelograms.size(); i++) {
-    //   cout << "a_corner_list[" << i << "]: " << a_corner_list[i] << endl;
-    //   cout << "b_corner_list[" << i << "]: " << b_corner_list[i] << endl;
-    //   cout << "c_corner_list[" << i << "]: " << c_corner_list[i] << endl;
-    //   cout << "d_corner_list[" << i << "]: " << d_corner_list[i] << endl;
-    // }
-
-    // TODO: TRANSLATION RESUME HERE!
+    DEBUG_PRINT_ALL( // print corner lists
+        for (int i = 0; i < parallelograms.size(); i++) {
+          cout << "a_corner_list[" << i << "]: " << a_corner_list[i] << endl;
+          cout << "b_corner_list[" << i << "]: " << b_corner_list[i] << endl;
+          cout << "c_corner_list[" << i << "]: " << c_corner_list[i] << endl;
+          cout << "d_corner_list[" << i << "]: " << d_corner_list[i] << endl;
+        })
 
     a_corner.push_back(parallelograms[0].z1_min);
     a_corner.push_back(
@@ -644,13 +642,12 @@ public:
     d_corner.push_back(
         *max_element(d_corner_list.begin(), d_corner_list.end()));
 
-    exit(0);
-
-    // print these corners: guaranteed
-    // cout << "a_corner: " << a_corner[0] << " " << a_corner[1] << endl;
-    // cout << "b_corner: " << b_corner[0] << " " << b_corner[1] << endl;
-    // cout << "c_corner: " << c_corner[0] << " " << c_corner[1] << endl;
-    // cout << "d_corner: " << d_corner[0] << " " << d_corner[1] << endl;
+    // print these corners
+    DEBUG_PRINT_ALL(
+        cout << "a_corner: " << a_corner[0] << " " << a_corner[1] << endl;
+        cout << "b_corner: " << b_corner[0] << " " << b_corner[1] << endl;
+        cout << "c_corner: " << c_corner[0] << " " << c_corner[1] << endl;
+        cout << "d_corner: " << d_corner[0] << " " << d_corner[1] << endl;)
 
     if (*min_element(a_corner_list.begin(), a_corner_list.end()) !=
         a_corner_list[env.num_layers - 2]) {
@@ -673,9 +670,9 @@ public:
       flatBottom = false;
     }
 
-    // print squareAcceptance and flatBottom: guaranteed
-    // cout << "squareAcceptance: " << squareAcceptance << endl;
-    // cout << "flatBottom: " << flatBottom << endl;
+    // print squareAcceptance and flatBottom
+    DEBUG_PRINT_ALL(cout << "squareAcceptance: " << squareAcceptance << endl;
+                    cout << "flatBottom: " << flatBottom << endl;)
 
     if (c_corner[1] > a_corner[1]) {
       triangleAcceptance = true;
@@ -688,6 +685,14 @@ public:
       b_corner[1] = c_corner[1];
       d_corner[1] = c_corner[1];
     }
+
+    // print x_corner[1]
+    DEBUG_PRINT_ALL(cout << "triangleAcceptance: " << triangleAcceptance
+                         << endl;
+                    cout << "a_corner[1]: " << a_corner[1] << endl;
+                    cout << "b_corner[1]: " << b_corner[1] << endl;
+                    cout << "c_corner[1]: " << c_corner[1] << endl;
+                    cout << "d_corner[1]: " << d_corner[1] << endl;)
   }
 
   void get_end_layer() {
