@@ -570,9 +570,18 @@ _shadowquilt_column_loop:
                                         [NUM_POINTS_IN_SUPERPOINT - 1])
              << " to "
              << point_get_z(patch_buffer[latest_patch_index][NUM_LAYERS - 1][0])
-             << " z_top_max: " << z_top_max << endl;)
+             << " z_top_max: " << z_top_max << endl;
+        cout << "original: [" << a_corner[latest_patch_index][0] << ", "
+             << a_corner[latest_patch_index][1] << "] for patch " << num_patches
+             << endl;
+        cout << "original: [" << b_corner[latest_patch_index][0] << ", "
+             << b_corner[latest_patch_index][1] << "]" << endl;
+        cout << "original: [" << c_corner[latest_patch_index][0] << ", "
+             << c_corner[latest_patch_index][1] << "]" << endl;
+        cout << "original: [" << d_corner[latest_patch_index][0] << ", "
+             << d_corner[latest_patch_index][1] << "]" << endl;)
 
-    // exit(0);
+    exit(0);
 
     // >>>>> END PRINT FIRST PATCH MADE <<<<<
 

@@ -928,22 +928,30 @@ public:
 
         makePatch_alignedToLine(apexZ0, z_top_max, ppl = ppl, false);
 
-        exit(0);
+        DEBUG_PRINT_ALL(
+            cout << "top layer from "
+                 << patches[patches.size() - 1]
+                        .superpoints[env.num_layers - 1]
+                        .max
+                 << " to "
+                 << patches[patches.size() - 1]
+                        .superpoints[env.num_layers - 1]
+                        .min
+                 << " z_top_max: " << z_top_max << endl;
+            cout << "original: [" << patches[patches.size() - 1].a_corner[0]
+                 << ", " << patches[patches.size() - 1].a_corner[1]
+                 << "] for patch " << patches.size() << endl;
+            cout << "original: [" << patches[patches.size() - 1].b_corner[0]
+                 << ", " << patches[patches.size() - 1].b_corner[1] << "]"
+                 << endl;
+            cout << "original: [" << patches[patches.size() - 1].c_corner[0]
+                 << ", " << patches[patches.size() - 1].c_corner[1] << "]"
+                 << endl;
+            cout << "original: [" << patches[patches.size() - 1].d_corner[0]
+                 << ", " << patches[patches.size() - 1].d_corner[1] << "]"
+                 << endl;)
 
-        cout << "top layer from "
-             << patches[patches.size() - 1].superpoints[env.num_layers - 1].max
-             << " to "
-             << patches[patches.size() - 1].superpoints[env.num_layers - 1].min
-             << " z_top_max: " << z_top_max << endl;
-        cout << "original: [" << patches[patches.size() - 1].a_corner[0] << ", "
-             << patches[patches.size() - 1].a_corner[1] << "] for patch "
-             << patches.size() << endl;
-        cout << "original: [" << patches[patches.size() - 1].b_corner[0] << ", "
-             << patches[patches.size() - 1].b_corner[1] << "]" << endl;
-        cout << "original: [" << patches[patches.size() - 1].c_corner[0] << ", "
-             << patches[patches.size() - 1].c_corner[1] << "]" << endl;
-        cout << "original: [" << patches[patches.size() - 1].d_corner[0] << ", "
-             << patches[patches.size() - 1].d_corner[1] << "]" << endl;
+        exit(0);
 
         // print superpoints of last patch
         // for (int i = 0; i < 5; i++) {
