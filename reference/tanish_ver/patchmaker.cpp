@@ -1047,27 +1047,6 @@ public:
 
         int nPatchesAtOriginal = patches.size();
 
-        exit(0);
-
-        // print all ingredients
-        // std::cout << "last_patch_c_corner[0]: " << last_patch->c_corner[0]
-        //           << std::endl;
-        // std::cout << "last_patch_c_corner[1]: " << last_patch->c_corner[1]
-        //           << std::endl;
-        // std::cout << "last_patch_a_corner[0]: " << last_patch->a_corner[0]
-        //           << std::endl;
-        // std::cout << "last_patch_a_corner[1]: " << last_patch->a_corner[1]
-        //           << std::endl;
-        // std::cout << "last_patch_b_corner[0]: " << last_patch->b_corner[0]
-        //           << std::endl;
-        // std::cout << "last_patch_b_corner[1]: " << last_patch->b_corner[1]
-        //           << std::endl;
-        // std::cout << "projectionOfCornerToBeam: " << projectionOfCornerToBeam
-        //           << std::endl;
-        // std::cout << "z_top_max: " << z_top_max << std::endl;
-        // std::cout << "last_patch_flatBottom: " << last_patch->flatBottom
-        //           << std::endl;
-
         DEBUG_PRINT_ALL(cout << "last_patch_c_corner[0]: "
                              << patches[patches.size() - 1].c_corner[0] << endl;
                         cout << "last_patch_c_corner[1]: "
@@ -1086,7 +1065,6 @@ public:
                         cout << "last_patch_flatBottom: "
                              << patches[patches.size() - 1].flatBottom << endl;)
 
-        // DEBUG PRINTING NOT TRANSLATED
         DEBUG_PRINT_ALL(
             cout << "squareAcceptance: "
                  << patches[patches.size() - 1].squareAcceptance
@@ -1094,7 +1072,8 @@ public:
                  << patches[patches.size() - 1].triangleAcceptance
                  << " projectionOfCornerToBeam: " << projectionOfCornerToBeam
                  << " notChoppedPatch: " << notChoppedPatch << endl;)
-        // DEBUG PRINTING NOT TRANSLATED
+
+        exit(0);
 
         if (!(notChoppedPatch) &&
             (patches[patches.size() - 1].c_corner[1] >

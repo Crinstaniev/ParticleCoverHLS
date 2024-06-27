@@ -534,7 +534,6 @@ _shadowquilt_column_loop:
         a_corner, b_corner, c_corner, d_corner, squareAcceptance, flatTop,
         flatBottom, triangleAcceptance, patch_stream);
 
-    // TODO: implement calculating corners, getParallelograms, get_end_layer
     getParallelograms(patch_buffer[latest_patch_index],
                       pSlope[latest_patch_index],
                       shadow_bottomL_jR[latest_patch_index],
@@ -610,10 +609,46 @@ _shadowquilt_column_loop:
     bool squarePatch_alternate1 =
         (a_corner[latest_patch_index][1] > z_top_max) &&
         (b_corner[latest_patch_index][1] > z_top_max) &&
-        (false // TODO: implement flatBottom array
-        );
+        (flatBottom[latest_patch_index]);
 
-    exit(0);
+    bool squarePatch_alternate2 =
+        (a_corner[latest_patch_index][1] > z_top_max) &&
+        (flatBottom[latest_patch_index]);
+
+    bool notChoppedPatch = (squareAcceptance[latest_patch_index]) ||
+                           (squarePatch_alternate1) || (squarePatch_alternate2);
+
+    bool madeComplementaryPatch = false;
+
+    int_value_t nPatchesAtOriginal = num_patches;
+
+    DEBUG_PRINT_ALL(
+        cout << "last_patch_c_corner[0]: " << c_corner[latest_patch_index][0]
+             << endl;
+        cout << "last_patch_c_corner[1]: " << c_corner[latest_patch_index][1]
+             << endl;
+        cout << "last_patch_a_corner[0]: " << a_corner[latest_patch_index][0]
+             << endl;
+        cout << "last_patch_a_corner[1]: " << a_corner[latest_patch_index][1]
+             << endl;
+        cout << "last_patch_b_corner[0]: " << b_corner[latest_patch_index][0]
+             << endl;
+        cout << "last_patch_b_corner[1]: " << b_corner[latest_patch_index][1]
+             << endl;
+        cout << "projectionOfCornerToBeam: " << projectionOfCornerToBeam
+             << endl;
+        cout << "z_top_max: " << z_top_max << endl;
+        cout << "last_patch_flatBottom: " << flatBottom[latest_patch_index]
+             << endl;)
+
+    DEBUG_PRINT_ALL(
+        cout << "squareAcceptance: " << squareAcceptance[latest_patch_index]
+             << " triangleAcceptance: "
+             << triangleAcceptance[latest_patch_index]
+             << " projectionOfCornerToBeam: " << projectionOfCornerToBeam
+             << " notChoppedPatch: " << notChoppedPatch << endl;)
+
+    // exit(0);
     // >>>>> END REPETITION DETECTION <<<<<
 
     // get condition for next iteration
