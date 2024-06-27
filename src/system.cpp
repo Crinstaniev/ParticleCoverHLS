@@ -161,11 +161,6 @@ loop_compute_parallelogram:
  */
 
 void get_acceptanceCorners(PATCH_BUFFER_ARGS) {
-  bool squareAcceptance = true;
-  bool flatTop = true;
-  bool flatBottom = true;
-  bool triangleAcceptance = false;
-
   // tmp corners
   float_value_t a_corner_list[4];
   float_value_t b_corner_list[4];
@@ -233,36 +228,36 @@ loop_calculate_min_max_element_of_corner_lists:
 
   // determine acceptance type
   if (a_corner_min != a_corner_list[NUM_LAYERS - 2]) {
-    squareAcceptance = false;
-    flatTop = false;
+    squareAcceptance[latest_patch_index] = false;
+    flatTop[latest_patch_index] = false;
   }
 
   if (b_corner_min != b_corner_list[NUM_LAYERS - 2]) {
-    squareAcceptance = false;
-    flatTop = false;
+    squareAcceptance[latest_patch_index] = false;
+    flatTop[latest_patch_index] = false;
   }
 
   if (c_corner_max != c_corner_list[NUM_LAYERS - 2]) {
-    squareAcceptance = false;
-    flatBottom = false;
+    squareAcceptance[latest_patch_index] = false;
+    flatBottom[latest_patch_index] = false;
   }
 
   if (d_corner_max != d_corner_list[NUM_LAYERS - 2]) {
-    squareAcceptance = false;
-    flatBottom = false;
+    squareAcceptance[latest_patch_index] = false;
+    flatBottom[latest_patch_index] = false;
   }
 
   DEBUG_PRINT_ALL(cout << "squareAcceptance: " << squareAcceptance << endl;
                   cout << "flatTop: " << flatTop << endl;)
 
   if (c_corner[latest_patch_index][1] > a_corner[latest_patch_index][1]) {
-    triangleAcceptance = true;
+    triangleAcceptance[latest_patch_index] = true;
     c_corner[latest_patch_index][1] = b_corner[latest_patch_index][1];
     a_corner[latest_patch_index][1] = b_corner[latest_patch_index][1];
   }
 
   if (b_corner[latest_patch_index][1] < d_corner[latest_patch_index][1]) {
-    triangleAcceptance = true;
+    triangleAcceptance[latest_patch_index] = true;
     b_corner[latest_patch_index][1] = c_corner[latest_patch_index][1];
     d_corner[latest_patch_index][1] = c_corner[latest_patch_index][1];
   }
@@ -466,7 +461,8 @@ alignedtoline_layer_loop:
         apexZ0, z_top_max, false, points, num_points, init_patch, patch_buffer,
         latest_patch_index, num_patches, pSlope, shadow_bottomL_jR,
         shadow_bottomR_jR, shadow_bottomL_jL, shadow_bottomR_jL, z1_min, z1_max,
-        a_corner, b_corner, c_corner, d_corner, patch_stream, i);
+        a_corner, b_corner, c_corner, d_corner, squareAcceptance, flatTop,
+        flatBottom, triangleAcceptance, patch_stream, i);
   }
 
   // print init_patch
@@ -535,7 +531,8 @@ _shadowquilt_column_loop:
         apexZ0, z_top_max, false, points, num_points, patch_buffer,
         latest_patch_index, num_patches, pSlope, shadow_bottomL_jR,
         shadow_bottomR_jR, shadow_bottomL_jL, shadow_bottomR_jL, z1_min, z1_max,
-        a_corner, b_corner, c_corner, d_corner, patch_stream);
+        a_corner, b_corner, c_corner, d_corner, squareAcceptance, flatTop,
+        flatBottom, triangleAcceptance, patch_stream);
 
     // TODO: implement calculating corners, getParallelograms, get_end_layer
     getParallelograms(patch_buffer[latest_patch_index],
@@ -549,7 +546,9 @@ _shadowquilt_column_loop:
     get_acceptanceCorners(patch_buffer, latest_patch_index, num_patches, pSlope,
                           shadow_bottomL_jR, shadow_bottomR_jR,
                           shadow_bottomL_jL, shadow_bottomR_jL, z1_min, z1_max,
-                          a_corner, b_corner, c_corner, d_corner, patch_stream);
+                          a_corner, b_corner, c_corner, d_corner,
+                          squareAcceptance, flatTop, flatBottom,
+                          triangleAcceptance, patch_stream);
 
     // >>>>> PRINT FIRST PATCH MADE <<<<<
     DEBUG_PRINT_ALL(
@@ -580,12 +579,42 @@ _shadowquilt_column_loop:
              << c_corner[latest_patch_index][1] << "]" << endl;
         cout << "original: [" << d_corner[latest_patch_index][0] << ", "
              << d_corner[latest_patch_index][1] << "]" << endl;)
-
-    exit(0);
-
     // >>>>> END PRINT FIRST PATCH MADE <<<<<
 
-    // complementary patch logic, not implemented yet
+    // >>>>> REPETITION DETECTION <<<<<
+    float_value_t original_c = c_corner[latest_patch_index][1];
+    float_value_t original_d = d_corner[latest_patch_index][1];
+
+    DEBUG_PRINT_ALL(cout << "original_c: " << original_c << endl;
+                    cout << "original_d: " << original_d << endl;)
+
+    c_corner_tmp = original_c;
+
+    bool repeat_patch = false;
+    bool repeat_original = false;
+
+    DEBUG_PRINT_ALL(cout << "original c_corner: " << c_corner_tmp << endl;
+                    cout << "original d_corner: " << original_d << endl;
+                    cout << "patch size: " << num_patches << endl;)
+
+    if (num_patches > 2) {
+      // not implemented
+    }
+
+    float_value_t seed_apexZ0 = apexZ0;
+
+    projectionOfCornerToBeam = straightLineProjectorFromLayerIJtoK(
+        c_corner[latest_patch_index][1], c_corner[latest_patch_index][0],
+        NUM_LAYERS, 1, 0);
+
+    bool squarePatch_alternate1 =
+        (a_corner[latest_patch_index][1] > z_top_max) &&
+        (b_corner[latest_patch_index][1] > z_top_max) &&
+        (false // TODO: implement flatBottom array
+        );
+
+    exit(0);
+    // >>>>> END REPETITION DETECTION <<<<<
 
     // get condition for next iteration
     _shadowquilt_column_loop_get_cond(c_corner_tmp, projectionOfCornerToBeam,
@@ -613,7 +642,8 @@ makepatch_main_loop:
         points, num_points, apexZ0, patch_buffer, latest_patch_index,
         num_patches, pSlope, shadow_bottomL_jR, shadow_bottomR_jR,
         shadow_bottomL_jL, shadow_bottomR_jL, z1_min, z1_max, a_corner,
-        b_corner, c_corner, d_corner, patch_stream);
+        b_corner, c_corner, d_corner, squareAcceptance, flatTop, flatBottom,
+        triangleAcceptance, patch_stream);
 
     return;
   }
@@ -646,6 +676,12 @@ void system_top(point_t points[NUM_LAYERS][MAX_NUM_POINTS],
   float_value_t c_corner[PATCH_BUFFER_SIZE][2];
   float_value_t d_corner[PATCH_BUFFER_SIZE][2];
 
+  // patch bools
+  bool squareAcceptance[PATCH_BUFFER_SIZE] = {true};
+  bool flatTop[PATCH_BUFFER_SIZE] = {true};
+  bool flatBottom[PATCH_BUFFER_SIZE] = {true};
+  bool triangleAcceptance[PATCH_BUFFER_SIZE] = {false};
+
 #if ARRAY_PARTITION == true
 // partition array: points
 #pragma HLS ARRAY_PARTITION variable = points complete dim = 0
@@ -658,7 +694,7 @@ void system_top(point_t points[NUM_LAYERS][MAX_NUM_POINTS],
       points, num_points, patch_buffer, latest_patch_index, num_patches, pSlope,
       shadow_bottomL_jR, shadow_bottomR_jR, shadow_bottomL_jL,
       shadow_bottomR_jL, z1_min, z1_max, a_corner, b_corner, c_corner, d_corner,
-      patch_stream);
+      squareAcceptance, flatTop, flatBottom, triangleAcceptance, patch_stream);
 
   return;
 }

@@ -68,6 +68,9 @@ typedef struct {
       float_value_t b_corner[PATCH_BUFFER_SIZE][2],                            \
       float_value_t c_corner[PATCH_BUFFER_SIZE][2],                            \
       float_value_t d_corner[PATCH_BUFFER_SIZE][2],                            \
+      bool squareAcceptance[PATCH_BUFFER_SIZE],                                \
+      bool flatTop[PATCH_BUFFER_SIZE], bool flatBottom[PATCH_BUFFER_SIZE],     \
+      bool triangleAcceptance[PATCH_BUFFER_SIZE],                              \
       hls::stream<point_t> &patch_stream
 
 // constant values

@@ -951,8 +951,6 @@ public:
                  << ", " << patches[patches.size() - 1].d_corner[1] << "]"
                  << endl;)
 
-        exit(0);
-
         // print superpoints of last patch
         // for (int i = 0; i < 5; i++) {
         //   cout << "superpoints[" << i
@@ -961,6 +959,7 @@ public:
         //        << patches[patches.size() - 1].superpoints[i].max << endl;
         // }
 
+      loop_print_patches_with_number_greater_than_1:
         for (int i = 1; i < patches[patches.size() - 1].superpoints.size() - 1;
              i++) {
           int j = i + 1;
@@ -998,6 +997,9 @@ public:
 
         float original_c = patches[patches.size() - 1].c_corner[1];
         float original_d = patches[patches.size() - 1].d_corner[1];
+
+        DEBUG_PRINT_ALL(cout << "original_c: " << original_c << endl;
+                        cout << "original_d: " << original_d << endl;)
 
         c_corner = original_c;
 
@@ -1044,6 +1046,8 @@ public:
         bool madeComplementaryPatch = false;
 
         int nPatchesAtOriginal = patches.size();
+
+        exit(0);
 
         // print all ingredients
         // std::cout << "last_patch_c_corner[0]: " << last_patch->c_corner[0]
