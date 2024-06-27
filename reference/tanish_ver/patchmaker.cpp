@@ -1073,7 +1073,13 @@ public:
                  << " projectionOfCornerToBeam: " << projectionOfCornerToBeam
                  << " notChoppedPatch: " << notChoppedPatch << endl;)
 
-        exit(0);
+        DEBUG_PRINT_ALL(
+            cout << "if_cond_0: "
+                 << (!(notChoppedPatch) &&
+                     (patches[patches.size() - 1].c_corner[1] >
+                      -1 * env.trapezoid_edges[env.num_layers - 1]) &&
+                     (projectionOfCornerToBeam < env.beam_axis_lim))
+                 << endl;)
 
         if (!(notChoppedPatch) &&
             (patches[patches.size() - 1].c_corner[1] >
@@ -1087,8 +1093,9 @@ public:
           if ((patches[patches.size() - 1].triangleAcceptance) &&
               !(repeat_original)) {
             z_top_min = patches[patches.size() - 1].d_corner[1];
+
+            DEBUG_PRINT_ALL(cout << "new z_top_min: " << z_top_min << endl;)
           } else {
-            // DEBUG PRINTING NOT TRANSLATED
             DEBUG_PRINT_ALL(cout << "z_top_min_before: " << z_top_min
                                  << " superpoints[self.env.num_layers-1].min: "
                                  << patches[patches.size() - 1]
@@ -1100,8 +1107,11 @@ public:
                 max(-1 * env.top_layer_lim, patches[patches.size() - 1]
                                                 .superpoints[env.num_layers - 1]
                                                 .min);
+
             DEBUG_PRINT_ALL(cout << "z_top_min_after: " << z_top_min << endl;)
           }
+
+          exit(0);
 
           makePatch_alignedToLine(complementary_apexZ0, z_top_min, ppl, true);
 

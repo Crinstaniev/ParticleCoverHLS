@@ -650,6 +650,45 @@ _shadowquilt_column_loop:
 
     // exit(0);
     // >>>>> END REPETITION DETECTION <<<<<
+    bool if_cond_0 = !(notChoppedPatch) &&
+                     ((float)c_corner[latest_patch_index][1] >
+                      (-1 * get_trapezoid_edges(NUM_LAYERS - 1))) &&
+                     (projectionOfCornerToBeam < BEAM_AXIS_LIM);
+
+    DEBUG_PRINT_ALL(cout << "if_cond_0: " << if_cond_0 << endl;)
+
+    if (if_cond_0) {
+      complementary_apexZ0 =
+          get_superpoint_min_z(patch_buffer[latest_patch_index][0]);
+
+      DEBUG_PRINT_ALL(cout << "complementary_apexZ0: " << complementary_apexZ0
+                           << endl;)
+
+      bool if_cond_0_0 =
+          (triangleAcceptance[latest_patch_index]) && (!repeat_original);
+
+      if (if_cond_0_0) {
+        z_top_min = d_corner[latest_patch_index][1];
+
+        DEBUG_PRINT_ALL(cout << "new z_top_min: " << z_top_min << endl;)
+      } else {
+        DEBUG_PRINT_ALL(
+            cout << "z_top_min_before: " << z_top_min
+                 << " superpoints[self.env.num_layers-1].min: "
+                 << get_superpoint_min_z(
+                        patch_buffer[latest_patch_index][NUM_LAYERS - 1])
+                 << endl;)
+
+        z_top_min =
+            std::max((float)-1 * TOP_LAYER_LIM,
+                     (float)get_superpoint_min_z(
+                         patch_buffer[latest_patch_index][NUM_LAYERS - 1]));
+
+        DEBUG_PRINT_ALL(cout << "z_top_min_after: " << z_top_min << endl;)
+      }
+    }
+
+    // exit(0);
 
     // get condition for next iteration
     _shadowquilt_column_loop_get_cond(c_corner_tmp, projectionOfCornerToBeam,
