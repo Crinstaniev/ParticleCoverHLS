@@ -359,14 +359,14 @@ void _find_boundaries_and_starting_index_and_value(
 }
 
 void alignedtoline_per_layer_loop(
-    z_value_t &apexZ0, z_value_t z_top_max, bool leftRight,
+    z_value_t &apexZ0, z_value_t z_top, bool leftRight,
     point_t points[NUM_LAYERS][MAX_NUM_POINTS], index_t num_points[NUM_LAYERS],
     point_t init_patch[NUM_LAYERS][NUM_POINTS_IN_SUPERPOINT], PATCH_BUFFER_ARGS,
     int i) {
   float_value_t y = get_radii(i);
   float_value_t r_max = get_radii(NUM_LAYERS - 1);
   float_value_t projectionToRow =
-      _cal_projection_to_row(z_top_max, apexZ0, y, r_max);
+      _cal_projection_to_row(z_top, apexZ0, y, r_max);
 
   // variables for finding starting index and value
   int_value_t start_index = 0;
@@ -382,8 +382,44 @@ void alignedtoline_per_layer_loop(
       num_points, points, left_bound, lbVal, right_bound, rbVal,
       projectionToRow, start_index, start_value, i);
 
+  DEBUG_PRINT_ALL(if (num_patches == 1) {
+    for (int j = 0; j < num_points[i]; j++) {
+      cout << "row_list[" << j << "]: " << point_get_z(points[i][j]) << endl;
+    }
+
+    cout << "z_top: " << z_top << " apexZ0: " << apexZ0 << " y: " << y
+         << " radii[0]: " << get_radii(0) << " r_max: " << r_max
+         << " radii[0]: " << get_radii(0) << " apexZ0: " << apexZ0
+         << " projectionToRow: " << projectionToRow << endl;
+  })
+
+  DEBUG_PRINT_ALL(if (num_patches == 1) {
+    cout << "num_points[" << i << "]: " << num_points[i] << endl;
+    cout << "start_index: " << start_index << " start_value: " << start_value
+         << endl;
+    cout << "left_bound: " << left_bound << endl;
+    cout << "right_bound: " << right_bound << endl;
+    cout << "lbVal: " << lbVal << endl;
+    cout << "rbVal: " << rbVal << endl;
+  })
+
   if (leftRight) {
-    // not implemented
+    DEBUG_PRINT_ALL(cout << "start_index_before: " << start_index << endl;)
+
+    if (start_index != 0) {
+      if (start_value > ALIGNMENT_ACCURACY) {
+        start_index -= 1;
+      }
+    }
+
+    DEBUG_PRINT_ALL(cout << "start_index_after: " << start_index << endl;)
+
+    if ((start_index + PPL) > (right_bound + 1)) {
+      // TODO: translation resume here
+    } else {
+    }
+
+    // PATCH_EXIT(1);
   } else {
     if (start_index != num_points[i] - 1) {
       DEBUG_PRINT_ALL(cout << "row " << i + 1 << " start_index " << start_index
@@ -437,8 +473,7 @@ void alignedtoline_per_layer_loop(
 // arrays, only specified size. point_t point[xxx][xxx], no point_t **point
 // no struct pointers! ->
 
-void makePatch_alignedToLine(z_value_t &apexZ0, z_value_t z_top_max,
-                             bool leftRight,
+void makePatch_alignedToLine(z_value_t &apexZ0, z_value_t z_top, bool leftRight,
                              point_t points[NUM_LAYERS][MAX_NUM_POINTS],
                              index_t num_points[NUM_LAYERS],
                              PATCH_BUFFER_ARGS) {
@@ -458,7 +493,7 @@ alignedtoline_layer_loop:
 #endif
 
     alignedtoline_per_layer_loop(
-        apexZ0, z_top_max, false, points, num_points, init_patch, patch_buffer,
+        apexZ0, z_top, leftRight, points, num_points, init_patch, patch_buffer,
         latest_patch_index, num_patches, pSlope, shadow_bottomL_jR,
         shadow_bottomR_jR, shadow_bottomL_jL, shadow_bottomR_jL, z1_min, z1_max,
         a_corner, b_corner, c_corner, d_corner, squareAcceptance, flatTop,
@@ -648,7 +683,6 @@ _shadowquilt_column_loop:
              << " projectionOfCornerToBeam: " << projectionOfCornerToBeam
              << " notChoppedPatch: " << notChoppedPatch << endl;)
 
-    // exit(0);
     // >>>>> END REPETITION DETECTION <<<<<
     bool if_cond_0 = !(notChoppedPatch) &&
                      ((float)c_corner[latest_patch_index][1] >
@@ -687,6 +721,18 @@ _shadowquilt_column_loop:
         DEBUG_PRINT_ALL(cout << "z_top_min_after: " << z_top_min << endl;)
       }
     }
+
+    // print ingredients
+    DEBUG_PRINT_ALL(cout << "complementary_apexZ0: " << complementary_apexZ0
+                         << endl;
+                    cout << "z_top_min: " << z_top_min << endl;)
+
+    makePatch_alignedToLine(
+        complementary_apexZ0, z_top_min, true, points, num_points, patch_buffer,
+        latest_patch_index, num_patches, pSlope, shadow_bottomL_jR,
+        shadow_bottomR_jR, shadow_bottomL_jL, shadow_bottomR_jR, z1_min, z1_max,
+        a_corner, b_corner, c_corner, d_corner, squareAcceptance, flatTop,
+        flatBottom, triangleAcceptance, patch_stream);
 
     // exit(0);
 

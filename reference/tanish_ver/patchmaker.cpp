@@ -1111,9 +1111,13 @@ public:
             DEBUG_PRINT_ALL(cout << "z_top_min_after: " << z_top_min << endl;)
           }
 
-          exit(0);
+          DEBUG_PRINT_ALL(
+              cout << "complementary_apexZ0: " << complementary_apexZ0 << endl;
+              cout << "z_top_min: " << z_top_min << endl;)
 
           makePatch_alignedToLine(complementary_apexZ0, z_top_min, ppl, true);
+
+          exit(0);
 
           DEBUG_PRINT_ALL(
               cout << "superpoints of patch_depth_1" << endl;
@@ -1627,7 +1631,7 @@ public:
 
     vector<vector<Point>> row_data = data->array;
 
-  alignedtoline_layer_loop:
+  alignedtoline_per_layer_loop:
     for (int i = 0; i < env.num_layers; i++) {
 
       float y = env.radii[i];
@@ -1643,18 +1647,16 @@ public:
           (z_top - apexZ0) * (y - env.radii[0]) / (r_max - env.radii[0]) +
           apexZ0;
 
-      // not translated yet
       DEBUG_PRINT_ALL(if (this->n_patches == 1) {
         // print row_list
-        DEBUG_PRINT_ALL(for (int j = 0; j < row_list.size(); j++) {
+        for (int j = 0; j < row_list.size(); j++) {
           cout << "row_list[" << j << "]: " << row_list[j] << endl;
-        })
+        }
 
-        DEBUG_PRINT_ALL(
-            cout << "z_top: " << z_top << " apexZ0: " << apexZ0 << " y: " << y
-                 << " radii[0]: " << env.radii[0] << " r_max: " << r_max
-                 << " radii[0]: " << env.radii[0] << " apexZ0: " << apexZ0
-                 << " projectionToRow: " << projectionToRow << endl;)
+        cout << "z_top: " << z_top << " apexZ0: " << apexZ0 << " y: " << y
+             << " radii[0]: " << env.radii[0] << " r_max: " << r_max
+             << " radii[0]: " << env.radii[0] << " apexZ0: " << apexZ0
+             << " projectionToRow: " << projectionToRow << endl;
       })
 
       int start_index = 0;
@@ -1708,22 +1710,28 @@ public:
         cout << "rbVal: " << rbVal << endl;
       })
 
-      // this part not translated yet
+      // >>>> THIS PART DO NOT NEED TO BE TRANSLATED <<<<
       if ((float_middleLayers_ppl == true) && (i != 0) &&
           (i != env.num_layers - 1)) {
         ppl = original_ppl * 2 - 1;
       } else {
         ppl = original_ppl;
       }
+      // >>>> END OF PART <<<<
 
       if (leftRight == true) {
+        DEBUG_PRINT_ALL(cout << "start_index_before: " << start_index << endl;)
+
         if (start_index != 0) {
           if (start_value > alignmentAccuracy) {
             start_index -= 1;
           }
         }
 
+        DEBUG_PRINT_ALL(cout << "start_index_after: " << start_index << endl;)
+
         if ((start_index + ppl) > (right_bound + 1)) {
+          // TODO: translation resume here
           vector<Point> temp(row_data[i].begin() + right_bound + 1 - ppl,
                              row_data[i].begin() + right_bound + 1);
           init_patch.push_back(wedgeSuperPoint(temp));
@@ -1738,6 +1746,12 @@ public:
                              row_data[i].begin() + start_index + ppl);
           init_patch.push_back(wedgeSuperPoint(temp));
         }
+
+        if (this->n_patches == 1) {
+          cout << "patch 1 exit" << endl;
+          exit(0);
+        }
+
       } else {
         if (start_index != (row_list.size() - 1)) {
 

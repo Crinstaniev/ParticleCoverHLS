@@ -30,3 +30,10 @@
 #define NUM_LAYERS 5
 #define PPL 16
 #define ALIGNMENT_ACCURACY 0.00001
+
+// debug macros
+#define PATCH_EXIT(x)                                                          \
+  if (num_patches == x) {                                                      \
+    cout << "patch " << x << " exit" << endl;                                  \
+    exit(0);                                                                   \
+  }

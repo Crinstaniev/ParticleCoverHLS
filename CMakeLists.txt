@@ -27,9 +27,9 @@ file(GLOB SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
 add_library(patchmaker SHARED ${SOURCES})
 set_target_properties(patchmaker PROPERTIES OUTPUT_NAME patchmaker)
 
-# PatchMakerHLS executable
-add_executable(PatchMakerHLS src/system.cpp)
-target_link_libraries(PatchMakerHLS PRIVATE patchmaker)
+# # PatchMakerHLS executable
+# add_executable(PatchMakerHLS src/system.cpp)
+# target_link_libraries(PatchMakerHLS PRIVATE patchmaker)
 
 # PatchMakerHLS reference implementation
 add_executable(PatchMakerHLSRef reference/tanish_ver/patchmaker.cpp)
