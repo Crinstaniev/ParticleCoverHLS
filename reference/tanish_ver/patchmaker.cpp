@@ -1117,8 +1117,6 @@ public:
 
           makePatch_alignedToLine(complementary_apexZ0, z_top_min, ppl, true);
 
-          exit(0);
-
           DEBUG_PRINT_ALL(
               cout << "superpoints of patch_depth_1" << endl;
               for (int i = 0; i < env.num_layers; i++) {
@@ -1143,8 +1141,6 @@ public:
           DEBUG_PRINT_ALL(
               cout << "complementary_apexZ0: " << complementary_apexZ0 << endl;
               cout << "z_top_min: " << z_top_min << endl;)
-
-          // exit(0);
 
           madeComplementaryPatch = true;
           cout << "complementary: [" << patches[patches.size() - 1].a_corner[0]
@@ -1745,13 +1741,13 @@ public:
           vector<Point> temp(row_data[i].begin() + start_index,
                              row_data[i].begin() + start_index + ppl);
           init_patch.push_back(wedgeSuperPoint(temp));
-        }
 
-        if (this->n_patches == 1) {
-          cout << "patch 1 exit" << endl;
-          exit(0);
+          // print this superpoint
+          DEBUG_PRINT_ALL(for (int j = 0; j < ppl; j++) {
+            cout << "init_patch[" << i << "][" << j
+                 << "]: " << init_patch[i].points[j].z << endl;
+          })
         }
-
       } else {
         if (start_index != (row_list.size() - 1)) {
 
@@ -1777,6 +1773,11 @@ public:
                         cout << "left_bound: " << left_bound << endl;
                         cout << "ppl: " << ppl << endl;)
 
+        if (this->n_patches == 1) {
+          cout << "patch 1 exit" << endl;
+          exit(0);
+        }
+
         if ((start_index - ppl + 1) < left_bound) {
           vector<Point> temp(row_data[i].begin() + left_bound,
                              row_data[i].begin() + left_bound + ppl);
@@ -1794,19 +1795,6 @@ public:
           })
 
           init_patch.push_back(wedgeSuperPoint(temp));
-
-          // cout << "max: " << wedgeSuperPoint(temp).max << endl;
-          // cout << "min: " << wedgeSuperPoint(temp).min << endl;
-
-          // print points in wedgeSuperPoint
-          wedgeSuperPoint temp_wedgeSuperPoint = wedgeSuperPoint(temp);
-          // for (int i = 0; i < temp_wedgeSuperPoint.points.size(); i++) {
-          //   cout << "layer_num: " <<
-          //   temp_wedgeSuperPoint.points[i].layer_num; cout << " z: " <<
-          //   temp_wedgeSuperPoint.points[i].z; cout << " radius: " <<
-          //   temp_wedgeSuperPoint.points[i].radius; cout << " phi: " <<
-          //   temp_wedgeSuperPoint.points[i].phi << endl;
-          // }
         }
       }
     }
@@ -1822,6 +1810,22 @@ public:
     // }
 
     add_patch(wedgePatch(env, init_patch, apexZ0 = apexZ0));
+
+    // print latest patch
+    DEBUG_PRINT_ALL(
+        cout << "Print patch num: " << n_patches << endl;
+        for (int i = 0; i < 5; i++) {
+          for (int j = 0; j < 16; j++) {
+            cout << "z[" << i << "][" << j << "]: "
+                 << patches[patches.size() - 1].superpoints[i].points[j].z
+                 << endl;
+          }
+        })
+
+    if (n_patches == 2) {
+      cout << "patch 2 exit" << endl;
+      exit(0);
+    }
   }
 
   void tester() {

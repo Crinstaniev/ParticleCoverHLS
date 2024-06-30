@@ -32,8 +32,12 @@
 #define ALIGNMENT_ACCURACY 0.00001
 
 // debug macros
+#if CONFIG_IS_SYNTHESIS == 0
 #define PATCH_EXIT(x)                                                          \
   if (num_patches == x) {                                                      \
     cout << "patch " << x << " exit" << endl;                                  \
     exit(0);                                                                   \
   }
+#else
+#define PATCH_EXIT(x)
+#endif

@@ -415,11 +415,28 @@ void alignedtoline_per_layer_loop(
     DEBUG_PRINT_ALL(cout << "start_index_after: " << start_index << endl;)
 
     if ((start_index + PPL) > (right_bound + 1)) {
-      // TODO: translation resume here
+    // copy points[i][right_bound + 1 - ppl] to points[i][right_bound + 1] to
+    // init_patch
+    loop_copy_points_to_init_patch0:
+      for (int j = 0; j < PPL; j++) {
+#pragma HLS UNROLL
+        init_patch[i][j] = points[i][right_bound + 1 - PPL + j];
+      }
     } else {
-    }
+    // copy points[i][start_index] to points[i][start_index + ppl] to
+    // init_patch
+    loop_copy_points_to_init_patch1:
+      for (int j = 0; j < PPL; j++) {
+#pragma HLS UNROLL
+        init_patch[i][j] = points[i][start_index + j];
+      }
 
-    // PATCH_EXIT(1);
+      // print this superpoint
+      DEBUG_PRINT_ALL(for (int j = 0; j < PPL; j++) {
+        cout << "init_patch[" << i << "][" << j
+             << "]: " << point_get_z(init_patch[i][j]) << endl;
+      })
+    }
   } else {
     if (start_index != num_points[i] - 1) {
       DEBUG_PRINT_ALL(cout << "row " << i + 1 << " start_index " << start_index
@@ -437,30 +454,20 @@ void alignedtoline_per_layer_loop(
                              << " z: " << start_index_z << endl;)
       }
     }
-  }
 
-  DEBUG_PRINT_ALL(cout << "start_index: " << start_index << endl;
-                  cout << "left_bound: " << left_bound << endl;
-                  cout << "ppl: " << PPL << endl;)
+    DEBUG_PRINT_ALL(cout << "start_index: " << start_index << endl;
+                    cout << "left_bound: " << left_bound << endl;
+                    cout << "ppl: " << PPL << endl;)
 
-  if ((start_index - PPL + 1) < left_bound) {
-    // not implemented yet, not for the first patch.
-  } else {
-    // push the patch into the patch buffer
-    point_t temp_superpoint[NUM_POINTS_IN_SUPERPOINT];
-
-  loop_copy_points_to_superpoint:
-    for (int j = 0; j < NUM_POINTS_IN_SUPERPOINT; j++) {
+    if ((start_index - PPL + 1) < left_bound) {
+      // not implemented yet, not for the first patch.
+    } else {
+      // copy points[i][start_index - ppl + 1] to points[i][start_index + 1] to
+      // init_patch
+    loop_copy_points_to_init_patch2:
+      for (int j = 0; j < PPL; j++) {
 #pragma HLS UNROLL
-      temp_superpoint[j] = points[i][start_index - PPL + 1 + j];
-
-      DEBUG_PRINT_ALL(cout << "temp_superpoint[" << j
-                           << "]: " << point_get_z(temp_superpoint[j]) << endl;)
-
-    loop_copy_superpoint_to_init_patch:
-      for (int k = 0; k < NUM_POINTS_IN_SUPERPOINT; k++) {
-#pragma HLS UNROLL
-        init_patch[i][k] = temp_superpoint[k];
+        init_patch[i][j] = points[i][start_index - PPL + 1 + j];
       }
     }
   }
@@ -514,6 +521,19 @@ alignedtoline_layer_loop:
 
   // add patch to stream
   write_patch_stream(patch_stream, init_patch);
+
+  // print latest patch
+  DEBUG_PRINT_ALL(
+      cout << "Print patch num: " << num_patches << endl;
+      for (int i = 0; i < NUM_LAYERS; i++) {
+        for (int j = 0; j < NUM_POINTS_IN_SUPERPOINT; j++) {
+          cout << "z[" << i << "][" << j
+               << "]: " << point_get_z(patch_buffer[latest_patch_index][i][j])
+               << endl;
+        }
+      })
+
+  PATCH_EXIT(2);
 
   return;
 }
