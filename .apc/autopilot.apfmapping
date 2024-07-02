@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
   <source>
-    <originFiles name="types.cpp" path="C:\Projects\ParticleCoverHLS\src\types.cpp"/>
-    <originFiles name="system.cpp" path="C:\Projects\ParticleCoverHLS\src\system.cpp"/>
-    <originFiles name="patch_buffer.cpp" path="C:\Projects\ParticleCoverHLS\src\patch_buffer.cpp"/>
-    <originFiles name="file_reader.cpp" path="C:\Projects\ParticleCoverHLS\src\file_reader.cpp"/>
+    <originFiles name="types.cpp" path="D:\VITIS_HLS_Git\ParticleCoverHLS\src\types.cpp"/>
+    <originFiles name="system.cpp" path="D:\VITIS_HLS_Git\ParticleCoverHLS\src\system.cpp"/>
+    <originFiles name="patch_buffer.cpp" path="D:\VITIS_HLS_Git\ParticleCoverHLS\src\patch_buffer.cpp"/>
+    <originFiles name="file_reader.cpp" path="D:\VITIS_HLS_Git\ParticleCoverHLS\src\file_reader.cpp"/>
   </source>
   <testbench>
-    <originFiles name="test_system.cpp" path="C:\Projects\ParticleCoverHLS\test\test_system.cpp"/>
+    <originFiles name="test_system.cpp" path="D:\VITIS_HLS_Git\ParticleCoverHLS\test\test_system.cpp"/>
   </testbench>
 </autopilotfilemapping:AutoPilotFileMapping>

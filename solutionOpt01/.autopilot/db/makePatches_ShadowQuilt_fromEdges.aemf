@@ -1,0 +1,1041 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cdfg:DBCdfg xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cdfg="http://www.autoesl.com/DBCdfg" timeStamp="1719456655959">
+  <ports id="1" name="points" type="PortType" originalName="points" coreName="RAM" coreId="1949265519" bitwidth="128" iftype="IfTypeRegister" arraysize="2560">
+    <dataOutputObjs>call</dataOutputObjs>
+    <dataOutputObjs>call</dataOutputObjs>
+    <dataOutputObjs>call</dataOutputObjs>
+    <dataOutputObjs>call</dataOutputObjs>
+    <dataOutputObjs>call</dataOutputObjs>
+  </ports>
+  <ports id="2" name="num_points" type="PortType" coreName="RAM" coreId="1949265519" bitwidth="32" iftype="IfTypeRegister" arraysize="5">
+    <dataOutputObjs>call</dataOutputObjs>
+    <dataOutputObjs>call</dataOutputObjs>
+    <dataOutputObjs>call</dataOutputObjs>
+    <dataOutputObjs>call</dataOutputObjs>
+    <dataOutputObjs>call</dataOutputObjs>
+  </ports>
+  <ports id="3" name="patch_stream_V" type="PortType" originalName="patch_stream" coreName="FIFO" coreId="1043341356" bitwidth="96" direction="DirOut" iftype="IfTypeRom">
+    <dataInputObjs>write</dataInputObjs>
+  </ports>
+  <ports id="4" name="patch_buffer_0_0" type="PortType" originalName="patch_buffer.V[0][0]" coreName="RAM" coreId="1869442415" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="5" name="patch_buffer_0_1" type="PortType" originalName="patch_buffer.V[0][1]" coreName="RAM" coreId="1869442415" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="6" name="patch_buffer_0_2" type="PortType" originalName="patch_buffer.V[0][2]" coreName="RAM" coreId="673195817" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="7" name="patch_buffer_0_3" type="PortType" originalName="patch_buffer.V[0][3]" coreName="RAM" coreId="795766637" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="8" name="patch_buffer_0_4" type="PortType" originalName="patch_buffer.V[0][4]" coreName="RAM" coreId="673195817" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="9" name="patch_buffer_0_5" type="PortType" originalName="patch_buffer.V[0][5]" coreName="RAM" coreId="1949265519" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="10" name="patch_buffer_0_6" type="PortType" originalName="patch_buffer.V[0][6]" coreName="RAM" coreId="673195817" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="11" name="patch_buffer_0_7" type="PortType" originalName="patch_buffer.V[0][7]" coreName="RAM" coreId="1852796269" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="12" name="patch_buffer_0_8" type="PortType" originalName="patch_buffer.V[0][8]" coreName="RAM" coreId="1869442415" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="13" name="patch_buffer_0_9" type="PortType" originalName="patch_buffer.V[0][9]" coreName="RAM" coreId="673195817" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="14" name="patch_buffer_0_10" type="PortType" originalName="patch_buffer.V[0][10]" coreName="RAM" coreId="1836016431" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="15" name="patch_buffer_0_11" type="PortType" originalName="patch_buffer.V[0][11]" coreName="RAM" coreId="1949265519" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="16" name="patch_buffer_0_12" type="PortType" originalName="patch_buffer.V[0][12]" coreName="RAM" coreId="1949265519" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="17" name="patch_buffer_0_13" type="PortType" originalName="patch_buffer.V[0][13]" coreName="RAM" coreId="673195817" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="18" name="patch_buffer_0_14" type="PortType" originalName="patch_buffer.V[0][14]" coreName="RAM" coreId="1949265519" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="19" name="patch_buffer_0_15" type="PortType" originalName="patch_buffer.V[0][15]" coreName="RAM" coreId="1949265519" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="20" name="patch_buffer_1_0" type="PortType" originalName="patch_buffer.V[1][0]" coreName="RAM" coreId="1852796269" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="21" name="patch_buffer_1_1" type="PortType" originalName="patch_buffer.V[1][1]" coreName="RAM" coreId="1869442415" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="22" name="patch_buffer_1_2" type="PortType" originalName="patch_buffer.V[1][2]" coreName="RAM" coreId="1852796269" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="23" name="patch_buffer_1_3" type="PortType" originalName="patch_buffer.V[1][3]" coreName="RAM" coreId="1836016431" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="24" name="patch_buffer_1_4" type="PortType" originalName="patch_buffer.V[1][4]" coreName="RAM" coreId="1043341356" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="25" name="patch_buffer_1_5" type="PortType" originalName="patch_buffer.V[1][5]" coreName="RAM" coreId="1949265519" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="26" name="patch_buffer_1_6" type="PortType" originalName="patch_buffer.V[1][6]" coreName="RAM" coreId="1949265519" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="27" name="patch_buffer_1_7" type="PortType" originalName="patch_buffer.V[1][7]" coreName="RAM" coreId="673195817" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="28" name="patch_buffer_1_8" type="PortType" originalName="patch_buffer.V[1][8]" coreName="RAM" coreId="1836016431" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="29" name="patch_buffer_1_9" type="PortType" originalName="patch_buffer.V[1][9]" coreName="RAM" coreId="1852796269" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="30" name="patch_buffer_1_10" type="PortType" originalName="patch_buffer.V[1][10]" coreName="RAM" coreId="1043341356" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="31" name="patch_buffer_1_11" type="PortType" originalName="patch_buffer.V[1][11]" coreName="RAM" coreId="673195817" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="32" name="patch_buffer_1_12" type="PortType" originalName="patch_buffer.V[1][12]" coreName="RAM" coreId="1949265519" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="33" name="patch_buffer_1_13" type="PortType" originalName="patch_buffer.V[1][13]" coreName="RAM" coreId="1949265519" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="34" name="patch_buffer_1_14" type="PortType" originalName="patch_buffer.V[1][14]" coreName="RAM" coreId="1949265519" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="35" name="patch_buffer_1_15" type="PortType" originalName="patch_buffer.V[1][15]" coreName="RAM" coreId="0" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="36" name="patch_buffer_2_0" type="PortType" originalName="patch_buffer.V[2][0]" coreName="RAM" coreId="0" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="37" name="patch_buffer_2_1" type="PortType" originalName="patch_buffer.V[2][1]" coreName="RAM" coreId="0" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="38" name="patch_buffer_2_2" type="PortType" originalName="patch_buffer.V[2][2]" coreName="RAM" coreId="0" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="39" name="patch_buffer_2_3" type="PortType" originalName="patch_buffer.V[2][3]" coreName="RAM" coreId="0" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="40" name="patch_buffer_2_4" type="PortType" originalName="patch_buffer.V[2][4]" coreName="RAM" coreId="0" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="41" name="patch_buffer_2_5" type="PortType" originalName="patch_buffer.V[2][5]" coreName="RAM" coreId="6" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="42" name="patch_buffer_2_6" type="PortType" originalName="patch_buffer.V[2][6]" coreName="RAM" coreId="558677957" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="43" name="patch_buffer_2_7" type="PortType" originalName="patch_buffer.V[2][7]" coreName="RAM" coreId="2482139760" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="44" name="patch_buffer_2_8" type="PortType" originalName="patch_buffer.V[2][8]" coreName="RAM" coreId="2478889072" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="45" name="patch_buffer_2_9" type="PortType" originalName="patch_buffer.V[2][9]" coreName="RAM" coreId="0" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="46" name="patch_buffer_2_10" type="PortType" originalName="patch_buffer.V[2][10]" coreName="RAM" coreId="556253084" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="47" name="patch_buffer_2_11" type="PortType" originalName="patch_buffer.V[2][11]" coreName="RAM" coreId="572702359" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="48" name="patch_buffer_2_12" type="PortType" originalName="patch_buffer.V[2][12]" coreName="RAM" coreId="0" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="49" name="patch_buffer_2_13" type="PortType" originalName="patch_buffer.V[2][13]" coreName="RAM" coreId="0" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="50" name="patch_buffer_2_14" type="PortType" originalName="patch_buffer.V[2][14]" coreName="RAM" coreId="2478964720" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="51" name="patch_buffer_2_15" type="PortType" originalName="patch_buffer.V[2][15]" coreName="RAM" coreId="0" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="52" name="patch_buffer_3_0" type="PortType" originalName="patch_buffer.V[3][0]" coreName="RAM" coreId="2478947952" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="53" name="patch_buffer_3_1" type="PortType" originalName="patch_buffer.V[3][1]" coreName="RAM" coreId="2482389744" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="54" name="patch_buffer_3_2" type="PortType" originalName="patch_buffer.V[3][2]" coreName="RAM" coreId="0" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="55" name="patch_buffer_3_3" type="PortType" originalName="patch_buffer.V[3][3]" coreName="RAM" coreId="544324802" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="56" name="patch_buffer_3_4" type="PortType" originalName="patch_buffer.V[3][4]" coreName="RAM" coreId="1" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="57" name="patch_buffer_3_5" type="PortType" originalName="patch_buffer.V[3][5]" coreName="RAM" coreId="643285740" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="58" name="patch_buffer_3_6" type="PortType" originalName="patch_buffer.V[3][6]" coreName="RAM" coreId="596689185" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="59" name="patch_buffer_3_7" type="PortType" originalName="patch_buffer.V[3][7]" coreName="RAM" coreId="0" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="60" name="patch_buffer_3_8" type="PortType" originalName="patch_buffer.V[3][8]" coreName="RAM" coreId="2478927600" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="61" name="patch_buffer_3_9" type="PortType" originalName="patch_buffer.V[3][9]" coreName="RAM" coreId="590987658" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="62" name="patch_buffer_3_10" type="PortType" originalName="patch_buffer.V[3][10]" coreName="RAM" coreId="0" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="63" name="patch_buffer_3_11" type="PortType" originalName="patch_buffer.V[3][11]" coreName="RAM" coreId="636142431" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="64" name="patch_buffer_3_12" type="PortType" originalName="patch_buffer.V[3][12]" coreName="RAM" coreId="2478893552" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="65" name="patch_buffer_3_13" type="PortType" originalName="patch_buffer.V[3][13]" coreName="RAM" coreId="2482397168" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="66" name="patch_buffer_3_14" type="PortType" originalName="patch_buffer.V[3][14]" coreName="RAM" coreId="1598309704" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="67" name="patch_buffer_3_15" type="PortType" originalName="patch_buffer.V[3][15]" coreName="RAM" coreId="580238894" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="68" name="patch_buffer_4_0" type="PortType" originalName="patch_buffer.V[4][0]" coreName="RAM" coreId="0" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="69" name="patch_buffer_4_1" type="PortType" originalName="patch_buffer.V[4][1]" coreName="RAM" coreId="564051755" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="70" name="patch_buffer_4_2" type="PortType" originalName="patch_buffer.V[4][2]" coreName="RAM" coreId="2482388592" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="71" name="patch_buffer_4_3" type="PortType" originalName="patch_buffer.V[4][3]" coreName="RAM" coreId="654689726" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="72" name="patch_buffer_4_4" type="PortType" originalName="patch_buffer.V[4][4]" coreName="RAM" coreId="0" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="73" name="patch_buffer_4_5" type="PortType" originalName="patch_buffer.V[4][5]" coreName="RAM" coreId="1" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="74" name="patch_buffer_4_6" type="PortType" originalName="patch_buffer.V[4][6]" coreName="RAM" coreId="624149376" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="75" name="patch_buffer_4_7" type="PortType" originalName="patch_buffer.V[4][7]" coreName="RAM" coreId="2478940016" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="76" name="patch_buffer_4_8" type="PortType" originalName="patch_buffer.V[4][8]" coreName="RAM" coreId="2482371312" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="77" name="patch_buffer_4_9" type="PortType" originalName="patch_buffer.V[4][9]" coreName="RAM" coreId="2478916464" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="78" name="patch_buffer_4_10" type="PortType" originalName="patch_buffer.V[4][10]" coreName="RAM" coreId="0" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="79" name="patch_buffer_4_11" type="PortType" originalName="patch_buffer.V[4][11]" coreName="RAM" coreId="1346914133" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="80" name="patch_buffer_4_12" type="PortType" originalName="patch_buffer.V[4][12]" coreName="RAM" coreId="0" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="81" name="patch_buffer_4_13" type="PortType" originalName="patch_buffer.V[4][13]" coreName="RAM" coreId="2478926320" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="82" name="patch_buffer_4_14" type="PortType" originalName="patch_buffer.V[4][14]" coreName="RAM" coreId="0" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="83" name="patch_buffer_4_15" type="PortType" originalName="patch_buffer.V[4][15]" coreName="RAM" coreId="2478974576" bitwidth="96" direction="DirOut" iftype="IfTypeRegister" arraysize="3">
+    <dataInputObjs>call</dataInputObjs>
+  </ports>
+  <ports id="92" name="latest_patch_index_constprop" type="PortType" coreId="591839731" bitwidth="2" direction="DirInOut">
+    <dataInputObjs>call</dataInputObjs>
+    <dataOutputObjs>call</dataOutputObjs>
+  </ports>
+  <ports id="94" name="num_patches_constprop" type="PortType" coreId="0" bitwidth="32" direction="DirInOut">
+    <dataInputObjs>call</dataInputObjs>
+    <dataOutputObjs>call</dataOutputObjs>
+  </ports>
+  <edges id="139" source_obj="//@ports.0" sink_obj="//@blocks.0/@node_objs.1"/>
+  <edges id="140" source_obj="//@ports.1" sink_obj="//@blocks.0/@node_objs.1"/>
+  <edges id="141" source_obj="//@blocks.0/@node_objs.0" sink_obj="//@blocks.0/@node_objs.1"/>
+  <edges id="145" source_obj="//@ports.0" sink_obj="//@blocks.0/@node_objs.2"/>
+  <edges id="146" source_obj="//@ports.1" sink_obj="//@blocks.0/@node_objs.2"/>
+  <edges id="147" source_obj="//@blocks.0/@node_objs.0" sink_obj="//@blocks.0/@node_objs.2"/>
+  <edges id="151" source_obj="//@ports.0" sink_obj="//@blocks.0/@node_objs.3"/>
+  <edges id="152" source_obj="//@ports.1" sink_obj="//@blocks.0/@node_objs.3"/>
+  <edges id="153" source_obj="//@blocks.0/@node_objs.0" sink_obj="//@blocks.0/@node_objs.3"/>
+  <edges id="157" source_obj="//@ports.0" sink_obj="//@blocks.0/@node_objs.4"/>
+  <edges id="158" source_obj="//@ports.1" sink_obj="//@blocks.0/@node_objs.4"/>
+  <edges id="159" source_obj="//@blocks.0/@node_objs.0" sink_obj="//@blocks.0/@node_objs.4"/>
+  <edges id="163" source_obj="//@ports.0" sink_obj="//@blocks.0/@node_objs.5"/>
+  <edges id="164" source_obj="//@ports.1" sink_obj="//@blocks.0/@node_objs.5"/>
+  <edges id="165" source_obj="//@blocks.0/@node_objs.0" sink_obj="//@blocks.0/@node_objs.5"/>
+  <edges id="170" source_obj="//@blocks.0/@node_objs.0" sink_obj="//@blocks.0/@node_objs.6"/>
+  <edges id="171" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.3"/>
+  <edges id="172" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.4"/>
+  <edges id="173" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.5"/>
+  <edges id="174" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.6"/>
+  <edges id="175" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.7"/>
+  <edges id="176" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.8"/>
+  <edges id="177" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.9"/>
+  <edges id="178" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.10"/>
+  <edges id="179" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.11"/>
+  <edges id="180" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.12"/>
+  <edges id="181" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.13"/>
+  <edges id="182" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.14"/>
+  <edges id="183" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.15"/>
+  <edges id="184" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.16"/>
+  <edges id="185" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.17"/>
+  <edges id="186" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.18"/>
+  <edges id="187" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.19"/>
+  <edges id="188" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.20"/>
+  <edges id="189" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.21"/>
+  <edges id="190" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.22"/>
+  <edges id="191" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.23"/>
+  <edges id="192" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.24"/>
+  <edges id="193" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.25"/>
+  <edges id="194" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.26"/>
+  <edges id="195" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.27"/>
+  <edges id="196" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.28"/>
+  <edges id="197" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.29"/>
+  <edges id="198" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.30"/>
+  <edges id="199" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.31"/>
+  <edges id="200" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.32"/>
+  <edges id="201" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.33"/>
+  <edges id="202" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.34"/>
+  <edges id="203" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.35"/>
+  <edges id="204" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.36"/>
+  <edges id="205" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.37"/>
+  <edges id="206" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.38"/>
+  <edges id="207" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.39"/>
+  <edges id="208" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.40"/>
+  <edges id="209" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.41"/>
+  <edges id="210" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.42"/>
+  <edges id="211" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.43"/>
+  <edges id="212" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.44"/>
+  <edges id="213" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.45"/>
+  <edges id="214" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.46"/>
+  <edges id="215" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.47"/>
+  <edges id="216" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.48"/>
+  <edges id="217" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.49"/>
+  <edges id="218" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.50"/>
+  <edges id="219" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.51"/>
+  <edges id="220" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.52"/>
+  <edges id="221" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.53"/>
+  <edges id="222" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.54"/>
+  <edges id="223" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.55"/>
+  <edges id="224" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.56"/>
+  <edges id="225" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.57"/>
+  <edges id="226" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.58"/>
+  <edges id="227" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.59"/>
+  <edges id="228" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.60"/>
+  <edges id="229" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.61"/>
+  <edges id="230" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.62"/>
+  <edges id="231" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.63"/>
+  <edges id="232" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.64"/>
+  <edges id="233" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.65"/>
+  <edges id="234" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.66"/>
+  <edges id="235" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.67"/>
+  <edges id="236" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.68"/>
+  <edges id="237" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.69"/>
+  <edges id="238" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.70"/>
+  <edges id="239" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.71"/>
+  <edges id="240" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.72"/>
+  <edges id="241" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.73"/>
+  <edges id="242" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.74"/>
+  <edges id="243" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.75"/>
+  <edges id="244" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.76"/>
+  <edges id="245" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.77"/>
+  <edges id="246" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.78"/>
+  <edges id="247" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.79"/>
+  <edges id="248" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.80"/>
+  <edges id="249" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.81"/>
+  <edges id="250" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.82"/>
+  <edges id="251" edge_type="CtrlEdge" source_obj="//@regions.0/@basic_blocks.0" sink_obj="//@blocks.0/@node_objs.7"/>
+  <edges id="254" edge_type="CtrlEdge" source_obj="//@blocks.0" sink_obj="//@regions.0/@basic_blocks.0/@node_objs.0"/>
+  <edges id="255" source_obj="//@regions.0/@basic_blocks.0/@node_objs.3" sink_obj="//@regions.0/@basic_blocks.0/@node_objs.0" is_back_edge="1"/>
+  <edges id="256" edge_type="CtrlEdge" source_obj="//@regions.0/@basic_blocks.1" sink_obj="//@regions.0/@basic_blocks.0/@node_objs.0" is_back_edge="1"/>
+  <edges id="258" edge_type="CtrlEdge" source_obj="//@blocks.0" sink_obj="//@regions.0/@basic_blocks.0/@node_objs.1"/>
+  <edges id="259" source_obj="//@regions.0/@basic_blocks.1/@node_objs.3" sink_obj="//@regions.0/@basic_blocks.0/@node_objs.1" is_back_edge="1"/>
+  <edges id="260" edge_type="CtrlEdge" source_obj="//@regions.0/@basic_blocks.1" sink_obj="//@regions.0/@basic_blocks.0/@node_objs.1" is_back_edge="1"/>
+  <edges id="263" edge_type="CtrlEdge" source_obj="//@blocks.0" sink_obj="//@regions.0/@basic_blocks.0/@node_objs.2"/>
+  <edges id="264" source_obj="//@regions.0/@basic_blocks.1/@node_objs.11" sink_obj="//@regions.0/@basic_blocks.0/@node_objs.2" is_back_edge="1"/>
+  <edges id="265" edge_type="CtrlEdge" source_obj="//@regions.0/@basic_blocks.1" sink_obj="//@regions.0/@basic_blocks.0/@node_objs.2" is_back_edge="1"/>
+  <edges id="266" source_obj="//@regions.0/@basic_blocks.0/@node_objs.0" sink_obj="//@regions.0/@basic_blocks.0/@node_objs.3"/>
+  <edges id="269" source_obj="//@regions.0/@basic_blocks.0/@node_objs.0" sink_obj="//@regions.0/@basic_blocks.0/@node_objs.4"/>
+  <edges id="272" source_obj="//@regions.0/@basic_blocks.0/@node_objs.4" sink_obj="//@regions.0/@basic_blocks.0/@node_objs.5"/>
+  <edges id="273" edge_type="CtrlEdge" source_obj="//@regions.0/@basic_blocks.1" sink_obj="//@regions.0/@basic_blocks.0/@node_objs.5"/>
+  <edges id="274" edge_type="CtrlEdge" source_obj="//@blocks.1" sink_obj="//@regions.0/@basic_blocks.0/@node_objs.5"/>
+  <edges id="275" source_obj="//@regions.0/@basic_blocks.0/@node_objs.1" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.0"/>
+  <edges id="277" source_obj="//@regions.0/@basic_blocks.0/@node_objs.2" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.1"/>
+  <edges id="280" source_obj="//@regions.0/@basic_blocks.1/@node_objs.1" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.2"/>
+  <edges id="282" source_obj="//@regions.0/@basic_blocks.0/@node_objs.2" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.2"/>
+  <edges id="283" source_obj="//@regions.0/@basic_blocks.1/@node_objs.1" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.3"/>
+  <edges id="284" source_obj="//@regions.0/@basic_blocks.1/@node_objs.0" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.3"/>
+  <edges id="285" source_obj="//@regions.0/@basic_blocks.0/@node_objs.1" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.3"/>
+  <edges id="288" source_obj="//@regions.0/@basic_blocks.1/@node_objs.3" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.4"/>
+  <edges id="291" source_obj="//@regions.0/@basic_blocks.1/@node_objs.2" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.5"/>
+  <edges id="292" source_obj="//@regions.0/@basic_blocks.1/@node_objs.4" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.6"/>
+  <edges id="293" source_obj="//@regions.0/@basic_blocks.1/@node_objs.5" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.6"/>
+  <edges id="294" source_obj="//@regions.0/@basic_blocks.1/@node_objs.6" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.7"/>
+  <edges id="295" source_obj="//@blocks.0/@node_objs.0" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.8"/>
+  <edges id="298" source_obj="//@regions.0/@basic_blocks.1/@node_objs.7" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.8"/>
+  <edges id="299" source_obj="//@regions.0/@basic_blocks.1/@node_objs.8" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.9"/>
+  <edges id="302" source_obj="//@regions.0/@basic_blocks.1/@node_objs.10" sink_obj="//@ports.2"/>
+  <edges id="303" source_obj="//@regions.0/@basic_blocks.1/@node_objs.9" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.10"/>
+  <edges id="304" source_obj="//@regions.0/@basic_blocks.1/@node_objs.2" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.11"/>
+  <edges id="307" edge_type="CtrlEdge" source_obj="//@regions.0/@basic_blocks.0" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.12"/>
+  <edges id="308" sink_obj="//@blocks.0/@node_objs.1"/>
+  <edges id="309" sink_obj="//@blocks.0/@node_objs.1"/>
+  <edges id="310" sink_obj="//@blocks.0/@node_objs.1"/>
+  <edges id="311" sink_obj="//@blocks.0/@node_objs.1"/>
+  <edges id="312" sink_obj="//@blocks.0/@node_objs.2"/>
+  <edges id="313" sink_obj="//@blocks.0/@node_objs.2"/>
+  <edges id="314" sink_obj="//@blocks.0/@node_objs.2"/>
+  <edges id="315" sink_obj="//@blocks.0/@node_objs.2"/>
+  <edges id="316" sink_obj="//@blocks.0/@node_objs.3"/>
+  <edges id="317" sink_obj="//@blocks.0/@node_objs.3"/>
+  <edges id="318" sink_obj="//@blocks.0/@node_objs.3"/>
+  <edges id="319" sink_obj="//@blocks.0/@node_objs.3"/>
+  <edges id="320" sink_obj="//@blocks.0/@node_objs.4"/>
+  <edges id="321" sink_obj="//@blocks.0/@node_objs.4"/>
+  <edges id="322" sink_obj="//@blocks.0/@node_objs.4"/>
+  <edges id="323" sink_obj="//@blocks.0/@node_objs.4"/>
+  <edges id="324" sink_obj="//@blocks.0/@node_objs.5"/>
+  <edges id="325" sink_obj="//@blocks.0/@node_objs.5"/>
+  <edges id="326" sink_obj="//@blocks.0/@node_objs.5"/>
+  <edges id="327" sink_obj="//@blocks.0/@node_objs.5"/>
+  <edges id="328" source_obj="//@ports.83" sink_obj="//@blocks.0/@node_objs.6"/>
+  <edges id="329" source_obj="//@ports.84" sink_obj="//@blocks.0/@node_objs.6"/>
+  <edges id="419" edge_type="CtrlEdge" source_obj="//@blocks.0" sink_obj="//@regions.0/@basic_blocks.0"/>
+  <edges id="420" edge_type="CtrlEdge" source_obj="//@regions.0/@basic_blocks.0" sink_obj="//@blocks.1"/>
+  <edges id="421" edge_type="CtrlEdge" source_obj="//@regions.0/@basic_blocks.0" sink_obj="//@regions.0/@basic_blocks.1"/>
+  <edges id="422" edge_type="CtrlEdge" source_obj="//@regions.0/@basic_blocks.1" sink_obj="//@regions.0/@basic_blocks.0" is_back_edge="1"/>
+  <edges id="423" edge_type="VirtEdge" source_obj="//@blocks.0/@node_objs.5" sink_obj="//@blocks.0/@node_objs.6"/>
+  <edges id="424" edge_type="VirtEdge" source_obj="//@blocks.0/@node_objs.4" sink_obj="//@blocks.0/@node_objs.5"/>
+  <edges id="425" edge_type="VirtEdge" source_obj="//@blocks.0/@node_objs.3" sink_obj="//@blocks.0/@node_objs.4"/>
+  <edges id="426" edge_type="VirtEdge" source_obj="//@blocks.0/@node_objs.2" sink_obj="//@blocks.0/@node_objs.3"/>
+  <edges id="427" edge_type="VirtEdge" source_obj="//@blocks.0/@node_objs.1" sink_obj="//@blocks.0/@node_objs.2"/>
+  <edges id="428" edge_type="VirtEdge" source_obj="//@blocks.0/@node_objs.4" sink_obj="//@blocks.0/@node_objs.5"/>
+  <edges id="429" edge_type="VirtEdge" source_obj="//@blocks.0/@node_objs.3" sink_obj="//@blocks.0/@node_objs.4"/>
+  <edges id="430" edge_type="VirtEdge" source_obj="//@blocks.0/@node_objs.2" sink_obj="//@blocks.0/@node_objs.3"/>
+  <edges id="431" edge_type="VirtEdge" source_obj="//@blocks.0/@node_objs.1" sink_obj="//@blocks.0/@node_objs.2"/>
+  <edges id="432" edge_type="VirtEdge" source_obj="//@blocks.0/@node_objs.1" sink_obj="//@blocks.0/@node_objs.2"/>
+  <edges id="433" edge_type="VirtEdge" source_obj="//@blocks.0/@node_objs.2" sink_obj="//@blocks.0/@node_objs.3"/>
+  <edges id="434" edge_type="VirtEdge" source_obj="//@blocks.0/@node_objs.3" sink_obj="//@blocks.0/@node_objs.4"/>
+  <edges id="435" edge_type="VirtEdge" source_obj="//@blocks.0/@node_objs.4" sink_obj="//@blocks.0/@node_objs.5"/>
+  <edges id="436" edge_type="VirtEdge" source_obj="//@blocks.0/@node_objs.5" sink_obj="//@blocks.0/@node_objs.6"/>
+  <edges id="-328" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.83"/>
+  <edges id="-329" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@ports.84"/>
+  <blocks id="106" name="_ZN13ap_fixed_baseILi32ELi12ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEC2Ed.exit" type="BlockType">
+    <controlOutputObjs>phi</controlOutputObjs>
+    <controlOutputObjs>phi</controlOutputObjs>
+    <controlOutputObjs>phi</controlOutputObjs>
+    <controlOutputObjs>block_114</controlOutputObjs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="98" name="init_patch_V" lineNumber="225" originalName="init_patch.V" fileName="ParticleCoverHLS/src/system.cpp" fileDirectory=".." rtlName="init_patch_V_U" coreName="RAM" implIndex="auto" control="auto" opType="ram" coreId="83" contextFuncName="makePatch_alignedToLine" bitwidth="96" opcode="alloca" m_display="0" m_topoIndex="1" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="ParticleCoverHLS/src/system.cpp" linenumber="225" fileDirectory="D:\VITIS_HLS_Git" functionName="makePatch_alignedToLine"/>
+      <dataOutputObjs>call</dataOutputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+      <dataOutputObjs>getelementptr</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="99" name="_ln239" lineNumber="239" fileName="ParticleCoverHLS/src/system.cpp" fileDirectory=".." rtlName="grp_alignedtoline_per_layer_loop3_fu_299" coreId="1869438833" contextFuncName="makePatch_alignedToLine" opcode="call" nodeLatency="1" m_display="0" m_delay="1.31" m_topoIndex="2" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="ParticleCoverHLS/src/system.cpp" linenumber="239" fileDirectory="D:\VITIS_HLS_Git" functionName="makePatch_alignedToLine"/>
+      <dataInputObjs>points</dataInputObjs>
+      <dataInputObjs>num_points</dataInputObjs>
+      <dataInputObjs>alloca</dataInputObjs>
+      <constName>alignedtoline_per_layer_loop3</constName>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="100" name="_ln239" lineNumber="239" fileName="ParticleCoverHLS/src/system.cpp" fileDirectory=".." rtlName="grp_alignedtoline_per_layer_loop3_fu_299" coreId="1869438833" contextFuncName="makePatch_alignedToLine" opcode="call" nodeLabel="2.0" nodeLatency="1" m_display="0" m_delay="1.31" m_topoIndex="3" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="ParticleCoverHLS/src/system.cpp" linenumber="239" fileDirectory="D:\VITIS_HLS_Git" functionName="makePatch_alignedToLine"/>
+      <dataInputObjs>points</dataInputObjs>
+      <dataInputObjs>num_points</dataInputObjs>
+      <dataInputObjs>alloca</dataInputObjs>
+      <constName>alignedtoline_per_layer_loop3</constName>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="101" name="_ln239" lineNumber="239" fileName="ParticleCoverHLS/src/system.cpp" fileDirectory=".." rtlName="grp_alignedtoline_per_layer_loop3_fu_299" coreId="1869438833" contextFuncName="makePatch_alignedToLine" opcode="call" nodeLabel="4.0" nodeLatency="1" m_display="0" m_delay="1.31" m_topoIndex="4" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="ParticleCoverHLS/src/system.cpp" linenumber="239" fileDirectory="D:\VITIS_HLS_Git" functionName="makePatch_alignedToLine"/>
+      <dataInputObjs>points</dataInputObjs>
+      <dataInputObjs>num_points</dataInputObjs>
+      <dataInputObjs>alloca</dataInputObjs>
+      <constName>alignedtoline_per_layer_loop3</constName>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="102" name="_ln239" lineNumber="239" fileName="ParticleCoverHLS/src/system.cpp" fileDirectory=".." rtlName="grp_alignedtoline_per_layer_loop3_fu_299" coreId="757935405" contextFuncName="makePatch_alignedToLine" opcode="call" nodeLabel="6.0" nodeLatency="1" m_display="0" m_delay="1.31" m_topoIndex="5" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="ParticleCoverHLS/src/system.cpp" linenumber="239" fileDirectory="D:\VITIS_HLS_Git" functionName="makePatch_alignedToLine"/>
+      <dataInputObjs>points</dataInputObjs>
+      <dataInputObjs>num_points</dataInputObjs>
+      <dataInputObjs>alloca</dataInputObjs>
+      <constName>alignedtoline_per_layer_loop3</constName>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="103" name="_ln239" lineNumber="239" fileName="ParticleCoverHLS/src/system.cpp" fileDirectory=".." rtlName="grp_alignedtoline_per_layer_loop3_fu_299" coreId="1953721967" contextFuncName="makePatch_alignedToLine" opcode="call" nodeLabel="8.0" nodeLatency="1" m_display="0" m_delay="1.31" m_topoIndex="6" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="ParticleCoverHLS/src/system.cpp" linenumber="239" fileDirectory="D:\VITIS_HLS_Git" functionName="makePatch_alignedToLine"/>
+      <dataInputObjs>points</dataInputObjs>
+      <dataInputObjs>num_points</dataInputObjs>
+      <dataInputObjs>alloca</dataInputObjs>
+      <constName>alignedtoline_per_layer_loop3</constName>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="104" name="_ln253" lineNumber="253" fileName="ParticleCoverHLS/src/system.cpp" fileDirectory=".." rtlName="grp_patch_buffer_add_patch_fu_323" coreId="1869438833" contextFuncName="makePatch_alignedToLine" opcode="call" nodeLabel="10.0" nodeLatency="1" m_display="0" m_topoIndex="7" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="ParticleCoverHLS/src/system.cpp" linenumber="253" fileDirectory="D:\VITIS_HLS_Git" functionName="makePatch_alignedToLine"/>
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataInputObjs>latest_patch_index_constprop</dataInputObjs>
+      <dataInputObjs>num_patches_constprop</dataInputObjs>
+      <dataOutputObjs>patch_buffer_0_0</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_0_1</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_0_2</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_0_3</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_0_4</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_0_5</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_0_6</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_0_7</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_0_8</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_0_9</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_0_10</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_0_11</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_0_12</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_0_13</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_0_14</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_0_15</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_1_0</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_1_1</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_1_2</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_1_3</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_1_4</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_1_5</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_1_6</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_1_7</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_1_8</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_1_9</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_1_10</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_1_11</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_1_12</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_1_13</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_1_14</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_1_15</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_2_0</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_2_1</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_2_2</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_2_3</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_2_4</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_2_5</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_2_6</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_2_7</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_2_8</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_2_9</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_2_10</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_2_11</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_2_12</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_2_13</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_2_14</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_2_15</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_3_0</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_3_1</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_3_2</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_3_3</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_3_4</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_3_5</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_3_6</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_3_7</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_3_8</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_3_9</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_3_10</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_3_11</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_3_12</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_3_13</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_3_14</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_3_15</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_4_0</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_4_1</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_4_2</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_4_3</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_4_4</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_4_5</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_4_6</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_4_7</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_4_8</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_4_9</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_4_10</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_4_11</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_4_12</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_4_13</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_4_14</dataOutputObjs>
+      <dataOutputObjs>patch_buffer_4_15</dataOutputObjs>
+      <dataOutputObjs>latest_patch_index_constprop</dataOutputObjs>
+      <dataOutputObjs>num_patches_constprop</dataOutputObjs>
+      <constName>patch_buffer_add_patch</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="105" name="br_ln37" lineNumber="37" fileName="ParticleCoverHLS/src/patch_buffer.cpp" fileDirectory=".." coreId="1953721967" contextFuncName="write_patch_stream" opcode="br" nodeLabel="11.0" m_display="0" m_delay="0.46" m_topoIndex="8" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="ParticleCoverHLS/src/patch_buffer.cpp" linenumber="37" fileDirectory="D:\VITIS_HLS_Git" functionName="write_patch_stream"/>
+      <controlInputObjs>block_114</controlInputObjs>
+    </node_objs>
+    <fileValidLineNumbers fileName="ParticleCoverHLS/src/system.cpp">
+      <validLinenumbers>225</validLinenumbers>
+      <validLinenumbers>239</validLinenumbers>
+      <validLinenumbers>253</validLinenumbers>
+    </fileValidLineNumbers>
+    <fileValidLineNumbers fileName="ParticleCoverHLS/src/patch_buffer.cpp">
+      <validLinenumbers>37</validLinenumbers>
+    </fileValidLineNumbers>
+  </blocks>
+  <blocks id="134" name="_Z42_shadowquilt_main_loop_make_verticle_stripPA512_7ap_uintILi96EEPjR8ap_fixedILi32ELi12EL9ap_q_mode5EL9ap_o_mode3ELi0EEPA5_A16_S0_RjSC_RN3hls6streamIS0_Li0EEE.exit" type="BlockType">
+    <controlInputObjs>block_114</controlInputObjs>
+    <controlOutputObjs>br</controlOutputObjs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="133" name="_ln354" lineNumber="354" fileName="ParticleCoverHLS/src/system.cpp" fileDirectory=".." coreId="1869438833" contextFuncName="makePatches_ShadowQuilt_fromEdges" opcode="ret" nodeLabel="14.0" m_display="0" m_topoIndex="28" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="ParticleCoverHLS/src/system.cpp" linenumber="354" fileDirectory="D:\VITIS_HLS_Git" functionName="makePatches_ShadowQuilt_fromEdges"/>
+    </node_objs>
+    <fileValidLineNumbers fileName="ParticleCoverHLS/src/system.cpp">
+      <validLinenumbers>354</validLinenumbers>
+    </fileValidLineNumbers>
+  </blocks>
+  <regions anchor_node="-1" region_type="8" interval="1" typeName="Pipeline" id="406" pipe_depth="2" RegionName="loop_write_patch_stream_layer_loop_write_patch_stream_superpoint">
+    <basic_blocks id="114" name="block_114" type="BlockType">
+      <controlInputObjs>_ZN13ap_fixed_baseILi32ELi12ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEC2Ed.exit</controlInputObjs>
+      <controlInputObjs>.split5</controlInputObjs>
+      <controlOutputObjs>br</controlOutputObjs>
+      <controlOutputObjs>br</controlOutputObjs>
+      <controlOutputObjs>_Z42_shadowquilt_main_loop_make_verticle_stripPA512_7ap_uintILi96EEPjR8ap_fixedILi32ELi12EL9ap_q_mode5EL9ap_o_mode3ELi0EEPA5_A16_S0_RjSC_RN3hls6streamIS0_Li0EEE.exit</controlOutputObjs>
+      <controlOutputObjs>.split5</controlOutputObjs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="107" name="indvar_flatten" lineNumber="37" fileName="ParticleCoverHLS/src/patch_buffer.cpp" fileDirectory=".." coreId="1869438833" contextFuncName="write_patch_stream" bitwidth="7" opcode="phi" nodeLabel="12.0" m_display="0" m_topoIndex="9" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="ParticleCoverHLS/src/patch_buffer.cpp" linenumber="37" fileDirectory="D:\VITIS_HLS_Git" functionName="write_patch_stream"/>
+        <dataInputObjs>add</dataInputObjs>
+        <dataOutputObjs>add</dataOutputObjs>
+        <dataOutputObjs>icmp</dataOutputObjs>
+        <controlInputObjs>_ZN13ap_fixed_baseILi32ELi12ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEC2Ed.exit</controlInputObjs>
+        <controlInputObjs>.split5</controlInputObjs>
+        <constName>empty</constName>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="108" name="layer" lineNumber="37" originalName="layer" fileName="ParticleCoverHLS/src/patch_buffer.cpp" fileDirectory=".." coreId="28160" contextFuncName="write_patch_stream" bitwidth="3" opcode="phi" nodeLabel="12.0" m_display="0" m_topoIndex="10" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="ParticleCoverHLS/src/patch_buffer.cpp" linenumber="37" fileDirectory="D:\VITIS_HLS_Git" functionName="write_patch_stream"/>
+        <dataInputObjs>select</dataInputObjs>
+        <dataOutputObjs>add</dataOutputObjs>
+        <dataOutputObjs>select</dataOutputObjs>
+        <controlInputObjs>_ZN13ap_fixed_baseILi32ELi12ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEC2Ed.exit</controlInputObjs>
+        <controlInputObjs>.split5</controlInputObjs>
+        <constName>empty</constName>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="109" name="point" lineNumber="39" originalName="point" fileName="ParticleCoverHLS/src/patch_buffer.cpp" fileDirectory=".." coreId="1869438833" contextFuncName="write_patch_stream" bitwidth="5" opcode="phi" nodeLabel="12.0" m_display="0" m_topoIndex="11" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="ParticleCoverHLS/src/patch_buffer.cpp" linenumber="39" fileDirectory="D:\VITIS_HLS_Git" functionName="write_patch_stream"/>
+        <dataInputObjs>add</dataInputObjs>
+        <dataOutputObjs>icmp</dataOutputObjs>
+        <dataOutputObjs>select</dataOutputObjs>
+        <controlInputObjs>_ZN13ap_fixed_baseILi32ELi12ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEC2Ed.exit</controlInputObjs>
+        <controlInputObjs>.split5</controlInputObjs>
+        <constName>empty</constName>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="110" name="add_ln37_1" lineNumber="37" fileName="ParticleCoverHLS/src/patch_buffer.cpp" fileDirectory=".." rtlName="add_ln37_1_fu_492_p2" coreName="Adder" implIndex="fabric" control="auto" opType="add" coreId="1" contextFuncName="write_patch_stream" bitwidth="7" opcode="add" nodeLabel="12.0" m_display="0" m_delay="0.85" m_topoIndex="12" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="ParticleCoverHLS/src/patch_buffer.cpp" linenumber="37" fileDirectory="D:\VITIS_HLS_Git" functionName="write_patch_stream"/>
+        <dataInputObjs>phi</dataInputObjs>
+        <dataOutputObjs>phi</dataOutputObjs>
+        <constName>empty</constName>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="112" name="icmp_ln37" lineNumber="37" fileName="ParticleCoverHLS/src/patch_buffer.cpp" fileDirectory=".." rtlName="icmp_ln37_fu_498_p2" opType="icmp" coreId="1953721967" contextFuncName="write_patch_stream" bitwidth="1" opcode="icmp" nodeLabel="12.0" m_display="0" m_delay="0.71" m_topoIndex="13" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="ParticleCoverHLS/src/patch_buffer.cpp" linenumber="37" fileDirectory="D:\VITIS_HLS_Git" functionName="write_patch_stream"/>
+        <dataInputObjs>phi</dataInputObjs>
+        <dataOutputObjs>br</dataOutputObjs>
+        <constName>empty</constName>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="113" name="br_ln37" lineNumber="37" fileName="ParticleCoverHLS/src/patch_buffer.cpp" fileDirectory=".." coreId="1953721967" contextFuncName="write_patch_stream" opcode="br" nodeLabel="12.0" m_display="0" m_topoIndex="14" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="ParticleCoverHLS/src/patch_buffer.cpp" linenumber="37" fileDirectory="D:\VITIS_HLS_Git" functionName="write_patch_stream"/>
+        <dataInputObjs>icmp</dataInputObjs>
+        <controlInputObjs>.split5</controlInputObjs>
+        <controlInputObjs>_Z42_shadowquilt_main_loop_make_verticle_stripPA512_7ap_uintILi96EEPjR8ap_fixedILi32ELi12EL9ap_q_mode5EL9ap_o_mode3ELi0EEPA5_A16_S0_RjSC_RN3hls6streamIS0_Li0EEE.exit</controlInputObjs>
+      </node_objs>
+      <fileValidLineNumbers fileName="ParticleCoverHLS/src/patch_buffer.cpp">
+        <validLinenumbers>37</validLinenumbers>
+        <validLinenumbers>39</validLinenumbers>
+      </fileValidLineNumbers>
+    </basic_blocks>
+    <basic_blocks id="132" name=".split5" type="BlockType">
+      <controlInputObjs>block_114</controlInputObjs>
+      <controlOutputObjs>phi</controlOutputObjs>
+      <controlOutputObjs>phi</controlOutputObjs>
+      <controlOutputObjs>phi</controlOutputObjs>
+      <controlOutputObjs>br</controlOutputObjs>
+      <controlOutputObjs>block_114</controlOutputObjs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="115" name="add_ln37" lineNumber="37" fileName="ParticleCoverHLS/src/patch_buffer.cpp" fileDirectory=".." rtlName="add_ln37_fu_504_p2" coreName="Adder" implIndex="fabric" control="auto" opType="add" coreId="1" contextFuncName="write_patch_stream" bitwidth="3" opcode="add" nodeLabel="12.0" m_display="0" m_delay="0.71" m_topoIndex="15" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="ParticleCoverHLS/src/patch_buffer.cpp" linenumber="37" fileDirectory="D:\VITIS_HLS_Git" functionName="write_patch_stream"/>
+        <dataInputObjs>phi</dataInputObjs>
+        <dataOutputObjs>select</dataOutputObjs>
+        <constName>empty</constName>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="118" name="icmp_ln39" lineNumber="39" fileName="ParticleCoverHLS/src/patch_buffer.cpp" fileDirectory=".." rtlName="icmp_ln39_fu_510_p2" opType="icmp" coreId="1953721967" contextFuncName="write_patch_stream" bitwidth="1" opcode="icmp" nodeLabel="12.0" m_display="0" m_delay="0.72" m_topoIndex="16" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="ParticleCoverHLS/src/patch_buffer.cpp" linenumber="39" fileDirectory="D:\VITIS_HLS_Git" functionName="write_patch_stream"/>
+        <dataInputObjs>phi</dataInputObjs>
+        <dataOutputObjs>select</dataOutputObjs>
+        <dataOutputObjs>select</dataOutputObjs>
+        <constName>empty</constName>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="119" name="select_ln37" lineNumber="37" fileName="ParticleCoverHLS/src/patch_buffer.cpp" fileDirectory=".." rtlName="select_ln37_fu_516_p3" coreName="Sel" implIndex="auto_sel" control="auto" opType="select" coreId="73" contextFuncName="write_patch_stream" bitwidth="5" opcode="select" nodeLabel="12.0" m_display="0" m_delay="0.34" m_topoIndex="17" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="ParticleCoverHLS/src/patch_buffer.cpp" linenumber="37" fileDirectory="D:\VITIS_HLS_Git" functionName="write_patch_stream"/>
+        <dataInputObjs>icmp</dataInputObjs>
+        <dataInputObjs>phi</dataInputObjs>
+        <dataOutputObjs>zext</dataOutputObjs>
+        <dataOutputObjs>add</dataOutputObjs>
+        <constName>empty</constName>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="120" name="select_ln37_1" lineNumber="37" fileName="ParticleCoverHLS/src/patch_buffer.cpp" fileDirectory=".." rtlName="select_ln37_1_fu_524_p3" coreName="Sel" implIndex="auto_sel" control="auto" opType="select" coreId="73" contextFuncName="write_patch_stream" bitwidth="3" opcode="select" nodeLabel="12.0" m_display="0" m_delay="0.34" m_topoIndex="18" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="ParticleCoverHLS/src/patch_buffer.cpp" linenumber="37" fileDirectory="D:\VITIS_HLS_Git" functionName="write_patch_stream"/>
+        <dataInputObjs>icmp</dataInputObjs>
+        <dataInputObjs>add</dataInputObjs>
+        <dataInputObjs>phi</dataInputObjs>
+        <dataOutputObjs>phi</dataOutputObjs>
+        <dataOutputObjs>bitconcatenate</dataOutputObjs>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="121" name="tmp" lineNumber="40" fileName="ParticleCoverHLS/src/patch_buffer.cpp" fileDirectory=".." rtlName="tmp_fu_532_p3" coreId="1869438833" contextFuncName="write_patch_stream" bitwidth="7" opcode="bitconcatenate" nodeLabel="12.0" m_display="0" m_topoIndex="19" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="ParticleCoverHLS/src/patch_buffer.cpp" linenumber="40" fileDirectory="D:\VITIS_HLS_Git" functionName="write_patch_stream"/>
+        <dataInputObjs>select</dataInputObjs>
+        <dataOutputObjs>add</dataOutputObjs>
+        <constName>empty</constName>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="123" name="zext_ln40" lineNumber="40" fileName="ParticleCoverHLS/src/patch_buffer.cpp" fileDirectory=".." rtlName="zext_ln40_fu_540_p1" coreId="1869438833" contextFuncName="write_patch_stream" bitwidth="7" opcode="zext" nodeLabel="12.0" m_display="0" m_topoIndex="20" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="ParticleCoverHLS/src/patch_buffer.cpp" linenumber="40" fileDirectory="D:\VITIS_HLS_Git" functionName="write_patch_stream"/>
+        <dataInputObjs>select</dataInputObjs>
+        <dataOutputObjs>add</dataOutputObjs>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="124" name="add_ln40" lineNumber="40" fileName="ParticleCoverHLS/src/patch_buffer.cpp" fileDirectory=".." rtlName="add_ln40_fu_544_p2" coreName="Adder" implIndex="fabric" control="auto" opType="add" coreId="1" contextFuncName="write_patch_stream" bitwidth="7" opcode="add" nodeLabel="12.0" m_display="0" m_delay="0.85" m_topoIndex="21" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="ParticleCoverHLS/src/patch_buffer.cpp" linenumber="40" fileDirectory="D:\VITIS_HLS_Git" functionName="write_patch_stream"/>
+        <dataInputObjs>bitconcatenate</dataInputObjs>
+        <dataInputObjs>zext</dataInputObjs>
+        <dataOutputObjs>zext</dataOutputObjs>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="125" name="zext_ln40_1" lineNumber="40" fileName="ParticleCoverHLS/src/patch_buffer.cpp" fileDirectory=".." rtlName="zext_ln40_1_fu_550_p1" coreId="1869438833" contextFuncName="write_patch_stream" bitwidth="64" opcode="zext" nodeLabel="12.0" m_display="0" m_topoIndex="22" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="ParticleCoverHLS/src/patch_buffer.cpp" linenumber="40" fileDirectory="D:\VITIS_HLS_Git" functionName="write_patch_stream"/>
+        <dataInputObjs>add</dataInputObjs>
+        <dataOutputObjs>getelementptr</dataOutputObjs>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="126" name="init_patch_V_addr" lineNumber="40" fileName="ParticleCoverHLS/src/patch_buffer.cpp" fileDirectory=".." coreId="1953721967" contextFuncName="write_patch_stream" bitwidth="7" opcode="getelementptr" nodeLabel="12.0" m_display="0" m_topoIndex="23" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="ParticleCoverHLS/src/patch_buffer.cpp" linenumber="40" fileDirectory="D:\VITIS_HLS_Git" functionName="write_patch_stream"/>
+        <dataInputObjs>alloca</dataInputObjs>
+        <dataInputObjs>zext</dataInputObjs>
+        <dataOutputObjs>load</dataOutputObjs>
+        <constName>empty</constName>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="128" name="init_patch_V_load" lineNumber="174" fileName="D:/STUDY/MY_FILE/VITIS/Vitis_HLS/2020.2/common/technology/autopilot/hls_stream_39.h" fileDirectory=".." coreName="RAM" implIndex="auto" control="auto" opType="ram" coreId="83" contextFuncName="write" bitwidth="96" opcode="load" nodeLabel="12.0" nodeLatency="1" m_display="0" m_delay="1.29" m_topoIndex="24" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="D:/STUDY/MY_FILE/VITIS/Vitis_HLS/2020.2/common/technology/autopilot/hls_stream_39.h" linenumber="174" fileDirectory="D:\VITIS_HLS_Git" functionName="write"/>
+        <dataInputObjs>getelementptr</dataInputObjs>
+        <dataOutputObjs>write</dataOutputObjs>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="129" name="patch_stream_V_write_ln174" lineNumber="174" fileName="D:/STUDY/MY_FILE/VITIS/Vitis_HLS/2020.2/common/technology/autopilot/hls_stream_39.h" fileDirectory=".." coreName="FIFO" implIndex="memory" control="auto" opType="fifo" coreId="78" contextFuncName="write" opcode="write" nodeLabel="13.0" m_display="0" m_delay="1.72" m_topoIndex="26" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="D:/STUDY/MY_FILE/VITIS/Vitis_HLS/2020.2/common/technology/autopilot/hls_stream_39.h" linenumber="174" fileDirectory="D:\VITIS_HLS_Git" functionName="write"/>
+        <dataInputObjs>load</dataInputObjs>
+        <dataOutputObjs>patch_stream_V</dataOutputObjs>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="130" name="add_ln39" lineNumber="39" fileName="ParticleCoverHLS/src/patch_buffer.cpp" fileDirectory=".." rtlName="add_ln39_fu_555_p2" coreName="Adder" implIndex="fabric" control="auto" opType="add" coreId="1" contextFuncName="write_patch_stream" bitwidth="5" opcode="add" nodeLabel="12.0" m_display="0" m_delay="0.82" m_topoIndex="25" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="ParticleCoverHLS/src/patch_buffer.cpp" linenumber="39" fileDirectory="D:\VITIS_HLS_Git" functionName="write_patch_stream"/>
+        <dataInputObjs>select</dataInputObjs>
+        <dataOutputObjs>phi</dataOutputObjs>
+        <constName>empty</constName>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="131" name="br_ln0" coreId="1869438833" opcode="br" nodeLabel="13.0" m_display="0" m_topoIndex="27" m_clusterGroupNumber="-1">
+        <controlInputObjs>block_114</controlInputObjs>
+      </node_objs>
+      <fileValidLineNumbers fileName="ParticleCoverHLS/src/patch_buffer.cpp">
+        <validLinenumbers>37</validLinenumbers>
+        <validLinenumbers>39</validLinenumbers>
+        <validLinenumbers>40</validLinenumbers>
+      </fileValidLineNumbers>
+      <fileValidLineNumbers fileName="D:/STUDY/MY_FILE/VITIS/Vitis_HLS/2020.2/common/technology/autopilot/hls_stream_39.h">
+        <validLinenumbers>174</validLinenumbers>
+      </fileValidLineNumbers>
+    </basic_blocks>
+  </regions>
+  <ScheduleInfo time="0"/>
+  <ScheduleInfo time="1"/>
+  <ScheduleInfo time="2"/>
+  <ScheduleInfo time="3"/>
+  <ScheduleInfo time="4"/>
+  <ScheduleInfo time="5"/>
+  <ScheduleInfo time="6"/>
+  <ScheduleInfo time="7"/>
+  <ScheduleInfo time="8"/>
+  <ScheduleInfo time="9"/>
+  <ScheduleInfo time="10"/>
+  <ScheduleInfo time="11"/>
+  <ScheduleInfo time="12"/>
+  <ScheduleInfo time="13"/>
+  <ScheduleInfo time="14"/>
+  <regnodes realName="add_ln37_1_reg_561">
+    <nodeIds>110</nodeIds>
+  </regnodes>
+  <regnodes realName="add_ln39_reg_580">
+    <nodeIds>130</nodeIds>
+  </regnodes>
+  <regnodes realName="layer_reg_277">
+    <nodeIds>108</nodeIds>
+  </regnodes>
+  <regnodes realName="init_patch_V_addr_reg_575">
+    <nodeIds>126</nodeIds>
+  </regnodes>
+  <regnodes realName="select_ln37_1_reg_570">
+    <nodeIds>120</nodeIds>
+  </regnodes>
+  <regnodes realName="point_reg_288">
+    <nodeIds>109</nodeIds>
+  </regnodes>
+  <regnodes realName="icmp_ln37_reg_566">
+    <nodeIds>112</nodeIds>
+  </regnodes>
+  <regnodes realName="indvar_flatten_reg_266">
+    <nodeIds>107</nodeIds>
+  </regnodes>
+  <expressionNodes realName="select_ln37_1_fu_524">
+    <nodeIds>120</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="add_ln37_1_fu_492">
+    <nodeIds>110</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="point_phi_fu_292">
+    <nodeIds>109</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="zext_ln40_1_fu_550">
+    <nodeIds>125</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="tmp_fu_532">
+    <nodeIds>121</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="layer_phi_fu_281">
+    <nodeIds>108</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="add_ln37_fu_504">
+    <nodeIds>115</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="add_ln40_fu_544">
+    <nodeIds>124</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="zext_ln40_fu_540">
+    <nodeIds>123</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="add_ln39_fu_555">
+    <nodeIds>130</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="init_patch_V_alloca_fu_242">
+    <nodeIds>98</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="indvar_flatten_phi_fu_270">
+    <nodeIds>107</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="icmp_ln37_fu_498">
+    <nodeIds>112</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="init_patch_V_addr_gep_fu_253">
+    <nodeIds>126</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="icmp_ln39_fu_510">
+    <nodeIds>118</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="select_ln37_fu_516">
+    <nodeIds>119</nodeIds>
+  </expressionNodes>
+  <moduleNodes realName="grp_patch_buffer_add_patch_fu_323">
+    <nodeIds>104</nodeIds>
+  </moduleNodes>
+  <moduleNodes realName="grp_alignedtoline_per_layer_loop3_fu_299">
+    <nodeIds>99</nodeIds>
+    <nodeIds>100</nodeIds>
+    <nodeIds>101</nodeIds>
+    <nodeIds>102</nodeIds>
+    <nodeIds>103</nodeIds>
+  </moduleNodes>
+  <ioNodes realName="write_ln174_write_fu_246">
+    <nodeIds>129</nodeIds>
+  </ioNodes>
+  <memoryPorts dataString="get_radiiradii" portID="100">
+    <nodeIds>99</nodeIds>
+    <nodeIds>100</nodeIds>
+    <nodeIds>101</nodeIds>
+    <nodeIds>102</nodeIds>
+    <nodeIds>103</nodeIds>
+  </memoryPorts>
+  <memoryPorts dataString="get_trapezoid_edgestrapezoid_edges" portID="100">
+    <nodeIds>99</nodeIds>
+    <nodeIds>100</nodeIds>
+    <nodeIds>101</nodeIds>
+    <nodeIds>102</nodeIds>
+    <nodeIds>103</nodeIds>
+  </memoryPorts>
+  <memoryPorts dataString="init_patch_V">
+    <nodeIds>128</nodeIds>
+  </memoryPorts>
+  <memoryPorts dataString="init_patch_V" portID="100">
+    <nodeIds>99</nodeIds>
+    <nodeIds>100</nodeIds>
+    <nodeIds>101</nodeIds>
+    <nodeIds>102</nodeIds>
+    <nodeIds>103</nodeIds>
+    <nodeIds>104</nodeIds>
+  </memoryPorts>
+  <ioPorts name="latest_patch_index_constprop">
+    <contents name="call">
+      <nodeIds>104</nodeIds>
+    </contents>
+  </ioPorts>
+  <ioPorts name="num_patches_constprop">
+    <contents name="call">
+      <nodeIds>104</nodeIds>
+    </contents>
+  </ioPorts>
+  <ioPorts name="patch_stream_V">
+    <contents name="write">
+      <nodeIds>129</nodeIds>
+    </contents>
+  </ioPorts>
+  <fsm>
+    <states id="1">
+      <operations id="98" stage="1" latency="1"/>
+      <operations id="99" stage="2" latency="2"/>
+    </states>
+    <states id="2">
+      <operations id="99" stage="1" latency="2"/>
+    </states>
+    <states id="3">
+      <operations id="100" stage="2" latency="2"/>
+    </states>
+    <states id="4">
+      <operations id="100" stage="1" latency="2"/>
+    </states>
+    <states id="5">
+      <operations id="101" stage="2" latency="2"/>
+    </states>
+    <states id="6">
+      <operations id="101" stage="1" latency="2"/>
+    </states>
+    <states id="7">
+      <operations id="102" stage="2" latency="2"/>
+    </states>
+    <states id="8">
+      <operations id="102" stage="1" latency="2"/>
+    </states>
+    <states id="9">
+      <operations id="103" stage="2" latency="2"/>
+    </states>
+    <states id="10">
+      <operations id="103" stage="1" latency="2"/>
+    </states>
+    <states id="11">
+      <operations id="104" stage="2" latency="2"/>
+    </states>
+    <states id="12">
+      <operations id="95" stage="1" latency="1"/>
+      <operations id="96" stage="1" latency="1"/>
+      <operations id="97" stage="1" latency="1"/>
+      <operations id="104" stage="1" latency="2"/>
+      <operations id="105" stage="1" latency="1"/>
+    </states>
+    <states id="13">
+      <operations id="107" stage="1" latency="1"/>
+      <operations id="108" stage="1" latency="1"/>
+      <operations id="109" stage="1" latency="1"/>
+      <operations id="110" stage="1" latency="1"/>
+      <operations id="111" stage="1" latency="1"/>
+      <operations id="112" stage="1" latency="1"/>
+      <operations id="113" stage="1" latency="1"/>
+      <operations id="115" stage="1" latency="1"/>
+      <operations id="118" stage="1" latency="1"/>
+      <operations id="119" stage="1" latency="1"/>
+      <operations id="120" stage="1" latency="1"/>
+      <operations id="121" stage="1" latency="1"/>
+      <operations id="123" stage="1" latency="1"/>
+      <operations id="124" stage="1" latency="1"/>
+      <operations id="125" stage="1" latency="1"/>
+      <operations id="126" stage="1" latency="1"/>
+      <operations id="128" stage="2" latency="2"/>
+      <operations id="130" stage="1" latency="1"/>
+    </states>
+    <states id="14">
+      <operations id="116" stage="1" latency="1"/>
+      <operations id="117" stage="1" latency="1"/>
+      <operations id="122" stage="1" latency="1"/>
+      <operations id="127" stage="1" latency="1"/>
+      <operations id="128" stage="1" latency="2"/>
+      <operations id="129" stage="1" latency="1"/>
+      <operations id="131" stage="1" latency="1"/>
+    </states>
+    <states id="15">
+      <operations id="133" stage="1" latency="1"/>
+    </states>
+    <transitions inState="1" outState="2">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="2" outState="3">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="3" outState="4">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="4" outState="5">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="5" outState="6">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="6" outState="7">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="7" outState="8">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="8" outState="9">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="9" outState="10">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="10" outState="11">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="11" outState="12">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="12" outState="13">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="14" outState="13">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="13" outState="15">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="13" outState="14">
+      <condition id="-1"/>
+    </transitions>
+  </fsm>
+  <CFGRegionsRoot>
+    <cfgRegions mId="1" mTag="makePatches_ShadowQuilt_fromEdges" mII="-1" mDepth="-1" mMinTripCount="-1" mMaxTripCount="-1" mMinLatency="-1" mMaxLatency="-1">
+      <subRegions>2</subRegions>
+      <subRegions>3</subRegions>
+      <subRegions>4</subRegions>
+      <mDfPipe/>
+    </cfgRegions>
+    <cfgRegions mId="2" mTag="Entry" mII="-1" mDepth="-1" mMinTripCount="-1" mMaxTripCount="-1" mMinLatency="-2" mMaxLatency="-2">
+      <basicBlocks>106</basicBlocks>
+      <mDfPipe/>
+    </cfgRegions>
+    <cfgRegions mId="3" mTag="loop_write_patch_stream_layer_loop_write_patch_stream_superpoint" mII="1" mDepth="2" mMinTripCount="80" mMaxTripCount="80" mMinLatency="80" mMaxLatency="80" mType="1">
+      <basicBlocks>114</basicBlocks>
+      <basicBlocks>132</basicBlocks>
+      <mDfPipe/>
+    </cfgRegions>
+    <cfgRegions mId="4" mTag="Return" mII="-1" mDepth="-1" mMinTripCount="-1" mMaxTripCount="-1">
+      <basicBlocks>134</basicBlocks>
+      <mDfPipe/>
+    </cfgRegions>
+  </CFGRegionsRoot>
+</cdfg:DBCdfg>

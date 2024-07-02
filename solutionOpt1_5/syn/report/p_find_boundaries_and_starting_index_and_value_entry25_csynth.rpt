@@ -1,0 +1,142 @@
+
+
+================================================================
+== Vitis HLS Report for 'p_find_boundaries_and_starting_index_and_value_entry25'
+================================================================
+* Date:           Mon Jul  1 23:31:20 2024
+
+* Version:        2020.2 (Build 3064766 on Wed Nov 18 09:12:45 MST 2020)
+* Project:        ParticleCoverHLS
+* Solution:       solutionOpt1_5 (Vivado IP Flow Target)
+* Product family: virtexuplus
+* Target device:  xcvu11p-flga2577-1-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+----------+----------+------------+
+    |  Clock |  Target  | Estimated| Uncertainty|
+    +--------+----------+----------+------------+
+    |ap_clk  |  10.00 ns|  2.102 ns|     2.70 ns|
+    +--------+----------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |        0|        0|      0 ns|      0 ns|    0|    0|     none|
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+------+---------+---------+-----+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
++---------------------+---------+------+---------+---------+-----+
+|DSP                  |        -|     -|        -|        -|    -|
+|Expression           |        -|     -|        0|        2|    -|
+|FIFO                 |        -|     -|        -|        -|    -|
+|Instance             |        -|     -|        -|        -|    -|
+|Memory               |        -|     -|        -|        -|    -|
+|Multiplexer          |        -|     -|        -|       36|    -|
+|Register             |        -|     -|        2|        -|    -|
++---------------------+---------+------+---------+---------+-----+
+|Total                |        0|     0|        2|       38|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available SLR        |     1344|  3072|   864000|   432000|  320|
++---------------------+---------+------+---------+---------+-----+
+|Utilization SLR (%)  |        0|     0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available            |     4032|  9216|  2592000|  1296000|  960|
++---------------------+---------+------+---------+---------+-----+
+|Utilization (%)      |        0|     0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +-----------------+----------+----+---+----+------------+------------+
+    |  Variable Name  | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +-----------------+----------+----+---+----+------------+------------+
+    |ap_block_state1  |        or|   0|  0|   2|           1|           1|
+    +-----------------+----------+----+---+----+------------+------------+
+    |Total            |          |   0|  0|   2|           1|           1|
+    +-----------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +---------------------------+----+-----------+-----+-----------+
+    |            Name           | LUT| Input Size| Bits| Total Bits|
+    +---------------------------+----+-----------+-----+-----------+
+    |ap_done                    |   9|          2|    1|          2|
+    |i_out1_blk_n               |   9|          2|    1|          2|
+    |i_out_blk_n                |   9|          2|    1|          2|
+    |projectionToRow_out_blk_n  |   9|          2|    1|          2|
+    +---------------------------+----+-----------+-----+-----------+
+    |Total                      |  36|          8|    4|          8|
+    +---------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-------------+---+----+-----+-----------+
+    |     Name    | FF| LUT| Bits| Const Bits|
+    +-------------+---+----+-----+-----------+
+    |ap_CS_fsm    |  1|   0|    1|          0|
+    |ap_done_reg  |  1|   0|    1|          0|
+    +-------------+---+----+-----+-----------+
+    |Total        |  2|   0|    2|          0|
+    +-------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++----------------------------+-----+-----+------------+-------------------------------------------------------+--------------+
+|          RTL Ports         | Dir | Bits|  Protocol  |                     Source Object                     |    C Type    |
++----------------------------+-----+-----+------------+-------------------------------------------------------+--------------+
+|ap_clk                      |   in|    1|  ap_ctrl_hs|  _find_boundaries_and_starting_index_and_value.entry25|  return value|
+|ap_rst                      |   in|    1|  ap_ctrl_hs|  _find_boundaries_and_starting_index_and_value.entry25|  return value|
+|ap_start                    |   in|    1|  ap_ctrl_hs|  _find_boundaries_and_starting_index_and_value.entry25|  return value|
+|ap_done                     |  out|    1|  ap_ctrl_hs|  _find_boundaries_and_starting_index_and_value.entry25|  return value|
+|ap_continue                 |   in|    1|  ap_ctrl_hs|  _find_boundaries_and_starting_index_and_value.entry25|  return value|
+|ap_idle                     |  out|    1|  ap_ctrl_hs|  _find_boundaries_and_starting_index_and_value.entry25|  return value|
+|ap_ready                    |  out|    1|  ap_ctrl_hs|  _find_boundaries_and_starting_index_and_value.entry25|  return value|
+|projectionToRow             |   in|   26|     ap_none|                                        projectionToRow|        scalar|
+|i                           |   in|    3|     ap_none|                                                      i|        scalar|
+|projectionToRow_out_din     |  out|   26|     ap_fifo|                                    projectionToRow_out|       pointer|
+|projectionToRow_out_full_n  |   in|    1|     ap_fifo|                                    projectionToRow_out|       pointer|
+|projectionToRow_out_write   |  out|    1|     ap_fifo|                                    projectionToRow_out|       pointer|
+|i_out_din                   |  out|    3|     ap_fifo|                                                  i_out|       pointer|
+|i_out_full_n                |   in|    1|     ap_fifo|                                                  i_out|       pointer|
+|i_out_write                 |  out|    1|     ap_fifo|                                                  i_out|       pointer|
+|i_out1_din                  |  out|    3|     ap_fifo|                                                 i_out1|       pointer|
+|i_out1_full_n               |   in|    1|     ap_fifo|                                                 i_out1|       pointer|
+|i_out1_write                |  out|    1|     ap_fifo|                                                 i_out1|       pointer|
++----------------------------+-----+-----+------------+-------------------------------------------------------+--------------+
+

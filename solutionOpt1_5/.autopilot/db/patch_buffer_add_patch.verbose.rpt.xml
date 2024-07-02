@@ -1,0 +1,452 @@
+<profile>
+
+<section name = "Vitis HLS Report for 'patch_buffer_add_patch'" level="0">
+<item name = "Date">Mon Jul  1 23:31:41 2024
+</item>
+<item name = "Version">2020.2 (Build 3064766 on Wed Nov 18 09:12:45 MST 2020)</item>
+<item name = "Project">ParticleCoverHLS</item>
+<item name = "Solution">solutionOpt1_5 (Vivado IP Flow Target)</item>
+<item name = "Product family">virtexuplus</item>
+<item name = "Target device">xcvu11p-flga2577-1-e</item>
+</section>
+
+<section name = "Performance Estimates" level="0">
+<item name = "Timing">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="4">Clock, Target, Estimated, Uncertainty</keys>
+<column name="ap_clk">10.00 ns, 2.283 ns, 2.70 ns</column>
+</table>
+</item>
+</section>
+</item>
+<item name = "Latency">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="8">, min, max, min, max, min, max, Type</keys>
+<column name="">40, 40, 0.400 us, 0.400 us, 40, 40, none</column>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="0">
+<keys size="9">Instance, Module, min, max, min, max, min, max, Type</keys>
+</table>
+</item>
+<item name = "Loop"><table name="" hasTotal="0">
+<keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
+</table>
+</item>
+</section>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Utilization Estimates" level="0">
+<item name = "Summary"><table name="" hasTotal="1">
+<keys size="6">Name, BRAM_18K, DSP, FF, LUT, URAM</keys>
+<column name="DSP">-, -, -, -, -</column>
+<column name="Expression">-, -, 0, 62, -</column>
+<column name="FIFO">-, -, -, -, -</column>
+<column name="Instance">-, -, -, -, -</column>
+<column name="Memory">-, -, -, -, -</column>
+<column name="Multiplexer">-, -, -, 565, -</column>
+<column name="Register">-, -, 43, -, -</column>
+<specialColumn name="Available SLR">1344, 3072, 864000, 432000, 320</specialColumn>
+<specialColumn name="Utilization SLR (%)">0, 0, ~0, ~0, 0</specialColumn>
+<specialColumn name="Available">4032, 9216, 2592000, 1296000, 960</specialColumn>
+<specialColumn name="Utilization (%)">0, 0, ~0, ~0, 0</specialColumn>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="1">
+<keys size="7">Instance, Module, BRAM_18K, DSP, FF, LUT, URAM</keys>
+</table>
+</item>
+<item name = "DSP"><table name="" hasTotal="0">
+<keys size="3">Instance, Module, Expression</keys>
+</table>
+</item>
+<item name = "Memory"><table name="" hasTotal="1">
+<keys size="10">Memory, Module, BRAM_18K, FF, LUT, URAM, Words, Bits, Banks, W*Bits*Banks</keys>
+</table>
+</item>
+<item name = "FIFO"><table name="" hasTotal="1">
+<keys size="8">Name, BRAM_18K, FF, LUT, URAM, Depth, Bits, Size:D*B</keys>
+</table>
+</item>
+<item name = "Expression"><table name="" hasTotal="1">
+<keys size="7">Variable Name, Operation, DSP, FF, LUT, Bitwidth P0, Bitwidth P1</keys>
+<column name="add_ln15_fu_2207_p2">+, 0, 0, 10, 3, 1</column>
+<column name="add_ln16_fu_2187_p2">+, 0, 0, 39, 32, 1</column>
+<column name="icmp_ln15_fu_2217_p2">icmp, 0, 0, 8, 3, 2</column>
+<column name="select_ln15_fu_2229_p3">select, 0, 0, 2, 1, 2</column>
+<column name="xor_ln15_fu_2223_p2">xor, 0, 0, 3, 2, 3</column>
+</table>
+</item>
+<item name = "Multiplexer"><table name="" hasTotal="1">
+<keys size="5">Name, LUT, Input Size, Bits, Total Bits</keys>
+<column name="ap_NS_fsm">185, 42, 1, 42</column>
+<column name="latest_patch_index_constprop_o">9, 2, 2, 4</column>
+<column name="new_patch_address0">181, 41, 7, 287</column>
+<column name="new_patch_address1">181, 41, 7, 287</column>
+<column name="num_patches_constprop_o">9, 2, 32, 64</column>
+</table>
+</item>
+<item name = "Register"><table name="" hasTotal="1">
+<keys size="5">Name, FF, LUT, Bits, Const Bits</keys>
+<column name="ap_CS_fsm">41, 0, 41, 0</column>
+<column name="idxprom4_reg_2269">2, 0, 64, 62</column>
+</table>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Interface" level="0">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="6">RTL Ports, Dir, Bits, Protocol, Source Object, C Type</keys>
+<column name="ap_clk">in, 1, ap_ctrl_hs, patch_buffer_add_patch, return value</column>
+<column name="ap_rst">in, 1, ap_ctrl_hs, patch_buffer_add_patch, return value</column>
+<column name="ap_start">in, 1, ap_ctrl_hs, patch_buffer_add_patch, return value</column>
+<column name="ap_done">out, 1, ap_ctrl_hs, patch_buffer_add_patch, return value</column>
+<column name="ap_idle">out, 1, ap_ctrl_hs, patch_buffer_add_patch, return value</column>
+<column name="ap_ready">out, 1, ap_ctrl_hs, patch_buffer_add_patch, return value</column>
+<column name="new_patch_address0">out, 7, ap_memory, new_patch, array</column>
+<column name="new_patch_ce0">out, 1, ap_memory, new_patch, array</column>
+<column name="new_patch_q0">in, 96, ap_memory, new_patch, array</column>
+<column name="new_patch_address1">out, 7, ap_memory, new_patch, array</column>
+<column name="new_patch_ce1">out, 1, ap_memory, new_patch, array</column>
+<column name="new_patch_q1">in, 96, ap_memory, new_patch, array</column>
+<column name="patch_buffer_0_0_address0">out, 2, ap_memory, patch_buffer_0_0, array</column>
+<column name="patch_buffer_0_0_ce0">out, 1, ap_memory, patch_buffer_0_0, array</column>
+<column name="patch_buffer_0_0_we0">out, 1, ap_memory, patch_buffer_0_0, array</column>
+<column name="patch_buffer_0_0_d0">out, 96, ap_memory, patch_buffer_0_0, array</column>
+<column name="patch_buffer_0_1_address0">out, 2, ap_memory, patch_buffer_0_1, array</column>
+<column name="patch_buffer_0_1_ce0">out, 1, ap_memory, patch_buffer_0_1, array</column>
+<column name="patch_buffer_0_1_we0">out, 1, ap_memory, patch_buffer_0_1, array</column>
+<column name="patch_buffer_0_1_d0">out, 96, ap_memory, patch_buffer_0_1, array</column>
+<column name="patch_buffer_0_2_address0">out, 2, ap_memory, patch_buffer_0_2, array</column>
+<column name="patch_buffer_0_2_ce0">out, 1, ap_memory, patch_buffer_0_2, array</column>
+<column name="patch_buffer_0_2_we0">out, 1, ap_memory, patch_buffer_0_2, array</column>
+<column name="patch_buffer_0_2_d0">out, 96, ap_memory, patch_buffer_0_2, array</column>
+<column name="patch_buffer_0_3_address0">out, 2, ap_memory, patch_buffer_0_3, array</column>
+<column name="patch_buffer_0_3_ce0">out, 1, ap_memory, patch_buffer_0_3, array</column>
+<column name="patch_buffer_0_3_we0">out, 1, ap_memory, patch_buffer_0_3, array</column>
+<column name="patch_buffer_0_3_d0">out, 96, ap_memory, patch_buffer_0_3, array</column>
+<column name="patch_buffer_0_4_address0">out, 2, ap_memory, patch_buffer_0_4, array</column>
+<column name="patch_buffer_0_4_ce0">out, 1, ap_memory, patch_buffer_0_4, array</column>
+<column name="patch_buffer_0_4_we0">out, 1, ap_memory, patch_buffer_0_4, array</column>
+<column name="patch_buffer_0_4_d0">out, 96, ap_memory, patch_buffer_0_4, array</column>
+<column name="patch_buffer_0_5_address0">out, 2, ap_memory, patch_buffer_0_5, array</column>
+<column name="patch_buffer_0_5_ce0">out, 1, ap_memory, patch_buffer_0_5, array</column>
+<column name="patch_buffer_0_5_we0">out, 1, ap_memory, patch_buffer_0_5, array</column>
+<column name="patch_buffer_0_5_d0">out, 96, ap_memory, patch_buffer_0_5, array</column>
+<column name="patch_buffer_0_6_address0">out, 2, ap_memory, patch_buffer_0_6, array</column>
+<column name="patch_buffer_0_6_ce0">out, 1, ap_memory, patch_buffer_0_6, array</column>
+<column name="patch_buffer_0_6_we0">out, 1, ap_memory, patch_buffer_0_6, array</column>
+<column name="patch_buffer_0_6_d0">out, 96, ap_memory, patch_buffer_0_6, array</column>
+<column name="patch_buffer_0_7_address0">out, 2, ap_memory, patch_buffer_0_7, array</column>
+<column name="patch_buffer_0_7_ce0">out, 1, ap_memory, patch_buffer_0_7, array</column>
+<column name="patch_buffer_0_7_we0">out, 1, ap_memory, patch_buffer_0_7, array</column>
+<column name="patch_buffer_0_7_d0">out, 96, ap_memory, patch_buffer_0_7, array</column>
+<column name="patch_buffer_0_8_address0">out, 2, ap_memory, patch_buffer_0_8, array</column>
+<column name="patch_buffer_0_8_ce0">out, 1, ap_memory, patch_buffer_0_8, array</column>
+<column name="patch_buffer_0_8_we0">out, 1, ap_memory, patch_buffer_0_8, array</column>
+<column name="patch_buffer_0_8_d0">out, 96, ap_memory, patch_buffer_0_8, array</column>
+<column name="patch_buffer_0_9_address0">out, 2, ap_memory, patch_buffer_0_9, array</column>
+<column name="patch_buffer_0_9_ce0">out, 1, ap_memory, patch_buffer_0_9, array</column>
+<column name="patch_buffer_0_9_we0">out, 1, ap_memory, patch_buffer_0_9, array</column>
+<column name="patch_buffer_0_9_d0">out, 96, ap_memory, patch_buffer_0_9, array</column>
+<column name="patch_buffer_0_10_address0">out, 2, ap_memory, patch_buffer_0_10, array</column>
+<column name="patch_buffer_0_10_ce0">out, 1, ap_memory, patch_buffer_0_10, array</column>
+<column name="patch_buffer_0_10_we0">out, 1, ap_memory, patch_buffer_0_10, array</column>
+<column name="patch_buffer_0_10_d0">out, 96, ap_memory, patch_buffer_0_10, array</column>
+<column name="patch_buffer_0_11_address0">out, 2, ap_memory, patch_buffer_0_11, array</column>
+<column name="patch_buffer_0_11_ce0">out, 1, ap_memory, patch_buffer_0_11, array</column>
+<column name="patch_buffer_0_11_we0">out, 1, ap_memory, patch_buffer_0_11, array</column>
+<column name="patch_buffer_0_11_d0">out, 96, ap_memory, patch_buffer_0_11, array</column>
+<column name="patch_buffer_0_12_address0">out, 2, ap_memory, patch_buffer_0_12, array</column>
+<column name="patch_buffer_0_12_ce0">out, 1, ap_memory, patch_buffer_0_12, array</column>
+<column name="patch_buffer_0_12_we0">out, 1, ap_memory, patch_buffer_0_12, array</column>
+<column name="patch_buffer_0_12_d0">out, 96, ap_memory, patch_buffer_0_12, array</column>
+<column name="patch_buffer_0_13_address0">out, 2, ap_memory, patch_buffer_0_13, array</column>
+<column name="patch_buffer_0_13_ce0">out, 1, ap_memory, patch_buffer_0_13, array</column>
+<column name="patch_buffer_0_13_we0">out, 1, ap_memory, patch_buffer_0_13, array</column>
+<column name="patch_buffer_0_13_d0">out, 96, ap_memory, patch_buffer_0_13, array</column>
+<column name="patch_buffer_0_14_address0">out, 2, ap_memory, patch_buffer_0_14, array</column>
+<column name="patch_buffer_0_14_ce0">out, 1, ap_memory, patch_buffer_0_14, array</column>
+<column name="patch_buffer_0_14_we0">out, 1, ap_memory, patch_buffer_0_14, array</column>
+<column name="patch_buffer_0_14_d0">out, 96, ap_memory, patch_buffer_0_14, array</column>
+<column name="patch_buffer_0_15_address0">out, 2, ap_memory, patch_buffer_0_15, array</column>
+<column name="patch_buffer_0_15_ce0">out, 1, ap_memory, patch_buffer_0_15, array</column>
+<column name="patch_buffer_0_15_we0">out, 1, ap_memory, patch_buffer_0_15, array</column>
+<column name="patch_buffer_0_15_d0">out, 96, ap_memory, patch_buffer_0_15, array</column>
+<column name="patch_buffer_1_0_address0">out, 2, ap_memory, patch_buffer_1_0, array</column>
+<column name="patch_buffer_1_0_ce0">out, 1, ap_memory, patch_buffer_1_0, array</column>
+<column name="patch_buffer_1_0_we0">out, 1, ap_memory, patch_buffer_1_0, array</column>
+<column name="patch_buffer_1_0_d0">out, 96, ap_memory, patch_buffer_1_0, array</column>
+<column name="patch_buffer_1_1_address0">out, 2, ap_memory, patch_buffer_1_1, array</column>
+<column name="patch_buffer_1_1_ce0">out, 1, ap_memory, patch_buffer_1_1, array</column>
+<column name="patch_buffer_1_1_we0">out, 1, ap_memory, patch_buffer_1_1, array</column>
+<column name="patch_buffer_1_1_d0">out, 96, ap_memory, patch_buffer_1_1, array</column>
+<column name="patch_buffer_1_2_address0">out, 2, ap_memory, patch_buffer_1_2, array</column>
+<column name="patch_buffer_1_2_ce0">out, 1, ap_memory, patch_buffer_1_2, array</column>
+<column name="patch_buffer_1_2_we0">out, 1, ap_memory, patch_buffer_1_2, array</column>
+<column name="patch_buffer_1_2_d0">out, 96, ap_memory, patch_buffer_1_2, array</column>
+<column name="patch_buffer_1_3_address0">out, 2, ap_memory, patch_buffer_1_3, array</column>
+<column name="patch_buffer_1_3_ce0">out, 1, ap_memory, patch_buffer_1_3, array</column>
+<column name="patch_buffer_1_3_we0">out, 1, ap_memory, patch_buffer_1_3, array</column>
+<column name="patch_buffer_1_3_d0">out, 96, ap_memory, patch_buffer_1_3, array</column>
+<column name="patch_buffer_1_4_address0">out, 2, ap_memory, patch_buffer_1_4, array</column>
+<column name="patch_buffer_1_4_ce0">out, 1, ap_memory, patch_buffer_1_4, array</column>
+<column name="patch_buffer_1_4_we0">out, 1, ap_memory, patch_buffer_1_4, array</column>
+<column name="patch_buffer_1_4_d0">out, 96, ap_memory, patch_buffer_1_4, array</column>
+<column name="patch_buffer_1_5_address0">out, 2, ap_memory, patch_buffer_1_5, array</column>
+<column name="patch_buffer_1_5_ce0">out, 1, ap_memory, patch_buffer_1_5, array</column>
+<column name="patch_buffer_1_5_we0">out, 1, ap_memory, patch_buffer_1_5, array</column>
+<column name="patch_buffer_1_5_d0">out, 96, ap_memory, patch_buffer_1_5, array</column>
+<column name="patch_buffer_1_6_address0">out, 2, ap_memory, patch_buffer_1_6, array</column>
+<column name="patch_buffer_1_6_ce0">out, 1, ap_memory, patch_buffer_1_6, array</column>
+<column name="patch_buffer_1_6_we0">out, 1, ap_memory, patch_buffer_1_6, array</column>
+<column name="patch_buffer_1_6_d0">out, 96, ap_memory, patch_buffer_1_6, array</column>
+<column name="patch_buffer_1_7_address0">out, 2, ap_memory, patch_buffer_1_7, array</column>
+<column name="patch_buffer_1_7_ce0">out, 1, ap_memory, patch_buffer_1_7, array</column>
+<column name="patch_buffer_1_7_we0">out, 1, ap_memory, patch_buffer_1_7, array</column>
+<column name="patch_buffer_1_7_d0">out, 96, ap_memory, patch_buffer_1_7, array</column>
+<column name="patch_buffer_1_8_address0">out, 2, ap_memory, patch_buffer_1_8, array</column>
+<column name="patch_buffer_1_8_ce0">out, 1, ap_memory, patch_buffer_1_8, array</column>
+<column name="patch_buffer_1_8_we0">out, 1, ap_memory, patch_buffer_1_8, array</column>
+<column name="patch_buffer_1_8_d0">out, 96, ap_memory, patch_buffer_1_8, array</column>
+<column name="patch_buffer_1_9_address0">out, 2, ap_memory, patch_buffer_1_9, array</column>
+<column name="patch_buffer_1_9_ce0">out, 1, ap_memory, patch_buffer_1_9, array</column>
+<column name="patch_buffer_1_9_we0">out, 1, ap_memory, patch_buffer_1_9, array</column>
+<column name="patch_buffer_1_9_d0">out, 96, ap_memory, patch_buffer_1_9, array</column>
+<column name="patch_buffer_1_10_address0">out, 2, ap_memory, patch_buffer_1_10, array</column>
+<column name="patch_buffer_1_10_ce0">out, 1, ap_memory, patch_buffer_1_10, array</column>
+<column name="patch_buffer_1_10_we0">out, 1, ap_memory, patch_buffer_1_10, array</column>
+<column name="patch_buffer_1_10_d0">out, 96, ap_memory, patch_buffer_1_10, array</column>
+<column name="patch_buffer_1_11_address0">out, 2, ap_memory, patch_buffer_1_11, array</column>
+<column name="patch_buffer_1_11_ce0">out, 1, ap_memory, patch_buffer_1_11, array</column>
+<column name="patch_buffer_1_11_we0">out, 1, ap_memory, patch_buffer_1_11, array</column>
+<column name="patch_buffer_1_11_d0">out, 96, ap_memory, patch_buffer_1_11, array</column>
+<column name="patch_buffer_1_12_address0">out, 2, ap_memory, patch_buffer_1_12, array</column>
+<column name="patch_buffer_1_12_ce0">out, 1, ap_memory, patch_buffer_1_12, array</column>
+<column name="patch_buffer_1_12_we0">out, 1, ap_memory, patch_buffer_1_12, array</column>
+<column name="patch_buffer_1_12_d0">out, 96, ap_memory, patch_buffer_1_12, array</column>
+<column name="patch_buffer_1_13_address0">out, 2, ap_memory, patch_buffer_1_13, array</column>
+<column name="patch_buffer_1_13_ce0">out, 1, ap_memory, patch_buffer_1_13, array</column>
+<column name="patch_buffer_1_13_we0">out, 1, ap_memory, patch_buffer_1_13, array</column>
+<column name="patch_buffer_1_13_d0">out, 96, ap_memory, patch_buffer_1_13, array</column>
+<column name="patch_buffer_1_14_address0">out, 2, ap_memory, patch_buffer_1_14, array</column>
+<column name="patch_buffer_1_14_ce0">out, 1, ap_memory, patch_buffer_1_14, array</column>
+<column name="patch_buffer_1_14_we0">out, 1, ap_memory, patch_buffer_1_14, array</column>
+<column name="patch_buffer_1_14_d0">out, 96, ap_memory, patch_buffer_1_14, array</column>
+<column name="patch_buffer_1_15_address0">out, 2, ap_memory, patch_buffer_1_15, array</column>
+<column name="patch_buffer_1_15_ce0">out, 1, ap_memory, patch_buffer_1_15, array</column>
+<column name="patch_buffer_1_15_we0">out, 1, ap_memory, patch_buffer_1_15, array</column>
+<column name="patch_buffer_1_15_d0">out, 96, ap_memory, patch_buffer_1_15, array</column>
+<column name="patch_buffer_2_0_address0">out, 2, ap_memory, patch_buffer_2_0, array</column>
+<column name="patch_buffer_2_0_ce0">out, 1, ap_memory, patch_buffer_2_0, array</column>
+<column name="patch_buffer_2_0_we0">out, 1, ap_memory, patch_buffer_2_0, array</column>
+<column name="patch_buffer_2_0_d0">out, 96, ap_memory, patch_buffer_2_0, array</column>
+<column name="patch_buffer_2_1_address0">out, 2, ap_memory, patch_buffer_2_1, array</column>
+<column name="patch_buffer_2_1_ce0">out, 1, ap_memory, patch_buffer_2_1, array</column>
+<column name="patch_buffer_2_1_we0">out, 1, ap_memory, patch_buffer_2_1, array</column>
+<column name="patch_buffer_2_1_d0">out, 96, ap_memory, patch_buffer_2_1, array</column>
+<column name="patch_buffer_2_2_address0">out, 2, ap_memory, patch_buffer_2_2, array</column>
+<column name="patch_buffer_2_2_ce0">out, 1, ap_memory, patch_buffer_2_2, array</column>
+<column name="patch_buffer_2_2_we0">out, 1, ap_memory, patch_buffer_2_2, array</column>
+<column name="patch_buffer_2_2_d0">out, 96, ap_memory, patch_buffer_2_2, array</column>
+<column name="patch_buffer_2_3_address0">out, 2, ap_memory, patch_buffer_2_3, array</column>
+<column name="patch_buffer_2_3_ce0">out, 1, ap_memory, patch_buffer_2_3, array</column>
+<column name="patch_buffer_2_3_we0">out, 1, ap_memory, patch_buffer_2_3, array</column>
+<column name="patch_buffer_2_3_d0">out, 96, ap_memory, patch_buffer_2_3, array</column>
+<column name="patch_buffer_2_4_address0">out, 2, ap_memory, patch_buffer_2_4, array</column>
+<column name="patch_buffer_2_4_ce0">out, 1, ap_memory, patch_buffer_2_4, array</column>
+<column name="patch_buffer_2_4_we0">out, 1, ap_memory, patch_buffer_2_4, array</column>
+<column name="patch_buffer_2_4_d0">out, 96, ap_memory, patch_buffer_2_4, array</column>
+<column name="patch_buffer_2_5_address0">out, 2, ap_memory, patch_buffer_2_5, array</column>
+<column name="patch_buffer_2_5_ce0">out, 1, ap_memory, patch_buffer_2_5, array</column>
+<column name="patch_buffer_2_5_we0">out, 1, ap_memory, patch_buffer_2_5, array</column>
+<column name="patch_buffer_2_5_d0">out, 96, ap_memory, patch_buffer_2_5, array</column>
+<column name="patch_buffer_2_6_address0">out, 2, ap_memory, patch_buffer_2_6, array</column>
+<column name="patch_buffer_2_6_ce0">out, 1, ap_memory, patch_buffer_2_6, array</column>
+<column name="patch_buffer_2_6_we0">out, 1, ap_memory, patch_buffer_2_6, array</column>
+<column name="patch_buffer_2_6_d0">out, 96, ap_memory, patch_buffer_2_6, array</column>
+<column name="patch_buffer_2_7_address0">out, 2, ap_memory, patch_buffer_2_7, array</column>
+<column name="patch_buffer_2_7_ce0">out, 1, ap_memory, patch_buffer_2_7, array</column>
+<column name="patch_buffer_2_7_we0">out, 1, ap_memory, patch_buffer_2_7, array</column>
+<column name="patch_buffer_2_7_d0">out, 96, ap_memory, patch_buffer_2_7, array</column>
+<column name="patch_buffer_2_8_address0">out, 2, ap_memory, patch_buffer_2_8, array</column>
+<column name="patch_buffer_2_8_ce0">out, 1, ap_memory, patch_buffer_2_8, array</column>
+<column name="patch_buffer_2_8_we0">out, 1, ap_memory, patch_buffer_2_8, array</column>
+<column name="patch_buffer_2_8_d0">out, 96, ap_memory, patch_buffer_2_8, array</column>
+<column name="patch_buffer_2_9_address0">out, 2, ap_memory, patch_buffer_2_9, array</column>
+<column name="patch_buffer_2_9_ce0">out, 1, ap_memory, patch_buffer_2_9, array</column>
+<column name="patch_buffer_2_9_we0">out, 1, ap_memory, patch_buffer_2_9, array</column>
+<column name="patch_buffer_2_9_d0">out, 96, ap_memory, patch_buffer_2_9, array</column>
+<column name="patch_buffer_2_10_address0">out, 2, ap_memory, patch_buffer_2_10, array</column>
+<column name="patch_buffer_2_10_ce0">out, 1, ap_memory, patch_buffer_2_10, array</column>
+<column name="patch_buffer_2_10_we0">out, 1, ap_memory, patch_buffer_2_10, array</column>
+<column name="patch_buffer_2_10_d0">out, 96, ap_memory, patch_buffer_2_10, array</column>
+<column name="patch_buffer_2_11_address0">out, 2, ap_memory, patch_buffer_2_11, array</column>
+<column name="patch_buffer_2_11_ce0">out, 1, ap_memory, patch_buffer_2_11, array</column>
+<column name="patch_buffer_2_11_we0">out, 1, ap_memory, patch_buffer_2_11, array</column>
+<column name="patch_buffer_2_11_d0">out, 96, ap_memory, patch_buffer_2_11, array</column>
+<column name="patch_buffer_2_12_address0">out, 2, ap_memory, patch_buffer_2_12, array</column>
+<column name="patch_buffer_2_12_ce0">out, 1, ap_memory, patch_buffer_2_12, array</column>
+<column name="patch_buffer_2_12_we0">out, 1, ap_memory, patch_buffer_2_12, array</column>
+<column name="patch_buffer_2_12_d0">out, 96, ap_memory, patch_buffer_2_12, array</column>
+<column name="patch_buffer_2_13_address0">out, 2, ap_memory, patch_buffer_2_13, array</column>
+<column name="patch_buffer_2_13_ce0">out, 1, ap_memory, patch_buffer_2_13, array</column>
+<column name="patch_buffer_2_13_we0">out, 1, ap_memory, patch_buffer_2_13, array</column>
+<column name="patch_buffer_2_13_d0">out, 96, ap_memory, patch_buffer_2_13, array</column>
+<column name="patch_buffer_2_14_address0">out, 2, ap_memory, patch_buffer_2_14, array</column>
+<column name="patch_buffer_2_14_ce0">out, 1, ap_memory, patch_buffer_2_14, array</column>
+<column name="patch_buffer_2_14_we0">out, 1, ap_memory, patch_buffer_2_14, array</column>
+<column name="patch_buffer_2_14_d0">out, 96, ap_memory, patch_buffer_2_14, array</column>
+<column name="patch_buffer_2_15_address0">out, 2, ap_memory, patch_buffer_2_15, array</column>
+<column name="patch_buffer_2_15_ce0">out, 1, ap_memory, patch_buffer_2_15, array</column>
+<column name="patch_buffer_2_15_we0">out, 1, ap_memory, patch_buffer_2_15, array</column>
+<column name="patch_buffer_2_15_d0">out, 96, ap_memory, patch_buffer_2_15, array</column>
+<column name="patch_buffer_3_0_address0">out, 2, ap_memory, patch_buffer_3_0, array</column>
+<column name="patch_buffer_3_0_ce0">out, 1, ap_memory, patch_buffer_3_0, array</column>
+<column name="patch_buffer_3_0_we0">out, 1, ap_memory, patch_buffer_3_0, array</column>
+<column name="patch_buffer_3_0_d0">out, 96, ap_memory, patch_buffer_3_0, array</column>
+<column name="patch_buffer_3_1_address0">out, 2, ap_memory, patch_buffer_3_1, array</column>
+<column name="patch_buffer_3_1_ce0">out, 1, ap_memory, patch_buffer_3_1, array</column>
+<column name="patch_buffer_3_1_we0">out, 1, ap_memory, patch_buffer_3_1, array</column>
+<column name="patch_buffer_3_1_d0">out, 96, ap_memory, patch_buffer_3_1, array</column>
+<column name="patch_buffer_3_2_address0">out, 2, ap_memory, patch_buffer_3_2, array</column>
+<column name="patch_buffer_3_2_ce0">out, 1, ap_memory, patch_buffer_3_2, array</column>
+<column name="patch_buffer_3_2_we0">out, 1, ap_memory, patch_buffer_3_2, array</column>
+<column name="patch_buffer_3_2_d0">out, 96, ap_memory, patch_buffer_3_2, array</column>
+<column name="patch_buffer_3_3_address0">out, 2, ap_memory, patch_buffer_3_3, array</column>
+<column name="patch_buffer_3_3_ce0">out, 1, ap_memory, patch_buffer_3_3, array</column>
+<column name="patch_buffer_3_3_we0">out, 1, ap_memory, patch_buffer_3_3, array</column>
+<column name="patch_buffer_3_3_d0">out, 96, ap_memory, patch_buffer_3_3, array</column>
+<column name="patch_buffer_3_4_address0">out, 2, ap_memory, patch_buffer_3_4, array</column>
+<column name="patch_buffer_3_4_ce0">out, 1, ap_memory, patch_buffer_3_4, array</column>
+<column name="patch_buffer_3_4_we0">out, 1, ap_memory, patch_buffer_3_4, array</column>
+<column name="patch_buffer_3_4_d0">out, 96, ap_memory, patch_buffer_3_4, array</column>
+<column name="patch_buffer_3_5_address0">out, 2, ap_memory, patch_buffer_3_5, array</column>
+<column name="patch_buffer_3_5_ce0">out, 1, ap_memory, patch_buffer_3_5, array</column>
+<column name="patch_buffer_3_5_we0">out, 1, ap_memory, patch_buffer_3_5, array</column>
+<column name="patch_buffer_3_5_d0">out, 96, ap_memory, patch_buffer_3_5, array</column>
+<column name="patch_buffer_3_6_address0">out, 2, ap_memory, patch_buffer_3_6, array</column>
+<column name="patch_buffer_3_6_ce0">out, 1, ap_memory, patch_buffer_3_6, array</column>
+<column name="patch_buffer_3_6_we0">out, 1, ap_memory, patch_buffer_3_6, array</column>
+<column name="patch_buffer_3_6_d0">out, 96, ap_memory, patch_buffer_3_6, array</column>
+<column name="patch_buffer_3_7_address0">out, 2, ap_memory, patch_buffer_3_7, array</column>
+<column name="patch_buffer_3_7_ce0">out, 1, ap_memory, patch_buffer_3_7, array</column>
+<column name="patch_buffer_3_7_we0">out, 1, ap_memory, patch_buffer_3_7, array</column>
+<column name="patch_buffer_3_7_d0">out, 96, ap_memory, patch_buffer_3_7, array</column>
+<column name="patch_buffer_3_8_address0">out, 2, ap_memory, patch_buffer_3_8, array</column>
+<column name="patch_buffer_3_8_ce0">out, 1, ap_memory, patch_buffer_3_8, array</column>
+<column name="patch_buffer_3_8_we0">out, 1, ap_memory, patch_buffer_3_8, array</column>
+<column name="patch_buffer_3_8_d0">out, 96, ap_memory, patch_buffer_3_8, array</column>
+<column name="patch_buffer_3_9_address0">out, 2, ap_memory, patch_buffer_3_9, array</column>
+<column name="patch_buffer_3_9_ce0">out, 1, ap_memory, patch_buffer_3_9, array</column>
+<column name="patch_buffer_3_9_we0">out, 1, ap_memory, patch_buffer_3_9, array</column>
+<column name="patch_buffer_3_9_d0">out, 96, ap_memory, patch_buffer_3_9, array</column>
+<column name="patch_buffer_3_10_address0">out, 2, ap_memory, patch_buffer_3_10, array</column>
+<column name="patch_buffer_3_10_ce0">out, 1, ap_memory, patch_buffer_3_10, array</column>
+<column name="patch_buffer_3_10_we0">out, 1, ap_memory, patch_buffer_3_10, array</column>
+<column name="patch_buffer_3_10_d0">out, 96, ap_memory, patch_buffer_3_10, array</column>
+<column name="patch_buffer_3_11_address0">out, 2, ap_memory, patch_buffer_3_11, array</column>
+<column name="patch_buffer_3_11_ce0">out, 1, ap_memory, patch_buffer_3_11, array</column>
+<column name="patch_buffer_3_11_we0">out, 1, ap_memory, patch_buffer_3_11, array</column>
+<column name="patch_buffer_3_11_d0">out, 96, ap_memory, patch_buffer_3_11, array</column>
+<column name="patch_buffer_3_12_address0">out, 2, ap_memory, patch_buffer_3_12, array</column>
+<column name="patch_buffer_3_12_ce0">out, 1, ap_memory, patch_buffer_3_12, array</column>
+<column name="patch_buffer_3_12_we0">out, 1, ap_memory, patch_buffer_3_12, array</column>
+<column name="patch_buffer_3_12_d0">out, 96, ap_memory, patch_buffer_3_12, array</column>
+<column name="patch_buffer_3_13_address0">out, 2, ap_memory, patch_buffer_3_13, array</column>
+<column name="patch_buffer_3_13_ce0">out, 1, ap_memory, patch_buffer_3_13, array</column>
+<column name="patch_buffer_3_13_we0">out, 1, ap_memory, patch_buffer_3_13, array</column>
+<column name="patch_buffer_3_13_d0">out, 96, ap_memory, patch_buffer_3_13, array</column>
+<column name="patch_buffer_3_14_address0">out, 2, ap_memory, patch_buffer_3_14, array</column>
+<column name="patch_buffer_3_14_ce0">out, 1, ap_memory, patch_buffer_3_14, array</column>
+<column name="patch_buffer_3_14_we0">out, 1, ap_memory, patch_buffer_3_14, array</column>
+<column name="patch_buffer_3_14_d0">out, 96, ap_memory, patch_buffer_3_14, array</column>
+<column name="patch_buffer_3_15_address0">out, 2, ap_memory, patch_buffer_3_15, array</column>
+<column name="patch_buffer_3_15_ce0">out, 1, ap_memory, patch_buffer_3_15, array</column>
+<column name="patch_buffer_3_15_we0">out, 1, ap_memory, patch_buffer_3_15, array</column>
+<column name="patch_buffer_3_15_d0">out, 96, ap_memory, patch_buffer_3_15, array</column>
+<column name="patch_buffer_4_0_address0">out, 2, ap_memory, patch_buffer_4_0, array</column>
+<column name="patch_buffer_4_0_ce0">out, 1, ap_memory, patch_buffer_4_0, array</column>
+<column name="patch_buffer_4_0_we0">out, 1, ap_memory, patch_buffer_4_0, array</column>
+<column name="patch_buffer_4_0_d0">out, 96, ap_memory, patch_buffer_4_0, array</column>
+<column name="patch_buffer_4_1_address0">out, 2, ap_memory, patch_buffer_4_1, array</column>
+<column name="patch_buffer_4_1_ce0">out, 1, ap_memory, patch_buffer_4_1, array</column>
+<column name="patch_buffer_4_1_we0">out, 1, ap_memory, patch_buffer_4_1, array</column>
+<column name="patch_buffer_4_1_d0">out, 96, ap_memory, patch_buffer_4_1, array</column>
+<column name="patch_buffer_4_2_address0">out, 2, ap_memory, patch_buffer_4_2, array</column>
+<column name="patch_buffer_4_2_ce0">out, 1, ap_memory, patch_buffer_4_2, array</column>
+<column name="patch_buffer_4_2_we0">out, 1, ap_memory, patch_buffer_4_2, array</column>
+<column name="patch_buffer_4_2_d0">out, 96, ap_memory, patch_buffer_4_2, array</column>
+<column name="patch_buffer_4_3_address0">out, 2, ap_memory, patch_buffer_4_3, array</column>
+<column name="patch_buffer_4_3_ce0">out, 1, ap_memory, patch_buffer_4_3, array</column>
+<column name="patch_buffer_4_3_we0">out, 1, ap_memory, patch_buffer_4_3, array</column>
+<column name="patch_buffer_4_3_d0">out, 96, ap_memory, patch_buffer_4_3, array</column>
+<column name="patch_buffer_4_4_address0">out, 2, ap_memory, patch_buffer_4_4, array</column>
+<column name="patch_buffer_4_4_ce0">out, 1, ap_memory, patch_buffer_4_4, array</column>
+<column name="patch_buffer_4_4_we0">out, 1, ap_memory, patch_buffer_4_4, array</column>
+<column name="patch_buffer_4_4_d0">out, 96, ap_memory, patch_buffer_4_4, array</column>
+<column name="patch_buffer_4_5_address0">out, 2, ap_memory, patch_buffer_4_5, array</column>
+<column name="patch_buffer_4_5_ce0">out, 1, ap_memory, patch_buffer_4_5, array</column>
+<column name="patch_buffer_4_5_we0">out, 1, ap_memory, patch_buffer_4_5, array</column>
+<column name="patch_buffer_4_5_d0">out, 96, ap_memory, patch_buffer_4_5, array</column>
+<column name="patch_buffer_4_6_address0">out, 2, ap_memory, patch_buffer_4_6, array</column>
+<column name="patch_buffer_4_6_ce0">out, 1, ap_memory, patch_buffer_4_6, array</column>
+<column name="patch_buffer_4_6_we0">out, 1, ap_memory, patch_buffer_4_6, array</column>
+<column name="patch_buffer_4_6_d0">out, 96, ap_memory, patch_buffer_4_6, array</column>
+<column name="patch_buffer_4_7_address0">out, 2, ap_memory, patch_buffer_4_7, array</column>
+<column name="patch_buffer_4_7_ce0">out, 1, ap_memory, patch_buffer_4_7, array</column>
+<column name="patch_buffer_4_7_we0">out, 1, ap_memory, patch_buffer_4_7, array</column>
+<column name="patch_buffer_4_7_d0">out, 96, ap_memory, patch_buffer_4_7, array</column>
+<column name="patch_buffer_4_8_address0">out, 2, ap_memory, patch_buffer_4_8, array</column>
+<column name="patch_buffer_4_8_ce0">out, 1, ap_memory, patch_buffer_4_8, array</column>
+<column name="patch_buffer_4_8_we0">out, 1, ap_memory, patch_buffer_4_8, array</column>
+<column name="patch_buffer_4_8_d0">out, 96, ap_memory, patch_buffer_4_8, array</column>
+<column name="patch_buffer_4_9_address0">out, 2, ap_memory, patch_buffer_4_9, array</column>
+<column name="patch_buffer_4_9_ce0">out, 1, ap_memory, patch_buffer_4_9, array</column>
+<column name="patch_buffer_4_9_we0">out, 1, ap_memory, patch_buffer_4_9, array</column>
+<column name="patch_buffer_4_9_d0">out, 96, ap_memory, patch_buffer_4_9, array</column>
+<column name="patch_buffer_4_10_address0">out, 2, ap_memory, patch_buffer_4_10, array</column>
+<column name="patch_buffer_4_10_ce0">out, 1, ap_memory, patch_buffer_4_10, array</column>
+<column name="patch_buffer_4_10_we0">out, 1, ap_memory, patch_buffer_4_10, array</column>
+<column name="patch_buffer_4_10_d0">out, 96, ap_memory, patch_buffer_4_10, array</column>
+<column name="patch_buffer_4_11_address0">out, 2, ap_memory, patch_buffer_4_11, array</column>
+<column name="patch_buffer_4_11_ce0">out, 1, ap_memory, patch_buffer_4_11, array</column>
+<column name="patch_buffer_4_11_we0">out, 1, ap_memory, patch_buffer_4_11, array</column>
+<column name="patch_buffer_4_11_d0">out, 96, ap_memory, patch_buffer_4_11, array</column>
+<column name="patch_buffer_4_12_address0">out, 2, ap_memory, patch_buffer_4_12, array</column>
+<column name="patch_buffer_4_12_ce0">out, 1, ap_memory, patch_buffer_4_12, array</column>
+<column name="patch_buffer_4_12_we0">out, 1, ap_memory, patch_buffer_4_12, array</column>
+<column name="patch_buffer_4_12_d0">out, 96, ap_memory, patch_buffer_4_12, array</column>
+<column name="patch_buffer_4_13_address0">out, 2, ap_memory, patch_buffer_4_13, array</column>
+<column name="patch_buffer_4_13_ce0">out, 1, ap_memory, patch_buffer_4_13, array</column>
+<column name="patch_buffer_4_13_we0">out, 1, ap_memory, patch_buffer_4_13, array</column>
+<column name="patch_buffer_4_13_d0">out, 96, ap_memory, patch_buffer_4_13, array</column>
+<column name="patch_buffer_4_14_address0">out, 2, ap_memory, patch_buffer_4_14, array</column>
+<column name="patch_buffer_4_14_ce0">out, 1, ap_memory, patch_buffer_4_14, array</column>
+<column name="patch_buffer_4_14_we0">out, 1, ap_memory, patch_buffer_4_14, array</column>
+<column name="patch_buffer_4_14_d0">out, 96, ap_memory, patch_buffer_4_14, array</column>
+<column name="patch_buffer_4_15_address0">out, 2, ap_memory, patch_buffer_4_15, array</column>
+<column name="patch_buffer_4_15_ce0">out, 1, ap_memory, patch_buffer_4_15, array</column>
+<column name="patch_buffer_4_15_we0">out, 1, ap_memory, patch_buffer_4_15, array</column>
+<column name="patch_buffer_4_15_d0">out, 96, ap_memory, patch_buffer_4_15, array</column>
+<column name="latest_patch_index_constprop_i">in, 2, ap_ovld, latest_patch_index_constprop, pointer</column>
+<column name="latest_patch_index_constprop_o">out, 2, ap_ovld, latest_patch_index_constprop, pointer</column>
+<column name="latest_patch_index_constprop_o_ap_vld">out, 1, ap_ovld, latest_patch_index_constprop, pointer</column>
+<column name="num_patches_constprop_i">in, 32, ap_ovld, num_patches_constprop, pointer</column>
+<column name="num_patches_constprop_o">out, 32, ap_ovld, num_patches_constprop, pointer</column>
+<column name="num_patches_constprop_o_ap_vld">out, 1, ap_ovld, num_patches_constprop, pointer</column>
+</table>
+</item>
+</section>
+</profile>

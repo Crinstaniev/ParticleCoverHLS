@@ -1,0 +1,35 @@
+
+
+================================================================
+== Synthesis Summary Report of 'system_top'
+================================================================
++ General Information: 
+    * Date:           Sat Jun 22 23:35:54 2024
+    * Version:        2020.2 (Build 3064766 on Wed Nov 18 09:12:45 MST 2020)
+    * Project:        ParticleCoverHLS
+    * Solution:       solution_opt1 (Vivado IP Flow Target)
+    * Product family: virtexuplus
+    * Target device:  xcvu11p-flga2577-1-e
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +--------------------------------------------------------------------------------+--------+-------+---------+---------+----------+---------+------+----------+---------+----------+-------------+------------+-----+
+    |                                     Modules                                    |  Issue |       | Latency | Latency | Iteration|         | Trip |          |         |          |             |            |     |
+    |                                     & Loops                                    |  Type  | Slack | (cycles)|   (ns)  |  Latency | Interval| Count| Pipelined|  BRAM   |    DSP   |      FF     |     LUT    | URAM|
+    +--------------------------------------------------------------------------------+--------+-------+---------+---------+----------+---------+------+----------+---------+----------+-------------+------------+-----+
+    |+ system_top                                                                    |  Timing|   0.37|        -|        -|         -|        -|     -|        no|  6 (~0%)|  19 (~0%)|  20003 (~0%)|  26215 (2%)|    -|
+    | + grp_p_shadowquilt_main_loop_make_verticle_strip_fu_362                       |  Timing|   0.37|        -|        -|         -|        -|     -|        no|  6 (~0%)|  19 (~0%)|   4605 (~0%)|  25768 (1%)|    -|
+    |  + grp_alignedtoline_per_layer_loop3_fu_284                                    |  Timing|   0.37|        -|        -|         -|        -|     -|        no|        -|  19 (~0%)|   4406 (~0%)|  24749 (1%)|    -|
+    |   + grp_p_find_boundaries_and_starting_index_and_value4_fu_549*                |  Timing|   0.37|        -|        -|         -|        -|     -|  dataflow|        -|   8 (~0%)|   3857 (~0%)|  21646 (1%)|    -|
+    |    + grp_p_find_left_and_right_boundaries6_fu_88                               |  Timing|   0.37|        -|        -|         -|        -|     -|        no|        -|   6 (~0%)|   2713 (~0%)|  17346 (1%)|    -|
+    |     o loop_find_left_and_right_boundaries                                      |      II|  -7.30|        -|        -|        17|        8|     -|       yes|        -|         -|            -|           -|    -|
+    |    + grp_p_find_starting_index_and_value5_fu_105                               |       -|  -0.00|        -|        -|         -|        -|     -|        no|        -|   2 (~0%)|    842 (~0%)|  4014 (~0%)|    -|
+    |     o loop_find_starting_index_and_value                                       |      II|  -7.30|        -|        -|         8|        3|     -|       yes|        -|         -|            -|           -|    -|
+    |    + call_ln285_p_find_boundaries_and_starting_index_and_value_entry26_fu_119  |       -|  -5.20|        0|    0.000|         -|        0|     -|        no|        -|         -|      2 (~0%)|    38 (~0%)|    -|
+    |  + grp_patch_buffer_add_patch_fu_308                                           |       -|  -5.02|       40|  400.000|         -|       40|     -|        no|        -|         -|     43 (~0%)|   627 (~0%)|    -|
+    |  o loop_write_patch_stream_layer                                               |       -|  -7.30|       95|  950.000|        19|        -|     5|        no|        -|         -|            -|           -|    -|
+    |   o loop_write_patch_stream_superpoint                                         |       -|  -7.30|       16|  160.000|         2|        1|    16|       yes|        -|         -|            -|           -|    -|
+    +--------------------------------------------------------------------------------+--------+-------+---------+---------+----------+---------+------+----------+---------+----------+-------------+------------+-----+
+

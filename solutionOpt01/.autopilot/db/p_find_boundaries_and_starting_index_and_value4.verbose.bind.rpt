@@ -1,0 +1,749 @@
+
+
+================================================================
+== Vitis HLS Report for 'p_find_boundaries_and_starting_index_and_value4'
+================================================================
+* Date:           Wed Jun 26 22:50:37 2024
+
+* Version:        2020.2 (Build 3064766 on Wed Nov 18 09:12:45 MST 2020)
+* Project:        ParticleCoverHLS
+* Solution:       solutionOpt01 (Vivado IP Flow Target)
+* Product family: virtexuplus
+* Target device:  xcvu11p-flga2577-1-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+----------+----------+------------+
+    |  Clock |  Target  | Estimated| Uncertainty|
+    +--------+----------+----------+------------+
+    |ap_clk  |  10.00 ns|  7.674 ns|     2.70 ns|
+    +--------+----------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+----------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline |
+    |   min   |   max   |    min   |    max   | min | max |   Type   |
+    +---------+---------+----------+----------+-----+-----+----------+
+    |        ?|        ?|         ?|         ?|    ?|    ?|  dataflow|
+    +---------+---------+----------+----------+-----+-----+----------+
+
+    + Detail: 
+        * Instance: 
+        +--------------------------------------------------------------------------+--------------------------------------------------------+---------+---------+----------+----------+-----+-----+---------+
+        |                                                                          |                                                        |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+        |                                 Instance                                 |                         Module                         |   min   |   max   |    min   |    max   | min | max |   Type  |
+        +--------------------------------------------------------------------------+--------------------------------------------------------+---------+---------+----------+----------+-----+-----+---------+
+        |grp_p_find_left_and_right_boundaries6_fu_88                               |p_find_left_and_right_boundaries6                       |        ?|        ?|         ?|         ?|    ?|    ?|     none|
+        |grp_p_find_starting_index_and_value5_fu_105                               |p_find_starting_index_and_value5                        |        ?|        ?|         ?|         ?|    ?|    ?|     none|
+        |call_ln120_p_find_boundaries_and_starting_index_and_value_entry25_fu_119  |p_find_boundaries_and_starting_index_and_value_entry25  |        0|        0|      0 ns|      0 ns|    0|    0|     none|
+        +--------------------------------------------------------------------------+--------------------------------------------------------+---------+---------+----------+----------+-----+-----+---------+
+
+        * Loop: 
+        N/A
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 2
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 5
+* Pipeline : 0
+* Dataflow Pipeline: 1
+  DF-Pipeline-0: Size = 5, States = { 1 2 3 4 5 }
+
+* FSM state transitions: 
+1 --> 2 
+2 --> 3 
+3 --> 4 
+4 --> 5 
+5 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 2.10>
+ST_1 : Operation 6 [1/1] (0.00ns)   --->   "%i_read = read i3 @_ssdm_op_Read.ap_auto.i3, i3 %i" [ParticleCoverHLS/src/system.cpp:120]   --->   Operation 6 'read' 'i_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 7 [1/1] (0.00ns)   --->   "%projectionToRow_read = read i26 @_ssdm_op_Read.ap_auto.i26, i26 %projectionToRow" [ParticleCoverHLS/src/system.cpp:120]   --->   Operation 7 'read' 'projectionToRow_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 8 [1/1] (0.00ns)   --->   "%i_c7 = alloca i64 1" [ParticleCoverHLS/src/system.cpp:120]   --->   Operation 8 'alloca' 'i_c7' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 81 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 2.10> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 3> <Depth = 2> <FIFO>
+ST_1 : Operation 9 [1/1] (0.00ns)   --->   "%i_c = alloca i64 1" [ParticleCoverHLS/src/system.cpp:120]   --->   Operation 9 'alloca' 'i_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 81 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 2.10> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 3> <Depth = 2> <FIFO>
+ST_1 : Operation 10 [1/1] (0.00ns)   --->   "%projectionToRow_c = alloca i64 1" [ParticleCoverHLS/src/system.cpp:127]   --->   Operation 10 'alloca' 'projectionToRow_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 81 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 2.10> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 26> <Depth = 2> <FIFO>
+ST_1 : Operation 11 [1/1] (2.10ns)   --->   "%call_ln120 = call void @_find_boundaries_and_starting_index_and_value.entry25, i26 %projectionToRow_read, i3 %i_read, i26 %projectionToRow_c, i3 %i_c, i3 %i_c7" [ParticleCoverHLS/src/system.cpp:120]   --->   Operation 11 'call' 'call_ln120' <Predicate = true> <Delay = 2.10> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 2 <SV = 1> <Delay = 0.00>
+ST_2 : Operation 12 [2/2] (0.00ns)   --->   "%call_ln123 = call void @_find_left_and_right_boundaries6, i32 %num_points, i128 %points, i32 %left_bound, i3 %i_c, i32 %get_trapezoid_edgestrapezoid_edges, i32 %lbVal_constprop, i32 %rbVal_constprop" [ParticleCoverHLS/src/system.cpp:123]   --->   Operation 12 'call' 'call_ln123' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 3 <SV = 2> <Delay = 6.11>
+ST_3 : Operation 13 [1/2] (6.11ns)   --->   "%call_ln123 = call void @_find_left_and_right_boundaries6, i32 %num_points, i128 %points, i32 %left_bound, i3 %i_c, i32 %get_trapezoid_edgestrapezoid_edges, i32 %lbVal_constprop, i32 %rbVal_constprop" [ParticleCoverHLS/src/system.cpp:123]   --->   Operation 13 'call' 'call_ln123' <Predicate = true> <Delay = 6.11> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 4 <SV = 3> <Delay = 6.69>
+ST_4 : Operation 14 [2/2] (6.69ns)   --->   "%call_ln127 = call void @_find_starting_index_and_value5, i32 %num_points, i128 %points, i26 %projectionToRow_c, i32 %start_index, i32 %start_value, i3 %i_c7" [ParticleCoverHLS/src/system.cpp:127]   --->   Operation 14 'call' 'call_ln127' <Predicate = true> <Delay = 6.69> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 5 <SV = 4> <Delay = 2.06>
+ST_5 : Operation 15 [1/1] (0.00ns)   --->   "%specshared_ln0 = specshared void @_ssdm_op_SpecShared, i128 %points, void @p_str"   --->   Operation 15 'specshared' 'specshared_ln0' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 16 [1/1] (0.00ns)   --->   "%specshared_ln0 = specshared void @_ssdm_op_SpecShared, i32 %num_points, void @p_str"   --->   Operation 16 'specshared' 'specshared_ln0' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 17 [1/1] (0.00ns)   --->   "%specdataflowpipeline_ln0 = specdataflowpipeline void @_ssdm_op_SpecDataflowPipeline, i32 4294967295, i32 0, void @empty_0"   --->   Operation 17 'specdataflowpipeline' 'specdataflowpipeline_ln0' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 18 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i32 %num_points, void @empty, i32 0, i32 0, void @empty_0, i32 4294967295, i32 0, void @empty_0, void @empty_0, void @empty_0, i32 0, i32 0, i32 0, i32 0, void @empty_0, void @empty_0"   --->   Operation 18 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 19 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i128 %points, void @empty, i32 0, i32 0, void @empty_0, i32 4294967295, i32 0, void @empty_0, void @empty_0, void @empty_0, i32 0, i32 0, i32 0, i32 0, void @empty_0, void @empty_0"   --->   Operation 19 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 20 [1/1] (0.00ns)   --->   "%empty = specchannel i32 @_ssdm_op_SpecChannel, void @projectionToRow_c_str, i32 1, void @p_str, void @p_str, i32 2, i32 0, i26 %projectionToRow_c, i26 %projectionToRow_c" [ParticleCoverHLS/src/system.cpp:127]   --->   Operation 20 'specchannel' 'empty' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 21 [1/1] (0.00ns)   --->   "%specinterface_ln127 = specinterface void @_ssdm_op_SpecInterface, i26 %projectionToRow_c, void @ap_fifo_str, i32 0, i32 0, void @p_str, i32 0, i32 0, void @p_str, void @p_str, void @p_str, i32 2, i32 2, i32 16, i32 16, void @p_str, void @p_str" [ParticleCoverHLS/src/system.cpp:127]   --->   Operation 21 'specinterface' 'specinterface_ln127' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 22 [1/1] (0.00ns)   --->   "%empty_95 = specchannel i32 @_ssdm_op_SpecChannel, void @i_c_str, i32 1, void @p_str, void @p_str, i32 2, i32 0, i3 %i_c, i3 %i_c" [ParticleCoverHLS/src/system.cpp:120]   --->   Operation 22 'specchannel' 'empty_95' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 23 [1/1] (0.00ns)   --->   "%specinterface_ln120 = specinterface void @_ssdm_op_SpecInterface, i3 %i_c, void @ap_fifo_str, i32 0, i32 0, void @p_str, i32 0, i32 0, void @p_str, void @p_str, void @p_str, i32 2, i32 2, i32 16, i32 16, void @p_str, void @p_str" [ParticleCoverHLS/src/system.cpp:120]   --->   Operation 23 'specinterface' 'specinterface_ln120' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 24 [1/1] (0.00ns)   --->   "%empty_96 = specchannel i32 @_ssdm_op_SpecChannel, void @i_c7_str, i32 1, void @p_str, void @p_str, i32 2, i32 0, i3 %i_c7, i3 %i_c7" [ParticleCoverHLS/src/system.cpp:120]   --->   Operation 24 'specchannel' 'empty_96' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 25 [1/1] (0.00ns)   --->   "%specinterface_ln120 = specinterface void @_ssdm_op_SpecInterface, i3 %i_c7, void @ap_fifo_str, i32 0, i32 0, void @p_str, i32 0, i32 0, void @p_str, void @p_str, void @p_str, i32 2, i32 2, i32 16, i32 16, void @p_str, void @p_str" [ParticleCoverHLS/src/system.cpp:120]   --->   Operation 25 'specinterface' 'specinterface_ln120' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 26 [1/2] (2.06ns)   --->   "%call_ln127 = call void @_find_starting_index_and_value5, i32 %num_points, i128 %points, i26 %projectionToRow_c, i32 %start_index, i32 %start_value, i3 %i_c7" [ParticleCoverHLS/src/system.cpp:127]   --->   Operation 26 'call' 'call_ln127' <Predicate = true> <Delay = 2.06> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_5 : Operation 27 [1/1] (0.00ns)   --->   "%ret_ln137 = ret" [ParticleCoverHLS/src/system.cpp:137]   --->   Operation 27 'ret' 'ret_ln137' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+STG Binding: 
+---------------- STG Properties BEGIN ----------------
+- Is combinational: 0
+- Is one-state seq: 0
+- Is datapath-only: 0
+- Is pipelined: 0
+- Is top level: 0
+Port [ Return ] is wired: 1; IO mode=ap_ctrl_hs:ce=0
+Port [ num_points]:  wired=1; compound=1; hidden=0; nouse=0; global=0; static=0; extern=0; dir=0; type=1; pingpong=0; private_global=0; MemPort=[11]; IO mode=ap_memory:ce=0
+Port [ points]:  wired=1; compound=1; hidden=0; nouse=0; global=0; static=0; extern=0; dir=0; type=1; pingpong=0; private_global=0; MemPort=[11]; IO mode=ap_memory:ce=0
+Port [ left_bound]:  wired=1; compound=0; hidden=0; nouse=0; global=0; static=0; extern=0; dir=1; type=0; pingpong=0; private_global=0; IO mode=ap_vld:ce=0
+Port [ projectionToRow]:  wired=1; compound=0; hidden=0; nouse=0; global=0; static=0; extern=0; dir=0; type=0; pingpong=0; private_global=0; IO mode=ap_none:ce=0
+Port [ start_index]:  wired=1; compound=0; hidden=0; nouse=0; global=0; static=0; extern=0; dir=1; type=0; pingpong=0; private_global=0; IO mode=ap_vld:ce=0
+Port [ start_value]:  wired=1; compound=0; hidden=0; nouse=0; global=0; static=0; extern=0; dir=2; type=0; pingpong=0; private_global=0; IO mode=ap_ovld:ce=0
+Port [ i]:  wired=1; compound=0; hidden=0; nouse=0; global=0; static=0; extern=0; dir=0; type=0; pingpong=0; private_global=0; IO mode=ap_none:ce=0
+Port [ get_trapezoid_edgestrapezoid_edges]:  wired=0; compound=1; hidden=1; nouse=1; global=1; static=0; extern=0; dir=0; type=1; pingpong=0; private_global=0; MemPort=[1]; IO mode=ap_memory:ce=0
+Port [ lbVal_constprop]:  wired=1; compound=0; hidden=0; nouse=0; global=1; static=1; extern=0; dir=2; type=0; pingpong=0; private_global=0; IO mode=ap_ovld:ce=0
+Port [ rbVal_constprop]:  wired=1; compound=0; hidden=0; nouse=0; global=1; static=1; extern=0; dir=2; type=0; pingpong=0; private_global=0; IO mode=ap_ovld:ce=0
+---------------- STG Properties END ------------------
+
+---------------- Datapath Model BEGIN ----------------
+
+<LifeTime>
+<method=bitvector/>
+i_read                   (read                ) [ 000000]
+projectionToRow_read     (read                ) [ 000000]
+i_c7                     (alloca              ) [ 011111]
+i_c                      (alloca              ) [ 011111]
+projectionToRow_c        (alloca              ) [ 011111]
+call_ln120               (call                ) [ 000000]
+call_ln123               (call                ) [ 000000]
+specshared_ln0           (specshared          ) [ 000000]
+specshared_ln0           (specshared          ) [ 000000]
+specdataflowpipeline_ln0 (specdataflowpipeline) [ 000000]
+specinterface_ln0        (specinterface       ) [ 000000]
+specinterface_ln0        (specinterface       ) [ 000000]
+empty                    (specchannel         ) [ 000000]
+specinterface_ln127      (specinterface       ) [ 000000]
+empty_95                 (specchannel         ) [ 000000]
+specinterface_ln120      (specinterface       ) [ 000000]
+empty_96                 (specchannel         ) [ 000000]
+specinterface_ln120      (specinterface       ) [ 000000]
+call_ln127               (call                ) [ 000000]
+ret_ln137                (ret                 ) [ 000000]
+</LifeTime>
+
+<model>
+
+<comp_list>
+<comp id="0" class="1000" name="num_points">
+<pin_list>
+<pin id="1" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="num_points"/><MemPortTyVec>1 1 </MemPortTyVec>
+</StgValue>
+</bind>
+</comp>
+
+<comp id="2" class="1000" name="points">
+<pin_list>
+<pin id="3" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="points"/><MemPortTyVec>1 1 </MemPortTyVec>
+</StgValue>
+</bind>
+</comp>
+
+<comp id="4" class="1000" name="left_bound">
+<pin_list>
+<pin id="5" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="left_bound"/></StgValue>
+</bind>
+</comp>
+
+<comp id="6" class="1000" name="projectionToRow">
+<pin_list>
+<pin id="7" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="projectionToRow"/></StgValue>
+</bind>
+</comp>
+
+<comp id="8" class="1000" name="start_index">
+<pin_list>
+<pin id="9" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="start_index"/></StgValue>
+</bind>
+</comp>
+
+<comp id="10" class="1000" name="start_value">
+<pin_list>
+<pin id="11" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="start_value"/></StgValue>
+</bind>
+</comp>
+
+<comp id="12" class="1000" name="i">
+<pin_list>
+<pin id="13" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="i"/></StgValue>
+</bind>
+</comp>
+
+<comp id="14" class="1000" name="get_trapezoid_edgestrapezoid_edges">
+<pin_list>
+<pin id="15" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="get_trapezoid_edgestrapezoid_edges"/><MemPortTyVec>1 </MemPortTyVec>
+</StgValue>
+</bind>
+</comp>
+
+<comp id="16" class="1000" name="lbVal_constprop">
+<pin_list>
+<pin id="17" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="lbVal_constprop"/></StgValue>
+</bind>
+</comp>
+
+<comp id="18" class="1000" name="rbVal_constprop">
+<pin_list>
+<pin id="19" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="rbVal_constprop"/></StgValue>
+</bind>
+</comp>
+
+<comp id="20" class="1001" name="const_20">
+<pin_list>
+<pin id="21" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="_ssdm_op_Read.ap_auto.i3"/></StgValue>
+</bind>
+</comp>
+
+<comp id="22" class="1001" name="const_22">
+<pin_list>
+<pin id="23" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="_ssdm_op_Read.ap_auto.i26"/></StgValue>
+</bind>
+</comp>
+
+<comp id="24" class="1001" name="const_24">
+<pin_list>
+<pin id="25" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name=""/></StgValue>
+</bind>
+</comp>
+
+<comp id="26" class="1001" name="const_26">
+<pin_list>
+<pin id="27" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="_find_boundaries_and_starting_index_and_value.entry25"/></StgValue>
+</bind>
+</comp>
+
+<comp id="28" class="1001" name="const_28">
+<pin_list>
+<pin id="29" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="_find_left_and_right_boundaries6"/></StgValue>
+</bind>
+</comp>
+
+<comp id="30" class="1001" name="const_30">
+<pin_list>
+<pin id="31" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="_find_starting_index_and_value5"/></StgValue>
+</bind>
+</comp>
+
+<comp id="32" class="1001" name="const_32">
+<pin_list>
+<pin id="33" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="_ssdm_op_SpecShared"/></StgValue>
+</bind>
+</comp>
+
+<comp id="34" class="1001" name="const_34">
+<pin_list>
+<pin id="35" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="p_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="36" class="1001" name="const_36">
+<pin_list>
+<pin id="37" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="_ssdm_op_SpecDataflowPipeline"/></StgValue>
+</bind>
+</comp>
+
+<comp id="38" class="1001" name="const_38">
+<pin_list>
+<pin id="39" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name=""/></StgValue>
+</bind>
+</comp>
+
+<comp id="40" class="1001" name="const_40">
+<pin_list>
+<pin id="41" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name=""/></StgValue>
+</bind>
+</comp>
+
+<comp id="42" class="1001" name="const_42">
+<pin_list>
+<pin id="43" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="empty_0"/></StgValue>
+</bind>
+</comp>
+
+<comp id="44" class="1001" name="const_44">
+<pin_list>
+<pin id="45" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="_ssdm_op_SpecInterface"/></StgValue>
+</bind>
+</comp>
+
+<comp id="46" class="1001" name="const_46">
+<pin_list>
+<pin id="47" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="empty"/></StgValue>
+</bind>
+</comp>
+
+<comp id="48" class="1001" name="const_48">
+<pin_list>
+<pin id="49" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="_ssdm_op_SpecChannel"/></StgValue>
+</bind>
+</comp>
+
+<comp id="50" class="1001" name="const_50">
+<pin_list>
+<pin id="51" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="projectionToRow_c_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="52" class="1001" name="const_52">
+<pin_list>
+<pin id="53" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name=""/></StgValue>
+</bind>
+</comp>
+
+<comp id="54" class="1001" name="const_54">
+<pin_list>
+<pin id="55" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name=""/></StgValue>
+</bind>
+</comp>
+
+<comp id="56" class="1001" name="const_56">
+<pin_list>
+<pin id="57" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="ap_fifo_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="58" class="1001" name="const_58">
+<pin_list>
+<pin id="59" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name=""/></StgValue>
+</bind>
+</comp>
+
+<comp id="60" class="1001" name="const_60">
+<pin_list>
+<pin id="61" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="i_c_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="62" class="1001" name="const_62">
+<pin_list>
+<pin id="63" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="i_c7_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="64" class="1004" name="i_c7_fu_64">
+<pin_list>
+<pin id="65" dir="0" index="0" bw="1" slack="0"/>
+<pin id="66" dir="1" index="1" bw="3" slack="0"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="i_c7/1 "/>
+</bind>
+</comp>
+
+<comp id="68" class="1004" name="i_c_fu_68">
+<pin_list>
+<pin id="69" dir="0" index="0" bw="1" slack="0"/>
+<pin id="70" dir="1" index="1" bw="3" slack="0"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="i_c/1 "/>
+</bind>
+</comp>
+
+<comp id="72" class="1004" name="projectionToRow_c_fu_72">
+<pin_list>
+<pin id="73" dir="0" index="0" bw="1" slack="0"/>
+<pin id="74" dir="1" index="1" bw="26" slack="0"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="projectionToRow_c/1 "/>
+</bind>
+</comp>
+
+<comp id="76" class="1004" name="i_read_read_fu_76">
+<pin_list>
+<pin id="77" dir="0" index="0" bw="3" slack="0"/>
+<pin id="78" dir="0" index="1" bw="3" slack="0"/>
+<pin id="79" dir="1" index="2" bw="3" slack="0"/>
+</pin_list>
+<bind>
+<opcode="read(1150) " fcode="read"/>
+<opset="i_read/1 "/>
+</bind>
+</comp>
+
+<comp id="82" class="1004" name="projectionToRow_read_read_fu_82">
+<pin_list>
+<pin id="83" dir="0" index="0" bw="26" slack="0"/>
+<pin id="84" dir="0" index="1" bw="26" slack="0"/>
+<pin id="85" dir="1" index="2" bw="26" slack="0"/>
+</pin_list>
+<bind>
+<opcode="read(1150) " fcode="read"/>
+<opset="projectionToRow_read/1 "/>
+</bind>
+</comp>
+
+<comp id="88" class="1004" name="grp_p_find_left_and_right_boundaries6_fu_88">
+<pin_list>
+<pin id="89" dir="0" index="0" bw="0" slack="0"/>
+<pin id="90" dir="0" index="1" bw="32" slack="0"/>
+<pin id="91" dir="0" index="2" bw="128" slack="0"/>
+<pin id="92" dir="0" index="3" bw="32" slack="0"/>
+<pin id="93" dir="0" index="4" bw="3" slack="1"/>
+<pin id="94" dir="0" index="5" bw="32" slack="0"/>
+<pin id="95" dir="0" index="6" bw="32" slack="0"/>
+<pin id="96" dir="0" index="7" bw="32" slack="0"/>
+<pin id="97" dir="1" index="8" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln123/2 "/>
+</bind>
+</comp>
+
+<comp id="105" class="1004" name="grp_p_find_starting_index_and_value5_fu_105">
+<pin_list>
+<pin id="106" dir="0" index="0" bw="0" slack="0"/>
+<pin id="107" dir="0" index="1" bw="32" slack="0"/>
+<pin id="108" dir="0" index="2" bw="128" slack="0"/>
+<pin id="109" dir="0" index="3" bw="26" slack="3"/>
+<pin id="110" dir="0" index="4" bw="32" slack="0"/>
+<pin id="111" dir="0" index="5" bw="32" slack="0"/>
+<pin id="112" dir="0" index="6" bw="3" slack="3"/>
+<pin id="113" dir="1" index="7" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln127/4 "/>
+</bind>
+</comp>
+
+<comp id="119" class="1004" name="call_ln120_p_find_boundaries_and_starting_index_and_value_entry25_fu_119">
+<pin_list>
+<pin id="120" dir="0" index="0" bw="0" slack="0"/>
+<pin id="121" dir="0" index="1" bw="26" slack="0"/>
+<pin id="122" dir="0" index="2" bw="3" slack="0"/>
+<pin id="123" dir="0" index="3" bw="26" slack="0"/>
+<pin id="124" dir="0" index="4" bw="3" slack="0"/>
+<pin id="125" dir="0" index="5" bw="3" slack="0"/>
+<pin id="126" dir="1" index="6" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln120/1 "/>
+</bind>
+</comp>
+
+<comp id="130" class="1005" name="i_c7_reg_130">
+<pin_list>
+<pin id="131" dir="0" index="0" bw="3" slack="0"/>
+<pin id="132" dir="1" index="1" bw="3" slack="0"/>
+</pin_list>
+<bind>
+<opset="i_c7 "/>
+</bind>
+</comp>
+
+<comp id="136" class="1005" name="i_c_reg_136">
+<pin_list>
+<pin id="137" dir="0" index="0" bw="3" slack="0"/>
+<pin id="138" dir="1" index="1" bw="3" slack="0"/>
+</pin_list>
+<bind>
+<opset="i_c "/>
+</bind>
+</comp>
+
+<comp id="142" class="1005" name="projectionToRow_c_reg_142">
+<pin_list>
+<pin id="143" dir="0" index="0" bw="26" slack="0"/>
+<pin id="144" dir="1" index="1" bw="26" slack="0"/>
+</pin_list>
+<bind>
+<opset="projectionToRow_c "/>
+</bind>
+</comp>
+
+</comp_list>
+
+<net_list>
+<net id="67"><net_src comp="24" pin="0"/><net_sink comp="64" pin=0"/></net>
+
+<net id="71"><net_src comp="24" pin="0"/><net_sink comp="68" pin=0"/></net>
+
+<net id="75"><net_src comp="24" pin="0"/><net_sink comp="72" pin=0"/></net>
+
+<net id="80"><net_src comp="20" pin="0"/><net_sink comp="76" pin=0"/></net>
+
+<net id="81"><net_src comp="12" pin="0"/><net_sink comp="76" pin=1"/></net>
+
+<net id="86"><net_src comp="22" pin="0"/><net_sink comp="82" pin=0"/></net>
+
+<net id="87"><net_src comp="6" pin="0"/><net_sink comp="82" pin=1"/></net>
+
+<net id="98"><net_src comp="28" pin="0"/><net_sink comp="88" pin=0"/></net>
+
+<net id="99"><net_src comp="0" pin="0"/><net_sink comp="88" pin=1"/></net>
+
+<net id="100"><net_src comp="2" pin="0"/><net_sink comp="88" pin=2"/></net>
+
+<net id="101"><net_src comp="4" pin="0"/><net_sink comp="88" pin=3"/></net>
+
+<net id="102"><net_src comp="14" pin="0"/><net_sink comp="88" pin=5"/></net>
+
+<net id="103"><net_src comp="16" pin="0"/><net_sink comp="88" pin=6"/></net>
+
+<net id="104"><net_src comp="18" pin="0"/><net_sink comp="88" pin=7"/></net>
+
+<net id="114"><net_src comp="30" pin="0"/><net_sink comp="105" pin=0"/></net>
+
+<net id="115"><net_src comp="0" pin="0"/><net_sink comp="105" pin=1"/></net>
+
+<net id="116"><net_src comp="2" pin="0"/><net_sink comp="105" pin=2"/></net>
+
+<net id="117"><net_src comp="8" pin="0"/><net_sink comp="105" pin=4"/></net>
+
+<net id="118"><net_src comp="10" pin="0"/><net_sink comp="105" pin=5"/></net>
+
+<net id="127"><net_src comp="26" pin="0"/><net_sink comp="119" pin=0"/></net>
+
+<net id="128"><net_src comp="82" pin="2"/><net_sink comp="119" pin=1"/></net>
+
+<net id="129"><net_src comp="76" pin="2"/><net_sink comp="119" pin=2"/></net>
+
+<net id="133"><net_src comp="64" pin="1"/><net_sink comp="130" pin=0"/></net>
+
+<net id="134"><net_src comp="130" pin="1"/><net_sink comp="119" pin=5"/></net>
+
+<net id="135"><net_src comp="130" pin="1"/><net_sink comp="105" pin=6"/></net>
+
+<net id="139"><net_src comp="68" pin="1"/><net_sink comp="136" pin=0"/></net>
+
+<net id="140"><net_src comp="136" pin="1"/><net_sink comp="119" pin=4"/></net>
+
+<net id="141"><net_src comp="136" pin="1"/><net_sink comp="88" pin=4"/></net>
+
+<net id="145"><net_src comp="72" pin="1"/><net_sink comp="142" pin=0"/></net>
+
+<net id="146"><net_src comp="142" pin="1"/><net_sink comp="119" pin=3"/></net>
+
+<net id="147"><net_src comp="142" pin="1"/><net_sink comp="105" pin=3"/></net>
+
+</net_list>
+
+</model> 
+---------------- Datapath Model END ------------------
+
+* FSMD analyzer results:
+  - Output states:
+	Port: left_bound | {2 3 }
+	Port: start_index | {4 5 }
+	Port: start_value | {4 5 }
+	Port: lbVal_constprop | {2 3 }
+	Port: rbVal_constprop | {2 3 }
+ - Input state : 
+	Port: _find_boundaries_and_starting_index_and_value4 : num_points | {2 3 4 5 }
+	Port: _find_boundaries_and_starting_index_and_value4 : points | {2 3 4 5 }
+	Port: _find_boundaries_and_starting_index_and_value4 : projectionToRow | {1 }
+	Port: _find_boundaries_and_starting_index_and_value4 : start_value | {4 5 }
+	Port: _find_boundaries_and_starting_index_and_value4 : i | {1 }
+	Port: _find_boundaries_and_starting_index_and_value4 : get_trapezoid_edgestrapezoid_edges | {2 3 }
+	Port: _find_boundaries_and_starting_index_and_value4 : lbVal_constprop | {2 3 }
+	Port: _find_boundaries_and_starting_index_and_value4 : rbVal_constprop | {2 3 }
+  - Chain level:
+	State 1
+		call_ln120 : 1
+	State 2
+	State 3
+	State 4
+	State 5
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+
+* Functional unit list:
+|----------|--------------------------------------------------------------------------|---------|---------|---------|---------|
+| Operation|                              Functional Unit                             |   DSP   |  Delay  |    FF   |   LUT   |
+|----------|--------------------------------------------------------------------------|---------|---------|---------|---------|
+|          |                grp_p_find_left_and_right_boundaries6_fu_88               |    6    | 6.28214 |   2618  |  15285  |
+|   call   |                grp_p_find_starting_index_and_value5_fu_105               |    2    |   2.3   |   808   |   3153  |
+|          | call_ln120_p_find_boundaries_and_starting_index_and_value_entry25_fu_119 |    0    |    0    |    0    |    0    |
+|----------|--------------------------------------------------------------------------|---------|---------|---------|---------|
+|   read   |                             i_read_read_fu_76                            |    0    |    0    |    0    |    0    |
+|          |                      projectionToRow_read_read_fu_82                     |    0    |    0    |    0    |    0    |
+|----------|--------------------------------------------------------------------------|---------|---------|---------|---------|
+|   Total  |                                                                          |    8    | 8.58214 |   3426  |  18438  |
+|----------|--------------------------------------------------------------------------|---------|---------|---------|---------|
+
+Memories:
+N/A
+
+* Register list:
++-------------------------+--------+
+|                         |   FF   |
++-------------------------+--------+
+|       i_c7_reg_130      |    3   |
+|       i_c_reg_136       |    3   |
+|projectionToRow_c_reg_142|   26   |
++-------------------------+--------+
+|          Total          |   32   |
++-------------------------+--------+
+
+* Multiplexer (MUX) list: 
+|--------|------|------|------|--------|
+|  Comp  |  Pin | Size |  BW  | S x BW |
+|--------|------|------|------|--------|
+|  Total |      |      |      |    0   |
+|--------|------|------|------|--------|
+
+
+
+* Summary:
++-----------+--------+--------+--------+--------+
+|           |   DSP  |  Delay |   FF   |   LUT  |
++-----------+--------+--------+--------+--------+
+|  Function |    8   |    8   |  3426  |  18438 |
+|   Memory  |    -   |    -   |    -   |    -   |
+|Multiplexer|    -   |    -   |    -   |    -   |
+|  Register |    -   |    -   |   32   |    -   |
++-----------+--------+--------+--------+--------+
+|   Total   |    8   |    8   |  3458  |  18438 |
++-----------+--------+--------+--------+--------+

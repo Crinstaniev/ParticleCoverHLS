@@ -42,7 +42,7 @@ void _find_left_and_right_boundaries(index_t num_points[NUM_LAYERS],
                                      int_value_t &right_bound,
                                      float_value_t &rbVal, int i) {
 loop_find_left_and_right_boundaries:
-  for (int j = 0; j < num_points[i]; j++) {
+  for (int j = 0; j < num_points[i]/2; j++) {
     z_value_t row_list_j = point_get_z(points[i][j]);
     float_value_t diff_0 =
         std::abs(row_list_j.to_float() + get_trapezoid_edges(i) +
@@ -52,18 +52,62 @@ loop_find_left_and_right_boundaries:
         std::abs(row_list_j.to_float() - get_trapezoid_edges(i) -
                  BOUNDARYPOINT_OFFSET) -
         rbVal.to_float();
-
     if (diff_0 < 0) {
       left_bound = j;
       lbVal = std::abs(row_list_j.to_float() + get_trapezoid_edges(i) +
                        BOUNDARYPOINT_OFFSET);
     }
-
     if (diff_1 < 0) {
       right_bound = j;
       rbVal = std::abs(row_list_j.to_float() - get_trapezoid_edges(i) -
                        BOUNDARYPOINT_OFFSET);
     }
+
+    z_value_t row_list_k = point_get_z(points[i][num_point[i] - j - 1]);
+    float_value_t diff_02 =
+			std::abs(row_list_k.to_float() + get_trapezoid_edges(i) +
+					 BOUNDARYPOINT_OFFSET) -
+			lbVal.to_float();
+	float_value_t diff_12 =
+		std::abs(row_list_k.to_float() - get_trapezoid_edges(i) -
+				 BOUNDARYPOINT_OFFSET) -
+		rbVal.to_float();
+    if (diff_02 < 0) {
+          left_bound = num_point[i] - j - 1;
+          lbVal = std::abs(row_list_k.to_float() + get_trapezoid_edges(i) +
+                           BOUNDARYPOINT_OFFSET);
+        }
+	if (diff_12 < 0) {
+	  right_bound = num_point[i] - j - 1;
+	  rbVal = std::abs(row_list_k.to_float() - get_trapezoid_edges(i) -
+					   BOUNDARYPOINT_OFFSET);
+	}
+  }
+  if(num_point[i]%2 == 1)
+  {
+	  int j = num_point[i]/2;
+	  z_value_t row_list_j = point_get_z(points[i][j]);
+	  float_value_t diff_0 =
+		  std::abs(row_list_j.to_float() + get_trapezoid_edges(i) +
+				   BOUNDARYPOINT_OFFSET) -
+		  lbVal.to_float();
+	  float_value_t diff_1 =
+		  std::abs(row_list_j.to_float() - get_trapezoid_edges(i) -
+				   BOUNDARYPOINT_OFFSET) -
+		  rbVal.to_float();
+
+
+	  if (diff_0 < 0) {
+		left_bound = j;
+		lbVal = std::abs(row_list_j.to_float() + get_trapezoid_edges(i) +
+						 BOUNDARYPOINT_OFFSET);
+	  }
+
+	  if (diff_1 < 0) {
+		right_bound = j;
+		rbVal = std::abs(row_list_j.to_float() - get_trapezoid_edges(i) -
+						 BOUNDARYPOINT_OFFSET);
+	  }
   }
 }
 

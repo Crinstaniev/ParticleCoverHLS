@@ -1,0 +1,159 @@
+
+
+================================================================
+== Vitis HLS Report for 'p_find_boundaries_and_starting_index_and_value4'
+================================================================
+* Date:           Mon Jul  1 23:31:00 2024
+
+* Version:        2020.2 (Build 3064766 on Wed Nov 18 09:12:45 MST 2020)
+* Project:        ParticleCoverHLS
+* Solution:       solutionOpt1_5 (Vivado IP Flow Target)
+* Product family: virtexuplus
+* Target device:  xcvu11p-flga2577-1-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+----------+----------+------------+
+    |  Clock |  Target  | Estimated| Uncertainty|
+    +--------+----------+----------+------------+
+    |ap_clk  |  10.00 ns|  7.649 ns|     2.70 ns|
+    +--------+----------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+----------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline |
+    |   min   |   max   |    min   |    max   | min | max |   Type   |
+    +---------+---------+----------+----------+-----+-----+----------+
+    |        ?|        ?|         ?|         ?|    ?|    ?|  dataflow|
+    +---------+---------+----------+----------+-----+-----+----------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 2
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 5
+* Pipeline : 0
+* Dataflow Pipeline: 1
+  DF-Pipeline-0: Size = 5, States = { 1 2 3 4 5 }
+
+* FSM state transitions: 
+1 --> 2 
+2 --> 3 
+3 --> 4 
+4 --> 5 
+5 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 2.10>
+ST_1 : Operation 6 [1/1] (0.00ns)   --->   "%i_read = read i3 @_ssdm_op_Read.ap_auto.i3, i3 %i" [ParticleCoverHLS/src/system.cpp:118]   --->   Operation 6 'read' 'i_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 7 [1/1] (0.00ns)   --->   "%projectionToRow_read = read i26 @_ssdm_op_Read.ap_auto.i26, i26 %projectionToRow" [ParticleCoverHLS/src/system.cpp:118]   --->   Operation 7 'read' 'projectionToRow_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 8 [1/1] (0.00ns)   --->   "%i_c7 = alloca i64 1" [ParticleCoverHLS/src/system.cpp:118]   --->   Operation 8 'alloca' 'i_c7' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 81 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 2.10> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 3> <Depth = 2> <FIFO>
+ST_1 : Operation 9 [1/1] (0.00ns)   --->   "%i_c = alloca i64 1" [ParticleCoverHLS/src/system.cpp:118]   --->   Operation 9 'alloca' 'i_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 81 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 2.10> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 3> <Depth = 2> <FIFO>
+ST_1 : Operation 10 [1/1] (0.00ns)   --->   "%projectionToRow_c = alloca i64 1" [ParticleCoverHLS/src/system.cpp:125]   --->   Operation 10 'alloca' 'projectionToRow_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 81 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 2.10> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 26> <Depth = 2> <FIFO>
+ST_1 : Operation 11 [1/1] (2.10ns)   --->   "%call_ln118 = call void @_find_boundaries_and_starting_index_and_value.entry25, i26 %projectionToRow_read, i3 %i_read, i26 %projectionToRow_c, i3 %i_c, i3 %i_c7" [ParticleCoverHLS/src/system.cpp:118]   --->   Operation 11 'call' 'call_ln118' <Predicate = true> <Delay = 2.10> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 2 <SV = 1> <Delay = 0.00>
+ST_2 : Operation 12 [2/2] (0.00ns)   --->   "%call_ln121 = call void @_find_left_and_right_boundaries6, i32 %num_points, i128 %points, i32 %left_bound, i3 %i_c, i32 %get_trapezoid_edgestrapezoid_edges, i32 %lbVal_constprop, i32 %rbVal_constprop" [ParticleCoverHLS/src/system.cpp:121]   --->   Operation 12 'call' 'call_ln121' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 3 <SV = 2> <Delay = 6.11>
+ST_3 : Operation 13 [1/2] (6.11ns)   --->   "%call_ln121 = call void @_find_left_and_right_boundaries6, i32 %num_points, i128 %points, i32 %left_bound, i3 %i_c, i32 %get_trapezoid_edgestrapezoid_edges, i32 %lbVal_constprop, i32 %rbVal_constprop" [ParticleCoverHLS/src/system.cpp:121]   --->   Operation 13 'call' 'call_ln121' <Predicate = true> <Delay = 6.11> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 4 <SV = 3> <Delay = 6.69>
+ST_4 : Operation 14 [2/2] (6.69ns)   --->   "%call_ln125 = call void @_find_starting_index_and_value5, i32 %num_points, i128 %points, i26 %projectionToRow_c, i32 %start_index, i32 %start_value, i3 %i_c7" [ParticleCoverHLS/src/system.cpp:125]   --->   Operation 14 'call' 'call_ln125' <Predicate = true> <Delay = 6.69> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 5 <SV = 4> <Delay = 2.06>
+ST_5 : Operation 15 [1/1] (0.00ns)   --->   "%specshared_ln0 = specshared void @_ssdm_op_SpecShared, i128 %points, void @p_str"   --->   Operation 15 'specshared' 'specshared_ln0' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 16 [1/1] (0.00ns)   --->   "%specshared_ln0 = specshared void @_ssdm_op_SpecShared, i32 %num_points, void @p_str"   --->   Operation 16 'specshared' 'specshared_ln0' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 17 [1/1] (0.00ns)   --->   "%specdataflowpipeline_ln0 = specdataflowpipeline void @_ssdm_op_SpecDataflowPipeline, i32 4294967295, i32 0, void @empty_0"   --->   Operation 17 'specdataflowpipeline' 'specdataflowpipeline_ln0' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 18 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i32 %num_points, void @empty, i32 0, i32 0, void @empty_0, i32 4294967295, i32 0, void @empty_0, void @empty_0, void @empty_0, i32 0, i32 0, i32 0, i32 0, void @empty_0, void @empty_0"   --->   Operation 18 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 19 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i128 %points, void @empty, i32 0, i32 0, void @empty_0, i32 4294967295, i32 0, void @empty_0, void @empty_0, void @empty_0, i32 0, i32 0, i32 0, i32 0, void @empty_0, void @empty_0"   --->   Operation 19 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 20 [1/1] (0.00ns)   --->   "%empty = specchannel i32 @_ssdm_op_SpecChannel, void @projectionToRow_c_str, i32 1, void @p_str, void @p_str, i32 2, i32 0, i26 %projectionToRow_c, i26 %projectionToRow_c" [ParticleCoverHLS/src/system.cpp:125]   --->   Operation 20 'specchannel' 'empty' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 21 [1/1] (0.00ns)   --->   "%specinterface_ln125 = specinterface void @_ssdm_op_SpecInterface, i26 %projectionToRow_c, void @ap_fifo_str, i32 0, i32 0, void @p_str, i32 0, i32 0, void @p_str, void @p_str, void @p_str, i32 2, i32 2, i32 16, i32 16, void @p_str, void @p_str" [ParticleCoverHLS/src/system.cpp:125]   --->   Operation 21 'specinterface' 'specinterface_ln125' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 22 [1/1] (0.00ns)   --->   "%empty_95 = specchannel i32 @_ssdm_op_SpecChannel, void @i_c_str, i32 1, void @p_str, void @p_str, i32 2, i32 0, i3 %i_c, i3 %i_c" [ParticleCoverHLS/src/system.cpp:118]   --->   Operation 22 'specchannel' 'empty_95' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 23 [1/1] (0.00ns)   --->   "%specinterface_ln118 = specinterface void @_ssdm_op_SpecInterface, i3 %i_c, void @ap_fifo_str, i32 0, i32 0, void @p_str, i32 0, i32 0, void @p_str, void @p_str, void @p_str, i32 2, i32 2, i32 16, i32 16, void @p_str, void @p_str" [ParticleCoverHLS/src/system.cpp:118]   --->   Operation 23 'specinterface' 'specinterface_ln118' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 24 [1/1] (0.00ns)   --->   "%empty_96 = specchannel i32 @_ssdm_op_SpecChannel, void @i_c7_str, i32 1, void @p_str, void @p_str, i32 2, i32 0, i3 %i_c7, i3 %i_c7" [ParticleCoverHLS/src/system.cpp:118]   --->   Operation 24 'specchannel' 'empty_96' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 25 [1/1] (0.00ns)   --->   "%specinterface_ln118 = specinterface void @_ssdm_op_SpecInterface, i3 %i_c7, void @ap_fifo_str, i32 0, i32 0, void @p_str, i32 0, i32 0, void @p_str, void @p_str, void @p_str, i32 2, i32 2, i32 16, i32 16, void @p_str, void @p_str" [ParticleCoverHLS/src/system.cpp:118]   --->   Operation 25 'specinterface' 'specinterface_ln118' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 26 [1/2] (2.06ns)   --->   "%call_ln125 = call void @_find_starting_index_and_value5, i32 %num_points, i128 %points, i26 %projectionToRow_c, i32 %start_index, i32 %start_value, i3 %i_c7" [ParticleCoverHLS/src/system.cpp:125]   --->   Operation 26 'call' 'call_ln125' <Predicate = true> <Delay = 2.06> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_5 : Operation 27 [1/1] (0.00ns)   --->   "%ret_ln135 = ret" [ParticleCoverHLS/src/system.cpp:135]   --->   Operation 27 'ret' 'ret_ln135' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 10ns, clock uncertainty: 2.7ns.
+
+ <State 1>: 2.1ns
+The critical path consists of the following:
+	wire read on port 'i' (ParticleCoverHLS/src/system.cpp:118) [15]  (0 ns)
+	'call' operation ('call_ln118', ParticleCoverHLS/src/system.cpp:118) to '_find_boundaries_and_starting_index_and_value.entry25' [29]  (2.1 ns)
+
+ <State 2>: 0ns
+The critical path consists of the following:
+
+ <State 3>: 6.12ns
+The critical path consists of the following:
+	'call' operation ('call_ln121', ParticleCoverHLS/src/system.cpp:121) to '_find_left_and_right_boundaries6' [30]  (6.12 ns)
+
+ <State 4>: 6.7ns
+The critical path consists of the following:
+	'call' operation ('call_ln125', ParticleCoverHLS/src/system.cpp:125) to '_find_starting_index_and_value5' [31]  (6.7 ns)
+
+ <State 5>: 2.06ns
+The critical path consists of the following:
+	'call' operation ('call_ln125', ParticleCoverHLS/src/system.cpp:125) to '_find_starting_index_and_value5' [31]  (2.06 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

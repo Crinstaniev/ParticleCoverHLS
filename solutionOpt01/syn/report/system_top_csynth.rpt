@@ -1,0 +1,237 @@
+
+
+================================================================
+== Vitis HLS Report for 'system_top'
+================================================================
+* Date:           Wed Jun 26 22:50:56 2024
+
+* Version:        2020.2 (Build 3064766 on Wed Nov 18 09:12:45 MST 2020)
+* Project:        ParticleCoverHLS
+* Solution:       solutionOpt01 (Vivado IP Flow Target)
+* Product family: virtexuplus
+* Target device:  xcvu11p-flga2577-1-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+----------+----------+------------+
+    |  Clock |  Target  | Estimated| Uncertainty|
+    +--------+----------+----------+------------+
+    |ap_clk  |  10.00 ns|  7.674 ns|     2.70 ns|
+    +--------+----------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |        ?|        ?|         ?|         ?|    ?|    ?|     none|
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        +----------------------------------------------+-----------------------------------+---------+---------+----------+----------+-----+-----+---------+
+        |                                              |                                   |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+        |                   Instance                   |               Module              |   min   |   max   |    min   |    max   | min | max |   Type  |
+        +----------------------------------------------+-----------------------------------+---------+---------+----------+----------+-----+-----+---------+
+        |grp_makePatches_ShadowQuilt_fromEdges_fu_362  |makePatches_ShadowQuilt_fromEdges  |        ?|        ?|         ?|         ?|    ?|    ?|     none|
+        +----------------------------------------------+-----------------------------------+---------+---------+----------+----------+-----+-----+---------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+------+---------+---------+-----+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
++---------------------+---------+------+---------+---------+-----+
+|DSP                  |        -|     -|        -|        -|    -|
+|Expression           |        -|     -|        -|        -|    -|
+|FIFO                 |        -|     -|        -|        -|    -|
+|Instance             |        6|    19|     4486|    25757|    -|
+|Memory               |        0|     -|    15360|      400|    -|
+|Multiplexer          |        -|     -|        -|       47|    -|
+|Register             |        -|     -|       38|        -|    -|
++---------------------+---------+------+---------+---------+-----+
+|Total                |        6|    19|    19884|    26204|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available SLR        |     1344|  3072|   864000|   432000|  320|
++---------------------+---------+------+---------+---------+-----+
+|Utilization SLR (%)  |       ~0|    ~0|        2|        6|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available            |     4032|  9216|  2592000|  1296000|  960|
++---------------------+---------+------+---------+---------+-----+
+|Utilization (%)      |       ~0|    ~0|       ~0|        2|    0|
++---------------------+---------+------+---------+---------+-----+
+
++ Detail: 
+    * Instance: 
+    +----------------------------------------------+-----------------------------------+---------+----+------+-------+-----+
+    |                   Instance                   |               Module              | BRAM_18K| DSP|  FF  |  LUT  | URAM|
+    +----------------------------------------------+-----------------------------------+---------+----+------+-------+-----+
+    |grp_makePatches_ShadowQuilt_fromEdges_fu_362  |makePatches_ShadowQuilt_fromEdges  |        6|  19|  4486|  25757|    0|
+    +----------------------------------------------+-----------------------------------+---------+----+------+-------+-----+
+    |Total                                         |                                   |        6|  19|  4486|  25757|    0|
+    +----------------------------------------------+-----------------------------------+---------+----+------+-------+-----+
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    +---------------------+------------------+---------+-----+----+-----+------+-----+------+-------------+
+    |        Memory       |      Module      | BRAM_18K|  FF | LUT| URAM| Words| Bits| Banks| W*Bits*Banks|
+    +---------------------+------------------+---------+-----+----+-----+------+-----+------+-------------+
+    |patch_buffer_0_0_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_0_1_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_0_2_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_0_3_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_0_4_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_0_5_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_0_6_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_0_7_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_0_8_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_0_9_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_0_10_U  |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_0_11_U  |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_0_12_U  |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_0_13_U  |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_0_14_U  |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_0_15_U  |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_1_0_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_1_1_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_1_2_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_1_3_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_1_4_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_1_5_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_1_6_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_1_7_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_1_8_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_1_9_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_1_10_U  |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_1_11_U  |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_1_12_U  |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_1_13_U  |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_1_14_U  |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_1_15_U  |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_2_0_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_2_1_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_2_2_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_2_3_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_2_4_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_2_5_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_2_6_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_2_7_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_2_8_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_2_9_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_2_10_U  |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_2_11_U  |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_2_12_U  |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_2_13_U  |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_2_14_U  |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_2_15_U  |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_3_0_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_3_1_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_3_2_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_3_3_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_3_4_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_3_5_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_3_6_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_3_7_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_3_8_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_3_9_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_3_10_U  |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_3_11_U  |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_3_12_U  |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_3_13_U  |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_3_14_U  |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_3_15_U  |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_4_0_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_4_1_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_4_2_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_4_3_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_4_4_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_4_5_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_4_6_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_4_7_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_4_8_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_4_9_U   |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_4_10_U  |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_4_11_U  |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_4_12_U  |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_4_13_U  |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_4_14_U  |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    |patch_buffer_4_15_U  |patch_buffer_0_0  |        0|  192|   5|    0|     3|   96|     1|          288|
+    +---------------------+------------------+---------+-----+----+-----+------+-----+------+-------------+
+    |Total                |                  |        0|15360| 400|    0|   240| 7680|    80|        23040|
+    +---------------------+------------------+---------+-----+----+-----+------+-----+------+-------------+
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    N/A
+
+    * Multiplexer: 
+    +------------------------------+----+-----------+-----+-----------+
+    |             Name             | LUT| Input Size| Bits| Total Bits|
+    +------------------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm                     |  20|          4|    1|          4|
+    |latest_patch_index_constprop  |   9|          2|    2|          4|
+    |num_patches_constprop         |   9|          2|   32|         64|
+    |patch_stream_V_write          |   9|          2|    1|          2|
+    +------------------------------+----+-----------+-----+-----------+
+    |Total                         |  47|         10|   36|         74|
+    +------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-----------------------------------------------------------+----+----+-----+-----------+
+    |                            Name                           | FF | LUT| Bits| Const Bits|
+    +-----------------------------------------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                                                  |   3|   0|    3|          0|
+    |grp_makePatches_ShadowQuilt_fromEdges_fu_362_ap_start_reg  |   1|   0|    1|          0|
+    |latest_patch_index_constprop                               |   2|   0|    2|          0|
+    |num_patches_constprop                                      |  32|   0|   32|          0|
+    +-----------------------------------------------------------+----+----+-----+-----------+
+    |Total                                                      |  38|   0|   38|          0|
+    +-----------------------------------------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-----------------------+-----+-----+------------+----------------+--------------+
+|       RTL Ports       | Dir | Bits|  Protocol  |  Source Object |    C Type    |
++-----------------------+-----+-----+------------+----------------+--------------+
+|ap_clk                 |   in|    1|  ap_ctrl_hs|      system_top|  return value|
+|ap_rst                 |   in|    1|  ap_ctrl_hs|      system_top|  return value|
+|ap_start               |   in|    1|  ap_ctrl_hs|      system_top|  return value|
+|ap_done                |  out|    1|  ap_ctrl_hs|      system_top|  return value|
+|ap_idle                |  out|    1|  ap_ctrl_hs|      system_top|  return value|
+|ap_ready               |  out|    1|  ap_ctrl_hs|      system_top|  return value|
+|points_address0        |  out|   12|   ap_memory|          points|         array|
+|points_ce0             |  out|    1|   ap_memory|          points|         array|
+|points_q0              |   in|  128|   ap_memory|          points|         array|
+|points_address1        |  out|   12|   ap_memory|          points|         array|
+|points_ce1             |  out|    1|   ap_memory|          points|         array|
+|points_q1              |   in|  128|   ap_memory|          points|         array|
+|num_points_address0    |  out|    3|   ap_memory|      num_points|         array|
+|num_points_ce0         |  out|    1|   ap_memory|      num_points|         array|
+|num_points_q0          |   in|   32|   ap_memory|      num_points|         array|
+|num_points_address1    |  out|    3|   ap_memory|      num_points|         array|
+|num_points_ce1         |  out|    1|   ap_memory|      num_points|         array|
+|num_points_q1          |   in|   32|   ap_memory|      num_points|         array|
+|patch_stream_V_din     |  out|   96|     ap_fifo|  patch_stream_V|       pointer|
+|patch_stream_V_full_n  |   in|    1|     ap_fifo|  patch_stream_V|       pointer|
+|patch_stream_V_write   |  out|    1|     ap_fifo|  patch_stream_V|       pointer|
++-----------------------+-----+-----+------------+----------------+--------------+
+

@@ -1,0 +1,633 @@
+
+
+================================================================
+== Vitis HLS Report for 'alignedtoline_per_layer_loop3'
+================================================================
+* Date:           Wed Jun 26 22:50:38 2024
+
+* Version:        2020.2 (Build 3064766 on Wed Nov 18 09:12:45 MST 2020)
+* Project:        ParticleCoverHLS
+* Solution:       solutionOpt01 (Vivado IP Flow Target)
+* Product family: virtexuplus
+* Target device:  xcvu11p-flga2577-1-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+----------+----------+------------+
+    |  Clock |  Target  | Estimated| Uncertainty|
+    +--------+----------+----------+------------+
+    |ap_clk  |  10.00 ns|  7.674 ns|     2.70 ns|
+    +--------+----------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |        ?|        ?|         ?|         ?|    ?|    ?|     none|
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 17
+* Pipeline : 0
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 2 
+2 --> 3 
+3 --> 4 
+4 --> 5 
+5 --> 6 
+6 --> 9 7 
+7 --> 8 
+8 --> 9 
+9 --> 10 17 
+10 --> 11 
+11 --> 12 
+12 --> 13 
+13 --> 14 
+14 --> 15 
+15 --> 16 
+16 --> 17 
+17 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 0.73>
+ST_1 : Operation 18 [1/1] (0.00ns)   --->   "%i_offset_read = read i3 @_ssdm_op_Read.ap_auto.i3, i3 %i_offset"   --->   Operation 18 'read' 'i_offset_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 19 [1/1] (0.00ns)   --->   "%start_index_V = alloca i64 1" [ParticleCoverHLS/src/system.cpp:151]   --->   Operation 19 'alloca' 'start_index_V' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 20 [1/1] (0.00ns)   --->   "%start_value_V = alloca i64 1" [ParticleCoverHLS/src/system.cpp:152]   --->   Operation 20 'alloca' 'start_value_V' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 21 [1/1] (0.00ns)   --->   "%left_bound_V = alloca i64 1" [ParticleCoverHLS/src/system.cpp:155]   --->   Operation 21 'alloca' 'left_bound_V' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 22 [1/1] (0.00ns)   --->   "%zext_ln84 = zext i3 %i_offset_read" [ParticleCoverHLS/include/types.h:84]   --->   Operation 22 'zext' 'zext_ln84' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 23 [1/1] (0.00ns)   --->   "%get_radiiradii_addr = getelementptr i32 %get_radiiradii, i64 0, i64 %zext_ln84" [ParticleCoverHLS/include/types.h:84]   --->   Operation 23 'getelementptr' 'get_radiiradii_addr' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 24 [2/2] (0.73ns)   --->   "%tmp_17 = load i3 %get_radiiradii_addr" [ParticleCoverHLS/include/types.h:84]   --->   Operation 24 'load' 'tmp_17' <Predicate = true> <Delay = 0.73> <CoreInst = "ROM">   --->   Core 101 'ROM' <Latency = 1> <II = 1> <Delay = 0.73> <Storage> <Opcode : 'load'> <Ports = 0> <Width = 32> <Depth = 5> <ROM>
+ST_1 : Operation 25 [1/1] (0.46ns)   --->   "%store_ln162 = store i32 0, i32 %start_index_V"   --->   Operation 25 'store' 'store_ln162' <Predicate = true> <Delay = 0.46>
+ST_1 : Operation 26 [1/1] (0.46ns)   --->   "%store_ln731 = store i32 1073741824, i32 %start_value_V"   --->   Operation 26 'store' 'store_ln731' <Predicate = true> <Delay = 0.46>
+ST_1 : Operation 27 [1/1] (0.00ns)   --->   "%store_ln162 = store i32 0, i32 %left_bound_V"   --->   Operation 27 'store' 'store_ln162' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 28 [1/1] (0.00ns)   --->   "%store_ln731 = store i32 1073741824, i32 %lbVal_constprop"   --->   Operation 28 'store' 'store_ln731' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 29 [1/1] (0.00ns)   --->   "%store_ln731 = store i32 1073741824, i32 %rbVal_constprop"   --->   Operation 29 'store' 'store_ln731' <Predicate = true> <Delay = 0.00>
+
+State 2 <SV = 1> <Delay = 6.30>
+ST_2 : Operation 30 [1/2] (0.73ns)   --->   "%tmp_17 = load i3 %get_radiiradii_addr" [ParticleCoverHLS/include/types.h:84]   --->   Operation 30 'load' 'tmp_17' <Predicate = true> <Delay = 0.73> <CoreInst = "ROM">   --->   Core 101 'ROM' <Latency = 1> <II = 1> <Delay = 0.73> <Storage> <Opcode : 'load'> <Ports = 0> <Width = 32> <Depth = 5> <ROM>
+ST_2 : Operation 31 [1/1] (0.00ns)   --->   "%trunc_ln731 = trunc i32 %tmp_17"   --->   Operation 31 'trunc' 'trunc_ln731' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 32 [1/1] (0.00ns)   --->   "%y_V = bitconcatenate i25 @_ssdm_op_BitConcatenate.i25.i5.i20, i5 %trunc_ln731, i20 0"   --->   Operation 32 'bitconcatenate' 'y_V' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 33 [1/1] (1.13ns)   --->   "%ret_V = add i25 %y_V, i25 28311552"   --->   Operation 33 'add' 'ret_V' <Predicate = true> <Delay = 1.13> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 34 [1/1] (0.00ns)   --->   "%zext_ln1148 = zext i25 %ret_V"   --->   Operation 34 'zext' 'zext_ln1148' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 35 [1/1] (4.43ns)   --->   "%mul_ln1148 = mul i70 %zext_ln1148, i70 30786216525824"   --->   Operation 35 'mul' 'mul_ln1148' <Predicate = true> <Delay = 4.43> <CoreInst = "Multiplier">   --->   Core 3 'Multiplier' <Latency = 0> <II = 1> <Delay = 5.82> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+
+State 3 <SV = 2> <Delay = 7.07>
+ST_3 : Operation 36 [1/1] (0.00ns)   --->   "%zext_ln1148_1 = zext i70 %mul_ln1148"   --->   Operation 36 'zext' 'zext_ln1148_1' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 37 [1/1] (5.82ns)   --->   "%mul_ln1148_1 = mul i141 %zext_ln1148_1, i141 1888946593147858085479"   --->   Operation 37 'mul' 'mul_ln1148_1' <Predicate = true> <Delay = 5.82> <CoreInst = "Multiplier">   --->   Core 3 'Multiplier' <Latency = 0> <II = 1> <Delay = 5.82> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 38 [1/1] (0.00ns)   --->   "%trunc_ln = partselect i46 @_ssdm_op_PartSelect.i46.i141.i32.i32, i141 %mul_ln1148_1, i32 95, i32 140"   --->   Operation 38 'partselect' 'trunc_ln' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 39 [1/1] (1.25ns)   --->   "%ret_V_1 = add i46 %trunc_ln, i46 24189364862976"   --->   Operation 39 'add' 'ret_V_1' <Predicate = true> <Delay = 1.25> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 40 [1/1] (0.00ns)   --->   "%projectionToRow_V = partselect i26 @_ssdm_op_PartSelect.i26.i46.i32.i32, i46 %ret_V_1, i32 20, i32 45"   --->   Operation 40 'partselect' 'projectionToRow_V' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 41 [2/2] (0.00ns)   --->   "%call_ln160 = call void @_find_boundaries_and_starting_index_and_value4, i32 %num_points, i128 %points, i32 %left_bound_V, i26 %projectionToRow_V, i32 %start_index_V, i32 %start_value_V, i3 %i_offset_read, i32 %get_trapezoid_edgestrapezoid_edges, i32 %lbVal_constprop, i32 %rbVal_constprop" [ParticleCoverHLS/src/system.cpp:160]   --->   Operation 41 'call' 'call_ln160' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 4 <SV = 3> <Delay = 0.00>
+ST_4 : Operation 42 [1/2] (0.00ns)   --->   "%call_ln160 = call void @_find_boundaries_and_starting_index_and_value4, i32 %num_points, i128 %points, i32 %left_bound_V, i26 %projectionToRow_V, i32 %start_index_V, i32 %start_value_V, i3 %i_offset_read, i32 %get_trapezoid_edgestrapezoid_edges, i32 %lbVal_constprop, i32 %rbVal_constprop" [ParticleCoverHLS/src/system.cpp:160]   --->   Operation 42 'call' 'call_ln160' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 5 <SV = 4> <Delay = 0.73>
+ST_5 : Operation 43 [1/1] (0.00ns)   --->   "%num_points_addr = getelementptr i32 %num_points, i64 0, i64 %zext_ln84" [ParticleCoverHLS/src/system.cpp:167]   --->   Operation 43 'getelementptr' 'num_points_addr' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 44 [2/2] (0.73ns)   --->   "%num_points_load = load i3 %num_points_addr" [ParticleCoverHLS/src/system.cpp:167]   --->   Operation 44 'load' 'num_points_load' <Predicate = true> <Delay = 0.73> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 0.73> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 5> <RAM>
+
+State 6 <SV = 5> <Delay = 5.33>
+ST_6 : Operation 45 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i128 %points, void @empty, i32 0, i32 0, void @empty_0, i32 4294967295, i32 0, void @empty_0, void @empty_0, void @empty_0, i32 0, i32 0, i32 0, i32 0, void @empty_0, void @empty_0"   --->   Operation 45 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 46 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i32 %num_points, void @empty, i32 0, i32 0, void @empty_0, i32 4294967295, i32 0, void @empty_0, void @empty_0, void @empty_0, i32 0, i32 0, i32 0, i32 0, void @empty_0, void @empty_0"   --->   Operation 46 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 47 [1/1] (0.00ns)   --->   "%tmp = bitconcatenate i7 @_ssdm_op_BitConcatenate.i7.i3.i4, i3 %i_offset_read, i4 0" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 47 'bitconcatenate' 'tmp' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 48 [1/1] (0.00ns)   --->   "%zext_ln206 = zext i7 %tmp" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 48 'zext' 'zext_ln206' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 49 [1/1] (0.00ns)   --->   "%init_patch_addr = getelementptr i96 %init_patch, i64 0, i64 %zext_ln206" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 49 'getelementptr' 'init_patch_addr' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 50 [1/1] (0.00ns)   --->   "%or_ln206 = or i7 %tmp, i7 1" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 50 'or' 'or_ln206' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 51 [1/1] (0.00ns)   --->   "%tmp_3 = bitconcatenate i64 @_ssdm_op_BitConcatenate.i64.i57.i7, i57 0, i7 %or_ln206" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 51 'bitconcatenate' 'tmp_3' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 52 [1/1] (0.00ns)   --->   "%init_patch_addr_1 = getelementptr i96 %init_patch, i64 0, i64 %tmp_3" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 52 'getelementptr' 'init_patch_addr_1' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 53 [1/1] (0.00ns)   --->   "%or_ln206_1 = or i7 %tmp, i7 2" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 53 'or' 'or_ln206_1' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 54 [1/1] (0.00ns)   --->   "%tmp_4 = bitconcatenate i64 @_ssdm_op_BitConcatenate.i64.i57.i7, i57 0, i7 %or_ln206_1" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 54 'bitconcatenate' 'tmp_4' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 55 [1/1] (0.00ns)   --->   "%init_patch_addr_2 = getelementptr i96 %init_patch, i64 0, i64 %tmp_4" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 55 'getelementptr' 'init_patch_addr_2' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 56 [1/1] (0.00ns)   --->   "%or_ln206_2 = or i7 %tmp, i7 3" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 56 'or' 'or_ln206_2' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 57 [1/1] (0.00ns)   --->   "%tmp_5 = bitconcatenate i64 @_ssdm_op_BitConcatenate.i64.i57.i7, i57 0, i7 %or_ln206_2" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 57 'bitconcatenate' 'tmp_5' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 58 [1/1] (0.00ns)   --->   "%init_patch_addr_3 = getelementptr i96 %init_patch, i64 0, i64 %tmp_5" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 58 'getelementptr' 'init_patch_addr_3' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 59 [1/1] (0.00ns)   --->   "%or_ln206_3 = or i7 %tmp, i7 4" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 59 'or' 'or_ln206_3' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 60 [1/1] (0.00ns)   --->   "%tmp_6 = bitconcatenate i64 @_ssdm_op_BitConcatenate.i64.i57.i7, i57 0, i7 %or_ln206_3" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 60 'bitconcatenate' 'tmp_6' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 61 [1/1] (0.00ns)   --->   "%init_patch_addr_4 = getelementptr i96 %init_patch, i64 0, i64 %tmp_6" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 61 'getelementptr' 'init_patch_addr_4' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 62 [1/1] (0.00ns)   --->   "%or_ln206_4 = or i7 %tmp, i7 5" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 62 'or' 'or_ln206_4' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 63 [1/1] (0.00ns)   --->   "%tmp_7 = bitconcatenate i64 @_ssdm_op_BitConcatenate.i64.i57.i7, i57 0, i7 %or_ln206_4" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 63 'bitconcatenate' 'tmp_7' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 64 [1/1] (0.00ns)   --->   "%init_patch_addr_5 = getelementptr i96 %init_patch, i64 0, i64 %tmp_7" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 64 'getelementptr' 'init_patch_addr_5' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 65 [1/1] (0.00ns)   --->   "%or_ln206_5 = or i7 %tmp, i7 6" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 65 'or' 'or_ln206_5' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 66 [1/1] (0.00ns)   --->   "%tmp_8 = bitconcatenate i64 @_ssdm_op_BitConcatenate.i64.i57.i7, i57 0, i7 %or_ln206_5" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 66 'bitconcatenate' 'tmp_8' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 67 [1/1] (0.00ns)   --->   "%init_patch_addr_6 = getelementptr i96 %init_patch, i64 0, i64 %tmp_8" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 67 'getelementptr' 'init_patch_addr_6' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 68 [1/1] (0.00ns)   --->   "%or_ln206_6 = or i7 %tmp, i7 7" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 68 'or' 'or_ln206_6' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 69 [1/1] (0.00ns)   --->   "%tmp_9 = bitconcatenate i64 @_ssdm_op_BitConcatenate.i64.i57.i7, i57 0, i7 %or_ln206_6" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 69 'bitconcatenate' 'tmp_9' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 70 [1/1] (0.00ns)   --->   "%init_patch_addr_7 = getelementptr i96 %init_patch, i64 0, i64 %tmp_9" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 70 'getelementptr' 'init_patch_addr_7' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 71 [1/1] (0.00ns)   --->   "%or_ln206_7 = or i7 %tmp, i7 8" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 71 'or' 'or_ln206_7' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 72 [1/1] (0.00ns)   --->   "%tmp_s = bitconcatenate i64 @_ssdm_op_BitConcatenate.i64.i57.i7, i57 0, i7 %or_ln206_7" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 72 'bitconcatenate' 'tmp_s' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 73 [1/1] (0.00ns)   --->   "%init_patch_addr_8 = getelementptr i96 %init_patch, i64 0, i64 %tmp_s" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 73 'getelementptr' 'init_patch_addr_8' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 74 [1/1] (0.00ns)   --->   "%or_ln206_8 = or i7 %tmp, i7 9" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 74 'or' 'or_ln206_8' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 75 [1/1] (0.00ns)   --->   "%tmp_10 = bitconcatenate i64 @_ssdm_op_BitConcatenate.i64.i57.i7, i57 0, i7 %or_ln206_8" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 75 'bitconcatenate' 'tmp_10' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 76 [1/1] (0.00ns)   --->   "%init_patch_addr_9 = getelementptr i96 %init_patch, i64 0, i64 %tmp_10" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 76 'getelementptr' 'init_patch_addr_9' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 77 [1/1] (0.00ns)   --->   "%or_ln206_9 = or i7 %tmp, i7 10" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 77 'or' 'or_ln206_9' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 78 [1/1] (0.00ns)   --->   "%tmp_11 = bitconcatenate i64 @_ssdm_op_BitConcatenate.i64.i57.i7, i57 0, i7 %or_ln206_9" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 78 'bitconcatenate' 'tmp_11' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 79 [1/1] (0.00ns)   --->   "%init_patch_addr_10 = getelementptr i96 %init_patch, i64 0, i64 %tmp_11" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 79 'getelementptr' 'init_patch_addr_10' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 80 [1/1] (0.00ns)   --->   "%or_ln206_10 = or i7 %tmp, i7 11" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 80 'or' 'or_ln206_10' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 81 [1/1] (0.00ns)   --->   "%tmp_12 = bitconcatenate i64 @_ssdm_op_BitConcatenate.i64.i57.i7, i57 0, i7 %or_ln206_10" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 81 'bitconcatenate' 'tmp_12' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 82 [1/1] (0.00ns)   --->   "%init_patch_addr_11 = getelementptr i96 %init_patch, i64 0, i64 %tmp_12" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 82 'getelementptr' 'init_patch_addr_11' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 83 [1/1] (0.00ns)   --->   "%or_ln206_11 = or i7 %tmp, i7 12" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 83 'or' 'or_ln206_11' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 84 [1/1] (0.00ns)   --->   "%tmp_13 = bitconcatenate i64 @_ssdm_op_BitConcatenate.i64.i57.i7, i57 0, i7 %or_ln206_11" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 84 'bitconcatenate' 'tmp_13' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 85 [1/1] (0.00ns)   --->   "%init_patch_addr_12 = getelementptr i96 %init_patch, i64 0, i64 %tmp_13" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 85 'getelementptr' 'init_patch_addr_12' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 86 [1/1] (0.00ns)   --->   "%or_ln206_12 = or i7 %tmp, i7 13" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 86 'or' 'or_ln206_12' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 87 [1/1] (0.00ns)   --->   "%tmp_14 = bitconcatenate i64 @_ssdm_op_BitConcatenate.i64.i57.i7, i57 0, i7 %or_ln206_12" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 87 'bitconcatenate' 'tmp_14' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 88 [1/1] (0.00ns)   --->   "%init_patch_addr_13 = getelementptr i96 %init_patch, i64 0, i64 %tmp_14" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 88 'getelementptr' 'init_patch_addr_13' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 89 [1/1] (0.00ns)   --->   "%or_ln206_13 = or i7 %tmp, i7 14" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 89 'or' 'or_ln206_13' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 90 [1/1] (0.00ns)   --->   "%tmp_15 = bitconcatenate i64 @_ssdm_op_BitConcatenate.i64.i57.i7, i57 0, i7 %or_ln206_13" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 90 'bitconcatenate' 'tmp_15' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 91 [1/1] (0.00ns)   --->   "%init_patch_addr_14 = getelementptr i96 %init_patch, i64 0, i64 %tmp_15" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 91 'getelementptr' 'init_patch_addr_14' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 92 [1/1] (0.00ns)   --->   "%or_ln206_14 = or i7 %tmp, i7 15" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 92 'or' 'or_ln206_14' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 93 [1/1] (0.00ns)   --->   "%tmp_16 = bitconcatenate i64 @_ssdm_op_BitConcatenate.i64.i57.i7, i57 0, i7 %or_ln206_14" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 93 'bitconcatenate' 'tmp_16' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 94 [1/1] (0.00ns)   --->   "%init_patch_addr_15 = getelementptr i96 %init_patch, i64 0, i64 %tmp_16" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 94 'getelementptr' 'init_patch_addr_15' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 95 [1/1] (0.00ns)   --->   "%zext_ln708 = zext i26 %projectionToRow_V"   --->   Operation 95 'zext' 'zext_ln708' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 96 [1/2] (0.73ns)   --->   "%num_points_load = load i3 %num_points_addr" [ParticleCoverHLS/src/system.cpp:167]   --->   Operation 96 'load' 'num_points_load' <Predicate = true> <Delay = 0.73> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 0.73> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 5> <RAM>
+ST_6 : Operation 97 [1/1] (1.14ns)   --->   "%add_ln167 = add i32 %num_points_load, i32 4294967295" [ParticleCoverHLS/src/system.cpp:167]   --->   Operation 97 'add' 'add_ln167' <Predicate = true> <Delay = 1.14> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 98 [1/1] (0.00ns)   --->   "%start_index_V_load = load i32 %start_index_V"   --->   Operation 98 'load' 'start_index_V_load' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 99 [1/1] (0.80ns)   --->   "%icmp_ln874 = icmp_eq  i32 %start_index_V_load, i32 %add_ln167"   --->   Operation 99 'icmp' 'icmp_ln874' <Predicate = true> <Delay = 0.80> <CoreInst = "Cmp">   --->   Core 9 'Cmp' <Latency = 0> <II = 1> <Delay = 0.85> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 100 [1/1] (0.46ns)   --->   "%br_ln167 = br i1 %icmp_ln874, void, void %_ZNK13ap_fixed_baseILi32ELi12ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEltEd.exit.thread" [ParticleCoverHLS/src/system.cpp:167]   --->   Operation 100 'br' 'br_ln167' <Predicate = true> <Delay = 0.46>
+ST_6 : Operation 101 [1/1] (0.00ns)   --->   "%p_Val2_s = load i32 %start_value_V"   --->   Operation 101 'load' 'p_Val2_s' <Predicate = (!icmp_ln874)> <Delay = 0.00>
+ST_6 : Operation 102 [1/1] (0.80ns)   --->   "%icmp_ln885 = icmp_eq  i32 %p_Val2_s, i32 0"   --->   Operation 102 'icmp' 'icmp_ln885' <Predicate = (!icmp_ln874)> <Delay = 0.80> <CoreInst = "Cmp">   --->   Core 9 'Cmp' <Latency = 0> <II = 1> <Delay = 0.85> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 103 [1/1] (0.46ns)   --->   "%br_ln885 = br i1 %icmp_ln885, void %_ifconv, void %_ZNK13ap_fixed_baseILi32ELi12ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEltEd.exit.thread"   --->   Operation 103 'br' 'br_ln885' <Predicate = (!icmp_ln874)> <Delay = 0.46>
+ST_6 : Operation 104 [1/1] (0.00ns)   --->   "%p_Result_4 = bitselect i1 @_ssdm_op_BitSelect.i1.i32.i32, i32 %p_Val2_s, i32 31"   --->   Operation 104 'bitselect' 'p_Result_4' <Predicate = (!icmp_ln874 & !icmp_ln885)> <Delay = 0.00>
+ST_6 : Operation 105 [1/1] (1.14ns)   --->   "%tmp_V = sub i32 0, i32 %p_Val2_s"   --->   Operation 105 'sub' 'tmp_V' <Predicate = (!icmp_ln874 & !icmp_ln885)> <Delay = 1.14> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 106 [1/1] (0.28ns)   --->   "%m_5 = select i1 %p_Result_4, i32 %tmp_V, i32 %p_Val2_s"   --->   Operation 106 'select' 'm_5' <Predicate = (!icmp_ln874 & !icmp_ln885)> <Delay = 0.28> <CoreInst = "Sel">   --->   Core 73 'Sel' <Latency = 0> <II = 1> <Delay = 0.37> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_6 : Operation 107 [1/1] (0.00ns)   --->   "%p_Result_5 = partselect i32 @_ssdm_op_PartSelect.i32.i32.i32.i32, i32 %m_5, i32 31, i32 0"   --->   Operation 107 'partselect' 'p_Result_5' <Predicate = (!icmp_ln874 & !icmp_ln885)> <Delay = 0.00>
+ST_6 : Operation 108 [1/1] (0.00ns)   --->   "%l = cttz i32 @llvm.cttz.i32, i32 %p_Result_5, i1 1"   --->   Operation 108 'cttz' 'l' <Predicate = (!icmp_ln874 & !icmp_ln885)> <Delay = 0.00>
+ST_6 : Operation 109 [1/1] (1.14ns)   --->   "%sub_ln894 = sub i32 32, i32 %l"   --->   Operation 109 'sub' 'sub_ln894' <Predicate = (!icmp_ln874 & !icmp_ln885)> <Delay = 1.14> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 110 [1/1] (1.14ns)   --->   "%lsb_index = add i32 %sub_ln894, i32 4294967243"   --->   Operation 110 'add' 'lsb_index' <Predicate = (!icmp_ln874 & !icmp_ln885)> <Delay = 1.14> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 111 [1/1] (0.00ns)   --->   "%tmp_19 = partselect i31 @_ssdm_op_PartSelect.i31.i32.i32.i32, i32 %lsb_index, i32 1, i32 31"   --->   Operation 111 'partselect' 'tmp_19' <Predicate = (!icmp_ln874 & !icmp_ln885)> <Delay = 0.00>
+ST_6 : Operation 112 [1/1] (0.81ns)   --->   "%icmp_ln896 = icmp_sgt  i31 %tmp_19, i31 0"   --->   Operation 112 'icmp' 'icmp_ln896' <Predicate = (!icmp_ln874 & !icmp_ln885)> <Delay = 0.81> <CoreInst = "Cmp">   --->   Core 9 'Cmp' <Latency = 0> <II = 1> <Delay = 0.85> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 113 [1/1] (0.00ns)   --->   "%trunc_ln897 = trunc i32 %sub_ln894"   --->   Operation 113 'trunc' 'trunc_ln897' <Predicate = (!icmp_ln874 & !icmp_ln885)> <Delay = 0.00>
+ST_6 : Operation 114 [1/1] (0.84ns)   --->   "%sub_ln897 = sub i6 22, i6 %trunc_ln897"   --->   Operation 114 'sub' 'sub_ln897' <Predicate = (!icmp_ln874 & !icmp_ln885)> <Delay = 0.84> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 115 [1/1] (0.00ns) (grouped into LUT with out node icmp_ln899)   --->   "%zext_ln897 = zext i6 %sub_ln897"   --->   Operation 115 'zext' 'zext_ln897' <Predicate = (!icmp_ln874 & !icmp_ln885)> <Delay = 0.00>
+ST_6 : Operation 116 [1/1] (0.00ns) (grouped into LUT with out node icmp_ln899)   --->   "%lshr_ln897 = lshr i32 4294967295, i32 %zext_ln897"   --->   Operation 116 'lshr' 'lshr_ln897' <Predicate = (!icmp_ln874 & !icmp_ln885)> <Delay = 0.00> <CoreInst = "Shifter">   --->   Core 75 'Shifter' <Latency = 0> <II = 1> <Delay = 1.27> <FuncUnit> <Opcode : 'shl' 'lshr' 'ashr'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 117 [1/1] (0.00ns) (grouped into LUT with out node icmp_ln899)   --->   "%shl_ln899 = shl i32 1, i32 %lsb_index"   --->   Operation 117 'shl' 'shl_ln899' <Predicate = (!icmp_ln874 & !icmp_ln885)> <Delay = 0.00> <CoreInst = "Shifter">   --->   Core 75 'Shifter' <Latency = 0> <II = 1> <Delay = 1.27> <FuncUnit> <Opcode : 'shl' 'lshr' 'ashr'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 118 [1/1] (0.00ns) (grouped into LUT with out node icmp_ln899)   --->   "%or_ln899_1 = or i32 %lshr_ln897, i32 %shl_ln899"   --->   Operation 118 'or' 'or_ln899_1' <Predicate = (!icmp_ln874 & !icmp_ln885)> <Delay = 0.00> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.14> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 119 [1/1] (0.00ns) (grouped into LUT with out node icmp_ln899)   --->   "%and_ln899 = and i32 %m_5, i32 %or_ln899_1"   --->   Operation 119 'and' 'and_ln899' <Predicate = (!icmp_ln874 & !icmp_ln885)> <Delay = 0.00> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.14> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 120 [1/1] (1.27ns) (out node of the LUT)   --->   "%icmp_ln899 = icmp_ne  i32 %and_ln899, i32 0"   --->   Operation 120 'icmp' 'icmp_ln899' <Predicate = (!icmp_ln874 & !icmp_ln885)> <Delay = 1.27> <CoreInst = "Cmp">   --->   Core 9 'Cmp' <Latency = 0> <II = 1> <Delay = 0.85> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 121 [1/1] (0.00ns) (grouped into LUT with out node select_ln908)   --->   "%tmp_20 = bitselect i1 @_ssdm_op_BitSelect.i1.i32.i32, i32 %lsb_index, i32 31"   --->   Operation 121 'bitselect' 'tmp_20' <Predicate = (!icmp_ln874 & !icmp_ln885)> <Delay = 0.00>
+ST_6 : Operation 122 [1/1] (0.00ns) (grouped into LUT with out node select_ln908)   --->   "%xor_ln899 = xor i1 %tmp_20, i1 1"   --->   Operation 122 'xor' 'xor_ln899' <Predicate = (!icmp_ln874 & !icmp_ln885)> <Delay = 0.00> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.14> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 123 [1/1] (0.00ns)   --->   "%p_Result_6 = bitselect i1 @_ssdm_op_BitSelect.i1.i32.i32, i32 %m_5, i32 %lsb_index"   --->   Operation 123 'bitselect' 'p_Result_6' <Predicate = (!icmp_ln874 & !icmp_ln885)> <Delay = 0.00>
+ST_6 : Operation 124 [1/1] (0.80ns)   --->   "%icmp_ln908 = icmp_sgt  i32 %lsb_index, i32 0"   --->   Operation 124 'icmp' 'icmp_ln908' <Predicate = (!icmp_ln874 & !icmp_ln885)> <Delay = 0.80> <CoreInst = "Cmp">   --->   Core 9 'Cmp' <Latency = 0> <II = 1> <Delay = 0.85> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 125 [1/1] (0.00ns) (grouped into LUT with out node select_ln908)   --->   "%and_ln899_1 = and i1 %p_Result_6, i1 %xor_ln899"   --->   Operation 125 'and' 'and_ln899_1' <Predicate = (!icmp_ln874 & !icmp_ln885)> <Delay = 0.00> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.14> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 126 [1/1] (0.00ns) (grouped into LUT with out node select_ln908)   --->   "%select_ln896 = select i1 %icmp_ln896, i1 %icmp_ln899, i1 %p_Result_6"   --->   Operation 126 'select' 'select_ln896' <Predicate = (!icmp_ln874 & !icmp_ln885)> <Delay = 0.00> <CoreInst = "Sel">   --->   Core 73 'Sel' <Latency = 0> <II = 1> <Delay = 0.37> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_6 : Operation 127 [1/1] (0.34ns) (out node of the LUT)   --->   "%select_ln908 = select i1 %icmp_ln908, i1 %select_ln896, i1 %and_ln899_1"   --->   Operation 127 'select' 'select_ln908' <Predicate = (!icmp_ln874 & !icmp_ln885)> <Delay = 0.34> <CoreInst = "Sel">   --->   Core 73 'Sel' <Latency = 0> <II = 1> <Delay = 0.37> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_6 : Operation 128 [1/1] (0.00ns)   --->   "%trunc_ln893 = trunc i32 %l"   --->   Operation 128 'trunc' 'trunc_ln893' <Predicate = (!icmp_ln874 & !icmp_ln885)> <Delay = 0.00>
+
+State 7 <SV = 6> <Delay = 5.88>
+ST_7 : Operation 129 [1/1] (0.00ns)   --->   "%zext_ln909_1 = zext i32 %m_5"   --->   Operation 129 'zext' 'zext_ln909_1' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 130 [1/1] (1.14ns)   --->   "%sub_ln909 = sub i32 54, i32 %sub_ln894"   --->   Operation 130 'sub' 'sub_ln909' <Predicate = (!icmp_ln908)> <Delay = 1.14> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 131 [1/1] (0.00ns) (grouped into LUT with out node m_2)   --->   "%zext_ln909 = zext i32 %sub_ln909"   --->   Operation 131 'zext' 'zext_ln909' <Predicate = (!icmp_ln908)> <Delay = 0.00>
+ST_7 : Operation 132 [1/1] (0.00ns) (grouped into LUT with out node m_2)   --->   "%shl_ln909 = shl i64 %zext_ln909_1, i64 %zext_ln909"   --->   Operation 132 'shl' 'shl_ln909' <Predicate = (!icmp_ln908)> <Delay = 0.00> <CoreInst = "Shifter">   --->   Core 75 'Shifter' <Latency = 0> <II = 1> <Delay = 1.27> <FuncUnit> <Opcode : 'shl' 'lshr' 'ashr'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 133 [1/1] (1.14ns)   --->   "%add_ln908 = add i32 %sub_ln894, i32 4294967242"   --->   Operation 133 'add' 'add_ln908' <Predicate = (icmp_ln908)> <Delay = 1.14> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 134 [1/1] (0.00ns) (grouped into LUT with out node m_2)   --->   "%zext_ln908 = zext i32 %add_ln908"   --->   Operation 134 'zext' 'zext_ln908' <Predicate = (icmp_ln908)> <Delay = 0.00>
+ST_7 : Operation 135 [1/1] (0.00ns) (grouped into LUT with out node m_2)   --->   "%lshr_ln908 = lshr i64 %zext_ln909_1, i64 %zext_ln908"   --->   Operation 135 'lshr' 'lshr_ln908' <Predicate = (icmp_ln908)> <Delay = 0.00> <CoreInst = "Shifter">   --->   Core 75 'Shifter' <Latency = 0> <II = 1> <Delay = 1.27> <FuncUnit> <Opcode : 'shl' 'lshr' 'ashr'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 136 [1/1] (0.00ns) (grouped into LUT with out node m_2)   --->   "%m = select i1 %icmp_ln908, i64 %lshr_ln908, i64 %shl_ln909"   --->   Operation 136 'select' 'm' <Predicate = true> <Delay = 0.00> <CoreInst = "Sel">   --->   Core 73 'Sel' <Latency = 0> <II = 1> <Delay = 0.37> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_7 : Operation 137 [1/1] (0.00ns) (grouped into LUT with out node m_2)   --->   "%zext_ln911 = zext i1 %select_ln908"   --->   Operation 137 'zext' 'zext_ln911' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 138 [1/1] (1.36ns) (out node of the LUT)   --->   "%m_2 = add i64 %m, i64 %zext_ln911"   --->   Operation 138 'add' 'm_2' <Predicate = true> <Delay = 1.36> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 139 [1/1] (0.00ns)   --->   "%m_6 = partselect i63 @_ssdm_op_PartSelect.i63.i64.i32.i32, i64 %m_2, i32 1, i32 63"   --->   Operation 139 'partselect' 'm_6' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 140 [1/1] (0.00ns)   --->   "%zext_ln912 = zext i63 %m_6"   --->   Operation 140 'zext' 'zext_ln912' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 141 [1/1] (0.00ns)   --->   "%p_Result_s = bitselect i1 @_ssdm_op_BitSelect.i1.i64.i32, i64 %m_2, i32 54"   --->   Operation 141 'bitselect' 'p_Result_s' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 142 [1/1] (0.37ns)   --->   "%select_ln893 = select i1 %p_Result_s, i11 1023, i11 1022"   --->   Operation 142 'select' 'select_ln893' <Predicate = true> <Delay = 0.37> <CoreInst = "Sel">   --->   Core 73 'Sel' <Latency = 0> <II = 1> <Delay = 0.37> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_7 : Operation 143 [1/1] (0.00ns) (grouped into TernaryAdder)   --->   "%sub_ln915 = sub i11 12, i11 %trunc_ln893"   --->   Operation 143 'sub' 'sub_ln915' <Predicate = true> <Delay = 0.00> <CoreInst = "TAddSub">   --->   Core 10 'TAddSub' <Latency = 0> <II = 1> <Delay = 0.47> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync>
+ST_7 : Operation 144 [1/1] (0.95ns) (root node of TernaryAdder)   --->   "%add_ln915 = add i11 %sub_ln915, i11 %select_ln893"   --->   Operation 144 'add' 'add_ln915' <Predicate = true> <Delay = 0.95> <CoreInst = "TAddSub">   --->   Core 10 'TAddSub' <Latency = 0> <II = 1> <Delay = 0.47> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync>
+ST_7 : Operation 145 [1/1] (0.00ns)   --->   "%tmp_1 = bitconcatenate i12 @_ssdm_op_BitConcatenate.i12.i1.i11, i1 %p_Result_4, i11 %add_ln915"   --->   Operation 145 'bitconcatenate' 'tmp_1' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 146 [1/1] (0.00ns)   --->   "%p_Result_7 = partset i64 @_ssdm_op_PartSet.i64.i64.i12.i32.i32, i64 %zext_ln912, i12 %tmp_1, i32 52, i32 63"   --->   Operation 146 'partset' 'p_Result_7' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 147 [1/1] (0.00ns)   --->   "%bitcast_ln734 = bitcast i64 %p_Result_7"   --->   Operation 147 'bitcast' 'bitcast_ln734' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 148 [1/1] (0.00ns)   --->   "%trunc_ln3 = partselect i52 @_ssdm_op_PartSelect.i52.i64.i32.i32, i64 %m_2, i32 1, i32 52"   --->   Operation 148 'partselect' 'trunc_ln3' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 149 [1/1] (0.79ns)   --->   "%icmp_ln1506 = icmp_ne  i11 %add_ln915, i11 2047"   --->   Operation 149 'icmp' 'icmp_ln1506' <Predicate = true> <Delay = 0.79> <CoreInst = "Cmp">   --->   Core 9 'Cmp' <Latency = 0> <II = 1> <Delay = 0.85> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 150 [1/1] (1.13ns)   --->   "%icmp_ln1506_1 = icmp_eq  i52 %trunc_ln3, i52 0"   --->   Operation 150 'icmp' 'icmp_ln1506_1' <Predicate = true> <Delay = 1.13> <CoreInst = "Cmp">   --->   Core 9 'Cmp' <Latency = 0> <II = 1> <Delay = 0.85> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 151 [2/2] (2.05ns)   --->   "%tmp_2 = fcmp_olt  i64 %bitcast_ln734, i64 -1e-05"   --->   Operation 151 'dcmp' 'tmp_2' <Predicate = true> <Delay = 2.05> <CoreInst = "DCompare">   --->   Core 38 'DCompare' <Latency = 1> <II = 1> <Delay = 2.05> <FuncUnit> <Opcode : 'dcmp'> <InPorts = 2> <OutPorts = 1>
+
+State 8 <SV = 7> <Delay = 2.66>
+ST_8 : Operation 152 [1/1] (0.00ns) (grouped into LUT with out node and_ln1506)   --->   "%or_ln1506 = or i1 %icmp_ln1506_1, i1 %icmp_ln1506"   --->   Operation 152 'or' 'or_ln1506' <Predicate = true> <Delay = 0.00> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.14> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 153 [1/2] (2.05ns)   --->   "%tmp_2 = fcmp_olt  i64 %bitcast_ln734, i64 -1e-05"   --->   Operation 153 'dcmp' 'tmp_2' <Predicate = true> <Delay = 2.05> <CoreInst = "DCompare">   --->   Core 38 'DCompare' <Latency = 1> <II = 1> <Delay = 2.05> <FuncUnit> <Opcode : 'dcmp'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 154 [1/1] (0.14ns) (out node of the LUT)   --->   "%and_ln1506 = and i1 %or_ln1506, i1 %tmp_2"   --->   Operation 154 'and' 'and_ln1506' <Predicate = true> <Delay = 0.14> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.14> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 155 [1/1] (0.46ns)   --->   "%br_ln172 = br i1 %and_ln1506, void %_ZNK13ap_fixed_baseILi32ELi12ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEltEd.exit.thread, void %_ZN13ap_fixed_baseILi33ELi13ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEC2ILi32ELi12ELb1ELS0_5ELS1_3ELi0EEERKS_IXT_EXT0_EXT1_EXT2_EXT3_EXT4_EE.exit.i" [ParticleCoverHLS/src/system.cpp:172]   --->   Operation 155 'br' 'br_ln172' <Predicate = true> <Delay = 0.46>
+ST_8 : Operation 156 [1/1] (0.00ns)   --->   "%shl_ln = bitconcatenate i16 @_ssdm_op_BitConcatenate.i16.i3.i13, i3 %i_offset_read, i13 0" [ParticleCoverHLS/src/system.cpp:174]   --->   Operation 156 'bitconcatenate' 'shl_ln' <Predicate = (and_ln1506)> <Delay = 0.00>
+ST_8 : Operation 157 [1/1] (0.00ns)   --->   "%trunc_ln174 = trunc i32 %start_index_V_load" [ParticleCoverHLS/src/system.cpp:174]   --->   Operation 157 'trunc' 'trunc_ln174' <Predicate = (and_ln1506)> <Delay = 0.00>
+ST_8 : Operation 158 [1/1] (0.00ns)   --->   "%shl_ln174_1 = bitconcatenate i16 @_ssdm_op_BitConcatenate.i16.i12.i4, i12 %trunc_ln174, i4 0" [ParticleCoverHLS/src/system.cpp:174]   --->   Operation 158 'bitconcatenate' 'shl_ln174_1' <Predicate = (and_ln1506)> <Delay = 0.00>
+ST_8 : Operation 159 [1/1] (1.12ns)   --->   "%add_ln174 = add i16 %shl_ln174_1, i16 %shl_ln" [ParticleCoverHLS/src/system.cpp:174]   --->   Operation 159 'add' 'add_ln174' <Predicate = (and_ln1506)> <Delay = 1.12> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 160 [1/1] (0.00ns)   --->   "%lshr_ln = partselect i3 @_ssdm_op_PartSelect.i3.i16.i32.i32, i16 %add_ln174, i32 13, i32 15" [ParticleCoverHLS/src/system.cpp:174]   --->   Operation 160 'partselect' 'lshr_ln' <Predicate = (and_ln1506)> <Delay = 0.00>
+ST_8 : Operation 161 [1/1] (0.00ns)   --->   "%trunc_ln174_1 = trunc i32 %start_index_V_load" [ParticleCoverHLS/src/system.cpp:174]   --->   Operation 161 'trunc' 'trunc_ln174_1' <Predicate = (and_ln1506)> <Delay = 0.00>
+ST_8 : Operation 162 [1/1] (0.00ns)   --->   "%tmp_18 = bitconcatenate i12 @_ssdm_op_BitConcatenate.i12.i3.i9, i3 %lshr_ln, i9 %trunc_ln174_1" [ParticleCoverHLS/src/system.cpp:174]   --->   Operation 162 'bitconcatenate' 'tmp_18' <Predicate = (and_ln1506)> <Delay = 0.00>
+ST_8 : Operation 163 [1/1] (0.00ns)   --->   "%zext_ln174 = zext i12 %tmp_18" [ParticleCoverHLS/src/system.cpp:174]   --->   Operation 163 'zext' 'zext_ln174' <Predicate = (and_ln1506)> <Delay = 0.00>
+ST_8 : Operation 164 [1/1] (0.00ns)   --->   "%points_addr = getelementptr i128 %points, i64 0, i64 %zext_ln174" [ParticleCoverHLS/src/system.cpp:174]   --->   Operation 164 'getelementptr' 'points_addr' <Predicate = (and_ln1506)> <Delay = 0.00>
+ST_8 : Operation 165 [2/2] (1.29ns)   --->   "%points_load = load i12 %points_addr" [ParticleCoverHLS/src/system.cpp:174]   --->   Operation 165 'load' 'points_load' <Predicate = (and_ln1506)> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 128> <Depth = 2560> <RAM>
+
+State 9 <SV = 8> <Delay = 5.01>
+ST_9 : Operation 166 [1/2] (1.29ns)   --->   "%points_load = load i12 %points_addr" [ParticleCoverHLS/src/system.cpp:174]   --->   Operation 166 'load' 'points_load' <Predicate = (!icmp_ln874 & !icmp_ln885 & and_ln1506)> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 128> <Depth = 2560> <RAM>
+ST_9 : Operation 167 [1/1] (0.00ns)   --->   "%z_bits = trunc i128 %points_load"   --->   Operation 167 'trunc' 'z_bits' <Predicate = (!icmp_ln874 & !icmp_ln885 & and_ln1506)> <Delay = 0.00>
+ST_9 : Operation 168 [1/1] (1.14ns)   --->   "%start_index_V_1 = add i32 %start_index_V_load, i32 1"   --->   Operation 168 'add' 'start_index_V_1' <Predicate = (!icmp_ln874 & !icmp_ln885 & and_ln1506)> <Delay = 1.14> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_9 : Operation 169 [1/1] (0.46ns)   --->   "%store_ln691 = store i32 %start_index_V_1, i32 %start_index_V"   --->   Operation 169 'store' 'store_ln691' <Predicate = (!icmp_ln874 & !icmp_ln885 & and_ln1506)> <Delay = 0.46>
+ST_9 : Operation 170 [1/1] (1.14ns)   --->   "%start_value_V_1 = sub i32 %z_bits, i32 %zext_ln708"   --->   Operation 170 'sub' 'start_value_V_1' <Predicate = (!icmp_ln874 & !icmp_ln885 & and_ln1506)> <Delay = 1.14> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_9 : Operation 171 [1/1] (0.46ns)   --->   "%store_ln176 = store i32 %start_value_V_1, i32 %start_value_V" [ParticleCoverHLS/src/system.cpp:176]   --->   Operation 171 'store' 'store_ln176' <Predicate = (!icmp_ln874 & !icmp_ln885 & and_ln1506)> <Delay = 0.46>
+ST_9 : Operation 172 [1/1] (0.46ns)   --->   "%br_ln181 = br void %_ZNK13ap_fixed_baseILi32ELi12ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEltEd.exit.thread" [ParticleCoverHLS/src/system.cpp:181]   --->   Operation 172 'br' 'br_ln181' <Predicate = (!icmp_ln874 & !icmp_ln885 & and_ln1506)> <Delay = 0.46>
+ST_9 : Operation 173 [1/1] (0.00ns)   --->   "%lhs_1 = phi i32 %start_index_V_1, void %_ZN13ap_fixed_baseILi33ELi13ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEC2ILi32ELi12ELb1ELS0_5ELS1_3ELi0EEERKS_IXT_EXT0_EXT1_EXT2_EXT3_EXT4_EE.exit.i, i32 %start_index_V_load, void %_ZN8ap_fixedILi32ELi12EL9ap_q_mode5EL9ap_o_mode3ELi0EEC2Ei.exit, i32 %start_index_V_load, void, i32 %start_index_V_load, void %_ifconv"   --->   Operation 173 'phi' 'lhs_1' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 174 [1/1] (0.00ns)   --->   "%sext_ln215 = sext i32 %lhs_1"   --->   Operation 174 'sext' 'sext_ln215' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 175 [1/1] (0.00ns)   --->   "%ret_16 = trunc i32 %lhs_1"   --->   Operation 175 'trunc' 'ret_16' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 176 [1/1] (1.14ns)   --->   "%ret = add i33 %sext_ln215, i33 8589934577"   --->   Operation 176 'add' 'ret' <Predicate = true> <Delay = 1.14> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_9 : Operation 177 [1/1] (0.00ns)   --->   "%left_bound_V_load = load i32 %left_bound_V"   --->   Operation 177 'load' 'left_bound_V_load' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 178 [1/1] (0.00ns)   --->   "%sext_ln878 = sext i32 %left_bound_V_load"   --->   Operation 178 'sext' 'sext_ln878' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 179 [1/1] (0.85ns)   --->   "%icmp_ln878 = icmp_slt  i33 %ret, i33 %sext_ln878"   --->   Operation 179 'icmp' 'icmp_ln878' <Predicate = true> <Delay = 0.85> <CoreInst = "Cmp">   --->   Core 9 'Cmp' <Latency = 0> <II = 1> <Delay = 0.85> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_9 : Operation 180 [1/1] (0.00ns)   --->   "%br_ln189 = br i1 %icmp_ln878, void, void %_ZNK13ap_fixed_baseILi32ELi12ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEltEd.exit.thread._crit_edge" [ParticleCoverHLS/src/system.cpp:189]   --->   Operation 180 'br' 'br_ln189' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 181 [1/1] (0.00ns)   --->   "%trunc_ln1461 = trunc i32 %lhs_1"   --->   Operation 181 'trunc' 'trunc_ln1461' <Predicate = (!icmp_ln878)> <Delay = 0.00>
+ST_9 : Operation 182 [1/1] (0.99ns)   --->   "%add_ln1461 = add i12 %ret_16, i12 4081"   --->   Operation 182 'add' 'add_ln1461' <Predicate = (!icmp_ln878)> <Delay = 0.99> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_9 : Operation 183 [1/1] (0.00ns)   --->   "%shl_ln1 = bitconcatenate i16 @_ssdm_op_BitConcatenate.i16.i3.i13, i3 %i_offset_read, i13 0" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 183 'bitconcatenate' 'shl_ln1' <Predicate = (!icmp_ln878)> <Delay = 0.00>
+ST_9 : Operation 184 [1/1] (0.00ns)   --->   "%shl_ln198_1 = bitconcatenate i16 @_ssdm_op_BitConcatenate.i16.i12.i4, i12 %add_ln1461, i4 0" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 184 'bitconcatenate' 'shl_ln198_1' <Predicate = (!icmp_ln878)> <Delay = 0.00>
+ST_9 : Operation 185 [1/1] (1.12ns)   --->   "%add_ln198 = add i16 %shl_ln198_1, i16 %shl_ln1" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 185 'add' 'add_ln198' <Predicate = (!icmp_ln878)> <Delay = 1.12> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_9 : Operation 186 [1/1] (0.00ns)   --->   "%lshr_ln1 = partselect i3 @_ssdm_op_PartSelect.i3.i16.i32.i32, i16 %add_ln198, i32 13, i32 15" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 186 'partselect' 'lshr_ln1' <Predicate = (!icmp_ln878)> <Delay = 0.00>
+ST_9 : Operation 187 [1/1] (0.90ns)   --->   "%add_ln198_16 = add i9 %trunc_ln1461, i9 497" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 187 'add' 'add_ln198_16' <Predicate = (!icmp_ln878)> <Delay = 0.90> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_9 : Operation 188 [1/1] (0.00ns)   --->   "%tmp_21 = bitconcatenate i12 @_ssdm_op_BitConcatenate.i12.i3.i9, i3 %lshr_ln1, i9 %add_ln198_16" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 188 'bitconcatenate' 'tmp_21' <Predicate = (!icmp_ln878)> <Delay = 0.00>
+ST_9 : Operation 189 [1/1] (0.00ns)   --->   "%zext_ln198 = zext i12 %tmp_21" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 189 'zext' 'zext_ln198' <Predicate = (!icmp_ln878)> <Delay = 0.00>
+ST_9 : Operation 190 [1/1] (0.00ns)   --->   "%points_addr_1 = getelementptr i128 %points, i64 0, i64 %zext_ln198" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 190 'getelementptr' 'points_addr_1' <Predicate = (!icmp_ln878)> <Delay = 0.00>
+ST_9 : Operation 191 [2/2] (1.29ns)   --->   "%points_load_1 = load i12 %points_addr_1" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 191 'load' 'points_load_1' <Predicate = (!icmp_ln878)> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 128> <Depth = 2560> <RAM>
+ST_9 : Operation 192 [1/1] (0.99ns)   --->   "%ret_2 = add i12 %ret_16, i12 4082"   --->   Operation 192 'add' 'ret_2' <Predicate = (!icmp_ln878)> <Delay = 0.99> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_9 : Operation 193 [1/1] (0.00ns)   --->   "%shl_ln198_2 = bitconcatenate i16 @_ssdm_op_BitConcatenate.i16.i12.i4, i12 %ret_2, i4 0" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 193 'bitconcatenate' 'shl_ln198_2' <Predicate = (!icmp_ln878)> <Delay = 0.00>
+ST_9 : Operation 194 [1/1] (1.12ns)   --->   "%add_ln198_1 = add i16 %shl_ln198_2, i16 %shl_ln1" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 194 'add' 'add_ln198_1' <Predicate = (!icmp_ln878)> <Delay = 1.12> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_9 : Operation 195 [1/1] (0.00ns)   --->   "%lshr_ln198_1 = partselect i3 @_ssdm_op_PartSelect.i3.i16.i32.i32, i16 %add_ln198_1, i32 13, i32 15" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 195 'partselect' 'lshr_ln198_1' <Predicate = (!icmp_ln878)> <Delay = 0.00>
+ST_9 : Operation 196 [1/1] (0.90ns)   --->   "%add_ln198_17 = add i9 %trunc_ln1461, i9 498" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 196 'add' 'add_ln198_17' <Predicate = (!icmp_ln878)> <Delay = 0.90> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_9 : Operation 197 [1/1] (0.00ns)   --->   "%tmp_22 = bitconcatenate i12 @_ssdm_op_BitConcatenate.i12.i3.i9, i3 %lshr_ln198_1, i9 %add_ln198_17" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 197 'bitconcatenate' 'tmp_22' <Predicate = (!icmp_ln878)> <Delay = 0.00>
+ST_9 : Operation 198 [1/1] (0.00ns)   --->   "%zext_ln198_1 = zext i12 %tmp_22" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 198 'zext' 'zext_ln198_1' <Predicate = (!icmp_ln878)> <Delay = 0.00>
+ST_9 : Operation 199 [1/1] (0.00ns)   --->   "%points_addr_2 = getelementptr i128 %points, i64 0, i64 %zext_ln198_1" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 199 'getelementptr' 'points_addr_2' <Predicate = (!icmp_ln878)> <Delay = 0.00>
+ST_9 : Operation 200 [2/2] (1.29ns)   --->   "%points_load_2 = load i12 %points_addr_2" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 200 'load' 'points_load_2' <Predicate = (!icmp_ln878)> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 128> <Depth = 2560> <RAM>
+
+State 10 <SV = 9> <Delay = 3.41>
+ST_10 : Operation 201 [1/2] (1.29ns)   --->   "%points_load_1 = load i12 %points_addr_1" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 201 'load' 'points_load_1' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 128> <Depth = 2560> <RAM>
+ST_10 : Operation 202 [1/1] (0.00ns)   --->   "%temp_superpoint_V = trunc i128 %points_load_1" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 202 'trunc' 'temp_superpoint_V' <Predicate = true> <Delay = 0.00>
+ST_10 : Operation 203 [1/2] (1.29ns)   --->   "%points_load_2 = load i12 %points_addr_2" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 203 'load' 'points_load_2' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 128> <Depth = 2560> <RAM>
+ST_10 : Operation 204 [1/1] (0.00ns)   --->   "%temp_superpoint_V_1 = trunc i128 %points_load_2" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 204 'trunc' 'temp_superpoint_V_1' <Predicate = true> <Delay = 0.00>
+ST_10 : Operation 205 [1/1] (0.99ns)   --->   "%ret_3 = add i12 %ret_16, i12 4083"   --->   Operation 205 'add' 'ret_3' <Predicate = true> <Delay = 0.99> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_10 : Operation 206 [1/1] (0.00ns)   --->   "%shl_ln198_3 = bitconcatenate i16 @_ssdm_op_BitConcatenate.i16.i12.i4, i12 %ret_3, i4 0" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 206 'bitconcatenate' 'shl_ln198_3' <Predicate = true> <Delay = 0.00>
+ST_10 : Operation 207 [1/1] (1.12ns)   --->   "%add_ln198_2 = add i16 %shl_ln198_3, i16 %shl_ln1" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 207 'add' 'add_ln198_2' <Predicate = true> <Delay = 1.12> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_10 : Operation 208 [1/1] (0.00ns)   --->   "%lshr_ln198_2 = partselect i3 @_ssdm_op_PartSelect.i3.i16.i32.i32, i16 %add_ln198_2, i32 13, i32 15" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 208 'partselect' 'lshr_ln198_2' <Predicate = true> <Delay = 0.00>
+ST_10 : Operation 209 [1/1] (0.90ns)   --->   "%add_ln198_18 = add i9 %trunc_ln1461, i9 499" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 209 'add' 'add_ln198_18' <Predicate = true> <Delay = 0.90> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_10 : Operation 210 [1/1] (0.00ns)   --->   "%tmp_23 = bitconcatenate i12 @_ssdm_op_BitConcatenate.i12.i3.i9, i3 %lshr_ln198_2, i9 %add_ln198_18" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 210 'bitconcatenate' 'tmp_23' <Predicate = true> <Delay = 0.00>
+ST_10 : Operation 211 [1/1] (0.00ns)   --->   "%zext_ln198_2 = zext i12 %tmp_23" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 211 'zext' 'zext_ln198_2' <Predicate = true> <Delay = 0.00>
+ST_10 : Operation 212 [1/1] (0.00ns)   --->   "%points_addr_3 = getelementptr i128 %points, i64 0, i64 %zext_ln198_2" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 212 'getelementptr' 'points_addr_3' <Predicate = true> <Delay = 0.00>
+ST_10 : Operation 213 [2/2] (1.29ns)   --->   "%points_load_3 = load i12 %points_addr_3" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 213 'load' 'points_load_3' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 128> <Depth = 2560> <RAM>
+ST_10 : Operation 214 [1/1] (0.99ns)   --->   "%ret_4 = add i12 %ret_16, i12 4084"   --->   Operation 214 'add' 'ret_4' <Predicate = true> <Delay = 0.99> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_10 : Operation 215 [1/1] (0.00ns)   --->   "%shl_ln198_4 = bitconcatenate i16 @_ssdm_op_BitConcatenate.i16.i12.i4, i12 %ret_4, i4 0" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 215 'bitconcatenate' 'shl_ln198_4' <Predicate = true> <Delay = 0.00>
+ST_10 : Operation 216 [1/1] (1.12ns)   --->   "%add_ln198_3 = add i16 %shl_ln198_4, i16 %shl_ln1" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 216 'add' 'add_ln198_3' <Predicate = true> <Delay = 1.12> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_10 : Operation 217 [1/1] (0.00ns)   --->   "%lshr_ln198_3 = partselect i3 @_ssdm_op_PartSelect.i3.i16.i32.i32, i16 %add_ln198_3, i32 13, i32 15" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 217 'partselect' 'lshr_ln198_3' <Predicate = true> <Delay = 0.00>
+ST_10 : Operation 218 [1/1] (0.90ns)   --->   "%add_ln198_19 = add i9 %trunc_ln1461, i9 500" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 218 'add' 'add_ln198_19' <Predicate = true> <Delay = 0.90> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_10 : Operation 219 [1/1] (0.00ns)   --->   "%tmp_24 = bitconcatenate i12 @_ssdm_op_BitConcatenate.i12.i3.i9, i3 %lshr_ln198_3, i9 %add_ln198_19" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 219 'bitconcatenate' 'tmp_24' <Predicate = true> <Delay = 0.00>
+ST_10 : Operation 220 [1/1] (0.00ns)   --->   "%zext_ln198_3 = zext i12 %tmp_24" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 220 'zext' 'zext_ln198_3' <Predicate = true> <Delay = 0.00>
+ST_10 : Operation 221 [1/1] (0.00ns)   --->   "%points_addr_4 = getelementptr i128 %points, i64 0, i64 %zext_ln198_3" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 221 'getelementptr' 'points_addr_4' <Predicate = true> <Delay = 0.00>
+ST_10 : Operation 222 [2/2] (1.29ns)   --->   "%points_load_4 = load i12 %points_addr_4" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 222 'load' 'points_load_4' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 128> <Depth = 2560> <RAM>
+ST_10 : Operation 223 [1/1] (1.29ns)   --->   "%store_ln206 = store i96 %temp_superpoint_V, i7 %init_patch_addr" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 223 'store' 'store_ln206' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 96> <Depth = 80> <RAM>
+ST_10 : Operation 224 [1/1] (1.29ns)   --->   "%store_ln206 = store i96 %temp_superpoint_V_1, i7 %init_patch_addr_1" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 224 'store' 'store_ln206' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 96> <Depth = 80> <RAM>
+
+State 11 <SV = 10> <Delay = 3.41>
+ST_11 : Operation 225 [1/2] (1.29ns)   --->   "%points_load_3 = load i12 %points_addr_3" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 225 'load' 'points_load_3' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 128> <Depth = 2560> <RAM>
+ST_11 : Operation 226 [1/1] (0.00ns)   --->   "%temp_superpoint_V_2 = trunc i128 %points_load_3" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 226 'trunc' 'temp_superpoint_V_2' <Predicate = true> <Delay = 0.00>
+ST_11 : Operation 227 [1/2] (1.29ns)   --->   "%points_load_4 = load i12 %points_addr_4" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 227 'load' 'points_load_4' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 128> <Depth = 2560> <RAM>
+ST_11 : Operation 228 [1/1] (0.00ns)   --->   "%temp_superpoint_V_3 = trunc i128 %points_load_4" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 228 'trunc' 'temp_superpoint_V_3' <Predicate = true> <Delay = 0.00>
+ST_11 : Operation 229 [1/1] (0.99ns)   --->   "%ret_5 = add i12 %ret_16, i12 4085"   --->   Operation 229 'add' 'ret_5' <Predicate = true> <Delay = 0.99> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 230 [1/1] (0.00ns)   --->   "%shl_ln198_5 = bitconcatenate i16 @_ssdm_op_BitConcatenate.i16.i12.i4, i12 %ret_5, i4 0" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 230 'bitconcatenate' 'shl_ln198_5' <Predicate = true> <Delay = 0.00>
+ST_11 : Operation 231 [1/1] (1.12ns)   --->   "%add_ln198_4 = add i16 %shl_ln198_5, i16 %shl_ln1" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 231 'add' 'add_ln198_4' <Predicate = true> <Delay = 1.12> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 232 [1/1] (0.00ns)   --->   "%lshr_ln198_4 = partselect i3 @_ssdm_op_PartSelect.i3.i16.i32.i32, i16 %add_ln198_4, i32 13, i32 15" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 232 'partselect' 'lshr_ln198_4' <Predicate = true> <Delay = 0.00>
+ST_11 : Operation 233 [1/1] (0.90ns)   --->   "%add_ln198_20 = add i9 %trunc_ln1461, i9 501" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 233 'add' 'add_ln198_20' <Predicate = true> <Delay = 0.90> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 234 [1/1] (0.00ns)   --->   "%tmp_25 = bitconcatenate i12 @_ssdm_op_BitConcatenate.i12.i3.i9, i3 %lshr_ln198_4, i9 %add_ln198_20" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 234 'bitconcatenate' 'tmp_25' <Predicate = true> <Delay = 0.00>
+ST_11 : Operation 235 [1/1] (0.00ns)   --->   "%zext_ln198_4 = zext i12 %tmp_25" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 235 'zext' 'zext_ln198_4' <Predicate = true> <Delay = 0.00>
+ST_11 : Operation 236 [1/1] (0.00ns)   --->   "%points_addr_5 = getelementptr i128 %points, i64 0, i64 %zext_ln198_4" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 236 'getelementptr' 'points_addr_5' <Predicate = true> <Delay = 0.00>
+ST_11 : Operation 237 [2/2] (1.29ns)   --->   "%points_load_5 = load i12 %points_addr_5" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 237 'load' 'points_load_5' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 128> <Depth = 2560> <RAM>
+ST_11 : Operation 238 [1/1] (0.99ns)   --->   "%ret_6 = add i12 %ret_16, i12 4086"   --->   Operation 238 'add' 'ret_6' <Predicate = true> <Delay = 0.99> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 239 [1/1] (0.00ns)   --->   "%shl_ln198_6 = bitconcatenate i16 @_ssdm_op_BitConcatenate.i16.i12.i4, i12 %ret_6, i4 0" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 239 'bitconcatenate' 'shl_ln198_6' <Predicate = true> <Delay = 0.00>
+ST_11 : Operation 240 [1/1] (1.12ns)   --->   "%add_ln198_5 = add i16 %shl_ln198_6, i16 %shl_ln1" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 240 'add' 'add_ln198_5' <Predicate = true> <Delay = 1.12> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 241 [1/1] (0.00ns)   --->   "%lshr_ln198_5 = partselect i3 @_ssdm_op_PartSelect.i3.i16.i32.i32, i16 %add_ln198_5, i32 13, i32 15" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 241 'partselect' 'lshr_ln198_5' <Predicate = true> <Delay = 0.00>
+ST_11 : Operation 242 [1/1] (0.90ns)   --->   "%add_ln198_21 = add i9 %trunc_ln1461, i9 502" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 242 'add' 'add_ln198_21' <Predicate = true> <Delay = 0.90> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 243 [1/1] (0.00ns)   --->   "%tmp_26 = bitconcatenate i12 @_ssdm_op_BitConcatenate.i12.i3.i9, i3 %lshr_ln198_5, i9 %add_ln198_21" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 243 'bitconcatenate' 'tmp_26' <Predicate = true> <Delay = 0.00>
+ST_11 : Operation 244 [1/1] (0.00ns)   --->   "%zext_ln198_5 = zext i12 %tmp_26" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 244 'zext' 'zext_ln198_5' <Predicate = true> <Delay = 0.00>
+ST_11 : Operation 245 [1/1] (0.00ns)   --->   "%points_addr_6 = getelementptr i128 %points, i64 0, i64 %zext_ln198_5" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 245 'getelementptr' 'points_addr_6' <Predicate = true> <Delay = 0.00>
+ST_11 : Operation 246 [2/2] (1.29ns)   --->   "%points_load_6 = load i12 %points_addr_6" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 246 'load' 'points_load_6' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 128> <Depth = 2560> <RAM>
+ST_11 : Operation 247 [1/1] (1.29ns)   --->   "%store_ln206 = store i96 %temp_superpoint_V_2, i7 %init_patch_addr_2" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 247 'store' 'store_ln206' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 96> <Depth = 80> <RAM>
+ST_11 : Operation 248 [1/1] (1.29ns)   --->   "%store_ln206 = store i96 %temp_superpoint_V_3, i7 %init_patch_addr_3" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 248 'store' 'store_ln206' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 96> <Depth = 80> <RAM>
+
+State 12 <SV = 11> <Delay = 3.41>
+ST_12 : Operation 249 [1/2] (1.29ns)   --->   "%points_load_5 = load i12 %points_addr_5" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 249 'load' 'points_load_5' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 128> <Depth = 2560> <RAM>
+ST_12 : Operation 250 [1/1] (0.00ns)   --->   "%temp_superpoint_V_4 = trunc i128 %points_load_5" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 250 'trunc' 'temp_superpoint_V_4' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 251 [1/2] (1.29ns)   --->   "%points_load_6 = load i12 %points_addr_6" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 251 'load' 'points_load_6' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 128> <Depth = 2560> <RAM>
+ST_12 : Operation 252 [1/1] (0.00ns)   --->   "%temp_superpoint_V_5 = trunc i128 %points_load_6" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 252 'trunc' 'temp_superpoint_V_5' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 253 [1/1] (0.99ns)   --->   "%ret_7 = add i12 %ret_16, i12 4087"   --->   Operation 253 'add' 'ret_7' <Predicate = true> <Delay = 0.99> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_12 : Operation 254 [1/1] (0.00ns)   --->   "%shl_ln198_7 = bitconcatenate i16 @_ssdm_op_BitConcatenate.i16.i12.i4, i12 %ret_7, i4 0" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 254 'bitconcatenate' 'shl_ln198_7' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 255 [1/1] (1.12ns)   --->   "%add_ln198_6 = add i16 %shl_ln198_7, i16 %shl_ln1" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 255 'add' 'add_ln198_6' <Predicate = true> <Delay = 1.12> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_12 : Operation 256 [1/1] (0.00ns)   --->   "%lshr_ln198_6 = partselect i3 @_ssdm_op_PartSelect.i3.i16.i32.i32, i16 %add_ln198_6, i32 13, i32 15" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 256 'partselect' 'lshr_ln198_6' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 257 [1/1] (0.90ns)   --->   "%add_ln198_22 = add i9 %trunc_ln1461, i9 503" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 257 'add' 'add_ln198_22' <Predicate = true> <Delay = 0.90> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_12 : Operation 258 [1/1] (0.00ns)   --->   "%tmp_27 = bitconcatenate i12 @_ssdm_op_BitConcatenate.i12.i3.i9, i3 %lshr_ln198_6, i9 %add_ln198_22" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 258 'bitconcatenate' 'tmp_27' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 259 [1/1] (0.00ns)   --->   "%zext_ln198_6 = zext i12 %tmp_27" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 259 'zext' 'zext_ln198_6' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 260 [1/1] (0.00ns)   --->   "%points_addr_7 = getelementptr i128 %points, i64 0, i64 %zext_ln198_6" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 260 'getelementptr' 'points_addr_7' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 261 [2/2] (1.29ns)   --->   "%points_load_7 = load i12 %points_addr_7" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 261 'load' 'points_load_7' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 128> <Depth = 2560> <RAM>
+ST_12 : Operation 262 [1/1] (0.99ns)   --->   "%ret_8 = add i12 %ret_16, i12 4088"   --->   Operation 262 'add' 'ret_8' <Predicate = true> <Delay = 0.99> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_12 : Operation 263 [1/1] (0.00ns)   --->   "%shl_ln198_8 = bitconcatenate i16 @_ssdm_op_BitConcatenate.i16.i12.i4, i12 %ret_8, i4 0" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 263 'bitconcatenate' 'shl_ln198_8' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 264 [1/1] (1.12ns)   --->   "%add_ln198_7 = add i16 %shl_ln198_8, i16 %shl_ln1" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 264 'add' 'add_ln198_7' <Predicate = true> <Delay = 1.12> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_12 : Operation 265 [1/1] (0.00ns)   --->   "%lshr_ln198_7 = partselect i3 @_ssdm_op_PartSelect.i3.i16.i32.i32, i16 %add_ln198_7, i32 13, i32 15" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 265 'partselect' 'lshr_ln198_7' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 266 [1/1] (0.90ns)   --->   "%add_ln198_23 = add i9 %trunc_ln1461, i9 504" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 266 'add' 'add_ln198_23' <Predicate = true> <Delay = 0.90> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_12 : Operation 267 [1/1] (0.00ns)   --->   "%tmp_28 = bitconcatenate i12 @_ssdm_op_BitConcatenate.i12.i3.i9, i3 %lshr_ln198_7, i9 %add_ln198_23" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 267 'bitconcatenate' 'tmp_28' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 268 [1/1] (0.00ns)   --->   "%zext_ln198_7 = zext i12 %tmp_28" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 268 'zext' 'zext_ln198_7' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 269 [1/1] (0.00ns)   --->   "%points_addr_8 = getelementptr i128 %points, i64 0, i64 %zext_ln198_7" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 269 'getelementptr' 'points_addr_8' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 270 [2/2] (1.29ns)   --->   "%points_load_8 = load i12 %points_addr_8" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 270 'load' 'points_load_8' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 128> <Depth = 2560> <RAM>
+ST_12 : Operation 271 [1/1] (0.99ns)   --->   "%ret_9 = add i12 %ret_16, i12 4089"   --->   Operation 271 'add' 'ret_9' <Predicate = true> <Delay = 0.99> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_12 : Operation 272 [1/1] (0.00ns)   --->   "%shl_ln198_9 = bitconcatenate i16 @_ssdm_op_BitConcatenate.i16.i12.i4, i12 %ret_9, i4 0" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 272 'bitconcatenate' 'shl_ln198_9' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 273 [1/1] (1.12ns)   --->   "%add_ln198_8 = add i16 %shl_ln198_9, i16 %shl_ln1" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 273 'add' 'add_ln198_8' <Predicate = true> <Delay = 1.12> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_12 : Operation 274 [1/1] (0.00ns)   --->   "%lshr_ln198_8 = partselect i3 @_ssdm_op_PartSelect.i3.i16.i32.i32, i16 %add_ln198_8, i32 13, i32 15" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 274 'partselect' 'lshr_ln198_8' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 275 [1/1] (0.99ns)   --->   "%ret_10 = add i12 %ret_16, i12 4090"   --->   Operation 275 'add' 'ret_10' <Predicate = true> <Delay = 0.99> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_12 : Operation 276 [1/1] (0.00ns)   --->   "%shl_ln198_s = bitconcatenate i16 @_ssdm_op_BitConcatenate.i16.i12.i4, i12 %ret_10, i4 0" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 276 'bitconcatenate' 'shl_ln198_s' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 277 [1/1] (1.12ns)   --->   "%add_ln198_9 = add i16 %shl_ln198_s, i16 %shl_ln1" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 277 'add' 'add_ln198_9' <Predicate = true> <Delay = 1.12> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_12 : Operation 278 [1/1] (0.00ns)   --->   "%lshr_ln198_9 = partselect i3 @_ssdm_op_PartSelect.i3.i16.i32.i32, i16 %add_ln198_9, i32 13, i32 15" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 278 'partselect' 'lshr_ln198_9' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 279 [1/1] (0.99ns)   --->   "%ret_11 = add i12 %ret_16, i12 4091"   --->   Operation 279 'add' 'ret_11' <Predicate = true> <Delay = 0.99> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_12 : Operation 280 [1/1] (0.00ns)   --->   "%shl_ln198_10 = bitconcatenate i16 @_ssdm_op_BitConcatenate.i16.i12.i4, i12 %ret_11, i4 0" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 280 'bitconcatenate' 'shl_ln198_10' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 281 [1/1] (1.12ns)   --->   "%add_ln198_10 = add i16 %shl_ln198_10, i16 %shl_ln1" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 281 'add' 'add_ln198_10' <Predicate = true> <Delay = 1.12> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_12 : Operation 282 [1/1] (0.00ns)   --->   "%lshr_ln198_s = partselect i3 @_ssdm_op_PartSelect.i3.i16.i32.i32, i16 %add_ln198_10, i32 13, i32 15" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 282 'partselect' 'lshr_ln198_s' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 283 [1/1] (0.99ns)   --->   "%ret_12 = add i12 %ret_16, i12 4092"   --->   Operation 283 'add' 'ret_12' <Predicate = true> <Delay = 0.99> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_12 : Operation 284 [1/1] (0.00ns)   --->   "%shl_ln198_11 = bitconcatenate i16 @_ssdm_op_BitConcatenate.i16.i12.i4, i12 %ret_12, i4 0" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 284 'bitconcatenate' 'shl_ln198_11' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 285 [1/1] (1.12ns)   --->   "%add_ln198_11 = add i16 %shl_ln198_11, i16 %shl_ln1" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 285 'add' 'add_ln198_11' <Predicate = true> <Delay = 1.12> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_12 : Operation 286 [1/1] (0.00ns)   --->   "%lshr_ln198_10 = partselect i3 @_ssdm_op_PartSelect.i3.i16.i32.i32, i16 %add_ln198_11, i32 13, i32 15" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 286 'partselect' 'lshr_ln198_10' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 287 [1/1] (0.99ns)   --->   "%ret_13 = add i12 %ret_16, i12 4093"   --->   Operation 287 'add' 'ret_13' <Predicate = true> <Delay = 0.99> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_12 : Operation 288 [1/1] (0.00ns)   --->   "%shl_ln198_12 = bitconcatenate i16 @_ssdm_op_BitConcatenate.i16.i12.i4, i12 %ret_13, i4 0" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 288 'bitconcatenate' 'shl_ln198_12' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 289 [1/1] (1.12ns)   --->   "%add_ln198_12 = add i16 %shl_ln198_12, i16 %shl_ln1" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 289 'add' 'add_ln198_12' <Predicate = true> <Delay = 1.12> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_12 : Operation 290 [1/1] (0.00ns)   --->   "%lshr_ln198_11 = partselect i3 @_ssdm_op_PartSelect.i3.i16.i32.i32, i16 %add_ln198_12, i32 13, i32 15" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 290 'partselect' 'lshr_ln198_11' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 291 [1/1] (0.99ns)   --->   "%ret_14 = add i12 %ret_16, i12 4094"   --->   Operation 291 'add' 'ret_14' <Predicate = true> <Delay = 0.99> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_12 : Operation 292 [1/1] (0.00ns)   --->   "%shl_ln198_13 = bitconcatenate i16 @_ssdm_op_BitConcatenate.i16.i12.i4, i12 %ret_14, i4 0" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 292 'bitconcatenate' 'shl_ln198_13' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 293 [1/1] (1.12ns)   --->   "%add_ln198_13 = add i16 %shl_ln198_13, i16 %shl_ln1" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 293 'add' 'add_ln198_13' <Predicate = true> <Delay = 1.12> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_12 : Operation 294 [1/1] (0.00ns)   --->   "%lshr_ln198_12 = partselect i3 @_ssdm_op_PartSelect.i3.i16.i32.i32, i16 %add_ln198_13, i32 13, i32 15" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 294 'partselect' 'lshr_ln198_12' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 295 [1/1] (0.99ns)   --->   "%ret_15 = add i12 %ret_16, i12 4095"   --->   Operation 295 'add' 'ret_15' <Predicate = true> <Delay = 0.99> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_12 : Operation 296 [1/1] (0.00ns)   --->   "%shl_ln198_14 = bitconcatenate i16 @_ssdm_op_BitConcatenate.i16.i12.i4, i12 %ret_15, i4 0" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 296 'bitconcatenate' 'shl_ln198_14' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 297 [1/1] (1.12ns)   --->   "%add_ln198_14 = add i16 %shl_ln198_14, i16 %shl_ln1" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 297 'add' 'add_ln198_14' <Predicate = true> <Delay = 1.12> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_12 : Operation 298 [1/1] (0.00ns)   --->   "%lshr_ln198_13 = partselect i3 @_ssdm_op_PartSelect.i3.i16.i32.i32, i16 %add_ln198_14, i32 13, i32 15" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 298 'partselect' 'lshr_ln198_13' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 299 [1/1] (0.00ns)   --->   "%shl_ln198_15 = bitconcatenate i16 @_ssdm_op_BitConcatenate.i16.i12.i4, i12 %ret_16, i4 0" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 299 'bitconcatenate' 'shl_ln198_15' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 300 [1/1] (1.12ns)   --->   "%add_ln198_15 = add i16 %shl_ln198_15, i16 %shl_ln1" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 300 'add' 'add_ln198_15' <Predicate = true> <Delay = 1.12> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_12 : Operation 301 [1/1] (0.00ns)   --->   "%lshr_ln198_14 = partselect i3 @_ssdm_op_PartSelect.i3.i16.i32.i32, i16 %add_ln198_15, i32 13, i32 15" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 301 'partselect' 'lshr_ln198_14' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 302 [1/1] (1.29ns)   --->   "%store_ln206 = store i96 %temp_superpoint_V_4, i7 %init_patch_addr_4" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 302 'store' 'store_ln206' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 96> <Depth = 80> <RAM>
+ST_12 : Operation 303 [1/1] (1.29ns)   --->   "%store_ln206 = store i96 %temp_superpoint_V_5, i7 %init_patch_addr_5" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 303 'store' 'store_ln206' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 96> <Depth = 80> <RAM>
+
+State 13 <SV = 12> <Delay = 2.59>
+ST_13 : Operation 304 [1/2] (1.29ns)   --->   "%points_load_7 = load i12 %points_addr_7" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 304 'load' 'points_load_7' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 128> <Depth = 2560> <RAM>
+ST_13 : Operation 305 [1/1] (0.00ns)   --->   "%temp_superpoint_V_6 = trunc i128 %points_load_7" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 305 'trunc' 'temp_superpoint_V_6' <Predicate = true> <Delay = 0.00>
+ST_13 : Operation 306 [1/2] (1.29ns)   --->   "%points_load_8 = load i12 %points_addr_8" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 306 'load' 'points_load_8' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 128> <Depth = 2560> <RAM>
+ST_13 : Operation 307 [1/1] (0.00ns)   --->   "%temp_superpoint_V_7 = trunc i128 %points_load_8" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 307 'trunc' 'temp_superpoint_V_7' <Predicate = true> <Delay = 0.00>
+ST_13 : Operation 308 [1/1] (0.90ns)   --->   "%add_ln198_24 = add i9 %trunc_ln1461, i9 505" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 308 'add' 'add_ln198_24' <Predicate = true> <Delay = 0.90> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_13 : Operation 309 [1/1] (0.00ns)   --->   "%tmp_29 = bitconcatenate i12 @_ssdm_op_BitConcatenate.i12.i3.i9, i3 %lshr_ln198_8, i9 %add_ln198_24" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 309 'bitconcatenate' 'tmp_29' <Predicate = true> <Delay = 0.00>
+ST_13 : Operation 310 [1/1] (0.00ns)   --->   "%zext_ln198_8 = zext i12 %tmp_29" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 310 'zext' 'zext_ln198_8' <Predicate = true> <Delay = 0.00>
+ST_13 : Operation 311 [1/1] (0.00ns)   --->   "%points_addr_9 = getelementptr i128 %points, i64 0, i64 %zext_ln198_8" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 311 'getelementptr' 'points_addr_9' <Predicate = true> <Delay = 0.00>
+ST_13 : Operation 312 [2/2] (1.29ns)   --->   "%points_load_9 = load i12 %points_addr_9" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 312 'load' 'points_load_9' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 128> <Depth = 2560> <RAM>
+ST_13 : Operation 313 [1/1] (0.90ns)   --->   "%add_ln198_25 = add i9 %trunc_ln1461, i9 506" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 313 'add' 'add_ln198_25' <Predicate = true> <Delay = 0.90> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_13 : Operation 314 [1/1] (0.00ns)   --->   "%tmp_30 = bitconcatenate i12 @_ssdm_op_BitConcatenate.i12.i3.i9, i3 %lshr_ln198_9, i9 %add_ln198_25" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 314 'bitconcatenate' 'tmp_30' <Predicate = true> <Delay = 0.00>
+ST_13 : Operation 315 [1/1] (0.00ns)   --->   "%zext_ln198_9 = zext i12 %tmp_30" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 315 'zext' 'zext_ln198_9' <Predicate = true> <Delay = 0.00>
+ST_13 : Operation 316 [1/1] (0.00ns)   --->   "%points_addr_10 = getelementptr i128 %points, i64 0, i64 %zext_ln198_9" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 316 'getelementptr' 'points_addr_10' <Predicate = true> <Delay = 0.00>
+ST_13 : Operation 317 [2/2] (1.29ns)   --->   "%points_load_10 = load i12 %points_addr_10" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 317 'load' 'points_load_10' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 128> <Depth = 2560> <RAM>
+ST_13 : Operation 318 [1/1] (1.29ns)   --->   "%store_ln206 = store i96 %temp_superpoint_V_6, i7 %init_patch_addr_6" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 318 'store' 'store_ln206' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 96> <Depth = 80> <RAM>
+ST_13 : Operation 319 [1/1] (1.29ns)   --->   "%store_ln206 = store i96 %temp_superpoint_V_7, i7 %init_patch_addr_7" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 319 'store' 'store_ln206' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 96> <Depth = 80> <RAM>
+
+State 14 <SV = 13> <Delay = 2.59>
+ST_14 : Operation 320 [1/2] (1.29ns)   --->   "%points_load_9 = load i12 %points_addr_9" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 320 'load' 'points_load_9' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 128> <Depth = 2560> <RAM>
+ST_14 : Operation 321 [1/1] (0.00ns)   --->   "%temp_superpoint_V_8 = trunc i128 %points_load_9" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 321 'trunc' 'temp_superpoint_V_8' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 322 [1/2] (1.29ns)   --->   "%points_load_10 = load i12 %points_addr_10" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 322 'load' 'points_load_10' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 128> <Depth = 2560> <RAM>
+ST_14 : Operation 323 [1/1] (0.00ns)   --->   "%temp_superpoint_V_9 = trunc i128 %points_load_10" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 323 'trunc' 'temp_superpoint_V_9' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 324 [1/1] (0.90ns)   --->   "%add_ln198_26 = add i9 %trunc_ln1461, i9 507" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 324 'add' 'add_ln198_26' <Predicate = true> <Delay = 0.90> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 325 [1/1] (0.00ns)   --->   "%tmp_31 = bitconcatenate i12 @_ssdm_op_BitConcatenate.i12.i3.i9, i3 %lshr_ln198_s, i9 %add_ln198_26" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 325 'bitconcatenate' 'tmp_31' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 326 [1/1] (0.00ns)   --->   "%zext_ln198_10 = zext i12 %tmp_31" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 326 'zext' 'zext_ln198_10' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 327 [1/1] (0.00ns)   --->   "%points_addr_11 = getelementptr i128 %points, i64 0, i64 %zext_ln198_10" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 327 'getelementptr' 'points_addr_11' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 328 [2/2] (1.29ns)   --->   "%points_load_11 = load i12 %points_addr_11" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 328 'load' 'points_load_11' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 128> <Depth = 2560> <RAM>
+ST_14 : Operation 329 [1/1] (0.90ns)   --->   "%add_ln198_27 = add i9 %trunc_ln1461, i9 508" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 329 'add' 'add_ln198_27' <Predicate = true> <Delay = 0.90> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 330 [1/1] (0.00ns)   --->   "%tmp_32 = bitconcatenate i12 @_ssdm_op_BitConcatenate.i12.i3.i9, i3 %lshr_ln198_10, i9 %add_ln198_27" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 330 'bitconcatenate' 'tmp_32' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 331 [1/1] (0.00ns)   --->   "%zext_ln198_11 = zext i12 %tmp_32" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 331 'zext' 'zext_ln198_11' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 332 [1/1] (0.00ns)   --->   "%points_addr_12 = getelementptr i128 %points, i64 0, i64 %zext_ln198_11" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 332 'getelementptr' 'points_addr_12' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 333 [2/2] (1.29ns)   --->   "%points_load_12 = load i12 %points_addr_12" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 333 'load' 'points_load_12' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 128> <Depth = 2560> <RAM>
+ST_14 : Operation 334 [1/1] (1.29ns)   --->   "%store_ln206 = store i96 %temp_superpoint_V_8, i7 %init_patch_addr_8" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 334 'store' 'store_ln206' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 96> <Depth = 80> <RAM>
+ST_14 : Operation 335 [1/1] (1.29ns)   --->   "%store_ln206 = store i96 %temp_superpoint_V_9, i7 %init_patch_addr_9" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 335 'store' 'store_ln206' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 96> <Depth = 80> <RAM>
+
+State 15 <SV = 14> <Delay = 2.59>
+ST_15 : Operation 336 [1/2] (1.29ns)   --->   "%points_load_11 = load i12 %points_addr_11" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 336 'load' 'points_load_11' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 128> <Depth = 2560> <RAM>
+ST_15 : Operation 337 [1/1] (0.00ns)   --->   "%temp_superpoint_V_10 = trunc i128 %points_load_11" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 337 'trunc' 'temp_superpoint_V_10' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 338 [1/2] (1.29ns)   --->   "%points_load_12 = load i12 %points_addr_12" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 338 'load' 'points_load_12' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 128> <Depth = 2560> <RAM>
+ST_15 : Operation 339 [1/1] (0.00ns)   --->   "%temp_superpoint_V_11 = trunc i128 %points_load_12" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 339 'trunc' 'temp_superpoint_V_11' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 340 [1/1] (0.90ns)   --->   "%add_ln198_28 = add i9 %trunc_ln1461, i9 509" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 340 'add' 'add_ln198_28' <Predicate = true> <Delay = 0.90> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 341 [1/1] (0.00ns)   --->   "%tmp_33 = bitconcatenate i12 @_ssdm_op_BitConcatenate.i12.i3.i9, i3 %lshr_ln198_11, i9 %add_ln198_28" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 341 'bitconcatenate' 'tmp_33' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 342 [1/1] (0.00ns)   --->   "%zext_ln198_12 = zext i12 %tmp_33" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 342 'zext' 'zext_ln198_12' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 343 [1/1] (0.00ns)   --->   "%points_addr_13 = getelementptr i128 %points, i64 0, i64 %zext_ln198_12" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 343 'getelementptr' 'points_addr_13' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 344 [2/2] (1.29ns)   --->   "%points_load_13 = load i12 %points_addr_13" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 344 'load' 'points_load_13' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 128> <Depth = 2560> <RAM>
+ST_15 : Operation 345 [1/1] (0.90ns)   --->   "%add_ln198_29 = add i9 %trunc_ln1461, i9 510" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 345 'add' 'add_ln198_29' <Predicate = true> <Delay = 0.90> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 346 [1/1] (0.00ns)   --->   "%tmp_34 = bitconcatenate i12 @_ssdm_op_BitConcatenate.i12.i3.i9, i3 %lshr_ln198_12, i9 %add_ln198_29" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 346 'bitconcatenate' 'tmp_34' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 347 [1/1] (0.00ns)   --->   "%zext_ln198_13 = zext i12 %tmp_34" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 347 'zext' 'zext_ln198_13' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 348 [1/1] (0.00ns)   --->   "%points_addr_14 = getelementptr i128 %points, i64 0, i64 %zext_ln198_13" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 348 'getelementptr' 'points_addr_14' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 349 [2/2] (1.29ns)   --->   "%points_load_14 = load i12 %points_addr_14" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 349 'load' 'points_load_14' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 128> <Depth = 2560> <RAM>
+ST_15 : Operation 350 [1/1] (1.29ns)   --->   "%store_ln206 = store i96 %temp_superpoint_V_10, i7 %init_patch_addr_10" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 350 'store' 'store_ln206' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 96> <Depth = 80> <RAM>
+ST_15 : Operation 351 [1/1] (1.29ns)   --->   "%store_ln206 = store i96 %temp_superpoint_V_11, i7 %init_patch_addr_11" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 351 'store' 'store_ln206' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 96> <Depth = 80> <RAM>
+
+State 16 <SV = 15> <Delay = 2.59>
+ST_16 : Operation 352 [1/2] (1.29ns)   --->   "%points_load_13 = load i12 %points_addr_13" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 352 'load' 'points_load_13' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 128> <Depth = 2560> <RAM>
+ST_16 : Operation 353 [1/1] (0.00ns)   --->   "%temp_superpoint_V_12 = trunc i128 %points_load_13" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 353 'trunc' 'temp_superpoint_V_12' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 354 [1/2] (1.29ns)   --->   "%points_load_14 = load i12 %points_addr_14" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 354 'load' 'points_load_14' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 128> <Depth = 2560> <RAM>
+ST_16 : Operation 355 [1/1] (0.00ns)   --->   "%temp_superpoint_V_13 = trunc i128 %points_load_14" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 355 'trunc' 'temp_superpoint_V_13' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 356 [1/1] (0.90ns)   --->   "%add_ln198_30 = add i9 %trunc_ln1461, i9 511" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 356 'add' 'add_ln198_30' <Predicate = true> <Delay = 0.90> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_16 : Operation 357 [1/1] (0.00ns)   --->   "%tmp_35 = bitconcatenate i12 @_ssdm_op_BitConcatenate.i12.i3.i9, i3 %lshr_ln198_13, i9 %add_ln198_30" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 357 'bitconcatenate' 'tmp_35' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 358 [1/1] (0.00ns)   --->   "%zext_ln198_14 = zext i12 %tmp_35" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 358 'zext' 'zext_ln198_14' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 359 [1/1] (0.00ns)   --->   "%points_addr_15 = getelementptr i128 %points, i64 0, i64 %zext_ln198_14" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 359 'getelementptr' 'points_addr_15' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 360 [2/2] (1.29ns)   --->   "%points_load_15 = load i12 %points_addr_15" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 360 'load' 'points_load_15' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 128> <Depth = 2560> <RAM>
+ST_16 : Operation 361 [1/1] (0.00ns)   --->   "%tmp_36 = bitconcatenate i12 @_ssdm_op_BitConcatenate.i12.i3.i9, i3 %lshr_ln198_14, i9 %trunc_ln1461" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 361 'bitconcatenate' 'tmp_36' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 362 [1/1] (0.00ns)   --->   "%zext_ln198_15 = zext i12 %tmp_36" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 362 'zext' 'zext_ln198_15' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 363 [1/1] (0.00ns)   --->   "%points_addr_16 = getelementptr i128 %points, i64 0, i64 %zext_ln198_15" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 363 'getelementptr' 'points_addr_16' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 364 [2/2] (1.29ns)   --->   "%points_load_16 = load i12 %points_addr_16" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 364 'load' 'points_load_16' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 128> <Depth = 2560> <RAM>
+ST_16 : Operation 365 [1/1] (1.29ns)   --->   "%store_ln206 = store i96 %temp_superpoint_V_12, i7 %init_patch_addr_12" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 365 'store' 'store_ln206' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 96> <Depth = 80> <RAM>
+ST_16 : Operation 366 [1/1] (1.29ns)   --->   "%store_ln206 = store i96 %temp_superpoint_V_13, i7 %init_patch_addr_13" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 366 'store' 'store_ln206' <Predicate = true> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 96> <Depth = 80> <RAM>
+
+State 17 <SV = 16> <Delay = 2.59>
+ST_17 : Operation 367 [1/2] (1.29ns)   --->   "%points_load_15 = load i12 %points_addr_15" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 367 'load' 'points_load_15' <Predicate = (!icmp_ln878)> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 128> <Depth = 2560> <RAM>
+ST_17 : Operation 368 [1/1] (0.00ns)   --->   "%temp_superpoint_V_14 = trunc i128 %points_load_15" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 368 'trunc' 'temp_superpoint_V_14' <Predicate = (!icmp_ln878)> <Delay = 0.00>
+ST_17 : Operation 369 [1/2] (1.29ns)   --->   "%points_load_16 = load i12 %points_addr_16" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 369 'load' 'points_load_16' <Predicate = (!icmp_ln878)> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 128> <Depth = 2560> <RAM>
+ST_17 : Operation 370 [1/1] (0.00ns)   --->   "%temp_superpoint_V_15 = trunc i128 %points_load_16" [ParticleCoverHLS/src/system.cpp:198]   --->   Operation 370 'trunc' 'temp_superpoint_V_15' <Predicate = (!icmp_ln878)> <Delay = 0.00>
+ST_17 : Operation 371 [1/1] (1.29ns)   --->   "%store_ln206 = store i96 %temp_superpoint_V_14, i7 %init_patch_addr_14" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 371 'store' 'store_ln206' <Predicate = (!icmp_ln878)> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 96> <Depth = 80> <RAM>
+ST_17 : Operation 372 [1/1] (1.29ns)   --->   "%store_ln206 = store i96 %temp_superpoint_V_15, i7 %init_patch_addr_15" [ParticleCoverHLS/src/system.cpp:206]   --->   Operation 372 'store' 'store_ln206' <Predicate = (!icmp_ln878)> <Delay = 1.29> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 1.29> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 96> <Depth = 80> <RAM>
+ST_17 : Operation 373 [1/1] (0.00ns)   --->   "%br_ln0 = br void %_ZNK13ap_fixed_baseILi32ELi12ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEltEd.exit.thread._crit_edge"   --->   Operation 373 'br' 'br_ln0' <Predicate = (!icmp_ln878)> <Delay = 0.00>
+ST_17 : Operation 374 [1/1] (0.00ns)   --->   "%ret_ln211 = ret" [ParticleCoverHLS/src/system.cpp:211]   --->   Operation 374 'ret' 'ret_ln211' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 10ns, clock uncertainty: 2.7ns.
+
+ <State 1>: 0.73ns
+The critical path consists of the following:
+	wire read on port 'i_offset' [14]  (0 ns)
+	'getelementptr' operation ('get_radiiradii_addr', ParticleCoverHLS/include/types.h:84) [67]  (0 ns)
+	'load' operation ('v', ParticleCoverHLS/include/types.h:84) on array 'get_radiiradii' [68]  (0.73 ns)
+
+ <State 2>: 6.3ns
+The critical path consists of the following:
+	'load' operation ('v', ParticleCoverHLS/include/types.h:84) on array 'get_radiiradii' [68]  (0.73 ns)
+	'add' operation ('ret.V') [71]  (1.13 ns)
+	'mul' operation ('mul_ln1148') [73]  (4.44 ns)
+
+ <State 3>: 7.08ns
+The critical path consists of the following:
+	'mul' operation ('mul_ln1148_1') [75]  (5.82 ns)
+	'add' operation ('ret.V') [77]  (1.26 ns)
+
+ <State 4>: 0ns
+The critical path consists of the following:
+
+ <State 5>: 0.73ns
+The critical path consists of the following:
+	'getelementptr' operation ('num_points_addr', ParticleCoverHLS/src/system.cpp:167) [86]  (0 ns)
+	'load' operation ('num_points_load', ParticleCoverHLS/src/system.cpp:167) on array 'num_points' [87]  (0.73 ns)
+
+ <State 6>: 5.34ns
+The critical path consists of the following:
+	'load' operation ('__Val2__') on local variable 'start_value.V', ParticleCoverHLS/src/system.cpp:152 [93]  (0 ns)
+	'sub' operation ('tmp.V') [98]  (1.14 ns)
+	'select' operation ('m') [99]  (0.286 ns)
+	'cttz' operation ('l') [101]  (0 ns)
+	'sub' operation ('sub_ln894') [102]  (1.14 ns)
+	'add' operation ('lsb_index') [103]  (1.14 ns)
+	'shl' operation ('shl_ln899') [110]  (0 ns)
+	'or' operation ('or_ln899_1') [111]  (0 ns)
+	'and' operation ('and_ln899') [112]  (0 ns)
+	'icmp' operation ('icmp_ln899') [113]  (1.28 ns)
+	'select' operation ('select_ln896') [123]  (0 ns)
+	'select' operation ('select_ln908') [127]  (0.345 ns)
+
+ <State 7>: 5.89ns
+The critical path consists of the following:
+	'sub' operation ('sub_ln909') [120]  (1.14 ns)
+	'shl' operation ('shl_ln909') [122]  (0 ns)
+	'select' operation ('m') [128]  (0 ns)
+	'add' operation ('m') [130]  (1.36 ns)
+	'select' operation ('select_ln893') [134]  (0.371 ns)
+	'add' operation ('add_ln915') [137]  (0.954 ns)
+	'dcmp' operation ('tmp_2') [145]  (2.06 ns)
+
+ <State 8>: 2.67ns
+The critical path consists of the following:
+	'dcmp' operation ('tmp_2') [145]  (2.06 ns)
+	'and' operation ('and_ln1506') [146]  (0.148 ns)
+	multiplexor before 'phi' operation ('start_index.V') with incoming values : ('start_index_V_load') ('start_index.V') [166]  (0.46 ns)
+
+ <State 9>: 5.02ns
+The critical path consists of the following:
+	'add' operation ('start_index.V') [160]  (1.14 ns)
+	multiplexor before 'phi' operation ('start_index.V') with incoming values : ('start_index_V_load') ('start_index.V') [166]  (0.46 ns)
+	'phi' operation ('start_index.V') with incoming values : ('start_index_V_load') ('start_index.V') [166]  (0 ns)
+	'add' operation ('add_ln1461') [176]  (0.996 ns)
+	'add' operation ('add_ln198', ParticleCoverHLS/src/system.cpp:198) [179]  (1.12 ns)
+	'getelementptr' operation ('points_addr_1', ParticleCoverHLS/src/system.cpp:198) [184]  (0 ns)
+	'load' operation ('points_load_1', ParticleCoverHLS/src/system.cpp:198) on array 'points' [185]  (1.3 ns)
+
+ <State 10>: 3.41ns
+The critical path consists of the following:
+	'add' operation ('ret') [197]  (0.996 ns)
+	'add' operation ('add_ln198_2', ParticleCoverHLS/src/system.cpp:198) [199]  (1.12 ns)
+	'getelementptr' operation ('points_addr_3', ParticleCoverHLS/src/system.cpp:198) [204]  (0 ns)
+	'load' operation ('points_load_3', ParticleCoverHLS/src/system.cpp:198) on array 'points' [205]  (1.3 ns)
+
+ <State 11>: 3.41ns
+The critical path consists of the following:
+	'add' operation ('ret') [217]  (0.996 ns)
+	'add' operation ('add_ln198_4', ParticleCoverHLS/src/system.cpp:198) [219]  (1.12 ns)
+	'getelementptr' operation ('points_addr_5', ParticleCoverHLS/src/system.cpp:198) [224]  (0 ns)
+	'load' operation ('points_load_5', ParticleCoverHLS/src/system.cpp:198) on array 'points' [225]  (1.3 ns)
+
+ <State 12>: 3.41ns
+The critical path consists of the following:
+	'add' operation ('ret') [237]  (0.996 ns)
+	'add' operation ('add_ln198_6', ParticleCoverHLS/src/system.cpp:198) [239]  (1.12 ns)
+	'getelementptr' operation ('points_addr_7', ParticleCoverHLS/src/system.cpp:198) [244]  (0 ns)
+	'load' operation ('points_load_7', ParticleCoverHLS/src/system.cpp:198) on array 'points' [245]  (1.3 ns)
+
+ <State 13>: 2.59ns
+The critical path consists of the following:
+	'load' operation ('points_load_7', ParticleCoverHLS/src/system.cpp:198) on array 'points' [245]  (1.3 ns)
+	'store' operation ('store_ln206', ParticleCoverHLS/src/system.cpp:206) of variable 'temp_superpoint.V', ParticleCoverHLS/src/system.cpp:198 on array 'init_patch' [341]  (1.3 ns)
+
+ <State 14>: 2.59ns
+The critical path consists of the following:
+	'load' operation ('points_load_9', ParticleCoverHLS/src/system.cpp:198) on array 'points' [265]  (1.3 ns)
+	'store' operation ('store_ln206', ParticleCoverHLS/src/system.cpp:206) of variable 'temp_superpoint.V', ParticleCoverHLS/src/system.cpp:198 on array 'init_patch' [343]  (1.3 ns)
+
+ <State 15>: 2.59ns
+The critical path consists of the following:
+	'load' operation ('points_load_11', ParticleCoverHLS/src/system.cpp:198) on array 'points' [285]  (1.3 ns)
+	'store' operation ('store_ln206', ParticleCoverHLS/src/system.cpp:206) of variable 'temp_superpoint.V', ParticleCoverHLS/src/system.cpp:198 on array 'init_patch' [345]  (1.3 ns)
+
+ <State 16>: 2.59ns
+The critical path consists of the following:
+	'load' operation ('points_load_13', ParticleCoverHLS/src/system.cpp:198) on array 'points' [305]  (1.3 ns)
+	'store' operation ('store_ln206', ParticleCoverHLS/src/system.cpp:206) of variable 'temp_superpoint.V', ParticleCoverHLS/src/system.cpp:198 on array 'init_patch' [347]  (1.3 ns)
+
+ <State 17>: 2.59ns
+The critical path consists of the following:
+	'load' operation ('points_load_15', ParticleCoverHLS/src/system.cpp:198) on array 'points' [325]  (1.3 ns)
+	'store' operation ('store_ln206', ParticleCoverHLS/src/system.cpp:206) of variable 'temp_superpoint.V', ParticleCoverHLS/src/system.cpp:198 on array 'init_patch' [349]  (1.3 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+	State 10
+	State 11
+	State 12
+	State 13
+	State 14
+	State 15
+	State 16
+	State 17
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A
