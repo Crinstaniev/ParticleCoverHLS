@@ -502,10 +502,11 @@ alignedtoline_layer_loop:
 
     alignedtoline_per_layer_loop(
         apexZ0, z_top, leftRight, points, num_points, init_patch, patch_buffer,
-        latest_patch_index, num_patches, pSlope, shadow_bottomL_jR,
-        shadow_bottomR_jR, shadow_bottomL_jL, shadow_bottomR_jL, z1_min, z1_max,
-        a_corner, b_corner, c_corner, d_corner, squareAcceptance, flatTop,
-        flatBottom, triangleAcceptance, patch_stream, i);
+        patch_buffer_is_empty, latest_patch_index, num_patches, pSlope,
+        shadow_bottomL_jR, shadow_bottomR_jR, shadow_bottomL_jL,
+        shadow_bottomR_jL, z1_min, z1_max, a_corner, b_corner, c_corner,
+        d_corner, squareAcceptance, flatTop, flatBottom, triangleAcceptance,
+        patch_stream, i);
   }
 
   // print init_patch
@@ -517,8 +518,8 @@ alignedtoline_layer_loop:
   })
 
   // add patch to buffer
-  patch_buffer_add_patch(init_patch, patch_buffer, latest_patch_index,
-                         num_patches);
+  patch_buffer_add_patch(init_patch, patch_buffer, patch_buffer_is_empty,
+                         latest_patch_index, num_patches);
 
   // add patch to stream
   write_patch_stream(patch_stream, init_patch);
@@ -616,10 +617,11 @@ _shadowquilt_column_loop:
 
     makePatch_alignedToLine(
         apexZ0, z_top_max, false, points, num_points, patch_buffer,
-        latest_patch_index, num_patches, pSlope, shadow_bottomL_jR,
-        shadow_bottomR_jR, shadow_bottomL_jL, shadow_bottomR_jL, z1_min, z1_max,
-        a_corner, b_corner, c_corner, d_corner, squareAcceptance, flatTop,
-        flatBottom, triangleAcceptance, patch_stream);
+        patch_buffer_is_empty, latest_patch_index, num_patches, pSlope,
+        shadow_bottomL_jR, shadow_bottomR_jR, shadow_bottomL_jL,
+        shadow_bottomR_jL, z1_min, z1_max, a_corner, b_corner, c_corner,
+        d_corner, squareAcceptance, flatTop, flatBottom, triangleAcceptance,
+        patch_stream);
 
     getParallelograms(patch_buffer[latest_patch_index],
                       pSlope[latest_patch_index],
@@ -629,12 +631,12 @@ _shadowquilt_column_loop:
                       shadow_bottomR_jL[latest_patch_index],
                       z1_min[latest_patch_index], z1_max[latest_patch_index]);
 
-    get_acceptanceCorners(patch_buffer, latest_patch_index, num_patches, pSlope,
-                          shadow_bottomL_jR, shadow_bottomR_jR,
-                          shadow_bottomL_jL, shadow_bottomR_jL, z1_min, z1_max,
-                          a_corner, b_corner, c_corner, d_corner,
-                          squareAcceptance, flatTop, flatBottom,
-                          triangleAcceptance, patch_stream);
+    get_acceptanceCorners(
+        patch_buffer, patch_buffer_is_empty, latest_patch_index, num_patches,
+        pSlope, shadow_bottomL_jR, shadow_bottomR_jR, shadow_bottomL_jL,
+        shadow_bottomR_jL, z1_min, z1_max, a_corner, b_corner, c_corner,
+        d_corner, squareAcceptance, flatTop, flatBottom, triangleAcceptance,
+        patch_stream);
 
     // >>>>> PRINT FIRST PATCH MADE <<<<<
     DEBUG_PRINT_ALL(
@@ -781,10 +783,11 @@ _shadowquilt_column_loop:
 
     makePatch_alignedToLine(
         complementary_apexZ0, z_top_min, true, points, num_points, patch_buffer,
-        latest_patch_index, num_patches, pSlope, shadow_bottomL_jR,
-        shadow_bottomR_jR, shadow_bottomL_jL, shadow_bottomR_jR, z1_min, z1_max,
-        a_corner, b_corner, c_corner, d_corner, squareAcceptance, flatTop,
-        flatBottom, triangleAcceptance, patch_stream);
+        patch_buffer_is_empty, latest_patch_index, num_patches, pSlope,
+        shadow_bottomL_jR, shadow_bottomR_jR, shadow_bottomL_jL,
+        shadow_bottomR_jR, z1_min, z1_max, a_corner, b_corner, c_corner,
+        d_corner, squareAcceptance, flatTop, flatBottom, triangleAcceptance,
+        patch_stream);
 
     getParallelograms(patch_buffer[latest_patch_index],
                       pSlope[latest_patch_index],
@@ -794,12 +797,12 @@ _shadowquilt_column_loop:
                       shadow_bottomR_jL[latest_patch_index],
                       z1_min[latest_patch_index], z1_max[latest_patch_index]);
 
-    get_acceptanceCorners(patch_buffer, latest_patch_index, num_patches, pSlope,
-                          shadow_bottomL_jR, shadow_bottomR_jR,
-                          shadow_bottomL_jL, shadow_bottomR_jL, z1_min, z1_max,
-                          a_corner, b_corner, c_corner, d_corner,
-                          squareAcceptance, flatTop, flatBottom,
-                          triangleAcceptance, patch_stream);
+    get_acceptanceCorners(
+        patch_buffer, patch_buffer_is_empty, latest_patch_index, num_patches,
+        pSlope, shadow_bottomL_jR, shadow_bottomR_jR, shadow_bottomL_jL,
+        shadow_bottomR_jL, z1_min, z1_max, a_corner, b_corner, c_corner,
+        d_corner, squareAcceptance, flatTop, flatBottom, triangleAcceptance,
+        patch_stream);
 
     DEBUG_PRINT_ALL(
         cout << "superpoints of patch_depth_1" << endl;
@@ -912,10 +915,11 @@ _shadowquilt_column_loop:
 
       current_z_top_index = get_index_from_z(
           NUM_LAYERS - 1, z_top_min, points, num_points, patch_buffer,
-          latest_patch_index, num_patches, pSlope, shadow_bottomL_jR,
-          shadow_bottomR_jR, shadow_bottomL_jL, shadow_bottomR_jL, z1_min,
-          z1_max, a_corner, b_corner, c_corner, d_corner, squareAcceptance,
-          flatTop, flatBottom, triangleAcceptance, patch_stream);
+          patch_buffer_is_empty, latest_patch_index, num_patches, pSlope,
+          shadow_bottomL_jR, shadow_bottomR_jR, shadow_bottomL_jL,
+          shadow_bottomR_jL, z1_min, z1_max, a_corner, b_corner, c_corner,
+          d_corner, squareAcceptance, flatTop, flatBottom, triangleAcceptance,
+          patch_stream);
 
       DEBUG_PRINT_ALL(
           cout << "current white_space_height: " << white_space_height << endl;
@@ -934,10 +938,11 @@ _shadowquilt_column_loop:
 
         current_z_i_index[i] = get_index_from_z(
             i, z_value_tmp, points, num_points, patch_buffer,
-            latest_patch_index, num_patches, pSlope, shadow_bottomL_jR,
-            shadow_bottomR_jR, shadow_bottomL_jL, shadow_bottomR_jL, z1_min,
-            z1_max, a_corner, b_corner, c_corner, d_corner, squareAcceptance,
-            flatTop, flatBottom, triangleAcceptance, patch_stream);
+            patch_buffer_is_empty, latest_patch_index, num_patches, pSlope,
+            shadow_bottomL_jR, shadow_bottomR_jR, shadow_bottomL_jL,
+            shadow_bottomR_jL, z1_min, z1_max, a_corner, b_corner, c_corner,
+            d_corner, squareAcceptance, flatTop, flatBottom, triangleAcceptance,
+            patch_stream);
       }
 
       DEBUG_PRINT_ALL(
@@ -1104,7 +1109,9 @@ _shadowquilt_column_loop:
 
         /**
          * TODO: resume here
+         * implement delete patch logic
          */
+
         return;
       }
 
@@ -1134,11 +1141,11 @@ makepatch_main_loop:
   while ((float)apexZ0 > -1 * get_trapezoid_edges(0)) {
 #pragma HLS PIPELINE II = 1
     _shadowquilt_main_loop_make_verticle_strip(
-        points, num_points, apexZ0, patch_buffer, latest_patch_index,
-        num_patches, pSlope, shadow_bottomL_jR, shadow_bottomR_jR,
-        shadow_bottomL_jL, shadow_bottomR_jL, z1_min, z1_max, a_corner,
-        b_corner, c_corner, d_corner, squareAcceptance, flatTop, flatBottom,
-        triangleAcceptance, patch_stream);
+        points, num_points, apexZ0, patch_buffer, patch_buffer_is_empty,
+        latest_patch_index, num_patches, pSlope, shadow_bottomL_jR,
+        shadow_bottomR_jR, shadow_bottomL_jL, shadow_bottomR_jL, z1_min, z1_max,
+        a_corner, b_corner, c_corner, d_corner, squareAcceptance, flatTop,
+        flatBottom, triangleAcceptance, patch_stream);
 
     return;
   }
@@ -1152,24 +1159,30 @@ void system_top(point_t points[NUM_LAYERS][MAX_NUM_POINTS],
   // patch buffer: circular buffer, three patches
   // patch: 5 superpoints
   // superpoints: 16 consecutive points
-  point_t patch_buffer[PATCH_BUFFER_SIZE][NUM_LAYERS][NUM_POINTS_IN_SUPERPOINT];
-  index_t latest_patch_index = 0;
-  index_t num_patches = 0;
+  point_t patch_buffer[PATCH_BUFFER_SIZE][NUM_LAYERS]
+                      [NUM_POINTS_IN_SUPERPOINT] = {0x0};
+  bool patch_buffer_is_empty[PATCH_BUFFER_SIZE] = {true};
+  index_t latest_patch_index = 0x0;
+  index_t num_patches = 0x0;
 
   // parallelogram arrays
-  float_value_t pSlope[PATCH_BUFFER_SIZE][NUM_LAYERS];
-  float_value_t shadow_bottomL_jR[PATCH_BUFFER_SIZE][NUM_LAYERS];
-  float_value_t shadow_bottomR_jR[PATCH_BUFFER_SIZE][NUM_LAYERS];
-  float_value_t shadow_bottomL_jL[PATCH_BUFFER_SIZE][NUM_LAYERS];
-  float_value_t shadow_bottomR_jL[PATCH_BUFFER_SIZE][NUM_LAYERS];
-  float_value_t z1_min[PATCH_BUFFER_SIZE][NUM_LAYERS];
-  float_value_t z1_max[PATCH_BUFFER_SIZE][NUM_LAYERS];
+  float_value_t pSlope[PATCH_BUFFER_SIZE][NUM_LAYERS] = {FLOAT_VALUE_T_MAX};
+  float_value_t shadow_bottomL_jR[PATCH_BUFFER_SIZE][NUM_LAYERS] = {
+      FLOAT_VALUE_T_MAX};
+  float_value_t shadow_bottomR_jR[PATCH_BUFFER_SIZE][NUM_LAYERS] = {
+      FLOAT_VALUE_T_MAX};
+  float_value_t shadow_bottomL_jL[PATCH_BUFFER_SIZE][NUM_LAYERS] = {
+      FLOAT_VALUE_T_MAX};
+  float_value_t shadow_bottomR_jL[PATCH_BUFFER_SIZE][NUM_LAYERS] = {
+      FLOAT_VALUE_T_MAX};
+  float_value_t z1_min[PATCH_BUFFER_SIZE][NUM_LAYERS] = {FLOAT_VALUE_T_MAX};
+  float_value_t z1_max[PATCH_BUFFER_SIZE][NUM_LAYERS] = {FLOAT_VALUE_T_MAX};
 
   // acceptance corners arrays
-  float_value_t a_corner[PATCH_BUFFER_SIZE][2];
-  float_value_t b_corner[PATCH_BUFFER_SIZE][2];
-  float_value_t c_corner[PATCH_BUFFER_SIZE][2];
-  float_value_t d_corner[PATCH_BUFFER_SIZE][2];
+  float_value_t a_corner[PATCH_BUFFER_SIZE][2] = {FLOAT_VALUE_T_MAX};
+  float_value_t b_corner[PATCH_BUFFER_SIZE][2] = {FLOAT_VALUE_T_MAX};
+  float_value_t c_corner[PATCH_BUFFER_SIZE][2] = {FLOAT_VALUE_T_MAX};
+  float_value_t d_corner[PATCH_BUFFER_SIZE][2] = {FLOAT_VALUE_T_MAX};
 
   // patch bools
   bool squareAcceptance[PATCH_BUFFER_SIZE] = {true};
@@ -1186,10 +1199,11 @@ void system_top(point_t points[NUM_LAYERS][MAX_NUM_POINTS],
 #endif
 
   makePatches_ShadowQuilt_fromEdges(
-      points, num_points, patch_buffer, latest_patch_index, num_patches, pSlope,
-      shadow_bottomL_jR, shadow_bottomR_jR, shadow_bottomL_jL,
-      shadow_bottomR_jL, z1_min, z1_max, a_corner, b_corner, c_corner, d_corner,
-      squareAcceptance, flatTop, flatBottom, triangleAcceptance, patch_stream);
+      points, num_points, patch_buffer, patch_buffer_is_empty,
+      latest_patch_index, num_patches, pSlope, shadow_bottomL_jR,
+      shadow_bottomR_jR, shadow_bottomL_jL, shadow_bottomR_jL, z1_min, z1_max,
+      a_corner, b_corner, c_corner, d_corner, squareAcceptance, flatTop,
+      flatBottom, triangleAcceptance, patch_stream);
 
   return;
 }

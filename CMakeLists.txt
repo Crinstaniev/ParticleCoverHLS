@@ -2,23 +2,32 @@ cmake_minimum_required(VERSION 3.10)
 
 project(PatchMakerHLS VERSION 1.0 LANGUAGES CXX)
 
-# Use C++11 standard
+# Use C++20 standard
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Global compiler options
 add_compile_options(-g) # Debugging information
 
-# Generate compile_commands.cjson
+# Suppress warnings and show only errors for GCC/Clang
+if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+    add_compile_options(-w)
+endif()
+
+# Suppress warnings and show only errors for MSVC
+if (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    add_compile_options(/w)
+endif()
+
+# Generate compile_commands.json
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Include directories
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 # include_directories(${CMAKE_CURRENT_SOURCE_DIR}/reference)
 
-# include vitis libraries /home/crinstaniev/opt/Xilinx/Vitis_HLS/2020.2/include
+# include Vitis libraries
 include_directories(/home/crinstaniev/opt/Xilinx/Vitis_HLS/2020.2/include)
-
 
 # Source files
 file(GLOB SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
@@ -33,7 +42,6 @@ set_target_properties(patchmaker PROPERTIES OUTPUT_NAME patchmaker)
 
 # PatchMakerHLS reference implementation
 add_executable(PatchMakerHLSRef reference/tanish_ver/patchmaker.cpp)
-
 
 enable_testing()
 

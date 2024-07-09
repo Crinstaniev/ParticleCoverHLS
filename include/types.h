@@ -56,6 +56,7 @@ typedef struct {
 #define PATCH_BUFFER_ARGS                                                      \
   point_t patch_buffer[PATCH_BUFFER_SIZE][NUM_LAYERS]                          \
                       [NUM_POINTS_IN_SUPERPOINT],                              \
+      bool patch_buffer_is_empty[PATCH_BUFFER_SIZE],                           \
       index_t &latest_patch_index, index_t &num_patches,                       \
       float_value_t pSlope[PATCH_BUFFER_SIZE][NUM_LAYERS],                     \
       float_value_t shadow_bottomL_jR[PATCH_BUFFER_SIZE][NUM_LAYERS],          \

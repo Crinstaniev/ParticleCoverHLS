@@ -9,10 +9,12 @@ void patch_buffer_add_patch(
     point_t new_patch[NUM_LAYERS][NUM_POINTS_IN_SUPERPOINT],
     point_t patch_buffer[PATCH_BUFFER_SIZE][NUM_LAYERS]
                         [NUM_POINTS_IN_SUPERPOINT],
-    index_t &latest_patch_index, index_t &num_patches) {
+    bool patch_buffer_is_empty[PATCH_BUFFER_SIZE], index_t &latest_patch_index,
+    index_t &num_patches) {
   // add patch to buffer
   // increment latest_patch_index
   latest_patch_index = (latest_patch_index + 1) % PATCH_BUFFER_SIZE;
+  patch_buffer_is_empty[latest_patch_index] = false;
   num_patches++;
 
 // copy new patch to buffer
@@ -25,6 +27,30 @@ loop_copy_patch_buffer_layer:
       patch_buffer[latest_patch_index][layer][point] = new_patch[layer][point];
     }
   }
+
+  return;
+}
+
+void patch_buffer_delete_patch(
+    point_t patch_buffer[PATCH_BUFFER_SIZE][NUM_LAYERS]
+                        [NUM_POINTS_IN_SUPERPOINT],
+    bool patch_buffer_is_empty[PATCH_BUFFER_SIZE], index_t &latest_patch_index,
+    index_t &num_patches, index_t patch_depth) {
+  // decrement num_patches
+  num_patches--;
+
+  /**
+   * Calculate index according to patch_depth.
+   * 0 means the latest patch, 1 means the second latest patch, and so on.
+   */
+  index_t index = (latest_patch_index - patch_depth) % PATCH_BUFFER_SIZE;
+
+  if (index < 0) {
+    index += PATCH_BUFFER_SIZE;
+  }
+
+  // set patch_buffer_is_empty to true
+  patch_buffer_is_empty[index] = true;
 
   return;
 }

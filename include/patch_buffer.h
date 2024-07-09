@@ -16,7 +16,14 @@ void patch_buffer_add_patch(
     point_t new_patch[NUM_LAYERS][NUM_POINTS_IN_SUPERPOINT],
     point_t patch_buffer[PATCH_BUFFER_SIZE][NUM_LAYERS]
                         [NUM_POINTS_IN_SUPERPOINT],
-    index_t &latest_patch_index, index_t &num_patches);
+    bool patch_buffer_is_empty[PATCH_BUFFER_SIZE], index_t &latest_patch_index,
+    index_t &num_patches);
+
+void patch_buffer_delete_patch(
+    point_t patch_buffer[PATCH_BUFFER_SIZE][NUM_LAYERS]
+                        [NUM_POINTS_IN_SUPERPOINT],
+    bool patch_buffer_is_empty[PATCH_BUFFER_SIZE], index_t &latest_patch_index,
+    index_t &num_patches, index_t patch_depth);
 
 void write_patch_stream(hls::stream<point_t> &patch_stream,
                         point_t patch[NUM_LAYERS][NUM_POINTS_IN_SUPERPOINT]);
