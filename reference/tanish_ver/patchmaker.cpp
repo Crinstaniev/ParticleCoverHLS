@@ -1257,8 +1257,6 @@ public:
                             cout << "orig_ztop: " << current_z_top_index
                                  << " orig_z_top_min: " << z_top_min << endl;)
 
-            // TODO: resume here
-
             vector<float> current_z_i_index;
             vector<float> new_z_i_index;
 
@@ -1420,36 +1418,44 @@ public:
             int nPatchesAtComplementary = patches.size();
 
             if (nPatchesAtComplementary > nPatchesAtOriginal) {
-              cout << "deleted complementary: "
-                   << patches[patches.size() - 1].a_corner[0] << " "
-                   << patches[patches.size() - 1].a_corner[1] << " for patch"
-                   << patches.size() << endl;
-              cout << "deleted complementary: "
-                   << patches[patches.size() - 1].b_corner[0] << " "
-                   << patches[patches.size() - 1].b_corner[1] << endl;
-              cout << "deleted complementary: "
-                   << patches[patches.size() - 1].c_corner[0] << " "
-                   << patches[patches.size() - 1].c_corner[1] << endl;
-              cout << "deleted complementary: "
-                   << patches[patches.size() - 1].d_corner[0] << " "
-                   << patches[patches.size() - 1].d_corner[1] << endl;
-              /**
-               * TODO: resume here
-               */
+              DEBUG_PRINT_ALL(
+                  cout << "deleted complementary: "
+                       << patches[patches.size() - 1].a_corner[0] << " "
+                       << patches[patches.size() - 1].a_corner[1]
+                       << " for patch" << patches.size() << endl;
+                  cout << "deleted complementary: "
+                       << patches[patches.size() - 1].b_corner[0] << " "
+                       << patches[patches.size() - 1].b_corner[1] << endl;
+                  cout << "deleted complementary: "
+                       << patches[patches.size() - 1].c_corner[0] << " "
+                       << patches[patches.size() - 1].c_corner[1] << endl;
+                  cout << "deleted complementary: "
+                       << patches[patches.size() - 1].d_corner[0] << " "
+                       << patches[patches.size() - 1].d_corner[1] << endl;)
 
               delete_patch(patches.size() - 1); // write delete patch
               n_patches -= 1;
             }
 
-            cout << "num_patches: " << patches.size() << endl;
-            exit(0);
-
-            if (n_patches == 2) {
-              cout << "patch 2 exit" << endl;
-              exit(0);
-            }
+            DEBUG_PRINT_ALL( // print ingredients
+                cout << "complementary_apexZ0: " << complementary_apexZ0
+                     << endl;
+                cout << "z_top_min: " << z_top_min << endl;)
 
             makePatch_alignedToLine(complementary_apexZ0, z_top_min, ppl, true);
+
+            DEBUG_PRINT_ALL( // print latest patch made
+                cout << "Print patch num: " << patches.size() << endl;
+                for (int i = 0; i < 5; i++) {
+                  for (int j = 0; j < 16; j++) {
+                    cout << "patch_buffer[latest][" << i << "][" << j << "]: "
+                         << patches[patches.size() - 1]
+                                .superpoints[i]
+                                .points[j]
+                                .z
+                         << endl;
+                  }
+                })
 
             complementary_a = patches[patches.size() - 1].a_corner[1];
             complementary_b = patches[patches.size() - 1].b_corner[1];
@@ -1459,26 +1465,33 @@ public:
             white_space_height =
                 max(original_c - complementary_a, original_d - complementary_b);
 
-            cout << "complementary_a:" << complementary_a << " "
-                 << patches[patches.size() - 1].a_corner[1]
-                 << " || complementary_b:" << complementary_b << " "
-                 << patches[patches.size() - 1].b_corner[1]
-                 << " new z_top_min: " << z_top_min << endl;
-            cout << "new white_space_height: " << white_space_height << endl;
-            cout << "adjusted complementary: "
-                 << patches[patches.size() - 1].a_corner[0] << " "
-                 << patches[patches.size() - 1].a_corner[1]
-                 << " for z_top_min:" << z_top_min << endl;
-            cout << "adjusted complementary: "
-                 << patches[patches.size() - 1].b_corner[0] << " "
-                 << patches[patches.size() - 1].b_corner[1] << "for patch "
-                 << patches.size() << endl;
-            cout << "adjusted complementary: "
-                 << patches[patches.size() - 1].c_corner[0] << " "
-                 << patches[patches.size() - 1].c_corner[1] << endl;
-            cout << "adjusted complementary: "
-                 << patches[patches.size() - 1].d_corner[0] << " "
-                 << patches[patches.size() - 1].d_corner[1] << endl;
+            DEBUG_PRINT_ALL(
+                cout << "complementary_a:" << complementary_a << " "
+                     << patches[patches.size() - 1].a_corner[1]
+                     << " || complementary_b:" << complementary_b << " "
+                     << patches[patches.size() - 1].b_corner[1]
+                     << " new z_top_min: " << z_top_min << endl;
+                cout << "new white_space_height: " << white_space_height
+                     << endl;
+                cout << "adjusted complementary: "
+                     << patches[patches.size() - 1].a_corner[0] << " "
+                     << patches[patches.size() - 1].a_corner[1]
+                     << " for z_top_min:" << z_top_min << endl;
+                cout << "adjusted complementary: "
+                     << patches[patches.size() - 1].b_corner[0] << " "
+                     << patches[patches.size() - 1].b_corner[1] << "for patch "
+                     << patches.size() << endl;
+                cout << "adjusted complementary: "
+                     << patches[patches.size() - 1].c_corner[0] << " "
+                     << patches[patches.size() - 1].c_corner[1] << endl;
+                cout << "adjusted complementary: "
+                     << patches[patches.size() - 1].d_corner[0] << " "
+                     << patches[patches.size() - 1].d_corner[1] << endl;)
+
+            if (n_patches == 2) {
+              cout << "patch 2 exit" << endl;
+              exit(0);
+            }
 
             if ((n_patches > 3) && fix42) {
               if ((patches[patches.size() - 1]

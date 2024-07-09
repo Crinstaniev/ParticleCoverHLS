@@ -1107,15 +1107,59 @@ _shadowquilt_column_loop:
             cout << "deleted complementary: " << d_corner[LATEST_PATCH_INDEX][0]
                  << " " << d_corner[LATEST_PATCH_INDEX][1] << endl;)
 
-        /**
-         * TODO: resume here
-         * implement delete patch logic
-         */
-
-        return;
+        patch_buffer_delete_patch(patch_buffer, patch_buffer_is_empty,
+                                  latest_patch_index, num_patches, 0);
       }
 
-      PATCH_EXIT(2);
+      DEBUG_PRINT_ALL( // print ingredients
+          cout << "complementary_apexZ0: " << complementary_apexZ0 << endl;
+          cout << "z_top_min: " << z_top_min << endl;)
+
+      makePatch_alignedToLine(
+          complementary_apexZ0, z_top_min, true, points, num_points,
+          patch_buffer, patch_buffer_is_empty, latest_patch_index, num_patches,
+          pSlope, shadow_bottomL_jR, shadow_bottomR_jR, shadow_bottomL_jL,
+          shadow_bottomR_jR, z1_min, z1_max, a_corner, b_corner, c_corner,
+          d_corner, squareAcceptance, flatTop, flatBottom, triangleAcceptance,
+          patch_stream);
+
+      DEBUG_PRINT_ALL( // print latest patch made
+          cout << "Print patch num: " << num_patches << endl;
+          for (int i = 0; i < NUM_LAYERS; i++) {
+            for (int j = 0; j < NUM_POINTS_IN_SUPERPOINT; j++) {
+              cout << "patch_buffer[latest][" << i << "][" << j << "]: "
+                   << point_get_z(patch_buffer[latest_patch_index][i][j])
+                   << endl;
+            }
+          })
+
+      complementary_a = a_corner[latest_patch_index][1];
+      complementary_b = b_corner[latest_patch_index][1];
+
+      previous_white_space_height = white_space_height;
+
+      white_space_height =
+          std::max(original_c - complementary_a, original_d - complementary_b);
+
+      DEBUG_PRINT_ALL(
+          cout << "complementary_a:" << complementary_a << " "
+               << a_corner[latest_patch_index][1] << " || complementary_b:"
+               << complementary_b << " " << b_corner[latest_patch_index][1]
+               << " new z_top_min: " << z_top_min << endl;
+          cout << "new white_space_height: " << white_space_height << endl;
+          cout << "adjusted complementary: " << a_corner[latest_patch_index][0]
+               << " " << a_corner[latest_patch_index][1]
+               << " for z_top_min:" << z_top_min << endl;
+          cout << "adjusted complementary: " << b_corner[latest_patch_index][0]
+               << " " << b_corner[latest_patch_index][1] << "for patch "
+               << num_patches << endl;
+          cout << "adjusted complementary: " << c_corner[latest_patch_index][0]
+               << " " << c_corner[latest_patch_index][1] << endl;
+          cout << "adjusted complementary: " << d_corner[latest_patch_index][0]
+               << " " << d_corner[latest_patch_index][1] << endl;)
+
+      // PATCH_EXIT(2)
+      return;
     }
 
     // get condition for next iteration

@@ -4,6 +4,7 @@
 
 #include <cstring>
 #include <hls_stream.h>
+#include <iostream>
 
 void patch_buffer_add_patch(
     point_t new_patch[NUM_LAYERS][NUM_POINTS_IN_SUPERPOINT],
@@ -11,9 +12,19 @@ void patch_buffer_add_patch(
                         [NUM_POINTS_IN_SUPERPOINT],
     bool patch_buffer_is_empty[PATCH_BUFFER_SIZE], index_t &latest_patch_index,
     index_t &num_patches) {
+
   // add patch to buffer
   // increment latest_patch_index
   latest_patch_index = (latest_patch_index + 1) % PATCH_BUFFER_SIZE;
+
+  DEBUG_PRINT_ALL(/**
+                   * DEBUG: if overriding older patch, print message
+                   */
+                  if (!patch_buffer_is_empty[latest_patch_index]) {
+                    std::cout << "Overriding patch " << latest_patch_index
+                              << std::endl;
+                  })
+
   patch_buffer_is_empty[latest_patch_index] = false;
   num_patches++;
 
@@ -51,6 +62,11 @@ void patch_buffer_delete_patch(
 
   // set patch_buffer_is_empty to true
   patch_buffer_is_empty[index] = true;
+
+  // if latest patch is deleted, update latest_patch_index
+  if (index == latest_patch_index) {
+    latest_patch_index = (latest_patch_index - 1) % PATCH_BUFFER_SIZE;
+  }
 
   return;
 }
