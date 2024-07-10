@@ -1124,6 +1124,13 @@ _shadowquilt_column_loop:
             cout << "complementary_apexZ0: " << complementary_apexZ0 << endl;
             cout << "z_top_min: " << z_top_min << endl;)
 
+        // DEBUG: print c_corner
+        cout << "========================" << endl;
+
+        // print ingredient of makepatch
+        cout << "complementary_apexZ0: " << complementary_apexZ0 << endl;
+        cout << "z_top_min: " << z_top_min << endl;
+
         makePatch_alignedToLine(
             complementary_apexZ0, z_top_min, true, points, num_points,
             patch_buffer, patch_buffer_is_empty, latest_patch_index,
@@ -1132,9 +1139,43 @@ _shadowquilt_column_loop:
             b_corner, c_corner, d_corner, squareAcceptance, flatTop, flatBottom,
             triangleAcceptance, patch_stream);
 
-        // DEBUG: print c_corner
+        getParallelograms(
+            patch_buffer[latest_patch_index], pSlope[latest_patch_index],
+            shadow_bottomL_jR[latest_patch_index],
+            shadow_bottomR_jR[latest_patch_index],
+            shadow_bottomL_jL[latest_patch_index],
+            shadow_bottomR_jL[latest_patch_index], z1_min[latest_patch_index],
+            z1_max[latest_patch_index]);
+
+        get_acceptanceCorners(
+            patch_buffer, patch_buffer_is_empty, latest_patch_index,
+            num_patches, pSlope, shadow_bottomL_jR, shadow_bottomR_jR,
+            shadow_bottomL_jL, shadow_bottomR_jL, z1_min, z1_max, a_corner,
+            b_corner, c_corner, d_corner, squareAcceptance, flatTop, flatBottom,
+            triangleAcceptance, patch_stream);
+
         cout << "c_corner: " << c_corner[latest_patch_index][0] << " "
              << c_corner[latest_patch_index][1] << endl;
+
+        // print patch made
+        cout << "Print patch num: " << num_patches << endl;
+        for (int i = 0; i < NUM_LAYERS; i++) {
+          for (int j = 0; j < NUM_POINTS_IN_SUPERPOINT; j++) {
+            cout << "patch_buffer[latest][" << i << "][" << j
+                 << "]: " << point_get_z(patch_buffer[latest_patch_index][i][j])
+                 << endl;
+          }
+        }
+
+        // print corners of the latest patch
+        cout << "a_corner: " << a_corner[latest_patch_index][0] << " "
+             << a_corner[latest_patch_index][1] << endl;
+        cout << "b_corner: " << b_corner[latest_patch_index][0] << " "
+             << b_corner[latest_patch_index][1] << endl;
+        cout << "c_corner: " << c_corner[latest_patch_index][0] << " "
+             << c_corner[latest_patch_index][1] << endl;
+        cout << "d_corner: " << d_corner[latest_patch_index][0] << " "
+             << d_corner[latest_patch_index][1] << endl;
 
         if (g_debug_counter == 3) {
           cout << "debug exit" << endl;

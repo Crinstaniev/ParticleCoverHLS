@@ -1445,11 +1445,37 @@ public:
                      << endl;
                 cout << "z_top_min: " << z_top_min << endl;)
 
+            cout << "========================" << endl;
+
+            // print ingredient of makepatch
+            cout << "complementary_apexZ0: " << complementary_apexZ0 << endl;
+            cout << "z_top_min: " << z_top_min << endl;
+
             makePatch_alignedToLine(complementary_apexZ0, z_top_min, ppl, true);
 
             // print c_corner
             cout << "c_corner: " << patches[patches.size() - 1].c_corner[0]
                  << " " << patches[patches.size() - 1].c_corner[1] << endl;
+
+            // print patch made
+            cout << "Print patch num: " << patches.size() << endl;
+            for (int i = 0; i < 5; i++) {
+              for (int j = 0; j < 16; j++) {
+                cout << "patch_buffer[latest][" << i << "][" << j << "]: "
+                     << patches[patches.size() - 1].superpoints[i].points[j].z
+                     << endl;
+              }
+            }
+
+            // print corners of the latest patch
+            cout << "a_corner: " << patches[patches.size() - 1].a_corner[0]
+                 << " " << patches[patches.size() - 1].a_corner[1] << endl;
+            cout << "b_corner: " << patches[patches.size() - 1].b_corner[0]
+                 << " " << patches[patches.size() - 1].b_corner[1] << endl;
+            cout << "c_corner: " << patches[patches.size() - 1].c_corner[0]
+                 << " " << patches[patches.size() - 1].c_corner[1] << endl;
+            cout << "d_corner: " << patches[patches.size() - 1].d_corner[0]
+                 << " " << patches[patches.size() - 1].d_corner[1] << endl;
 
             if (g_debug_counter == 3) {
               cout << "debug exit" << endl;

@@ -1,0 +1,14 @@
+## [2024-07-10]
+
+### [BUG FIXES]
+
+#### infinite loop when adjusting white spaces
+
+Working on bug that adjustment of whitespace runs into infinite loop.
+
+- Inspect problem in `makepatch_alignedtoline`
+  - Corrent patch is produced (by inspecting z values)
+  - Inspect `get_acceptancecorners`
+    - `get_acceptancecorners` is not called, as well as `get_parallelogram`
+
+By adding missing function calls, correct c_corners are produced.
