@@ -21,6 +21,8 @@
 #define DEBUG_PRINT_ALL(x)
 #endif // DEBUG_PRINT_ALL
 
+int g_debug_counter = 0;
+
 using namespace std;
 
 // global variables for debug
@@ -1102,6 +1104,7 @@ public:
             (patches[patches.size() - 1].c_corner[1] >
              -1 * env.trapezoid_edges[env.num_layers - 1]) &&
             (projectionOfCornerToBeam < env.beam_axis_lim)) {
+
           complementary_apexZ0 = patches[patches.size() - 1].superpoints[0].min;
 
           DEBUG_PRINT_ALL(
@@ -1444,6 +1447,15 @@ public:
 
             makePatch_alignedToLine(complementary_apexZ0, z_top_min, ppl, true);
 
+            // print c_corner
+            cout << "c_corner: " << patches[patches.size() - 1].c_corner[0]
+                 << " " << patches[patches.size() - 1].c_corner[1] << endl;
+
+            if (g_debug_counter == 3) {
+              cout << "debug exit" << endl;
+              exit(0);
+            }
+
             DEBUG_PRINT_ALL( // print latest patch made
                 cout << "Print patch num: " << patches.size() << endl;
                 for (int i = 0; i < 5; i++) {
@@ -1465,33 +1477,26 @@ public:
             white_space_height =
                 max(original_c - complementary_a, original_d - complementary_b);
 
-            DEBUG_PRINT_ALL(
-                cout << "complementary_a:" << complementary_a << " "
-                     << patches[patches.size() - 1].a_corner[1]
-                     << " || complementary_b:" << complementary_b << " "
-                     << patches[patches.size() - 1].b_corner[1]
-                     << " new z_top_min: " << z_top_min << endl;
-                cout << "new white_space_height: " << white_space_height
-                     << endl;
-                cout << "adjusted complementary: "
-                     << patches[patches.size() - 1].a_corner[0] << " "
-                     << patches[patches.size() - 1].a_corner[1]
-                     << " for z_top_min:" << z_top_min << endl;
-                cout << "adjusted complementary: "
-                     << patches[patches.size() - 1].b_corner[0] << " "
-                     << patches[patches.size() - 1].b_corner[1] << "for patch "
-                     << patches.size() << endl;
-                cout << "adjusted complementary: "
-                     << patches[patches.size() - 1].c_corner[0] << " "
-                     << patches[patches.size() - 1].c_corner[1] << endl;
-                cout << "adjusted complementary: "
-                     << patches[patches.size() - 1].d_corner[0] << " "
-                     << patches[patches.size() - 1].d_corner[1] << endl;)
-
-            if (n_patches == 2) {
-              cout << "patch 2 exit" << endl;
-              exit(0);
-            }
+            cout << "complementary_a:" << complementary_a << " "
+                 << patches[patches.size() - 1].a_corner[1]
+                 << " || complementary_b:" << complementary_b << " "
+                 << patches[patches.size() - 1].b_corner[1]
+                 << " new z_top_min: " << z_top_min << endl;
+            cout << "new white_space_height: " << white_space_height << endl;
+            cout << "adjusted complementary: "
+                 << patches[patches.size() - 1].a_corner[0] << " "
+                 << patches[patches.size() - 1].a_corner[1]
+                 << " for z_top_min:" << z_top_min << endl;
+            cout << "adjusted complementary: "
+                 << patches[patches.size() - 1].b_corner[0] << " "
+                 << patches[patches.size() - 1].b_corner[1] << "for patch "
+                 << patches.size() << endl;
+            cout << "adjusted complementary: "
+                 << patches[patches.size() - 1].c_corner[0] << " "
+                 << patches[patches.size() - 1].c_corner[1] << endl;
+            cout << "adjusted complementary: "
+                 << patches[patches.size() - 1].d_corner[0] << " "
+                 << patches[patches.size() - 1].d_corner[1] << endl;
 
             if ((n_patches > 3) && fix42) {
               if ((patches[patches.size() - 1]
@@ -1525,7 +1530,21 @@ public:
                                         true);
               }
             }
+
+            // print ingredients of the condition
+            cout << endl << "CONDITION:" << endl;
+            cout << "white_space_height: " << white_space_height << endl;
+            cout << "c_corner: " << patches[patches.size() - 1].c_corner[1]
+                 << endl;
+            cout << "current_z_top_index: " << current_z_top_index << endl;
+            cout << "repeat_patch: " << repeat_patch << endl;
+            cout << "repeat_original: " << repeat_original << endl;
+            cout << "g_debug_counter: " << g_debug_counter << endl;
+
+            g_debug_counter++;
           }
+
+          exit(0);
         }
 
         c_corner = patches[patches.size() - 1].c_corner[1];
@@ -1534,6 +1553,11 @@ public:
             patches[patches.size() - 1].straightLineProjectorFromLayerIJtoK(
                 c_corner, patches[patches.size() - 1].c_corner[0],
                 env.num_layers, 1, 0);
+
+        if (n_patches == 2) {
+          cout << "patch 2 exit" << endl;
+          exit(0);
+        }
 
         saved_apexZ0 = patches[patches.size() - 1].c_corner[0];
 

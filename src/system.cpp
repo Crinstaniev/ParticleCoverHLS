@@ -11,6 +11,8 @@
 
 using namespace std;
 
+int g_debug_counter = 0;
+
 float_value_t straightLineProjectorFromLayerIJtoK(float_value_t z_i,
                                                   float_value_t z_j,
                                                   int_value_t i, int_value_t j,
@@ -774,346 +776,11 @@ _shadowquilt_column_loop:
 
         DEBUG_PRINT_ALL(cout << "z_top_min_after: " << z_top_min << endl;)
       }
-    }
 
-    // print ingredients
-    DEBUG_PRINT_ALL(cout << "complementary_apexZ0: " << complementary_apexZ0
-                         << endl;
-                    cout << "z_top_min: " << z_top_min << endl;)
-
-    makePatch_alignedToLine(
-        complementary_apexZ0, z_top_min, true, points, num_points, patch_buffer,
-        patch_buffer_is_empty, latest_patch_index, num_patches, pSlope,
-        shadow_bottomL_jR, shadow_bottomR_jR, shadow_bottomL_jL,
-        shadow_bottomR_jR, z1_min, z1_max, a_corner, b_corner, c_corner,
-        d_corner, squareAcceptance, flatTop, flatBottom, triangleAcceptance,
-        patch_stream);
-
-    getParallelograms(patch_buffer[latest_patch_index],
-                      pSlope[latest_patch_index],
-                      shadow_bottomL_jR[latest_patch_index],
-                      shadow_bottomR_jR[latest_patch_index],
-                      shadow_bottomL_jL[latest_patch_index],
-                      shadow_bottomR_jL[latest_patch_index],
-                      z1_min[latest_patch_index], z1_max[latest_patch_index]);
-
-    get_acceptanceCorners(
-        patch_buffer, patch_buffer_is_empty, latest_patch_index, num_patches,
-        pSlope, shadow_bottomL_jR, shadow_bottomR_jR, shadow_bottomL_jL,
-        shadow_bottomR_jL, z1_min, z1_max, a_corner, b_corner, c_corner,
-        d_corner, squareAcceptance, flatTop, flatBottom, triangleAcceptance,
-        patch_stream);
-
-    DEBUG_PRINT_ALL(
-        cout << "superpoints of patch_depth_1" << endl;
-        for (int i = 0; i < NUM_LAYERS; i++) {
-          cout << "superpoint " << i << " min: "
-               << get_superpoint_min_z(patch_buffer[latest_patch_index][i])
-               << " max: "
-               << get_superpoint_max_z(patch_buffer[latest_patch_index][i])
-               << endl;
-        })
-
-    DEBUG_PRINT_ALL(
-        cout << "superpoints of patch_depth_2" << endl;
-        for (int i = 0; i < NUM_LAYERS; i++) {
-          cout << "superpoint " << i << " min: "
-               << get_superpoint_min_z(patch_buffer[latest_patch_index - 1][i])
-               << " max: "
-               << get_superpoint_max_z(patch_buffer[latest_patch_index - 1][i])
-               << endl;
-        })
-
-    DEBUG_PRINT_ALL(cout << "complementary_apexZ0: " << complementary_apexZ0
-                         << endl;
-                    cout << "z_top_min: " << z_top_min << endl;)
-
-    // print patch_buffer[latest_patch_index - 1]
-    DEBUG_PRINT_ALL(cout << "Print patch num: " << num_patches << endl;
-                    for (int i = 0; i < NUM_LAYERS; i++) {
-                      for (int j = 0; j < NUM_POINTS_IN_SUPERPOINT; j++) {
-                        cout << "patch_buffer[1][" << i << "][" << j << "]: "
-                             << point_get_z(
-                                    patch_buffer[latest_patch_index - 1][i][j])
-                             << endl;
-                      }
-                    })
-
-    DEBUG_PRINT_ALL(if (num_patches == 2) {
-      // print min, max z of superpoints of last - 1 patch
-      cout << "Print patch num: " << num_patches - 1 << endl;
-      for (int i = 0; i < NUM_LAYERS; i++) {
-        cout << "superpoint " << i << " min: "
-             << get_superpoint_min_z(patch_buffer[latest_patch_index - 1][i])
-             << " max: "
-             << get_superpoint_max_z(patch_buffer[latest_patch_index - 1][i])
-             << endl;
-      }
-
-      // print min, max z of superpoints of last patch
-      cout << "Print patch num: " << num_patches << endl;
-      for (int i = 0; i < NUM_LAYERS; i++) {
-        cout << "superpoint " << i << " min: "
-             << get_superpoint_min_z(patch_buffer[latest_patch_index][i])
-             << " max: "
-             << get_superpoint_max_z(patch_buffer[latest_patch_index][i])
-             << endl;
-      }
-    })
-
-    madeComplementaryPatch = true;
-
-    DEBUG_PRINT_ALL(
-        cout << "complementary: [" << a_corner[latest_patch_index][0] << ", "
-             << a_corner[latest_patch_index][1]
-             << "] for z_top_min: " << z_top_min << endl;
-        cout << "complementary: [" << b_corner[latest_patch_index][0] << ", "
-             << b_corner[latest_patch_index][1] << "] for patch " << num_patches
-             << endl;
-        cout << "complementary: [" << c_corner[latest_patch_index][0] << ", "
-             << c_corner[latest_patch_index][1] << "]" << endl;
-        cout << "complementary: [" << d_corner[latest_patch_index][0] << ", "
-             << d_corner[latest_patch_index][1] << "]" << endl;)
-
-    float_value_t complementary_a = a_corner[latest_patch_index][1];
-    float_value_t complementary_b = b_corner[latest_patch_index][1];
-
-    float_value_t white_space_height =
-        std::max(original_c - complementary_a, original_d - complementary_b);
-    float_value_t previous_white_space_height = -1;
-    int_value_t counter = 0;
-    int_value_t counterUpshift = 0;
-    int_value_t current_z_top_index = -1;
-    float_value_t previous_z_top_min = FLOAT_VALUE_T_MIN;
-
-    bool cond_loop_adjust_complementary_patch = false;
-
-    // TODO: extract to external function
-    cond_loop_adjust_complementary_patch =
-        !(white_space_height <= 0 && (previous_white_space_height >= 0) &&
-          (std::abs((double)white_space_height) > 0.000001) &&
-          ((c_corner[latest_patch_index][1] >
-            (float_value_t)(-1 * get_trapezoid_edges(NUM_LAYERS - 1))) ||
-           (white_space_height > 0)) &&
-          (current_z_top_index < (num_points[NUM_LAYERS - 1] - 1)) &&
-          !repeat_patch && !repeat_original);
-
-  loop_adjust_complementary_patch:
-    while (cond_loop_adjust_complementary_patch) {
-      DEBUG_PRINT_ALL(cout << endl; if (num_patches > 2) {
-        // this part not tested yet
-        cout << 'roginal c: ' << original_c << " "
-             << c_corner[PREVIOUS_PATCH_INDEX][1]
-             << " || original d: " << original_d << " "
-             << d_corner[PREVIOUS_PATCH_INDEX][1] << endl;
-      })
-
-      DEBUG_PRINT_ALL(cout << "complementary_a: " << complementary_a << " "
-                           << a_corner[LATEST_PATCH_INDEX][1]
-                           << " || complementary_b: " << complementary_b << " "
-                           << b_corner[LATEST_PATCH_INDEX][1] << endl;)
-
-      current_z_top_index = get_index_from_z(
-          NUM_LAYERS - 1, z_top_min, points, num_points, patch_buffer,
-          patch_buffer_is_empty, latest_patch_index, num_patches, pSlope,
-          shadow_bottomL_jR, shadow_bottomR_jR, shadow_bottomL_jL,
-          shadow_bottomR_jL, z1_min, z1_max, a_corner, b_corner, c_corner,
-          d_corner, squareAcceptance, flatTop, flatBottom, triangleAcceptance,
-          patch_stream);
-
-      DEBUG_PRINT_ALL(
-          cout << "current white_space_height: " << white_space_height << endl;
-          cout << "counter: " << counter
-               << " counterUpshift: " << counterUpshift << endl;
-          cout << "orig_ztop: " << current_z_top_index
-               << " orig_z_top_min: " << z_top_min << endl;)
-
-      float_value_t current_z_i_index[NUM_LAYERS] = {FLOAT_VALUE_T_MAX};
-      float_value_t new_z_i_index[NUM_LAYERS] = {FLOAT_VALUE_T_MAX};
-
-    loop_copy_z_values_to_current_z_array:
-      for (int i = 0; i < NUM_LAYERS; i++) {
-        float_value_t z_value_tmp = straightLineProjectorFromLayerIJtoK(
-            complementary_apexZ0, z_top_min, 1, NUM_LAYERS, i + 1);
-
-        current_z_i_index[i] = get_index_from_z(
-            i, z_value_tmp, points, num_points, patch_buffer,
-            patch_buffer_is_empty, latest_patch_index, num_patches, pSlope,
-            shadow_bottomL_jR, shadow_bottomR_jR, shadow_bottomL_jL,
-            shadow_bottomR_jL, z1_min, z1_max, a_corner, b_corner, c_corner,
-            d_corner, squareAcceptance, flatTop, flatBottom, triangleAcceptance,
-            patch_stream);
-      }
-
-      DEBUG_PRINT_ALL(
-          // DEBUG: print current_z_i_index
-          for (int i = 0; i < NUM_LAYERS; i++) {
-            cout << "current_z_i_index[" << i << "]: " << current_z_i_index[i]
-                 << endl;
-          })
-
-      if (z_top_min == previous_z_top_min) {
-        current_z_top_index++;
-        for (int i = 0; i < NUM_LAYERS; i++) {
-          new_z_i_index[i] = current_z_i_index[i] + 1;
-        }
-      }
-
-      previous_z_top_min = z_top_min;
-
-      if (white_space_height < 0) {
-        counter++;
-        current_z_top_index--;
-
-        /**
-         * BUG: this is probably wrong, not sure about the actual size of
-         * new_z_i_index
-         */
-        for (int i = 0; i < NUM_LAYERS; i++) {
-          new_z_i_index[i] = current_z_i_index[i] - 1;
-        }
-      } else {
-        counterUpshift++;
-        current_z_top_index++;
-
-        for (int i = 0; i < NUM_LAYERS; i++) {
-          new_z_i_index[i] = current_z_i_index[i] + 1;
-        }
-      }
-
-      DEBUG_PRINT_ALL( // DEBUG: print new_z_i_index
-          for (int i = 0; i < NUM_LAYERS; i++) {
-            cout << "new_z_i_index[" << i << "]: " << new_z_i_index[i] << endl;
-          })
-
-      int x = num_points[NUM_LAYERS - 1] - 1;
-      current_z_top_index = std::min((int)current_z_top_index, x);
-
-      for (int i = 0; i < NUM_LAYERS; i++) {
-        new_z_i_index[i] =
-            std::min((float)new_z_i_index[i], (float)(num_points[i] - 1));
-      }
-
-      DEBUG_PRINT_ALL( // DEBUG: print new_z_i_index
-          for (int i = 0; i < NUM_LAYERS; i++) {
-            cout << "new_z_i_index[" << i << "]: " << new_z_i_index[i] << endl;
-          })
-
-      for (int i = 0; i < NUM_LAYERS; i++) {
-        new_z_i_index[i] = std::max((float)new_z_i_index[i], 0.0f);
-      }
-
-      float_value_t new_z_i[NUM_LAYERS] = {FLOAT_VALUE_T_MAX};
-
-      for (int i = 0; i < NUM_LAYERS; i++) {
-        new_z_i[i] = point_get_z(points[i][(int)new_z_i_index[i]]);
-      }
-
-      DEBUG_PRINT_ALL( // DEBUG: print new_z_i
-          for (int i = 0; i < NUM_LAYERS;
-               i++) { cout << "new_z_i[" << i << "]: " << new_z_i[i] << endl; })
-
-      float_value_t new_z_i_atTop[NUM_LAYERS] = {FLOAT_VALUE_T_MAX};
-
-      for (int i = 1; i < NUM_LAYERS; i++) {
-        new_z_i_atTop[i - 1] = straightLineProjectorFromLayerIJtoK(
-            complementary_apexZ0, new_z_i[i], 1, i + 1, NUM_LAYERS);
-      }
-
-      DEBUG_PRINT_ALL(
-          // DEBUG: print new_z_i_atTop
-          for (int i = 0; i < NUM_LAYERS - 1; i++) {
-            cout << "new_z_i_atTop[" << i << "]: " << new_z_i_atTop[i] << endl;
-          })
-
-      int layerWithSmallestShift = 0;
-      float_value_t layerSMin = FLOAT_VALUE_T_MAX;
-
-      for (int i = 0; i < NUM_LAYERS - 1; i++) {
-        if ((float_value_t)std::abs((float)new_z_i_atTop[i] -
-                                    (float)previous_z_top_min) < layerSMin) {
-          layerSMin =
-              std::abs((float)new_z_i_atTop[i] - (float)previous_z_top_min);
-          layerWithSmallestShift = i;
-        }
-      }
-
-      layerWithSmallestShift++;
-
-      DEBUG_PRINT_ALL( // DEBUG: print layerSMin and layerWithSmallestShift
-          cout << "layerSMin: " << layerSMin << " layerWithSmallestShift: "
-               << layerWithSmallestShift << endl;)
-
-      DEBUG_PRINT_ALL(for (int i = 0; i < NUM_LAYERS - 1; i++) {
-        cout << i + 1 << " new_z_i_atTop: " << new_z_i_atTop[i]
-             << " shift_i_ztop: " << new_z_i_atTop[i] - previous_z_top_min
-             << " layerWithSmallestShift: " << layerWithSmallestShift << endl;
-      })
-
-      z_top_min = new_z_i_atTop[layerWithSmallestShift - 1];
-
-      if (std::abs((float)(z_top_min - previous_z_top_min)) <
-          ALIGNMENT_ACCURACY * 0.1) {
-        z_top_min = point_get_z(points[NUM_LAYERS - 1][current_z_top_index]);
-      }
-
-      if (std::abs((float)(z_top_min - previous_z_top_min)) <
-          ALIGNMENT_ACCURACY * 0.1) {
-        z_top_min = point_get_z(points[NUM_LAYERS - 2][current_z_top_index]);
-      }
-
-      if (std::abs((float)(z_top_min - previous_z_top_min)) <
-          ALIGNMENT_ACCURACY * 0.1) {
-        z_top_min = point_get_z(points[NUM_LAYERS - 3][current_z_top_index]);
-      }
-
-      if (((z_top_min - previous_z_top_min) * (white_space_height)) < 0) {
-        z_top_min = new_z_i_atTop[NUM_LAYERS - 2];
-      }
-
-      DEBUG_PRINT_ALL( // DEBUG: print z_top_min
-          cout << "z_top_min: " << z_top_min << endl;)
-
-      DEBUG_PRINT_ALL(
-          /**
-           * BUG: new_def_z_top_min prints 1.90735e-06 instead of 0
-           */
-          cout << " new_def_z_top_min_diff: "
-               << z_top_min -
-                      point_get_z(points[NUM_LAYERS - 1][current_z_top_index])
-               << endl;
-
-          cout << " new_ztop_index: " << current_z_top_index
-               << " new_z_i_index: " << new_z_i_index[0] << " "
-               << new_z_i_index[1] << " " << new_z_i_index[2] << " "
-               << new_z_i_index[3] << " " << new_z_i_index[4]
-               << " new_z_top_min: " << z_top_min
-               << " shift_ztop: " << z_top_min - previous_z_top_min << endl;)
-
-      int nPatchesAtComplementary = num_patches;
-
-      if (nPatchesAtComplementary > nPatchesAtOriginal) {
-        DEBUG_PRINT_ALL(
-            cout << "deleted complementary: " << a_corner[LATEST_PATCH_INDEX][0]
-                 << " " << a_corner[LATEST_PATCH_INDEX][1] << " for patch"
-                 << num_patches << endl;
-
-            cout << "deleted complementary: " << b_corner[LATEST_PATCH_INDEX][0]
-                 << " " << b_corner[LATEST_PATCH_INDEX][1] << endl;
-
-            cout << "deleted complementary: " << c_corner[LATEST_PATCH_INDEX][0]
-                 << " " << c_corner[LATEST_PATCH_INDEX][1] << endl;
-
-            cout << "deleted complementary: " << d_corner[LATEST_PATCH_INDEX][0]
-                 << " " << d_corner[LATEST_PATCH_INDEX][1] << endl;)
-
-        patch_buffer_delete_patch(patch_buffer, patch_buffer_is_empty,
-                                  latest_patch_index, num_patches, 0);
-      }
-
-      DEBUG_PRINT_ALL( // print ingredients
-          cout << "complementary_apexZ0: " << complementary_apexZ0 << endl;
-          cout << "z_top_min: " << z_top_min << endl;)
+      // print ingredients
+      DEBUG_PRINT_ALL(cout << "complementary_apexZ0: " << complementary_apexZ0
+                           << endl;
+                      cout << "z_top_min: " << z_top_min << endl;)
 
       makePatch_alignedToLine(
           complementary_apexZ0, z_top_min, true, points, num_points,
@@ -1123,43 +790,423 @@ _shadowquilt_column_loop:
           d_corner, squareAcceptance, flatTop, flatBottom, triangleAcceptance,
           patch_stream);
 
-      DEBUG_PRINT_ALL( // print latest patch made
+      getParallelograms(patch_buffer[latest_patch_index],
+                        pSlope[latest_patch_index],
+                        shadow_bottomL_jR[latest_patch_index],
+                        shadow_bottomR_jR[latest_patch_index],
+                        shadow_bottomL_jL[latest_patch_index],
+                        shadow_bottomR_jL[latest_patch_index],
+                        z1_min[latest_patch_index], z1_max[latest_patch_index]);
+
+      get_acceptanceCorners(
+          patch_buffer, patch_buffer_is_empty, latest_patch_index, num_patches,
+          pSlope, shadow_bottomL_jR, shadow_bottomR_jR, shadow_bottomL_jL,
+          shadow_bottomR_jL, z1_min, z1_max, a_corner, b_corner, c_corner,
+          d_corner, squareAcceptance, flatTop, flatBottom, triangleAcceptance,
+          patch_stream);
+
+      DEBUG_PRINT_ALL(
+          cout << "superpoints of patch_depth_1" << endl;
+          for (int i = 0; i < NUM_LAYERS; i++) {
+            cout << "superpoint " << i << " min: "
+                 << get_superpoint_min_z(patch_buffer[latest_patch_index][i])
+                 << " max: "
+                 << get_superpoint_max_z(patch_buffer[latest_patch_index][i])
+                 << endl;
+          })
+
+      DEBUG_PRINT_ALL(cout << "superpoints of patch_depth_2" << endl;
+                      for (int i = 0; i < NUM_LAYERS; i++) {
+                        cout << "superpoint " << i << " min: "
+                             << get_superpoint_min_z(
+                                    patch_buffer[latest_patch_index - 1][i])
+                             << " max: "
+                             << get_superpoint_max_z(
+                                    patch_buffer[latest_patch_index - 1][i])
+                             << endl;
+                      })
+
+      DEBUG_PRINT_ALL(cout << "complementary_apexZ0: " << complementary_apexZ0
+                           << endl;
+                      cout << "z_top_min: " << z_top_min << endl;)
+
+      // print patch_buffer[latest_patch_index - 1]
+      DEBUG_PRINT_ALL(
           cout << "Print patch num: " << num_patches << endl;
           for (int i = 0; i < NUM_LAYERS; i++) {
             for (int j = 0; j < NUM_POINTS_IN_SUPERPOINT; j++) {
-              cout << "patch_buffer[latest][" << i << "][" << j << "]: "
-                   << point_get_z(patch_buffer[latest_patch_index][i][j])
+              cout << "patch_buffer[1][" << i << "][" << j << "]: "
+                   << point_get_z(patch_buffer[latest_patch_index - 1][i][j])
                    << endl;
             }
           })
 
-      complementary_a = a_corner[latest_patch_index][1];
-      complementary_b = b_corner[latest_patch_index][1];
+      DEBUG_PRINT_ALL(if (num_patches == 2) {
+        // print min, max z of superpoints of last - 1 patch
+        cout << "Print patch num: " << num_patches - 1 << endl;
+        for (int i = 0; i < NUM_LAYERS; i++) {
+          cout << "superpoint " << i << " min: "
+               << get_superpoint_min_z(patch_buffer[latest_patch_index - 1][i])
+               << " max: "
+               << get_superpoint_max_z(patch_buffer[latest_patch_index - 1][i])
+               << endl;
+        }
 
-      previous_white_space_height = white_space_height;
+        // print min, max z of superpoints of last patch
+        cout << "Print patch num: " << num_patches << endl;
+        for (int i = 0; i < NUM_LAYERS; i++) {
+          cout << "superpoint " << i << " min: "
+               << get_superpoint_min_z(patch_buffer[latest_patch_index][i])
+               << " max: "
+               << get_superpoint_max_z(patch_buffer[latest_patch_index][i])
+               << endl;
+        }
+      })
 
-      white_space_height =
-          std::max(original_c - complementary_a, original_d - complementary_b);
+      madeComplementaryPatch = true;
 
       DEBUG_PRINT_ALL(
-          cout << "complementary_a:" << complementary_a << " "
-               << a_corner[latest_patch_index][1] << " || complementary_b:"
-               << complementary_b << " " << b_corner[latest_patch_index][1]
-               << " new z_top_min: " << z_top_min << endl;
-          cout << "new white_space_height: " << white_space_height << endl;
-          cout << "adjusted complementary: " << a_corner[latest_patch_index][0]
-               << " " << a_corner[latest_patch_index][1]
-               << " for z_top_min:" << z_top_min << endl;
-          cout << "adjusted complementary: " << b_corner[latest_patch_index][0]
-               << " " << b_corner[latest_patch_index][1] << "for patch "
+          cout << "complementary: [" << a_corner[latest_patch_index][0] << ", "
+               << a_corner[latest_patch_index][1]
+               << "] for z_top_min: " << z_top_min << endl;
+          cout << "complementary: [" << b_corner[latest_patch_index][0] << ", "
+               << b_corner[latest_patch_index][1] << "] for patch "
                << num_patches << endl;
-          cout << "adjusted complementary: " << c_corner[latest_patch_index][0]
-               << " " << c_corner[latest_patch_index][1] << endl;
-          cout << "adjusted complementary: " << d_corner[latest_patch_index][0]
-               << " " << d_corner[latest_patch_index][1] << endl;)
+          cout << "complementary: [" << c_corner[latest_patch_index][0] << ", "
+               << c_corner[latest_patch_index][1] << "]" << endl;
+          cout << "complementary: [" << d_corner[latest_patch_index][0] << ", "
+               << d_corner[latest_patch_index][1] << "]" << endl;)
 
-      // PATCH_EXIT(2)
-      return;
+      float_value_t complementary_a = a_corner[latest_patch_index][1];
+      float_value_t complementary_b = b_corner[latest_patch_index][1];
+
+      float_value_t white_space_height =
+          std::max(original_c - complementary_a, original_d - complementary_b);
+      float_value_t previous_white_space_height = -1;
+      int_value_t counter = 0;
+      int_value_t counterUpshift = 0;
+      int_value_t current_z_top_index = -1;
+      float_value_t previous_z_top_min = FLOAT_VALUE_T_MIN;
+
+      bool cond_loop_adjust_complementary_patch = false;
+
+      // TODO: extract to external function
+      cond_loop_adjust_complementary_patch =
+          !(white_space_height <= 0 && (previous_white_space_height >= 0) &&
+            (std::abs((double)white_space_height) > 0.000001) &&
+            ((c_corner[latest_patch_index][1] >
+              (float_value_t)(-1 * get_trapezoid_edges(NUM_LAYERS - 1))) ||
+             (white_space_height > 0)) &&
+            (current_z_top_index < (num_points[NUM_LAYERS - 1] - 1)) &&
+            !repeat_patch && !repeat_original);
+
+    loop_adjust_complementary_patch:
+      while (cond_loop_adjust_complementary_patch) {
+        DEBUG_PRINT_ALL(cout << endl; if (num_patches > 2) {
+          // this part not tested yet
+          cout << 'roginal c: ' << original_c << " "
+               << c_corner[PREVIOUS_PATCH_INDEX][1]
+               << " || original d: " << original_d << " "
+               << d_corner[PREVIOUS_PATCH_INDEX][1] << endl;
+        })
+
+        DEBUG_PRINT_ALL(cout << "complementary_a: " << complementary_a << " "
+                             << a_corner[LATEST_PATCH_INDEX][1]
+                             << " || complementary_b: " << complementary_b
+                             << " " << b_corner[LATEST_PATCH_INDEX][1] << endl;)
+
+        current_z_top_index = get_index_from_z(
+            NUM_LAYERS - 1, z_top_min, points, num_points, patch_buffer,
+            patch_buffer_is_empty, latest_patch_index, num_patches, pSlope,
+            shadow_bottomL_jR, shadow_bottomR_jR, shadow_bottomL_jL,
+            shadow_bottomR_jL, z1_min, z1_max, a_corner, b_corner, c_corner,
+            d_corner, squareAcceptance, flatTop, flatBottom, triangleAcceptance,
+            patch_stream);
+
+        DEBUG_PRINT_ALL(cout << "current white_space_height: "
+                             << white_space_height << endl;
+                        cout << "counter: " << counter
+                             << " counterUpshift: " << counterUpshift << endl;
+                        cout << "orig_ztop: " << current_z_top_index
+                             << " orig_z_top_min: " << z_top_min << endl;)
+
+        float_value_t current_z_i_index[NUM_LAYERS] = {FLOAT_VALUE_T_MAX};
+        float_value_t new_z_i_index[NUM_LAYERS] = {FLOAT_VALUE_T_MAX};
+
+      loop_copy_z_values_to_current_z_array:
+        for (int i = 0; i < NUM_LAYERS; i++) {
+          float_value_t z_value_tmp = straightLineProjectorFromLayerIJtoK(
+              complementary_apexZ0, z_top_min, 1, NUM_LAYERS, i + 1);
+
+          current_z_i_index[i] = get_index_from_z(
+              i, z_value_tmp, points, num_points, patch_buffer,
+              patch_buffer_is_empty, latest_patch_index, num_patches, pSlope,
+              shadow_bottomL_jR, shadow_bottomR_jR, shadow_bottomL_jL,
+              shadow_bottomR_jL, z1_min, z1_max, a_corner, b_corner, c_corner,
+              d_corner, squareAcceptance, flatTop, flatBottom,
+              triangleAcceptance, patch_stream);
+        }
+
+        DEBUG_PRINT_ALL(
+            // DEBUG: print current_z_i_index
+            for (int i = 0; i < NUM_LAYERS; i++) {
+              cout << "current_z_i_index[" << i << "]: " << current_z_i_index[i]
+                   << endl;
+            })
+
+        if (z_top_min == previous_z_top_min) {
+          current_z_top_index++;
+          for (int i = 0; i < NUM_LAYERS; i++) {
+            new_z_i_index[i] = current_z_i_index[i] + 1;
+          }
+        }
+
+        previous_z_top_min = z_top_min;
+
+        if (white_space_height < 0) {
+          counter++;
+          current_z_top_index--;
+
+          /**
+           * BUG: this is probably wrong, not sure about the actual size of
+           * new_z_i_index
+           */
+          for (int i = 0; i < NUM_LAYERS; i++) {
+            new_z_i_index[i] = current_z_i_index[i] - 1;
+          }
+        } else {
+          counterUpshift++;
+          current_z_top_index++;
+
+          for (int i = 0; i < NUM_LAYERS; i++) {
+            new_z_i_index[i] = current_z_i_index[i] + 1;
+          }
+        }
+
+        DEBUG_PRINT_ALL( // DEBUG: print new_z_i_index
+            for (int i = 0; i < NUM_LAYERS; i++) {
+              cout << "new_z_i_index[" << i << "]: " << new_z_i_index[i]
+                   << endl;
+            })
+
+        int x = num_points[NUM_LAYERS - 1] - 1;
+        current_z_top_index = std::min((int)current_z_top_index, x);
+
+        for (int i = 0; i < NUM_LAYERS; i++) {
+          new_z_i_index[i] =
+              std::min((float)new_z_i_index[i], (float)(num_points[i] - 1));
+        }
+
+        DEBUG_PRINT_ALL( // DEBUG: print new_z_i_index
+            for (int i = 0; i < NUM_LAYERS; i++) {
+              cout << "new_z_i_index[" << i << "]: " << new_z_i_index[i]
+                   << endl;
+            })
+
+        for (int i = 0; i < NUM_LAYERS; i++) {
+          new_z_i_index[i] = std::max((float)new_z_i_index[i], 0.0f);
+        }
+
+        float_value_t new_z_i[NUM_LAYERS] = {FLOAT_VALUE_T_MAX};
+
+        for (int i = 0; i < NUM_LAYERS; i++) {
+          new_z_i[i] = point_get_z(points[i][(int)new_z_i_index[i]]);
+        }
+
+        DEBUG_PRINT_ALL( // DEBUG: print new_z_i
+            for (int i = 0; i < NUM_LAYERS; i++) {
+              cout << "new_z_i[" << i << "]: " << new_z_i[i] << endl;
+            })
+
+        float_value_t new_z_i_atTop[NUM_LAYERS] = {FLOAT_VALUE_T_MAX};
+
+        for (int i = 1; i < NUM_LAYERS; i++) {
+          new_z_i_atTop[i - 1] = straightLineProjectorFromLayerIJtoK(
+              complementary_apexZ0, new_z_i[i], 1, i + 1, NUM_LAYERS);
+        }
+
+        DEBUG_PRINT_ALL(
+            // DEBUG: print new_z_i_atTop
+            for (int i = 0; i < NUM_LAYERS - 1; i++) {
+              cout << "new_z_i_atTop[" << i << "]: " << new_z_i_atTop[i]
+                   << endl;
+            })
+
+        int layerWithSmallestShift = 0;
+        float_value_t layerSMin = FLOAT_VALUE_T_MAX;
+
+        for (int i = 0; i < NUM_LAYERS - 1; i++) {
+          if ((float_value_t)std::abs((float)new_z_i_atTop[i] -
+                                      (float)previous_z_top_min) < layerSMin) {
+            layerSMin =
+                std::abs((float)new_z_i_atTop[i] - (float)previous_z_top_min);
+            layerWithSmallestShift = i;
+          }
+        }
+
+        layerWithSmallestShift++;
+
+        DEBUG_PRINT_ALL( // DEBUG: print layerSMin and layerWithSmallestShift
+            cout << "layerSMin: " << layerSMin << " layerWithSmallestShift: "
+                 << layerWithSmallestShift << endl;)
+
+        DEBUG_PRINT_ALL(for (int i = 0; i < NUM_LAYERS - 1; i++) {
+          cout << i + 1 << " new_z_i_atTop: " << new_z_i_atTop[i]
+               << " shift_i_ztop: " << new_z_i_atTop[i] - previous_z_top_min
+               << " layerWithSmallestShift: " << layerWithSmallestShift << endl;
+        })
+
+        z_top_min = new_z_i_atTop[layerWithSmallestShift - 1];
+
+        if (std::abs((float)(z_top_min - previous_z_top_min)) <
+            ALIGNMENT_ACCURACY * 0.1) {
+          z_top_min = point_get_z(points[NUM_LAYERS - 1][current_z_top_index]);
+        }
+
+        if (std::abs((float)(z_top_min - previous_z_top_min)) <
+            ALIGNMENT_ACCURACY * 0.1) {
+          z_top_min = point_get_z(points[NUM_LAYERS - 2][current_z_top_index]);
+        }
+
+        if (std::abs((float)(z_top_min - previous_z_top_min)) <
+            ALIGNMENT_ACCURACY * 0.1) {
+          z_top_min = point_get_z(points[NUM_LAYERS - 3][current_z_top_index]);
+        }
+
+        if (((z_top_min - previous_z_top_min) * (white_space_height)) < 0) {
+          z_top_min = new_z_i_atTop[NUM_LAYERS - 2];
+        }
+
+        DEBUG_PRINT_ALL( // DEBUG: print z_top_min
+            cout << "z_top_min: " << z_top_min << endl;)
+
+        DEBUG_PRINT_ALL(
+            /**
+             * BUG: new_def_z_top_min prints 1.90735e-06 instead of 0
+             */
+            cout << " new_def_z_top_min_diff: "
+                 << z_top_min -
+                        point_get_z(points[NUM_LAYERS - 1][current_z_top_index])
+                 << endl;
+
+            cout << " new_ztop_index: " << current_z_top_index
+                 << " new_z_i_index: " << new_z_i_index[0] << " "
+                 << new_z_i_index[1] << " " << new_z_i_index[2] << " "
+                 << new_z_i_index[3] << " " << new_z_i_index[4]
+                 << " new_z_top_min: " << z_top_min
+                 << " shift_ztop: " << z_top_min - previous_z_top_min << endl;)
+
+        int nPatchesAtComplementary = num_patches;
+
+        if (nPatchesAtComplementary > nPatchesAtOriginal) {
+          DEBUG_PRINT_ALL(cout << "deleted complementary: "
+                               << a_corner[LATEST_PATCH_INDEX][0] << " "
+                               << a_corner[LATEST_PATCH_INDEX][1]
+                               << " for patch" << num_patches << endl;
+
+                          cout << "deleted complementary: "
+                               << b_corner[LATEST_PATCH_INDEX][0] << " "
+                               << b_corner[LATEST_PATCH_INDEX][1] << endl;
+
+                          cout << "deleted complementary: "
+                               << c_corner[LATEST_PATCH_INDEX][0] << " "
+                               << c_corner[LATEST_PATCH_INDEX][1] << endl;
+
+                          cout << "deleted complementary: "
+                               << d_corner[LATEST_PATCH_INDEX][0] << " "
+                               << d_corner[LATEST_PATCH_INDEX][1] << endl;)
+
+          patch_buffer_delete_patch(patch_buffer, patch_buffer_is_empty,
+                                    latest_patch_index, num_patches, 0);
+        }
+
+        DEBUG_PRINT_ALL( // print ingredients
+            cout << "complementary_apexZ0: " << complementary_apexZ0 << endl;
+            cout << "z_top_min: " << z_top_min << endl;)
+
+        makePatch_alignedToLine(
+            complementary_apexZ0, z_top_min, true, points, num_points,
+            patch_buffer, patch_buffer_is_empty, latest_patch_index,
+            num_patches, pSlope, shadow_bottomL_jR, shadow_bottomR_jR,
+            shadow_bottomL_jL, shadow_bottomR_jR, z1_min, z1_max, a_corner,
+            b_corner, c_corner, d_corner, squareAcceptance, flatTop, flatBottom,
+            triangleAcceptance, patch_stream);
+
+        // DEBUG: print c_corner
+        cout << "c_corner: " << c_corner[latest_patch_index][0] << " "
+             << c_corner[latest_patch_index][1] << endl;
+
+        if (g_debug_counter == 3) {
+          cout << "debug exit" << endl;
+          exit(0);
+        }
+
+        DEBUG_PRINT_ALL( // print latest patch made
+            cout << "Print patch num: " << num_patches << endl;
+            for (int i = 0; i < NUM_LAYERS; i++) {
+              for (int j = 0; j < NUM_POINTS_IN_SUPERPOINT; j++) {
+                cout << "patch_buffer[latest][" << i << "][" << j << "]: "
+                     << point_get_z(patch_buffer[latest_patch_index][i][j])
+                     << endl;
+              }
+            })
+
+        complementary_a = a_corner[latest_patch_index][1];
+        complementary_b = b_corner[latest_patch_index][1];
+
+        previous_white_space_height = white_space_height;
+
+        white_space_height = std::max(original_c - complementary_a,
+                                      original_d - complementary_b);
+
+        cout << "complementary_a:" << complementary_a << " "
+             << a_corner[latest_patch_index][1]
+             << " || complementary_b:" << complementary_b << " "
+             << b_corner[latest_patch_index][1]
+             << " new z_top_min: " << z_top_min << endl;
+        cout << "new white_space_height: " << white_space_height << endl;
+        cout << "adjusted complementary: " << a_corner[latest_patch_index][0]
+             << " " << a_corner[latest_patch_index][1]
+             << " for z_top_min:" << z_top_min << endl;
+        cout << "adjusted complementary: " << b_corner[latest_patch_index][0]
+             << " " << b_corner[latest_patch_index][1] << "for patch "
+             << num_patches << endl;
+        cout << "adjusted complementary: " << c_corner[latest_patch_index][0]
+             << " " << c_corner[latest_patch_index][1] << endl;
+        cout << "adjusted complementary: " << d_corner[latest_patch_index][0]
+             << " " << d_corner[latest_patch_index][1] << endl;
+
+        // PATCH_EXIT(2)
+        /**
+         * BUG: Fix 42 not implemented
+         */
+        /**
+         * TODO: extract to external function
+         */
+        cond_loop_adjust_complementary_patch =
+            !(white_space_height <= 0 && (previous_white_space_height >= 0) &&
+              (std::abs((double)white_space_height) > 0.000001) &&
+              ((c_corner[latest_patch_index][1] >
+                (float_value_t)(-1 * get_trapezoid_edges(NUM_LAYERS - 1))) ||
+               (white_space_height > 0)) &&
+              (current_z_top_index < (num_points[NUM_LAYERS - 1] - 1)) &&
+              !repeat_patch && !repeat_original);
+
+        // print ingredients of the condition
+        cout << endl << "CONDITION:" << endl;
+        cout << "white_space_height: " << white_space_height << endl;
+        cout << "c_corner: " << c_corner[latest_patch_index][1] << endl;
+        cout << "current_z_top_index: " << current_z_top_index << endl;
+        cout << "repeat_patch: " << repeat_patch << endl;
+        cout << "repeat_original: " << repeat_original << endl;
+        cout << "g_debug_counter: " << g_debug_counter << endl;
+
+        g_debug_counter++;
+
+        if (g_debug_counter >= 11) {
+          exit(0);
+        }
+      }
     }
 
     // get condition for next iteration
@@ -1252,10 +1299,10 @@ void system_top(point_t points[NUM_LAYERS][MAX_NUM_POINTS],
   return;
 }
 
-#if CONFIG_IS_SYNTHESIS == false
-int main() {
-  cout << "Hello, world!" << endl;
+// #if CONFIG_IS_SYNTHESIS == false
+// int main() {
+//   cout << "Hello, world!" << endl;
 
-  return 0;
-}
-#endif
+//   return 0;
+// }
+// #endif

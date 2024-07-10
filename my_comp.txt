@@ -1,0 +1,48 @@
+c_corner: 7.75751 21.8966
+complementary_a:7.50636 7.50636 || complementary_b:2.75884 2.75884 new z_top_min: -19.2292
+new white_space_height: 14.3902
+adjusted complementary: 7.75751 7.50636 for z_top_min:-19.2292
+adjusted complementary: 22.0001 2.75884for patch 2
+adjusted complementary: 7.75751 -20.8228
+adjusted complementary: 22.0001 -20.8228
+
+CONDITION:
+white_space_height: 14.3902
+c_corner: -20.8228
+current_z_top_index: 35
+repeat_patch: 0
+repeat_original: 0
+g_debug_counter: 0
+c_corner: 7.75751 21.8966
+complementary_a:7.50636 7.50636 || complementary_b:2.75884 2.75884 new z_top_min: -18.1842
+new white_space_height: 14.3902
+adjusted complementary: 7.75751 7.50636 for z_top_min:-18.1842
+adjusted complementary: 22.0001 2.75884for patch 2
+adjusted complementary: 7.75751 -20.8228
+adjusted complementary: 22.0001 -20.8228
+
+CONDITION:
+white_space_height: 14.3902
+c_corner: -20.8228
+current_z_top_index: 36
+repeat_patch: 0
+repeat_original: 0
+g_debug_counter: 1
+c_corner: 7.75751 21.8966
+complementary_a:7.50636 7.50636 || complementary_b:2.75884 2.75884 new z_top_min: -17.0298
+new white_space_height: 14.3902
+adjusted complementary: 7.75751 7.50636 for z_top_min:-17.0298
+adjusted complementary: 22.0001 2.75884for patch 2
+adjusted complementary: 7.75751 -20.8228
+adjusted complementary: 22.0001 -20.8228
+
+CONDITION:
+white_space_height: 14.3902
+c_corner: -20.8228
+current_z_top_index: 37
+repeat_patch: 0
+repeat_original: 0
+g_debug_counter: 2
+c_corner: 7.75751 21.8966
+debug exit
+The maximum depth reached by any of the 1 hls::stream() instances in the design is 0
