@@ -1445,42 +1445,17 @@ public:
                      << endl;
                 cout << "z_top_min: " << z_top_min << endl;)
 
-            cout << "========================" << endl;
-
-            // print ingredient of makepatch
-            cout << "complementary_apexZ0: " << complementary_apexZ0 << endl;
-            cout << "z_top_min: " << z_top_min << endl;
-
             makePatch_alignedToLine(complementary_apexZ0, z_top_min, ppl, true);
 
-            // print c_corner
-            cout << "c_corner: " << patches[patches.size() - 1].c_corner[0]
-                 << " " << patches[patches.size() - 1].c_corner[1] << endl;
-
-            // print patch made
-            cout << "Print patch num: " << patches.size() << endl;
-            for (int i = 0; i < 5; i++) {
-              for (int j = 0; j < 16; j++) {
-                cout << "patch_buffer[latest][" << i << "][" << j << "]: "
-                     << patches[patches.size() - 1].superpoints[i].points[j].z
-                     << endl;
-              }
-            }
-
-            // print corners of the latest patch
-            cout << "a_corner: " << patches[patches.size() - 1].a_corner[0]
-                 << " " << patches[patches.size() - 1].a_corner[1] << endl;
-            cout << "b_corner: " << patches[patches.size() - 1].b_corner[0]
-                 << " " << patches[patches.size() - 1].b_corner[1] << endl;
-            cout << "c_corner: " << patches[patches.size() - 1].c_corner[0]
-                 << " " << patches[patches.size() - 1].c_corner[1] << endl;
-            cout << "d_corner: " << patches[patches.size() - 1].d_corner[0]
-                 << " " << patches[patches.size() - 1].d_corner[1] << endl;
-
-            if (g_debug_counter == 3) {
-              cout << "debug exit" << endl;
-              exit(0);
-            }
+            DEBUG_PRINT_ALL( // print corners of the latest patch
+                cout << "a_corner: " << patches[patches.size() - 1].a_corner[0]
+                     << " " << patches[patches.size() - 1].a_corner[1] << endl;
+                cout << "b_corner: " << patches[patches.size() - 1].b_corner[0]
+                     << " " << patches[patches.size() - 1].b_corner[1] << endl;
+                cout << "c_corner: " << patches[patches.size() - 1].c_corner[0]
+                     << " " << patches[patches.size() - 1].c_corner[1] << endl;
+                cout << "d_corner: " << patches[patches.size() - 1].d_corner[0]
+                     << " " << patches[patches.size() - 1].d_corner[1] << endl;)
 
             DEBUG_PRINT_ALL( // print latest patch made
                 cout << "Print patch num: " << patches.size() << endl;
@@ -1503,26 +1478,28 @@ public:
             white_space_height =
                 max(original_c - complementary_a, original_d - complementary_b);
 
-            cout << "complementary_a:" << complementary_a << " "
-                 << patches[patches.size() - 1].a_corner[1]
-                 << " || complementary_b:" << complementary_b << " "
-                 << patches[patches.size() - 1].b_corner[1]
-                 << " new z_top_min: " << z_top_min << endl;
-            cout << "new white_space_height: " << white_space_height << endl;
-            cout << "adjusted complementary: "
-                 << patches[patches.size() - 1].a_corner[0] << " "
-                 << patches[patches.size() - 1].a_corner[1]
-                 << " for z_top_min:" << z_top_min << endl;
-            cout << "adjusted complementary: "
-                 << patches[patches.size() - 1].b_corner[0] << " "
-                 << patches[patches.size() - 1].b_corner[1] << "for patch "
-                 << patches.size() << endl;
-            cout << "adjusted complementary: "
-                 << patches[patches.size() - 1].c_corner[0] << " "
-                 << patches[patches.size() - 1].c_corner[1] << endl;
-            cout << "adjusted complementary: "
-                 << patches[patches.size() - 1].d_corner[0] << " "
-                 << patches[patches.size() - 1].d_corner[1] << endl;
+            DEBUG_PRINT_ALL(
+                cout << "complementary_a:" << complementary_a << " "
+                     << patches[patches.size() - 1].a_corner[1]
+                     << " || complementary_b:" << complementary_b << " "
+                     << patches[patches.size() - 1].b_corner[1]
+                     << " new z_top_min: " << z_top_min << endl;
+                cout << "new white_space_height: " << white_space_height
+                     << endl;
+                cout << "adjusted complementary: "
+                     << patches[patches.size() - 1].a_corner[0] << " "
+                     << patches[patches.size() - 1].a_corner[1]
+                     << " for z_top_min:" << z_top_min << endl;
+                cout << "adjusted complementary: "
+                     << patches[patches.size() - 1].b_corner[0] << " "
+                     << patches[patches.size() - 1].b_corner[1] << "for patch "
+                     << patches.size() << endl;
+                cout << "adjusted complementary: "
+                     << patches[patches.size() - 1].c_corner[0] << " "
+                     << patches[patches.size() - 1].c_corner[1] << endl;
+                cout << "adjusted complementary: "
+                     << patches[patches.size() - 1].d_corner[0] << " "
+                     << patches[patches.size() - 1].d_corner[1] << endl;)
 
             if ((n_patches > 3) && fix42) {
               if ((patches[patches.size() - 1]
@@ -1556,18 +1533,6 @@ public:
                                         true);
               }
             }
-
-            // print ingredients of the condition
-            cout << endl << "CONDITION:" << endl;
-            cout << "white_space_height: " << white_space_height << endl;
-            cout << "c_corner: " << patches[patches.size() - 1].c_corner[1]
-                 << endl;
-            cout << "current_z_top_index: " << current_z_top_index << endl;
-            cout << "repeat_patch: " << repeat_patch << endl;
-            cout << "repeat_original: " << repeat_original << endl;
-            cout << "g_debug_counter: " << g_debug_counter << endl;
-
-            g_debug_counter++;
           }
 
           exit(0);

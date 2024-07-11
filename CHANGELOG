@@ -12,3 +12,7 @@ Working on bug that adjustment of whitespace runs into infinite loop.
     - `get_acceptancecorners` is not called, as well as `get_parallelogram`
 
 By adding missing function calls, correct c_corners are produced.
+
+#### Wrong number of iteration when adjusting white spaces
+
+- Fixed by correcting while condition
