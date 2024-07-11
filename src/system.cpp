@@ -1214,7 +1214,7 @@ _shadowquilt_column_loop:
             !(repeat_patch) && !(repeat_original);
       }
 
-      exit(0);
+      // exit(0);
     }
 
     // get condition for next iteration
