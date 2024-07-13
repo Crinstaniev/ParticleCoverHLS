@@ -1,3 +1,12 @@
+## [2024-07-12]
+
+### [IMPL]
+
+Implemented `getShadows()`
+
+- Passed C-Synthesis
+- Passed Co-Simulation
+
 ## [2024-07-10]
 
 ### [BUG FIXES]

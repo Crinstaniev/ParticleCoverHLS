@@ -506,9 +506,11 @@ alignedtoline_layer_loop:
         apexZ0, z_top, leftRight, points, num_points, init_patch, patch_buffer,
         patch_buffer_is_empty, latest_patch_index, num_patches, pSlope,
         shadow_bottomL_jR, shadow_bottomR_jR, shadow_bottomL_jL,
-        shadow_bottomR_jL, z1_min, z1_max, a_corner, b_corner, c_corner,
-        d_corner, squareAcceptance, flatTop, flatBottom, triangleAcceptance,
-        patch_stream, i);
+        shadow_bottomR_jL, shadow_fromTopToInnermost_topL_jL,
+        shadow_fromTopToInnermost_topL_jR, shadow_fromTopToInnermost_topR_jL,
+        shadow_fromTopToInnermost_topR_jR, z1_min, z1_max, a_corner, b_corner,
+        c_corner, d_corner, squareAcceptance, flatTop, flatBottom,
+        triangleAcceptance, patch_stream, i);
   }
 
   // print init_patch
@@ -582,9 +584,79 @@ loop_find_minimum_z_values_from_layer_with_index:
   return index;
 }
 
+void getShadows(float_value_t zTopMin, float_value_t zTopMax,
+                point_t patch[NUM_LAYERS][NUM_POINTS_IN_SUPERPOINT],
+                float_value_t &shadow_fromTopToInnermost_topL_jL,
+                float_value_t &shadow_fromTopToInnermost_topL_jR,
+                float_value_t &shadow_fromTopToInnermost_topR_jL,
+                float_value_t &shadow_fromTopToInnermost_topR_jR) {
+
+  float_value_t zTop_min = FLOAT_VALUE_T_MAX;
+  float_value_t zTop_max = FLOAT_VALUE_T_MIN;
+
+  float_value_t topL_jL[NUM_LAYERS - 1] = {FLOAT_VALUE_T_MAX};
+  float_value_t topL_jR[NUM_LAYERS - 1] = {FLOAT_VALUE_T_MIN};
+  float_value_t topR_jL[NUM_LAYERS - 1] = {FLOAT_VALUE_T_MAX};
+  float_value_t topR_jR[NUM_LAYERS - 1] = {FLOAT_VALUE_T_MIN};
+
+  float_value_t topL_jL_max = FLOAT_VALUE_T_MIN;
+  float_value_t topL_jR_min = FLOAT_VALUE_T_MAX;
+  float_value_t topR_jL_max = FLOAT_VALUE_T_MIN;
+  float_value_t topR_jR_min = FLOAT_VALUE_T_MAX;
+
+  zTop_min = GET_MAX_VAL_UNIVERSAL(
+      (float_value_t)zTopMin,
+      (float_value_t)(-get_trapezoid_edges(NUM_LAYERS - 1)));
+  zTop_max =
+      GET_MIN_VAL_UNIVERSAL((float_value_t)zTopMax,
+                            (float_value_t)get_trapezoid_edges(NUM_LAYERS - 1));
+
+/**
+ * Optimization suggestion:
+ * Since only 4 elements are involved in getting min and max,
+ * firstly get 2 pairs compared in parallel, then get the min and max.
+ */
+loop_calculate_shadows:
+  for (int i = 0; i < NUM_LAYERS - 1; i++) {
+    int j = i + 1;
+    float_value_t z_j_min = get_superpoint_min_z(patch[i]);
+    float_value_t z_j_max = get_superpoint_max_z(patch[i]);
+
+    topL_jL[i] = straightLineProjectorFromLayerIJtoK(zTop_min, z_j_min,
+                                                     NUM_LAYERS, j, 1);
+    topL_jR[i] = straightLineProjectorFromLayerIJtoK(zTop_min, z_j_max,
+                                                     NUM_LAYERS, j, 1);
+    topR_jL[i] = straightLineProjectorFromLayerIJtoK(zTop_max, z_j_min,
+                                                     NUM_LAYERS, j, 1);
+    topR_jR[i] = straightLineProjectorFromLayerIJtoK(zTop_max, z_j_max,
+                                                     NUM_LAYERS, j, 1);
+
+    // calculate min and max values
+    if (topL_jL[i] > topL_jL_max) {
+      topL_jL_max = topL_jL[i];
+    }
+    if (topL_jR[i] < topL_jR_min) {
+      topL_jR_min = topL_jR[i];
+    }
+    if (topR_jL[i] > topR_jL_max) {
+      topR_jL_max = topR_jL[i];
+    }
+    if (topR_jR[i] < topR_jR_min) {
+      topR_jR_min = topR_jR[i];
+    }
+  }
+
+  shadow_fromTopToInnermost_topL_jL = topL_jL_max;
+  shadow_fromTopToInnermost_topL_jR = topL_jR_min;
+  shadow_fromTopToInnermost_topR_jL = topR_jL_max;
+  shadow_fromTopToInnermost_topR_jR = topR_jR_min;
+
+  return;
+}
+
 void _shadowquilt_main_loop_make_verticle_strip(
     point_t points[NUM_LAYERS][MAX_NUM_POINTS], index_t num_points[NUM_LAYERS],
-    z_value_t &apexZ0, PATCH_BUFFER_ARGS) {
+    z_value_t &apexZ0, z_value_t &saved_apexZ0, PATCH_BUFFER_ARGS) {
   // variable declarations
   z_value_t z_top_min = -1 * TOP_LAYER_LIM;
   float_value_t complementary_apexZ0 = 0x0;
@@ -621,9 +693,11 @@ _shadowquilt_column_loop:
         apexZ0, z_top_max, false, points, num_points, patch_buffer,
         patch_buffer_is_empty, latest_patch_index, num_patches, pSlope,
         shadow_bottomL_jR, shadow_bottomR_jR, shadow_bottomL_jL,
-        shadow_bottomR_jL, z1_min, z1_max, a_corner, b_corner, c_corner,
-        d_corner, squareAcceptance, flatTop, flatBottom, triangleAcceptance,
-        patch_stream);
+        shadow_bottomR_jL, shadow_fromTopToInnermost_topL_jL,
+        shadow_fromTopToInnermost_topL_jR, shadow_fromTopToInnermost_topR_jL,
+        shadow_fromTopToInnermost_topR_jR, z1_min, z1_max, a_corner, b_corner,
+        c_corner, d_corner, squareAcceptance, flatTop, flatBottom,
+        triangleAcceptance, patch_stream);
 
     getParallelograms(patch_buffer[latest_patch_index],
                       pSlope[latest_patch_index],
@@ -636,9 +710,11 @@ _shadowquilt_column_loop:
     get_acceptanceCorners(
         patch_buffer, patch_buffer_is_empty, latest_patch_index, num_patches,
         pSlope, shadow_bottomL_jR, shadow_bottomR_jR, shadow_bottomL_jL,
-        shadow_bottomR_jL, z1_min, z1_max, a_corner, b_corner, c_corner,
-        d_corner, squareAcceptance, flatTop, flatBottom, triangleAcceptance,
-        patch_stream);
+        shadow_bottomR_jL, shadow_fromTopToInnermost_topL_jL,
+        shadow_fromTopToInnermost_topL_jR, shadow_fromTopToInnermost_topR_jL,
+        shadow_fromTopToInnermost_topR_jR, z1_min, z1_max, a_corner, b_corner,
+        c_corner, d_corner, squareAcceptance, flatTop, flatBottom,
+        triangleAcceptance, patch_stream);
 
     // >>>>> PRINT FIRST PATCH MADE <<<<<
     DEBUG_PRINT_ALL(
@@ -786,9 +862,11 @@ _shadowquilt_column_loop:
           complementary_apexZ0, z_top_min, true, points, num_points,
           patch_buffer, patch_buffer_is_empty, latest_patch_index, num_patches,
           pSlope, shadow_bottomL_jR, shadow_bottomR_jR, shadow_bottomL_jL,
-          shadow_bottomR_jR, z1_min, z1_max, a_corner, b_corner, c_corner,
-          d_corner, squareAcceptance, flatTop, flatBottom, triangleAcceptance,
-          patch_stream);
+          shadow_bottomR_jR, shadow_fromTopToInnermost_topL_jL,
+          shadow_fromTopToInnermost_topL_jR, shadow_fromTopToInnermost_topR_jL,
+          shadow_fromTopToInnermost_topR_jR, z1_min, z1_max, a_corner, b_corner,
+          c_corner, d_corner, squareAcceptance, flatTop, flatBottom,
+          triangleAcceptance, patch_stream);
 
       getParallelograms(patch_buffer[latest_patch_index],
                         pSlope[latest_patch_index],
@@ -801,9 +879,11 @@ _shadowquilt_column_loop:
       get_acceptanceCorners(
           patch_buffer, patch_buffer_is_empty, latest_patch_index, num_patches,
           pSlope, shadow_bottomL_jR, shadow_bottomR_jR, shadow_bottomL_jL,
-          shadow_bottomR_jL, z1_min, z1_max, a_corner, b_corner, c_corner,
-          d_corner, squareAcceptance, flatTop, flatBottom, triangleAcceptance,
-          patch_stream);
+          shadow_bottomR_jL, shadow_fromTopToInnermost_topL_jL,
+          shadow_fromTopToInnermost_topL_jR, shadow_fromTopToInnermost_topR_jL,
+          shadow_fromTopToInnermost_topR_jR, z1_min, z1_max, a_corner, b_corner,
+          c_corner, d_corner, squareAcceptance, flatTop, flatBottom,
+          triangleAcceptance, patch_stream);
 
       DEBUG_PRINT_ALL(
           cout << "superpoints of patch_depth_1" << endl;
@@ -919,9 +999,12 @@ _shadowquilt_column_loop:
             NUM_LAYERS - 1, z_top_min, points, num_points, patch_buffer,
             patch_buffer_is_empty, latest_patch_index, num_patches, pSlope,
             shadow_bottomL_jR, shadow_bottomR_jR, shadow_bottomL_jL,
-            shadow_bottomR_jL, z1_min, z1_max, a_corner, b_corner, c_corner,
-            d_corner, squareAcceptance, flatTop, flatBottom, triangleAcceptance,
-            patch_stream);
+            shadow_bottomR_jL, shadow_fromTopToInnermost_topL_jL,
+            shadow_fromTopToInnermost_topL_jR,
+            shadow_fromTopToInnermost_topR_jL,
+            shadow_fromTopToInnermost_topR_jR, z1_min, z1_max, a_corner,
+            b_corner, c_corner, d_corner, squareAcceptance, flatTop, flatBottom,
+            triangleAcceptance, patch_stream);
 
         DEBUG_PRINT_ALL(cout << "current white_space_height: "
                              << white_space_height << endl;
@@ -942,9 +1025,12 @@ _shadowquilt_column_loop:
               i, z_value_tmp, points, num_points, patch_buffer,
               patch_buffer_is_empty, latest_patch_index, num_patches, pSlope,
               shadow_bottomL_jR, shadow_bottomR_jR, shadow_bottomL_jL,
-              shadow_bottomR_jL, z1_min, z1_max, a_corner, b_corner, c_corner,
-              d_corner, squareAcceptance, flatTop, flatBottom,
-              triangleAcceptance, patch_stream);
+              shadow_bottomR_jL, shadow_fromTopToInnermost_topL_jL,
+              shadow_fromTopToInnermost_topL_jR,
+              shadow_fromTopToInnermost_topR_jL,
+              shadow_fromTopToInnermost_topR_jR, z1_min, z1_max, a_corner,
+              b_corner, c_corner, d_corner, squareAcceptance, flatTop,
+              flatBottom, triangleAcceptance, patch_stream);
         }
 
         DEBUG_PRINT_ALL(
@@ -1128,7 +1214,11 @@ _shadowquilt_column_loop:
             complementary_apexZ0, z_top_min, true, points, num_points,
             patch_buffer, patch_buffer_is_empty, latest_patch_index,
             num_patches, pSlope, shadow_bottomL_jR, shadow_bottomR_jR,
-            shadow_bottomL_jL, shadow_bottomR_jR, z1_min, z1_max, a_corner,
+            shadow_bottomL_jL, shadow_bottomR_jR,
+            shadow_fromTopToInnermost_topL_jL,
+            shadow_fromTopToInnermost_topL_jR,
+            shadow_fromTopToInnermost_topR_jL,
+            shadow_fromTopToInnermost_topR_jR, z1_min, z1_max, a_corner,
             b_corner, c_corner, d_corner, squareAcceptance, flatTop, flatBottom,
             triangleAcceptance, patch_stream);
 
@@ -1143,7 +1233,11 @@ _shadowquilt_column_loop:
         get_acceptanceCorners(
             patch_buffer, patch_buffer_is_empty, latest_patch_index,
             num_patches, pSlope, shadow_bottomL_jR, shadow_bottomR_jR,
-            shadow_bottomL_jL, shadow_bottomR_jL, z1_min, z1_max, a_corner,
+            shadow_bottomL_jL, shadow_bottomR_jL,
+            shadow_fromTopToInnermost_topL_jL,
+            shadow_fromTopToInnermost_topL_jR,
+            shadow_fromTopToInnermost_topR_jL,
+            shadow_fromTopToInnermost_topR_jR, z1_min, z1_max, a_corner,
             b_corner, c_corner, d_corner, squareAcceptance, flatTop, flatBottom,
             triangleAcceptance, patch_stream);
 
@@ -1214,7 +1308,59 @@ _shadowquilt_column_loop:
             !(repeat_patch) && !(repeat_original);
       }
 
+      c_corner_tmp = c_corner[latest_patch_index][1];
+
+      projectionOfCornerToBeam = straightLineProjectorFromLayerIJtoK(
+          c_corner_tmp, c_corner[latest_patch_index][0], NUM_LAYERS, 1, 0);
+
+      saved_apexZ0 = c_corner[latest_patch_index][1];
+
+      // IF_MADE_COMPLEMENTARY_PATCH
+      if (madeComplementaryPatch) {
+        // get shadow for latest patch
+        getShadows(z_top_min, z_top_max, patch_buffer[latest_patch_index],
+                   shadow_fromTopToInnermost_topL_jL[latest_patch_index],
+                   shadow_fromTopToInnermost_topL_jR[latest_patch_index],
+                   shadow_fromTopToInnermost_topR_jL[latest_patch_index],
+                   shadow_fromTopToInnermost_topR_jR[latest_patch_index]);
+        // get shadow for 2nd latest patch
+        getShadows(z_top_min, z_top_max, patch_buffer[PREVIOUS_PATCH_INDEX],
+                   shadow_fromTopToInnermost_topL_jL[PREVIOUS_PATCH_INDEX],
+                   shadow_fromTopToInnermost_topL_jR[PREVIOUS_PATCH_INDEX],
+                   shadow_fromTopToInnermost_topR_jL[PREVIOUS_PATCH_INDEX],
+                   shadow_fromTopToInnermost_topR_jR[PREVIOUS_PATCH_INDEX]);
+
+        // DEBUG: print shadows
+        DEBUG_PRINT_ALL(
+            cout << "latest patch shadow:" << endl;
+            cout << "shadow_fromTopToInnermost_topL_jL: "
+                 << shadow_fromTopToInnermost_topL_jL[latest_patch_index]
+                 << endl;
+            cout << "shadow_fromTopToInnermost_topL_jR: "
+                 << shadow_fromTopToInnermost_topL_jR[latest_patch_index]
+                 << endl;
+            cout << "shadow_fromTopToInnermost_topR_jL: "
+                 << shadow_fromTopToInnermost_topR_jL[latest_patch_index]
+                 << endl;
+            cout << "shadow_fromTopToInnermost_topR_jR: "
+                 << shadow_fromTopToInnermost_topR_jR[latest_patch_index]
+                 << endl;
+            cout << "previous patch shadow:" << endl;
+            cout << "shadow_fromTopToInnermost_topL_jL: "
+                 << shadow_fromTopToInnermost_topL_jL[PREVIOUS_PATCH_INDEX]
+                 << endl;
+            cout << "shadow_fromTopToInnermost_topL_jR: "
+                 << shadow_fromTopToInnermost_topL_jR[PREVIOUS_PATCH_INDEX]
+                 << endl;
+            cout << "shadow_fromTopToInnermost_topR_jL: "
+                 << shadow_fromTopToInnermost_topR_jL[PREVIOUS_PATCH_INDEX]
+                 << endl;
+            cout << "shadow_fromTopToInnermost_topR_jR: "
+                 << shadow_fromTopToInnermost_topR_jR[PREVIOUS_PATCH_INDEX]
+                 << endl;)
+      }
       // exit(0);
+      // END_IF_MADE_COMPLEMENTARY_PATCH
     }
 
     // get condition for next iteration
@@ -1240,11 +1386,14 @@ makepatch_main_loop:
   while ((float)apexZ0 > -1 * get_trapezoid_edges(0)) {
 #pragma HLS PIPELINE II = 1
     _shadowquilt_main_loop_make_verticle_strip(
-        points, num_points, apexZ0, patch_buffer, patch_buffer_is_empty,
-        latest_patch_index, num_patches, pSlope, shadow_bottomL_jR,
-        shadow_bottomR_jR, shadow_bottomL_jL, shadow_bottomR_jL, z1_min, z1_max,
-        a_corner, b_corner, c_corner, d_corner, squareAcceptance, flatTop,
-        flatBottom, triangleAcceptance, patch_stream);
+        points, num_points, apexZ0, saved_apexZ0, patch_buffer,
+        patch_buffer_is_empty, latest_patch_index, num_patches, pSlope,
+        shadow_bottomL_jR, shadow_bottomR_jR, shadow_bottomL_jL,
+        shadow_bottomR_jL, shadow_fromTopToInnermost_topL_jL,
+        shadow_fromTopToInnermost_topL_jR, shadow_fromTopToInnermost_topR_jL,
+        shadow_fromTopToInnermost_topR_jR, z1_min, z1_max, a_corner, b_corner,
+        c_corner, d_corner, squareAcceptance, flatTop, flatBottom,
+        triangleAcceptance, patch_stream);
 
     return;
   }
@@ -1283,6 +1432,16 @@ void system_top(point_t points[NUM_LAYERS][MAX_NUM_POINTS],
   float_value_t c_corner[PATCH_BUFFER_SIZE][2] = {FLOAT_VALUE_T_MAX};
   float_value_t d_corner[PATCH_BUFFER_SIZE][2] = {FLOAT_VALUE_T_MAX};
 
+  // shadows array
+  float_value_t shadow_fromTopToInnermost_topL_jL[PATCH_BUFFER_SIZE] = {
+      FLOAT_VALUE_T_MAX};
+  float_value_t shadow_fromTopToInnermost_topL_jR[PATCH_BUFFER_SIZE] = {
+      FLOAT_VALUE_T_MAX};
+  float_value_t shadow_fromTopToInnermost_topR_jL[PATCH_BUFFER_SIZE] = {
+      FLOAT_VALUE_T_MAX};
+  float_value_t shadow_fromTopToInnermost_topR_jR[PATCH_BUFFER_SIZE] = {
+      FLOAT_VALUE_T_MAX};
+
   // patch bools
   bool squareAcceptance[PATCH_BUFFER_SIZE] = {true};
   bool flatTop[PATCH_BUFFER_SIZE] = {true};
@@ -1300,9 +1459,11 @@ void system_top(point_t points[NUM_LAYERS][MAX_NUM_POINTS],
   makePatches_ShadowQuilt_fromEdges(
       points, num_points, patch_buffer, patch_buffer_is_empty,
       latest_patch_index, num_patches, pSlope, shadow_bottomL_jR,
-      shadow_bottomR_jR, shadow_bottomL_jL, shadow_bottomR_jL, z1_min, z1_max,
-      a_corner, b_corner, c_corner, d_corner, squareAcceptance, flatTop,
-      flatBottom, triangleAcceptance, patch_stream);
+      shadow_bottomR_jR, shadow_bottomL_jL, shadow_bottomR_jL,
+      shadow_fromTopToInnermost_topL_jL, shadow_fromTopToInnermost_topL_jR,
+      shadow_fromTopToInnermost_topR_jL, shadow_fromTopToInnermost_topR_jR,
+      z1_min, z1_max, a_corner, b_corner, c_corner, d_corner, squareAcceptance,
+      flatTop, flatBottom, triangleAcceptance, patch_stream);
 
   return;
 }

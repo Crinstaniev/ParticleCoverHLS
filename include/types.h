@@ -63,6 +63,10 @@ typedef struct {
       float_value_t shadow_bottomR_jR[PATCH_BUFFER_SIZE][NUM_LAYERS],          \
       float_value_t shadow_bottomL_jL[PATCH_BUFFER_SIZE][NUM_LAYERS],          \
       float_value_t shadow_bottomR_jL[PATCH_BUFFER_SIZE][NUM_LAYERS],          \
+      float_value_t shadow_fromTopToInnermost_topL_jL[PATCH_BUFFER_SIZE],      \
+      float_value_t shadow_fromTopToInnermost_topL_jR[PATCH_BUFFER_SIZE],      \
+      float_value_t shadow_fromTopToInnermost_topR_jL[PATCH_BUFFER_SIZE],      \
+      float_value_t shadow_fromTopToInnermost_topR_jR[PATCH_BUFFER_SIZE],      \
       float_value_t z1_min[PATCH_BUFFER_SIZE][NUM_LAYERS],                     \
       float_value_t z1_max[PATCH_BUFFER_SIZE][NUM_LAYERS],                     \
       float_value_t a_corner[PATCH_BUFFER_SIZE][2],                            \
@@ -108,3 +112,6 @@ constexpr float get_radii_leverArm(int idx) {
 // min and max values
 #define FLOAT_VALUE_T_MIN ((float_value_t)(-0x800))
 #define FLOAT_VALUE_T_MAX ((float_value_t)(0x7FF))
+
+#define GET_MAX_VAL_UNIVERSAL(a, b) ((a) > (b) ? (a) : (b))
+#define GET_MIN_VAL_UNIVERSAL(a, b) ((a) < (b) ? (a) : (b))

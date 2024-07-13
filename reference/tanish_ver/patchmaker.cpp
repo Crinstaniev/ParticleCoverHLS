@@ -543,6 +543,7 @@ public:
     vector<float> topR_jL;
     vector<float> topR_jR;
 
+  loop_calculate_shadows:
     for (int i = 0; i < superpoints.size() - 1; i++) {
       int j = i + 1;
       float z_j_min = superpoints[i].min;
@@ -1534,8 +1535,6 @@ public:
               }
             }
           }
-
-          exit(0);
         }
 
         c_corner = patches[patches.size() - 1].c_corner[1];
@@ -1545,16 +1544,54 @@ public:
                 c_corner, patches[patches.size() - 1].c_corner[0],
                 env.num_layers, 1, 0);
 
-        if (n_patches == 2) {
-          cout << "patch 2 exit" << endl;
-          exit(0);
-        }
-
         saved_apexZ0 = patches[patches.size() - 1].c_corner[0];
 
+      if_madeComplementaryPatch:
         if (madeComplementaryPatch) {
           patches[patches.size() - 1].getShadows(z_top_min, z_top_max);
           patches[patches.size() - 2].getShadows(z_top_min, z_top_max);
+
+          // DEBUG: print shadows
+          DEBUG_PRINT_ALL(
+              cout << "latest patch shadow:" << endl;
+              cout
+              << "shadow_fromTopToInnermost_topL_jL: "
+              << patches[patches.size() - 1].shadow_fromTopToInnermost_topL_jL
+              << endl;
+              cout
+              << "shadow_fromTopToInnermost_topL_jR: "
+              << patches[patches.size() - 1].shadow_fromTopToInnermost_topL_jR
+              << endl;
+              cout
+              << "shadow_fromTopToInnermost_topR_jL: "
+              << patches[patches.size() - 1].shadow_fromTopToInnermost_topR_jL
+              << endl;
+              cout
+              << "shadow_fromTopToInnermost_topR_jR: "
+              << patches[patches.size() - 1].shadow_fromTopToInnermost_topR_jR
+              << endl;
+              cout << "previous patch shadow:" << endl;
+              cout
+              << "shadow_fromTopToInnermost_topL_jL: "
+              << patches[patches.size() - 2].shadow_fromTopToInnermost_topL_jL
+              << endl;
+              cout
+              << "shadow_fromTopToInnermost_topL_jR: "
+              << patches[patches.size() - 2].shadow_fromTopToInnermost_topL_jR
+              << endl;
+              cout
+              << "shadow_fromTopToInnermost_topR_jL: "
+              << patches[patches.size() - 2].shadow_fromTopToInnermost_topR_jL
+              << endl;
+              cout
+              << "shadow_fromTopToInnermost_topR_jR: "
+              << patches[patches.size() - 2].shadow_fromTopToInnermost_topR_jR
+              << endl;)
+
+          if (n_patches == 2) {
+            cout << "patch 2 exit" << endl;
+            exit(0);
+          }
 
           float original_topR_jL =
               patches[patches.size() - 2].shadow_fromTopToInnermost_topR_jL;
@@ -1750,6 +1787,7 @@ public:
             }
           }
         }
+      end_if_madeComplementaryPatch:
 
         z_top_max = c_corner;
 
