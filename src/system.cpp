@@ -1358,6 +1358,119 @@ _shadowquilt_column_loop:
             cout << "shadow_fromTopToInnermost_topR_jR: "
                  << shadow_fromTopToInnermost_topR_jR[PREVIOUS_PATCH_INDEX]
                  << endl;)
+
+        float_value_t original_topR_jL =
+            shadow_fromTopToInnermost_topR_jL[PREVIOUS_PATCH_INDEX];
+        bool originalPartialTop =
+            (original_topR_jL > complementary_apexZ0) &&
+            (original_topR_jL < apexZ0) &&
+            (ABS_UNIVERSAL(straightLineProjectorFromLayerIJtoK(
+                               original_topR_jL, z_top_max, 1, NUM_LAYERS, 0),
+                           float_value_t) < 20 * BEAM_AXIS_LIM);
+
+        /**
+         * BUG:
+         * if the two values a, b are equal, a < b yields false,
+         * however, the reference version yields true (because in the reference
+         * version, a and b are slightly different, which is not the case in my
+         * version.)
+         * Potential fix: temporarily change < to <= to compensate for the
+         * difference
+         */
+        cout << "ingredient for originalPartialTop: " << endl;
+        cout << "original_topR_jL: " << original_topR_jL << endl;
+        cout << "complementary_apexZ0: " << complementary_apexZ0 << endl;
+        cout << "original_topR_jL > complementary_apexZ0: "
+             << (original_topR_jL > complementary_apexZ0) << endl;
+        cout << "original_topR_jL < apexZ0: " << (original_topR_jL < apexZ0)
+             << endl;
+        cout << "result: " << originalPartialTop << endl;
+        cout << "diff: " << (original_topR_jL - complementary_apexZ0) << endl;
+
+        exit(0);
+
+        float_value_t original_topL_jL =
+            shadow_fromTopToInnermost_topL_jL[PREVIOUS_PATCH_INDEX];
+        bool originalPartialBottom =
+            (original_topL_jL > complementary_apexZ0) &&
+            (original_topL_jL < apexZ0) &&
+            (ABS_UNIVERSAL(straightLineProjectorFromLayerIJtoK(
+                               original_topL_jL, z_top_min, 1, NUM_LAYERS, 0),
+                           float_value_t) < 20 * BEAM_AXIS_LIM);
+        float_value_t complementary_topR_jR =
+            shadow_fromTopToInnermost_topR_jR[LATEST_PATCH_INDEX];
+        bool complementaryPartialTop =
+            (complementary_topR_jR > complementary_apexZ0) &&
+            (complementary_topR_jR < apexZ0) &&
+            (ABS_UNIVERSAL(
+                 straightLineProjectorFromLayerIJtoK(
+                     complementary_topR_jR, z_top_max, 1, NUM_LAYERS, 0),
+                 float_value_t) < 20 * BEAM_AXIS_LIM);
+        float_value_t complementary_topL_jR =
+            shadow_fromTopToInnermost_topL_jR[LATEST_PATCH_INDEX];
+        bool complementaryPartialBottom =
+            (complementary_topL_jR > complementary_apexZ0) &&
+            (complementary_topL_jR < apexZ0) &&
+            (ABS_UNIVERSAL(
+                 straightLineProjectorFromLayerIJtoK(
+                     complementary_topL_jR, z_top_min, 1, NUM_LAYERS, 0),
+                 float_value_t) < 20 * BEAM_AXIS_LIM);
+
+        float_value_t horizontalShiftTop =
+            original_topR_jL - complementary_topR_jR;
+        float_value_t horizontalShiftBottom =
+            original_topL_jL - complementary_topL_jR;
+
+        float_value_t complementary_topR_jL =
+            shadow_fromTopToInnermost_topR_jL[LATEST_PATCH_INDEX];
+        float_value_t complementary_topL_jL =
+            shadow_fromTopToInnermost_topL_jL[LATEST_PATCH_INDEX];
+        float_value_t original_topR_jR =
+            shadow_fromTopToInnermost_topR_jR[PREVIOUS_PATCH_INDEX];
+        float_value_t original_topL_jR =
+            shadow_fromTopToInnermost_topL_jR[PREVIOUS_PATCH_INDEX];
+
+        float_value_t horizontalOverlapTop =
+            GET_MAX_VAL_UNIVERSAL(complementary_topR_jL - original_topR_jL,
+                                  complementary_topR_jR - original_topR_jR);
+        float_value_t horizontalOverlapBottom =
+            GET_MAX_VAL_UNIVERSAL(complementary_topL_jL - original_topL_jL,
+                                  complementary_topL_jR - original_topL_jR);
+
+        horizontalOverlapTop = -1;
+        horizontalOverlapBottom = -1;
+
+        float_value_t newGapTop = -0.000001;
+        float_value_t newGapBottom = -0.000001;
+
+        bool makeHorizontallyShiftedPatch = false;
+        float_value_t shifted_Align = apexZ0;
+        bool doShiftedPatch = true;
+
+        float_value_t newZtop = 0;
+
+        cout << "original_topR_jL: " << original_topR_jL << endl;
+        cout << "originalPartialTop: " << originalPartialTop << endl;
+        cout << "original_topL_jL: " << original_topL_jL << endl;
+        cout << "originalPartialBottom: " << originalPartialBottom << endl;
+        cout << "complementary_topR_jR: " << complementary_topR_jR << endl;
+        cout << "complementaryPartialTop: " << complementaryPartialTop << endl;
+        cout << "complementary_topL_jR: " << complementary_topL_jR << endl;
+        cout << "complementaryPartialBottom: " << complementaryPartialBottom
+             << endl;
+        cout << "horizontalShiftTop: " << horizontalShiftTop << endl;
+        cout << "horizontalShiftBottom: " << horizontalShiftBottom << endl;
+        cout << "complementary_topR_jL: " << complementary_topR_jL << endl;
+        cout << "complementary_topL_jL: " << complementary_topL_jL << endl;
+        cout << "original_topR_jR: " << original_topR_jR << endl;
+        cout << "original_topL_jR: " << original_topL_jR << endl;
+        cout << "horizontalOverlapTop: " << horizontalOverlapTop << endl;
+        cout << "horizontalOverlapBottom: " << horizontalOverlapBottom << endl;
+
+        /**
+         * TODO: translation resume here
+         */
+        exit(0);
       }
       // exit(0);
       // END_IF_MADE_COMPLEMENTARY_PATCH

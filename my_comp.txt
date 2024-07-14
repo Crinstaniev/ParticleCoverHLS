@@ -1,1 +1,17 @@
+original_topR_jL: 7.75751
+originalPartialTop: 0
+original_topL_jL: 83.6175
+originalPartialBottom: 0
+complementary_topR_jR: -76.5528
+complementaryPartialTop: 0
+complementary_topL_jR: 22.0001
+complementaryPartialBottom: 0
+horizontalShiftTop: 84.3103
+horizontalShiftBottom: 61.6174
+complementary_topR_jL: 7.75751
+complementary_topL_jL: 7.75751
+original_topR_jR: 22.0001
+original_topL_jR: 22.0001
+horizontalOverlapTop: -1
+horizontalOverlapBottom: -1
 The maximum depth reached by any of the 1 hls::stream() instances in the design is 0

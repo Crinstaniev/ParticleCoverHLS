@@ -115,3 +115,5 @@ constexpr float get_radii_leverArm(int idx) {
 
 #define GET_MAX_VAL_UNIVERSAL(a, b) ((a) > (b) ? (a) : (b))
 #define GET_MIN_VAL_UNIVERSAL(a, b) ((a) < (b) ? (a) : (b))
+
+#define ABS_UNIVERSAL(a, type) ((type)(a) < (type)0 ? (type)(-(a)) : (type)(a))
