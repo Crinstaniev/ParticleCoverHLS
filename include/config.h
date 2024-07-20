@@ -2,7 +2,7 @@
 
 // debug config
 #define CONFIG_DEBUG_PRINT_ALL false
-#define CONFIG_IS_SYNTHESIS false
+#define CONFIG_IS_SYNTHESIS true
 #define ARRAY_PARTITION false
 #define PRINT_EXTREMES false
 
@@ -42,3 +42,5 @@
 #else
 #define PATCH_EXIT(x)
 #endif
+
+

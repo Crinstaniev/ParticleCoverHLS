@@ -1,3 +1,15 @@
+## [2024-07-20]
+
+### [TASKS]
+
+- [ ] Modify patch buffer, add a bool list of "should be outputed when override?"-ish
+
+### [IMPL]
+
+- Partially implement the loop for horizontal shift.
+- The loop haven't been tested yet since case not met.
+- Delete patch part not implemented yet since modification to patch buffer is required.
+
 ## [2024-07-12]
 
 ### [IMPL]

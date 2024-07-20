@@ -1598,19 +1598,6 @@ public:
                            original_topR_jL, z_top_max, 1, env.num_layers, 0)) <
                20 * env.beam_axis_lim);
 
-          cout << "ingredient for originalPartialTop: " << endl;
-          cout << "original_topR_jL: " << original_topR_jL << endl;
-          cout << "complementary_apexZ0: " << complementary_apexZ0 << endl;
-          cout << "original_topR_jL > complementary_apexZ0: "
-               << (original_topR_jL > complementary_apexZ0) << endl;
-          cout << "original_topR_jL < apexZ0: " << (original_topR_jL < apexZ0)
-               << endl;
-          cout << "result: " << originalPartialTop << endl;
-
-          cout << "diff:" << (original_topR_jL - complementary_apexZ0) << endl;
-
-          exit(0);
-
           float original_topL_jL =
               patches[patches.size() - 2].shadow_fromTopToInnermost_topL_jL;
           bool originalPartialBottom =
@@ -1670,27 +1657,32 @@ public:
 
           float newZtop = 0;
 
-          cout << "original_topR_jL: " << original_topR_jL << endl;
-          cout << "originalPartialTop: " << originalPartialTop << endl;
-          cout << "original_topL_jL: " << original_topL_jL << endl;
-          cout << "originalPartialBottom: " << originalPartialBottom << endl;
-          cout << "complementary_topR_jR: " << complementary_topR_jR << endl;
-          cout << "complementaryPartialTop: " << complementaryPartialTop
-               << endl;
-          cout << "complementary_topL_jR: " << complementary_topL_jR << endl;
-          cout << "complementaryPartialBottom: " << complementaryPartialBottom
-               << endl;
-          cout << "horizontalShiftTop: " << horizontalShiftTop << endl;
-          cout << "horizontalShiftBottom: " << horizontalShiftBottom << endl;
-          cout << "complementary_topR_jL: " << complementary_topR_jL << endl;
-          cout << "complementary_topL_jL: " << complementary_topL_jL << endl;
-          cout << "original_topR_jR: " << original_topR_jR << endl;
-          cout << "original_topL_jR: " << original_topL_jR << endl;
-          cout << "horizontalOverlapTop: " << horizontalOverlapTop << endl;
-          cout << "horizontalOverlapBottom: " << horizontalOverlapBottom
-               << endl;
-
-          exit(0);
+          DEBUG_PRINT_ALL(
+              cout << "original_topR_jL: " << original_topR_jL << endl;
+              cout << "originalPartialTop: " << originalPartialTop << endl;
+              cout << "original_topL_jL: " << original_topL_jL << endl;
+              cout << "originalPartialBottom: " << originalPartialBottom
+                   << endl;
+              cout << "complementary_topR_jR: " << complementary_topR_jR
+                   << endl;
+              cout << "complementaryPartialTop: " << complementaryPartialTop
+                   << endl;
+              cout << "complementary_topL_jR: " << complementary_topL_jR
+                   << endl;
+              cout << "complementaryPartialBottom: "
+                   << complementaryPartialBottom << endl;
+              cout << "horizontalShiftTop: " << horizontalShiftTop << endl;
+              cout << "horizontalShiftBottom: " << horizontalShiftBottom
+                   << endl;
+              cout << "complementary_topR_jL: " << complementary_topR_jL
+                   << endl;
+              cout << "complementary_topL_jL: " << complementary_topL_jL
+                   << endl;
+              cout << "original_topR_jR: " << original_topR_jR << endl;
+              cout << "original_topL_jR: " << original_topL_jR << endl;
+              cout << "horizontalOverlapTop: " << horizontalOverlapTop << endl;
+              cout << "horizontalOverlapBottom: " << horizontalOverlapBottom
+                   << endl;)
 
           float z0_original_bCorner =
               patches[patches.size() - 2].straightLineProjectorFromLayerIJtoK(
@@ -1699,6 +1691,11 @@ public:
               patches[patches.size() - 1].straightLineProjectorFromLayerIJtoK(
                   complementary_apexZ0, z_top_min, 1, env.num_layers, 0);
           bool shiftOriginal = true;
+
+          DEBUG_PRINT_ALL(
+              cout << "z0_original_bCorner: " << z0_original_bCorner << endl;
+              cout << "z0_complementary_cCorner: " << z0_complementary_cCorner
+                   << endl;)
 
           if (z0_original_bCorner < 0) {
             shiftOriginal = false;
@@ -1710,19 +1707,24 @@ public:
             shifted_Align = apexZ0;
           }
 
-          if (horizontalShiftTop > 0 or horizontalShiftBottom > 0) {
-            cout << "originalPartialTop: " << originalPartialTop
-                 << " complementaryPartialTop: " << complementaryPartialTop
-                 << " originalPartialBottom: " << originalPartialBottom
-                 << " complementaryPartialBottom: "
-                 << complementaryPartialBottom << " " << original_topR_jL << " "
-                 << original_topL_jL << " " << complementary_topR_jR << " "
-                 << complementary_topL_jR
-                 << " horizontalOverlapTop: " << horizontalOverlapTop
-                 << " horizontalOverlapBottom: " << horizontalOverlapBottom
-                 << endl;
-          }
+          DEBUG_PRINT_ALL(
+              if (horizontalShiftTop > 0 or horizontalShiftBottom > 0) {
+                cout << "originalPartialTop: " << originalPartialTop
+                     << " complementaryPartialTop: " << complementaryPartialTop
+                     << " originalPartialBottom: " << originalPartialBottom
+                     << " complementaryPartialBottom: "
+                     << complementaryPartialBottom << " " << original_topR_jL
+                     << " " << original_topL_jL << " " << complementary_topR_jR
+                     << " " << complementary_topL_jR
+                     << " horizontalOverlapTop: " << horizontalOverlapTop
+                     << " horizontalOverlapBottom: " << horizontalOverlapBottom
+                     << endl;
+              })
 
+          DEBUG_PRINT_ALL(cout << "shiftedOriginal: " << shiftOriginal << endl;
+                          cout << "shiftedAlign: " << shifted_Align << endl;)
+
+          // LOOP: begin_loop_for_horizontal_shifts
           while (((horizontalShiftTop > 0 && originalPartialTop &&
                    complementaryPartialTop) ||
                   (horizontalShiftBottom > 0 && originalPartialBottom &&
@@ -1804,6 +1806,9 @@ public:
                  << horizontalShiftBottom << " shifted_Align: " << shifted_Align
                  << endl;
           }
+          // END_LOOP: end_loop_for_horizontal_shifts
+
+          exit(0);
 
           if (makeHorizontallyShiftedPatch) {
             if (((patches[patches.size() - 1]

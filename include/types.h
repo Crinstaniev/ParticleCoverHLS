@@ -53,6 +53,15 @@ typedef struct {
       float_value_t radii[NUM_LAYERS],                                         \
       float_value_t radii_leverArm[NUM_LAYERS - 1]
 
+#define PATCH_BUFFER_PARS                                                      \
+  patch_buffer, patch_buffer_is_empty, latest_patch_index, num_patches,        \
+      pSlope, shadow_bottomL_jR, shadow_bottomR_jR, shadow_bottomL_jL,         \
+      shadow_bottomR_jL, shadow_fromTopToInnermost_topL_jL,                    \
+      shadow_fromTopToInnermost_topL_jR, shadow_fromTopToInnermost_topR_jL,    \
+      shadow_fromTopToInnermost_topR_jR, z1_min, z1_max, a_corner, b_corner,   \
+      c_corner, d_corner, squareAcceptance, flatTop, flatBottom,               \
+      triangleAcceptance, patch_stream
+
 #define PATCH_BUFFER_ARGS                                                      \
   point_t patch_buffer[PATCH_BUFFER_SIZE][NUM_LAYERS]                          \
                       [NUM_POINTS_IN_SUPERPOINT],                              \
