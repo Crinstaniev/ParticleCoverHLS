@@ -1812,6 +1812,10 @@ public:
           }
           // END_LOOP: end_loop_for_horizontal_shifts
 
+          /**
+           * TODO: translation resume here
+           */
+
           exit(0);
 
           if (makeHorizontallyShiftedPatch) {
@@ -1953,7 +1957,6 @@ public:
         DEBUG_PRINT_ALL(cout << "start_index_after: " << start_index << endl;)
 
         if ((start_index + ppl) > (right_bound + 1)) {
-          // TODO: translation resume here
           vector<Point> temp(row_data[i].begin() + right_bound + 1 - ppl,
                              row_data[i].begin() + right_bound + 1);
           init_patch.push_back(wedgeSuperPoint(temp));

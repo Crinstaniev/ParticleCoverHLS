@@ -1529,7 +1529,13 @@ _shadowquilt_column_loop:
               z1_max[latest_patch_index]);
 
           get_acceptanceCorners(PATCH_BUFFER_PARS);
-          // TODO: get_shadow for last patch
+
+          // get shadow for latest patch
+          getShadows(z_top_min, z_top_max, patch_buffer[latest_patch_index],
+                     shadow_fromTopToInnermost_topL_jL[latest_patch_index],
+                     shadow_fromTopToInnermost_topL_jR[latest_patch_index],
+                     shadow_fromTopToInnermost_topR_jL[latest_patch_index],
+                     shadow_fromTopToInnermost_topR_jR[latest_patch_index]);
 
           if (shiftOriginal) {
             original_topR_jL =

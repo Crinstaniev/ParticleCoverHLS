@@ -1,0 +1,287 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0xAAC9BA8ECF47DB98",
+      "device": "xc7z030sbg485-3",
+      "gen_directory": "../../../../project.gen/sources_1/bd/bd_0",
+      "name": "bd_0",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2020.2",
+      "validated": "true"
+    },
+    "design_tree": {
+      "hls_inst": ""
+    },
+    "interface_ports": {
+      "ap_ctrl": {
+        "mode": "Slave",
+        "vlnv": "xilinx.com:interface:acc_handshake_rtl:1.0"
+      },
+      "patch_stream_V": {
+        "mode": "Master",
+        "vlnv": "xilinx.com:interface:acc_fifo_write_rtl:1.0"
+      }
+    },
+    "ports": {
+      "ap_clk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "ASSOCIATED_RESET": {
+            "value": "ap_rst",
+            "value_src": "default"
+          },
+          "CLK_DOMAIN": {
+            "value": "bd_0_ap_clk_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000.0"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.000",
+            "value_src": "default"
+          }
+        }
+      },
+      "ap_rst": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_HIGH"
+          }
+        }
+      },
+      "num_points_address0": {
+        "type": "data",
+        "direction": "O",
+        "left": "2",
+        "right": "0",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
+      },
+      "num_points_address1": {
+        "type": "data",
+        "direction": "O",
+        "left": "2",
+        "right": "0",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
+      },
+      "num_points_ce0": {
+        "direction": "O"
+      },
+      "num_points_ce1": {
+        "direction": "O"
+      },
+      "num_points_q0": {
+        "type": "data",
+        "direction": "I",
+        "left": "31",
+        "right": "0",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
+      },
+      "num_points_q1": {
+        "type": "data",
+        "direction": "I",
+        "left": "31",
+        "right": "0",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
+      },
+      "points_address0": {
+        "type": "data",
+        "direction": "O",
+        "left": "11",
+        "right": "0",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
+      },
+      "points_address1": {
+        "type": "data",
+        "direction": "O",
+        "left": "11",
+        "right": "0",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
+      },
+      "points_ce0": {
+        "direction": "O"
+      },
+      "points_ce1": {
+        "direction": "O"
+      },
+      "points_q0": {
+        "type": "data",
+        "direction": "I",
+        "left": "127",
+        "right": "0",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
+      },
+      "points_q1": {
+        "type": "data",
+        "direction": "I",
+        "left": "127",
+        "right": "0",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
+      }
+    },
+    "components": {
+      "hls_inst": {
+        "vlnv": "xilinx.com:hls:system_top:1.0",
+        "xci_name": "bd_0_hls_inst_0",
+        "xci_path": "ip\\bd_0_hls_inst_0\\bd_0_hls_inst_0.xci",
+        "inst_hier_path": "hls_inst"
+      }
+    },
+    "interface_nets": {
+      "hls_inst_patch_stream_V": {
+        "interface_ports": [
+          "patch_stream_V",
+          "hls_inst/patch_stream_V"
+        ]
+      },
+      "ap_ctrl_0_1": {
+        "interface_ports": [
+          "ap_ctrl",
+          "hls_inst/ap_ctrl"
+        ]
+      }
+    },
+    "nets": {
+      "ap_clk_0_1": {
+        "ports": [
+          "ap_clk",
+          "hls_inst/ap_clk"
+        ]
+      },
+      "ap_rst_0_1": {
+        "ports": [
+          "ap_rst",
+          "hls_inst/ap_rst"
+        ]
+      },
+      "hls_inst_num_points_address0": {
+        "ports": [
+          "hls_inst/num_points_address0",
+          "num_points_address0"
+        ]
+      },
+      "hls_inst_num_points_address1": {
+        "ports": [
+          "hls_inst/num_points_address1",
+          "num_points_address1"
+        ]
+      },
+      "hls_inst_num_points_ce0": {
+        "ports": [
+          "hls_inst/num_points_ce0",
+          "num_points_ce0"
+        ]
+      },
+      "hls_inst_num_points_ce1": {
+        "ports": [
+          "hls_inst/num_points_ce1",
+          "num_points_ce1"
+        ]
+      },
+      "num_points_q0_0_1": {
+        "ports": [
+          "num_points_q0",
+          "hls_inst/num_points_q0"
+        ]
+      },
+      "num_points_q1_0_1": {
+        "ports": [
+          "num_points_q1",
+          "hls_inst/num_points_q1"
+        ]
+      },
+      "hls_inst_points_address0": {
+        "ports": [
+          "hls_inst/points_address0",
+          "points_address0"
+        ]
+      },
+      "hls_inst_points_address1": {
+        "ports": [
+          "hls_inst/points_address1",
+          "points_address1"
+        ]
+      },
+      "hls_inst_points_ce0": {
+        "ports": [
+          "hls_inst/points_ce0",
+          "points_ce0"
+        ]
+      },
+      "hls_inst_points_ce1": {
+        "ports": [
+          "hls_inst/points_ce1",
+          "points_ce1"
+        ]
+      },
+      "points_q0_0_1": {
+        "ports": [
+          "points_q0",
+          "hls_inst/points_q0"
+        ]
+      },
+      "points_q1_0_1": {
+        "ports": [
+          "points_q1",
+          "hls_inst/points_q1"
+        ]
+      }
+    }
+  }
+}

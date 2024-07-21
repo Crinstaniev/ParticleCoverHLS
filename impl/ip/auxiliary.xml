@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xd:acceleratorMap xmlns:xd="http://www.xilinx.com/xidane" xd:functionName="system_top" xd:componentRef="system_top" xd:initiationInterval="x" xd:clockPeriod="10.000" xd:sequential="true" xd:hostMachine="64" xd:reset="control">
+  <xd:controlReg xd:name="control" xd:interfaceRef="ap_ctrl" xd:busTypeRef="acc_handshake" xd:type="acc_handshake"/>
+  <xd:arg xd:name="patch_stream" xd:originalName="patch_stream" xd:direction="out" xd:interfaceRef="patch_stream_V" xd:busTypeRef="acc_fifo" xd:firstOut="13" xd:dataWidth="1"/>
+  <xd:arg xd:name="points_q0" xd:originalName="points_q0" xd:direction="in" xd:interfaceRef="points_q0" xd:busTypeRef="ap_memory" xd:arraySize="1" xd:dataWidth="128"/>
+  <xd:arg xd:name="points_q1" xd:originalName="points_q1" xd:direction="in" xd:interfaceRef="points_q1" xd:busTypeRef="ap_memory" xd:arraySize="1" xd:dataWidth="128"/>
+  <xd:arg xd:name="num_points_q0" xd:originalName="num_points_q0" xd:direction="in" xd:interfaceRef="num_points_q0" xd:busTypeRef="ap_memory" xd:arraySize="1" xd:dataWidth="32"/>
+  <xd:arg xd:name="num_points_q1" xd:originalName="num_points_q1" xd:direction="in" xd:interfaceRef="num_points_q1" xd:busTypeRef="ap_memory" xd:arraySize="1" xd:dataWidth="32"/>
+  <xd:latencyEstimates xd:best-case="undef" xd:worst-case="undef" xd:average-case="undef"/>
+  <xd:resourceEstimates xd:LUT="54609" xd:FF="35048" xd:BRAM="8" xd:DSP="13"/>
+</xd:acceleratorMap>
