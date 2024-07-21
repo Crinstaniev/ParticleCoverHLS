@@ -23,6 +23,10 @@
 
 int g_debug_counter = 0;
 
+// statistics
+std::vector<int> makepatch_call_count;
+std::vector<int> deletepatch_call_count;
+
 using namespace std;
 
 // global variables for debug

@@ -1,7 +1,11 @@
 ### [TASKS]
 
 - [ ] Modify patch buffer, add a bool list of "should be outputed when override?"-ish
-- [ ] Efficiency test for how many patches are made before a real patch is made
+
+## [2024-07-20]
+
+- Efficiency test for how many patches are made before a real patch is made
+- Two statistical plots produced
 
 ## [2024-07-20]
 
