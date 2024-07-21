@@ -1,8 +1,14 @@
-## [2024-07-20]
-
 ### [TASKS]
 
 - [ ] Modify patch buffer, add a bool list of "should be outputed when override?"-ish
+- [ ] Efficiency test for how many patches are made before a real patch is made
+
+## [2024-07-20]
+
+### [MOD]
+
+- eleminate all `min`, `max`, and `abs` functions from stdlib
+- replaced all `float` conversion to `float_value_t` conversion
 
 ### [IMPL]
 
