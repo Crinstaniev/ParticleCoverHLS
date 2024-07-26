@@ -6,69 +6,42 @@
 #include <hls_stream.h>
 #include <iostream>
 
+/**
+ * @brief add a new patch to the patch buffer
+ * 
+ * Add a new patch to the patch buffer.
+ * The new patch will be marked as `valid`.
+ * The index of the patch will be written into the patch index queue.
+ */
 void patch_buffer_add_patch(
-    point_t new_patch[NUM_LAYERS][NUM_POINTS_IN_SUPERPOINT],
+   point_t new_patch[NUM_LAYERS][NUM_POINTS_IN_SUPERPOINT],
     point_t patch_buffer[PATCH_BUFFER_SIZE][NUM_LAYERS]
                         [NUM_POINTS_IN_SUPERPOINT],
-    bool patch_buffer_is_empty[PATCH_BUFFER_SIZE], index_t &latest_patch_index,
+                        bool patch_buffer_valid[PATCH_BUFFER_SIZE],
+                        index_t patch_buffer_order[PATCH_BUFFER_SIZE],
+                         index_t &latest_patch_index,
     index_t &num_patches) {
-
-  // add patch to buffer
-  // increment latest_patch_index
-  latest_patch_index = (latest_patch_index + 1) % PATCH_BUFFER_SIZE;
-
-  DEBUG_PRINT_ALL(/**
-                   * DEBUG: if overriding older patch, print message
-                   */
-                  if (!patch_buffer_is_empty[latest_patch_index]) {
-                    std::cout << "Overriding patch " << latest_patch_index
-                              << std::endl;
-                  })
-
-  patch_buffer_is_empty[latest_patch_index] = false;
-  num_patches++;
-
-// copy new patch to buffer
-loop_copy_patch_buffer_layer:
-  for (index_t layer = 0; layer < NUM_LAYERS; layer++) {
-#pragma HLS UNROLL
-  loop_copy_patch_buffer_superpoint:
-    for (index_t point = 0; point < NUM_POINTS_IN_SUPERPOINT; point++) {
-#pragma HLS UNROLL
-      patch_buffer[latest_patch_index][layer][point] = new_patch[layer][point];
-    }
-  }
-
   return;
 }
 
+/**
+ * @brief delete a patch from the patch buffer
+ * 
+ * Delete a patch from the patch buffer.
+ * The patch will be marked as `invalid`.
+ * The index of the patch will be removed from the patch index queue.
+ * The patch index queue will be sorted based on the change.
+ * A patch makred as `invalid` will not be outputed to
+ * the patch stream when overriden, and vice versa.
+ */
 void patch_buffer_delete_patch(
     point_t patch_buffer[PATCH_BUFFER_SIZE][NUM_LAYERS]
                         [NUM_POINTS_IN_SUPERPOINT],
-    bool patch_buffer_is_empty[PATCH_BUFFER_SIZE], index_t &latest_patch_index,
+                        bool patch_buffer_valid[PATCH_BUFFER_SIZE],
+                        index_t patch_buffer_order[PATCH_BUFFER_SIZE],
+                         index_t &latest_patch_index,
     index_t &num_patches, index_t patch_depth) {
-  // decrement num_patches
-  num_patches--;
-
-  /**
-   * Calculate index according to patch_depth.
-   * 0 means the latest patch, 1 means the second latest patch, and so on.
-   */
-  index_t index = (latest_patch_index - patch_depth) % PATCH_BUFFER_SIZE;
-
-  if (index < 0) {
-    index += PATCH_BUFFER_SIZE;
-  }
-
-  // set patch_buffer_is_empty to true
-  patch_buffer_is_empty[index] = true;
-
-  // if latest patch is deleted, update latest_patch_index
-  if (index == latest_patch_index) {
-    latest_patch_index = (latest_patch_index - 1) % PATCH_BUFFER_SIZE;
-  }
-
-  return;
+return;
 }
 
 // read and write stream

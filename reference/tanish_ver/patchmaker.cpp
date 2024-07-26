@@ -1812,12 +1812,6 @@ public:
           }
           // END_LOOP: end_loop_for_horizontal_shifts
 
-          /**
-           * TODO: translation resume here
-           */
-
-          exit(0);
-
           if (makeHorizontallyShiftedPatch) {
             if (((patches[patches.size() - 1]
                       .straightLineProjectorFromLayerIJtoK(
@@ -1843,6 +1837,11 @@ public:
       cout << "'=======================================================  "
               "z1_Align: "
            << apexZ0 << endl;
+      /**
+       * TODO: translation resume here
+       */
+
+      exit(0);
     }
   }
 

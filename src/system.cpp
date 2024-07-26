@@ -516,9 +516,9 @@ alignedtoline_layer_loop:
     }
   })
 
-  // add patch to buffer
-  patch_buffer_add_patch(init_patch, patch_buffer, patch_buffer_is_empty,
-                         latest_patch_index, num_patches);
+  // TODO: add patch to buffer
+  // patch_buffer_add_patch(init_patch, patch_buffer, patch_buffer_is_empty,
+  //                        latest_patch_index, num_patches);
 
   // add patch to stream
   write_patch_stream(patch_stream, init_patch);
@@ -955,20 +955,14 @@ _shadowquilt_column_loop:
       int_value_t current_z_top_index = -1;
       float_value_t previous_z_top_min = FLOAT_VALUE_T_MIN;
 
-      bool cond_loop_adjust_complementary_patch = false;
-
-      // TODO: extract to external function
-      cond_loop_adjust_complementary_patch =
-          !(white_space_height <= 0 && (previous_white_space_height >= 0) &&
-            (std::abs((double)white_space_height) > 0.000001) &&
-            ((c_corner[latest_patch_index][1] >
-              (float_value_t)(-1 * get_trapezoid_edges(NUM_LAYERS - 1))) ||
-             (white_space_height > 0)) &&
-            (current_z_top_index < (num_points[NUM_LAYERS - 1] - 1)) &&
-            !repeat_patch && !repeat_original);
-
     loop_adjust_complementary_patch:
-      while (cond_loop_adjust_complementary_patch) {
+      while (!(white_space_height <= 0 && (previous_white_space_height >= 0) &&
+               (std::abs((double)white_space_height) > 0.000001) &&
+               ((c_corner[latest_patch_index][1] >
+                 (float_value_t)(-1 * get_trapezoid_edges(NUM_LAYERS - 1))) ||
+                (white_space_height > 0)) &&
+               (current_z_top_index < (num_points[NUM_LAYERS - 1] - 1)) &&
+               !repeat_patch && !repeat_original)) {
         DEBUG_PRINT_ALL(cout << endl; if (num_patches > 2) {
           // this part not tested yet
           cout << 'roginal c: ' << original_c << " "
@@ -1193,8 +1187,10 @@ _shadowquilt_column_loop:
                                << d_corner[LATEST_PATCH_INDEX][0] << " "
                                << d_corner[LATEST_PATCH_INDEX][1] << endl;)
 
-          patch_buffer_delete_patch(patch_buffer, patch_buffer_is_empty,
-                                    latest_patch_index, num_patches, 0);
+
+          // TODO: delete patch
+          // patch_buffer_delete_patch(patch_buffer, patch_buffer_is_empty,
+          //                           latest_patch_index, num_patches, 0);
         }
 
         DEBUG_PRINT_ALL( // print ingredients
@@ -1269,20 +1265,6 @@ _shadowquilt_column_loop:
         /**
          * BUG: Fix 42 not implemented
          */
-        /**
-         * TODO: extract to external function
-         */
-
-        cond_loop_adjust_complementary_patch =
-            !(white_space_height <= 0 && (previous_white_space_height >= 0)) &&
-            // (std::abs((float)white_space_height) > 0.000001) &&
-            (ABS_UNIVERSAL(white_space_height, float_value_t) >
-             (float_value_t)0.000001) &&
-            ((c_corner[LATEST_PATCH_INDEX][1] >
-              (-1 * (float_value_t)get_trapezoid_edges(NUM_LAYERS - 1))) ||
-             (white_space_height > 0)) &&
-            (current_z_top_index < (int)(num_points[NUM_LAYERS - 1] - 1)) &&
-            !(repeat_patch) && !(repeat_original);
       }
 
       c_corner_tmp = c_corner[latest_patch_index][1];
@@ -1290,7 +1272,7 @@ _shadowquilt_column_loop:
       projectionOfCornerToBeam = straightLineProjectorFromLayerIJtoK(
           c_corner_tmp, c_corner[latest_patch_index][0], NUM_LAYERS, 1, 0);
 
-      saved_apexZ0 = c_corner[latest_patch_index][1];
+      saved_apexZ0 = c_corner[latest_patch_index][0];
 
       // IF_MADE_COMPLEMENTARY_PATCH
       if (madeComplementaryPatch) {
@@ -1593,14 +1575,38 @@ _shadowquilt_column_loop:
 
         // END_LOOP: end_loop_for_horizontal_shifts
 
-        /**
-         * TODO: translation resume here
-         */
-        // exit(0);
+        if (makeHorizontallyShiftedPatch) {
+          if (((straightLineProjectorFromLayerIJtoK(shifted_Align, newZtop, 1,
+                                                    NUM_LAYERS,
+                                                    0) > BEAM_AXIS_LIM)) and
+              shiftOriginal) {
+            if (num_patches > 2) {
+              /**
+               * TODO:
+               * delete previous prevous patch
+               */
+            }
+          }
+        }
       }
       // exit(0);
       // END_IF_MADE_COMPLEMENTARY_PATCH
+
+      z_top_max = c_corner_tmp;
+
+      cout << "+++++++++++++++++++++++ c_corner: " << c_corner_tmp << endl;
     }
+
+    apexZ0 = c_corner[LATEST_PATCH_INDEX][0];
+    apexZ0 = saved_apexZ0;
+    cout << "'=======================================================  "
+            "z1_Align: "
+         << apexZ0 << endl;
+
+    /**
+     * TODO: translation resume here
+     */
+    exit(0);
 
     // get condition for next iteration
     _shadowquilt_column_loop_get_cond(c_corner_tmp, projectionOfCornerToBeam,
@@ -1642,7 +1648,9 @@ void system_top(point_t points[NUM_LAYERS][MAX_NUM_POINTS],
   // superpoints: 16 consecutive points
   point_t patch_buffer[PATCH_BUFFER_SIZE][NUM_LAYERS]
                       [NUM_POINTS_IN_SUPERPOINT] = {0x0};
-  bool patch_buffer_is_empty[PATCH_BUFFER_SIZE] = {true};
+  bool patch_buffer_valid[PATCH_BUFFER_SIZE] = {false};
+  index_t patch_buffer_order[PATCH_BUFFER_SIZE] = {-1};
+  
   index_t latest_patch_index = 0x0;
   index_t num_patches = 0x0;
 
