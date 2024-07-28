@@ -8,6 +8,19 @@
 #include <iostream>
 #include <string>
 
+#define PRINT_PATCH_BUFFER                                                     \
+  cout << "-------------------" << endl;                                       \
+  cout << "patch_buffer_valid:" << endl;                                       \
+  for (int i = 0; i < PATCH_BUFFER_SIZE; i++) {                                \
+    cout << patch_buffer_valid[i] << " ";                                      \
+  }                                                                            \
+  cout << endl;                                                                \
+  cout << "patch_buffer_order:" << endl;                                       \
+  for (int i = 0; i < PATCH_BUFFER_SIZE; i++) {                                \
+    cout << patch_buffer_order[i] << " ";                                      \
+  }                                                                            \
+  cout << endl << "-------------------" << endl;
+
 using namespace std;
 
 void print_patch(point_t patch[NUM_LAYERS][NUM_POINTS_IN_SUPERPOINT]) {
@@ -60,72 +73,96 @@ int main(void) {
 
   hls::stream<point_t> patch_stream;
 
-  // print all patches in patch buffer
-  cout << "Before adding patches:" << endl;
-  for (int i = 0; i < PATCH_BUFFER_SIZE; i++) {
-    cout << "Patch " << i << ":" << endl;
-    print_patch(patch_buffer[i]);
-  }
-  cout << endl;
-
-  // print patch_buffer_valid
-  cout << "patch_buffer_valid:" << endl;
-  for (int i = 0; i < PATCH_BUFFER_SIZE; i++) {
-    cout << patch_buffer_valid[i] << " ";
-  }
-  cout << endl;
-
-  // print patch_buffer_order
-  cout << "patch_buffer_order:" << endl;
-  for (int i = 0; i < PATCH_BUFFER_SIZE; i++) {
-    cout << patch_buffer_order[i] << " ";
-  }
-  cout << endl;
+  cout << "begin test" << endl;
+  PRINT_PATCH_BUFFER
 
   // add patches to patch buffer
   patch_buffer_add_patch(patch_0, patch_buffer, patch_buffer_valid,
                          patch_buffer_order, latest_patch_index, num_patches,
                          patch_stream);
+  cout << "add patch" << endl;
+  PRINT_PATCH_BUFFER
+
   patch_buffer_add_patch(patch_1, patch_buffer, patch_buffer_valid,
                          patch_buffer_order, latest_patch_index, num_patches,
                          patch_stream);
 
-  // print patch_buffer
-  for (int i = 0; i < PATCH_BUFFER_SIZE; i++) {
-    cout << "Patch " << i << ":" << endl;
-    print_patch(patch_buffer[i]);
-  }
+  cout << "add patch" << endl;
+  PRINT_PATCH_BUFFER
 
   // delete patch depth 1
   patch_buffer_delete_patch(patch_buffer, patch_buffer_valid,
                             patch_buffer_order, latest_patch_index, num_patches,
                             1);
 
+  cout << "delete patch depth 1" << endl;
+  PRINT_PATCH_BUFFER
+
   // add patches to patch buffer
   patch_buffer_add_patch(patch_2, patch_buffer, patch_buffer_valid,
                          patch_buffer_order, latest_patch_index, num_patches,
                          patch_stream);
 
-  // print patch_buffer
-  cout << "======================" << endl;
-  for (int i = 0; i < PATCH_BUFFER_SIZE; i++) {
-    cout << "Patch " << i << ":" << endl;
-    print_patch(patch_buffer[i]);
-  }
+  cout << "add patch" << endl;
+  PRINT_PATCH_BUFFER
 
-  // print patch_buffer_valid
-  cout << "patch_buffer_valid:" << endl;
-  for (int i = 0; i < PATCH_BUFFER_SIZE; i++) {
-    cout << patch_buffer_valid[i] << " ";
-  }
-  cout << endl;
+  patch_buffer_add_patch(patch_3, patch_buffer, patch_buffer_valid,
+                         patch_buffer_order, latest_patch_index, num_patches,
+                         patch_stream);
 
-  // print patch_buffer_order
-  cout << "patch_buffer_order:" << endl;
-  for (int i = 0; i < PATCH_BUFFER_SIZE; i++) {
-    cout << patch_buffer_order[i] << " ";
-  }
-  cout << endl;
+  cout << "add patch" << endl;
+  PRINT_PATCH_BUFFER
+
+  patch_buffer_add_patch(patch_4, patch_buffer, patch_buffer_valid,
+                         patch_buffer_order, latest_patch_index, num_patches,
+                         patch_stream);
+
+  cout << "add patch" << endl;
+  PRINT_PATCH_BUFFER
+
+  patch_buffer_add_patch(patch_5, patch_buffer, patch_buffer_valid,
+                         patch_buffer_order, latest_patch_index, num_patches,
+                         patch_stream);
+
+  cout << "add patch" << endl;
+  PRINT_PATCH_BUFFER
+
+  patch_buffer_delete_patch(patch_buffer, patch_buffer_valid,
+                            patch_buffer_order, latest_patch_index, num_patches,
+                            0);
+
+  cout << "delete patch depth 0" << endl;
+  PRINT_PATCH_BUFFER
+
+  patch_buffer_add_patch(patch_0, patch_buffer, patch_buffer_valid,
+                         patch_buffer_order, latest_patch_index, num_patches,
+                         patch_stream);
+
+  cout << "add patch" << endl;
+  PRINT_PATCH_BUFFER
+
+  patch_buffer_add_patch(patch_1, patch_buffer, patch_buffer_valid,
+                         patch_buffer_order, latest_patch_index, num_patches,
+                         patch_stream);
+
+  cout << "add patch" << endl;
+  PRINT_PATCH_BUFFER
+
+  // delete depth 2
+  patch_buffer_delete_patch(patch_buffer, patch_buffer_valid,
+                            patch_buffer_order, latest_patch_index, num_patches,
+                            2);
+
+  cout << "delete patch depth 2" << endl;
+  PRINT_PATCH_BUFFER
+
+  // add patches to patch buffer
+  patch_buffer_add_patch(patch_2, patch_buffer, patch_buffer_valid,
+                         patch_buffer_order, latest_patch_index, num_patches,
+                         patch_stream);
+
+  cout << "add patch" << endl;
+  PRINT_PATCH_BUFFER  
 
   return EXIT_SUCCESS;
 }

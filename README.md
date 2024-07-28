@@ -2,8 +2,14 @@
 
 ## [TASKS]
 
-- [ ] Modify patch buffer, add a bool list of "should be outputed when override?"-ish
-- [ ] Implement delete patch
+## [2024-07-28]
+
+### [IMPL] Patch Buffer Methods
+
+- Implemented `patch_buffer_delete_patch` and `patch_buffer_add_patch`.
+- Passed test with custom test bench.
+- Not yet tested with c-sim and co-sim.
+- Not yet integrated with the main program.
 
 ## [2024-07-26]
 
@@ -43,10 +49,10 @@ void patch_buffer_add_patch(__ARGS__);
 
 `patch_buffer_add_patch` adds a patch to the buffer with the following steps:
 
-+ Calculate the index of the next patch to be added and overrided.
-+ If the overridden patch is valid, then port the patch to `patch_stream`.
-+ Add the new patch to the buffer and mark it as valid.
-+ Update the order of patches in `patch_buffer_order` queue.
+- Calculate the index of the next patch to be added and overrided.
+- If the overridden patch is valid, then port the patch to `patch_stream`.
+- Add the new patch to the buffer and mark it as valid.
+- Update the order of patches in `patch_buffer_order` queue.
 
 ```C
 void patch_buffer_delete_patch(__ARGA__);
@@ -54,8 +60,8 @@ void patch_buffer_delete_patch(__ARGA__);
 
 `patch_buffer_delete_patch` deletes a patch from the buffer with the following steps:
 
-+ Mark the patch as invalid in `patch_buffer_valid`.
-+ Update the order of patch indexes in `patch_buffer_order`.
+- Mark the patch as invalid in `patch_buffer_valid`.
+- Update the order of patch indexes in `patch_buffer_order`.
 
 ## [2024-07-21]
 

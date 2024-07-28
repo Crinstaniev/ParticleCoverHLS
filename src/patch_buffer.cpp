@@ -83,6 +83,7 @@ PBAP_loop_copy_new_patch:
    * calculate the patch index based on the patch depth and push it to the patch
    * index queue
    */
+  num_patches++;
 
   return;
 }
@@ -111,12 +112,27 @@ void patch_buffer_delete_patch(
   /**
    * Update the patch_buffer_order queue.
    * copy the patch indexes from the deleted patch to the latest patch
+   * For example, if the patch depth is 1 and patch buffer size is 3,
+   * then
+   * arr[1] <- arr[0]
+   * arr[0] <- (-1)
+   *
+   * If patch_depth is 0, then
+   * arr[2] <- arr[1]
+   * arr[1] <- arr[0]
+   * arr[0] <- (-1)
+   *
+   * If patch_depth is 2, then
+   * arr[0] <- (-1)
    */
 PBDP_loop_update_patch_buffer_order:
-  for (index_t i = PATCH_BUFFER_SIZE - patch_depth - 1;
-       i < PATCH_BUFFER_SIZE - 1; i++) {
-    patch_buffer_order[i] = patch_buffer_order[i + 1];
+  for (index_t i = PATCH_BUFFER_SIZE - patch_depth - 1; i > 0; i--) {
+    patch_buffer_order[i] = patch_buffer_order[i - 1];
   }
+
+  patch_buffer_order[0] = -1;
+
+  num_patches--;
 
   return;
 }
