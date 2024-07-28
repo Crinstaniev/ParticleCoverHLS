@@ -54,3 +54,4 @@ endmacro()
 
 # Add tests
 patchmaker_add_test(test_system)
+patchmaker_add_test(test_patch_buffer)
