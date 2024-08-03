@@ -2,14 +2,32 @@
 
 ## [TASKS]
 
+- [ ] Integrate patch buffer with the main program.
+
+## [2024-08-03]
+
+- implemented `patch_buffer_get_patch_index` and auxiliary macros.e
+
+### [BUG] Loop Condition Error
+
+- `loop_adjust_complementary_patch` got one more iteration than expected.
+
 ## [2024-07-28]
+
+### [BUG] Values Error
+
+- Line `1457` - `1461`
+  - Error value of `original_topL_jL`
+  - Error value of `complementary_topR_jR`
+  - Error value of `z0_complementary_cCorner`
+    - Error value of `z_top_min`
 
 ### [IMPL] Patch Buffer Methods
 
 - Implemented `patch_buffer_delete_patch` and `patch_buffer_add_patch`.
 - Passed test with custom test bench.
-- Not yet tested with c-sim and co-sim.
-- Not yet integrated with the main program.
+- Tested with c-sim and co-sim.
+- Integration with the main program not yet tested.
 
 ## [2024-07-26]
 
@@ -55,7 +73,7 @@ void patch_buffer_add_patch(__ARGS__);
 - Update the order of patches in `patch_buffer_order` queue.
 
 ```C
-void patch_buffer_delete_patch(__ARGA__);
+void patch_buffer_delete_patch(__ARGS__);
 ```
 
 `patch_buffer_delete_patch` deletes a patch from the buffer with the following steps:
@@ -108,3 +126,6 @@ By adding missing function calls, correct c_corners are produced.
 #### Wrong number of iteration when adjusting white spaces
 
 - Fixed by correcting while condition
+
+
+

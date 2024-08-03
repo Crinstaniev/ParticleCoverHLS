@@ -316,25 +316,43 @@ void _find_left_and_right_boundaries(index_t num_points[NUM_LAYERS],
 loop_find_left_and_right_boundaries:
   for (int j = 0; j < num_points[i]; j++) {
     z_value_t row_list_j = point_get_z(points[i][j]);
+    // float_value_t diff_0 =
+    //     std::abs(row_list_j.to_float() + get_trapezoid_edges(i) +
+    //              BOUNDARYPOINT_OFFSET) -
+    //     lbVal.to_float();
     float_value_t diff_0 =
-        std::abs(row_list_j.to_float() + get_trapezoid_edges(i) +
-                 BOUNDARYPOINT_OFFSET) -
-        lbVal.to_float();
+        ABS_UNIVERSAL(row_list_j + (float_value_t)get_trapezoid_edges(i) +
+                          BOUNDARYPOINT_OFFSET,
+                      float_value_t) -
+        lbVal;
+    // float_value_t diff_1 =
+    //     std::abs(row_list_j.to_float() - get_trapezoid_edges(i) -
+    //              BOUNDARYPOINT_OFFSET) -
+    //     rbVal.to_float();
     float_value_t diff_1 =
-        std::abs(row_list_j.to_float() - get_trapezoid_edges(i) -
-                 BOUNDARYPOINT_OFFSET) -
-        rbVal.to_float();
+        ABS_UNIVERSAL(row_list_j - (float_value_t)get_trapezoid_edges(i) -
+                          BOUNDARYPOINT_OFFSET,
+                      float_value_t) -
+        rbVal;
 
     if (diff_0 < 0) {
       left_bound = j;
       lbVal = std::abs(row_list_j.to_float() + get_trapezoid_edges(i) +
                        BOUNDARYPOINT_OFFSET);
+      // lbVal = ABS_UNIVERSAL(row_list_j +
+      // (float_value_t)get_trapezoid_edges(i) +
+      //                           BOUNDARYPOINT_OFFSET,
+      //                       float_value_t);
     }
 
     if (diff_1 < 0) {
       right_bound = j;
       rbVal = std::abs(row_list_j.to_float() - get_trapezoid_edges(i) -
                        BOUNDARYPOINT_OFFSET);
+      // rbVal = ABS_UNIVERSAL(row_list_j -
+      // (float_value_t)get_trapezoid_edges(i) -
+      //                           BOUNDARYPOINT_OFFSET,
+      //                       float_value_t);
     }
   }
 }
@@ -519,9 +537,12 @@ alignedtoline_layer_loop:
   // TODO: add patch to buffer
   // patch_buffer_add_patch(init_patch, patch_buffer, patch_buffer_is_empty,
   //                        latest_patch_index, num_patches);
+  patch_buffer_add_patch(init_patch, patch_buffer, patch_buffer_valid,
+                         patch_buffer_order, latest_patch_index, num_patches,
+                         patch_stream);
 
   // add patch to stream
-  write_patch_stream(patch_stream, init_patch);
+  // write_patch_stream(patch_stream, init_patch);
 
   // print latest patch
   DEBUG_PRINT_ALL(
@@ -956,13 +977,14 @@ _shadowquilt_column_loop:
       float_value_t previous_z_top_min = FLOAT_VALUE_T_MIN;
 
     loop_adjust_complementary_patch:
-      while (!(white_space_height <= 0 && (previous_white_space_height >= 0) &&
-               (std::abs((double)white_space_height) > 0.000001) &&
-               ((c_corner[latest_patch_index][1] >
-                 (float_value_t)(-1 * get_trapezoid_edges(NUM_LAYERS - 1))) ||
-                (white_space_height > 0)) &&
-               (current_z_top_index < (num_points[NUM_LAYERS - 1] - 1)) &&
-               !repeat_patch && !repeat_original)) {
+      while (!(white_space_height <= 0 && (previous_white_space_height >= 0)) &&
+             (ABS_UNIVERSAL(white_space_height, float_value_t) > 0.000001) &&
+             ((c_corner[LATEST_PATCH_INDEX][1] >
+               -1 * (float_value_t)get_trapezoid_edges(NUM_LAYERS - 1)) ||
+              (white_space_height > 0)) &&
+             (current_z_top_index <
+              (int_value_t)(num_points[NUM_LAYERS - 1] - 1)) &&
+             !(repeat_patch) && !(repeat_original)) {
         DEBUG_PRINT_ALL(cout << endl; if (num_patches > 2) {
           // this part not tested yet
           cout << 'roginal c: ' << original_c << " "
@@ -1095,7 +1117,8 @@ _shadowquilt_column_loop:
 
         for (int i = 0; i < NUM_LAYERS - 1; i++) {
           // if ((float_value_t)std::abs((float)new_z_i_atTop[i] -
-          //                             (float)previous_z_top_min) < layerSMin)
+          //                             (float)previous_z_top_min) <
+          //                             layerSMin)
           //                             {
           if ((float_value_t)ABS_UNIVERSAL(
                   new_z_i_atTop[i] - previous_z_top_min, float_value_t) <
@@ -1187,10 +1210,9 @@ _shadowquilt_column_loop:
                                << d_corner[LATEST_PATCH_INDEX][0] << " "
                                << d_corner[LATEST_PATCH_INDEX][1] << endl;)
 
-
-          // TODO: delete patch
-          // patch_buffer_delete_patch(patch_buffer, patch_buffer_is_empty,
-          //                           latest_patch_index, num_patches, 0);
+          patch_buffer_delete_patch(patch_buffer, patch_buffer_valid,
+                                    patch_buffer_order, latest_patch_index,
+                                    num_patches, 0);
         }
 
         DEBUG_PRINT_ALL( // print ingredients
@@ -1240,32 +1262,73 @@ _shadowquilt_column_loop:
         white_space_height = GET_MAX_VAL_UNIVERSAL(
             original_c - complementary_a, original_d - complementary_b);
 
-        DEBUG_PRINT_ALL(
-            cout << "complementary_a:" << complementary_a << " "
-                 << a_corner[latest_patch_index][1] << " || complementary_b:"
-                 << complementary_b << " " << b_corner[latest_patch_index][1]
-                 << " new z_top_min: " << z_top_min << endl;
-            cout << "new white_space_height: " << white_space_height << endl;
-            cout << "adjusted complementary: "
-                 << a_corner[latest_patch_index][0] << " "
-                 << a_corner[latest_patch_index][1]
-                 << " for z_top_min:" << z_top_min << endl;
-            cout << "adjusted complementary: "
-                 << b_corner[latest_patch_index][0] << " "
-                 << b_corner[latest_patch_index][1] << "for patch "
-                 << num_patches << endl;
-            cout << "adjusted complementary: "
-                 << c_corner[latest_patch_index][0] << " "
-                 << c_corner[latest_patch_index][1] << endl;
-            cout << "adjusted complementary: "
-                 << d_corner[latest_patch_index][0] << " "
-                 << d_corner[latest_patch_index][1] << endl;)
+        cout << "complementary_a:" << complementary_a << " "
+             << a_corner[latest_patch_index][1]
+             << " || complementary_b:" << complementary_b << " "
+             << b_corner[latest_patch_index][1]
+             << " new z_top_min: " << z_top_min << endl;
+        cout << "new white_space_height: " << white_space_height << endl;
+        cout << "adjusted complementary: " << a_corner[latest_patch_index][0]
+             << " " << a_corner[latest_patch_index][1]
+             << " for z_top_min:" << z_top_min << endl;
+        cout << "adjusted complementary: " << b_corner[latest_patch_index][0]
+             << " " << b_corner[latest_patch_index][1] << "for patch "
+             << num_patches << endl;
+        cout << "adjusted complementary: " << c_corner[latest_patch_index][0]
+             << " " << c_corner[latest_patch_index][1] << endl;
+        cout << "adjusted complementary: " << d_corner[latest_patch_index][0]
+             << " " << d_corner[latest_patch_index][1] << endl;
 
-        // PATCH_EXIT(2)
-        /**
-         * BUG: Fix 42 not implemented
-         */
+        if ((num_patches > 3) && FIX42) {
+          /**
+           * TODO:
+           * not implemented yet
+           */
+        }
+
+        bool loop_cond =
+            !(white_space_height <= 0 && (previous_white_space_height >= 0)) &&
+            (ABS_UNIVERSAL(white_space_height, float_value_t) > 0.000001) &&
+            ((c_corner[LATEST_PATCH_INDEX][1] >
+              -1 * (float_value_t)get_trapezoid_edges(NUM_LAYERS - 1)) ||
+             (white_space_height > 0)) &&
+            (current_z_top_index <
+             (int_value_t)(num_points[NUM_LAYERS - 1] - 1)) &&
+            !(repeat_patch) && !(repeat_original);
+
+        cout << "===========================" << endl;
+        cout << "loop condition for iter " << g_debug_counter << ":" << endl;
+
+        cout << "white_space_height <= 0: " << (white_space_height <= 0)
+             << endl;
+        cout << "previous_white_space_height >= 0: "
+             << (previous_white_space_height >= 0) << endl;
+        cout << "abs(white_space_height) > 0.000001: "
+             << (ABS_UNIVERSAL(white_space_height, float_value_t) > 0.000001)
+             << endl;
+        cout << "c_corner[LATEST_PATCH_INDEX][1] > -1 * get_trapezoid_edges("
+                "NUM_LAYERS - 1): "
+             << (c_corner[LATEST_PATCH_INDEX][1] >
+                 -1 * (float_value_t)get_trapezoid_edges(NUM_LAYERS - 1))
+             << endl;
+        cout << "white_space_height > 0: " << (white_space_height > 0) << endl;
+        cout << "current_z_top_index < num_points[NUM_LAYERS - 1] - 1: "
+             << (current_z_top_index <
+                 (int_value_t)(num_points[NUM_LAYERS - 1] - 1))
+             << endl;
+        cout << "repeat_patch: " << repeat_patch << endl;
+        cout << "repeat_original: " << repeat_original << endl;
+
+        // when g_debug_counter == 11, exit
+        // if (g_debug_counter == 11) {
+        //   cout << "debug exit" << endl;
+        //   exit(0);
+        // }
+
+        g_debug_counter++;
       }
+
+      exit(0);
 
       c_corner_tmp = c_corner[latest_patch_index][1];
 
@@ -1428,11 +1491,28 @@ _shadowquilt_column_loop:
             cout << "horizontalOverlapBottom: " << horizontalOverlapBottom
                  << endl;)
 
+        /**
+         * TODO:
+         * Fix `z0_complementary_cCorner` value error
+         */
         float_value_t z0_original_bCorner = straightLineProjectorFromLayerIJtoK(
             apexZ0, z_top_max, 1, NUM_LAYERS, 0);
         float_value_t z0_complementary_cCorner =
             straightLineProjectorFromLayerIJtoK(complementary_apexZ0, z_top_min,
                                                 1, NUM_LAYERS, 0);
+
+        cout << "z0_complementary_cCorner: " << z0_complementary_cCorner
+             << endl;
+        // print ingredient
+        cout << "complementary_apexZ0: " << complementary_apexZ0 << endl;
+        /**
+         * BUG:
+         * value error of z_top_min
+         */
+        cout << "z_top_min: " << z_top_min << endl;
+
+        exit(0);
+
         bool shiftOriginal = true;
 
         DEBUG_PRINT_ALL(
@@ -1450,15 +1530,26 @@ _shadowquilt_column_loop:
           shifted_Align = apexZ0;
         }
 
+        cout << "original_topR_jL: " << original_topR_jL << endl;
+        cout << "original_topL_jL: " << original_topL_jL << endl;
+        cout << "complementary_topR_jR: " << complementary_topR_jR << endl;
+        cout << "complementary_topL_jR: " << complementary_topL_jR << endl;
+        cout << "z0_original_bCorner: " << z0_original_bCorner << endl;
+        cout << "z0_complementary_cCorner: " << z0_complementary_cCorner
+             << endl;
+
         DEBUG_PRINT_ALL(if (horizontalShiftTop > 0 or
                             horizontalShiftBottom > 0) {
-          cout << "originalPartialTop: " << originalPartialTop
+          cout << "originalPartialTop: " << originalPartialTop << endl
                << " complementaryPartialTop: " << complementaryPartialTop
-               << " originalPartialBottom: " << originalPartialBottom
+               << endl
+               << " originalPartialBottom: " << originalPartialBottom << endl
                << " complementaryPartialBottom: " << complementaryPartialBottom
+               << endl
                << " " << original_topR_jL << " " << original_topL_jL << " "
-               << complementary_topR_jR << " " << complementary_topL_jR
-               << " horizontalOverlapTop: " << horizontalOverlapTop
+               << endl
+               << complementary_topR_jR << " " << complementary_topL_jR << endl
+               << " horizontalOverlapTop: " << horizontalOverlapTop << endl
                << " horizontalOverlapBottom: " << horizontalOverlapBottom
                << endl;
         })
@@ -1493,10 +1584,9 @@ _shadowquilt_column_loop:
           }
 
           if (makeHorizontallyShiftedPatch) {
-            /**
-             * TODO:
-             * delete the latest patch
-             */
+            patch_buffer_delete_patch(patch_buffer, patch_buffer_valid,
+                                      patch_buffer_order, latest_patch_index,
+                                      num_patches, 0);
           }
 
           makePatch_alignedToLine(shifted_Align, newZtop, (not shiftOriginal),
@@ -1572,7 +1662,6 @@ _shadowquilt_column_loop:
                                << horizontalShiftBottom
                                << " shifted_Align: " << shifted_Align << endl;)
         }
-
         // END_LOOP: end_loop_for_horizontal_shifts
 
         if (makeHorizontallyShiftedPatch) {
@@ -1581,15 +1670,13 @@ _shadowquilt_column_loop:
                                                     0) > BEAM_AXIS_LIM)) and
               shiftOriginal) {
             if (num_patches > 2) {
-              /**
-               * TODO:
-               * delete previous prevous patch
-               */
+              patch_buffer_delete_patch(patch_buffer, patch_buffer_valid,
+                                        patch_buffer_order, latest_patch_index,
+                                        num_patches, 2);
             }
           }
         }
       }
-      // exit(0);
       // END_IF_MADE_COMPLEMENTARY_PATCH
 
       z_top_max = c_corner_tmp;
@@ -1649,8 +1736,8 @@ void system_top(point_t points[NUM_LAYERS][MAX_NUM_POINTS],
   point_t patch_buffer[PATCH_BUFFER_SIZE][NUM_LAYERS]
                       [NUM_POINTS_IN_SUPERPOINT] = {0x0};
   bool patch_buffer_valid[PATCH_BUFFER_SIZE] = {false};
-  index_t patch_buffer_order[PATCH_BUFFER_SIZE] = {-1};
-  
+  index_t patch_buffer_order[PATCH_BUFFER_SIZE] = {0x0};
+
   index_t latest_patch_index = 0x0;
   index_t num_patches = 0x0;
 

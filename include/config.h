@@ -5,6 +5,7 @@
 #define CONFIG_IS_SYNTHESIS false
 #define ARRAY_PARTITION false
 #define PRINT_EXTREMES false
+#define FIX42 true
 
 #ifdef DEBUG
 #define D(x) x

@@ -78,12 +78,10 @@ PBAP_loop_copy_new_patch:
     }
   }
 
-  /**
-   * TODO:
-   * calculate the patch index based on the patch depth and push it to the patch
-   * index queue
-   */
   num_patches++;
+
+  // update lateset patch index
+  latest_patch_index = patch_buffer_order[PATCH_BUFFER_SIZE - 1];
 
   return;
 }
@@ -134,7 +132,33 @@ PBDP_loop_update_patch_buffer_order:
 
   num_patches--;
 
+  // update lateset patch index
+  latest_patch_index = patch_buffer_order[PATCH_BUFFER_SIZE - 1];
+
   return;
+}
+
+/**
+ * @brief get the patch index from the patch buffer
+ *
+ * @return the patch index from the patch buffer
+ */
+index_t
+patch_buffer_get_patch_index(index_t patch_depth, index_t num_patches,
+                             index_t patch_buffer_order[PATCH_BUFFER_SIZE]) {
+  if (num_patches == 1) {
+    return patch_buffer_order[0];
+  }
+
+  if (num_patches == 2) {
+    return patch_buffer_order[1];
+  }
+
+  /**
+   * Number of patches is more than 2, then
+   * patch_buffer_order is fully occupied.
+   */
+  index_t patch_index = patch_buffer_order[PATCH_BUFFER_SIZE - patch_depth - 1];
 }
 
 // read and write stream

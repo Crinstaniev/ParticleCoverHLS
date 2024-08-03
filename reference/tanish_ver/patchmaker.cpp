@@ -1483,30 +1483,29 @@ public:
             white_space_height =
                 max(original_c - complementary_a, original_d - complementary_b);
 
-            DEBUG_PRINT_ALL(
-                cout << "complementary_a:" << complementary_a << " "
-                     << patches[patches.size() - 1].a_corner[1]
-                     << " || complementary_b:" << complementary_b << " "
-                     << patches[patches.size() - 1].b_corner[1]
-                     << " new z_top_min: " << z_top_min << endl;
-                cout << "new white_space_height: " << white_space_height
-                     << endl;
-                cout << "adjusted complementary: "
-                     << patches[patches.size() - 1].a_corner[0] << " "
-                     << patches[patches.size() - 1].a_corner[1]
-                     << " for z_top_min:" << z_top_min << endl;
-                cout << "adjusted complementary: "
-                     << patches[patches.size() - 1].b_corner[0] << " "
-                     << patches[patches.size() - 1].b_corner[1] << "for patch "
-                     << patches.size() << endl;
-                cout << "adjusted complementary: "
-                     << patches[patches.size() - 1].c_corner[0] << " "
-                     << patches[patches.size() - 1].c_corner[1] << endl;
-                cout << "adjusted complementary: "
-                     << patches[patches.size() - 1].d_corner[0] << " "
-                     << patches[patches.size() - 1].d_corner[1] << endl;)
+            cout << "complementary_a:" << complementary_a << " "
+                 << patches[patches.size() - 1].a_corner[1]
+                 << " || complementary_b:" << complementary_b << " "
+                 << patches[patches.size() - 1].b_corner[1]
+                 << " new z_top_min: " << z_top_min << endl;
+            cout << "new white_space_height: " << white_space_height << endl;
+            cout << "adjusted complementary: "
+                 << patches[patches.size() - 1].a_corner[0] << " "
+                 << patches[patches.size() - 1].a_corner[1]
+                 << " for z_top_min:" << z_top_min << endl;
+            cout << "adjusted complementary: "
+                 << patches[patches.size() - 1].b_corner[0] << " "
+                 << patches[patches.size() - 1].b_corner[1] << "for patch "
+                 << patches.size() << endl;
+            cout << "adjusted complementary: "
+                 << patches[patches.size() - 1].c_corner[0] << " "
+                 << patches[patches.size() - 1].c_corner[1] << endl;
+            cout << "adjusted complementary: "
+                 << patches[patches.size() - 1].d_corner[0] << " "
+                 << patches[patches.size() - 1].d_corner[1] << endl;
 
             if ((n_patches > 3) && fix42) {
+              cout << "fix42 triggered" << endl;
               if ((patches[patches.size() - 1]
                        .superpoints[env.num_layers - 1] ==
                    patches[patches.size() - 3]
@@ -1538,8 +1537,48 @@ public:
                                         true);
               }
             }
+
+            bool loop_cond =
+                !(white_space_height <= 0 &&
+                  (previous_white_space_height >= 0)) &&
+                (abs(white_space_height) > 0.000001) &&
+                ((patches[patches.size() - 1].c_corner[1] >
+                  -1 * env.trapezoid_edges[env.num_layers - 1]) ||
+                 (white_space_height > 0)) &&
+                (current_z_top_index <
+                 (int)(data->array[env.num_layers - 1].size() - 1)) &&
+                !(repeat_patch) && !(repeat_original);
+
+            cout << "===========================" << endl;
+            cout << "loop condition for iter " << g_debug_counter << ":"
+                 << endl;
+
+            cout << "white_space_height <= 0: " << (white_space_height <= 0)
+                 << endl;
+            cout << "previous_white_space_height >= 0: "
+                 << (previous_white_space_height >= 0) << endl;
+            cout << "abs(white_space_height) > 0.000001: "
+                 << (abs(white_space_height) > 0.000001) << endl;
+            cout
+                << "c_corner[LATEST_PATCH_INDEX][1] > -1 * get_trapezoid_edges("
+                   "NUM_LAYERS - 1): "
+                << (patches[patches.size() - 1].c_corner[1] >
+                    -1 * env.trapezoid_edges[env.num_layers - 1])
+                << endl;
+            cout << "white_space_height > 0: " << (white_space_height > 0)
+                 << endl;
+            cout << "current_z_top_index < num_points[NUM_LAYERS - 1] - 1: "
+                 << (current_z_top_index <
+                     (int)(data->array[env.num_layers - 1].size() - 1))
+                 << endl;
+            cout << "repeat_patch: " << repeat_patch << endl;
+            cout << "repeat_original: " << repeat_original << endl;
+
+            g_debug_counter++;
           }
         }
+
+        exit(0);
 
         c_corner = patches[patches.size() - 1].c_corner[1];
 
@@ -1696,6 +1735,14 @@ public:
                   complementary_apexZ0, z_top_min, 1, env.num_layers, 0);
           bool shiftOriginal = true;
 
+          cout << "z0_complementary_cCorner: " << z0_complementary_cCorner
+               << endl;
+          // print ingredient
+          cout << "complementary_apexZ0: " << complementary_apexZ0 << endl;
+          cout << "z_top_min: " << z_top_min << endl;
+
+          exit(0);
+
           DEBUG_PRINT_ALL(
               cout << "z0_original_bCorner: " << z0_original_bCorner << endl;
               cout << "z0_complementary_cCorner: " << z0_complementary_cCorner
@@ -1711,19 +1758,30 @@ public:
             shifted_Align = apexZ0;
           }
 
-          DEBUG_PRINT_ALL(
-              if (horizontalShiftTop > 0 or horizontalShiftBottom > 0) {
-                cout << "originalPartialTop: " << originalPartialTop
-                     << " complementaryPartialTop: " << complementaryPartialTop
-                     << " originalPartialBottom: " << originalPartialBottom
-                     << " complementaryPartialBottom: "
-                     << complementaryPartialBottom << " " << original_topR_jL
-                     << " " << original_topL_jL << " " << complementary_topR_jR
-                     << " " << complementary_topL_jR
-                     << " horizontalOverlapTop: " << horizontalOverlapTop
-                     << " horizontalOverlapBottom: " << horizontalOverlapBottom
-                     << endl;
-              })
+          cout << "original_topR_jL: " << original_topR_jL << endl;
+          cout << "original_topL_jL: " << original_topL_jL << endl;
+          cout << "complementary_topR_jR: " << complementary_topR_jR << endl;
+          cout << "complementary_topL_jR: " << complementary_topL_jR << endl;
+          cout << "z0_original_bCorner: " << z0_original_bCorner << endl;
+          cout << "z0_complementary_cCorner: " << z0_complementary_cCorner
+               << endl;
+
+          DEBUG_PRINT_ALL(if (horizontalShiftTop > 0 or
+                              horizontalShiftBottom > 0) {
+            cout << "originalPartialTop: " << originalPartialTop << endl
+                 << " complementaryPartialTop: " << complementaryPartialTop
+                 << endl
+                 << " originalPartialBottom: " << originalPartialBottom << endl
+                 << " complementaryPartialBottom: "
+                 << complementaryPartialBottom << endl
+                 << " " << original_topR_jL << " " << original_topL_jL << " "
+                 << endl
+                 << complementary_topR_jR << " " << complementary_topL_jR
+                 << endl
+                 << " horizontalOverlapTop: " << horizontalOverlapTop << endl
+                 << " horizontalOverlapBottom: " << horizontalOverlapBottom
+                 << endl;
+          })
 
           DEBUG_PRINT_ALL(cout << "shiftedOriginal: " << shiftOriginal << endl;
                           cout << "shiftedAlign: " << shifted_Align << endl;)
