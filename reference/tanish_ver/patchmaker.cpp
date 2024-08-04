@@ -1510,7 +1510,6 @@ public:
                      << patches[patches.size() - 1].d_corner[1] << endl;)
 
             if ((n_patches > 3) && fix42) {
-              cout << "fix42 triggered" << endl;
               if ((patches[patches.size() - 1]
                        .superpoints[env.num_layers - 1] ==
                    patches[patches.size() - 3]
@@ -1523,6 +1522,7 @@ public:
                    patches[patches.size() - 3].superpoints[2]) &&
                   (patches[patches.size() - 1].superpoints[3] ==
                    patches[patches.size() - 3].superpoints[3])) {
+                cout << "fix42 triggered" << endl;
                 repeat_patch = true;
                 cout << patches[patches.size() - 1]
                             .superpoints[env.num_layers - 1]
@@ -1545,7 +1545,6 @@ public:
 
             DEBUG_PRINT_ALL({
               // print the latest patch
-              cout << "counter: " << g_debug_counter << endl;
               cout << "Print patch num: " << n_patches << endl;
               for (int i = 0; i < 5; i++) {
                 for (int j = 0; j < 16; j++) {
@@ -1554,8 +1553,6 @@ public:
                        << endl;
                 }
               }
-
-              g_debug_counter++;
             })
           }
           // END_LOOP_ADJUST_COMPLEMENTARY_PATCH
@@ -1902,7 +1899,25 @@ public:
               "z1_Align: "
            << apexZ0 << endl;
 
-      exit(0);
+      cout << "number of patches: " << patches.size() << endl;
+
+      DEBUG_PRINT_ALL({
+        // print latest patch
+        cout << "Print patch num: " << n_patches << endl;
+        for (int i = 0; i < 5; i++) {
+          for (int j = 0; j < 16; j++) {
+            cout << "patch_buffer[latest][" << i << "][" << j << "]: "
+                 << patches[patches.size() - 1].superpoints[i].points[j].z
+                 << endl;
+          }
+        }
+      })
+      cout << "counter: " << g_debug_counter << endl;
+      g_debug_counter++;
+
+      if (g_debug_counter >= 3) {
+        exit(0);
+      }
     }
   }
 

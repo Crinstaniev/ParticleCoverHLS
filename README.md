@@ -2,8 +2,8 @@
 
 ## [TASKS]
 
-- fix: error value of `complementary_topR_jR`
 - implement `fix42`
+- fix `c_corner` deviation problem
 
 ## [2024-08-04]
 
@@ -12,6 +12,10 @@
 - fixed error value of `complementary_topR_jR`
 - fixed error value of `z_top_min`
 - passed synthesis co-simulation, and export_rtl
+
+### [BUG]
+
+- `c_corner` values deviate from expected values starting from second strip
 
 ## [2024-08-03]
 

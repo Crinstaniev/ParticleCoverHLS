@@ -1276,14 +1276,12 @@ _shadowquilt_column_loop:
 
         if ((num_patches > 3) && FIX42) {
           /**
-           * TODO:
-           * not implemented yet
+           * Not Implemented Yet
            */
         }
 
         DEBUG_PRINT_ALL({
           // print the latest patch
-          cout << "counter: " << g_debug_counter << endl;
           cout << "Print patch num: " << num_patches << endl;
           for (int i = 0; i < NUM_LAYERS; i++) {
             for (int j = 0; j < NUM_POINTS_IN_SUPERPOINT; j++) {
@@ -1292,8 +1290,6 @@ _shadowquilt_column_loop:
                    << endl;
             }
           }
-
-          g_debug_counter++;
         })
       }
       // END_LOOP_ADJUST_COMPLEMENTARY_PATCH
@@ -1651,8 +1647,7 @@ _shadowquilt_column_loop:
 
     z_top_max = c_corner_tmp;
 
-    DEBUG_PRINT_ALL(cout << "+++++++++++++++++++++++ c_corner: " << c_corner_tmp
-                         << endl;)
+    cout << "+++++++++++++++++++++++ c_corner: " << c_corner_tmp << endl;
 
     // get condition for next iteration
     _shadowquilt_column_loop_get_cond(c_corner_tmp, projectionOfCornerToBeam,
@@ -1662,10 +1657,31 @@ _shadowquilt_column_loop:
 
   apexZ0 = c_corner[LATEST_PATCH_INDEX][0];
   apexZ0 = saved_apexZ0;
-  DEBUG_PRINT_ALL(
-      cout << "'=======================================================  "
-              "z1_Align: "
-           << apexZ0 << endl;)
+
+  cout << "'=======================================================  "
+          "z1_Align: "
+       << apexZ0 << endl;
+
+  cout << "number of patches: " << num_patches << endl;
+
+  DEBUG_PRINT_ALL({
+    // print latest patch
+    cout << "Print patch num: " << num_patches << endl;
+    for (int i = 0; i < NUM_LAYERS; i++) {
+      for (int j = 0; j < NUM_POINTS_IN_SUPERPOINT; j++) {
+        cout << "patch_buffer[latest][" << i << "][" << j
+             << "]: " << point_get_z(patch_buffer[latest_patch_index][i][j])
+             << endl;
+      }
+    }
+  })
+
+  cout << "counter: " << g_debug_counter << endl;
+  g_debug_counter++;
+
+  if (g_debug_counter >= 3) {
+    exit(0);
+  }
 
   return;
 }
@@ -1682,13 +1698,12 @@ void makePatches_ShadowQuilt_fromEdges(
   int_value_t first_row_count = 0;
 
 makepatch_main_loop:
-  // while ((float)apexZ0 > -1 * get_trapezoid_edges(0)) {
   while (apexZ0 > (float_value_t)-1 * (float_value_t)get_trapezoid_edges(0)) {
 #pragma HLS PIPELINE II = 1
     _shadowquilt_main_loop_make_verticle_strip(points, num_points, apexZ0,
                                                saved_apexZ0, PATCH_BUFFER_PARS);
 
-    return;
+    // return;
   }
 }
 
@@ -1752,6 +1767,8 @@ void system_top(point_t points[NUM_LAYERS][MAX_NUM_POINTS],
 #endif
 
   makePatches_ShadowQuilt_fromEdges(points, num_points, PATCH_BUFFER_PARS);
+
+  exit(0);
 
   return;
 }
