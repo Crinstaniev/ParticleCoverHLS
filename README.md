@@ -3,10 +3,15 @@
 ## [TASKS]
 
 - fix: error value of `complementary_topR_jR`
+- implement `fix42`
 
 ## [2024-08-04]
 
 - correctness of ingredient of `getShadows` under condition `madeComplementaryPatch` guaranteed.
+- fixed error value of `shadow_fromTopToInnermost_topR_jR`
+- fixed error value of `complementary_topR_jR`
+- fixed error value of `z_top_min`
+- passed synthesis co-simulation, and export_rtl
 
 ## [2024-08-03]
 

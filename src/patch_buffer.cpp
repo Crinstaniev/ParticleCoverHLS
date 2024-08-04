@@ -6,6 +6,8 @@
 #include <hls_stream.h>
 #include <iostream>
 
+using namespace std;
+
 /**
  * @brief add a new patch to the patch buffer
  *
@@ -146,19 +148,27 @@ PBDP_loop_update_patch_buffer_order:
 index_t
 patch_buffer_get_patch_index(index_t patch_depth, index_t num_patches,
                              index_t patch_buffer_order[PATCH_BUFFER_SIZE]) {
-  if (num_patches == 1) {
-    return patch_buffer_order[0];
-  }
+  // if (num_patches == 1) {
+  //   return patch_buffer_order[0 - patch_depth];
+  // }
 
-  if (num_patches == 2) {
-    return patch_buffer_order[1];
-  }
+  // if (num_patches == 2) {
+  //   // print the patch buffer order
+  //   cout << "PATCH_BUFFER_SIZE: " << PATCH_BUFFER_SIZE << endl;
+  //   for (index_t i = 0; i < PATCH_BUFFER_SIZE; i++) {
+  //     cout << patch_buffer_order[i] << " ";
+  //   }
+  //   cout << endl;
+  //   return patch_buffer_order[1 - patch_depth];
+  // }
 
   /**
    * Number of patches is more than 2, then
    * patch_buffer_order is fully occupied.
    */
   index_t patch_index = patch_buffer_order[PATCH_BUFFER_SIZE - patch_depth - 1];
+
+  return patch_index;
 }
 
 // read and write stream

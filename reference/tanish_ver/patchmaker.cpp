@@ -540,6 +540,7 @@ public:
   }
 
   void getShadows(float zTopMin, float zTopMax) {
+
     float zTop_min = max(zTopMin, -env.trapezoid_edges[env.num_layers - 1]);
     float zTop_max = min(zTopMax, env.trapezoid_edges[env.num_layers - 1]);
     vector<float> topL_jL;
@@ -1574,71 +1575,60 @@ public:
 
       if_madeComplementaryPatch:
         if (madeComplementaryPatch) {
-          cout << "ingredient of getShadows: " << endl;
-          cout << "z_top_min: " << z_top_min << endl;
-          cout << "z_top_max: " << z_top_max << endl;
-
-          {
-            // print the latest patch
-            cout << "++++++++++++++++++++++++++" << endl;
-            cout << "counter: " << g_debug_counter << endl;
-            cout << "Print patch num: " << n_patches << endl;
-            for (int i = 0; i < 5; i++) {
-              for (int j = 0; j < 16; j++) {
-                cout << "patch_buffer[latest][" << i << "][" << j << "]: "
-                     << patches[patches.size() - 1].superpoints[i].points[j].z
-                     << endl;
-              }
-            }
-          }
-
-          cout << "shadow_fromTopToInnermost_topR_jR[LATEST_PATCH_INDEX]: "
-               << patches[patches.size() - 1].shadow_fromTopToInnermost_topR_jR
-               << endl;
+          DEBUG_PRINT_ALL({
+            cout << "ingredient of getShadows: " << endl;
+            cout << "z_top_min: " << z_top_min << endl;
+            cout << "z_top_max: " << z_top_max << endl;
+          })
 
           // LATEST PATCH IS CORRECT UP TO HERE
-
-          exit(0);
 
           patches[patches.size() - 1].getShadows(z_top_min, z_top_max);
           patches[patches.size() - 2].getShadows(z_top_min, z_top_max);
 
-          // DEBUG: print shadows
           DEBUG_PRINT_ALL(
-              cout << "latest patch shadow:" << endl;
-              cout
-              << "shadow_fromTopToInnermost_topL_jL: "
-              << patches[patches.size() - 1].shadow_fromTopToInnermost_topL_jL
-              << endl;
-              cout
-              << "shadow_fromTopToInnermost_topL_jR: "
-              << patches[patches.size() - 1].shadow_fromTopToInnermost_topL_jR
-              << endl;
-              cout
-              << "shadow_fromTopToInnermost_topR_jL: "
-              << patches[patches.size() - 1].shadow_fromTopToInnermost_topR_jL
-              << endl;
-              cout
-              << "shadow_fromTopToInnermost_topR_jR: "
-              << patches[patches.size() - 1].shadow_fromTopToInnermost_topR_jR
-              << endl;
-              cout << "previous patch shadow:" << endl;
-              cout
-              << "shadow_fromTopToInnermost_topL_jL: "
-              << patches[patches.size() - 2].shadow_fromTopToInnermost_topL_jL
-              << endl;
-              cout
-              << "shadow_fromTopToInnermost_topL_jR: "
-              << patches[patches.size() - 2].shadow_fromTopToInnermost_topL_jR
-              << endl;
-              cout
-              << "shadow_fromTopToInnermost_topR_jL: "
-              << patches[patches.size() - 2].shadow_fromTopToInnermost_topR_jL
-              << endl;
-              cout
-              << "shadow_fromTopToInnermost_topR_jR: "
-              << patches[patches.size() - 2].shadow_fromTopToInnermost_topR_jR
-              << endl;)
+              cout << "shadow_fromTopToInnermost_topR_jR[LATEST_PATCH_INDEX]: "
+                   << patches[patches.size() - 1]
+                          .shadow_fromTopToInnermost_topR_jR
+                   << endl;)
+
+          // DEBUG: print shadows
+          DEBUG_PRINT_ALL({
+            cout << "latest patch shadow:" << endl;
+            cout
+                << "shadow_fromTopToInnermost_topL_jL: "
+                << patches[patches.size() - 1].shadow_fromTopToInnermost_topL_jL
+                << endl;
+            cout
+                << "shadow_fromTopToInnermost_topL_jR: "
+                << patches[patches.size() - 1].shadow_fromTopToInnermost_topL_jR
+                << endl;
+            cout
+                << "shadow_fromTopToInnermost_topR_jL: "
+                << patches[patches.size() - 1].shadow_fromTopToInnermost_topR_jL
+                << endl;
+            cout
+                << "shadow_fromTopToInnermost_topR_jR: "
+                << patches[patches.size() - 1].shadow_fromTopToInnermost_topR_jR
+                << endl;
+            cout << "previous patch shadow:" << endl;
+            cout
+                << "shadow_fromTopToInnermost_topL_jL: "
+                << patches[patches.size() - 2].shadow_fromTopToInnermost_topL_jL
+                << endl;
+            cout
+                << "shadow_fromTopToInnermost_topL_jR: "
+                << patches[patches.size() - 2].shadow_fromTopToInnermost_topL_jR
+                << endl;
+            cout
+                << "shadow_fromTopToInnermost_topR_jL: "
+                << patches[patches.size() - 2].shadow_fromTopToInnermost_topR_jL
+                << endl;
+            cout
+                << "shadow_fromTopToInnermost_topR_jR: "
+                << patches[patches.size() - 2].shadow_fromTopToInnermost_topR_jR
+                << endl;
+          })
 
           float original_topR_jL =
               patches[patches.size() - 2].shadow_fromTopToInnermost_topR_jL;
@@ -1662,10 +1652,8 @@ public:
           float complementary_topR_jR =
               patches[patches.size() - 1].shadow_fromTopToInnermost_topR_jR;
 
-          cout << "complementary_topR_jR updated to: " << complementary_topR_jR
-               << endl;
-
-          exit(0);
+          DEBUG_PRINT_ALL(cout << "complementary_topR_jR updated to: "
+                               << complementary_topR_jR << endl;)
 
           bool complementaryPartialTop =
               (complementary_topR_jR > complementary_apexZ0) &&
@@ -1750,11 +1738,12 @@ public:
                   complementary_apexZ0, z_top_min, 1, env.num_layers, 0);
           bool shiftOriginal = true;
 
-          cout << "z0_complementary_cCorner: " << z0_complementary_cCorner
-               << endl;
-          // print ingredient
-          cout << "complementary_apexZ0: " << complementary_apexZ0 << endl;
-          cout << "z_top_min: " << z_top_min << endl;
+          DEBUG_PRINT_ALL(
+              cout << "z0_complementary_cCorner: " << z0_complementary_cCorner
+                   << endl;
+              // print ingredient
+              cout << "complementary_apexZ0: " << complementary_apexZ0 << endl;
+              cout << "z_top_min: " << z_top_min << endl;)
 
           DEBUG_PRINT_ALL(
               cout << "z0_original_bCorner: " << z0_original_bCorner << endl;
@@ -1771,13 +1760,16 @@ public:
             shifted_Align = apexZ0;
           }
 
-          cout << "original_topR_jL: " << original_topR_jL << endl;
-          cout << "original_topL_jL: " << original_topL_jL << endl;
-          cout << "complementary_topR_jR: " << complementary_topR_jR << endl;
-          cout << "complementary_topL_jR: " << complementary_topL_jR << endl;
-          cout << "z0_original_bCorner: " << z0_original_bCorner << endl;
-          cout << "z0_complementary_cCorner: " << z0_complementary_cCorner
-               << endl;
+          DEBUG_PRINT_ALL(
+              cout << "original_topR_jL: " << original_topR_jL << endl;
+              cout << "original_topL_jL: " << original_topL_jL << endl;
+              cout << "complementary_topR_jR: " << complementary_topR_jR
+                   << endl;
+              cout << "complementary_topL_jR: " << complementary_topL_jR
+                   << endl;
+              cout << "z0_original_bCorner: " << z0_original_bCorner << endl;
+              cout << "z0_complementary_cCorner: " << z0_complementary_cCorner
+                   << endl;)
 
           DEBUG_PRINT_ALL(if (horizontalShiftTop > 0 or
                               horizontalShiftBottom > 0) {
@@ -1807,7 +1799,6 @@ public:
                  doShiftedPatch && (horizontalOverlapTop <= 0) &&
                  (horizontalOverlapBottom <= 0) &&
                  (newGapTop < 0 || newGapBottom < 0)) {
-
             cout << "horizontalShifts: " << horizontalShiftTop << " "
                  << horizontalShiftBottom << " shifted_Align: " << shifted_Align
                  << endl;
@@ -1902,8 +1893,6 @@ public:
         z_top_max = c_corner;
 
         cout << "+++++++++++++++++++++++ c_corner: " << c_corner << endl;
-
-        exit(0);
       }
       // END_SHADOWQUILT_COLUMN_LOOP
 
