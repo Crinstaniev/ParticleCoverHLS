@@ -2,11 +2,10 @@
 
 ## [TASKS]
 
-- [ ] Integrate patch buffer with the main program.
-
 ## [2024-08-03]
 
-- implemented `patch_buffer_get_patch_index` and auxiliary macros.e
+- implemented `patch_buffer_get_patch_index` and auxiliary macros.
+- fixed error value of `z_top_min` and `z0_complementary_cCorner`
 
 ### [BUG] Loop Condition Error
 
