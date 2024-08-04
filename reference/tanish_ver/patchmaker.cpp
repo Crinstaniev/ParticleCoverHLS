@@ -1593,6 +1593,25 @@ public:
           patches[patches.size() - 1].getShadows(z_top_min, z_top_max);
           patches[patches.size() - 2].getShadows(z_top_min, z_top_max);
 
+          cout << "ingredient of getShadows: " << endl;
+          cout << "z_top_min: " << z_top_min << endl;
+          cout << "z_top_max: " << z_top_max << endl;
+          cout << "latest_patch: " << endl;
+          for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 16; j++) {
+              cout << "patch_buffer[LATEST_PATCH_INDEX][" << i << "][" << j
+                   << "]: "
+                   << patches[patches.size() - 1].superpoints[i].points[j].z
+                   << endl;
+            }
+          }
+
+          cout << "shadow_fromTopToInnermost_topR_jR[LATEST_PATCH_INDEX]: "
+               << patches[patches.size() - 1].shadow_fromTopToInnermost_topR_jR
+               << endl;
+
+          exit(0);
+
           // DEBUG: print shadows
           DEBUG_PRINT_ALL(
               cout << "latest patch shadow:" << endl;
@@ -1651,6 +1670,12 @@ public:
                20 * env.beam_axis_lim);
           float complementary_topR_jR =
               patches[patches.size() - 1].shadow_fromTopToInnermost_topR_jR;
+
+          cout << "complementary_topR_jR updated to: " << complementary_topR_jR
+               << endl;
+
+          exit(0);
+
           bool complementaryPartialTop =
               (complementary_topR_jR > complementary_apexZ0) &&
               (complementary_topR_jR < apexZ0) &&

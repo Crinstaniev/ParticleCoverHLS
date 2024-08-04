@@ -1339,11 +1339,30 @@ _shadowquilt_column_loop:
       // IF_MADE_COMPLEMENTARY_PATCH
       if (madeComplementaryPatch) {
         // get shadow for latest patch
-        getShadows(z_top_min, z_top_max, patch_buffer[latest_patch_index],
-                   shadow_fromTopToInnermost_topL_jL[latest_patch_index],
-                   shadow_fromTopToInnermost_topL_jR[latest_patch_index],
-                   shadow_fromTopToInnermost_topR_jL[latest_patch_index],
-                   shadow_fromTopToInnermost_topR_jR[latest_patch_index]);
+        getShadows(z_top_min, z_top_max, patch_buffer[LATEST_PATCH_INDEX],
+                   shadow_fromTopToInnermost_topL_jL[LATEST_PATCH_INDEX],
+                   shadow_fromTopToInnermost_topL_jR[LATEST_PATCH_INDEX],
+                   shadow_fromTopToInnermost_topR_jL[LATEST_PATCH_INDEX],
+                   shadow_fromTopToInnermost_topR_jR[LATEST_PATCH_INDEX]);
+
+        cout << "ingredient of getShadows: " << endl;
+        cout << "z_top_min: " << z_top_min << endl;
+        cout << "z_top_max: " << z_top_max << endl;
+        cout << "latest_patch: " << endl;
+        for (int i = 0; i < NUM_LAYERS; i++) {
+          for (int j = 0; j < NUM_POINTS_IN_SUPERPOINT; j++) {
+            cout << "patch_buffer[LATEST_PATCH_INDEX][" << i << "][" << j
+                 << "]: " <<
+                 point_get_z(patch_buffer[LATEST_PATCH_INDEX][i][j])
+                 << endl;
+          }
+        }
+
+        cout << "shadow_fromTopToInnermost_topR_jR[LATEST_PATCH_INDEX]: "
+             << shadow_fromTopToInnermost_topR_jR[LATEST_PATCH_INDEX] << endl;
+
+        exit(0);
+
         // get shadow for 2nd latest patch
         getShadows(z_top_min, z_top_max, patch_buffer[PREVIOUS_PATCH_INDEX],
                    shadow_fromTopToInnermost_topL_jL[PREVIOUS_PATCH_INDEX],
@@ -1419,6 +1438,12 @@ _shadowquilt_column_loop:
                            float_value_t) < 20 * BEAM_AXIS_LIM);
         float_value_t complementary_topR_jR =
             shadow_fromTopToInnermost_topR_jR[LATEST_PATCH_INDEX];
+
+        cout << "complementary_topR_jR updated to: " << complementary_topR_jR
+             << endl;
+
+        exit(0);
+
         bool complementaryPartialTop =
             (complementary_topR_jR > complementary_apexZ0) &&
             (complementary_topR_jR < apexZ0) &&
@@ -1527,6 +1552,10 @@ _shadowquilt_column_loop:
           shifted_Align = apexZ0;
         }
 
+        /**
+         * BUG:
+         * error value of complementary_topR_jR
+         */
         cout << "original_topR_jL: " << original_topR_jL << endl;
         cout << "original_topL_jL: " << original_topL_jL << endl;
         cout << "complementary_topR_jR: " << complementary_topR_jR << endl;
@@ -1600,11 +1629,11 @@ _shadowquilt_column_loop:
           get_acceptanceCorners(PATCH_BUFFER_PARS);
 
           // get shadow for latest patch
-          getShadows(z_top_min, z_top_max, patch_buffer[latest_patch_index],
-                     shadow_fromTopToInnermost_topL_jL[latest_patch_index],
-                     shadow_fromTopToInnermost_topL_jR[latest_patch_index],
-                     shadow_fromTopToInnermost_topR_jL[latest_patch_index],
-                     shadow_fromTopToInnermost_topR_jR[latest_patch_index]);
+          getShadows(z_top_min, z_top_max, patch_buffer[LATEST_PATCH_INDEX],
+                     shadow_fromTopToInnermost_topL_jL[LATEST_PATCH_INDEX],
+                     shadow_fromTopToInnermost_topL_jR[LATEST_PATCH_INDEX],
+                     shadow_fromTopToInnermost_topR_jL[LATEST_PATCH_INDEX],
+                     shadow_fromTopToInnermost_topR_jR[LATEST_PATCH_INDEX]);
 
           if (shiftOriginal) {
             original_topR_jL =

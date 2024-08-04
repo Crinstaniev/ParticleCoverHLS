@@ -2,6 +2,9 @@
 
 ## [TASKS]
 
+- fix: error value of `complementary_topR_jR`
+- fix: in line `1596` (`patchmaker.cpp`): different result of last patch
+
 ## [2024-08-03]
 
 - implemented `patch_buffer_get_patch_index` and auxiliary macros.
@@ -10,6 +13,7 @@
 ### [BUG] Loop Condition Error
 
 - `loop_adjust_complementary_patch` got one more iteration than expected.
+- in line `1596` (`patchmaker.cpp`): different result of last patch
 
 ## [2024-07-28]
 
@@ -125,6 +129,3 @@ By adding missing function calls, correct c_corners are produced.
 #### Wrong number of iteration when adjusting white spaces
 
 - Fixed by correcting while condition
-
-
-
