@@ -3,7 +3,10 @@
 ## [TASKS]
 
 - fix: error value of `complementary_topR_jR`
-- fix: in line `1596` (`patchmaker.cpp`): different result of last patch
+
+## [2024-08-04]
+
+- correctness of ingredient of `getShadows` under condition `madeComplementaryPatch` guaranteed.
 
 ## [2024-08-03]
 

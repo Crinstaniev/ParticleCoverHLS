@@ -946,6 +946,7 @@ public:
       int nPatchesInColumn = 0;
       float projectionOfCornerToBeam = 0;
 
+    _shadowquilt_column_loop:
       while ((c_corner > -1 * env.trapezoid_edges[env.num_layers - 1]) &&
              (projectionOfCornerToBeam < env.beam_axis_lim)) {
         nPatchesInColumn++;
@@ -1105,6 +1106,7 @@ public:
                      (projectionOfCornerToBeam < env.beam_axis_lim))
                  << endl;)
 
+        // IF_CHOPPED_PATCH
         if (!(notChoppedPatch) &&
             (patches[patches.size() - 1].c_corner[1] >
              -1 * env.trapezoid_edges[env.num_layers - 1]) &&
@@ -1540,44 +1542,26 @@ public:
               }
             }
 
-            bool loop_cond =
-                !(white_space_height <= 0 &&
-                  (previous_white_space_height >= 0)) &&
-                (abs(white_space_height) > 0.000001) &&
-                ((patches[patches.size() - 1].c_corner[1] >
-                  -1 * env.trapezoid_edges[env.num_layers - 1]) ||
-                 (white_space_height > 0)) &&
-                (current_z_top_index <
-                 (int)(data->array[env.num_layers - 1].size() - 1)) &&
-                !(repeat_patch) && !(repeat_original);
+            DEBUG_PRINT_ALL({
+              // print the latest patch
+              cout << "counter: " << g_debug_counter << endl;
+              cout << "Print patch num: " << n_patches << endl;
+              for (int i = 0; i < 5; i++) {
+                for (int j = 0; j < 16; j++) {
+                  cout << "patch_buffer[latest][" << i << "][" << j << "]: "
+                       << patches[patches.size() - 1].superpoints[i].points[j].z
+                       << endl;
+                }
+              }
 
-            DEBUG_PRINT_ALL(
-                cout << "===========================" << endl;
-                cout << "loop condition for iter " << g_debug_counter << ":"
-                     << endl;
-
-                cout << "white_space_height <= 0: " << (white_space_height <= 0)
-                     << endl;
-                cout << "previous_white_space_height >= 0: "
-                     << (previous_white_space_height >= 0) << endl;
-                cout << "abs(white_space_height) > 0.000001: "
-                     << (abs(white_space_height) > 0.000001) << endl;
-                cout
-                << "c_corner[LATEST_PATCH_INDEX][1] > -1 * get_trapezoid_edges("
-                   "NUM_LAYERS - 1): "
-                << (patches[patches.size() - 1].c_corner[1] >
-                    -1 * env.trapezoid_edges[env.num_layers - 1])
-                << endl;
-                cout << "white_space_height > 0: " << (white_space_height > 0)
-                     << endl;
-                cout << "current_z_top_index < num_points[NUM_LAYERS - 1] - 1: "
-                     << (current_z_top_index <
-                         (int)(data->array[env.num_layers - 1].size() - 1))
-                     << endl;
-                cout << "repeat_patch: " << repeat_patch << endl;
-                cout << "repeat_original: " << repeat_original << endl;)
+              g_debug_counter++;
+            })
           }
+          // END_LOOP_ADJUST_COMPLEMENTARY_PATCH
         }
+        // END_IF_CHOPPED_PATCH
+
+        // up to here, latest patch is still correct
 
         c_corner = patches[patches.size() - 1].c_corner[1];
 
@@ -1590,19 +1574,21 @@ public:
 
       if_madeComplementaryPatch:
         if (madeComplementaryPatch) {
-          patches[patches.size() - 1].getShadows(z_top_min, z_top_max);
-          patches[patches.size() - 2].getShadows(z_top_min, z_top_max);
-
           cout << "ingredient of getShadows: " << endl;
           cout << "z_top_min: " << z_top_min << endl;
           cout << "z_top_max: " << z_top_max << endl;
-          cout << "latest_patch: " << endl;
-          for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 16; j++) {
-              cout << "patch_buffer[LATEST_PATCH_INDEX][" << i << "][" << j
-                   << "]: "
-                   << patches[patches.size() - 1].superpoints[i].points[j].z
-                   << endl;
+
+          {
+            // print the latest patch
+            cout << "++++++++++++++++++++++++++" << endl;
+            cout << "counter: " << g_debug_counter << endl;
+            cout << "Print patch num: " << n_patches << endl;
+            for (int i = 0; i < 5; i++) {
+              for (int j = 0; j < 16; j++) {
+                cout << "patch_buffer[latest][" << i << "][" << j << "]: "
+                     << patches[patches.size() - 1].superpoints[i].points[j].z
+                     << endl;
+              }
             }
           }
 
@@ -1610,7 +1596,12 @@ public:
                << patches[patches.size() - 1].shadow_fromTopToInnermost_topR_jR
                << endl;
 
+          // LATEST PATCH IS CORRECT UP TO HERE
+
           exit(0);
+
+          patches[patches.size() - 1].getShadows(z_top_min, z_top_max);
+          patches[patches.size() - 2].getShadows(z_top_min, z_top_max);
 
           // DEBUG: print shadows
           DEBUG_PRINT_ALL(
@@ -1816,6 +1807,7 @@ public:
                  doShiftedPatch && (horizontalOverlapTop <= 0) &&
                  (horizontalOverlapBottom <= 0) &&
                  (newGapTop < 0 || newGapBottom < 0)) {
+
             cout << "horizontalShifts: " << horizontalShiftTop << " "
                  << horizontalShiftBottom << " shifted_Align: " << shifted_Align
                  << endl;
@@ -1913,15 +1905,13 @@ public:
 
         exit(0);
       }
+      // END_SHADOWQUILT_COLUMN_LOOP
 
       apexZ0 = patches[patches.size() - 1].c_corner[0];
       apexZ0 = saved_apexZ0;
       cout << "'=======================================================  "
               "z1_Align: "
            << apexZ0 << endl;
-      /**
-       * TODO: translation resume here
-       */
 
       exit(0);
     }
